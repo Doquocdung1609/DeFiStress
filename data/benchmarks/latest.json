@@ -1,0 +1,14 @@
+[
+  {
+    "positions": 1000,
+    "duration_seconds": 0.061626,
+    "events": 303,
+    "cascade_depth": 3
+  },
+  {
+    "positions": 5000,
+    "duration_seconds": 0.229733,
+    "events": 1503,
+    "cascade_depth": 3
+  }
+]

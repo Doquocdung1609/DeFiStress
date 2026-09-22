@@ -1,0 +1,12 @@
+{
+  "name": "defi-stress-lab",
+  "private": true,
+  "packageManager": "pnpm@11.19.0",
+  "scripts": {
+    "build": "pnpm --dir frontend build",
+    "dev": "pnpm --dir frontend dev",
+    "lint": "pnpm --dir frontend lint",
+    "test": "pnpm --dir frontend test"
+  }
+}
+

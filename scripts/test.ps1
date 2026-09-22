@@ -1,0 +1,11 @@
+$ErrorActionPreference = "Stop"
+$root = Split-Path -Parent $PSScriptRoot
+Set-Location -LiteralPath $root
+& ".\.venv\Scripts\ruff.exe" check backend sim tests scripts
+& ".\.venv\Scripts\python.exe" -m pytest
+Push-Location -LiteralPath "$root\frontend"
+try {
+    & pnpm test
+    & pnpm lint
+    & pnpm build
+} finally { Pop-Location }
