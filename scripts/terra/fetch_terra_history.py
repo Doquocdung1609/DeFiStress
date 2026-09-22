@@ -1,4 +1,8 @@
-from _fetch_unavailable import run
+from _fetch_normalized import run
 
 if __name__ == "__main__":
-    run("Terra Classic archival LCD/RPC", "Fetch block-pinned Terra Classic historical state.")
+    run(
+        "Terra Classic normalized historical data",
+        "Download normalized Terra Classic historical observations for the research dataset.",
+        "TERRA_HISTORY_DATA_URL",
+    )
