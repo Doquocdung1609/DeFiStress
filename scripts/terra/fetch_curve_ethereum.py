@@ -1,4 +1,8 @@
-from _fetch_unavailable import run
+from _fetch_normalized import run
 
 if __name__ == "__main__":
-    run("Ethereum archival Curve state", "Fetch secondary Ethereum Curve UST historical state.")
+    run(
+        "Ethereum Curve UST historical data",
+        "Download normalized historical Curve/UST observations for the secondary contagion channel.",
+        "CURVE_HISTORY_DATA_URL",
+    )
