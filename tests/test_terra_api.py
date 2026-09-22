@@ -14,8 +14,7 @@ from backend.app.terra_api import terra_repository
 def test_terra_api_lifecycle_and_export(tmp_path) -> None:
     repository = Repository(f"sqlite:///{tmp_path / 'terra.db'}")
     app.dependency_overrides[terra_repository] = lambda: repository
-    api = TestClient(app)
-    status = api.get("/api/v1/terra/status")
+    app.dependency_overrides[get_settings] = lambda: Settings(\n        terra_archive_lcd_url="",\n        terra_history_data_url="",\n        eth_archive_rpc_url="",\n        curve_history_data_url="",\n        bridge_flow_data_url="",\n    )\n    api = TestClient(app)\n    status = api.get("/api/v1/terra/status")
     assert status.status_code == 200
     assert status.json()["datasets"][0]["status"] == "FIXTURE"
     assert all(item["status"] == "UNAVAILABLE" for item in status.json()["historical_sources"])
