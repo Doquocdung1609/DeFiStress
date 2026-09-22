@@ -165,6 +165,9 @@ export function TerraDashboard({ section }: { section: string }) {
                   onChange={(event) => {
                     const next = event.target.value;
                     setDatasetVersion(next);
+                    setReplay(null);
+                    setBenchmark(null);
+                    setExperiment(null);
                     void perform(() => loadDataset(next));
                   }}
                 >
@@ -193,7 +196,7 @@ export function TerraDashboard({ section }: { section: string }) {
 }
 
 function Overview({ manifest, latest, sources }: { manifest: TerraManifest; latest?: TerraObservation; sources: Status["historical_sources"] }) {
-  return <><SectionLead title="TerraUSD / LUNA — May 2022" text="Can models frozen before the collapse reproduce the subsequent nonlinear dynamics without seeing evaluation-period ground truth?" /><div className="researchFlow"><span>PRE-CRISIS DATA</span><b>→</b><span>FREEZE AT T0</span><b>→</b><span>REPLAY</span><b>→</b><span>GROUND TRUTH</span><b>→</b><span>VALIDATION</span></div><div className="metricGrid wide"><Metric label="Calibration cutoff" value="May 06 · 23:59 UTC" detail="Configurable T0" /><Metric label="Evaluation" value="May 07 → May 13" detail="168 hourly observations" /><Metric label="Data status" value={manifest.status} detail="Read this badge before presenting" /><Metric label="UST price" value={latest ? `$${latest.ust_price.toFixed(3)}` : "—"} detail="Latest fixture row" /><Metric label="LUNA price" value={latest ? `$${latest.luna_price.toFixed(4)}` : "—"} /><Metric label="Backing ratio" value={latest ? latest.backing_ratio.toFixed(3) : "—"} detail="Risk indicator, not a guarantee" /></div><section className="panel"><header><div><p className="eyebrow">SOURCE AVAILABILITY</p><h3>Canonical-on-chain first</h3></div></header><div className="sourceGrid">{sources.map((source) => <div className="sourceCard" key={source.source}><span className={`modeBadge ${source.status.toLowerCase()}`}>{source.status}</span><strong>{source.source}</strong><p>{source.reason}</p></div>)}</div></section></>;
+  return <><SectionLead title="TerraUSD / LUNA — May 2022" text="Can models frozen before the collapse reproduce the subsequent nonlinear dynamics without seeing evaluation-period ground truth?" /><div className="researchFlow"><span>PRE-CRISIS DATA</span><b>→</b><span>FREEZE AT T0</span><b>→</b><span>REPLAY</span><b>→</b><span>GROUND TRUTH</span><b>→</b><span>VALIDATION</span></div><div className="metricGrid wide"><Metric label="Calibration cutoff" value="May 06 · 23:59 UTC" detail="Configurable T0" /><Metric label="Evaluation" value="May 07 → May 13" detail="168 hourly observations" /><Metric label="Data status" value={manifest.status} detail="Read this badge before presenting" /><Metric label="UST price" value={latest ? `$${latest.ust_price.toFixed(3)}` : "—"} detail="Latest selected dataset row" /><Metric label="LUNA price" value={latest ? `$${latest.luna_price.toFixed(4)}` : "—"} /><Metric label="Backing ratio" value={latest ? latest.backing_ratio.toFixed(3) : "—"} detail="Risk indicator, not a guarantee" /></div><section className="panel"><header><div><p className="eyebrow">SOURCE AVAILABILITY</p><h3>Canonical-on-chain first</h3></div></header><div className="sourceGrid">{sources.map((source) => <div className="sourceCard" key={source.source}><span className={`modeBadge ${source.status.toLowerCase()}`}>{source.status}</span><strong>{source.source}</strong><p>{source.reason}</p></div>)}</div></section></>;
 }
 
 function HistoricalData({ rows, manifest }: { rows: TerraObservation[]; manifest: TerraManifest }) {
