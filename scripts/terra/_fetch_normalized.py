@@ -10,6 +10,7 @@ from pathlib import Path
 from urllib.parse import urlsplit, urlunsplit
 
 import httpx
+from dotenv import load_dotenv
 
 
 def _safe_endpoint(value: str) -> str:
@@ -33,6 +34,7 @@ def _row_count(content: bytes, content_type: str) -> int | None:
 
 
 def run(source: str, description: str, env_var: str) -> None:
+    load_dotenv()
     parser = ArgumentParser(description=description)
     parser.add_argument("--start", default="2022-05-01T00:00:00Z")
     parser.add_argument("--end", default="2022-05-13T23:59:59Z")
