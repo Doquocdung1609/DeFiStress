@@ -12,6 +12,7 @@ htmlcov/
 node_modules/
 .next/
 .next-*/
+*.tsbuildinfo
 frontend/coverage/
 data/exports/*.zip
 data/snapshots/real-*.json

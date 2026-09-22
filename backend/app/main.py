@@ -17,8 +17,8 @@ logger = logging.getLogger("defi_stress.api")
 
 app = FastAPI(
     title="DeFiStress Lab API",
-    version="0.1.0",
-    description="Research Simulation — Mainnet Read-Only",
+    version="0.2.0",
+    description="Cutoff-safe Terra historical replay and read-only Aave V3 stress research",
 )
 app.add_middleware(
     CORSMiddleware,

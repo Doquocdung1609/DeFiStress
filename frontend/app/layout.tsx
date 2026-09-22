@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "DeFiStress Lab",
-  description: "Aave V3 and Uniswap V3 contagion stress research dashboard",
+  description: "Historical Terra validation and contemporary Aave V3 stress research dashboard",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -13,4 +13,3 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     </html>
   );
 }
-

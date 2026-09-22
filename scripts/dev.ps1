@@ -67,7 +67,9 @@ try {
         Write-Host "Reusing the DeFiStress API already running on port $apiPort."
     }
     else {
-        $api = Start-Process -FilePath $python -ArgumentList "-m", "uvicorn", "backend.app.main:app", "--reload", "--port", "$apiPort" -WorkingDirectory $root -WindowStyle Hidden -PassThru
+        # Watch source directories only. Watching the whole repository makes a
+        # replay's SQLite writes trigger an API restart and transient fetch errors.
+        $api = Start-Process -FilePath $python -ArgumentList "-m", "uvicorn", "backend.app.main:app", "--reload", "--reload-dir", "backend", "--reload-dir", "sim", "--reload-exclude", "*.db", "--port", "$apiPort" -WorkingDirectory $root -WindowStyle Hidden -PassThru
     }
 
     if ($reuseFrontend) {

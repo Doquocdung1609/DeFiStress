@@ -42,6 +42,70 @@ export type Run = {
   error?: string;
 };
 
+export type TerraManifest = {
+  dataset_version: string;
+  status: "REAL_HISTORICAL" | "FIXTURE" | "PARTIAL" | "UNAVAILABLE" | "QUALITY_WARNING";
+  row_count: number;
+  start_timestamp: string;
+  end_timestamp: string;
+  dataset_hash: string;
+  source_manifest: Record<string, unknown>;
+  quality_report: Record<string, unknown>;
+  transformation_version: string;
+  git_commit: string;
+};
+
+export type TerraObservation = {
+  timestamp: string;
+  block_height: number;
+  ust_price: number;
+  luna_price: number;
+  ust_supply: number;
+  luna_supply: number;
+  anchor_total_deposits: number;
+  anchor_withdrawal_flow: number;
+  ust_native_redemption_volume: number;
+  terra_dex_liquidity: number;
+  backing_ratio: number;
+  ust_depeg_bps: number;
+  top10_anchor_share: number;
+  top100_anchor_share: number;
+};
+
+export type TerraReplay = {
+  id: string;
+  status: string;
+  metadata: Record<string, unknown> & {
+    cutoff_timestamp: string;
+    evaluation_start: string;
+    evaluation_end: string;
+    mode: string;
+    leakage_check_status: { status: string; checked_rows: number };
+  };
+  dataset: TerraManifest;
+  model: { name: string; version: string; status: string; diagnostics: Record<string, unknown> };
+  simulated_timeseries: Array<Record<string, number | string | boolean>>;
+  ground_truth_timeseries: TerraObservation[];
+  validation_metrics: Record<string, number | boolean | null>;
+  validation_warnings: string[];
+  agent_events: Array<Record<string, unknown>>;
+  early_warning: {
+    score: number;
+    contributions: Record<string, number>;
+    calibration_policy: string;
+    label: string;
+  };
+  evidence_warning?: string | null;
+};
+
+export type TerraBenchmark = {
+  id: string;
+  status: string;
+  benchmark_results: Array<Record<string, number | string | boolean | null>>;
+  interpretation: string;
+  dataset_status: string;
+};
+
 export async function api<T>(path: string, init?: RequestInit): Promise<T> {
   const request = () => fetch(`${API_URL}${path}`, {
       ...init,

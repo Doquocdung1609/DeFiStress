@@ -5,7 +5,7 @@ Set-Location -LiteralPath $root
 & ".\.venv\Scripts\python.exe" -m pytest
 Push-Location -LiteralPath "$root\frontend"
 try {
-    & pnpm test
-    & pnpm lint
-    & pnpm build
+    & pnpm.cmd test
+    & pnpm.cmd lint
+    & pnpm.cmd build
 } finally { Pop-Location }

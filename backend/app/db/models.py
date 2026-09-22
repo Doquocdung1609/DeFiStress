@@ -136,3 +136,86 @@ class DataQualityFlag(Base):
     code: Mapped[str] = mapped_column(String(64), index=True)
     severity: Mapped[str] = mapped_column(String(16))
     message: Mapped[str] = mapped_column(Text)
+
+
+class ResearchCaseStudyRecord(Base):
+    __tablename__ = "research_case_studies"
+    id: Mapped[str] = mapped_column(String(64), primary_key=True)
+    name: Mapped[str] = mapped_column(String(160))
+    case_type: Mapped[str] = mapped_column(String(48), index=True)
+    payload_json: Mapped[dict] = mapped_column(JSON)
+
+
+class ResearchDatasetVersionRecord(Base):
+    __tablename__ = "research_dataset_versions"
+    dataset_version: Mapped[str] = mapped_column(String(96), primary_key=True)
+    case_study_id: Mapped[str] = mapped_column(String(64), index=True)
+    status: Mapped[str] = mapped_column(String(32), index=True)
+    dataset_hash: Mapped[str] = mapped_column(String(80), unique=True)
+    row_count: Mapped[int] = mapped_column(Integer)
+    start_timestamp: Mapped[str] = mapped_column(String(64))
+    end_timestamp: Mapped[str] = mapped_column(String(64))
+    manifest_json: Mapped[dict] = mapped_column(JSON)
+    quality_report_json: Mapped[dict] = mapped_column(JSON)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=utc_now)
+
+
+class DatasetSourceRecord(Base):
+    __tablename__ = "dataset_sources"
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    dataset_version: Mapped[str] = mapped_column(ForeignKey("research_dataset_versions.dataset_version"), index=True)
+    source_name: Mapped[str] = mapped_column(String(160))
+    source_type: Mapped[str] = mapped_column(String(64))
+    chain_id: Mapped[str] = mapped_column(String(64))
+    quality_flag: Mapped[str] = mapped_column(String(32))
+    payload_json: Mapped[dict] = mapped_column(JSON)
+
+
+class TerraHourlyStateRecord(Base):
+    __tablename__ = "terra_hourly_state"
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    dataset_version: Mapped[str] = mapped_column(ForeignKey("research_dataset_versions.dataset_version"), index=True)
+    timestamp: Mapped[str] = mapped_column(String(64), index=True)
+    block_height: Mapped[int] = mapped_column(Integer, index=True)
+    payload_json: Mapped[dict] = mapped_column(JSON)
+    __table_args__ = (Index("ix_terra_dataset_timestamp", "dataset_version", "timestamp", unique=True),)
+
+
+class TerraWalletCohortRecord(Base):
+    __tablename__ = "terra_wallet_cohorts"
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    dataset_version: Mapped[str] = mapped_column(ForeignKey("research_dataset_versions.dataset_version"), index=True)
+    wallet_id_hash: Mapped[str] = mapped_column(String(96), index=True)
+    cohort: Mapped[str] = mapped_column(String(24), index=True)
+    payload_json: Mapped[dict] = mapped_column(JSON)
+
+
+class HistoricalReplayRecord(Base):
+    __tablename__ = "historical_replays"
+    id: Mapped[str] = mapped_column(String(64), primary_key=True)
+    dataset_version: Mapped[str] = mapped_column(ForeignKey("research_dataset_versions.dataset_version"), index=True)
+    model_name: Mapped[str] = mapped_column(String(64), index=True)
+    experiment_mode: Mapped[str] = mapped_column(String(48), index=True)
+    status: Mapped[str] = mapped_column(String(24), index=True)
+    metadata_json: Mapped[dict] = mapped_column(JSON)
+    result_json: Mapped[dict] = mapped_column(JSON)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=utc_now)
+
+
+class ModelBenchmarkRecord(Base):
+    __tablename__ = "model_benchmarks"
+    id: Mapped[str] = mapped_column(String(64), primary_key=True)
+    dataset_version: Mapped[str] = mapped_column(ForeignKey("research_dataset_versions.dataset_version"), index=True)
+    status: Mapped[str] = mapped_column(String(24), index=True)
+    result_json: Mapped[dict] = mapped_column(JSON)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=utc_now)
+
+
+class TerraExperimentRecord(Base):
+    __tablename__ = "terra_experiments"
+    id: Mapped[str] = mapped_column(String(64), primary_key=True)
+    dataset_version: Mapped[str] = mapped_column(ForeignKey("research_dataset_versions.dataset_version"), index=True)
+    experiment_type: Mapped[str] = mapped_column(String(48), index=True)
+    status: Mapped[str] = mapped_column(String(24), index=True)
+    result_json: Mapped[dict] = mapped_column(JSON)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=utc_now)

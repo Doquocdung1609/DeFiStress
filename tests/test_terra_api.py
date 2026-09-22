@@ -1,0 +1,53 @@
+from __future__ import annotations
+
+import io
+import zipfile
+
+from fastapi.testclient import TestClient
+
+from backend.app.db import Repository
+from backend.app.main import app
+from backend.app.terra_api import terra_repository
+
+
+def test_terra_api_lifecycle_and_export(tmp_path) -> None:
+    repository = Repository(f"sqlite:///{tmp_path / 'terra.db'}")
+    app.dependency_overrides[terra_repository] = lambda: repository
+    api = TestClient(app)
+    status = api.get("/api/v1/terra/status")
+    assert status.status_code == 200
+    assert status.json()["datasets"][0]["status"] == "FIXTURE"
+    assert all(item["status"] == "UNAVAILABLE" for item in status.json()["historical_sources"])
+
+    replay = api.post("/api/v1/terra/replays", json={"model_name": "ABM", "seed": 19})
+    assert replay.status_code == 201
+    payload = replay.json()
+    assert payload["metadata"]["leakage_check_status"]["status"] == "PASS"
+    assert payload["dataset"]["status"] == "FIXTURE"
+    replay_id = payload["id"]
+    assert api.get(f"/api/v1/terra/replays/{replay_id}/metrics").status_code == 200
+
+    exported = api.get(f"/api/v1/terra/export/{replay_id}")
+    assert exported.status_code == 200
+    with zipfile.ZipFile(io.BytesIO(exported.content)) as archive:
+        names = set(archive.namelist())
+    assert {
+        "manifest.json",
+        "data_sources.json",
+        "cutoff.json",
+        "parameters.json",
+        "simulation_timeseries.csv",
+        "ground_truth_timeseries.csv",
+        "validation_metrics.csv",
+        "quality_report.json",
+    } <= names
+    app.dependency_overrides.clear()
+
+
+def test_case_study_api_preserves_aave_and_terra(tmp_path) -> None:
+    repository = Repository(f"sqlite:///{tmp_path / 'cases.db'}")
+    app.dependency_overrides[terra_repository] = lambda: repository
+    api = TestClient(app)
+    cases = api.get("/api/v1/case-studies").json()
+    assert {item["id"] for item in cases} == {"aave-v3", "terra-2022"}
+    app.dependency_overrides.clear()

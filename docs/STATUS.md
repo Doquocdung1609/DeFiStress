@@ -1,6 +1,6 @@
 # Project Status
 
-Last verified locally: 2026-09-15. A checked item means its offline/fixture implementation and automated checks pass. Environment-dependent Mainnet and fork evidence is tracked separately and is never inferred from fixture results.
+Last verified locally: 2026-09-22. A checked item means its offline/fixture implementation and automated checks pass. Environment-dependent Mainnet, fork, and Terra historical evidence is tracked separately and is never inferred from fixture results.
 
 - [x] FR-01 Data Source Health — API/UI and read-only RPC health implemented; live RPC check skipped.
 - [x] FR-02 Create Snapshot — fixture, real, and explicit cached-Mainnet modes implemented; fixture/cached tests pass.
@@ -23,16 +23,26 @@ Last verified locally: 2026-09-15. A checked item means its offline/fixture impl
 
 | Check | Status | Evidence |
 |---|---|---|
-| Python backend/simulation tests | PASS | 36 tests |
+| Python backend/simulation tests | PASS | 56 tests |
 | Ruff | PASS | backend, simulation, tests, scripts |
-| mypy | PASS | 19 simulation source files |
-| Vitest | PASS | 2 tests |
+| mypy | PASS | 32 simulation source files |
+| Vitest | PASS | 4 tests |
 | ESLint | PASS | frontend source |
 | Next.js production build | PASS | Next.js 16.3.5, TypeScript strict build |
 | Alembic migration | PASS | SQLite upgraded to head |
 | Fixture API/UI E2E | PASS | Scenario → Run → Results, two waves, browser console clean |
 | Docker Compose configuration | PASS | five-service topology resolves |
 | Deterministic performance | PASS | 1,000 positions 0.0616s; 5,000 positions 0.2297s on this machine |
+
+## Terra V2 status
+
+- [x] Immutable dataset manifest, data-quality report, stable hashes, UTC schema, and explicit `REAL` / `FIXTURE` / `UNAVAILABLE` labels.
+- [x] Hard cutoff at `2022-05-06T00:00:00Z`; calibration and ground truth are separate types and storage paths.
+- [x] Threshold, aggregate discrete-hazard fallback, system-dynamics, and heterogeneous cohort ABM models.
+- [x] Historical replay, validation metrics, benchmark, ablation, sensitivity, counterfactual, Monte Carlo, and reproducible ZIP export.
+- [x] Terra API and nine-section responsive research dashboard while preserving the Aave case.
+- [x] CSV/JSON/Parquet import and explicit unavailable fetch commands.
+- [ ] Reproducible real Terra historical dataset has not been supplied or connected; all current Terra numerical demonstrations are visibly marked `FIXTURE`.
 
 ## Environment-dependent checks
 
@@ -43,6 +53,7 @@ Last verified locally: 2026-09-15. A checked item means its offline/fixture impl
 | QuoterV2 / executable local-fork comparison | NOT RUN | Archive RPC and Foundry/Anvil unavailable |
 | Foundry harness compile/run | NOT RUN | `forge` and `anvil` unavailable |
 | Docker image build / `compose up` | NOT RUN | Docker Desktop engine unavailable; Compose config itself passes |
+| Real Terra historical import/replay | UNAVAILABLE | No reproducible historical provider credentials or source file configured; fixture is never promoted to real data |
 
 ## Definition-of-Done assessment
 

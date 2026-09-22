@@ -1,13 +1,13 @@
 [
   {
     "positions": 1000,
-    "duration_seconds": 0.061626,
+    "duration_seconds": 0.172442,
     "events": 303,
     "cascade_depth": 3
   },
   {
     "positions": 5000,
-    "duration_seconds": 0.229733,
+    "duration_seconds": 0.429187,
     "events": 1503,
     "cascade_depth": 3
   }

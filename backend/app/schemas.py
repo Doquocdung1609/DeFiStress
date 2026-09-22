@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from decimal import Decimal
-from typing import Literal
+from typing import Any, Literal
 
 from pydantic import BaseModel, Field, field_validator
 
@@ -60,3 +60,39 @@ class CascadeThresholdRequest(BaseModel):
 class ForkValidationRequest(BaseModel):
     snapshot_id: str | None = None
     borrower_hash: str | None = None
+
+
+class TerraDatasetImportRequest(BaseModel):
+    dataset_version: str = Field(min_length=1, max_length=96)
+    status: Literal["REAL_HISTORICAL", "FIXTURE", "PARTIAL", "QUALITY_WARNING"]
+    source_name: str = Field(min_length=1, max_length=160)
+    source_type: str = Field(min_length=1, max_length=80)
+    chain_id: str = "columbus-5"
+    raw_reference: str = "api-import"
+    observations: list[dict[str, Any]] = Field(min_length=1)
+
+
+class TerraReplayRequest(BaseModel):
+    dataset_version: str = "terra_fixture_v1"
+    calibration_start: str = "2022-05-01T00:00:00Z"
+    calibration_end: str = "2022-05-06T23:59:59Z"
+    cutoff_timestamp: str = "2022-05-06T23:59:59Z"
+    evaluation_start: str = "2022-05-07T00:00:00Z"
+    evaluation_end: str = "2022-05-13T23:59:59Z"
+    model_name: Literal["THRESHOLD", "HAZARD", "SYSTEM_DYNAMICS", "ABM"] = "ABM"
+    mode: Literal["IN_SAMPLE_REPLAY", "OUT_OF_SAMPLE_REPLAY", "COUNTERFACTUAL_STRESS"] = "OUT_OF_SAMPLE_REPLAY"
+    parameters: dict[str, Any] = Field(default_factory=dict)
+    seed: int = 20220506
+
+
+class TerraCounterfactualRequest(TerraReplayRequest):
+    overrides: dict[str, Any] = Field(default_factory=lambda: {"price_impact_coefficient": 0.18})
+
+
+class TerraSensitivityRequest(TerraReplayRequest):
+    parameter: str = "reaction_delay_hours"
+    values: list[float] = Field(default_factory=lambda: [0, 3, 6], min_length=1, max_length=20)
+
+
+class TerraMonteCarloRequest(TerraReplayRequest):
+    runs: int = Field(default=100, ge=1, le=10_000)

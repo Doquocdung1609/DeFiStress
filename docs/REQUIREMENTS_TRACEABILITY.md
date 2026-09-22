@@ -22,3 +22,19 @@
 | FR-16 Data Provenance View | provenance API and frontend route | API integration and browser walkthrough | PASS (FIXTURE) |
 
 The broader NFR, model, UI, data-source, testing, and Definition-of-Done mappings are documented in `docs/IMPLEMENTATION_PLAN.md`, `docs/ARCHITECTURE.md`, `docs/MODEL_ASSUMPTIONS.md`, and `docs/VALIDATION.md`.
+
+## V2 Terra historical case
+
+| Requirement | Implementation | Test | Status |
+|---|---|---|---|
+| Strict pre/post-cutoff isolation | `sim/terra/datasets.py`, `ground_truth.py`, `leakage.py` | mandatory leakage guard in `tests/test_terra_data_and_leakage.py` | PASS |
+| Provenance and immutable hashes | Terra dataset manifest/import service | dataset/hash/import tests | PASS (fixture/import path) |
+| Threshold, hazard, system dynamics, ABM | `sim/terra/models.py` | model and invariant tests | PASS |
+| Historical replay and metrics | `sim/terra/replay.py`, `validation.py` | replay/API lifecycle tests | PASS (fixture); REAL DATA NOT CONFIGURED |
+| Four-model benchmark | `sim/terra/experiments.py`, Terra API/UI | benchmark tests | PASS (fixture) |
+| Ablation, counterfactual, sensitivity | `sim/terra/experiments.py` | experiment tests | PASS (fixture) |
+| Seeded Monte Carlo | `sim/terra/monte_carlo.py` | reproducibility/probability tests | PASS (fixture) |
+| Dataset import CSV/JSON/Parquet | `backend/app/services/terra_datasets.py` | importer validation plus smoke checks | PASS |
+| Reproducible ZIP export | `backend/app/services/terra_export.py` | archive-content API test | PASS |
+| Nine Terra research screens | `frontend/app/terra/[section]` | TypeScript, Vitest, ESLint, browser walkthrough | PASS locally |
+| Real historical source acquisition | source adapters/fetch commands expose explicit status | unavailable-state tests | UNAVAILABLE until a reproducible provider/source file is supplied |

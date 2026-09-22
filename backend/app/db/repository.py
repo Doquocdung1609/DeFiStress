@@ -12,16 +12,25 @@ from backend.app.db.models import (
     Base,
     BorrowerPositionRecord,
     DataQualityFlag,
+    DatasetSourceRecord,
     DataSnapshot,
     DexPoolRecord,
     DexTickRecord,
+    HistoricalReplayRecord,
+    ModelBenchmarkRecord,
+    ResearchCaseStudyRecord,
+    ResearchDatasetVersionRecord,
     ScenarioRecord,
     SimulationEventRecord,
     SimulationMetricRecord,
     SimulationRunRecord,
+    TerraExperimentRecord,
+    TerraHourlyStateRecord,
     ValidationRun,
 )
 from sim.schemas import json_safe
+from sim.terra.datasets import DatasetManifest, ResearchDataset
+from sim.terra.schemas import DataStatus, TerraObservation, parse_utc
 
 
 class Repository:
@@ -216,6 +225,164 @@ class Repository:
         with self.sessions.begin() as session:
             session.add(ValidationRun(id=validation_id, snapshot_id=snapshot_id, status=status, report_json=report))
         return {"id": validation_id, "status": status, "report": report}
+
+    def ensure_case_studies(self) -> None:
+        cases = (
+            (
+                "terra-2022",
+                "TerraUSD / LUNA — May 2022",
+                "HISTORICAL_VALIDATION",
+                {"chain": "Terra Classic", "purpose": "Out-of-sample historical replay and model benchmark"},
+            ),
+            (
+                "aave-v3",
+                "Aave V3 + Uniswap V3",
+                "CONTEMPORARY_STRESS",
+                {"chain": "Ethereum Mainnet", "purpose": "Contemporary counterfactual stress testing"},
+            ),
+        )
+        with self.sessions.begin() as session:
+            for case_id, name, case_type, payload in cases:
+                if session.get(ResearchCaseStudyRecord, case_id) is None:
+                    session.add(
+                        ResearchCaseStudyRecord(id=case_id, name=name, case_type=case_type, payload_json=payload)
+                    )
+
+    def list_case_studies(self) -> list[dict[str, Any]]:
+        self.ensure_case_studies()
+        with self.sessions() as session:
+            rows = session.scalars(select(ResearchCaseStudyRecord).order_by(ResearchCaseStudyRecord.id)).all()
+            return [{"id": row.id, "name": row.name, "case_type": row.case_type, **row.payload_json} for row in rows]
+
+    def save_terra_dataset(self, dataset: ResearchDataset) -> dict[str, Any]:
+        manifest = dataset.manifest
+        payload = manifest.to_dict()
+        with self.sessions.begin() as session:
+            existing = session.get(ResearchDatasetVersionRecord, manifest.dataset_version)
+            if existing:
+                if existing.dataset_hash != manifest.dataset_hash:
+                    raise ValueError("dataset_version already exists with a different hash")
+                return existing.manifest_json
+            session.add(
+                ResearchDatasetVersionRecord(
+                    dataset_version=manifest.dataset_version,
+                    case_study_id="terra-2022",
+                    status=manifest.status.value,
+                    dataset_hash=manifest.dataset_hash,
+                    row_count=manifest.row_count,
+                    start_timestamp=payload["start_timestamp"],
+                    end_timestamp=payload["end_timestamp"],
+                    manifest_json=payload,
+                    quality_report_json=manifest.quality_report,
+                )
+            )
+            primary = manifest.source_manifest.get("primary", {})
+            session.add(
+                DatasetSourceRecord(
+                    dataset_version=manifest.dataset_version,
+                    source_name=str(primary.get("source", "UNAVAILABLE")),
+                    source_type=str(primary.get("priority", "UNAVAILABLE")),
+                    chain_id=str(primary.get("chain", "columbus-5")),
+                    quality_flag=manifest.status.value,
+                    payload_json=manifest.source_manifest,
+                )
+            )
+            for row in dataset.observations:
+                row_payload = row.to_dict()
+                session.add(
+                    TerraHourlyStateRecord(
+                        dataset_version=manifest.dataset_version,
+                        timestamp=str(row_payload["timestamp"]),
+                        block_height=row.block_height,
+                        payload_json=row_payload,
+                    )
+                )
+        return payload
+
+    def get_terra_dataset(self, dataset_version: str) -> ResearchDataset | None:
+        with self.sessions() as session:
+            manifest_row = session.get(ResearchDatasetVersionRecord, dataset_version)
+            if not manifest_row:
+                return None
+            rows = session.scalars(
+                select(TerraHourlyStateRecord)
+                .where(TerraHourlyStateRecord.dataset_version == dataset_version)
+                .order_by(TerraHourlyStateRecord.timestamp)
+            ).all()
+            payload = manifest_row.manifest_json
+            manifest = DatasetManifest(
+                dataset_version=dataset_version,
+                status=DataStatus(payload["status"]),
+                row_count=int(payload["row_count"]),
+                start_timestamp=parse_utc(payload["start_timestamp"]),
+                end_timestamp=parse_utc(payload["end_timestamp"]),
+                dataset_hash=str(payload["dataset_hash"]),
+                source_manifest=dict(payload["source_manifest"]),
+                quality_report=dict(payload["quality_report"]),
+                transformation_version=str(payload["transformation_version"]),
+                git_commit=str(payload["git_commit"]),
+            )
+            return ResearchDataset(manifest, tuple(TerraObservation.from_mapping(row.payload_json) for row in rows))
+
+    def list_terra_datasets(self) -> list[dict[str, Any]]:
+        with self.sessions() as session:
+            rows = session.scalars(
+                select(ResearchDatasetVersionRecord).order_by(ResearchDatasetVersionRecord.created_at.desc())
+            ).all()
+            return [row.manifest_json for row in rows]
+
+    def save_terra_replay(self, dataset_version: str, result: dict[str, Any]) -> str:
+        replay_id = str(uuid4())
+        metadata = result["metadata"]
+        with self.sessions.begin() as session:
+            session.add(
+                HistoricalReplayRecord(
+                    id=replay_id,
+                    dataset_version=dataset_version,
+                    model_name=str(result["model"]["name"]),
+                    experiment_mode=str(metadata["mode"]),
+                    status="COMPLETE",
+                    metadata_json=metadata,
+                    result_json=json_safe(result),
+                )
+            )
+        return replay_id
+
+    def get_terra_replay(self, replay_id: str) -> dict[str, Any] | None:
+        with self.sessions() as session:
+            row = session.get(HistoricalReplayRecord, replay_id)
+            if not row:
+                return None
+            return {"id": row.id, "status": row.status, **row.result_json}
+
+    def save_terra_benchmark(self, dataset_version: str, result: dict[str, Any]) -> str:
+        benchmark_id = str(uuid4())
+        with self.sessions.begin() as session:
+            session.add(
+                ModelBenchmarkRecord(
+                    id=benchmark_id, dataset_version=dataset_version, status="COMPLETE", result_json=json_safe(result)
+                )
+            )
+        return benchmark_id
+
+    def get_terra_benchmark(self, benchmark_id: str) -> dict[str, Any] | None:
+        with self.sessions() as session:
+            row = session.get(ModelBenchmarkRecord, benchmark_id)
+            return None if not row else {"id": row.id, "status": row.status, **row.result_json}
+
+    def save_terra_experiment(self, dataset_version: str, experiment_type: str, result: dict[str, Any]) -> str:
+        experiment_id = str(uuid4())
+        with self.sessions.begin() as session:
+            session.add(
+                TerraExperimentRecord(
+                    id=experiment_id,
+                    dataset_version=dataset_version,
+                    experiment_type=experiment_type,
+                    status="COMPLETE",
+                    result_json=json_safe(result),
+                )
+            )
+        return experiment_id
 
 
 def _position_hf(position: dict[str, Any], price: float) -> float:

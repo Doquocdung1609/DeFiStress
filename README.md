@@ -1,41 +1,47 @@
 # DeFiStress Lab
 
-DeFiStress Lab is a reproducible research dashboard for the Aave V3 to Uniswap V3 liquidation feedback loop on Ethereum. It combines immutable block-pinned snapshots, an agent-based liquidation model, Uniswap V3 square-root-price liquidity math, deterministic and Monte Carlo experiments, traceable metrics, and local-fork validation hooks.
+DeFiStress Lab is a reproducible DeFi systemic-risk research platform with two deliberately separate case studies:
 
-The Mainnet integration is strictly read-only. The project has no signer, private-key setting, `eth_sendTransaction`, or `eth_sendRawTransaction` path.
+1. **TerraUSD/LUNA, May 2022** — cutoff-safe historical replay, historical validation, competing-model benchmark, ablation, and counterfactual experiments.
+2. **Aave V3 + Uniswap V3** — contemporary Ethereum liquidation and liquidity-feedback stress testing.
 
-## 1 Project overview
+Historical validation improves confidence in the research workflow; it does not transfer universal validity from Terra to Aave. A replay is never labelled a prediction.
 
-The system asks what happens after an ETH shock: which Aave positions cross Health Factor 1, how liquidators respond to profit and capacity limits, how seized WETH execution moves a Uniswap V3 pool, whether the endogenous price move creates further liquidation waves, and how bad debt and cascade probability change under liquidity, gas, and arbitrage assumptions.
+## Research design
 
-## 2 Architecture
+The default Terra experiment freezes calibration at `2022-05-06 23:59:59 UTC` and evaluates `2022-05-07 00:00` through `2022-05-13 23:59 UTC`. Model code receives a `CalibrationDatasetView`, a cutoff state, evaluation timestamps, frozen parameters, and a seed. It cannot receive `GroundTruthState`; the validator loads ground truth only after simulation completes.
 
-- `sim`: API-independent quantitative engine using `Decimal` for monetary/accounting values.
-- `backend`: FastAPI, SQLAlchemy storage, block-pinned adapters, Celery worker, export and validation status.
-- `frontend`: Next.js and Recharts research dashboard.
-- `contracts/validation`: local-only Foundry/Anvil harness.
-- `data`: explicitly labelled fixture and generated experiment artifacts.
-- `docs`: assumptions, validation, status, demo procedure, and requirement traceability.
+Every replay records calibration/evaluation windows, cutoff, dataset/model versions, git commit, seed, scenario parameters, source manifest, and leakage-check status. Modes are `IN_SAMPLE_REPLAY`, `OUT_OF_SAMPLE_REPLAY`, and `COUNTERFACTUAL_STRESS`.
 
-See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+## Data integrity and provenance
 
-## 3 Research question
+Terra Classic is the primary historical chain. Ethereum Curve/bridge data is secondary contagion evidence, and market-provider data is an external cross-check. P2 data never silently replaces missing canonical chain data.
 
-For an ETH price shock, estimate direct liquidations, forced WETH selling, DEX price impact, endogenous liquidation waves, unliquidated debt, bad debt, recovery, and Monte Carlo tail risk under alternative market and agent capacities.
+No historical endpoint or credential is bundled. Therefore the repository ships only `terra_fixture_v1`, a deterministic synthetic fixture visibly labelled `FIXTURE`. Historical adapters report `UNAVAILABLE` until a source is configured. CSV, JSON, and Parquet imports carry source, chain, block/time range, quality flags, dataset hash, transformation version, and git commit.
 
-## 4 Safety
+See [Terra provenance](docs/TERRA_DATA_PROVENANCE.md), [data dictionary](docs/TERRA_DATA_DICTIONARY.md), and the [sample schema](docs/data/README.md).
 
-`REAL_MAINNET` calls only block reads, `eth_call`, and `eth_getLogs`. Never add a private key or seed phrase. Fork transactions belong on `127.0.0.1` Anvil only. The UI always displays `Research Simulation — Mainnet Read-Only` and a `FIXTURE` snapshot is never called Mainnet data.
+## Model families
 
-## 5 Requirements
+- **Threshold** — pre-specified depeg/backing rule.
+- **Hazard** — transparent aggregate discrete-time withdrawal hazard fallback. Cox PH is explicitly `UNAVAILABLE` when wallet event durations are absent.
+- **System Dynamics** — aggregate UST selling → redemption → LUNA minting → price/backing feedback.
+- **ABM** — heterogeneous depositor cohorts, arbitrage, protocol conversion, DEX liquidity, optional reserves, and decomposable decisions.
 
-- Python 3.12+
-- Node.js 20+ and pnpm
-- PostgreSQL and Redis for the full Docker topology; SQLite and local background jobs work for development
-- Optional Mainnet RPC for real snapshots
-- Optional archive RPC plus Foundry/Anvil for local-fork validation
+Validation includes MAE, RMSE, MAPE/sMAPE, correlation, directional accuracy, configurable event-timing errors, supply and withdrawal errors, and crisis classification. Metrics are displayed neutrally; the software does not auto-declare a winner.
 
-## 6 Quick start fixture mode
+## Architecture
+
+- `sim`: API-independent Aave and Terra quantitative engines.
+- `sim/terra`: dataset views, leakage guard, four model families, replay, metrics, benchmark, ablation, sensitivity, and counterfactuals.
+- `backend`: FastAPI, SQLAlchemy, migrations, persistence, import services, export, and read-only chain adapters.
+- `frontend`: Next.js research dashboard with a top-level Terra/Aave selector.
+- `data`: immutable raw, interim, processed, fixture, export, and run layers.
+- `docs`: methodology, assumptions, provenance, validation, limitations, and professor demo.
+
+SQLite remains the default local database. PostgreSQL/Redis remain optional for the full topology.
+
+## Bootstrap and start
 
 PowerShell:
 
@@ -51,103 +57,62 @@ Bash:
 ./scripts/dev.sh
 ```
 
-Open `http://localhost:3000/overview`; the API and Swagger run at `http://localhost:8000` and `http://localhost:8000/docs`. Run a non-browser smoke demo with:
+Open:
+
+- Terra demo: `http://localhost:3000/terra/overview`
+- Aave demo: `http://localhost:3000/overview`
+- API docs: `http://localhost:8000/docs`
+
+## Terra fixture workflow
 
 ```powershell
-.\.venv\Scripts\python.exe scripts\run_demo.py
+.\scripts\terra\run_replay.ps1 --model ABM --output data\exports\terra-abm.json
+.\scripts\terra\run_benchmark.ps1 --output data\exports\terra-benchmark.json
+.\scripts\terra\run_ablation.ps1 --output data\exports\terra-ablation.json
+.\scripts\terra\run_counterfactual.ps1 --reaction-delay-hours 6 --output data\exports\terra-counterfactual.json
 ```
 
-## 7 Real Mainnet mode
+These results are software demonstrations, not historical empirical evidence, because the bundled dataset status is `FIXTURE`.
 
-Set `APP_MODE=REAL_MAINNET` and `ETH_RPC_URL`, start the API, then request:
+## Import historical Terra data
+
+Validate first, then import with an honest status:
 
 ```powershell
-Invoke-RestMethod -Method Post -Uri http://localhost:8000/api/v1/snapshots -ContentType application/json -Body '{"mode":"REAL_MAINNET"}'
+.\.venv\Scripts\python.exe scripts\terra\validate_dataset.py --input path\terra.csv --dataset-version terra_ground_truth_v1
+.\scripts\terra\import_dataset.ps1 --input path\terra.csv --dataset-version terra_ground_truth_v1 --status PARTIAL --source-name "Research export" --source-type INDEXED_ONCHAIN
 ```
 
-The service selects one finalized block first. Every Aave and Uniswap contract read uses that block number. Borrower discovery scans a configurable recent log range with adaptive chunks; use `candidate_users` for a controlled research cohort. The Uniswap adapter scans initialized `tickBitmap` words directly at that same block and selects the fee tier with the largest modeled ±2% executable depth.
+Use `REAL_HISTORICAL` only when provenance actually supports that label. Import refuses duplicate timestamps, naive timestamps, impossible negative supplies, and a reused dataset version with a different hash.
 
-## 8 RPC configuration
+## Terra API
 
-Copy `.env.example` to `.env`. `ETH_RPC_URL` is sufficient for a current finalized snapshot. `ETH_ARCHIVE_RPC_URL` is required for historical blocks and Anvil validation. `GRAPH_API_KEY` enables indexed history/tick work; its absence must not be hidden.
+Core endpoints include `/api/v1/case-studies`, `/api/v1/terra/status`, dataset import/list/timeseries/provenance, replay lifecycle/timeseries/metrics/events/export, benchmark, ablation, sensitivity, and counterfactual execution.
 
-## 9 Database
+The export ZIP contains `manifest.json`, source/cutoff/parameter/model files, simulation and ground-truth CSVs, validation metrics, agent events, quality report, and charts.
 
-SQLite is the default:
+## Aave contemporary stress test
+
+The original case remains intact. Create an immutable `FIXTURE`, `REAL_MAINNET`, or `CACHED_MAINNET` snapshot, lock a scenario, then run deterministic or seeded Monte Carlo stress. Ethereum integration is strictly read-only: no signer, private-key setting, `eth_sendTransaction`, or `eth_sendRawTransaction` path exists.
+
+The professor preset remains ETH −20%, liquidity haircut 40%, gas 2×, arbitrage capacity 50%, seed `20260914`. No-cascade results are reported as-is.
+
+## Database migrations
 
 ```powershell
 .\.venv\Scripts\alembic.exe upgrade head
 ```
 
-Set a PostgreSQL SQLAlchemy URL for the full stack. Snapshots, locked scenarios, and completed runs are immutable; re-running creates a new run.
+Migration `0002_terra_research` adds case studies, dataset manifests/sources, hourly Terra states, wallet cohorts, historical replays, model benchmarks, and generic Terra experiment records.
 
-## 10 Docker
-
-```bash
-docker compose up --build
-```
-
-Services are `postgres`, `redis`, `backend`, `worker`, and `frontend`, each with a health check where supported. Docker Desktop must be running.
-
-## 11 Create snapshot
-
-Fixture:
-
-```bash
-curl -X POST http://localhost:8000/api/v1/snapshots -H "Content-Type: application/json" -d '{"mode":"FIXTURE"}'
-```
-
-Real snapshot:
-
-```bash
-python scripts/create_real_snapshot.py
-```
-
-## 12 Run stress simulation
-
-Create a scenario using `POST /api/v1/scenarios`, then call `POST /api/v1/runs`. The professor preset is ETH −20%, liquidity haircut 40%, gas 2×, arbitrage capacity 50%, seed `20260914`. A scientific no-cascade result is returned as-is; the threshold endpoint can search for the first shock producing depth at least two.
-
-## 13 Monte Carlo
-
-Use run mode `MONTE_CARLO`. With `ASYNC_BACKEND=local`, FastAPI schedules a local background task for development. With `ASYNC_BACKEND=CELERY`, the Redis-backed worker executes it and `/runs/{id}` reports status and progress. The same snapshot, scenario, model version, and seed reproduce the same paths.
-
-## 14 Fork validation
-
-Set `ETH_ARCHIVE_RPC_URL`, install Foundry, and follow [contracts/validation/README.md](contracts/validation/README.md). The API reports `NOT_RUN_MISSING_ARCHIVE_RPC`, `NOT_RUN_MISSING_FOUNDRY`, `UNAVAILABLE`, or `READY_LOCAL_ONLY`; it never fabricates `PASS`.
-
-## 15 Export results
-
-`GET /api/v1/runs/{id}/export` returns a ZIP with manifest, snapshot summary, scenario, metrics, event/position/timeseries CSVs, validation status, README, and four generated charts.
-
-## 16 Testing
+## Tests
 
 ```powershell
 .\scripts\test.ps1
 ```
 
-The suite covers decimals, HF, Aave close-factor approximation, V3 swap behavior, cascade waves, invariants, seeded Monte Carlo, API lifecycle, export, and the read-only RPC allowlist. Real RPC and fork checks skip when credentials/tooling are absent.
+The suite includes timestamp/timezone validation, cutoff enforcement, the mandatory ground-truth isolation test, manifests/hashes, Terra accounting and behavior, deterministic replay, metrics/timing, benchmark/ablation/counterfactuals, API/export lifecycle, the full original Aave suite, frontend tests, lint, and production build.
 
-Run the deterministic 1,000/5,000-position benchmark with:
+## Scientific limitations
 
-```powershell
-.\.venv\Scripts\python.exe scripts\benchmark_simulation.py
-```
-
-## 17 Known limitations
-
-- A real snapshot whose direct initialized-tick reads fail is valid for direct state analysis but receives `TICK_DATA_INCOMPLETE`; trades beyond the configured bitmap window require a Quoter/fork cross-check.
-- The ABM models WETH-to-USDC liquidation while retaining other portfolio value in aggregate. `HF_MISMATCH` records approximation error against `getUserAccountData`.
-- Aave V3.7 dust, protocol-fee, e-mode, isolation, and rounding behavior is approximated off-chain and must be measured against a local fork for publication claims.
-- No RPC credentials, archive RPC, Foundry, or running Docker daemon are bundled.
-
-## 18 Research methodology
-
-Separate exogenous shock from endogenous price feedback. Direct liquidation is eligibility immediately after the shock; cascade liquidation is eligibility created only after forced-sale DEX feedback. Events preserve each liquidation decision and execution. Monte Carlo changes price, liquidity, and gas inputs but uses the identical deterministic core.
-
-## 19 Data sources
-
-P0 sources are Ethereum JSON-RPC, the Aave DAO Address Book/Aave V3 contracts, and Uniswap V3 contracts. Official subgraphs/SDKs are P1 acceleration and cross-check sources. DefiLlama/CoinGecko are P2 external references only and never substitute for the Aave oracle.
-
-## 20 Demo script
-
-The exact 5–7 minute flow is in [docs/DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md). Before presenting real data, capture and cache the snapshot so the live run does not depend entirely on internet connectivity.
+Archival Terra endpoints may be incomplete; wallet behavior and confidence are only partially observable; CEX order books may be absent; protocol conversion and aggregate DEX execution are simplified; missing intervals may remain; out-of-sample historical replay is not prospective prediction; and Terra validation does not validate Aave liquidation mechanics. See [research limitations](docs/RESEARCH_LIMITATIONS.md).

@@ -23,12 +23,14 @@ from backend.app.services.export import build_experiment_zip
 from backend.app.services.real_snapshot import create_real_snapshot
 from backend.app.services.runs import execute_run, scenario_from_dict
 from backend.app.services.snapshots import ensure_fixture_snapshot, simulation_inputs
+from backend.app.terra_api import router as terra_router
 from sim.dex import V3Pool
 from sim.engine import MODEL_VERSION, find_cascade_threshold
 from sim.presets import scenario_presets
 from sim.schemas import json_safe
 
 router = APIRouter(prefix="/api/v1")
+router.include_router(terra_router)
 
 
 def get_repository(settings: Settings = Depends(get_settings)) -> Repository:

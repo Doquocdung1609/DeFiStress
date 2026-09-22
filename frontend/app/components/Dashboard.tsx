@@ -203,6 +203,10 @@ export function Dashboard({ section, runId }: { section: string; runId?: string 
           <span className="brandMark">DS</span>
           <div><strong>DeFiStress</strong><small>LAB / RESEARCH</small></div>
         </div>
+        <div className="caseSwitch" aria-label="Case study selector">
+          <Link href="/terra/overview">Terra 2022</Link>
+          <span className="activeCase">Aave V3</span>
+        </div>
         <nav>
           {nav.map(([path, label]) => (
             <Link key={path} href={`/${path}`} className={section === path ? "active" : ""}>

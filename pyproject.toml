@@ -4,8 +4,8 @@ build-backend = "hatchling.build"
 
 [project]
 name = "defi-stress-lab"
-version = "0.1.0"
-description = "Read-only Ethereum stress simulation for Aave V3 and Uniswap V3"
+version = "0.2.0"
+description = "Cutoff-safe Terra historical replay and read-only Aave V3 stress research"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
@@ -16,6 +16,7 @@ dependencies = [
   "matplotlib>=3.9,<4",
   "numpy>=2.0,<3",
   "pandas>=2.2,<3",
+  "pyarrow>=18,<24",
   "pydantic>=2.9,<3",
   "pydantic-settings>=2.5,<3",
   "psycopg[binary]>=3.2,<4",
@@ -50,6 +51,7 @@ select = ["E", "F", "I", "UP", "B", "SIM"]
 
 [tool.ruff.lint.per-file-ignores]
 "backend/app/api.py" = ["B008"]
+"backend/app/terra_api.py" = ["B008"]
 
 [tool.mypy]
 python_version = "3.12"
