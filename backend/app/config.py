@@ -11,9 +11,20 @@ class Settings(BaseSettings):
     app_env: str = "development"
     app_mode: str = "FIXTURE"
     log_level: str = "INFO"
+
+    # Ethereum sources.
     eth_rpc_url: str = ""
     eth_archive_rpc_url: str = ""
     graph_api_key: str = ""
+
+    # Terra historical-source configuration. These values only indicate that a
+    # provider has been configured; imported datasets still carry their own
+    # FIXTURE/PARTIAL/REAL_HISTORICAL evidence status.
+    terra_archive_lcd_url: str = ""
+    terra_history_data_url: str = ""
+    curve_history_data_url: str = ""
+    bridge_flow_data_url: str = ""
+
     database_url: str = "sqlite:///./defi_stress.db"
     redis_url: str = "redis://localhost:6379/0"
     async_backend: str = "local"
