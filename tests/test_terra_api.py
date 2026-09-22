@@ -5,6 +5,7 @@ import zipfile
 
 from fastapi.testclient import TestClient
 
+from backend.app.config import Settings, get_settings
 from backend.app.db import Repository
 from backend.app.main import app
 from backend.app.terra_api import terra_repository
@@ -50,4 +51,29 @@ def test_case_study_api_preserves_aave_and_terra(tmp_path) -> None:
     api = TestClient(app)
     cases = api.get("/api/v1/case-studies").json()
     assert {item["id"] for item in cases} == {"aave-v3", "terra-2022"}
+    app.dependency_overrides.clear()
+
+
+def test_terra_source_status_reflects_configured_providers(tmp_path) -> None:
+    repository = Repository(f"sqlite:///{tmp_path / 'configured.db'}")
+    app.dependency_overrides[terra_repository] = lambda: repository
+    app.dependency_overrides[get_settings] = lambda: Settings(
+        terra_archive_lcd_url="https://terra.example.invalid",
+        terra_history_data_url="https://data.example.invalid/terra.json",
+        eth_archive_rpc_url="https://ethereum.example.invalid",
+        curve_history_data_url="https://data.example.invalid/curve.json",
+        bridge_flow_data_url="https://data.example.invalid/bridge.json",
+    )
+    api = TestClient(app)
+
+    payload = api.get("/api/v1/terra/status").json()
+
+    assert [item["status"] for item in payload["historical_sources"]] == [
+        "CONFIGURED",
+        "CONFIGURED",
+        "CONFIGURED",
+    ]
+    build = api.post("/api/v1/terra/datasets/build")
+    assert build.status_code == 200
+    assert build.json()["status"] == "CONFIGURED"
     app.dependency_overrides.clear()
