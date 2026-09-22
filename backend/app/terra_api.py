@@ -4,7 +4,7 @@ from typing import Any
 
 from fastapi import APIRouter, Depends, HTTPException, Query, Response, status
 
-from backend.app.adapters.terra.history import unavailable
+from backend.app.adapters.terra.history import configured, historical, partial, unavailable
 from backend.app.config import Settings, get_settings
 from backend.app.db import Repository
 from backend.app.schemas import (
@@ -42,6 +42,102 @@ def _dataset_or_404(repository: Repository, dataset_version: str):
     return dataset
 
 
+def _preferred_historical_dataset(repository: Repository):
+    """Return the strongest non-fixture Terra dataset currently stored."""
+
+    manifests = repository.list_terra_datasets()
+    priority = ("REAL_HISTORICAL", "PARTIAL", "QUALITY_WARNING")
+    for wanted in priority:
+        for manifest in manifests:
+            if manifest.get("status") == wanted:
+                dataset = repository.get_terra_dataset(str(manifest["dataset_version"]))
+                if dataset is not None:
+                    return dataset
+    return None
+
+
+def _historical_source_status(repository: Repository, settings: Settings) -> list[dict[str, Any]]:
+    dataset = _preferred_historical_dataset(repository)
+    dataset_status = dataset.manifest.status.value if dataset is not None else None
+    dataset_version = dataset.manifest.dataset_version if dataset is not None else None
+
+    if dataset is not None:
+        reason = (
+            f"Versioned dataset {dataset_version} is loaded with status {dataset_status}; "
+            "use Data Provenance to inspect its manifest before citing it as evidence."
+        )
+        terra = (
+            historical("Terra Classic historical data", reason)
+            if dataset_status == "REAL_HISTORICAL"
+            else partial("Terra Classic historical data", reason)
+        )
+    elif settings.terra_history_data_url or settings.terra_archive_lcd_url:
+        terra = configured(
+            "Terra Classic historical data",
+            "A Terra historical provider is configured. Ingest and validate a versioned dataset before treating it as evidence.",
+        )
+    else:
+        terra = unavailable(
+            "Terra Classic historical data",
+            "Set TERRA_HISTORY_DATA_URL or TERRA_ARCHIVE_LCD_URL, or import a verified CSV/JSON/Parquet dataset.",
+        )
+
+    has_curve = bool(
+        dataset
+        and any(
+            row.curve_ust_liquidity is not None
+            or row.curve_pool_imbalance is not None
+            or row.curve_ust_price is not None
+            for row in dataset.observations
+        )
+    )
+    if has_curve:
+        reason = f"Curve fields are present in dataset {dataset_version} ({dataset_status})."
+        curve = (
+            historical("Ethereum archival RPC / Curve", reason)
+            if dataset_status == "REAL_HISTORICAL"
+            else partial("Ethereum archival RPC / Curve", reason)
+        )
+    elif settings.curve_history_data_url or settings.eth_archive_rpc_url:
+        curve = configured(
+            "Ethereum archival RPC / Curve",
+            "An Ethereum archive RPC or normalized Curve historical provider is configured; ingest Curve observations to attach historical evidence.",
+        )
+    else:
+        curve = unavailable(
+            "Ethereum archival RPC / Curve",
+            "Set ETH_ARCHIVE_RPC_URL or CURVE_HISTORY_DATA_URL if the Curve cross-chain channel is required.",
+        )
+
+    has_bridge = bool(
+        dataset
+        and any(
+            row.bridge_outflow_terra_to_ethereum is not None
+            or row.bridge_inflow_ethereum_to_terra is not None
+            for row in dataset.observations
+        )
+    )
+    if has_bridge:
+        reason = f"Bridge-flow fields are present in dataset {dataset_version} ({dataset_status})."
+        bridge = (
+            historical("Bridge-flow indexer", reason)
+            if dataset_status == "REAL_HISTORICAL"
+            else partial("Bridge-flow indexer", reason)
+        )
+    elif settings.bridge_flow_data_url:
+        bridge = configured(
+            "Bridge-flow indexer",
+            "A normalized bridge-flow provider is configured; ingest the observations before using them as evidence.",
+        )
+    else:
+        bridge = unavailable(
+            "Bridge-flow indexer",
+            "Set BRIDGE_FLOW_DATA_URL or import a dataset containing bridge flow fields.",
+        )
+
+    return [terra.to_dict(), curve.to_dict(), bridge.to_dict()]
+
+
 def _experiment(request: TerraReplayRequest) -> HistoricalReplayExperiment:
     return HistoricalReplayExperiment(
         dataset_version=request.dataset_version,
@@ -64,20 +160,17 @@ def case_studies(repository: Repository = Depends(terra_repository)) -> list[dic
 
 
 @router.get("/terra/status")
-def terra_status(repository: Repository = Depends(terra_repository)) -> dict[str, Any]:
+def terra_status(
+    repository: Repository = Depends(terra_repository),
+    settings: Settings = Depends(get_settings),
+) -> dict[str, Any]:
     ensure_terra_fixture(repository)
     return {
         "case_study": "TERRA_2022",
         "default_cutoff": "2022-05-06T23:59:59Z",
         "default_evaluation": ["2022-05-07T00:00:00Z", "2022-05-13T23:59:59Z"],
         "datasets": repository.list_terra_datasets(),
-        "historical_sources": [
-            unavailable("Terra Classic archival LCD/RPC", "No archival Terra endpoint is configured.").to_dict(),
-            unavailable(
-                "Ethereum archival RPC / Curve", "ETH_ARCHIVE_RPC_URL is not configured for this dataset."
-            ).to_dict(),
-            unavailable("Bridge-flow indexer", "No indexed bridge dataset is configured.").to_dict(),
-        ],
+        "historical_sources": _historical_source_status(repository, settings),
         "fixture_warning": "Synthetic fixture is available for software demonstration and is not historical evidence.",
     }
 
@@ -102,11 +195,40 @@ def import_terra_dataset(
 
 
 @router.post("/terra/datasets/build")
-def build_terra_dataset(repository: Repository = Depends(terra_repository)) -> dict[str, Any]:
+def build_terra_dataset(
+    repository: Repository = Depends(terra_repository),
+    settings: Settings = Depends(get_settings),
+) -> dict[str, Any]:
     ensure_terra_fixture(repository)
+    existing = _preferred_historical_dataset(repository)
+    if existing is not None:
+        return {
+            "status": existing.manifest.status.value,
+            "reason": "A non-fixture historical dataset is already loaded.",
+            "dataset_version": existing.manifest.dataset_version,
+            "fixture_dataset": FIXTURE_VERSION,
+            "import_formats": ["CSV", "Parquet", "JSON"],
+        }
+
+    if settings.terra_history_data_url:
+        return {
+            "status": "CONFIGURED",
+            "reason": "TERRA_HISTORY_DATA_URL is configured. Run scripts/terra/fetch_terra_history.py, validate the downloaded file, then import it.",
+            "fixture_dataset": FIXTURE_VERSION,
+            "import_formats": ["CSV", "Parquet", "JSON"],
+        }
+
+    if settings.terra_archive_lcd_url:
+        return {
+            "status": "CONFIGURED",
+            "reason": "TERRA_ARCHIVE_LCD_URL is configured. Raw archival chain access is available, but a normalized research dataset must still be built/imported before replay.",
+            "fixture_dataset": FIXTURE_VERSION,
+            "import_formats": ["CSV", "Parquet", "JSON"],
+        }
+
     return {
-        "status": "UNAVAILABLE",
-        "reason": "No archival Terra Classic endpoint is configured; fixture remains separately available.",
+        "status": "NEEDS_CONFIGURATION",
+        "reason": "Configure TERRA_HISTORY_DATA_URL or TERRA_ARCHIVE_LCD_URL, or import a verified historical dataset.",
         "fixture_dataset": FIXTURE_VERSION,
         "import_formats": ["CSV", "Parquet", "JSON"],
     }
