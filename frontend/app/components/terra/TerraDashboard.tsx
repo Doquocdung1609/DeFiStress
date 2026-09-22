@@ -46,6 +46,7 @@ type ExperimentResult = { id: string; status: string; ablation_results?: Array<{
 
 export function TerraDashboard({ section }: { section: string }) {
   const [status, setStatus] = useState<Status | null>(null);
+  const [datasetVersion, setDatasetVersion] = useState(defaultRequest.dataset_version);
   const [observations, setObservations] = useState<TerraObservation[]>([]);
   const [cohorts, setCohorts] = useState<Cohorts | null>(null);
   const [replay, setReplay] = useState<TerraReplay | null>(null);
@@ -58,24 +59,31 @@ export function TerraDashboard({ section }: { section: string }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const loadDataset = useCallback(async (version: string) => {
+    const encoded = encodeURIComponent(version);
+    const [seriesData, cohortData] = await Promise.all([
+      api<{ dataset: TerraManifest; observations: TerraObservation[] }>(`/api/v1/terra/timeseries?dataset_version=${encoded}`),
+      api<Cohorts>(`/api/v1/terra/wallet-cohorts?dataset_version=${encoded}`),
+    ]);
+    setObservations(seriesData.observations);
+    setCohorts(cohortData);
+  }, []);
+
   const load = useCallback(async () => {
     try {
       setBusy(true);
-      const [statusData, seriesData, cohortData] = await Promise.all([
-        api<Status>("/api/v1/terra/status"),
-        api<{ dataset: TerraManifest; observations: TerraObservation[] }>("/api/v1/terra/timeseries?dataset_version=terra_fixture_v1"),
-        api<Cohorts>("/api/v1/terra/wallet-cohorts?dataset_version=terra_fixture_v1"),
-      ]);
+      const statusData = await api<Status>("/api/v1/terra/status");
+      const preferred = preferredDataset(statusData.datasets);
       setStatus(statusData);
-      setObservations(seriesData.observations);
-      setCohorts(cohortData);
+      setDatasetVersion(preferred.dataset_version);
+      await loadDataset(preferred.dataset_version);
       setError(null);
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : "Terra research API is unavailable.");
     } finally {
       setBusy(false);
     }
-  }, []);
+  }, [loadDataset]);
 
   useEffect(() => {
     const timer = window.setTimeout(() => void load(), 0);
@@ -84,10 +92,11 @@ export function TerraDashboard({ section }: { section: string }) {
 
   const request = useMemo(() => ({
     ...defaultRequest,
+    dataset_version: datasetVersion,
     model_name: model,
     seed,
     parameters: { reaction_delay_hours: reactionDelay, price_impact_coefficient: priceImpact },
-  }), [model, priceImpact, reactionDelay, seed]);
+  }), [datasetVersion, model, priceImpact, reactionDelay, seed]);
 
   async function runReplay() {
     await perform(async () => setReplay(await api<TerraReplay>("/api/v1/terra/replays", { method: "POST", body: JSON.stringify(request) })));
@@ -118,7 +127,7 @@ export function TerraDashboard({ section }: { section: string }) {
     }
   }
 
-  const manifest = status?.datasets.find((dataset) => dataset.status === "FIXTURE") ?? status?.datasets[0] ?? null;
+  const manifest = status?.datasets.find((dataset) => dataset.dataset_version === datasetVersion) ?? status?.datasets[0] ?? null;
   const latest = observations.at(-1);
   return (
     <div className="shell terraShell">
@@ -142,7 +151,34 @@ export function TerraDashboard({ section }: { section: string }) {
         {busy && !status ? <div className="loading"><span />Loading cutoff-safe research state…</div> : null}
         {status && manifest ? (
           <section className="content">
-            <div className="fixtureBanner"><strong>{manifest.status}</strong>{status.fixture_warning}</div>
+            <div className={`dataBanner ${manifest.status.toLowerCase()}`}>
+              <strong>{terraStatusLabel(manifest.status)}</strong>
+              {manifest.status === "FIXTURE"
+                ? status.fixture_warning
+                : `Dataset ${manifest.dataset_version} is selected. Inspect provenance before presenting empirical claims.`}
+            </div>
+            <div className="datasetToolbar">
+              <label>
+                Research dataset
+                <select
+                  value={datasetVersion}
+                  onChange={(event) => {
+                    const next = event.target.value;
+                    setDatasetVersion(next);
+                    setReplay(null);
+                    setBenchmark(null);
+                    setExperiment(null);
+                    void perform(() => loadDataset(next));
+                  }}
+                >
+                  {status.datasets.map((dataset) => (
+                    <option key={dataset.dataset_version} value={dataset.dataset_version}>
+                      {dataset.dataset_version} · {terraStatusLabel(dataset.status)}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
             {section === "overview" ? <Overview manifest={manifest} latest={latest} sources={status.historical_sources} /> : null}
             {section === "historical-data" ? <HistoricalData rows={observations} manifest={manifest} /> : null}
             {section === "wallet-dynamics" ? <WalletDynamics cohorts={cohorts} rows={observations} replay={replay} /> : null}
@@ -160,7 +196,7 @@ export function TerraDashboard({ section }: { section: string }) {
 }
 
 function Overview({ manifest, latest, sources }: { manifest: TerraManifest; latest?: TerraObservation; sources: Status["historical_sources"] }) {
-  return <><SectionLead title="TerraUSD / LUNA — May 2022" text="Can models frozen before the collapse reproduce the subsequent nonlinear dynamics without seeing evaluation-period ground truth?" /><div className="researchFlow"><span>PRE-CRISIS DATA</span><b>→</b><span>FREEZE AT T0</span><b>→</b><span>REPLAY</span><b>→</b><span>GROUND TRUTH</span><b>→</b><span>VALIDATION</span></div><div className="metricGrid wide"><Metric label="Calibration cutoff" value="May 06 · 23:59 UTC" detail="Configurable T0" /><Metric label="Evaluation" value="May 07 → May 13" detail="168 hourly observations" /><Metric label="Data status" value={manifest.status} detail="Read this badge before presenting" /><Metric label="UST price" value={latest ? `$${latest.ust_price.toFixed(3)}` : "—"} detail="Latest fixture row" /><Metric label="LUNA price" value={latest ? `$${latest.luna_price.toFixed(4)}` : "—"} /><Metric label="Backing ratio" value={latest ? latest.backing_ratio.toFixed(3) : "—"} detail="Risk indicator, not a guarantee" /></div><section className="panel"><header><div><p className="eyebrow">SOURCE AVAILABILITY</p><h3>Canonical-on-chain first</h3></div></header><div className="sourceGrid">{sources.map((source) => <div className="sourceCard" key={source.source}><span className="modeBadge unavailable">{source.status}</span><strong>{source.source}</strong><p>{source.reason}</p></div>)}</div></section></>;
+  return <><SectionLead title="TerraUSD / LUNA — May 2022" text="Can models frozen before the collapse reproduce the subsequent nonlinear dynamics without seeing evaluation-period ground truth?" /><div className="researchFlow"><span>PRE-CRISIS DATA</span><b>→</b><span>FREEZE AT T0</span><b>→</b><span>REPLAY</span><b>→</b><span>GROUND TRUTH</span><b>→</b><span>VALIDATION</span></div><div className="metricGrid wide"><Metric label="Calibration cutoff" value="May 06 · 23:59 UTC" detail="Configurable T0" /><Metric label="Evaluation" value="May 07 → May 13" detail="168 hourly observations" /><Metric label="Data status" value={manifest.status} detail="Read this badge before presenting" /><Metric label="UST price" value={latest ? `$${latest.ust_price.toFixed(3)}` : "—"} detail="Latest selected dataset row" /><Metric label="LUNA price" value={latest ? `$${latest.luna_price.toFixed(4)}` : "—"} /><Metric label="Backing ratio" value={latest ? latest.backing_ratio.toFixed(3) : "—"} detail="Risk indicator, not a guarantee" /></div><section className="panel"><header><div><p className="eyebrow">SOURCE AVAILABILITY</p><h3>Canonical-on-chain first</h3></div></header><div className="sourceGrid">{sources.map((source) => <div className="sourceCard" key={source.source}><span className={`modeBadge ${source.status.toLowerCase()}`}>{source.status}</span><strong>{source.source}</strong><p>{source.reason}</p></div>)}</div></section></>;
 }
 
 function HistoricalData({ rows, manifest }: { rows: TerraObservation[]; manifest: TerraManifest }) {
@@ -208,3 +244,13 @@ function Empty({ title: heading, text, action, busy, onRun }: { title: string; t
 function title(section: string) { return ({ overview: "Event Overview", "historical-data": "Historical Data", "wallet-dynamics": "Wallet / Run Dynamics", "model-lab": "Model Lab", replay: "Historical Replay", benchmark: "Model Benchmark", ablation: "Ablation Study", counterfactual: "Counterfactual", provenance: "Data Provenance" } as Record<string, string>)[section] ?? "Event Overview"; }
 function formatMetric(value: unknown) { return typeof value === "number" && Number.isFinite(value) ? new Intl.NumberFormat("en-US", { maximumFractionDigits: 4 }).format(value) : "—"; }
 function formatHours(value: unknown) { return typeof value === "number" && Number.isFinite(value) ? `${value > 0 ? "+" : ""}${value.toFixed(1)}h` : "Not detected"; }
+
+
+function preferredDataset(datasets: TerraManifest[]): TerraManifest {
+  const priority: TerraManifest["status"][] = ["REAL_HISTORICAL", "PARTIAL", "QUALITY_WARNING", "FIXTURE", "UNAVAILABLE"];
+  for (const status of priority) {
+    const match = datasets.find((dataset) => dataset.status === status);
+    if (match) return match;
+  }
+  throw new Error("No Terra research dataset is available.");
+}

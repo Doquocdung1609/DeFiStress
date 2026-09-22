@@ -5,6 +5,7 @@ from argparse import ArgumentParser, Namespace
 from pathlib import Path
 from typing import Any
 
+from backend.app.config import Settings
 from backend.app.db import Repository
 from backend.app.services.terra_datasets import import_research_dataset
 from sim.terra.fixtures import FIXTURE_VERSION, terra_fixture_dataset
@@ -20,7 +21,7 @@ def common_replay_parser(description: str) -> ArgumentParser:
     parser.add_argument("--evaluation-start", default="2022-05-07T00:00:00Z")
     parser.add_argument("--evaluation-end", default="2022-05-13T23:59:59Z")
     parser.add_argument("--seed", type=int, default=20220506)
-    parser.add_argument("--database-url", default="sqlite:///./data/defi_stress.db")
+    parser.add_argument("--database-url", default=None, help="Defaults to DATABASE_URL from .env / application settings.")
     parser.add_argument("--output", type=Path)
     return parser
 
@@ -43,10 +44,11 @@ def experiment_from_args(args: Namespace, model_name: str = "ABM") -> Historical
 def load_dataset(args: Namespace):
     if args.dataset_version == FIXTURE_VERSION:
         return terra_fixture_dataset()
-    repository = Repository(args.database_url)
+    database_url = args.database_url or Settings().database_url
+    repository = Repository(database_url)
     dataset = repository.get_terra_dataset(args.dataset_version)
     if dataset is None:
-        raise SystemExit(f"Dataset {args.dataset_version!r} was not found in {args.database_url}")
+        raise SystemExit(f"Dataset {args.dataset_version!r} was not found in {database_url}")
     return dataset
 
 
@@ -72,6 +74,7 @@ def import_file(args: Namespace) -> dict[str, Any]:
         args.chain_id,
         args.raw_reference,
     )
-    repository = Repository(args.database_url)
+    database_url = args.database_url or Settings().database_url
+    repository = Repository(database_url)
     repository.save_terra_dataset(dataset)
     return dataset.manifest.to_dict()

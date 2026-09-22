@@ -17,7 +17,31 @@ Every replay records calibration/evaluation windows, cutoff, dataset/model versi
 
 Terra Classic is the primary historical chain. Ethereum Curve/bridge data is secondary contagion evidence, and market-provider data is an external cross-check. P2 data never silently replaces missing canonical chain data.
 
-No historical endpoint or credential is bundled. Therefore the repository ships only `terra_fixture_v1`, a deterministic synthetic fixture visibly labelled `FIXTURE`. Historical adapters report `UNAVAILABLE` until a source is configured. CSV, JSON, and Parquet imports carry source, chain, block/time range, quality flags, dataset hash, transformation version, and git commit.
+No historical endpoint or credential is bundled. Therefore the repository ships only `terra_fixture_v1`, a deterministic synthetic fixture visibly labelled `FIXTURE`. Historical-source health is now dynamic: a source is `UNAVAILABLE` only when neither a provider nor historical evidence is configured, `CONFIGURED` when an endpoint is present but not yet ingested, and `REAL_HISTORICAL` / `PARTIAL` when a versioned dataset actually carries that evidence. CSV, JSON, and Parquet imports carry source, chain, block/time range, quality flags, dataset hash, transformation version, and git commit.
+
+### Configure historical sources
+
+Copy `.env.example` to `.env` and configure only the providers you actually have:
+
+```env
+TERRA_ARCHIVE_LCD_URL=
+TERRA_HISTORY_DATA_URL=
+ETH_ARCHIVE_RPC_URL=
+CURVE_HISTORY_DATA_URL=
+BRIDGE_FLOW_DATA_URL=
+```
+
+`TERRA_HISTORY_DATA_URL`, `CURVE_HISTORY_DATA_URL`, and `BRIDGE_FLOW_DATA_URL` are normalized historical providers. The source-specific fetch scripts now perform a real HTTP download instead of writing a permanent `UNAVAILABLE` stub. A successful download is labelled `DOWNLOADED_UNVERIFIED`; validate provenance/schema before importing it as `REAL_HISTORICAL`.
+
+Example:
+
+```powershell
+.\.venv\Scripts\python.exe scripts\terra\fetch_terra_history.py --output data\raw\terra_history.json
+.\.venv\Scripts\python.exe scripts\terra\validate_dataset.py --input data\raw\terra_history.json --dataset-version terra_ground_truth_v1
+.\scripts\terra\import_dataset.ps1 --input data\raw\terra_history.json --dataset-version terra_ground_truth_v1 --status REAL_HISTORICAL --source-name "Verified Terra historical provider" --source-type INDEXED_ONCHAIN
+```
+
+The Terra CLI now defaults to the same `DATABASE_URL` as the running API, so a dataset imported from the command line is visible in the dashboard without writing to a second SQLite database.
 
 See [Terra provenance](docs/TERRA_DATA_PROVENANCE.md), [data dictionary](docs/TERRA_DATA_DICTIONARY.md), and the [sample schema](docs/data/README.md).
 
