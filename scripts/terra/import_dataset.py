@@ -15,7 +15,7 @@ def main() -> None:
     parser.add_argument("--source-type", required=True)
     parser.add_argument("--chain-id", default="columbus-5")
     parser.add_argument("--raw-reference", default="manual-import")
-    parser.add_argument("--database-url", default="sqlite:///./data/defi_stress.db")
+    parser.add_argument("--database-url", default=None, help="Defaults to DATABASE_URL from .env / application settings.")
     parser.add_argument("--manifest-output", type=Path)
     args = parser.parse_args()
     write_json(args.manifest_output, import_file(args))
