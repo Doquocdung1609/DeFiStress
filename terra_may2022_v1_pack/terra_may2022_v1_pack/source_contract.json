@@ -1,0 +1,35 @@
+{
+  "dataset_version": "terra_may2022_v1",
+  "window": {
+    "start": "2022-05-01T00:00:00Z",
+    "end": "2022-05-13T23:00:00Z",
+    "frequency": "1h",
+    "expected_rows": 312
+  },
+  "calibration_cutoff": "2022-05-06T23:59:59Z",
+  "evaluation_window": ["2022-05-07T00:00:00Z", "2022-05-13T23:59:59Z"],
+  "primary_source": {
+    "name": "Anatomy of a Run: The Terra Luna Crash replication package",
+    "doi": "10.17632/j5d8n7hzdy.4",
+    "mendeley_dataset_id": "j5d8n7hzdy",
+    "version": 4,
+    "license": "CC BY 4.0"
+  },
+  "required_columns": [
+    "timestamp", "block_height", "ust_price", "luna_price", "ust_supply", "luna_supply",
+    "anchor_total_deposits", "anchor_deposit_flow", "anchor_withdrawal_flow",
+    "ust_native_redemption_volume", "luna_minted_from_redemption", "luna_burned",
+    "ust_dex_sell_volume", "terra_dex_liquidity", "terra_dex_depth",
+    "top10_anchor_share", "top100_anchor_share"
+  ],
+  "optional_columns": [
+    "curve_ust_liquidity", "curve_pool_imbalance", "curve_ust_price",
+    "bridge_outflow_terra_to_ethereum", "bridge_inflow_ethereum_to_terra",
+    "btc_reserve_value", "reserve_intervention_volume"
+  ],
+  "status_policy": {
+    "REAL_HISTORICAL": "All required fields have auditable historical source or direct deterministic aggregation from event-level source data.",
+    "QUALITY_WARNING": "At least one required field uses a documented proxy/derivation that is not equivalent to the historical variable.",
+    "PARTIAL": "Historical observations exist but not all required model-input fields are present."
+  }
+}
