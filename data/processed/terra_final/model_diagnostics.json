@@ -6,6 +6,7 @@
     "caps_or_floors_not_dominant": true,
     "evaluation_ground_truth_not_accepted_by_runner": true,
     "evaluation_starts_after_calibration": true,
+    "external_exit_stock_change_proxy_rejected": true,
     "luna_supply_below_100x_initial": true,
     "mint_uses_pre_step_luna_price": true,
     "no_nan_or_infinity": true,
@@ -14,17 +15,18 @@
     "quarantined_variables_not_consumed": true,
     "redemption_never_exceeds_pre_step_ust_supply": true,
     "tiny_depth_perturbation_is_stable": true,
+    "ust_impact_marked_underidentified": true,
     "ust_moves_are_accounted_for_by_recorded_impact": true
   },
   "component_effects_on_ust_path_rmse": {
-    "arbitrage": 0.0006445580761703935,
-    "confidence_feedback": 0.0144650425153515,
-    "external_holders": 0.03794294791934682,
-    "liquidity_feedback": 0.005971163406533984,
-    "whale_heterogeneity": 1.772890711601565e-06
+    "arbitrage": 0.005049078226922491,
+    "confidence_feedback": 0.029556838050686596,
+    "external_holders": 0.06751230260356883,
+    "liquidity_feedback": 0.0022206287995351925,
+    "whale_heterogeneity": 8.05814620182171e-06
   },
-  "final_luna_supply_multiple": 1.022095689521112,
-  "largest_component_effect_share": 0.642823147369232,
+  "final_luna_supply_multiple": 1.0986865147805194,
+  "largest_component_effect_share": 0.646998605934273,
   "runtime_diagnostics": {
     "cap_counts": {},
     "component_modules": [
@@ -52,5 +54,5 @@
     ],
     "quarantined_variables_consumed": []
   },
-  "tiny_depth_perturbation_final_ust_difference": 0.000666878473684962
+  "tiny_depth_perturbation_final_ust_difference": 0.001195245634014519
 }

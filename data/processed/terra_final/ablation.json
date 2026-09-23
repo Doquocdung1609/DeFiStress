@@ -3,58 +3,58 @@
   "variants": [
     {
       "collapse_hour": null,
-      "cumulative_withdrawal_relative_error": 0.6468319973487511,
-      "final_supply_relative_error": 0.9998874873909457,
-      "luna_log_rmse": 6.159938998119993,
-      "ust_rmse": 0.42609411510553213,
+      "cumulative_withdrawal_relative_error": 0.6624537410690642,
+      "final_supply_relative_error": 0.9998790562492551,
+      "luna_log_rmse": 5.418100760841835,
+      "ust_rmse": 0.38960381350358814,
       "variant": "FULL"
     },
     {
       "collapse_hour": null,
-      "cumulative_withdrawal_relative_error": 0.647763357849871,
-      "final_supply_relative_error": 0.9998874873909457,
-      "luna_log_rmse": 6.159938998119993,
-      "ust_rmse": 0.42609581979084166,
+      "cumulative_withdrawal_relative_error": 0.663377386162333,
+      "final_supply_relative_error": 0.9998790562492551,
+      "luna_log_rmse": 5.418100760841835,
+      "ust_rmse": 0.3896111561794332,
       "variant": "NO_WHALE_HETEROGENEITY"
     },
     {
       "collapse_hour": null,
-      "cumulative_withdrawal_relative_error": 0.6468981457427818,
+      "cumulative_withdrawal_relative_error": 0.662528108194498,
       "final_supply_relative_error": 0.9998899196912697,
       "luna_log_rmse": 7.01258477069239,
-      "ust_rmse": 0.4254716972391009,
+      "ust_rmse": 0.3848031886323972,
       "variant": "NO_ARBITRAGE"
     },
     {
       "collapse_hour": null,
-      "cumulative_withdrawal_relative_error": 0.7090866971066397,
-      "final_supply_relative_error": 0.9998881632613301,
-      "luna_log_rmse": 6.345195363462084,
-      "ust_rmse": 0.4309403698049494,
+      "cumulative_withdrawal_relative_error": 0.672406589351495,
+      "final_supply_relative_error": 0.9998803350021551,
+      "luna_log_rmse": 5.487759942052875,
+      "ust_rmse": 0.39122718137105367,
       "variant": "NO_LIQUIDITY_FEEDBACK"
     },
     {
       "collapse_hour": null,
       "cumulative_withdrawal_relative_error": 0.8563652455899261,
-      "final_supply_relative_error": 0.9998884582618401,
-      "luna_log_rmse": 6.441703046007569,
-      "ust_rmse": 0.4396657768697133,
+      "final_supply_relative_error": 0.9998822549840869,
+      "luna_log_rmse": 5.616117227809498,
+      "ust_rmse": 0.4173897101459969,
       "variant": "NO_CONFIDENCE_FEEDBACK"
     },
     {
       "collapse_hour": null,
-      "cumulative_withdrawal_relative_error": 0.8552627160777405,
-      "final_supply_relative_error": 0.9998899196912697,
-      "luna_log_rmse": 7.01258477069239,
-      "ust_rmse": 0.46169989407219697,
+      "cumulative_withdrawal_relative_error": 0.7876563730254362,
+      "final_supply_relative_error": 0.9998898529872442,
+      "luna_log_rmse": 6.98655840627105,
+      "ust_rmse": 0.4525465102066833,
       "variant": "NO_EXTERNAL_HOLDERS"
     },
     {
       "collapse_hour": null,
-      "cumulative_withdrawal_relative_error": 0.6469392789873366,
+      "cumulative_withdrawal_relative_error": 0.6627556814658466,
       "final_supply_relative_error": 0.9998899196912697,
       "luna_log_rmse": 7.01258477069239,
-      "ust_rmse": 0.4261002603742392,
+      "ust_rmse": 0.3896495298842064,
       "variant": "NO_PROTOCOL_MINT"
     }
   ]

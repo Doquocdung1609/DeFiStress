@@ -1,40 +1,132 @@
 {
   "analysis_type": "PROTOCOL_MECHANISM_VALIDATION",
   "conditional_calibration_window": {
-    "gross_protocol_mint_identity_luna": 533529.0748389286,
-    "hourly_delta_correlation": 0.851871758784651,
-    "identity": "gross LUNA issued = accepted UST redemption / contemporaneous LUNA price",
-    "implied_realization_ratio": 0.7008216879405638,
-    "observed_positive_luna_supply_delta": 373908.74679398537,
+    "event_gross_mint_swap_plus_fee": {
+      "actual_cumulative_luna_supply_change": 342805.5713059902,
+      "final_cumulative_error_luna": 189285.8128400098,
+      "final_cumulative_relative_error": 0.5521666760516334,
+      "hourly_correlation_positive_supply_delta": 0.8542326264685289,
+      "hourly_correlation_signed_supply_delta": 0.7179802671435115,
+      "predicted_cumulative_luna": 532091.384146,
+      "predicted_to_actual_scale_ratio": 1.5521666760516333
+    },
+    "event_recipient_swap_amount": {
+      "actual_cumulative_luna_supply_change": 342805.5713059902,
+      "final_cumulative_error_luna": 185416.13151800982,
+      "final_cumulative_relative_error": 0.5408784075813818,
+      "hourly_correlation_positive_supply_delta": 0.8537409258549172,
+      "hourly_correlation_signed_supply_delta": 0.7174847264666327,
+      "predicted_cumulative_luna": 528221.702824,
+      "predicted_to_actual_scale_ratio": 1.5408784075813817
+    },
+    "fee_share_of_event_gross_mint": 0.0072725878247601955,
+    "old_offchain_price_approximation_offer_divided_by_luna_price": {
+      "actual_cumulative_luna_supply_change": 342805.5713059902,
+      "final_cumulative_error_luna": 190723.50353293843,
+      "final_cumulative_relative_error": 0.5563605714059342,
+      "hourly_correlation_positive_supply_delta": 0.851871758784651,
+      "hourly_correlation_signed_supply_delta": 0.7140424847236895,
+      "predicted_cumulative_luna": 533529.0748389286,
+      "predicted_to_actual_scale_ratio": 1.556360571405934
+    },
     "rows": 12
   },
   "conditional_evaluation_window": {
-    "gross_protocol_mint_identity_luna": 21311530844207.79,
-    "hourly_delta_correlation": 0.8699014158477663,
-    "identity": "gross LUNA issued = accepted UST redemption / contemporaneous LUNA price",
-    "implied_realization_ratio": 0.31906083677793773,
-    "observed_positive_luna_supply_delta": 6799674864171.767,
+    "event_gross_mint_swap_plus_fee": {
+      "actual_cumulative_luna_supply_change": 6799674912002.535,
+      "final_cumulative_error_luna": 72427415434.48828,
+      "final_cumulative_relative_error": 0.010651599726722536,
+      "hourly_correlation_positive_supply_delta": 0.9999998919078108,
+      "hourly_correlation_signed_supply_delta": 0.9999998919078108,
+      "predicted_cumulative_luna": 6872102327437.023,
+      "predicted_to_actual_scale_ratio": 1.0106515997267225
+    },
+    "event_recipient_swap_amount": {
+      "actual_cumulative_luna_supply_change": 6799674912002.535,
+      "final_cumulative_error_luna": -291601743852.7578,
+      "final_cumulative_relative_error": 0.0428846595795386,
+      "hourly_correlation_positive_supply_delta": 0.9999876662459449,
+      "hourly_correlation_signed_supply_delta": 0.9999876662459449,
+      "predicted_cumulative_luna": 6508073168149.777,
+      "predicted_to_actual_scale_ratio": 0.9571153404204614
+    },
+    "fee_share_of_event_gross_mint": 0.052972022525603436,
+    "old_offchain_price_approximation_offer_divided_by_luna_price": {
+      "actual_cumulative_luna_supply_change": 6799674912002.535,
+      "final_cumulative_error_luna": 14511855932205.254,
+      "final_cumulative_relative_error": 2.134198490370394,
+      "hourly_correlation_positive_supply_delta": 0.8699014158210632,
+      "hourly_correlation_signed_supply_delta": 0.8699014158210632,
+      "predicted_cumulative_luna": 21311530844207.79,
+      "predicted_to_actual_scale_ratio": 3.134198490370394
+    },
     "rows": 134
   },
-  "interpretation": "The on-chain series supports the direction and timing of redemption pressure. The one-for-one gross issuance identity overstates observed net supply because the extract does not identify all burns, routing, or same-hour netting; realization is therefore estimated only in calibration.",
+  "interpretation": "offer_amount / off-chain LUNA price is only an approximation. The audited Terra Core identity is direct event gross mint = swap_amount + fee_amount. Evaluation comparisons are diagnostics only and do not retune the calibration-window protocol multiplier.",
   "not_price_model_tuning": true,
   "post_trigger_full_window": {
-    "gross_protocol_mint_identity_luna": 21311531377736.863,
-    "hourly_delta_correlation": 0.8700115600121594,
-    "identity": "gross LUNA issued = accepted UST redemption / contemporaneous LUNA price",
-    "implied_realization_ratio": 0.31906084857959,
-    "observed_positive_luna_supply_delta": 6799675285911.282,
+    "event_gross_mint_swap_plus_fee": {
+      "actual_cumulative_luna_supply_change": 6799675254808.106,
+      "final_cumulative_error_luna": 72427604720.30078,
+      "final_cumulative_relative_error": 0.010651627027200546,
+      "hourly_correlation_positive_supply_delta": 0.9999998919851137,
+      "hourly_correlation_signed_supply_delta": 0.9999998919851204,
+      "predicted_cumulative_luna": 6872102859528.407,
+      "predicted_to_actual_scale_ratio": 1.0106516270272006
+    },
+    "event_recipient_swap_amount": {
+      "actual_cumulative_luna_supply_change": 6799675254808.106,
+      "final_cumulative_error_luna": -291601558436.626,
+      "final_cumulative_relative_error": 0.04288463014912839,
+      "hourly_correlation_positive_supply_delta": 0.9999876537889453,
+      "hourly_correlation_signed_supply_delta": 0.999987653788637,
+      "predicted_cumulative_luna": 6508073696371.48,
+      "predicted_to_actual_scale_ratio": 0.9571153698508716
+    },
+    "fee_share_of_event_gross_mint": 0.052972018987199554,
+    "old_offchain_price_approximation_offer_divided_by_luna_price": {
+      "actual_cumulative_luna_supply_change": 6799675254808.106,
+      "final_cumulative_error_luna": 14511856122928.758,
+      "final_cumulative_relative_error": 2.134198410823709,
+      "hourly_correlation_positive_supply_delta": 0.8700115600121594,
+      "hourly_correlation_signed_supply_delta": 0.8700115600280669,
+      "predicted_cumulative_luna": 21311531377736.863,
+      "predicted_to_actual_scale_ratio": 3.1341984108237084
+    },
     "rows": 146
   },
   "source_validation": {
-    "documented_direction": "offer='uusd', swap='uluna' (UST offered for LUNA)",
-    "hourly_aggregation_mismatches": 0,
+    "columns_audited": [
+      "time",
+      "offer_amount",
+      "swap_amount",
+      "fee_amount"
+    ],
+    "direction": "offer='uusd', ask/swap='uluna' (UST burned; LUNA minted)",
+    "gross_mint_identity": "swap_amount + fee_amount",
+    "hourly_offer_aggregation_mismatches": 0,
     "hourly_rows_checked": 312,
-    "limitation": "four-column extract has no action/direction column; direction is documented by package path/code",
+    "limitation": "the extract omits transaction hash, trader, denoms, and action fields; direction is traced via package code",
+    "normalization_evidence": "Replication figure multiplies swap_amount by LUNA USD price and divides by 1e6 to plot USD millions; its fee percentage is fee/(fee+swap), confirming token-unit LUNA outputs.",
     "raw_rows": 277342,
+    "replication_evidence": [
+      "Datasets.md native swap schema",
+      "code/figures/fig11_swap_arbitrage.py",
+      "code/tables/fmt_tableIA1_native_swap_run.py"
+    ],
     "sha256": "ecd470c77c314a79fb784f85b436f62e69f636343abd8ab98e6ad60c9347d124",
     "source_file": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/native_swaps/ust_luna_swaps_run.parquet",
-    "status": "PROVENANCE_SUPPORTED_WITH_EXTRACT_LIMITATION",
-    "unit": "UST, already normalized by replication package"
+    "status": "DIRECT_EVENT_OUTPUT_PROVENANCE_SUPPORTED_WITH_EXTRACT_LIMITATION",
+    "terra_core_evidence": {
+      "file": "x/market/keeper/msg_server.go",
+      "logic": "burn offerCoin; mint swapCoin.Add(feeCoin); send swapCoin to recipient; send feeCoin to oracle module",
+      "repository": "https://github.com/terra-money/classic-core",
+      "tag": "v0.5.20"
+    },
+    "units": {
+      "fee_amount": "LUNA token units minted and sent to the oracle module, normalized from uluna",
+      "offer_amount": "UST token units, normalized from uusd before this extract",
+      "swap_amount": "LUNA token units delivered to the recipient, normalized from uluna"
+    }
   }
 }
