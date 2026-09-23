@@ -18,9 +18,11 @@ from sim.terra.research_pipeline import (
     DEFAULT_DATASET,
     DEFAULT_NATIVE_SWAPS,
     DEFAULT_STRICT_V2,
+    _native_mint_by_hour,
     data_quality_report,
     load_historical_dataset,
     monte_carlo,
+    parameter_uncertainty_ensemble,
     protocol_mechanism_validation,
     run_final_pipeline,
 )
@@ -35,8 +37,15 @@ def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def _final_calibration(dataset: ResearchDataset):
+    return calibrate_conditional(
+        dataset,
+        native_mint_by_timestamp=_native_mint_by_hour(DEFAULT_NATIVE_SWAPS),
+    )
+
+
 def test_conditional_window_is_exact_and_sealed(historical_dataset: ResearchDataset) -> None:
-    calibration = calibrate_conditional(historical_dataset)
+    calibration = _final_calibration(historical_dataset)
     assert calibration.trigger_timestamp.isoformat() == "2022-05-07T22:00:00+00:00"
     assert calibration.calibration_end.isoformat() == "2022-05-08T09:00:00+00:00"
     assert calibration.evaluation_start.isoformat() == "2022-05-08T10:00:00+00:00"
@@ -50,13 +59,16 @@ def test_conditional_window_is_exact_and_sealed(historical_dataset: ResearchData
         for row in historical_dataset.observations
     )
     mutated = ResearchDataset(historical_dataset.manifest, changed)
-    recalibrated = calibrate_conditional(mutated)
+    recalibrated = calibrate_conditional(
+        mutated,
+        native_mint_by_timestamp=_native_mint_by_hour(DEFAULT_NATIVE_SWAPS),
+    )
     assert recalibrated.parameters == calibration.parameters
     assert recalibrated.initial_state == calibration.initial_state
 
 
 def test_simulation_uses_only_initial_state_and_timestamps(historical_dataset: ResearchDataset) -> None:
-    calibration = calibrate_conditional(historical_dataset)
+    calibration = _final_calibration(historical_dataset)
     timestamps = tuple(
         row.timestamp for row in historical_dataset.observations if row.timestamp >= calibration.evaluation_start
     )
@@ -74,7 +86,7 @@ def test_simulation_uses_only_initial_state_and_timestamps(historical_dataset: R
 
 
 def test_net_sell_and_protocol_conservation(historical_dataset: ResearchDataset) -> None:
-    calibration = calibrate_conditional(historical_dataset)
+    calibration = _final_calibration(historical_dataset)
     parameters = calibration.parameters
     absorption = ArbitrageThroughput().absorb(10_000_000.0, 0.90, parameters, True, 1.0)
     assert 0.0 <= absorption <= min(10_000_000.0, parameters.arbitrage_hourly_capacity)
@@ -89,7 +101,7 @@ def test_net_sell_and_protocol_conservation(historical_dataset: ResearchDataset)
 
 
 def test_bounds_and_nonnegative_state(historical_dataset: ResearchDataset) -> None:
-    calibration = calibrate_conditional(historical_dataset)
+    calibration = _final_calibration(historical_dataset)
     timestamps = tuple(
         row.timestamp for row in historical_dataset.observations if row.timestamp >= calibration.evaluation_start
     )
@@ -104,25 +116,61 @@ def test_bounds_and_nonnegative_state(historical_dataset: ResearchDataset) -> No
 
 
 def test_native_redemption_aggregation_and_duplicate_quarantine(historical_dataset: ResearchDataset) -> None:
-    calibration = calibrate_conditional(historical_dataset)
+    calibration = _final_calibration(historical_dataset)
     validation = protocol_mechanism_validation(historical_dataset, calibration)
     source = validation["source_validation"]
-    assert source["status"] == "PROVENANCE_SUPPORTED_WITH_EXTRACT_LIMITATION"
-    assert source["hourly_aggregation_mismatches"] == 0
+    assert source["status"] == "DIRECT_EVENT_OUTPUT_PROVENANCE_SUPPORTED_WITH_EXTRACT_LIMITATION"
+    assert source["hourly_offer_aggregation_mismatches"] == 0
     assert source["raw_rows"] == 277_342
-    quality = data_quality_report(historical_dataset, validation)
+    assert source["units"]["swap_amount"].startswith("LUNA token units")
+    assert source["units"]["fee_amount"].startswith("LUNA token units")
+    assert source["gross_mint_identity"] == "swap_amount + fee_amount"
+    evaluation = validation["conditional_evaluation_window"]
+    old = evaluation["old_offchain_price_approximation_offer_divided_by_luna_price"]
+    reconstructed = evaluation["event_gross_mint_swap_plus_fee"]
+    assert reconstructed["final_cumulative_relative_error"] < old["final_cumulative_relative_error"]
+    assert reconstructed["hourly_correlation_signed_supply_delta"] > 0.9999
+    quality = data_quality_report(historical_dataset, validation, calibration)
     assert all(quality["duplicate_or_suspect_field_checks"].values())
     assert quality["source_availability"]["ethereum_archival_rpc_curve"]["status"] == "UNAVAILABLE"
 
 
+def test_external_exit_is_scenario_not_supply_contraction(historical_dataset: ResearchDataset) -> None:
+    calibration = _final_calibration(historical_dataset)
+    accounting = calibration.diagnostics["external_exit_accounting"]
+    identification = calibration.diagnostics["ust_impact_identification"]
+    assert accounting["old_proxy_rejected"] is True
+    assert accounting["source_status"] == "UNAVAILABLE_SCENARIO_PARAMETER"
+    assert accounting["old_proxy_positive_rows"] == 1
+    assert accounting["same_hour_redemption_when_old_proxy_positive"] > 1_900_000
+    assert accounting["ust_supply_change_when_old_proxy_positive"] == 0.0
+    assert accounting["anchor_deposit_change_when_old_proxy_positive"] > 85_000_000
+    assert calibration.parameters.external_exit_rate == 0.0025
+    assert identification["status"] == "UNDERIDENTIFIED"
+    assert identification["observable_anchor_only_rows"] == 1
+    assert calibration.parameters.ust_impact_beta == 0.001
+
+    changed = tuple(
+        replace(row, ust_supply=row.ust_supply - 100_000_000)
+        if calibration.calibration_start <= row.timestamp <= calibration.calibration_end
+        else row
+        for row in historical_dataset.observations
+    )
+    mutated = ResearchDataset(historical_dataset.manifest, changed)
+    recalibrated = _final_calibration(mutated)
+    assert recalibrated.parameters.external_exit_rate == calibration.parameters.external_exit_rate
+    assert recalibrated.parameters.ust_impact_beta == calibration.parameters.ust_impact_beta
+
+
 def test_monte_carlo_is_seeded_and_reports_quantiles(historical_dataset: ResearchDataset) -> None:
-    calibration = calibrate_conditional(historical_dataset)
+    calibration = _final_calibration(historical_dataset)
     timestamps = tuple(
         row.timestamp for row in historical_dataset.observations if row.timestamp >= calibration.evaluation_start
     )[:4]
     left = monte_carlo(ConditionalABM(), calibration, timestamps, runs=3)
     right = monte_carlo(ConditionalABM(), calibration, timestamps, runs=3)
     assert left == right
+    assert left["uncertainty_class"] == "ALEATORY_AGENT_RNG_ONLY"
     assert set(left["time_series_quantiles"]) == {
         "ust_price",
         "luna_price",
@@ -136,6 +184,11 @@ def test_monte_carlo_is_seeded_and_reports_quantiles(historical_dataset: Researc
         "p75",
         "p95",
     }
+    epistemic = parameter_uncertainty_ensemble(ConditionalABM(), calibration, timestamps, runs=3)
+    assert epistemic["uncertainty_class"] == "EPISTEMIC_STRUCTURAL_AND_PROXY_PARAMETER_UNCERTAINTY"
+    assert epistemic["agent_rng_fixed"] is True
+    assert "external_exit_rate" in epistemic["parameter_ranges"]
+    assert "ust_impact_beta" in epistemic["parameter_ranges"]
 
 
 def test_pipeline_writes_complete_bundle_without_touching_frozen_v2(tmp_path: Path) -> None:
@@ -156,6 +209,7 @@ def test_pipeline_writes_complete_bundle_without_touching_frozen_v2(tmp_path: Pa
         "conditional_benchmark.json",
         "protocol_mechanism_validation.json",
         "monte_carlo.json",
+        "parameter_uncertainty_ensemble.json",
         "ablation.json",
         "sensitivity.json",
         "rolling_origin.json",

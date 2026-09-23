@@ -15,6 +15,7 @@ jobs:
           cache: pip
       - run: pip install -e '.[dev]'
       - run: ruff check backend sim tests scripts
+      - run: mypy sim
       - run: pytest
       - run: python scripts/run_demo.py
 

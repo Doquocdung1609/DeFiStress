@@ -12,6 +12,7 @@ from collections.abc import Sequence
 from datetime import datetime
 from importlib import metadata
 from pathlib import Path
+from random import Random
 from typing import Any
 
 from backend.app.services.terra_datasets import import_research_dataset
@@ -29,7 +30,7 @@ from sim.terra.datasets import ResearchDataset
 from sim.terra.schemas import DataStatus, TerraObservation
 from sim.terra.validation import correlation, directional_accuracy, mae, rmse, smape, timing_error_hours
 
-FINAL_PIPELINE_VERSION = "terra-final-research-pipeline-1.0.0"
+FINAL_PIPELINE_VERSION = "terra-final-research-pipeline-1.1.0"
 DEFAULT_DATASET = Path("data/processed/terra_may2022_v1.csv")
 DEFAULT_STRICT_V2 = Path("data/processed/model_v2/terra_abm_v2_strict_oos.json")
 DEFAULT_OUTPUT = Path("data/processed/terra_final")
@@ -160,61 +161,131 @@ def evaluate_conditional(run: ConditionalRun, truth: Sequence[TerraObservation])
     }
 
 
+def _native_swap_hourly(native_swaps: Path) -> tuple[Any, int]:
+    import pandas as pd  # type: ignore[import-untyped]
+
+    required = ["time", "offer_amount", "swap_amount", "fee_amount"]
+    swaps = pd.read_parquet(native_swaps, columns=required)
+    if list(swaps.columns) != required:
+        raise ValueError("native swap extract does not have the audited four-column schema")
+    swaps["timestamp"] = pd.to_datetime(swaps["time"], utc=True).dt.floor("h")
+    hourly = swaps.groupby("timestamp", sort=True)[required[1:]].sum()
+    return hourly, int(len(swaps))
+
+
+def _native_mint_by_hour(native_swaps: Path) -> dict[datetime, float] | None:
+    if not native_swaps.exists():
+        return None
+    hourly, _ = _native_swap_hourly(native_swaps)
+    return {
+        timestamp.to_pydatetime(): float(row["swap_amount"] + row["fee_amount"]) for timestamp, row in hourly.iterrows()
+    }
+
+
 def protocol_mechanism_validation(
     dataset: ResearchDataset, calibration: ConditionalCalibration, native_swaps: Path = DEFAULT_NATIVE_SWAPS
 ) -> dict[str, Any]:
     rows = dataset.observations
     trigger_rows = tuple(row for row in rows if row.timestamp >= calibration.trigger_timestamp)
     evaluation_rows = _truth(dataset, calibration)
+    hourly = None
+    raw_rows = 0
+    if native_swaps.exists():
+        hourly, raw_rows = _native_swap_hourly(native_swaps)
 
     def window_metrics(window: Sequence[TerraObservation]) -> dict[str, Any]:
-        previous_supply = float(window[0].luna_supply)
-        gross_mint: list[float] = []
-        positive_delta: list[float] = []
+        start_index = rows.index(window[0])
+        previous_supply = float(rows[start_index - 1].luna_supply) if start_index > 0 else float(window[0].luna_supply)
+        actual_delta: list[float] = []
+        old_approximation: list[float] = []
+        recipient_output: list[float] = []
+        fee_output: list[float] = []
         for row in window:
-            gross_mint.append(float(row.ust_native_redemption_volume) / max(float(row.luna_price), 1e-12))
             current_supply = float(row.luna_supply)
-            positive_delta.append(max(0.0, current_supply - previous_supply))
+            actual_delta.append(current_supply - previous_supply)
             previous_supply = current_supply
-        gross = sum(gross_mint)
-        observed = sum(positive_delta)
+            event = hourly.loc[row.timestamp] if hourly is not None and row.timestamp in hourly.index else None
+            offer = float(event["offer_amount"]) if event is not None else 0.0
+            swap = float(event["swap_amount"]) if event is not None else 0.0
+            fee = float(event["fee_amount"]) if event is not None else 0.0
+            old_approximation.append(offer / max(float(row.luna_price), 1e-12))
+            recipient_output.append(swap)
+            fee_output.append(fee)
+
+        def compare(predicted: Sequence[float]) -> dict[str, Any]:
+            predicted_total = sum(predicted)
+            actual_total = sum(actual_delta)
+            return {
+                "predicted_cumulative_luna": predicted_total,
+                "actual_cumulative_luna_supply_change": actual_total,
+                "predicted_to_actual_scale_ratio": predicted_total / actual_total if actual_total else None,
+                "final_cumulative_error_luna": predicted_total - actual_total,
+                "final_cumulative_relative_error": (
+                    abs(predicted_total - actual_total) / abs(actual_total) if actual_total else None
+                ),
+                "hourly_correlation_signed_supply_delta": correlation(actual_delta, predicted),
+                "hourly_correlation_positive_supply_delta": correlation(
+                    [max(0.0, value) for value in actual_delta], predicted
+                ),
+            }
+
+        gross_event_output = [swap + fee for swap, fee in zip(recipient_output, fee_output, strict=True)]
         return {
             "rows": len(window),
-            "gross_protocol_mint_identity_luna": gross,
-            "observed_positive_luna_supply_delta": observed,
-            "implied_realization_ratio": observed / gross if gross else None,
-            "hourly_delta_correlation": correlation(gross_mint, positive_delta),
-            "identity": "gross LUNA issued = accepted UST redemption / contemporaneous LUNA price",
+            "old_offchain_price_approximation_offer_divided_by_luna_price": compare(old_approximation),
+            "event_recipient_swap_amount": compare(recipient_output),
+            "event_gross_mint_swap_plus_fee": compare(gross_event_output),
+            "fee_share_of_event_gross_mint": sum(fee_output) / sum(gross_event_output)
+            if sum(gross_event_output)
+            else None,
         }
 
     source_check: dict[str, Any] = {
         "status": "UNAVAILABLE",
         "reason": f"source parquet not found at {native_swaps.as_posix()}",
     }
-    if native_swaps.exists():
-        import pandas as pd  # type: ignore[import-untyped]
-
-        swaps = pd.read_parquet(native_swaps, columns=["time", "offer_amount"])
-        swaps["timestamp"] = pd.to_datetime(swaps["time"], utc=True).dt.floor("h")
-        hourly = swaps.groupby("timestamp", sort=True)["offer_amount"].sum()
+    if hourly is not None:
         mismatches = 0
-        checked = 0
         for row in rows:
-            expected = float(hourly.get(row.timestamp, 0.0))
-            checked += 1
+            expected = float(hourly.loc[row.timestamp, "offer_amount"]) if row.timestamp in hourly.index else 0.0
             if not math.isclose(expected, float(row.ust_native_redemption_volume), rel_tol=1e-9, abs_tol=1e-6):
                 mismatches += 1
         source_check = {
-            "status": "PROVENANCE_SUPPORTED_WITH_EXTRACT_LIMITATION",
+            "status": "DIRECT_EVENT_OUTPUT_PROVENANCE_SUPPORTED_WITH_EXTRACT_LIMITATION",
             "source_file": native_swaps.as_posix(),
             "sha256": _sha256(native_swaps),
-            "raw_rows": int(len(swaps)),
-            "hourly_rows_checked": checked,
-            "hourly_aggregation_mismatches": mismatches,
-            "documented_direction": "offer='uusd', swap='uluna' (UST offered for LUNA)",
-            "unit": "UST, already normalized by replication package",
+            "raw_rows": raw_rows,
+            "columns_audited": ["time", "offer_amount", "swap_amount", "fee_amount"],
+            "hourly_rows_checked": len(rows),
+            "hourly_offer_aggregation_mismatches": mismatches,
+            "direction": "offer='uusd', ask/swap='uluna' (UST burned; LUNA minted)",
+            "units": {
+                "offer_amount": "UST token units, normalized from uusd before this extract",
+                "swap_amount": "LUNA token units delivered to the recipient, normalized from uluna",
+                "fee_amount": "LUNA token units minted and sent to the oracle module, normalized from uluna",
+            },
+            "gross_mint_identity": "swap_amount + fee_amount",
+            "normalization_evidence": (
+                "Replication figure multiplies swap_amount by LUNA USD price and divides by 1e6 to plot USD millions; "
+                "its fee percentage is fee/(fee+swap), confirming token-unit LUNA outputs."
+            ),
+            "terra_core_evidence": {
+                "repository": "https://github.com/terra-money/classic-core",
+                "tag": "v0.5.20",
+                "file": "x/market/keeper/msg_server.go",
+                "logic": (
+                    "burn offerCoin; mint swapCoin.Add(feeCoin); send swapCoin to recipient; "
+                    "send feeCoin to oracle module"
+                ),
+            },
+            "replication_evidence": [
+                "Datasets.md native swap schema",
+                "code/figures/fig11_swap_arbitrage.py",
+                "code/tables/fmt_tableIA1_native_swap_run.py",
+            ],
             "limitation": (
-                "four-column extract has no action/direction column; direction is documented by package path/code"
+                "the extract omits transaction hash, trader, denoms, and action fields; "
+                "direction is traced via package code"
             ),
         }
     return {
@@ -227,14 +298,18 @@ def protocol_mechanism_validation(
         "conditional_evaluation_window": window_metrics(evaluation_rows),
         "post_trigger_full_window": window_metrics(trigger_rows),
         "interpretation": (
-            "The on-chain series supports the direction and timing of redemption pressure. "
-            "The one-for-one gross issuance identity overstates observed net supply because the extract does not "
-            "identify all burns, routing, or same-hour netting; realization is therefore estimated only in calibration."
+            "offer_amount / off-chain LUNA price is only an approximation. The audited Terra Core identity is direct "
+            "event gross mint = swap_amount + fee_amount. Evaluation comparisons are diagnostics only and do not "
+            "retune the calibration-window protocol multiplier."
         ),
     }
 
 
-def data_quality_report(dataset: ResearchDataset, protocol_validation: dict[str, Any]) -> dict[str, Any]:
+def data_quality_report(
+    dataset: ResearchDataset,
+    protocol_validation: dict[str, Any],
+    calibration: ConditionalCalibration,
+) -> dict[str, Any]:
     rows = dataset.observations
 
     def equal(field_a: str, field_b: str) -> bool:
@@ -274,6 +349,8 @@ def data_quality_report(dataset: ResearchDataset, protocol_validation: dict[str,
         "quarantined_variables": list(QUARANTINED_VARIABLES),
         "execution_capacity_proxies": list(PROXY_FIELDS),
         "duplicate_or_suspect_field_checks": duplicate_checks,
+        "external_exit_accounting": calibration.diagnostics["external_exit_accounting"],
+        "ust_impact_identification": calibration.diagnostics["ust_impact_identification"],
         "policy": "Suspect duplicate fields and unavailable sources are excluded, not imputed or fabricated.",
     }
 
@@ -308,9 +385,90 @@ def monte_carlo(
     observed = [value for value in collapse if value is not None]
     return {
         "model": "CONDITIONAL_ABM_FINAL",
+        "uncertainty_class": "ALEATORY_AGENT_RNG_ONLY",
+        "structural_parameters_fixed": True,
         "runs": runs,
         "seed_start": SEED,
         "seed_end": SEED + runs - 1,
+        "time_series_quantiles": series,
+        "collapse_timing_hours_from_evaluation_start": {
+            "collapsed_runs": len(observed),
+            "noncollapsed_runs": runs - len(observed),
+            "quantiles": {f"p{int(p * 100):02d}": _quantile(observed, p) for p in probabilities},
+        },
+    }
+
+
+def parameter_uncertainty_ensemble(
+    model: ConditionalABM,
+    calibration: ConditionalCalibration,
+    timestamps: tuple[datetime, ...],
+    runs: int = MONTE_CARLO_RUNS,
+) -> dict[str, Any]:
+    ensemble_seed = 20220923
+    rng = Random(ensemble_seed)
+    ranges = {
+        "execution_depth_multiplier": [0.5, 2.0],
+        "execution_capacity_multiplier": [0.5, 2.0],
+        "redemption_friction": [0.01, 0.04],
+        "mint_to_market_fraction": [0.25, 0.75],
+        "confidence_sensitivity": [0.5, 1.5],
+        "external_exit_rate": [0.0, 0.01],
+        "ust_impact_beta": [0.0001, 0.01],
+    }
+    simulations: list[ConditionalRun] = []
+    draws: list[dict[str, float]] = []
+    for _ in range(runs):
+        draw = {
+            "execution_depth_multiplier": math.exp(rng.uniform(math.log(0.5), math.log(2.0))),
+            "execution_capacity_multiplier": math.exp(rng.uniform(math.log(0.5), math.log(2.0))),
+            "redemption_friction": rng.uniform(0.01, 0.04),
+            "mint_to_market_fraction": rng.uniform(0.25, 0.75),
+            "confidence_sensitivity": rng.uniform(0.5, 1.5),
+            "external_exit_rate": rng.uniform(0.0, 0.01),
+            "ust_impact_beta": math.exp(rng.uniform(math.log(0.0001), math.log(0.01))),
+        }
+        draws.append(draw)
+        simulations.append(model.run(calibration, timestamps, SEED, draw))
+
+    probabilities = (0.05, 0.25, 0.50, 0.75, 0.95)
+    series: dict[str, list[dict[str, Any]]] = {}
+    for field in ("ust_price", "luna_price", "luna_supply", "anchor_withdrawal_flow"):
+        field_rows = []
+        for index, timestamp in enumerate(timestamps):
+            sample = [float(getattr(run.states[index], field)) for run in simulations]
+            field_rows.append(
+                {
+                    "timestamp": _iso(timestamp),
+                    "quantiles": {f"p{int(p * 100):02d}": _quantile(sample, p) for p in probabilities},
+                }
+            )
+        series[field] = field_rows
+    collapse = [_collapse_hour(run) for run in simulations]
+    observed = [value for value in collapse if value is not None]
+    return {
+        "model": "CONDITIONAL_ABM_FINAL",
+        "uncertainty_class": "EPISTEMIC_STRUCTURAL_AND_PROXY_PARAMETER_UNCERTAINTY",
+        "agent_rng_fixed": True,
+        "agent_seed": SEED,
+        "ensemble_seed": ensemble_seed,
+        "runs": runs,
+        "range_policy": "Predeclared from audit/sensitivity design; not selected against the 134h holdout",
+        "parameter_ranges": ranges,
+        "sampling": {
+            "log_uniform": [
+                "execution_depth_multiplier",
+                "execution_capacity_multiplier",
+                "ust_impact_beta",
+            ],
+            "uniform": [
+                "redemption_friction",
+                "mint_to_market_fraction",
+                "confidence_sensitivity",
+                "external_exit_rate",
+            ],
+        },
+        "parameter_draws": draws,
         "time_series_quantiles": series,
         "collapse_timing_hours_from_evaluation_start": {
             "collapsed_runs": len(observed),
@@ -357,11 +515,16 @@ def _benchmark(
             }
         )
     return {
-        "label": "CONDITIONAL_HISTORICAL_REPLAY_BENCHMARK",
+        "label": "CONDITIONAL_HISTORICAL_REPLAY_STRUCTURAL_COMPARATOR_VARIANTS",
         "not_strict_oos": True,
+        "implementation": "All variants share ConditionalABM and differ by explicit component overrides.",
+        "independently_implemented_models": False,
         "common_calibration": calibration.to_dict(),
         "comparators": rows,
-        "warning": "Comparator variants are structural baselines, not separately holdout-tuned production models.",
+        "warning": (
+            "These are structural comparator variants, not four independently implemented model families and not "
+            "separately holdout-tuned production models."
+        ),
     }
 
 
@@ -378,7 +541,7 @@ def _ablation(
         "NO_LIQUIDITY_FEEDBACK": {"liquidity_feedback": False},
         "NO_CONFIDENCE_FEEDBACK": {"confidence_feedback": False},
         "NO_EXTERNAL_HOLDERS": {"external_holders_enabled": False},
-        "NO_PROTOCOL_MINT": {"mint_efficiency": 0.0},
+        "NO_PROTOCOL_MINT": {"protocol_mint_multiplier": 0.0},
     }
     results = []
     for name, overrides in variants.items():
@@ -408,6 +571,8 @@ def _sensitivity(
         "redemption_friction": (0.01, 0.02, 0.04),
         "mint_to_market_fraction": (0.25, 0.50, 0.75),
         "confidence_sensitivity": (0.5, 1.0, 1.5),
+        "external_exit_rate": (0.0, 0.0025, 0.01),
+        "ust_impact_beta": (0.0001, 0.001, 0.01),
     }
     rows = []
     for parameter, values in grid.items():
@@ -431,10 +596,14 @@ def _sensitivity(
     }
 
 
-def _rolling_origin(dataset: ResearchDataset, model: ConditionalABM) -> dict[str, Any]:
+def _rolling_origin(
+    dataset: ResearchDataset,
+    model: ConditionalABM,
+    native_mint_by_timestamp: dict[datetime, float] | None,
+) -> dict[str, Any]:
     rows = []
     for hours in (6, 12, 18, 24):
-        calibration = calibrate_conditional(dataset, hours)
+        calibration = calibrate_conditional(dataset, hours, native_mint_by_timestamp=native_mint_by_timestamp)
         truth = _truth(dataset, calibration)[:6]
         timestamps = tuple(row.timestamp for row in truth)
         run = model.run(calibration, timestamps, SEED + hours)
@@ -450,10 +619,13 @@ def _rolling_origin(dataset: ResearchDataset, model: ConditionalABM) -> dict[str
             }
         )
     return {
-        "method": "ROLLING_ORIGIN_CALIBRATION_LENGTH_SENSITIVITY",
+        "method": "EXPANDING_WINDOW_MOVING_ORIGIN_SIX_HOUR_SHORT_HORIZON_ROBUSTNESS",
         "forecast_horizon_hours": 6,
         "windows": rows,
-        "warning": "Only the pre-forecast origin window is used at each origin.",
+        "warning": (
+            "Only the pre-forecast origin window is used at each origin. This does not validate the full May 9-13 "
+            "collapse trajectory."
+        ),
     }
 
 
@@ -514,7 +686,7 @@ def _diagnostics(
         "mint_uses_pre_step_luna_price": all(
             math.isclose(
                 row.minted_luna,
-                row.redemption_volume / max(previous, 1e-12) * run.parameters.mint_efficiency,
+                row.redemption_volume / max(previous, 1e-12) * run.parameters.protocol_mint_multiplier,
             )
             for row, previous in zip(states, pre_step_luna_prices, strict=True)
         ),
@@ -522,6 +694,12 @@ def _diagnostics(
         "quarantined_variables_not_consumed": not run.diagnostics["quarantined_variables_consumed"],
         "evaluation_starts_after_calibration": timestamps[0] > calibration.calibration_end,
         "evaluation_ground_truth_not_accepted_by_runner": True,
+        "external_exit_stock_change_proxy_rejected": bool(
+            calibration.diagnostics["external_exit_accounting"]["old_proxy_rejected"]
+        ),
+        "ust_impact_marked_underidentified": (
+            calibration.diagnostics["ust_impact_identification"]["status"] == "UNDERIDENTIFIED"
+        ),
     }
     return {
         "checks": checks,
@@ -567,6 +745,7 @@ def _manifest(
             "monte_carlo_start": SEED,
             "monte_carlo_end": SEED + monte_carlo_runs - 1,
             "monte_carlo_runs": monte_carlo_runs,
+            "epistemic_ensemble": 20220923,
         },
         "strict_oos_window": {
             "calibration_start": "2022-05-01T00:00:00Z",
@@ -579,7 +758,12 @@ def _manifest(
         "quarantined_variables": list(QUARANTINED_VARIABLES),
         "proxy_fields": list(PROXY_FIELDS),
         "git_branch": _git("branch", "--show-current"),
-        "git_commit": _git("rev-parse", "HEAD"),
+        "source_code_commit": _git("rev-parse", "HEAD"),
+        "artifact_bundle_commit": None,
+        "artifact_bundle_commit_resolution": (
+            "The artifact commit cannot be embedded without circular self-hashing. Resolve it with: "
+            "git log -1 --format=%H -- data/processed/terra_final/reproducibility_manifest.json"
+        ),
         "python": sys.version,
         "platform": platform.platform(),
         "packages": packages,
@@ -603,6 +787,7 @@ def _report(
     diagnostics: dict[str, Any],
     benchmark: dict[str, Any],
     monte_carlo_result: dict[str, Any],
+    epistemic_result: dict[str, Any],
     ablation: dict[str, Any],
     sensitivity: dict[str, Any],
     rolling_origin: dict[str, Any],
@@ -615,7 +800,21 @@ def _report(
     no_external = next(row for row in ablation["variants"] if row["variant"] == "NO_EXTERNAL_HOLDERS")
     sensitivity_ust = [row["final_ust_price"] for row in sensitivity["results"]]
     mc_collapse = monte_carlo_result["collapse_timing_hours_from_evaluation_start"]
+    epistemic_collapse = epistemic_result["collapse_timing_hours_from_evaluation_start"]
+    epistemic_final_ust = epistemic_result["time_series_quantiles"]["ust_price"][-1]["quantiles"]
     rolling_hours = [row["calibration_hours"] for row in rolling_origin["windows"]]
+    impact_identification = calibration.diagnostics["ust_impact_identification"]
+    external_accounting = calibration.diagnostics["external_exit_accounting"]
+    calibration_protocol = protocol["conditional_calibration_window"]
+    evaluation_protocol = protocol["conditional_evaluation_window"]
+    calibration_old_error = calibration_protocol["old_offchain_price_approximation_offer_divided_by_luna_price"][
+        "final_cumulative_relative_error"
+    ]
+    calibration_event_error = calibration_protocol["event_gross_mint_swap_plus_fee"]["final_cumulative_relative_error"]
+    evaluation_old_error = evaluation_protocol["old_offchain_price_approximation_offer_divided_by_luna_price"][
+        "final_cumulative_relative_error"
+    ]
+    evaluation_event = evaluation_protocol["event_gross_mint_swap_plus_fee"]
     return f"""# Terra May 2022 final research report
 
 ## 1. Research question
@@ -632,13 +831,19 @@ dilution/backing deterioration → confidence loss → further exits.
 
 The 312 hourly rows cover May 1--13, 2022. Native-redemption provenance is `{source["status"]}`;
 the raw 277,342 swaps aggregate to the processed hourly series with
-{source.get("hourly_aggregation_mismatches", "N/A")} mismatches.
+{source.get("hourly_offer_aggregation_mismatches", "N/A")} mismatches.
 
 ## 4. Data limitations
 
 Dataset status remains `QUALITY_WARNING`. Unavailable archival endpoints were not replaced with
 fabricated observations. Curve and bridge fields, plus suspect duplicate mint/burn/sell fields, are
 quarantined. DEX liquidity and depth are execution-capacity proxies only.
+
+The former external-exit proxy was rejected. With `outside_ust = total_ust_supply - Anchor deposits`,
+changes in outside UST combine issuance, redemption burns, and Anchor transfers; holder selling is a
+transfer flow and is not identified by that stock difference. The old proxy contributed
+{external_accounting["old_proxy_positive_total_in_calibration"]:.6g} UST in the 12-hour window. External
+exit is now an explicit scenario parameter with hourly rates {external_accounting["predeclared_hourly_rate_scenarios"]}.
 
 ## 5. Strict OOS design
 
@@ -656,10 +861,15 @@ The preserved V2 artifact is the **strict out-of-sample replay**. The final V4 m
 UST price below 0.99 ({_iso(calibration.trigger_timestamp)}), its calibration window is exactly
 {calibration.calibration_hours} hours through {_iso(calibration.calibration_end)}, and its sealed
 evaluation window starts {_iso(calibration.evaluation_start)} with {calibration.evaluation_rows} rows.
+UST price impact remains `{impact_identification["status"]}`: only
+{impact_identification["observable_anchor_only_rows"]} independently observable anchor-only rows jointly
+have positive residual selling and downside price movement. The old point estimate is not used; the
+main value and robustness range were declared as scenarios rather than fitted to holdout.
 
 ## 7. Baseline models
 
-Four common-window structural variants were evaluated. Conditional ABM UST RMSE is
+Four common-window structural comparator variants sharing the same `ConditionalABM` implementation
+were evaluated; they are not four independently implemented models. Conditional ABM UST RMSE is
 {benchmark_rows[-1]["ust_rmse"]:.6g}, versus static threshold {benchmark_rows[0]["ust_rmse"]:.6g},
 aggregate hazard {benchmark_rows[1]["ust_rmse"]:.6g}, and system dynamics
 {benchmark_rows[2]["ust_rmse"]:.6g}. The ABM does not materially outperform system dynamics.
@@ -675,14 +885,15 @@ bounded with `tanh`; prices and supplies have explicit physical bounds.
 
 ## 9. Protocol mechanism validation
 
-During conditional calibration, gross identity mint is
-{protocol["conditional_calibration_window"]["gross_protocol_mint_identity_luna"]:.6g} LUNA and the
-observed positive supply delta is
-{protocol["conditional_calibration_window"]["observed_positive_luna_supply_delta"]:.6g}, implying a
-calibration-only realization ratio of
-{protocol["conditional_calibration_window"]["implied_realization_ratio"]:.6g}. The evaluation ratio
-falls to {protocol["conditional_evaluation_window"]["implied_realization_ratio"]:.6g}; this instability
-is a material limitation, not a parameter retuned on holdout.
+Terra Core v0.5.20 burns `offerCoin`, then mints `swapCoin + feeCoin`; `swap_amount` is LUNA delivered
+to the recipient and `fee_amount` is LUNA minted to the oracle module. Thus gross mint is their sum,
+not `offer_amount / off-chain LUNA price`. In calibration, the old approximation has cumulative relative
+error {calibration_old_error:.6g} and direct event gross mint has error
+{calibration_event_error:.6g}. In the
+sealed evaluation diagnostics, those errors are respectively
+{evaluation_old_error:.6g} and {evaluation_event["final_cumulative_relative_error"]:.6g}; the
+direct event-output hourly correlation is
+{evaluation_event["hourly_correlation_signed_supply_delta"]:.9g}.
 
 ## 10. Results
 
@@ -694,7 +905,9 @@ is a material limitation, not a parameter retuned on holdout.
 - Automated plausibility checks pass: {diagnostics["all_checks_pass"]}
 
 The final model remains exploratory: it captures directional co-movement but materially underpredicts
-the LUNA supply explosion and does not reproduce the UST < 0.90 collapse state.
+the LUNA supply explosion. It crosses UST < 0.90 only for part of the observed crisis and does so
+{metrics["threshold_timing_error_hours"]["0.9"]} hours late; it never satisfies the joint UST/supply
+collapse condition.
 
 ## 11. Timing analysis
 
@@ -706,9 +919,12 @@ Timing errors for UST thresholds .995/.99/.95/.90 are respectively
 
 ## 12. Monte Carlo
 
-{monte_carlo_result["runs"]} seeded runs were evaluated. {mc_collapse["collapsed_runs"]} crossed the
-model collapse condition and {mc_collapse["noncollapsed_runs"]} did not. Full p05/p25/p50/p75/p95
-time-series quantiles are in `monte_carlo.json`; one seed is not presented as the uncertainty result.
+Aleatory uncertainty uses {monte_carlo_result["runs"]} agent-RNG seeds with structural parameters fixed:
+{mc_collapse["collapsed_runs"]} crossed the collapse condition and {mc_collapse["noncollapsed_runs"]}
+did not. Separately, {epistemic_result["runs"]} fixed-agent-seed runs sample only predeclared proxy and
+underidentified parameter ranges. Their final UST p05/p50/p95 are
+{epistemic_final_ust["p05"]:.6g}/{epistemic_final_ust["p50"]:.6g}/{epistemic_final_ust["p95"]:.6g}, with
+{epistemic_collapse["collapsed_runs"]} collapse runs. These layers must not be conflated.
 
 ## 13. Ablation
 
@@ -724,9 +940,10 @@ no sensitivity value is used to select the primary result.
 
 ## 15. Data-quality concerns
 
-The redemption direction is documented by the replication package rather than carried in the
-four-column extract. Duplicate synthetic-looking columns are excluded. Rolling-origin 6-hour
-forecast checks cover calibration lengths {rolling_hours}.
+The redemption direction and denoms are documented by replication code rather than carried in the
+four-column extract. Duplicate synthetic-looking processed columns are excluded. The
+expanding-window/moving-origin six-hour short-horizon checks cover calibration lengths {rolling_hours};
+they do not validate the full May 9-13 collapse trajectory.
 
 ## 16. Interpretation
 
@@ -774,23 +991,29 @@ def run_final_pipeline(
         raise FileNotFoundError(f"frozen strict-OOS V2 artifact is missing: {strict_v2_path}")
     strict_v2 = json.loads(strict_v2_path.read_text(encoding="utf-8"))
     dataset = load_historical_dataset(dataset_path)
-    calibration = calibrate_conditional(dataset, MAIN_CALIBRATION_HOURS)
+    native_mint_by_timestamp = _native_mint_by_hour(native_swaps_path)
+    calibration = calibrate_conditional(
+        dataset,
+        MAIN_CALIBRATION_HOURS,
+        native_mint_by_timestamp=native_mint_by_timestamp,
+    )
     truth = _truth(dataset, calibration)
     timestamps = tuple(row.timestamp for row in truth)
     model = ConditionalABM()
     run = model.run(calibration, timestamps, SEED)
     metrics = evaluate_conditional(run, truth)
     protocol = protocol_mechanism_validation(dataset, calibration, native_swaps_path)
-    quality = data_quality_report(dataset, protocol)
+    quality = data_quality_report(dataset, protocol, calibration)
     diagnostics = _diagnostics(run, calibration, timestamps, model)
 
     strict_destination = output_dir / "strict_oos_v2.json"
     shutil.copyfile(strict_v2_path, strict_destination)
     benchmark = _benchmark(model, calibration, timestamps, truth)
     monte_carlo_result = monte_carlo(model, calibration, timestamps, monte_carlo_runs)
+    epistemic_result = parameter_uncertainty_ensemble(model, calibration, timestamps, monte_carlo_runs)
     ablation = _ablation(model, calibration, timestamps, truth)
     sensitivity = _sensitivity(model, calibration, timestamps)
-    rolling_origin = _rolling_origin(dataset, model)
+    rolling_origin = _rolling_origin(dataset, model, native_mint_by_timestamp)
     artifacts: dict[str, dict[str, Any]] = {
         "conditional_abm_final.json": {
             **run.to_dict(),
@@ -800,6 +1023,7 @@ def run_final_pipeline(
         "conditional_benchmark.json": benchmark,
         "protocol_mechanism_validation.json": protocol,
         "monte_carlo.json": monte_carlo_result,
+        "parameter_uncertainty_ensemble.json": epistemic_result,
         "ablation.json": ablation,
         "sensitivity.json": sensitivity,
         "rolling_origin.json": rolling_origin,
@@ -822,6 +1046,7 @@ def run_final_pipeline(
             diagnostics,
             benchmark,
             monte_carlo_result,
+            epistemic_result,
             ablation,
             sensitivity,
             rolling_origin,

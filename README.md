@@ -113,8 +113,9 @@ Use `REAL_HISTORICAL` only when provenance actually supports that label. Import 
 
 The final pipeline preserves the strict-OOS V2 artifact and builds a separate, explicitly post-trigger
 conditional mechanism replay. It validates native-redemption provenance, excludes quarantined duplicate
-and unavailable fields, and emits benchmark, Monte Carlo, ablation, sensitivity, rolling-origin,
-diagnostic, metrics, report, and reproducibility artifacts under `data/processed/terra_final`.
+and unavailable fields, and emits structural comparator, aleatory Monte Carlo, epistemic parameter
+ensemble, ablation, sensitivity, six-hour moving-origin robustness, diagnostic, metrics, report, and
+reproducibility artifacts under `data/processed/terra_final`.
 
 ```powershell
 .\.venv\Scripts\python.exe scripts\terra\run_final_pipeline.py --overwrite-final
@@ -122,6 +123,12 @@ diagnostic, metrics, report, and reproducibility artifacts under `data/processed
 
 `--overwrite-final` is restricted to that generated final directory; it cannot overwrite the V1
 benchmark or frozen V2 output.
+
+Run and save exact local verification evidence separately after generation:
+
+```powershell
+.\.venv\Scripts\python.exe scripts\terra\run_audit_checks.py
+```
 
 ## Terra API
 

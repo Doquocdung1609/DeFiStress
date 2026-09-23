@@ -11,9 +11,12 @@ from typing import Any
 from sim.terra.datasets import ResearchDataset
 from sim.terra.schemas import AgentEvent, TerraObservation
 
-CONDITIONAL_MODEL_VERSION = "4.0.0-conditional-mechanism-replay"
+CONDITIONAL_MODEL_VERSION = "4.1.0-conditional-scientific-audit"
 TRIGGER_THRESHOLD = 0.99
 MAIN_CALIBRATION_HOURS = 12
+EXTERNAL_EXIT_RATE_SCENARIOS = (0.0, 0.0025, 0.01)
+UST_IMPACT_BETA_SCENARIOS = (0.0001, 0.001, 0.01)
+MIN_IDENTIFYING_ROWS = 5
 QUARANTINED_VARIABLES = (
     "ust_dex_sell_volume",
     "luna_minted_from_redemption",
@@ -97,7 +100,7 @@ class ConditionalParameters:
     external_exit_rate: float
     arbitrage_hourly_capacity: float
     redemption_friction: float
-    mint_efficiency: float
+    protocol_mint_multiplier: float
     ust_impact_beta: float
     luna_impact_beta: float
     luna_impact_form: str
@@ -160,6 +163,7 @@ def calibrate_conditional(
     dataset: ResearchDataset,
     calibration_hours: int = MAIN_CALIBRATION_HOURS,
     trigger_threshold: float = TRIGGER_THRESHOLD,
+    native_mint_by_timestamp: dict[datetime, float] | None = None,
 ) -> ConditionalCalibration:
     if calibration_hours < 4:
         raise ValueError("conditional calibration needs at least four hourly observations")
@@ -175,65 +179,80 @@ def calibrate_conditional(
         raise ValueError("conditional evaluation window is empty")
 
     withdrawals: list[float] = []
-    external_exit_rates: list[float] = []
-    gross_sell: list[float] = []
     redemptions: list[float] = []
-    net_sell: list[float] = []
+    observable_net_sell: list[float] = []
+    scenario_net_sell: list[float] = []
     downside_ust: list[float] = []
     gross_mint: list[float] = []
-    supply_delta: list[float] = []
+    offchain_price_mint_approximation: list[float] = []
     downside_luna: list[float] = []
-    previous = calibration_rows[0]
+    invalid_external_outflow_proxy: list[float] = []
+    invalid_proxy_same_hour_redemption: list[float] = []
+    invalid_proxy_ust_supply_change: list[float] = []
+    invalid_proxy_anchor_change: list[float] = []
+    previous = rows[trigger_index - 1] if trigger_index > 0 else calibration_rows[0]
     for row in calibration_rows:
         deposit_stock = max(float(row.anchor_total_deposits), 1.0)
         withdrawal = max(0.0, float(row.anchor_withdrawal_flow))
         withdrawals.append(withdrawal / deposit_stock)
         previous_outside = max(0.0, float(previous.ust_supply - previous.anchor_total_deposits))
         current_outside = max(0.0, float(row.ust_supply - row.anchor_total_deposits))
-        external_outflow = max(0.0, previous_outside - current_outside)
-        external_exit_rates.append(external_outflow / max(previous_outside, 1.0))
-        sell = withdrawal * 0.68 + external_outflow
+        invalid_proxy = max(0.0, previous_outside - current_outside)
+        invalid_external_outflow_proxy.append(invalid_proxy)
         redemption = max(0.0, float(row.ust_native_redemption_volume))
-        gross_sell.append(sell)
+        if invalid_proxy > 0:
+            invalid_proxy_same_hour_redemption.append(redemption)
+            invalid_proxy_ust_supply_change.append(float(row.ust_supply - previous.ust_supply))
+            invalid_proxy_anchor_change.append(float(row.anchor_total_deposits - previous.anchor_total_deposits))
         redemptions.append(redemption)
-        net_sell.append(max(0.0, sell - redemption))
+        anchor_sell = withdrawal * 0.68
+        scenario_external_sell = current_outside * EXTERNAL_EXIT_RATE_SCENARIOS[1]
+        observable_net_sell.append(max(0.0, anchor_sell - redemption))
+        scenario_net_sell.append(max(0.0, anchor_sell + scenario_external_sell - redemption))
         downside_ust.append(
             max(0.0, -math.log(max(float(row.ust_price), 1e-12) / max(float(previous.ust_price), 1e-12)))
         )
         implied_mint = redemption / max(float(row.luna_price), 1e-12)
-        gross_mint.append(implied_mint)
-        supply_delta.append(max(0.0, float(row.luna_supply - previous.luna_supply)))
+        offchain_price_mint_approximation.append(implied_mint)
+        gross_mint.append(
+            max(0.0, native_mint_by_timestamp.get(row.timestamp, 0.0))
+            if native_mint_by_timestamp is not None
+            else implied_mint
+        )
         downside_luna.append(
             max(0.0, -math.log(max(float(row.luna_price), 1e-12) / max(float(previous.luna_price), 1e-12)))
         )
         previous = row
 
     execution_depth = max(float(calibration_rows[-1].terra_dex_depth), 1.0)
-    ust_pressure = [math.sqrt(value / execution_depth) for value in net_sell]
-    ust_beta_rows = [
+    observable_pressure = [math.sqrt(value / execution_depth) for value in observable_net_sell]
+    scenario_pressure = [math.sqrt(value / execution_depth) for value in scenario_net_sell]
+    observable_beta_rows = [
         price_move / pressure
-        for price_move, pressure in zip(downside_ust, ust_pressure, strict=True)
+        for price_move, pressure in zip(downside_ust, observable_pressure, strict=True)
         if price_move > 0 and pressure > 0
     ]
-    ust_beta = _positive_median(ust_beta_rows)
-    efficiency_rows = [
-        delta / mint for delta, mint in zip(supply_delta, gross_mint, strict=True) if delta > 0 and mint > 0
+    scenario_beta_rows = [
+        price_move / pressure
+        for price_move, pressure in zip(downside_ust, scenario_pressure, strict=True)
+        if price_move > 0 and pressure > 0
     ]
-    mint_efficiency = min(1.0, _positive_median(efficiency_rows, 1.0))
+    approximate_total = sum(offchain_price_mint_approximation)
+    protocol_mint_multiplier = sum(gross_mint) / approximate_total if approximate_total > 0 else 1.0
     mint_to_market = 0.50
     mint_pressure = [
-        mint_to_market * mint * mint_efficiency / max(float(row.luna_supply), 1.0)
+        mint_to_market * mint / max(float(row.luna_supply), 1.0)
         for mint, row in zip(gross_mint, calibration_rows, strict=True)
     ]
     impact_form, luna_beta, candidate_diagnostics = _select_luna_impact_form(mint_pressure, downside_luna)
 
     parameters = ConditionalParameters(
         anchor_exit_rate=_positive_median(withdrawals),
-        external_exit_rate=_positive_median(external_exit_rates),
+        external_exit_rate=EXTERNAL_EXIT_RATE_SCENARIOS[1],
         arbitrage_hourly_capacity=_quantile(redemptions, 0.90),
         redemption_friction=0.02,
-        mint_efficiency=mint_efficiency,
-        ust_impact_beta=ust_beta,
+        protocol_mint_multiplier=protocol_mint_multiplier,
+        ust_impact_beta=UST_IMPACT_BETA_SCENARIOS[1],
         luna_impact_beta=luna_beta,
         luna_impact_form=impact_form,
         mint_to_market_fraction=mint_to_market,
@@ -245,11 +264,54 @@ def calibrate_conditional(
         "parameter_policy": "12h post-trigger calibration only; no May 8 10:00 onward observations were used",
         "ust_impact_driver": "net sell pressure = Anchor/external sell - arbitrage absorption",
         "redemption_role": "UST absorption and protocol LUNA issuance; not direct UST sell pressure",
-        "mint_efficiency_rows": len(efficiency_rows),
-        "ust_impact_beta_rows": len(ust_beta_rows),
+        "external_exit_accounting": {
+            "identity": (
+                "outside_ust = total_ust_supply - anchor_deposits; delta outside includes issuance, "
+                "redemption burns, Anchor transfers, and other stock changes, not holder selling"
+            ),
+            "old_proxy_rejected": True,
+            "old_proxy_positive_total_in_calibration": sum(invalid_external_outflow_proxy),
+            "old_proxy_positive_rows": sum(value > 0 for value in invalid_external_outflow_proxy),
+            "same_hour_redemption_when_old_proxy_positive": sum(invalid_proxy_same_hour_redemption),
+            "ust_supply_change_when_old_proxy_positive": sum(invalid_proxy_ust_supply_change),
+            "anchor_deposit_change_when_old_proxy_positive": sum(invalid_proxy_anchor_change),
+            "audit_conclusion": (
+                "STRUCTURALLY_CONFOUNDED_AND_DOUBLE_COUNT_CAPABLE; selected-window positive proxy is explained by "
+                "Anchor stock change rather than independently observed holder selling"
+            ),
+            "source_status": "UNAVAILABLE_SCENARIO_PARAMETER",
+            "predeclared_hourly_rate_scenarios": list(EXTERNAL_EXIT_RATE_SCENARIOS),
+            "main_scenario": EXTERNAL_EXIT_RATE_SCENARIOS[1],
+        },
+        "protocol_mint_calibration": {
+            "source": (
+                "DIRECT_EVENT_OUTPUT_SWAP_PLUS_FEE"
+                if native_mint_by_timestamp is not None
+                else "EVENT_OUTPUT_UNAVAILABLE_DEFAULT_MULTIPLIER_ONE"
+            ),
+            "event_output_rows": sum(value > 0 for value in gross_mint),
+            "event_output_to_offchain_approximation_multiplier": protocol_mint_multiplier,
+        },
+        "ust_impact_identification": {
+            "status": "UNDERIDENTIFIED",
+            "minimum_identifying_rows": MIN_IDENTIFYING_ROWS,
+            "observable_anchor_only_rows": len(observable_beta_rows),
+            "scenario_augmented_rows": len(scenario_beta_rows),
+            "single_observation_point_estimate_not_used": _positive_median(observable_beta_rows),
+            "predeclared_beta_scenarios": list(UST_IMPACT_BETA_SCENARIOS),
+            "main_scenario": UST_IMPACT_BETA_SCENARIOS[1],
+            "reason": (
+                "external-holder sells and DEX sell flow are not independently observed in the 12h calibration window"
+            ),
+        },
+        "ust_impact_beta_rows": len(observable_beta_rows),
         "luna_impact_candidate_selection": candidate_diagnostics,
         "mint_to_market_fraction_policy": "pre-specified 0.50; varied in sensitivity, not selected on holdout",
-        "redemption_provenance": "PROVENANCE_SUPPORTED_WITH_EXTRACT_LIMITATION",
+        "redemption_provenance": (
+            "DIRECT_EVENT_OUTPUT_PROVENANCE_SUPPORTED_WITH_EXTRACT_LIMITATION"
+            if native_mint_by_timestamp is not None
+            else "OFFER_ONLY_PROVENANCE_SUPPORTED_WITH_EXTRACT_LIMITATION"
+        ),
     }
     return ConditionalCalibration(
         trigger_timestamp=calibration_rows[0].timestamp,
@@ -384,10 +446,10 @@ class TerraProtocolMechanism:
         luna_supply: float,
         redemption: float,
         luna_price: float,
-        mint_efficiency: float,
+        protocol_mint_multiplier: float,
     ) -> tuple[float, float, float]:
         accepted = min(max(0.0, redemption), ust_supply)
-        minted = accepted / max(luna_price, 1e-12) * min(1.0, max(0.0, mint_efficiency))
+        minted = accepted / max(luna_price, 1e-12) * max(0.0, protocol_mint_multiplier)
         return max(0.0, ust_supply - accepted), luna_supply + minted, minted
 
 
@@ -526,7 +588,7 @@ class ConditionalABM:
                 luna_supply,
                 absorption,
                 luna_price,
-                parameters.mint_efficiency,
+                parameters.protocol_mint_multiplier,
             )
             ust_impact, ust_capped = self.impact.ust(
                 net_sell,
