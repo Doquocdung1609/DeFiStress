@@ -20,7 +20,9 @@ def test_terra_api_lifecycle_and_export(tmp_path) -> None:
         eth_archive_rpc_url="",
         curve_history_data_url="",
         bridge_flow_data_url="",
-    )\n    api = TestClient(app)\n    status = api.get("/api/v1/terra/status")
+    )
+    api = TestClient(app)
+    status = api.get("/api/v1/terra/status")
     assert status.status_code == 200
     assert status.json()["datasets"][0]["status"] == "FIXTURE"
     assert all(item["status"] == "UNAVAILABLE" for item in status.json()["historical_sources"])

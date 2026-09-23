@@ -15,13 +15,18 @@ class ArbitrageDecision:
 
 @dataclass(slots=True)
 class ArbitrageurAgent:
-    capital: Decimal
+    """Aggregate arbitrage throughput, reset each simulation hour."""
+
+    hourly_capacity: Decimal
     minimum_profit: Decimal
     trading_cost_bps: Decimal = D("12")
     risk_buffer_bps: Decimal = D("25")
 
     def evaluate(self, ust_price: Decimal, requested_amount: Decimal, slippage_bps: Decimal) -> ArbitrageDecision:
-        amount = min(max(D("0"), requested_amount), self.capital / max(ust_price, D("0.0001")))
+        amount = min(
+            max(D("0"), requested_amount),
+            self.hourly_capacity / max(ust_price, D("0.0001")),
+        )
         purchase_cost = amount * ust_price
         gross_redemption = amount
         costs = purchase_cost * (self.trading_cost_bps + self.risk_buffer_bps + slippage_bps) / D("10000")

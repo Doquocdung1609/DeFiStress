@@ -60,6 +60,8 @@ def _historical_source_status(repository: Repository, settings: Settings) -> lis
     dataset = _preferred_historical_dataset(repository)
     dataset_status = dataset.manifest.status.value if dataset is not None else None
     dataset_version = dataset.manifest.dataset_version if dataset is not None else None
+    source_manifest = dataset.manifest.source_manifest if dataset is not None else {}
+    primary_source_type = str(source_manifest.get("primary", {}).get("source_type", "")).upper()
 
     if dataset is not None:
         reason = (
@@ -74,7 +76,10 @@ def _historical_source_status(repository: Repository, settings: Settings) -> lis
     elif settings.terra_history_data_url or settings.terra_archive_lcd_url:
         terra = configured(
             "Terra Classic historical data",
-            "A Terra historical provider is configured. Ingest and validate a versioned dataset before treating it as evidence.",
+            (
+                "A Terra historical provider is configured. Ingest and validate a versioned dataset "
+                "before treating it as evidence."
+            ),
         )
     else:
         terra = unavailable(
@@ -84,6 +89,7 @@ def _historical_source_status(repository: Repository, settings: Settings) -> lis
 
     has_curve = bool(
         dataset
+        and ("curve" in source_manifest or "CURVE" in primary_source_type)
         and any(
             row.curve_ust_liquidity is not None
             or row.curve_pool_imbalance is not None
@@ -101,7 +107,10 @@ def _historical_source_status(repository: Repository, settings: Settings) -> lis
     elif settings.curve_history_data_url or settings.eth_archive_rpc_url:
         curve = configured(
             "Ethereum archival RPC / Curve",
-            "An Ethereum archive RPC or normalized Curve historical provider is configured; ingest Curve observations to attach historical evidence.",
+            (
+                "An Ethereum archive RPC or normalized Curve historical provider is configured; "
+                "ingest Curve observations to attach historical evidence."
+            ),
         )
     else:
         curve = unavailable(
@@ -111,9 +120,9 @@ def _historical_source_status(repository: Repository, settings: Settings) -> lis
 
     has_bridge = bool(
         dataset
+        and ("bridge" in source_manifest or "BRIDGE" in primary_source_type)
         and any(
-            row.bridge_outflow_terra_to_ethereum is not None
-            or row.bridge_inflow_ethereum_to_terra is not None
+            row.bridge_outflow_terra_to_ethereum is not None or row.bridge_inflow_ethereum_to_terra is not None
             for row in dataset.observations
         )
     )
@@ -213,7 +222,10 @@ def build_terra_dataset(
     if settings.terra_history_data_url:
         return {
             "status": "CONFIGURED",
-            "reason": "TERRA_HISTORY_DATA_URL is configured. Run scripts/terra/fetch_terra_history.py, validate the downloaded file, then import it.",
+            "reason": (
+                "TERRA_HISTORY_DATA_URL is configured. Run scripts/terra/fetch_terra_history.py, "
+                "validate the downloaded file, then import it."
+            ),
             "fixture_dataset": FIXTURE_VERSION,
             "import_formats": ["CSV", "Parquet", "JSON"],
         }
@@ -221,7 +233,10 @@ def build_terra_dataset(
     if settings.terra_archive_lcd_url:
         return {
             "status": "CONFIGURED",
-            "reason": "TERRA_ARCHIVE_LCD_URL is configured. Raw archival chain access is available, but a normalized research dataset must still be built/imported before replay.",
+            "reason": (
+                "TERRA_ARCHIVE_LCD_URL is configured. Raw archival chain access is available, but a normalized "
+                "research dataset must still be built/imported before replay."
+            ),
             "fixture_dataset": FIXTURE_VERSION,
             "import_formats": ["CSV", "Parquet", "JSON"],
         }

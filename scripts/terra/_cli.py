@@ -21,7 +21,11 @@ def common_replay_parser(description: str) -> ArgumentParser:
     parser.add_argument("--evaluation-start", default="2022-05-07T00:00:00Z")
     parser.add_argument("--evaluation-end", default="2022-05-13T23:59:59Z")
     parser.add_argument("--seed", type=int, default=20220506)
-    parser.add_argument("--database-url", default=None, help="Defaults to DATABASE_URL from .env / application settings.")
+    parser.add_argument(
+        "--database-url",
+        default=None,
+        help="Defaults to DATABASE_URL from .env / application settings.",
+    )
     parser.add_argument("--output", type=Path)
     return parser
 
