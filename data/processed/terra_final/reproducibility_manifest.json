@@ -1,6 +1,6 @@
 {
-  "artifact_bundle_commit": null,
-  "artifact_bundle_commit_resolution": "The artifact commit cannot be embedded without circular self-hashing. Resolve it with: git log -1 --format=%H -- data/processed/terra_final/reproducibility_manifest.json",
+  "artifact_bundle_commit": "10946d41b7040e897570c7363c9798eb3743760f",
+  "artifact_bundle_commit_note": "Commit that first published the generated scientific-audit outputs. Later documentation-only commits may change wording or provenance metadata without changing model logic, parameters, metrics, or numerical results.",
   "conditional_window": {
     "calibration_end_inclusive": "2022-05-08T09:00:00Z",
     "calibration_hours": 12,
@@ -181,7 +181,7 @@
     "conditional_benchmark.json": "0bc6df507d9aee396c24787b097f6c421e7c6b5f370ada525226fe1cb114171f",
     "data_quality.json": "bd01b3eeea43de1244417f3bddf555c6beb2f77ba92ad024556ef78d35e13eda",
     "final_metrics.json": "aa3419c583211f5938954e0ff99221cc161c388f24f5631318ec0f16adb39912",
-    "final_report.md": "a9b3e695335d8c876b7b47bc6c7f7a998c44cfcb8c5899f8bd5fc83d584ee3b3",
+    "final_report.md": "5be9a1e041cb1ad5bd9089d699273417d4f53643c7bfd67da68e2e5e4a6b3c4f",
     "model_diagnostics.json": "d18185cd62e6d0fd9c09c6c93adb89ee52d409e78ea121e5e6cf486e8c60aa0f",
     "monte_carlo.json": "4f6467b9e9b947b2098db2c853078b623f4272e09141ca74e25c55681c3516e4",
     "parameter_uncertainty_ensemble.json": "3b98ba0e076040fd9475c5fcf318129d2bd26f2bfbdd863aa2d1d9bfad4be4ba",

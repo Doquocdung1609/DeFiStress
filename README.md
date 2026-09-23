@@ -130,6 +130,14 @@ Run and save exact local verification evidence separately after generation:
 .\.venv\Scripts\python.exe scripts\terra\run_audit_checks.py
 ```
 
+Final scientific-audit provenance distinguishes the model source from the generated bundle:
+
+- source code commit: `1e856ddc0e5ddf98ebeb361d6128735ba007d4f4`
+- artifact bundle commit: `10946d41b7040e897570c7363c9798eb3743760f`
+
+Documentation-only follow-up commits do not change the model logic, parameters, metrics, or numerical
+artifact contents.
+
 ## Terra API
 
 Core endpoints include `/api/v1/case-studies`, `/api/v1/terra/status`, dataset import/list/timeseries/provenance, replay lifecycle/timeseries/metrics/events/export, benchmark, ablation, sensitivity, and counterfactual execution.

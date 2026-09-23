@@ -61,8 +61,10 @@ aggregate hazard 0.452572, and system dynamics
 
 Depositor and external-holder exits create gross UST selling. Arbitrage throughput absorbs only an
 economically executable hourly tranche. UST impact is driven by residual net selling; accepted
-redemptions reduce UST supply and issue LUNA according to the protocol identity. A calibration-only
-realization ratio accounts for the difference between gross issuance and observed net supply change.
+redemptions reduce UST supply and issue LUNA according to the protocol identity. The calibration-only
+`protocol_mint_multiplier` maps the old off-chain approximation (`offer_amount / observed LUNA price`)
+to direct event-output gross mint (`swap_amount + fee_amount`); it is not a realization ratio against
+observed net supply change.
 LUNA impact form is selected by rolling-origin error inside calibration only. Confidence feedback is
 bounded with `tanh`; prices and supplies have explicit physical bounds.
 
@@ -150,3 +152,13 @@ scale. **C. Counterfactual capability:** bounded ablations and sensitivities are
 counterfactual claims remain exploratory. Holdout metrics were not used to select a winning parameter
 set. V4 prioritizes protocol identity and auditable failure over the old V3's implausible recursive
 over-amplification.
+
+## 19. Reproducibility provenance
+
+- Source code commit used to generate and test the model outputs:
+  `1e856ddc0e5ddf98ebeb361d6128735ba007d4f4`.
+- Artifact bundle commit that first published those generated outputs:
+  `10946d41b7040e897570c7363c9798eb3743760f`.
+
+Later documentation-only commits may update wording or provenance metadata without changing model
+logic, parameters, metrics, or the generated numerical results.
