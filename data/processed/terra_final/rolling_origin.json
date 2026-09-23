@@ -1,0 +1,39 @@
+{
+  "forecast_horizon_hours": 6,
+  "method": "ROLLING_ORIGIN_CALIBRATION_LENGTH_SENSITIVITY",
+  "warning": "Only the pre-forecast origin window is used at each origin.",
+  "windows": [
+    {
+      "calibration_end": "2022-05-08T03:00:00Z",
+      "calibration_hours": 6,
+      "forecast_hours": 6,
+      "luna_log_rmse": 0.024086941198118602,
+      "supply_final_relative_error": 0.00018574880512724017,
+      "ust_rmse": 0.0010418497851438031
+    },
+    {
+      "calibration_end": "2022-05-08T09:00:00Z",
+      "calibration_hours": 12,
+      "forecast_hours": 6,
+      "luna_log_rmse": 0.029282207119549968,
+      "supply_final_relative_error": 0.00039398741120769587,
+      "ust_rmse": 0.0030387906080257977
+    },
+    {
+      "calibration_end": "2022-05-08T15:00:00Z",
+      "calibration_hours": 18,
+      "forecast_hours": 6,
+      "luna_log_rmse": 0.020644178456895246,
+      "supply_final_relative_error": 0.00032622902726196025,
+      "ust_rmse": 0.007386871905204275
+    },
+    {
+      "calibration_end": "2022-05-08T21:00:00Z",
+      "calibration_hours": 24,
+      "forecast_hours": 6,
+      "luna_log_rmse": 0.06366387874381275,
+      "supply_final_relative_error": 0.00020522707070729776,
+      "ust_rmse": 0.009227644152350105
+    }
+  ]
+}

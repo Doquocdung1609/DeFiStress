@@ -1,0 +1,40 @@
+{
+  "analysis_type": "PROTOCOL_MECHANISM_VALIDATION",
+  "conditional_calibration_window": {
+    "gross_protocol_mint_identity_luna": 533529.0748389286,
+    "hourly_delta_correlation": 0.851871758784651,
+    "identity": "gross LUNA issued = accepted UST redemption / contemporaneous LUNA price",
+    "implied_realization_ratio": 0.7008216879405638,
+    "observed_positive_luna_supply_delta": 373908.74679398537,
+    "rows": 12
+  },
+  "conditional_evaluation_window": {
+    "gross_protocol_mint_identity_luna": 21311530844207.79,
+    "hourly_delta_correlation": 0.8699014158477663,
+    "identity": "gross LUNA issued = accepted UST redemption / contemporaneous LUNA price",
+    "implied_realization_ratio": 0.31906083677793773,
+    "observed_positive_luna_supply_delta": 6799674864171.767,
+    "rows": 134
+  },
+  "interpretation": "The on-chain series supports the direction and timing of redemption pressure. The one-for-one gross issuance identity overstates observed net supply because the extract does not identify all burns, routing, or same-hour netting; realization is therefore estimated only in calibration.",
+  "not_price_model_tuning": true,
+  "post_trigger_full_window": {
+    "gross_protocol_mint_identity_luna": 21311531377736.863,
+    "hourly_delta_correlation": 0.8700115600121594,
+    "identity": "gross LUNA issued = accepted UST redemption / contemporaneous LUNA price",
+    "implied_realization_ratio": 0.31906084857959,
+    "observed_positive_luna_supply_delta": 6799675285911.282,
+    "rows": 146
+  },
+  "source_validation": {
+    "documented_direction": "offer='uusd', swap='uluna' (UST offered for LUNA)",
+    "hourly_aggregation_mismatches": 0,
+    "hourly_rows_checked": 312,
+    "limitation": "four-column extract has no action/direction column; direction is documented by package path/code",
+    "raw_rows": 277342,
+    "sha256": "ecd470c77c314a79fb784f85b436f62e69f636343abd8ab98e6ad60c9347d124",
+    "source_file": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/native_swaps/ust_luna_swaps_run.parquet",
+    "status": "PROVENANCE_SUPPORTED_WITH_EXTRACT_LIMITATION",
+    "unit": "UST, already normalized by replication package"
+  }
+}

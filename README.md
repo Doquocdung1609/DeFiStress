@@ -109,6 +109,20 @@ Validate first, then import with an honest status:
 
 Use `REAL_HISTORICAL` only when provenance actually supports that label. Import refuses duplicate timestamps, naive timestamps, impossible negative supplies, and a reused dataset version with a different hash.
 
+## Terra May 2022 final research bundle
+
+The final pipeline preserves the strict-OOS V2 artifact and builds a separate, explicitly post-trigger
+conditional mechanism replay. It validates native-redemption provenance, excludes quarantined duplicate
+and unavailable fields, and emits benchmark, Monte Carlo, ablation, sensitivity, rolling-origin,
+diagnostic, metrics, report, and reproducibility artifacts under `data/processed/terra_final`.
+
+```powershell
+.\.venv\Scripts\python.exe scripts\terra\run_final_pipeline.py --overwrite-final
+```
+
+`--overwrite-final` is restricted to that generated final directory; it cannot overwrite the V1
+benchmark or frozen V2 output.
+
 ## Terra API
 
 Core endpoints include `/api/v1/case-studies`, `/api/v1/terra/status`, dataset import/list/timeseries/provenance, replay lifecycle/timeseries/metrics/events/export, benchmark, ablation, sensitivity, and counterfactual execution.

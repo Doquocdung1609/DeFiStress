@@ -1,0 +1,213 @@
+{
+  "conditional_window": {
+    "calibration_end_inclusive": "2022-05-08T09:00:00Z",
+    "calibration_hours": 12,
+    "calibration_rows": 12,
+    "calibration_start": "2022-05-07T22:00:00Z",
+    "dataset_status": "QUALITY_WARNING",
+    "dataset_version": "terra_may2022_v1",
+    "diagnostics": {
+      "luna_impact_candidate_selection": {
+        "candidates": {
+          "ELASTICITY": {
+            "beta": 370.2446923080334,
+            "calibration_rmse": 0.01216849156686748,
+            "observations": 12,
+            "rolling_origin_rmse": 0.010724659941164297
+          },
+          "LINEAR_BOUNDED": {
+            "beta": 370.2305945344065,
+            "calibration_rmse": 0.012168520538272986,
+            "observations": 12,
+            "rolling_origin_rmse": 0.010724713435968551
+          },
+          "LOG_IMPACT": {
+            "beta": 370.23764339566424,
+            "calibration_rmse": 0.012168506052395849,
+            "observations": 12,
+            "rolling_origin_rmse": 0.010724686688328983
+          },
+          "SQUARE_ROOT": {
+            "beta": 2.043322379044288,
+            "calibration_rmse": 0.01192231923420092,
+            "observations": 12,
+            "rolling_origin_rmse": 0.010031496911494863
+          }
+        },
+        "selection": "SQUARE_ROOT"
+      },
+      "mint_efficiency_rows": 11,
+      "mint_to_market_fraction_policy": "pre-specified 0.50; varied in sensitivity, not selected on holdout",
+      "parameter_policy": "12h post-trigger calibration only; no May 8 10:00 onward observations were used",
+      "redemption_provenance": "PROVENANCE_SUPPORTED_WITH_EXTRACT_LIMITATION",
+      "redemption_role": "UST absorption and protocol LUNA issuance; not direct UST sell pressure",
+      "ust_impact_beta_rows": 1,
+      "ust_impact_driver": "net sell pressure = Anchor/external sell - arbitrage absorption"
+    },
+    "evaluation_end": "2022-05-13T23:00:00Z",
+    "evaluation_rows": 134,
+    "evaluation_start": "2022-05-08T10:00:00Z",
+    "initial_state": {
+      "anchor_deposit_flow": 64243.415808,
+      "anchor_net_flow": 0.0,
+      "anchor_total_deposits": 11855468933.918337,
+      "anchor_withdrawal_flow": 64243.415808,
+      "backing_ratio": 2.5092602193036173,
+      "block_hash": null,
+      "block_height": 7555016,
+      "bridge_inflow_ethereum_to_terra": 47.008498223960096,
+      "bridge_outflow_terra_to_ethereum": 47.008498223960096,
+      "btc_reserve_value": null,
+      "chain_id": "columbus-5",
+      "curve_pool_imbalance": null,
+      "curve_ust_liquidity": null,
+      "curve_ust_price": 0.9947208481893752,
+      "luna_burned": 20250.699982,
+      "luna_market_cap": 46945779126.74795,
+      "luna_minted_from_redemption": 20250.699982,
+      "luna_price": 62.712043467325884,
+      "luna_supply": 748592718.8962923,
+      "quality_flag": "QUALITY_WARNING",
+      "raw_reference": "doi:10.17632/j5d8n7hzdy.4",
+      "reserve_intervention_volume": 0.0,
+      "source_name": "Liu-Makarov-Schoar Terra/LUNA replication package",
+      "source_type": "REPLICATION_ONCHAIN_WITH_PRECRISIS_PROXIES",
+      "terra_dex_depth": 30550556.510721922,
+      "terra_dex_liquidity": 32632111.12814283,
+      "timestamp": "2022-05-08T09:00:00Z",
+      "top100_anchor_share": 0.5945578327367015,
+      "top10_anchor_share": 0.2362009546666057,
+      "ust_depeg_bps": 52.791518106248,
+      "ust_dex_sell_volume": 20250.699982,
+      "ust_market_cap": 18610244116.024616,
+      "ust_native_redemption_volume": 1284947.020854,
+      "ust_price": 0.9947208481893752,
+      "ust_supply": 18709011829.70038
+    },
+    "label": "CONDITIONAL_HISTORICAL_REPLAY",
+    "not_prediction": true,
+    "parameters": {
+      "anchor_exit_rate": 7.816738335387811e-05,
+      "arbitrage_hourly_capacity": 5285022.5707697,
+      "confidence_sensitivity": 1.0,
+      "execution_capacity_proxy": 32632111.12814283,
+      "execution_depth_proxy": 30550556.510721922,
+      "external_exit_rate": 0.012267825406559109,
+      "luna_impact_beta": 2.043322379044288,
+      "luna_impact_cap": 0.7,
+      "luna_impact_form": "SQUARE_ROOT",
+      "mint_efficiency": 0.7442047588846092,
+      "mint_to_market_fraction": 0.5,
+      "price_floor_luna": 1e-08,
+      "price_floor_ust": 0.005,
+      "redemption_friction": 0.02,
+      "reserve_capacity": 0.0,
+      "ust_impact_beta": 0.0002063771295690808,
+      "ust_impact_cap": 0.12
+    },
+    "proxy_fields": [
+      "terra_dex_liquidity",
+      "terra_dex_depth"
+    ],
+    "quarantined_variables": [
+      "ust_dex_sell_volume",
+      "luna_minted_from_redemption",
+      "luna_burned",
+      "bridge_outflow_terra_to_ethereum",
+      "bridge_inflow_ethereum_to_terra",
+      "curve_ust_price",
+      "curve_ust_liquidity",
+      "curve_pool_imbalance"
+    ],
+    "trigger_rule": "first ust_price < 0.99",
+    "trigger_timestamp": "2022-05-07T22:00:00Z"
+  },
+  "data_status": "QUALITY_WARNING",
+  "dataset_hash": "895ef9032e22824641cd2c02b52b22b6f3d1dd8b1b4b868d70db027707ba8708",
+  "dataset_version": "terra_may2022_v1",
+  "determinism": "Fixed seeds; output hashes exclude this manifest because it contains their hashes.",
+  "environment_presence_only": {
+    "ETH_ARCHIVE_RPC_URL": false,
+    "TERRA_LCD_URL": false,
+    "TERRA_RPC_URL": false
+  },
+  "git_branch": "feat/terra-model-v2",
+  "git_commit": "943f3abf457ac46ec3e0ecb0e16d2d373dc193e9",
+  "inputs": {
+    "data/processed/model_v2/terra_abm_v2_strict_oos.json": "2aa642b7cad12a7ba4d2c910f3ab788a9d7868d04106ccd4089e1c1a31989fbc",
+    "data/processed/terra_may2022_v1.csv": "c3c3faf99b9a94632b4bcc009cca87984b578c81bbf563b17df2c1ef540ad613",
+    "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/native_swaps/ust_luna_swaps_run.parquet": "ecd470c77c314a79fb784f85b436f62e69f636343abd8ab98e6ad60c9347d124"
+  },
+  "model_version": "4.0.0-conditional-mechanism-replay",
+  "outputs": {
+    "ablation.json": "a57aad4738a484b2817adcb1de23776d5288bf2896f5ea77bdd04ceb457a4b46",
+    "conditional_abm_final.json": "72083d2362547d7fdcda437153987b062a85d231a48723ecaf544b97a96396a7",
+    "conditional_benchmark.json": "ca9be114f139940f57a217169b66698240aaeaec3eacecf55a47dec690639f2d",
+    "data_quality.json": "be0f0524697e04cbd9901b4d9e3c74ecb026471b3bb185f09e0792be32828878",
+    "final_metrics.json": "a542aa26f6d4e973b0d0e2ef2826a3c8a9757ca1a4a28298d04da07dcc7ced7b",
+    "final_report.md": "f7587ce07329e67e93b64867fd99beb84537606a195a154849565c5de603dd75",
+    "model_diagnostics.json": "0d19771f5b6345fd86e2e771adfb17543ca5ca1d145577877bfc7876defb58ea",
+    "monte_carlo.json": "0048d19ee96fa25f399b8d6a7300a7d16b3f276b950140f6d4e0dd6f57d1ad6a",
+    "protocol_mechanism_validation.json": "75008f28409648bdcbc980ed2980bbd78e84c17cbc6c68b47ede673db59e605c",
+    "rolling_origin.json": "f6513cb4b363a38af0f39b8a4ad90073efa1467345fa03af0a08da85865a3d48",
+    "sensitivity.json": "0e57a7d8781dd7640f76fb8a26ab902e9d5b73a2a2d3c73270fb1240c9ae922c",
+    "strict_oos_v2.json": "2aa642b7cad12a7ba4d2c910f3ab788a9d7868d04106ccd4089e1c1a31989fbc"
+  },
+  "packages": {
+    "numpy": "2.5.3",
+    "pandas": "2.3.3",
+    "pyarrow": "23.0.1",
+    "pydantic": "2.13.5",
+    "pytest": "8.4.2",
+    "ruff": "0.16.7"
+  },
+  "parameters": {
+    "anchor_exit_rate": 7.816738335387811e-05,
+    "arbitrage_hourly_capacity": 5285022.5707697,
+    "confidence_sensitivity": 1.0,
+    "execution_capacity_proxy": 32632111.12814283,
+    "execution_depth_proxy": 30550556.510721922,
+    "external_exit_rate": 0.012267825406559109,
+    "luna_impact_beta": 2.043322379044288,
+    "luna_impact_cap": 0.7,
+    "luna_impact_form": "SQUARE_ROOT",
+    "mint_efficiency": 0.7442047588846092,
+    "mint_to_market_fraction": 0.5,
+    "price_floor_luna": 1e-08,
+    "price_floor_ust": 0.005,
+    "redemption_friction": 0.02,
+    "reserve_capacity": 0.0,
+    "ust_impact_beta": 0.0002063771295690808,
+    "ust_impact_cap": 0.12
+  },
+  "pipeline_version": "terra-final-research-pipeline-1.0.0",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "proxy_fields": [
+    "terra_dex_liquidity",
+    "terra_dex_depth"
+  ],
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "quarantined_variables": [
+    "ust_dex_sell_volume",
+    "luna_minted_from_redemption",
+    "luna_burned",
+    "bridge_outflow_terra_to_ethereum",
+    "bridge_inflow_ethereum_to_terra",
+    "curve_ust_price",
+    "curve_ust_liquidity",
+    "curve_pool_imbalance"
+  ],
+  "random_seeds": {
+    "monte_carlo_end": 20220605,
+    "monte_carlo_runs": 100,
+    "monte_carlo_start": 20220506,
+    "primary": 20220506
+  },
+  "reproduce_command": ".\\.venv\\Scripts\\python.exe scripts\\terra\\run_final_pipeline.py --overwrite-final",
+  "strict_oos_window": {
+    "calibration_start": "2022-05-01T00:00:00Z",
+    "cutoff": "2022-05-06T23:59:59Z",
+    "evaluation_end": "2022-05-13T23:59:59Z",
+    "evaluation_start": "2022-05-07T00:00:00Z"
+  }
+}

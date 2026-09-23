@@ -1,0 +1,53 @@
+{
+  "aligned_observations": 134,
+  "anchor_withdrawals": {
+    "correlation": 0.024388349609513152,
+    "cumulative_relative_error": 0.6468319973487511,
+    "directional_accuracy": 0.41353383458646614,
+    "mae": 7482314.812121437,
+    "rmse": 26429278.961282372,
+    "smape": 1.5913572657722823
+  },
+  "classification_at_ust_below_0_90": {
+    "f1": 0.0,
+    "false_alarms": 0,
+    "false_negative_hours": 85,
+    "false_positive_hours": 0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "true_negative_hours": 49,
+    "true_positive_hours": 0
+  },
+  "label": "CONDITIONAL_HISTORICAL_REPLAY",
+  "luna_price": {
+    "correlation": 0.9096038897570329,
+    "directional_accuracy": 0.43609022556390975,
+    "log_rmse": 6.159938998119993,
+    "mae": 17.39174418729452,
+    "rmse": 20.271772913444938,
+    "smape": 1.1279218937945314
+  },
+  "luna_supply": {
+    "correlation": 0.8328767118904904,
+    "delta_correlation": 0.09616215526800026,
+    "directional_accuracy": 0.5639097744360902,
+    "final_relative_error": 0.9998874873909457,
+    "mae": 1179517943435.673,
+    "rmse": 2818280511176.068,
+    "smape": 0.7579377334115044
+  },
+  "not_prediction": true,
+  "threshold_timing_error_hours": {
+    "0.9": null,
+    "0.95": 54.0,
+    "0.99": -19.0,
+    "0.995": 0.0
+  },
+  "ust_price": {
+    "correlation": 0.9177519780130398,
+    "directional_accuracy": 0.5338345864661654,
+    "mae": 0.3058350331178149,
+    "rmse": 0.42609411510553213,
+    "smape": 0.4926540007532466
+  }
+}
