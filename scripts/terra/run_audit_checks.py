@@ -42,7 +42,7 @@ def main() -> None:
     checks = [
         ("ruff", [sys.executable, "-m", "ruff", "check", "backend", "sim", "tests", "scripts"], ROOT),
         ("mypy", [sys.executable, "-m", "mypy", "sim"], ROOT),
-        ("pytest", [sys.executable, "-m", "pytest", "-q"], ROOT),
+        ("pytest", [sys.executable, "-m", "pytest"], ROOT),
         ("frontend_tests", [pnpm, "test"], ROOT / "frontend"),
         ("frontend_lint", [pnpm, "lint"], ROOT / "frontend"),
         ("frontend_build", [pnpm, "build"], ROOT / "frontend"),
