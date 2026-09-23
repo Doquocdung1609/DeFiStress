@@ -1,0 +1,503 @@
+{
+  "block_height": {
+    "file": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\data\\anchor\\Anchor_global_stats_fullnode.parquet",
+    "raw_window_rows": 1393,
+    "raw_min_time": "2022-04-30T00:14:00+00:00",
+    "raw_max_time": "2022-05-14T22:59:00+00:00",
+    "max_raw_gap_minutes": 571.0,
+    "height_summary": {
+      "count": 1393,
+      "missing": 0,
+      "min": 7446041.0,
+      "max": 7627867.0,
+      "median": 7540129.0
+    },
+    "height_monotonic_non_decreasing": true,
+    "hourly_last_missing_count": 9,
+    "hourly_last_missing_timestamps": [
+      "2022-05-13T02:00:00+00:00",
+      "2022-05-13T03:00:00+00:00",
+      "2022-05-13T04:00:00+00:00",
+      "2022-05-13T05:00:00+00:00",
+      "2022-05-13T06:00:00+00:00",
+      "2022-05-13T07:00:00+00:00",
+      "2022-05-13T08:00:00+00:00",
+      "2022-05-13T09:00:00+00:00",
+      "2022-05-13T10:00:00+00:00"
+    ],
+    "hourly_ffill_missing_count": 0,
+    "asof_6h_missing_count": 4,
+    "asof_6h_missing_timestamps": [
+      "2022-05-13T08:00:00+00:00",
+      "2022-05-13T09:00:00+00:00",
+      "2022-05-13T10:00:00+00:00",
+      "2022-05-13T11:00:00+00:00"
+    ],
+    "first_5_window": [
+      {
+        "t": "2022-04-30T00:14:00+00:00",
+        "height": 7446041.0
+      },
+      {
+        "t": "2022-04-30T00:29:00+00:00",
+        "height": 7446178.0
+      },
+      {
+        "t": "2022-04-30T00:44:00+00:00",
+        "height": 7446315.0
+      },
+      {
+        "t": "2022-04-30T00:59:00+00:00",
+        "height": 7446452.0
+      },
+      {
+        "t": "2022-04-30T01:14:00+00:00",
+        "height": 7446589.0
+      }
+    ],
+    "last_5_window": [
+      {
+        "t": "2022-05-14T21:59:00+00:00",
+        "height": 7627298.0
+      },
+      {
+        "t": "2022-05-14T22:14:00+00:00",
+        "height": 7627441.0
+      },
+      {
+        "t": "2022-05-14T22:29:00+00:00",
+        "height": 7627584.0
+      },
+      {
+        "t": "2022-05-14T22:44:00+00:00",
+        "height": 7627726.0
+      },
+      {
+        "t": "2022-05-14T22:59:00+00:00",
+        "height": 7627867.0
+      }
+    ]
+  },
+  "anchor_total_deposits": {
+    "global_file": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\data\\anchor\\Anchor_global_stats_fullnode.parquet",
+    "daily_file": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\data\\anchor\\Anchor_daily_stats.parquet",
+    "aust_supply_file": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\data\\anchor\\aust_supply_col5.parquet",
+    "global_index_min": "2021-03-17T04:59:00+00:00",
+    "global_index_max": "2022-05-26T19:12:00+00:00",
+    "daily_index_min": "2021-03-18T00:00:00+00:00",
+    "daily_index_max": "2022-05-10T00:00:00+00:00",
+    "aust_supply_date_min": "2021-09-30T00:00:00+00:00",
+    "aust_supply_date_max": "2022-05-14T00:00:00+00:00",
+    "direct_deposit_balance_summary": {
+      "count": 419,
+      "missing": 0,
+      "min": 65471861.318179,
+      "max": 14071762646.480225,
+      "median": 1694540771.3437672
+    },
+    "prev_aterra_supply_summary_target_window": {
+      "count": 1205,
+      "missing": 0,
+      "min": 1238368205590456.0,
+      "max": 1.1374521465463468e+16,
+      "median": 1.1020802590358568e+16
+    },
+    "prev_exchange_rate_summary_target_window": {
+      "count": 1205,
+      "missing": 0,
+      "min": 1.2432615920364338,
+      "max": 1.250384621659645,
+      "median": 1.2469224277885826
+    },
+    "raw_mul_hourly_missing_count": 9,
+    "raw_mul_hourly_missing_timestamps": [
+      "2022-05-13T02:00:00+00:00",
+      "2022-05-13T03:00:00+00:00",
+      "2022-05-13T04:00:00+00:00",
+      "2022-05-13T05:00:00+00:00",
+      "2022-05-13T06:00:00+00:00",
+      "2022-05-13T07:00:00+00:00",
+      "2022-05-13T08:00:00+00:00",
+      "2022-05-13T09:00:00+00:00",
+      "2022-05-13T10:00:00+00:00"
+    ],
+    "formula_tests_pre_cutoff": [
+      {
+        "formula": "prev_aterra_supply * prev_exchange_rate",
+        "overlap_days": 6,
+        "median_ratio_direct_over_raw": 9.940905834822626e-07,
+        "median_relative_error_free_scale": 0.0036813719257929563,
+        "nearest_power_of_10_scale": 1e-06,
+        "median_relative_error_power10_scale": 0.0059473584152232905,
+        "rows": [
+          {
+            "date": "2022-05-01T00:00:00+00:00",
+            "direct": 13640731369.765345,
+            "raw": 1.3744804276275164e+16,
+            "ratio_direct_over_raw": 9.92428200182562e-07
+          },
+          {
+            "date": "2022-05-02T00:00:00+00:00",
+            "direct": 13708067277.886341,
+            "raw": 1.3847479395543042e+16,
+            "ratio_direct_over_raw": 9.899323108795113e-07
+          },
+          {
+            "date": "2022-05-03T00:00:00+00:00",
+            "direct": 13831722563.44544,
+            "raw": 1.3957944284262762e+16,
+            "ratio_direct_over_raw": 9.909569978037787e-07
+          },
+          {
+            "date": "2022-05-04T00:00:00+00:00",
+            "direct": 13965211102.492378,
+            "raw": 1.4024774786887772e+16,
+            "ratio_direct_over_raw": 9.957529667819634e-07
+          },
+          {
+            "date": "2022-05-05T00:00:00+00:00",
+            "direct": 14071762646.480225,
+            "raw": 1.4061203592517446e+16,
+            "ratio_direct_over_raw": 1.000750935287531e-06
+          },
+          {
+            "date": "2022-05-06T00:00:00+00:00",
+            "direct": 14049085802.243898,
+            "raw": 1.4042765647136416e+16,
+            "ratio_direct_over_raw": 1.0004500648423746e-06
+          }
+        ]
+      },
+      {
+        "formula": "prev_aterra_supply / prev_exchange_rate",
+        "overlap_days": 6,
+        "median_ratio_direct_over_raw": 1.5405033659856344e-06,
+        "median_relative_error_free_scale": 0.004039096049189887,
+        "nearest_power_of_10_scale": 1e-06,
+        "median_relative_error_power10_scale": 0.3508560578284915,
+        "rows": [
+          {
+            "date": "2022-05-01T00:00:00+00:00",
+            "direct": 13640731369.765345,
+            "raw": 8883657771367616.0,
+            "ratio_direct_over_raw": 1.535485913666099e-06
+          },
+          {
+            "date": "2022-05-02T00:00:00+00:00",
+            "direct": 13708067277.886341,
+            "raw": 8941240001391299.0,
+            "ratio_direct_over_raw": 1.5331282099298644e-06
+          },
+          {
+            "date": "2022-05-03T00:00:00+00:00",
+            "direct": 13831722563.44544,
+            "raw": 9004844994222517.0,
+            "ratio_direct_over_raw": 1.5360311668129585e-06
+          },
+          {
+            "date": "2022-05-04T00:00:00+00:00",
+            "direct": 13965211102.492378,
+            "raw": 9039114544870744.0,
+            "ratio_direct_over_raw": 1.54497556515831e-06
+          },
+          {
+            "date": "2022-05-05T00:00:00+00:00",
+            "direct": 14071762646.480225,
+            "raw": 9054845544912074.0,
+            "ratio_direct_over_raw": 1.5540588270318051e-06
+          },
+          {
+            "date": "2022-05-06T00:00:00+00:00",
+            "direct": 14049085802.243898,
+            "raw": 9034035875282218.0,
+            "ratio_direct_over_raw": 1.5551284050889397e-06
+          }
+        ]
+      },
+      {
+        "formula": "prev_aterra_supply only",
+        "overlap_days": 6,
+        "median_ratio_direct_over_raw": 1.2373876172117566e-06,
+        "median_relative_error_free_scale": 0.003682100446263329,
+        "nearest_power_of_10_scale": 1e-06,
+        "median_relative_error_power10_scale": 0.1918412358859295,
+        "rows": [
+          {
+            "date": "2022-05-01T00:00:00+00:00",
+            "direct": 13640731369.765345,
+            "raw": 1.1050074086849314e+16,
+            "ratio_direct_over_raw": 1.2344470509930038e-06
+          },
+          {
+            "date": "2022-05-02T00:00:00+00:00",
+            "direct": 13708067277.886341,
+            "raw": 1.1127157619530302e+16,
+            "ratio_direct_over_raw": 1.2319468948499521e-06
+          },
+          {
+            "date": "2022-05-03T00:00:00+00:00",
+            "direct": 13831722563.44544,
+            "raw": 1.1211116122749792e+16,
+            "ratio_direct_over_raw": 1.2337507177700059e-06
+          },
+          {
+            "date": "2022-05-04T00:00:00+00:00",
+            "direct": 13965211102.492378,
+            "raw": 1.1259287089540516e+16,
+            "ratio_direct_over_raw": 1.2403281834305096e-06
+          },
+          {
+            "date": "2022-05-05T00:00:00+00:00",
+            "direct": 14071762646.480225,
+            "raw": 1.1283706248649344e+16,
+            "ratio_direct_over_raw": 1.247086935479609e-06
+          },
+          {
+            "date": "2022-05-06T00:00:00+00:00",
+            "direct": 14049085802.243898,
+            "raw": 1.1263340918413644e+16,
+            "ratio_direct_over_raw": 1.2473284706561653e-06
+          }
+        ]
+      },
+      {
+        "formula": "aust_supply_col5.supply * prev_exchange_rate_daily",
+        "overlap_days": 6,
+        "median_ratio_direct_over_raw": 1.1480264880748665,
+        "median_relative_error_free_scale": 0.0027253015742428693,
+        "nearest_power_of_10_scale": 1.0,
+        "median_relative_error_power10_scale": 0.12893978008642387,
+        "rows": [
+          {
+            "date": "2022-05-01T00:00:00+00:00",
+            "direct": 13640731369.765345,
+            "raw": 11876516490.529617,
+            "ratio_direct_over_raw": 1.1485464934640153
+          },
+          {
+            "date": "2022-05-02T00:00:00+00:00",
+            "direct": 13708067277.886341,
+            "raw": 11997925646.959827,
+            "ratio_direct_over_raw": 1.1425364418189947
+          },
+          {
+            "date": "2022-05-03T00:00:00+00:00",
+            "direct": 13831722563.44544,
+            "raw": 12120753389.991875,
+            "ratio_direct_over_raw": 1.141160299067409
+          },
+          {
+            "date": "2022-05-04T00:00:00+00:00",
+            "direct": 13965211102.492378,
+            "raw": 12170049854.365145,
+            "ratio_direct_over_raw": 1.1475064826857178
+          },
+          {
+            "date": "2022-05-05T00:00:00+00:00",
+            "direct": 14071762646.480225,
+            "raw": 12200986316.660858,
+            "ratio_direct_over_raw": 1.1533299260621872
+          },
+          {
+            "date": "2022-05-06T00:00:00+00:00",
+            "direct": 14049085802.243898,
+            "raw": 12227167974.377562,
+            "ratio_direct_over_raw": 1.1490057085732548
+          }
+        ]
+      },
+      {
+        "formula": "aust_supply_col5.supply / prev_exchange_rate_daily",
+        "overlap_days": 6,
+        "median_ratio_direct_over_raw": 1.7787316605153247,
+        "median_relative_error_free_scale": 0.004665340559438164,
+        "nearest_power_of_10_scale": 1.0,
+        "median_relative_error_power10_scale": 0.43780113945725785,
+        "rows": [
+          {
+            "date": "2022-05-01T00:00:00+00:00",
+            "direct": 13640731369.765345,
+            "raw": 7676130259.634473,
+            "ratio_direct_over_raw": 1.7770322947092483
+          },
+          {
+            "date": "2022-05-02T00:00:00+00:00",
+            "direct": 13708067277.886341,
+            "raw": 7746993489.865297,
+            "ratio_direct_over_raw": 1.7694693168155344
+          },
+          {
+            "date": "2022-05-03T00:00:00+00:00",
+            "direct": 13831722563.44544,
+            "raw": 7819597446.963075,
+            "ratio_direct_over_raw": 1.7688535320724619
+          },
+          {
+            "date": "2022-05-04T00:00:00+00:00",
+            "direct": 13965211102.492378,
+            "raw": 7843724859.898838,
+            "ratio_direct_over_raw": 1.7804310263214014
+          },
+          {
+            "date": "2022-05-05T00:00:00+00:00",
+            "direct": 14071762646.480225,
+            "raw": 7856940969.956493,
+            "ratio_direct_over_raw": 1.7909976287575626
+          },
+          {
+            "date": "2022-05-06T00:00:00+00:00",
+            "direct": 14049085802.243898,
+            "raw": 7866019907.278998,
+            "ratio_direct_over_raw": 1.786047577790041
+          }
+        ]
+      },
+      {
+        "formula": "aust_supply_col5.supply only",
+        "overlap_days": 6,
+        "median_ratio_direct_over_raw": 1.4289961682599976,
+        "median_relative_error_free_scale": 0.003747660150096057,
+        "nearest_power_of_10_scale": 1.0,
+        "median_relative_error_power10_scale": 0.30020801642501316,
+        "rows": [
+          {
+            "date": "2022-05-01T00:00:00+00:00",
+            "direct": 13640731369.765345,
+            "raw": 9548072455.317995,
+            "ratio_direct_over_raw": 1.428637186573491
+          },
+          {
+            "date": "2022-05-02T00:00:00+00:00",
+            "direct": 13708067277.886341,
+            "raw": 9640946627.737635,
+            "ratio_direct_over_raw": 1.4218590567079101
+          },
+          {
+            "date": "2022-05-03T00:00:00+00:00",
+            "direct": 13831722563.44544,
+            "raw": 9735471856.24043,
+            "ratio_direct_over_raw": 1.420755230736897
+          },
+          {
+            "date": "2022-05-04T00:00:00+00:00",
+            "direct": 13965211102.492378,
+            "raw": 9770287743.403063,
+            "ratio_direct_over_raw": 1.4293551499465043
+          },
+          {
+            "date": "2022-05-05T00:00:00+00:00",
+            "direct": 14071762646.480225,
+            "raw": 9790936077.068998,
+            "ratio_direct_over_raw": 1.4372234213066917
+          },
+          {
+            "date": "2022-05-06T00:00:00+00:00",
+            "direct": 14049085802.243898,
+            "raw": 9807096751.643583,
+            "ratio_direct_over_raw": 1.4325427961021588
+          }
+        ]
+      }
+    ],
+    "daily_tail": [
+      {
+        "date": "2022-04-29T00:00:00+00:00",
+        "deposit_balance": 13669502102.505108
+      },
+      {
+        "date": "2022-04-30T00:00:00+00:00",
+        "deposit_balance": 13677890363.296495
+      },
+      {
+        "date": "2022-05-01T00:00:00+00:00",
+        "deposit_balance": 13640731369.765345
+      },
+      {
+        "date": "2022-05-02T00:00:00+00:00",
+        "deposit_balance": 13708067277.886341
+      },
+      {
+        "date": "2022-05-03T00:00:00+00:00",
+        "deposit_balance": 13831722563.44544
+      },
+      {
+        "date": "2022-05-04T00:00:00+00:00",
+        "deposit_balance": 13965211102.492378
+      },
+      {
+        "date": "2022-05-05T00:00:00+00:00",
+        "deposit_balance": 14071762646.480225
+      },
+      {
+        "date": "2022-05-06T00:00:00+00:00",
+        "deposit_balance": 14049085802.243898
+      },
+      {
+        "date": "2022-05-07T00:00:00+00:00",
+        "deposit_balance": 14033290084.78809
+      },
+      {
+        "date": "2022-05-08T00:00:00+00:00",
+        "deposit_balance": 12548331169.806915
+      },
+      {
+        "date": "2022-05-09T00:00:00+00:00",
+        "deposit_balance": 11160654892.319174
+      },
+      {
+        "date": "2022-05-10T00:00:00+00:00",
+        "deposit_balance": 7820590718.356955
+      }
+    ],
+    "aust_supply_tail": [
+      {
+        "date": "2022-05-03T00:00:00+00:00",
+        "supply": 9735471856.24043
+      },
+      {
+        "date": "2022-05-04T00:00:00+00:00",
+        "supply": 9770287743.403063
+      },
+      {
+        "date": "2022-05-05T00:00:00+00:00",
+        "supply": 9790936077.068998
+      },
+      {
+        "date": "2022-05-06T00:00:00+00:00",
+        "supply": 9807096751.643583
+      },
+      {
+        "date": "2022-05-07T00:00:00+00:00",
+        "supply": 8820426523.794754
+      },
+      {
+        "date": "2022-05-08T00:00:00+00:00",
+        "supply": 7475839578.013709
+      },
+      {
+        "date": "2022-05-09T00:00:00+00:00",
+        "supply": 5256638814.920172
+      },
+      {
+        "date": "2022-05-10T00:00:00+00:00",
+        "supply": 3812403081.1437235
+      },
+      {
+        "date": "2022-05-11T00:00:00+00:00",
+        "supply": 1840338610.7266498
+      },
+      {
+        "date": "2022-05-12T00:00:00+00:00",
+        "supply": 1122773915.7595115
+      },
+      {
+        "date": "2022-05-13T00:00:00+00:00",
+        "supply": 937103109.8174001
+      },
+      {
+        "date": "2022-05-14T00:00:00+00:00",
+        "supply": 903857678.7957516
+      }
+    ]
+  }
+}

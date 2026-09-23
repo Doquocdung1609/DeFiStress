@@ -1,0 +1,16 @@
+token,label,volume_bn_usd,tx_count
+UST,UST,359.638,20272983
+LUNA,LUNA,216.698,9540155
+aUST,aUST (Anchor UST deposit),114.507,1581845
+bLUNA,bLUNA (Anchor-bonded LUNA),49.569,1548061
+ANC,ANC (Anchor token),13.161,2983677
+bETH,bETH (Anchor-bonded ETH),9.214,191050
+Astroport ANC-UST LP,Astroport ANC-UST LP,5.983,177590
+Terraswap ANC-UST LP,Terraswap ANC-UST LP,5.068,170849
+ASTRO,ASTRO (Astroport token),3.988,1348552
+VKR,VKR (Valkyrie token),3.795,737877
+SD,SD (Stader token),2.578,95102
+MIR,MIR (Mirror token),2.446,867647
+Astroport ASTRO-UST LP,Astroport ASTRO-UST LP,1.236,238299
+PSI,PSI (Nexus token),1.077,1175289
+MINE,MINE (Pylon token),1.065,593806

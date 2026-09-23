@@ -1,0 +1,59 @@
+Replication package for "Anatomy of a Run: The Terra Luna Crash"
+Liu, Makarov, and Schoar — Journal of Financial Economics.
+
+This package is dual-licensed: the code is released under the MIT License and the
+data and generated exhibits are released under the Creative Commons Attribution
+4.0 International (CC-BY-4.0) License.
+
+================================================================================
+CODE — MIT License
+Applies to all source code in this package (the `code/` directory).
+================================================================================
+
+Copyright (c) 2026 Jiageng Liu, Igor Makarov, and Antoinette Schoar
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+================================================================================
+DATA — Creative Commons Attribution 4.0 International (CC BY 4.0)
+Applies to the datasets and generated exhibits in this package (the `data/` and
+`output/` directories).
+================================================================================
+
+Copyright (c) 2026 Jiageng Liu, Igor Makarov, and Antoinette Schoar
+
+This material is licensed under the Creative Commons Attribution 4.0
+International License. You are free to share (copy and redistribute the material
+in any medium or format) and adapt (remix, transform, and build upon the
+material) for any purpose, even commercially, provided you give appropriate
+credit, provide a link to the license, and indicate if changes were made.
+
+Full legal text:   https://creativecommons.org/licenses/by/4.0/legalcode
+Human-readable summary:   https://creativecommons.org/licenses/by/4.0/
+
+Attribution — when reusing the data, please cite:
+    Liu, J., Makarov, I., and Schoar, A. "Anatomy of a Run: The Terra Luna
+    Crash." Journal of Financial Economics.
+
+Note on third-party data: some shipped files are minimal processed extracts
+derived from third-party providers (Kaiko, Flipside, Nansen) and from public
+sources (the Terra Classic blockchain, CoinGecko), as documented in README.md
+and Datasets.md. The CC-BY-4.0 license above covers the authors' compilation and
+processing; reuse of provider-derived content may additionally be subject to the
+original providers' terms.

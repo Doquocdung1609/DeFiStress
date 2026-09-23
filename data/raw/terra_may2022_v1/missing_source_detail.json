@@ -1,0 +1,1589 @@
+{
+  "files": {
+    "Anchor_daily_stats.parquet": {
+      "path": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\data\\anchor\\Anchor_daily_stats.parquet",
+      "shape": [
+        419,
+        21
+      ],
+      "columns": [
+        "market balance",
+        "loan balance",
+        "borrow APR",
+        "borrow APY",
+        "aUST/UST",
+        "deposit APR",
+        "deposit APY",
+        "ANC distribution",
+        "ANC repurchase",
+        "bLuna collateral",
+        "bLuna APR",
+        "bLuna APY",
+        "bLuna LTV",
+        "deposit balance",
+        "net_collateral_usd",
+        "LUNA_staking_airdrop",
+        "LUNA_opp_cost",
+        "ANC/UST",
+        "ANC APR",
+        "ANC APY",
+        "Exploit UST"
+      ],
+      "dtypes": {
+        "market balance": "float64",
+        "loan balance": "float64",
+        "borrow APR": "float64",
+        "borrow APY": "float64",
+        "aUST/UST": "float64",
+        "deposit APR": "float64",
+        "deposit APY": "float64",
+        "ANC distribution": "float64",
+        "ANC repurchase": "float64",
+        "bLuna collateral": "float64",
+        "bLuna APR": "float64",
+        "bLuna APY": "float64",
+        "bLuna LTV": "float64",
+        "deposit balance": "float64",
+        "net_collateral_usd": "float64",
+        "LUNA_staking_airdrop": "float64",
+        "LUNA_opp_cost": "float64",
+        "ANC/UST": "float64",
+        "ANC APR": "float64",
+        "ANC APY": "float64",
+        "Exploit UST": "float64"
+      },
+      "index_type": "DatetimeIndex",
+      "index_name": "date",
+      "index_dtype": "datetime64[us]",
+      "head": [
+        {
+          "date": "2021-03-18T00:00:00",
+          "market balance": 18306597.386563,
+          "loan balance": 47165263.931616,
+          "borrow APR": 0.3225637342853073,
+          "borrow APY": 0.3806628683452067,
+          "aUST/UST": 1.000980213289358,
+          "deposit APR": 0.2130731678145692,
+          "deposit APY": 0.2373982625337978,
+          "ANC distribution": 91324.200913242,
+          "ANC repurchase": 1369.295697,
+          "bLuna collateral": 5965106.303739,
+          "bLuna APR": 0.015078012278239608,
+          "bLuna APY": 0.015191942831469518,
+          "bLuna LTV": 0.5,
+          "deposit balance": 65471861.318179,
+          "net_collateral_usd": 110880684.08345886,
+          "LUNA_staking_airdrop": 0.040169886860765634,
+          "LUNA_opp_cost": 0.08033977372153127,
+          "ANC/UST": 4.285372538019087,
+          "ANC APR": 3.0286219001002976,
+          "ANC APY": 19.41205871135236,
+          "Exploit UST": 31145627.618437756
+        },
+        {
+          "date": "2021-03-19T00:00:00",
+          "market balance": 19075913.484023,
+          "loan balance": 59323389.497033,
+          "borrow APR": 0.33780669777737315,
+          "borrow APY": 0.4018694767287536,
+          "aUST/UST": 1.0015835357955702,
+          "deposit APR": 0.21999707071514663,
+          "deposit APY": 0.24599050224439223,
+          "ANC distribution": 91324.200913242,
+          "ANC repurchase": 2485.260725,
+          "bLuna collateral": 7955127.377687,
+          "bLuna APR": 0.03334486121630951,
+          "bLuna APY": 0.033905457533674355,
+          "bLuna LTV": 0.5,
+          "deposit balance": 78399302.981056,
+          "net_collateral_usd": 152021381.2575596,
+          "LUNA_staking_airdrop": 0.04143737668447693,
+          "LUNA_opp_cost": 0.08287475336895386,
+          "ANC/UST": 6.877587993866434,
+          "ANC APR": 3.8644611353561817,
+          "ANC APY": 45.71880590585593,
+          "Exploit UST": 34899132.46984956
+        },
+        {
+          "date": "2021-03-20T00:00:00",
+          "market balance": 22061590.462408,
+          "loan balance": 64823090.309882,
+          "borrow APR": 0.33335441055688875,
+          "borrow APY": 0.39564182598230446,
+          "aUST/UST": 1.0021652370823633,
+          "deposit APR": 0.2119852833950997,
+          "deposit APY": 0.23605363071910013,
+          "ANC distribution": 91324.200913242,
+          "ANC repurchase": 1922.007309,
+          "bLuna collateral": 8672429.333109,
+          "bLuna APR": 0.046704335452730714,
+          "bLuna APY": 0.04780903169804662,
+          "bLuna LTV": 0.5,
+          "deposit balance": 86884680.77228999,
+          "net_collateral_usd": 173870333.7263781,
+          "LUNA_staking_airdrop": 0.03885685512057335,
+          "LUNA_opp_cost": 0.0777137102411467,
+          "ANC/UST": 6.74505026351426,
+          "ANC APR": 3.4684401454636222,
+          "ANC APY": 30.565484098735784,
+          "Exploit UST": 39986726.40461939
+        },
+        {
+          "date": "2021-03-21T00:00:00",
+          "market balance": 26853199.844022,
+          "loan balance": 70602691.100848,
+          "borrow APR": 0.32427232232447806,
+          "borrow APY": 0.3830238694750918,
+          "aUST/UST": 1.0027420754445924,
+          "deposit APR": 0.21009110516207907,
+          "deposit APY": 0.23371589123331882,
+          "ANC distribution": 91324.200913242,
+          "ANC repurchase": 2496.903168,
+          "bLuna collateral": 9232372.309628,
+          "bLuna APR": 0.03753041879011509,
+          "bLuna APY": 0.03824157556708485,
+          "bLuna LTV": 0.5,
+          "deposit balance": 97455890.94487,
+          "net_collateral_usd": 193615967.82258335,
+          "LUNA_staking_airdrop": 2.5191855934913336,
+          "LUNA_opp_cost": 5.038371186982667,
+          "ANC/UST": 6.136562353337574,
+          "ANC APR": 2.897227786295088,
+          "ANC APY": 16.917712360198845,
+          "Exploit UST": 41395063.75203535
+        },
+        {
+          "date": "2021-03-22T00:00:00",
+          "market balance": 30219974.446303,
+          "loan balance": 71453018.924106,
+          "borrow APR": 0.31516459536530395,
+          "borrow APY": 0.3704848545669781,
+          "aUST/UST": 1.003320404260935,
+          "deposit APR": 0.21051277605104501,
+          "deposit APY": 0.23423592331667153,
+          "ANC distribution": 91324.200913242,
+          "ANC repurchase": 3010.785717,
+          "bLuna collateral": 9687827.544218,
+          "bLuna APR": 0.04251843446299218,
+          "bLuna APY": 0.04343270754161033,
+          "bLuna LTV": 0.5,
+          "deposit balance": 101672993.370409,
+          "net_collateral_usd": 213173109.49898854,
+          "LUNA_staking_airdrop": 2.780199391715951,
+          "LUNA_opp_cost": 5.560398783431902,
+          "ANC/UST": 6.561770938772193,
+          "ANC APR": 3.0611120600991426,
+          "ANC APY": 20.080473925027444,
+          "Exploit UST": 39454892.784369685
+        }
+      ],
+      "tail": [
+        {
+          "date": "2022-05-06T00:00:00",
+          "market balance": 11078426830.447008,
+          "loan balance": 2970658971.79689,
+          "borrow APR": 0.10880839548470414,
+          "borrow APY": 0.11494869925800377,
+          "aUST/UST": 1.246726128357651,
+          "deposit APR": 0.16965122225551021,
+          "deposit APY": 0.18484481440694522,
+          "ANC distribution": 273972.602739726,
+          "ANC repurchase": 82730.206525,
+          "bLuna collateral": 47336135.374673,
+          "bLuna APR": 0.06487583473794764,
+          "bLuna APY": 0.0670203772491762,
+          "bLuna LTV": 0.8,
+          "deposit balance": 14049085802.243898,
+          "net_collateral_usd": 3910898581.67953,
+          "LUNA_staking_airdrop": 0.07019934780617171,
+          "LUNA_opp_cost": 0.08774918475771463,
+          "ANC/UST": 2.117983621668782,
+          "ANC APR": 0.07129676081221999,
+          "ANC APY": 0.07389239306773798,
+          "Exploit UST": 1469803940.4539828
+        },
+        {
+          "date": "2022-05-07T00:00:00",
+          "market balance": 11080298646.1784,
+          "loan balance": 2952991438.60969,
+          "borrow APR": 0.10837958858486745,
+          "borrow APY": 0.11447070372537782,
+          "aUST/UST": 1.2473013641769044,
+          "deposit APR": 0.16840994124674435,
+          "deposit APY": 0.1833756813842995,
+          "ANC distribution": 273972.602739726,
+          "ANC repurchase": 110553.902343,
+          "bLuna collateral": 47213841.487686,
+          "bLuna APR": 0.07693847843682122,
+          "bLuna APY": 0.0799668763631971,
+          "bLuna LTV": 0.8,
+          "deposit balance": 14033290084.78809,
+          "net_collateral_usd": 3662131015.4376655,
+          "LUNA_staking_airdrop": null,
+          "LUNA_opp_cost": null,
+          "ANC/UST": 2.117983621668782,
+          "ANC APR": 0.07172332415111769,
+          "ANC APY": 0.07435048413975842,
+          "Exploit UST": 1324954672.2061596
+        },
+        {
+          "date": "2022-05-08T00:00:00",
+          "market balance": 10076157051.622656,
+          "loan balance": 2472174118.18426,
+          "borrow APR": 0.10274511690518945,
+          "borrow APY": 0.10820890840615949,
+          "aUST/UST": 1.2478851423644992,
+          "deposit APR": 0.17083204155131093,
+          "deposit APY": 0.18624407536408527,
+          "ANC distribution": 273972.602739726,
+          "ANC repurchase": 163906.878224,
+          "bLuna collateral": 46229393.142128,
+          "bLuna APR": 0.07768767595790188,
+          "bLuna APY": 0.08077611656177486,
+          "bLuna LTV": 0.8,
+          "deposit balance": 12548331169.806915,
+          "net_collateral_usd": 3170287981.1285405,
+          "LUNA_staking_airdrop": null,
+          "LUNA_opp_cost": null,
+          "ANC/UST": 2.117983621668782,
+          "ANC APR": 0.08567291462562432,
+          "ANC APY": 0.08943897468428985,
+          "Exploit UST": 1033389166.2279931
+        },
+        {
+          "date": "2022-05-09T00:00:00",
+          "market balance": 8903107933.445824,
+          "loan balance": 2257546958.87335,
+          "borrow APR": 0.10495645926256855,
+          "borrow APY": 0.1106622490592084,
+          "aUST/UST": 1.2483691923390028,
+          "deposit APR": 0.14158213339971915,
+          "deposit APY": 0.15206349841772182,
+          "ANC distribution": 273972.602739726,
+          "ANC repurchase": 233282.231625,
+          "bLuna collateral": 46061988.613635,
+          "bLuna APR": 0.08128441237072725,
+          "bLuna APY": 0.08466953310525471,
+          "bLuna LTV": 0.8,
+          "deposit balance": 11160654892.319174,
+          "net_collateral_usd": 2941353528.3141384,
+          "LUNA_staking_airdrop": null,
+          "LUNA_opp_cost": null,
+          "ANC/UST": 2.117983621668782,
+          "ANC APR": 0.09381792096700312,
+          "ANC APY": 0.09834649856598854,
+          "Exploit UST": 476716568.2829397
+        },
+        {
+          "date": "2022-05-10T00:00:00",
+          "market balance": 6696230961.930944,
+          "loan balance": 1124359756.42601,
+          "borrow APR": 0.08038304709835775,
+          "borrow APY": 0.08370209624183467,
+          "aUST/UST": 1.2489211261375834,
+          "deposit APR": 0.16137520672426353,
+          "deposit APY": 0.1750838929720424,
+          "ANC distribution": 273972.602739726,
+          "ANC repurchase": 553464.86971,
+          "bLuna collateral": 34650708.188569,
+          "bLuna APR": 0.16183407743224165,
+          "bLuna APY": 0.17562298954197963,
+          "bLuna LTV": 0.8,
+          "deposit balance": 7820590718.356955,
+          "net_collateral_usd": 1148452058.2741432,
+          "LUNA_staking_airdrop": null,
+          "LUNA_opp_cost": null,
+          "ANC/UST": 2.117983621668782,
+          "ANC APR": 0.18837241457317838,
+          "ANC APY": 0.20722437889211331,
+          "Exploit UST": 412895484.8368757
+        }
+      ],
+      "time_candidates": {
+        "__index__": {
+          "valid_ratio": 1.0,
+          "min": "2021-03-18T00:00:00+00:00",
+          "max": "2022-05-10T00:00:00+00:00"
+        }
+      },
+      "numeric_summary": {
+        "market balance": {
+          "count": 419,
+          "min": 18306597.386563,
+          "max": 11080298646.1784,
+          "median": 745754302.836442
+        },
+        "loan balance": {
+          "count": 419,
+          "min": 29053904.41603402,
+          "max": 3518246514.63274,
+          "median": 964958118.9017471
+        },
+        "borrow APR": {
+          "count": 419,
+          "min": 0.07310114755857534,
+          "max": 0.4069221261742302,
+          "median": 0.1920718834221028
+        },
+        "borrow APY": {
+          "count": 419,
+          "min": 0.07583934961486327,
+          "max": 0.5021870950656224,
+          "median": 0.211757615198934
+        },
+        "aUST/UST": {
+          "count": 419,
+          "min": 1.000980213289358,
+          "max": 1.2489211261375834,
+          "median": 1.116812289751401
+        },
+        "deposit APR": {
+          "count": 419,
+          "min": 0.14158213339971915,
+          "max": 0.24478646109144853,
+          "median": 0.1942393383278651
+        },
+        "deposit APY": {
+          "count": 419,
+          "min": 0.15206349841772182,
+          "max": 0.27724372333787106,
+          "median": 0.2143241576776196
+        },
+        "ANC distribution": {
+          "count": 419,
+          "min": 91324.200913242,
+          "max": 273972.602739726,
+          "median": 273972.602739726
+        },
+        "ANC repurchase": {
+          "count": 419,
+          "min": 0.0,
+          "max": 553464.86971,
+          "median": 25052.445011
+        },
+        "bLuna collateral": {
+          "count": 419,
+          "min": 5965106.303739,
+          "max": 79852900.682547,
+          "median": 59757928.59629
+        },
+        "bLuna APR": {
+          "count": 419,
+          "min": 0.013960608080237661,
+          "max": 0.16183407743224165,
+          "median": 0.04251843446299218
+        },
+        "bLuna APY": {
+          "count": 419,
+          "min": 0.014058241709335562,
+          "max": 0.17562298954197963,
+          "median": 0.04343270754161033
+        },
+        "bLuna LTV": {
+          "count": 419,
+          "min": 0.5,
+          "max": 0.8,
+          "median": 0.6
+        },
+        "deposit balance": {
+          "count": 419,
+          "min": 65471861.318179,
+          "max": 14071762646.480225,
+          "median": 1694540771.3437672
+        },
+        "net_collateral_usd": {
+          "count": 419,
+          "min": 110880684.08345886,
+          "max": 5842900579.845142,
+          "median": 2512168300.074237
+        },
+        "LUNA_staking_airdrop": {
+          "count": 415,
+          "min": 0.03885685512057335,
+          "max": 2.8652249939426304,
+          "median": 0.08769639148579733
+        },
+        "LUNA_opp_cost": {
+          "count": 415,
+          "min": 0.0777137102411467,
+          "max": 5.730449987885261,
+          "median": 0.1401856016662855
+        },
+        "ANC/UST": {
+          "count": 419,
+          "min": 1.31893815716059,
+          "max": 6.877587993866434,
+          "median": 2.9630059146652585
+        },
+        "ANC APR": {
+          "count": 419,
+          "min": 0.05644015151637,
+          "max": 4.640981631170513,
+          "median": 0.3184972009632748
+        },
+        "ANC APY": {
+          "count": 419,
+          "min": 0.05805867285194344,
+          "max": 99.65756315081714,
+          "median": 0.37486881899987234
+        },
+        "Exploit UST": {
+          "count": 419,
+          "min": 17262388.71446178,
+          "max": 1974888523.4455376,
+          "median": 338489010.08994544
+        }
+      }
+    },
+    "Anchor_global_stats_fullnode.parquet": {
+      "path": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\data\\anchor\\Anchor_global_stats_fullnode.parquet",
+      "shape": [
+        41714,
+        13
+      ],
+      "columns": [
+        "height",
+        "total_liabilities",
+        "total_reserves",
+        "last_interest_updated",
+        "last_reward_updated",
+        "global_interest_index",
+        "global_reward_index",
+        "anc_emission_rate",
+        "deposit_rate",
+        "prev_aterra_supply",
+        "prev_exchange_rate",
+        "prev_interest_buffer",
+        "last_executed_height"
+      ],
+      "dtypes": {
+        "height": "int64",
+        "total_liabilities": "float64",
+        "total_reserves": "float64",
+        "last_interest_updated": "float64",
+        "last_reward_updated": "float64",
+        "global_interest_index": "float64",
+        "global_reward_index": "float64",
+        "anc_emission_rate": "float64",
+        "deposit_rate": "float64",
+        "prev_aterra_supply": "float64",
+        "prev_exchange_rate": "float64",
+        "prev_interest_buffer": "float64",
+        "last_executed_height": "float64"
+      },
+      "index_type": "DatetimeIndex",
+      "index_name": "minute",
+      "index_dtype": "datetime64[us]",
+      "head": [
+        {
+          "minute": "2021-03-17T04:59:00",
+          "height": 2208273,
+          "total_liabilities": 0.0,
+          "total_reserves": 0.0,
+          "last_interest_updated": 2208243.0,
+          "last_reward_updated": 2208243.0,
+          "global_interest_index": 1.0,
+          "global_reward_index": 0.0,
+          "anc_emission_rate": 6793787.950524104,
+          "deposit_rate": 0.0,
+          "prev_aterra_supply": 0.0,
+          "prev_exchange_rate": 1.0,
+          "prev_interest_buffer": 0.0,
+          "last_executed_height": 2208249.0
+        },
+        {
+          "minute": "2021-03-17T05:14:00",
+          "height": 2208411,
+          "total_liabilities": 0.0,
+          "total_reserves": 0.0,
+          "last_interest_updated": 2208243.0,
+          "last_reward_updated": 2208243.0,
+          "global_interest_index": 1.0,
+          "global_reward_index": 0.0,
+          "anc_emission_rate": 6793787.950524104,
+          "deposit_rate": 0.0,
+          "prev_aterra_supply": 0.0,
+          "prev_exchange_rate": 1.0,
+          "prev_interest_buffer": 0.0,
+          "last_executed_height": 2208249.0
+        },
+        {
+          "minute": "2021-03-17T05:29:00",
+          "height": 2208550,
+          "total_liabilities": 0.0,
+          "total_reserves": 0.0,
+          "last_interest_updated": 2208243.0,
+          "last_reward_updated": 2208243.0,
+          "global_interest_index": 1.0,
+          "global_reward_index": 0.0,
+          "anc_emission_rate": 6793787.950524104,
+          "deposit_rate": 0.0,
+          "prev_aterra_supply": 0.0,
+          "prev_exchange_rate": 1.0,
+          "prev_interest_buffer": 0.0,
+          "last_executed_height": 2208249.0
+        },
+        {
+          "minute": "2021-03-17T05:44:00",
+          "height": 2208689,
+          "total_liabilities": 0.0,
+          "total_reserves": 0.0,
+          "last_interest_updated": 2208243.0,
+          "last_reward_updated": 2208243.0,
+          "global_interest_index": 1.0,
+          "global_reward_index": 0.0,
+          "anc_emission_rate": 6793787.950524104,
+          "deposit_rate": 0.0,
+          "prev_aterra_supply": 0.0,
+          "prev_exchange_rate": 1.0,
+          "prev_interest_buffer": 0.0,
+          "last_executed_height": 2208249.0
+        },
+        {
+          "minute": "2021-03-17T05:59:00",
+          "height": 2208827,
+          "total_liabilities": 0.0,
+          "total_reserves": 0.0,
+          "last_interest_updated": 2208243.0,
+          "last_reward_updated": 2208243.0,
+          "global_interest_index": 1.0,
+          "global_reward_index": 0.0,
+          "anc_emission_rate": 6793787.950524104,
+          "deposit_rate": 0.0,
+          "prev_aterra_supply": 0.0,
+          "prev_exchange_rate": 1.0,
+          "prev_interest_buffer": 0.0,
+          "last_executed_height": 2208249.0
+        }
+      ],
+      "tail": [
+        {
+          "minute": "2022-05-26T18:14:00",
+          "height": 7790910,
+          "total_liabilities": 33169933066743.37,
+          "total_reserves": 0.7348601568089436,
+          "last_interest_updated": 7790910.0,
+          "last_reward_updated": 7790910.0,
+          "global_interest_index": 1.2612594061749904,
+          "global_reward_index": 0.3999400463473927,
+          "anc_emission_rate": 20381363.85157231,
+          "deposit_rate": 3.6836091536e-08,
+          "prev_aterra_supply": 544634195659175.0,
+          "prev_exchange_rate": 1.258310869274019,
+          "prev_interest_buffer": 170863834940996.0,
+          "last_executed_height": 7790279.0
+        },
+        {
+          "minute": "2022-05-26T18:29:00",
+          "height": 7791051,
+          "total_liabilities": 33169958964359.082,
+          "total_reserves": 0.7348601568089436,
+          "last_interest_updated": 7791051.0,
+          "last_reward_updated": 7791051.0,
+          "global_interest_index": 1.2612608723614454,
+          "global_reward_index": 0.40004931920953657,
+          "anc_emission_rate": 20381363.85157231,
+          "deposit_rate": 3.6836091536e-08,
+          "prev_aterra_supply": 544634195659175.0,
+          "prev_exchange_rate": 1.258310869274019,
+          "prev_interest_buffer": 170863834940996.0,
+          "last_executed_height": 7790279.0
+        },
+        {
+          "minute": "2022-05-26T18:44:00",
+          "height": 7791195,
+          "total_liabilities": 33172460814085.582,
+          "total_reserves": 0.7348601568089436,
+          "last_interest_updated": 7791195.0,
+          "last_reward_updated": 7791195.0,
+          "global_interest_index": 1.261262370448034,
+          "global_reward_index": 0.40016091462901077,
+          "anc_emission_rate": 20381363.85157231,
+          "deposit_rate": 3.6836091536e-08,
+          "prev_aterra_supply": 544634195659175.0,
+          "prev_exchange_rate": 1.258310869274019,
+          "prev_interest_buffer": 170863834940996.0,
+          "last_executed_height": 7790279.0
+        },
+        {
+          "minute": "2022-05-26T18:59:00",
+          "height": 7791338,
+          "total_liabilities": 33172320052661.938,
+          "total_reserves": 0.7348601568089436,
+          "last_interest_updated": 7791338.0,
+          "last_reward_updated": 7791338.0,
+          "global_interest_index": 1.2612638588493514,
+          "global_reward_index": 0.4002717297806339,
+          "anc_emission_rate": 20381363.85157231,
+          "deposit_rate": 3.6836091536e-08,
+          "prev_aterra_supply": 544634195659175.0,
+          "prev_exchange_rate": 1.258310869274019,
+          "prev_interest_buffer": 170863834940996.0,
+          "last_executed_height": 7790279.0
+        },
+        {
+          "minute": "2022-05-26T19:12:00",
+          "height": 7791459,
+          "total_liabilities": 33172353198059.67,
+          "total_reserves": 0.7348601568089436,
+          "last_interest_updated": 7791459.0,
+          "last_reward_updated": 7791459.0,
+          "global_interest_index": 1.2612651190895816,
+          "global_reward_index": 0.4003654964990029,
+          "anc_emission_rate": 20381363.85157231,
+          "deposit_rate": 3.6836091536e-08,
+          "prev_aterra_supply": 544634195659175.0,
+          "prev_exchange_rate": 1.258310869274019,
+          "prev_interest_buffer": 170863834940996.0,
+          "last_executed_height": 7790279.0
+        }
+      ],
+      "time_candidates": {
+        "last_interest_updated": {
+          "valid_ratio": 1.0,
+          "min": "1970-01-01T00:00:00.002208243+00:00",
+          "max": "1970-01-01T00:00:00.007791459+00:00"
+        },
+        "last_reward_updated": {
+          "valid_ratio": 1.0,
+          "min": "1970-01-01T00:00:00.002208243+00:00",
+          "max": "1970-01-01T00:00:00.007791459+00:00"
+        },
+        "__index__": {
+          "valid_ratio": 1.0,
+          "min": "2021-03-17T04:59:00+00:00",
+          "max": "2022-05-26T19:12:00+00:00"
+        }
+      },
+      "numeric_summary": {
+        "height": {
+          "count": 41714,
+          "min": 2208273,
+          "max": 7791459,
+          "median": 4985131.0
+        },
+        "total_liabilities": {
+          "count": 41714,
+          "min": 0.0,
+          "max": 3565152431897167.5,
+          "median": 987036257202178.2
+        },
+        "total_reserves": {
+          "count": 41714,
+          "min": 0.0,
+          "max": 15910436039.478542,
+          "median": 0.127014529524242
+        },
+        "last_interest_updated": {
+          "count": 41714,
+          "min": 2208243.0,
+          "max": 7791459.0,
+          "median": 4985131.0
+        },
+        "last_reward_updated": {
+          "count": 41714,
+          "min": 2208243.0,
+          "max": 7791459.0,
+          "median": 4985131.0
+        },
+        "global_interest_index": {
+          "count": 41714,
+          "min": 1.0,
+          "max": 1.2612651190895816,
+          "median": 1.1504790122882174
+        },
+        "global_reward_index": {
+          "count": 41714,
+          "min": 0.0,
+          "max": 0.4003654964990029,
+          "median": 0.22767055898267355
+        },
+        "anc_emission_rate": {
+          "count": 41714,
+          "min": 6793787.950524104,
+          "max": 20381363.85157231,
+          "median": 20381363.85157231
+        },
+        "deposit_rate": {
+          "count": 41714,
+          "min": 0.0,
+          "max": 6.9083664922e-08,
+          "median": 4.1815838523e-08
+        },
+        "prev_aterra_supply": {
+          "count": 41714,
+          "min": 0.0,
+          "max": 1.1374521465463468e+16,
+          "median": 1561808093343229.0
+        },
+        "prev_exchange_rate": {
+          "count": 41714,
+          "min": 1.0,
+          "max": 1.258310869274019,
+          "median": 1.1209646921137943
+        },
+        "prev_interest_buffer": {
+          "count": 41714,
+          "min": 0.0,
+          "max": 507159497545384.0,
+          "median": 67122938954375.0
+        },
+        "last_executed_height": {
+          "count": 41714,
+          "min": 2208249.0,
+          "max": 7790279.0,
+          "median": 4983555.0
+        }
+      }
+    },
+    "columbus-5-lunaust-supply-breakdown-fullnode.parquet": {
+      "path": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\data\\daily_balances\\columbus-5-lunaust-supply-breakdown-fullnode.parquet",
+      "shape": [
+        159939,
+        4
+      ],
+      "columns": [
+        "denom",
+        "balance",
+        "address",
+        "date"
+      ],
+      "dtypes": {
+        "denom": "object",
+        "balance": "float64",
+        "address": "object",
+        "date": "datetime64[us]"
+      },
+      "index_type": "RangeIndex",
+      "index_name": null,
+      "index_dtype": "int64",
+      "head": [
+        {
+          "index": 0,
+          "denom": "UST",
+          "balance": 736036755.62685,
+          "address": "terra1sepfj7s0aeg5967uxnfk4thzlerrsktkpelm5s",
+          "date": "2021-09-30T00:00:00"
+        },
+        {
+          "index": 1,
+          "denom": "UST",
+          "balance": 583917727.238589,
+          "address": "terra1wfz7h3aqf4cjmjcvc6s8lxdhh7k30nkczyf0mj",
+          "date": "2021-09-30T00:00:00"
+        },
+        {
+          "index": 2,
+          "denom": "UST",
+          "balance": 441115729.520027,
+          "address": "terra13yxhrk08qvdf5zdc9ss5mwsg5sf7zva9xrgwgc",
+          "date": "2021-09-30T00:00:00"
+        },
+        {
+          "index": 3,
+          "denom": "UST",
+          "balance": 93828760.40947,
+          "address": "terra1gm5p3ner9x9xpwugn9sp6gvhd0lwrtkyrecdn3",
+          "date": "2021-09-30T00:00:00"
+        },
+        {
+          "index": 4,
+          "denom": "UST",
+          "balance": 89407280.507407,
+          "address": "terra169urmlm8wcltyjsrn7gedheh7dker69ujmerv2",
+          "date": "2021-09-30T00:00:00"
+        }
+      ],
+      "tail": [
+        {
+          "index": 159934,
+          "denom": "LUNA",
+          "balance": 0.000109,
+          "address": "terra1k8542s5ke56dth7zk4at3vq4aqsst49flfm0wk",
+          "date": "2022-05-26T00:00:00"
+        },
+        {
+          "index": 159935,
+          "denom": "LUNA",
+          "balance": 0.0001,
+          "address": "terra1e2fyumfttgqdaaf0kx0elet0rkpv5nrv3jslmr",
+          "date": "2022-05-26T00:00:00"
+        },
+        {
+          "index": 159936,
+          "denom": "LUNA",
+          "balance": 0.0001,
+          "address": "terra1n38982txtv2yygtcfv3e9wp2ktmjyxl6z88rma",
+          "date": "2022-05-26T00:00:00"
+        },
+        {
+          "index": 159937,
+          "denom": "LUNA",
+          "balance": 6e-05,
+          "address": "terra1aucvjvwztl8ce2rr3h4ugflrfw7ga964u54ta0",
+          "date": "2022-05-26T00:00:00"
+        },
+        {
+          "index": 159938,
+          "denom": "LUNA",
+          "balance": 4e-06,
+          "address": "terra1nnf0kq78wkt554ar33tt64354sm5m4l3sf4suf",
+          "date": "2022-05-26T00:00:00"
+        }
+      ],
+      "time_candidates": {
+        "date": {
+          "valid_ratio": 1.0,
+          "min": "2021-09-30T00:00:00+00:00",
+          "max": "2022-05-26T00:00:00+00:00"
+        },
+        "__index__": {
+          "valid_ratio": 1.0,
+          "min": "1970-01-01T00:00:00+00:00",
+          "max": "1970-01-01T00:00:00.000159938+00:00"
+        }
+      },
+      "numeric_summary": {
+        "balance": {
+          "count": 159939,
+          "min": 1e-06,
+          "max": 2455712740591.8105,
+          "median": 2517.017218
+        },
+        "date": {
+          "count": 159939,
+          "min": 1632960000000000,
+          "max": 1653523200000000,
+          "median": 1644796800000000.0
+        }
+      },
+      "denom_values": {
+        "UST": 92317,
+        "LUNA": 67622
+      }
+    },
+    "luna_total_supply_run.parquet": {
+      "path": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\data\\native_swaps\\luna_total_supply_run.parquet",
+      "shape": [
+        337,
+        1
+      ],
+      "columns": [
+        "luna_supply"
+      ],
+      "dtypes": {
+        "luna_supply": "float64"
+      },
+      "index_type": "DatetimeIndex",
+      "index_name": "time",
+      "index_dtype": "datetime64[ns]",
+      "head": [
+        {
+          "time": "2022-05-01T00:00:00",
+          "luna_supply": 751668917.4396232
+        },
+        {
+          "time": "2022-05-01T01:00:00",
+          "luna_supply": 751666758.0382203
+        },
+        {
+          "time": "2022-05-01T02:00:00",
+          "luna_supply": 751654884.3009162
+        },
+        {
+          "time": "2022-05-01T03:00:00",
+          "luna_supply": 751650235.7159643
+        },
+        {
+          "time": "2022-05-01T04:00:00",
+          "luna_supply": 751644445.4303533
+        }
+      ],
+      "tail": [
+        {
+          "time": "2022-05-14T20:00:00",
+          "luna_supply": 6800423504721.432
+        },
+        {
+          "time": "2022-05-14T21:00:00",
+          "luna_supply": 6800423504721.432
+        },
+        {
+          "time": "2022-05-14T22:00:00",
+          "luna_supply": 6800423504721.432
+        },
+        {
+          "time": "2022-05-14T23:00:00",
+          "luna_supply": 6800423504721.432
+        },
+        {
+          "time": "2022-05-15T00:00:00",
+          "luna_supply": 6800423504721.432
+        }
+      ],
+      "time_candidates": {
+        "__index__": {
+          "valid_ratio": 1.0,
+          "min": "2022-05-01T00:00:00+00:00",
+          "max": "2022-05-15T00:00:00+00:00"
+        }
+      },
+      "numeric_summary": {
+        "luna_supply": {
+          "count": 337,
+          "min": 748218810.1494983,
+          "max": 6800423504721.432,
+          "median": 750378565.3210282
+        }
+      }
+    },
+    "curve_ust_3pool_may7.parquet": {
+      "path": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\data\\curve\\curve_ust_3pool_may7.parquet",
+      "shape": [
+        405,
+        6
+      ],
+      "columns": [
+        "time",
+        "sell_amount",
+        "taker_side_sell",
+        "trader",
+        "price_native",
+        "quote_asset"
+      ],
+      "dtypes": {
+        "time": "datetime64[us]",
+        "sell_amount": "float64",
+        "taker_side_sell": "bool",
+        "trader": "object",
+        "price_native": "float64",
+        "quote_asset": "object"
+      },
+      "index_type": "RangeIndex",
+      "index_name": null,
+      "index_dtype": "int64",
+      "head": [
+        {
+          "index": 0,
+          "time": "2022-05-07T00:11:28",
+          "sell_amount": 510605.061,
+          "taker_side_sell": true,
+          "trader": "0xbfdeeb8efdbe70a93606e6040543ff1f08e4c2d3",
+          "price_native": 0.9987371903370147,
+          "quote_asset": "USDT"
+        },
+        {
+          "index": 1,
+          "time": "2022-05-07T00:24:14",
+          "sell_amount": 25686.454837,
+          "taker_side_sell": true,
+          "trader": "0xef979c5f05b590bcf09cce5ffff4a4ec3f599774",
+          "price_native": 0.9987554011947982,
+          "quote_asset": "USDC"
+        },
+        {
+          "index": 2,
+          "time": "2022-05-07T02:34:12",
+          "sell_amount": 218429.228265,
+          "taker_side_sell": false,
+          "trader": "0x55f1af8f42775500a4b9355370caa562da8ede51",
+          "price_native": 0.9793441045536613,
+          "quote_asset": "3Crv"
+        },
+        {
+          "index": 3,
+          "time": "2022-05-07T03:15:55",
+          "sell_amount": 500000.0,
+          "taker_side_sell": true,
+          "trader": "0xc8b6a67f9dc66ecd44eb61a2aa71ef1a0ad05541",
+          "price_native": 0.99874398266,
+          "quote_asset": "USDT"
+        },
+        {
+          "index": 4,
+          "time": "2022-05-07T03:17:16",
+          "sell_amount": 499974.377518,
+          "taker_side_sell": true,
+          "trader": "0xc8b6a67f9dc66ecd44eb61a2aa71ef1a0ad05541",
+          "price_native": 0.9987545590434229,
+          "quote_asset": "USDC"
+        }
+      ],
+      "tail": [
+        {
+          "index": 400,
+          "time": "2022-05-07T23:55:30",
+          "sell_amount": 1169109.0,
+          "taker_side_sell": true,
+          "trader": "0x1df8ea15bb725e110118f031e8e71b91abaa2a06",
+          "price_native": 0.9940074707833059,
+          "quote_asset": "USDC"
+        },
+        {
+          "index": 401,
+          "time": "2022-05-07T23:56:18",
+          "sell_amount": 50217.651812,
+          "taker_side_sell": true,
+          "trader": "0xf61b9e6eea26185904d0de5e627fd8895b9f6d11",
+          "price_native": 0.994153591809219,
+          "quote_asset": "DAI"
+        },
+        {
+          "index": 402,
+          "time": "2022-05-07T23:56:18",
+          "sell_amount": 15810541.731102,
+          "taker_side_sell": true,
+          "trader": "0x68963dc7c28a36fcacb0b39ac2d807b0329b9c69",
+          "price_native": 0.9935234555940251,
+          "quote_asset": "USDC"
+        },
+        {
+          "index": 403,
+          "time": "2022-05-07T23:58:21",
+          "sell_amount": 2634100.004115,
+          "taker_side_sell": true,
+          "trader": "0x6db7dcf200c2a26ab93a7a15e8c51714769785b6",
+          "price_native": 0.9929637156671935,
+          "quote_asset": "USDC"
+        },
+        {
+          "index": 404,
+          "time": "2022-05-07T23:59:04",
+          "sell_amount": 6369359.695063,
+          "taker_side_sell": true,
+          "trader": "0xc2872ab688400940d5a6041599b3f7de20730d49",
+          "price_native": 0.9929037083937913,
+          "quote_asset": "USDT"
+        }
+      ],
+      "time_candidates": {
+        "time": {
+          "valid_ratio": 1.0,
+          "min": "2022-05-07T00:11:28+00:00",
+          "max": "2022-05-07T23:59:04+00:00"
+        },
+        "__index__": {
+          "valid_ratio": 1.0,
+          "min": "1970-01-01T00:00:00+00:00",
+          "max": "1970-01-01T00:00:00.000000404+00:00"
+        }
+      },
+      "numeric_summary": {
+        "time": {
+          "count": 405,
+          "min": 1651882288000000,
+          "max": 1651967944000000,
+          "median": 1651962675000000.0
+        },
+        "sell_amount": {
+          "count": 405,
+          "min": 1.0,
+          "max": 85001010.0,
+          "median": 220967.368851
+        },
+        "taker_side_sell": {
+          "count": 405,
+          "min": false,
+          "max": true,
+          "median": 1.0
+        },
+        "price_native": {
+          "count": 405,
+          "min": 0.9554278740493014,
+          "max": 0.9987801961157631,
+          "median": 0.9946680513967777
+        }
+      },
+      "quote_asset_values": {
+        "USDC": 231,
+        "DAI": 70,
+        "3Crv": 63,
+        "USDT": 41
+      }
+    },
+    "ust_luna_swaps_run.parquet": {
+      "path": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\data\\native_swaps\\ust_luna_swaps_run.parquet",
+      "shape": [
+        277342,
+        4
+      ],
+      "columns": [
+        "time",
+        "offer_amount",
+        "swap_amount",
+        "fee_amount"
+      ],
+      "dtypes": {
+        "time": "datetime64[us]",
+        "offer_amount": "float64",
+        "swap_amount": "float64",
+        "fee_amount": "float64"
+      },
+      "index_type": "RangeIndex",
+      "index_name": null,
+      "index_dtype": "int64",
+      "head": [
+        {
+          "index": 0,
+          "time": "2021-05-17T03:30:30",
+          "offer_amount": 111.892774,
+          "swap_amount": 7.274596,
+          "fee_amount": 0.03655600533990156
+        },
+        {
+          "index": 1,
+          "time": "2021-05-17T04:40:31",
+          "offer_amount": 4583.40984,
+          "swap_amount": 300.807215,
+          "fee_amount": 1.5115950021379458
+        },
+        {
+          "index": 2,
+          "time": "2021-05-17T04:40:31",
+          "offer_amount": 4583.381367,
+          "swap_amount": 300.805347,
+          "fee_amount": 1.5115849410922004
+        },
+        {
+          "index": 3,
+          "time": "2021-05-17T05:22:40",
+          "offer_amount": 301.0973,
+          "swap_amount": 19.814166,
+          "fee_amount": 0.09956885254760181
+        },
+        {
+          "index": 4,
+          "time": "2021-05-17T05:22:47",
+          "offer_amount": 4588.667874,
+          "swap_amount": 301.964274,
+          "fee_amount": 1.5174090613868259
+        }
+      ],
+      "tail": [
+        {
+          "index": 277337,
+          "time": "2022-05-13T01:58:49",
+          "offer_amount": 6000.0,
+          "swap_amount": 2435118504.961518,
+          "fee_amount": 93206372.550401
+        },
+        {
+          "index": 277338,
+          "time": "2022-05-13T01:58:49",
+          "offer_amount": 50000.0,
+          "swap_amount": 20315404001.5595,
+          "fee_amount": 753969977.706503
+        },
+        {
+          "index": 277339,
+          "time": "2022-05-13T01:58:49",
+          "offer_amount": 5000.0,
+          "swap_amount": 2029594417.001345,
+          "fee_amount": 77342980.925254
+        },
+        {
+          "index": 277340,
+          "time": "2022-05-13T01:58:49",
+          "offer_amount": 253.041992,
+          "swap_amount": 102889217.97537,
+          "fee_amount": 3739509.262758
+        },
+        {
+          "index": 277341,
+          "time": "2022-05-13T01:58:49",
+          "offer_amount": 4344.270429,
+          "swap_amount": 1767061681.068949,
+          "fee_amount": 63559485.644397
+        }
+      ],
+      "time_candidates": {
+        "time": {
+          "valid_ratio": 1.0,
+          "min": "2021-05-17T03:30:30+00:00",
+          "max": "2022-05-13T01:58:49+00:00"
+        },
+        "__index__": {
+          "valid_ratio": 1.0,
+          "min": "1970-01-01T00:00:00+00:00",
+          "max": "1970-01-01T00:00:00.000277341+00:00"
+        }
+      },
+      "numeric_summary": {
+        "time": {
+          "count": 277342,
+          "min": 1621222230000000,
+          "max": 1652407129000000,
+          "median": 1652263553000000.0
+        },
+        "offer_amount": {
+          "count": 277342,
+          "min": 1.0008,
+          "max": 10000000.0,
+          "median": 2862.75173
+        },
+        "swap_amount": {
+          "count": 277342,
+          "min": 0.013692,
+          "max": 677469800037.8478,
+          "median": 925.556141
+        },
+        "fee_amount": {
+          "count": 277342,
+          "min": 6.9e-05,
+          "max": 27144662018.22251,
+          "median": 156.78679799999998
+        }
+      }
+    }
+  },
+  "code_references": {
+    "Anchor_daily_stats.parquet": [
+      {
+        "file": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\Datasets.md",
+        "line": 25,
+        "context": [
+          "",
+          "| # | File | Primary source | Cols | Used by |",
+          "|---|------|----------------|------|---------|",
+          "| 1 | `anchor/Anchor_daily_stats.parquet` | NODE (Anchor contract state + epoch ops) | 21 (+date idx) | Figs 1, 3, 6, IA.1 |",
+          "| 2 | `anchor/Anchor_global_stats_fullnode.parquet` | NODE (`{state}` per-block) | 13 (+minute idx) | Fig 3 |",
+          "| 3 | `anchor/anchor_deposit_concentration.parquet` | shipped-derived (from #5,#6,#7) | 3 (+date idx) | Fig 6 |",
+          "| 4 | `anchor/aust_rnk_col5.parquet` | NANSEN→NODE (aUST balances) | 4 | Fig 6 (via prep) |"
+        ]
+      },
+      {
+        "file": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\Datasets.md",
+        "line": 72,
+        "context": [
+          "",
+          "## `data/anchor/`",
+          "",
+          "### 1. `Anchor_daily_stats.parquet` — daily Anchor money-market state (419 rows; index `date`)",
+          "Built from daily `wasm` smart-queries of the Anchor market contract (`MKT`) `{epoch_state}`/`{state}` plus epoch-operation txs. Raw per-block queries are not shipped.",
+          "",
+          "| Column | Origin | Notes |"
+        ]
+      },
+      {
+        "file": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\code\\figures\\fig01_anchor_net_rates.py",
+        "line": 12,
+        "context": [
+          "% recursive loans = Exploit UST / loan balance * 100",
+          "",
+          "Input (node-derived Anchor daily state; shippable):",
+          "    data/anchor/Anchor_daily_stats.parquet",
+          "    columns used: deposit APR, borrow APR, ANC APR, LUNA_opp_cost,",
+          "                  loan balance, Exploit UST",
+          ""
+        ]
+      },
+      {
+        "file": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\code\\figures\\fig01_anchor_net_rates.py",
+        "line": 44,
+        "context": [
+          "",
+          "",
+          "def build_rates() -> pd.DataFrame:",
+          "    ads = pd.read_parquet(datadir(\"anchor\", \"Anchor_daily_stats.parquet\"))",
+          "    out = pd.DataFrame(index=ads.index)",
+          "    out[\"Deposit APR (%)\"] = ads[\"deposit APR\"] * 100",
+          "    out[\"Net borrow APR (%)\"] = ("
+        ]
+      },
+      {
+        "file": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\code\\figures\\fig03_anchor_cashflow.py",
+        "line": 24,
+        "context": [
+          "archive node — see Datasets.md):",
+          "    data/anchor/anchor_cashflow_transfers.parquet  cols: time, sender, recipient, denom, amount",
+          "        (daily bucket = time.ceil('D'), the end-of-day label the source carried)",
+          "    data/anchor/Anchor_daily_stats.parquet        cols: loan balance, borrow APR, deposit balance, deposit APR",
+          "    data/anchor/Anchor_global_stats_fullnode.parquet  col: prev_interest_buffer",
+          "    data/labels/anchor_contracts.csv              cols: address, address_name",
+          ""
+        ]
+      },
+      {
+        "file": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\code\\figures\\fig03_anchor_cashflow.py",
+        "line": 83,
+        "context": [
+          "    acbf[\"Liquidation\"] = acbf.get(\"Liquidation Contract\", 0) + acbf.get(\"Liquidation Queue\", 0)",
+          "",
+          "    # Computed interest legs from Anchor daily state (override on-chain market leg)",
+          "    ads = pd.read_parquet(datadir(\"anchor\", \"Anchor_daily_stats.parquet\"))",
+          "    acbf[\"Loan interest\"] = ads[\"loan balance\"] * ads[\"borrow APR\"] / 365",
+          "    acbf[\"Deposit interest\"] = -ads[\"deposit balance\"] * ads[\"deposit APR\"] / 365",
+          ""
+        ]
+      },
+      {
+        "file": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\code\\figures\\fig06_anchor_concentration.py",
+        "line": 18,
+        "context": [
+          "        code/prep/prep_fig06_concentration.py for the derivation from the raw",
+          "        Columbus-4/5 aUST balances + interdm exclusion list.",
+          "    data/anchor/prerun_deposits.parquet      cols: address, balance (aUST, 2022-05-05)",
+          "    data/anchor/Anchor_daily_stats.parquet   col: aUST/UST (to convert aUST -> UST)",
+          "",
+          "Output (two separate panels, matching the paper's two subfigures):",
+          "    output/figures/Anchor_deposit_conc.png       (left panel)"
+        ]
+      },
+      {
+        "file": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\code\\figures\\fig06_anchor_concentration.py",
+        "line": 59,
+        "context": [
+          "def main() -> list:",
+          "    adconc = pd.read_parquet(datadir(\"anchor\", \"anchor_deposit_concentration.parquet\"))",
+          "    pre = pd.read_parquet(datadir(\"anchor\", \"prerun_deposits.parquet\"))",
+          "    aust_ust = pd.read_parquet(datadir(\"anchor\", \"Anchor_daily_stats.parquet\"),",
+          "                               columns=[\"aUST/UST\"]).loc[\"2022-05-06\", \"aUST/UST\"]",
+          "",
+          "    outL = figpath(\"Anchor_deposit_conc.png\")"
+        ]
+      },
+      {
+        "file": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\code\\figures\\figIA1_staking_yield.py",
+        "line": 15,
+        "context": [
+          "shipped with acknowledgment):",
+          "    data/anchor/luna_staking_stats.parquet   apr_percent_comm, anc_luna, mir_luna,",
+          "                                             mine_luna, luna_stake_balance (index date_reward)",
+          "    data/anchor/Anchor_daily_stats.parquet   ANC APR",
+          "",
+          "Output (two separate panels, matching the paper's two subfigures):",
+          "    output/figures/LUNA_staking_decomposition.png  (left panel)"
+        ]
+      },
+      {
+        "file": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\code\\figures\\figIA1_staking_yield.py",
+        "line": 58,
+        "context": [
+          "",
+          "def main() -> list:",
+          "    dec = build_decomposition()",
+          "    anc = pd.read_parquet(datadir(\"anchor\", \"Anchor_daily_stats.parquet\"), columns=[\"ANC APR\"])",
+          "    anc = (anc[\"ANC APR\"].rolling(7).mean().dropna() * 100)",
+          "",
+          "    outL = figpath(\"LUNA_staking_decomposition.png\")"
+        ]
+      }
+    ],
+    "Anchor_global_stats_fullnode.parquet": [
+      {
+        "file": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\Datasets.md",
+        "line": 26,
+        "context": [
+          "| # | File | Primary source | Cols | Used by |",
+          "|---|------|----------------|------|---------|",
+          "| 1 | `anchor/Anchor_daily_stats.parquet` | NODE (Anchor contract state + epoch ops) | 21 (+date idx) | Figs 1, 3, 6, IA.1 |",
+          "| 2 | `anchor/Anchor_global_stats_fullnode.parquet` | NODE (`{state}` per-block) | 13 (+minute idx) | Fig 3 |",
+          "| 3 | `anchor/anchor_deposit_concentration.parquet` | shipped-derived (from #5,#6,#7) | 3 (+date idx) | Fig 6 |",
+          "| 4 | `anchor/aust_rnk_col5.parquet` | NANSEN→NODE (aUST balances) | 4 | Fig 6 (via prep) |",
+          "| 5 | `anchor/aust_supply_col5.parquet` | NANSEN→NODE (aUST supply) | 2 | Fig 6 (via prep) |"
+        ]
+      },
+      {
+        "file": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\Datasets.md",
+        "line": 100,
+        "context": [
+          "| `ANC APY` | (1) | transform of `ANC APR` |",
+          "| `Exploit UST` | (2) NODE | UST attributable to the Anchor exploit (used Fig 1) |",
+          "",
+          "### 2. `Anchor_global_stats_fullnode.parquet` — per-block Anchor `{state}` (41,714 rows; index `minute`)",
+          "Raw `{state}` contract reads of `MKT`. One column is used: `prev_interest_buffer` (Fig 3 reserve injection); the rest are shipped as the raw state record. (Fig 10's deposit balance previously came from `prev_aterra_supply` × `prev_exchange_rate` here, but those `prev_*` fields are epoch-cached and only refresh ~70 times across the run, producing a staircase; Fig 10 now reads the per-block `{epoch_state}` series in file #13a instead.)",
+          "",
+          "| Column | Origin | Notes |"
+        ]
+      },
+      {
+        "file": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\code\\figures\\fig03_anchor_cashflow.py",
+        "line": 25,
+        "context": [
+          "    data/anchor/anchor_cashflow_transfers.parquet  cols: time, sender, recipient, denom, amount",
+          "        (daily bucket = time.ceil('D'), the end-of-day label the source carried)",
+          "    data/anchor/Anchor_daily_stats.parquet        cols: loan balance, borrow APR, deposit balance, deposit APR",
+          "    data/anchor/Anchor_global_stats_fullnode.parquet  col: prev_interest_buffer",
+          "    data/labels/anchor_contracts.csv              cols: address, address_name",
+          "",
+          "Output (two separate panels, matching the paper's two subfigures):"
+        ]
+      },
+      {
+        "file": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\code\\figures\\fig03_anchor_cashflow.py",
+        "line": 98,
+        "context": [
+          "",
+          "",
+          "def build_reserve_balance() -> pd.Series:",
+          "    g = pd.read_parquet(datadir(\"anchor\", \"Anchor_global_stats_fullnode.parquet\"))",
+          "    bal = pd.to_numeric(g[\"prev_interest_buffer\"], errors=\"coerce\").resample(\"D\").last()",
+          "    return (bal / 1e12).loc[:\"2022-05-26\"]   # micro-UST -> million UST",
+          ""
+        ]
+      },
+      {
+        "file": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\code\\figures\\fig10_run_outflows.py",
+        "line": 41,
+        "context": [
+          "  gently after the May 12-13 chain halt as the exchange rate ticks. The Kaiko UST",
+          "  price, which is off-chain, also continues through May 15.",
+          "- ``epoch_state_fig10.parquet`` was re-fetched at the snapshot heights of file #2",
+          "  (``Anchor_global_stats_fullnode.parquet``); only the shipped parquet is needed",
+          "  to reproduce the figure.",
+          "\"\"\"",
+          "import sys"
+        ]
+      }
+    ],
+    "columbus-5-lunaust-supply-breakdown-fullnode.parquet": [
+      {
+        "file": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\Datasets.md",
+        "line": 42,
+        "context": [
+          "| 14 | `curve/curve_ust_3pool_may7.parquet` | FLIPSIDE (Ethereum Curve) | 6 | Fig 8 |",
+          "| 15 | `curve/curve_ust_may2021.parquet` | FLIPSIDE (Ethereum Curve) | 6 | Fig IA.2 |",
+          "| 16 | `daily_balances/columbus-4-lunaust-supply-breakdown-fullnode.parquet` | NODE (transfer cumsum + genesis) | 4 | Fig 2 |",
+          "| 17 | `daily_balances/columbus-5-lunaust-supply-breakdown-fullnode.parquet` | NODE (transfer cumsum) | 4 | Fig 2 |",
+          "| 18 | `exchange/binance_ustusdt_may7.parquet` | KAIKO (tick trades) | 4 | Fig 9 |",
+          "| 19 | `external/lunc-usd-max.csv` | COINGECKO | 4 | Fig 5 |",
+          "| 20 | `external/ustc-usd-max.csv` | COINGECKO | 4 | Fig 5 |"
+        ]
+      },
+      {
+        "file": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\Datasets.md",
+        "line": 264,
+        "context": [
+          "## `data/daily_balances/` (UST/LUNA supply breakdown)",
+          "",
+          "### 16. `columbus-4-lunaust-supply-breakdown-fullnode.parquet` (1,468,900 rows)",
+          "### 17. `columbus-5-lunaust-supply-breakdown-fullnode.parquet` (159,939 rows)",
+          "Per-address daily UST/LUNA balances, reconstructed by parsing `transfer`/`send`/`mint`/`burn` logs and cumulative-summing from the genesis snapshot. Used by Fig 2.",
+          "",
+          "| Column | Origin | Notes |"
+        ]
+      },
+      {
+        "file": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\code\\figures\\fig02_ust_supply_by_entity.py",
+        "line": 9,
+        "context": [
+          "",
+          "Inputs (node-derived daily balance breakdown + our manual entity labels; shippable):",
+          "    data/daily_balances/columbus-4-lunaust-supply-breakdown-fullnode.parquet",
+          "    data/daily_balances/columbus-5-lunaust-supply-breakdown-fullnode.parquet",
+          "        columns used: address, date, denom, balance",
+          "    data/labels/terra_labels_4vol.parquet   columns: address, label_type",
+          ""
+        ]
+      }
+    ],
+    "luna_total_supply_run.parquet": [
+      {
+        "file": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\Datasets.md",
+        "line": 54,
+        "context": [
+          "| 27 | `labels/terra_labels_4vol.parquet` | AUTHOR | 2 | Figs 2, 4 |",
+          "| 28 | `loss/anchor_loss_panel.parquet` | mixed (built by prep) | 10 | Tabs 2, 3 |",
+          "| 29 | `loss/depositor_prerun_size.parquet` | NODE (+ prep adds full_maxusd) | 4 | Figs 10,13; Tabs 2,3 |",
+          "| 30 | `native_swaps/luna_total_supply_run.parquet` | unshipped-derived NODE (swap mint/burn) | 1 (+time idx) | Fig 12 |",
+          "| 31 | `native_swaps/ust_luna_swaps_run.parquet` | FLIPSIDE→NODE (swap events) | 4 | Figs 11, IA.5 |",
+          "| 32 | `network/volume_by_group_token.csv` | NODE (transfers) + AUTHOR (types) | 4 | Fig 4 |",
+          "| 33 | `prices/luna_price_may2022.parquet` | KAIKO (minute VWAP) | 2 | Fig 12 |"
+        ]
+      },
+      {
+        "file": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\Datasets.md",
+        "line": 396,
+        "context": [
+          "",
+          "## `data/native_swaps/`",
+          "",
+          "### 30. `luna_total_supply_run.parquet` — hourly LUNA supply (337 rows; index `time`)",
+          "| Column | Origin | Notes |",
+          "|--------|--------|-------|",
+          "| `time` (index) | (2) NODE | hour |"
+        ]
+      },
+      {
+        "file": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\code\\figures\\fig12_death_spiral.py",
+        "line": 10,
+        "context": [
+          "",
+          "Inputs (LUNA supply rebuilt from native-swap mint/burn — on-chain; LUNA price",
+          "from Kaiko — both redistributed minimally with acknowledgment):",
+          "    data/native_swaps/luna_total_supply_run.parquet   time, luna_supply (hourly)",
+          "    data/prices/luna_price_may2022.parquet            time, luna_price (minute)",
+          "",
+          "The supply series is precomputed (shipped as data #30; see Datasets.md): hourly"
+        ]
+      },
+      {
+        "file": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\code\\figures\\fig12_death_spiral.py",
+        "line": 43,
+        "context": [
+          "",
+          "",
+          "def main() -> Path:",
+          "    sup = pd.read_parquet(datadir(\"native_swaps\", \"luna_total_supply_run.parquet\"))",
+          "    prc = pd.read_parquet(datadir(\"prices\", \"luna_price_may2022.parquet\"))",
+          "    prc = prc.set_index(\"time\")[\"luna_price\"].resample(\"h\").last().reindex(sup.index).ffill()",
+          ""
+        ]
+      }
+    ],
+    "curve_ust_3pool_may7.parquet": [
+      {
+        "file": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\Datasets.md",
+        "line": 39,
+        "context": [
+          "| 12 | `anchor_run/may21_anchor_run_prices.parquet` | NODE + KAIKO | 3 (+minute idx), 1 plot-unused | Fig IA.3 |",
+          "| 13 | `anchor_run/run_aust_flow_by_depositor.parquet` | unshipped-derived NODE (built by prep) | 3 | Fig 13 |",
+          "| 13a | `anchor_run/epoch_state_fig10.parquet` | NODE (`{epoch_state}` per-block) | 5 | Fig 10 |",
+          "| 14 | `curve/curve_ust_3pool_may7.parquet` | FLIPSIDE (Ethereum Curve) | 6 | Fig 8 |",
+          "| 15 | `curve/curve_ust_may2021.parquet` | FLIPSIDE (Ethereum Curve) | 6 | Fig IA.2 |",
+          "| 16 | `daily_balances/columbus-4-lunaust-supply-breakdown-fullnode.parquet` | NODE (transfer cumsum + genesis) | 4 | Fig 2 |",
+          "| 17 | `daily_balances/columbus-5-lunaust-supply-breakdown-fullnode.parquet` | NODE (transfer cumsum) | 4 | Fig 2 |"
+        ]
+      },
+      {
+        "file": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\Datasets.md",
+        "line": 246,
+        "context": [
+          "",
+          "## `data/curve/` (Ethereum — rebuild via an Ethereum node/Dune, not the Terra node)",
+          "",
+          "### 14. `curve_ust_3pool_may7.parquet` — Curve UST swaps, May 7 2022 (405 rows)",
+          "### 15. `curve_ust_may2021.parquet` — Curve UST swaps, May 2021 (1,733 rows)",
+          "Both have identical schemas (Flipside Ethereum Curve-pool trade extracts). Used by Figs 8 and IA.2.",
+          ""
+        ]
+      },
+      {
+        "file": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\code\\figures\\fig08_curve_swaps.py",
+        "line": 12,
+        "context": [
+          "",
+          "Input (Curve/Ethereum swap txs, originally Flipside; minimal May 7 slice,",
+          "redistributed with acknowledgment — content is public Ethereum data):",
+          "    data/curve/curve_ust_3pool_may7.parquet",
+          "        columns: time, sell_amount, taker_side_sell, trader, price_native, quote_asset",
+          "",
+          "Output:"
+        ]
+      },
+      {
+        "file": "data\\raw\\terra_may2022_v1\\replication\\terra-luna-run-replication\\code\\figures\\fig08_curve_swaps.py",
+        "line": 120,
+        "context": [
+          "",
+          "",
+          "def main() -> Path:",
+          "    return plot_curve_swaps(\"curve_ust_3pool_may7.parquet\", START, END,",
+          "                            \"curve_swap_May7.png\", depeg=DEPEG,",
+          "                            xloc=mdates.HourLocator(byhour=range(0, 24, 6)))",
+          ""
+        ]
+      }
+    ]
+  }
+}

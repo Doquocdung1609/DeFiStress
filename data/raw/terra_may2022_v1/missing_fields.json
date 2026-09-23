@@ -1,0 +1,7 @@
+{
+  "missing_required_fields": [],
+  "proxy_fields": [
+    "terra_dex_liquidity",
+    "terra_dex_depth"
+  ]
+}

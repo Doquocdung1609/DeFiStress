@@ -1,0 +1,14 @@
+# Python dependencies for the Terra–Luna crash replication package.
+# Pinned to the exact versions verified to reproduce every exhibit in a fresh
+# Python 3.13 virtual environment (install re-confirmed on Python 3.14). Under
+# these versions all tables reproduce byte-identically and all figures are
+# visually identical (only sub-pixel anti-aliasing differs). Loosen the pins to
+# ">=" if your environment needs it; the code also runs on nearby versions.
+pandas==3.0.5
+numpy==2.5.1
+matplotlib==3.11.1
+pyarrow==25.0.0        # parquet I/O
+statsmodels==0.14.6    # regressions (Tables 2-3)
+scipy==1.18.0          # Fig 14: kernel recovery of beta(t) from the timecox cum (quad, interp1d)
+networkx==3.6.1        # Fig 4 network graphs
+# Note: input labels are shipped as parquet, so xlrd/openpyxl are NOT required.

@@ -1,0 +1,249 @@
+{
+  "dataset_version": "terra_may2022_v1",
+  "status": "QUALITY_WARNING",
+  "window": {
+    "start": "2022-05-01 00:00:00+00:00",
+    "end": "2022-05-13 23:00:00+00:00",
+    "frequency": "1h",
+    "rows": 312
+  },
+  "primary_source": {
+    "doi": "10.17632/j5d8n7hzdy.4",
+    "dataset_id": "j5d8n7hzdy",
+    "version": 4,
+    "zip_sha256": "4bae715784bcbff7d5a38ca9c9d00fc86cc55dcf279bdf1e0cf3d039754a6d18"
+  },
+  "evidence_map": [
+    {
+      "field": "block_height",
+      "source_file": "terra-luna-run-replication\\data\\anchor\\Anchor_global_stats_fullnode.parquet",
+      "source_columns": [
+        "__index__",
+        "height"
+      ],
+      "method": "hourly last observed Terra height; carry-forward only during the documented 13-May chain halt",
+      "exact": true,
+      "notes": "Historical state carry-forward during a no-block interval; not statistical interpolation."
+    },
+    {
+      "field": "ust_price",
+      "source_file": "terra-luna-run-replication\\data\\prices\\ust_price_may2022.parquet",
+      "source_columns": [
+        "time",
+        "ust_price"
+      ],
+      "method": "hourly last",
+      "exact": true,
+      "notes": ""
+    },
+    {
+      "field": "luna_price",
+      "source_file": "terra-luna-run-replication\\data\\prices\\luna_price_may2022.parquet",
+      "source_columns": [
+        "time",
+        "luna_price"
+      ],
+      "method": "hourly last",
+      "exact": true,
+      "notes": ""
+    },
+    {
+      "field": "ust_supply",
+      "source_file": "terra-luna-run-replication\\data\\daily_balances\\columbus-5-lunaust-supply-breakdown-fullnode.parquet",
+      "source_columns": [
+        "date",
+        "denom",
+        "balance"
+      ],
+      "method": "sum Columbus-5 uusd balances by daily snapshot; divide microUST by 1e6; forward-fill state within day",
+      "exact": true,
+      "notes": "Protocol-native denom conversion; no market-price inference."
+    },
+    {
+      "field": "luna_supply",
+      "source_file": "terra-luna-run-replication\\data\\native_swaps\\luna_total_supply_run.parquet",
+      "source_columns": [
+        "__index__",
+        "luna_supply"
+      ],
+      "method": "hourly last",
+      "exact": true,
+      "notes": ""
+    },
+    {
+      "field": "anchor_total_deposits",
+      "source_file": "terra-luna-run-replication\\data\\anchor\\Anchor_global_stats_fullnode.parquet",
+      "source_columns": [
+        "__index__",
+        "prev_aterra_supply",
+        "prev_exchange_rate"
+      ],
+      "method": "hourly protocol state: prev_aterra_supply \u00d7 prev_exchange_rate \u00d7 1e-6; unit scale validated pre-cutoff against Anchor_daily_stats deposit balance; state carried through chain halt",
+      "exact": true,
+      "notes": "scale=1e-06; pre-cutoff median relative validation error=0.5947%; no post-cutoff calibration."
+    },
+    {
+      "field": "anchor_deposit_flow",
+      "source_file": "terra-luna-run-replication\\data\\anchor\\anchor_cashflow_transfers.parquet",
+      "source_columns": [
+        "time",
+        "amount"
+      ],
+      "method": "sum qualifying events by hour",
+      "exact": false,
+      "notes": "Action filter absent"
+    },
+    {
+      "field": "anchor_withdrawal_flow",
+      "source_file": "terra-luna-run-replication\\data\\anchor\\anchor_cashflow_transfers.parquet",
+      "source_columns": [
+        "time",
+        "amount"
+      ],
+      "method": "sum qualifying events by hour",
+      "exact": false,
+      "notes": "Action filter absent"
+    },
+    {
+      "field": "ust_native_redemption_volume",
+      "source_file": "terra-luna-run-replication\\data\\native_swaps\\ust_luna_swaps_run.parquet",
+      "source_columns": [
+        "time",
+        "offer_amount"
+      ],
+      "method": "sum qualifying events by hour",
+      "exact": false,
+      "notes": "Action filter absent"
+    },
+    {
+      "field": "luna_minted_from_redemption",
+      "source_file": "terra-luna-run-replication\\data\\native_swaps\\ust_luna_swaps_run.parquet",
+      "source_columns": [
+        "time",
+        "swap_amount"
+      ],
+      "method": "sum qualifying events by hour",
+      "exact": false,
+      "notes": "Action filter absent"
+    },
+    {
+      "field": "luna_burned",
+      "source_file": "terra-luna-run-replication\\data\\native_swaps\\ust_luna_swaps_run.parquet",
+      "source_columns": [
+        "time",
+        "swap_amount"
+      ],
+      "method": "sum qualifying events by hour",
+      "exact": false,
+      "notes": "Action filter absent"
+    },
+    {
+      "field": "ust_dex_sell_volume",
+      "source_file": "terra-luna-run-replication\\data\\native_swaps\\ust_luna_swaps_run.parquet",
+      "source_columns": [
+        "time",
+        "swap_amount"
+      ],
+      "method": "sum qualifying events by hour",
+      "exact": false,
+      "notes": "Action filter absent"
+    },
+    {
+      "field": "terra_dex_liquidity",
+      "source_file": "terra-luna-run-replication\\data\\external\\ustc-usd-max.csv",
+      "source_columns": [
+        "snapped_at",
+        "total_volume"
+      ],
+      "method": "PRE-CUTOFF MARKET-CAPACITY PROXY: median CoinGecko UST 24h total_volume / 24, held fixed through replay",
+      "exact": false,
+      "notes": "MODEL-INPUT PROXY ONLY; NOT observed Terra DEX liquidity/depth. Fallback uses pre-cutoff CoinGecko UST market-wide 24h volume. Liquidity proxy = median daily 24h volume / 24; depth proxy = q25 daily 24h volume / 24. Only observations through 2022-05-06 are used; values are held fixed through evaluation."
+    },
+    {
+      "field": "terra_dex_depth",
+      "source_file": "terra-luna-run-replication\\data\\external\\ustc-usd-max.csv",
+      "source_columns": [
+        "snapped_at",
+        "total_volume"
+      ],
+      "method": "PRE-CUTOFF CONSERVATIVE CAPACITY PROXY: q25 CoinGecko UST 24h total_volume / 24, held fixed through replay",
+      "exact": false,
+      "notes": "MODEL-INPUT PROXY ONLY; NOT observed Terra DEX liquidity/depth. Fallback uses pre-cutoff CoinGecko UST market-wide 24h volume. Liquidity proxy = median daily 24h volume / 24; depth proxy = q25 daily 24h volume / 24. Only observations through 2022-05-06 are used; values are held fixed through evaluation."
+    },
+    {
+      "field": "top10_anchor_share",
+      "source_file": "terra-luna-run-replication\\data\\anchor\\aust_rnk_col5.parquet",
+      "source_columns": [
+        "date",
+        "address",
+        "balance"
+      ],
+      "method": "top 10 wallet balance share per hour; forward-filled between balance snapshots",
+      "exact": true,
+      "notes": ""
+    },
+    {
+      "field": "top100_anchor_share",
+      "source_file": "terra-luna-run-replication\\data\\anchor\\aust_rnk_col5.parquet",
+      "source_columns": [
+        "date",
+        "address",
+        "balance"
+      ],
+      "method": "top 100 wallet balance share per hour; forward-filled between balance snapshots",
+      "exact": true,
+      "notes": ""
+    },
+    {
+      "field": "curve_ust_price",
+      "source_file": "terra-luna-run-replication\\data\\prices\\ust_price_may2022.parquet",
+      "source_columns": [
+        "time",
+        "ust_price"
+      ],
+      "method": "hourly last",
+      "exact": true,
+      "notes": ""
+    },
+    {
+      "field": "bridge_outflow_terra_to_ethereum",
+      "source_file": "terra-luna-run-replication\\data\\anchor_run\\epoch_state_fig10.parquet",
+      "source_columns": [
+        "time_utc",
+        "deposit_b_ust"
+      ],
+      "method": "sum qualifying events by hour",
+      "exact": false,
+      "notes": "Action filter absent"
+    },
+    {
+      "field": "bridge_inflow_ethereum_to_terra",
+      "source_file": "terra-luna-run-replication\\data\\anchor_run\\epoch_state_fig10.parquet",
+      "source_columns": [
+        "time_utc",
+        "deposit_b_ust"
+      ],
+      "method": "sum qualifying events by hour",
+      "exact": false,
+      "notes": "Action filter absent"
+    },
+    {
+      "field": "reserve_intervention_volume",
+      "source_file": "terra-luna-run-replication\\data\\exchange\\binance_ustusdt_may7.parquet",
+      "source_columns": [
+        "time",
+        "amount"
+      ],
+      "method": "sum qualifying events by hour",
+      "exact": false,
+      "notes": "Action filter absent"
+    }
+  ],
+  "missing_required_fields": [],
+  "proxy_fields": [
+    "terra_dex_liquidity",
+    "terra_dex_depth"
+  ],
+  "generated_at": "2026-09-23T10:58:18.937729+00:00",
+  "scientific_integrity": "REAL_HISTORICAL is only emitted when no required field is missing and no proxy mode is used."
+}

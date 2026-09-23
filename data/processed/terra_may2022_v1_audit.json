@@ -1,0 +1,279 @@
+{
+  "dataset": "data\\processed\\terra_may2022_v1.csv",
+  "rows": 312,
+  "expected_rows": 312,
+  "checks": {
+    "required_columns_present": true,
+    "missing_columns": [],
+    "timestamp_parse_ok": true,
+    "row_count_312": true,
+    "start_ok": true,
+    "end_ok": true,
+    "timestamps_sorted": true,
+    "duplicate_timestamps": 0,
+    "hourly_grid_ok": true,
+    "non_hourly_gap_count": 0,
+    "required_na_counts": {
+      "block_height": 0,
+      "ust_price": 0,
+      "luna_price": 0,
+      "ust_supply": 0,
+      "luna_supply": 0,
+      "anchor_total_deposits": 0,
+      "anchor_deposit_flow": 0,
+      "anchor_withdrawal_flow": 0,
+      "ust_native_redemption_volume": 0,
+      "luna_minted_from_redemption": 0,
+      "luna_burned": 0,
+      "ust_dex_sell_volume": 0,
+      "terra_dex_liquidity": 0,
+      "terra_dex_depth": 0,
+      "top10_anchor_share": 0,
+      "top100_anchor_share": 0
+    },
+    "no_required_na": true,
+    "negative_counts": {
+      "ust_price": 0,
+      "luna_price": 0,
+      "ust_supply": 0,
+      "luna_supply": 0,
+      "anchor_total_deposits": 0,
+      "anchor_deposit_flow": 0,
+      "anchor_withdrawal_flow": 0,
+      "ust_native_redemption_volume": 0,
+      "luna_minted_from_redemption": 0,
+      "luna_burned": 0,
+      "ust_dex_sell_volume": 0,
+      "terra_dex_liquidity": 0,
+      "terra_dex_depth": 0
+    },
+    "no_negative_required_values": true,
+    "top10_anchor_share_outside_0_1": 0,
+    "top100_anchor_share_outside_0_1": 0,
+    "top10_le_top100": true,
+    "top10_gt_top100_count": 0,
+    "block_height_non_decreasing": true,
+    "terra_dex_liquidity_constant_through_replay": true,
+    "terra_dex_depth_constant_through_replay": true,
+    "dex_proxy_has_used_entry": true,
+    "dex_proxy_pre_cutoff_only": true,
+    "dex_proxy_positive": true
+  },
+  "summaries": {
+    "block_height_flat_hours": [
+      "2022-05-13T02:00:00+00:00",
+      "2022-05-13T03:00:00+00:00",
+      "2022-05-13T04:00:00+00:00",
+      "2022-05-13T05:00:00+00:00",
+      "2022-05-13T06:00:00+00:00",
+      "2022-05-13T07:00:00+00:00",
+      "2022-05-13T08:00:00+00:00",
+      "2022-05-13T09:00:00+00:00",
+      "2022-05-13T10:00:00+00:00"
+    ],
+    "ust_price": {
+      "min": 0.0965570633779561,
+      "max": 1.0003902867669177,
+      "median": 0.9992330782456393,
+      "first": 0.9999807669803402,
+      "last": 0.122655625904284,
+      "unique_values": 312
+    },
+    "luna_price": {
+      "min": 2.0132568680739067e-06,
+      "max": 87.61710548589213,
+      "median": 73.13651637776528,
+      "first": 78.37035167890407,
+      "last": 0.0001202035422725,
+      "unique_values": 312
+    },
+    "ust_supply": {
+      "min": 11279973952.833817,
+      "max": 18768534965.92928,
+      "median": 18611325611.26276,
+      "first": 18536893252.850677,
+      "last": 11279973952.833817,
+      "unique_values": 13
+    },
+    "luna_supply": {
+      "min": 748218810.1494983,
+      "max": 6800423504721.432,
+      "median": 750199950.0396198,
+      "first": 751668917.4396232,
+      "last": 6800423504721.432,
+      "unique_values": 290
+    },
+    "anchor_total_deposits": {
+      "min": 1548436560.2225556,
+      "max": 14172637157.548277,
+      "median": 13703689196.198313,
+      "first": 13658111688.385248,
+      "last": 1548436560.2225556,
+      "unique_values": 91
+    },
+    "terra_dex_liquidity": {
+      "min": 32632111.12814283,
+      "max": 32632111.12814283,
+      "median": 32632111.12814283,
+      "first": 32632111.12814283,
+      "last": 32632111.12814283,
+      "unique_values": 1
+    },
+    "terra_dex_depth": {
+      "min": 30550556.51072192,
+      "max": 30550556.51072192,
+      "median": 30550556.51072192,
+      "first": 30550556.51072192,
+      "last": 30550556.51072192,
+      "unique_values": 1
+    },
+    "ust_native_redemption_volume": {
+      "min": 0.0,
+      "max": 276733597.769307,
+      "median": 0.0,
+      "first": 0.0,
+      "last": 0.0,
+      "unique_values": 147
+    },
+    "anchor_withdrawal_flow": {
+      "min": 0.0,
+      "max": 225292636.432877,
+      "median": 4214.576387,
+      "first": 0.0,
+      "last": 0.0,
+      "unique_values": 193
+    },
+    "split": {
+      "calibration_rows": 144,
+      "evaluation_rows": 168,
+      "cutoff": "2022-05-06T23:59:59+00:00"
+    }
+  },
+  "warnings": [],
+  "checkpoints": [
+    {
+      "timestamp": "2022-05-01T00:00:00Z",
+      "block_height": 7459537,
+      "ust_price": 0.9999807669803402,
+      "luna_price": 78.37035167890407,
+      "ust_supply": 18536893252.850677,
+      "luna_supply": 751668917.4396232,
+      "anchor_total_deposits": 13658111688.385248,
+      "ust_native_redemption_volume": 0.0,
+      "terra_dex_liquidity": 32632111.12814283,
+      "terra_dex_depth": 30550556.51072192,
+      "top10_anchor_share": 0.2792279868642299,
+      "top100_anchor_share": 0.6297557817921368
+    },
+    {
+      "timestamp": "2022-05-06T23:00:00Z",
+      "block_height": 7536783,
+      "ust_price": 0.999632321884776,
+      "luna_price": 77.34411526956339,
+      "ust_supply": 18738025099.463127,
+      "luna_supply": 748660741.4661114,
+      "anchor_total_deposits": 14042765647.136415,
+      "ust_native_redemption_volume": 0.0,
+      "terra_dex_liquidity": 32632111.12814283,
+      "terra_dex_depth": 30550556.51072192,
+      "top10_anchor_share": 0.294558038549359,
+      "top100_anchor_share": 0.6388595254575794
+    },
+    {
+      "timestamp": "2022-05-07T00:00:00Z",
+      "block_height": 7537326,
+      "ust_price": 0.9994549904441742,
+      "luna_price": 76.76496530507606,
+      "ust_supply": 18768534965.92928,
+      "luna_supply": 748622919.6596514,
+      "anchor_total_deposits": 14042765647.136415,
+      "ust_native_redemption_volume": 23003.111036,
+      "terra_dex_liquidity": 32632111.12814283,
+      "terra_dex_depth": 30550556.51072192,
+      "top10_anchor_share": 0.297178413549432,
+      "top100_anchor_share": 0.6386339494875428
+    },
+    {
+      "timestamp": "2022-05-09T00:00:00Z",
+      "block_height": 7563136,
+      "ust_price": 0.9948198150475044,
+      "luna_price": 64.37153223377999,
+      "ust_supply": 18569679951.53665,
+      "luna_supply": 749223268.9840513,
+      "anchor_total_deposits": 11178034764.19862,
+      "ust_native_redemption_volume": 2442980.841772,
+      "terra_dex_liquidity": 32632111.12814283,
+      "terra_dex_depth": 30550556.51072192,
+      "top10_anchor_share": 0.2827149877509518,
+      "top100_anchor_share": 0.5927877918575168
+    },
+    {
+      "timestamp": "2022-05-11T00:00:00Z",
+      "block_height": 7585472,
+      "ust_price": 0.8002407169017215,
+      "luna_price": 16.902081188793098,
+      "ust_supply": 13214075774.615429,
+      "luna_supply": 804345781.1655612,
+      "anchor_total_deposits": 5748997600.968618,
+      "ust_native_redemption_volume": 95078228.159964,
+      "terra_dex_liquidity": 32632111.12814283,
+      "terra_dex_depth": 30550556.51072192,
+      "top10_anchor_share": 0.2294609574101106,
+      "top100_anchor_share": 0.5575919050930244
+    },
+    {
+      "timestamp": "2022-05-13T00:00:00Z",
+      "block_height": 7607287,
+      "ust_price": 0.2131522898458836,
+      "luna_price": 4.957507454979241e-06,
+      "ust_supply": 11279973952.833817,
+      "luna_supply": 918173266715.8108,
+      "anchor_total_deposits": 1860747300.8179724,
+      "ust_native_redemption_volume": 43710537.980888,
+      "terra_dex_liquidity": 32632111.12814283,
+      "terra_dex_depth": 30550556.51072192,
+      "top10_anchor_share": 0.3159463564706649,
+      "top100_anchor_share": 0.6165329546983336
+    },
+    {
+      "timestamp": "2022-05-13T23:00:00Z",
+      "block_height": 7614714,
+      "ust_price": 0.122655625904284,
+      "luna_price": 0.0001202035422725,
+      "ust_supply": 11279973952.833817,
+      "luna_supply": 6800423504721.432,
+      "anchor_total_deposits": 1548436560.2225556,
+      "ust_native_redemption_volume": 0.0,
+      "terra_dex_liquidity": 32632111.12814283,
+      "terra_dex_depth": 30550556.51072192,
+      "top10_anchor_share": 0.3159463564706649,
+      "top100_anchor_share": 0.6165329546983336
+    }
+  ],
+  "provenance": {
+    "dex_proxy": [
+      {
+        "tier": 1,
+        "source": "ust_native_redemption_volume",
+        "result": "unusable",
+        "reason": "pre-cutoff turnover is absent or non-positive",
+        "pre_cutoff_points": 144,
+        "positive_points": 0
+      },
+      {
+        "tier": 2,
+        "source": "terra-luna-run-replication\\data\\external\\ustc-usd-max.csv",
+        "time_column": "snapped_at",
+        "volume_column": "total_volume",
+        "pre_cutoff_days": 6,
+        "daily_volume_min": 624421400.153268,
+        "daily_volume_median": 783170667.075428,
+        "daily_volume_max": 996431869.9289768,
+        "liquidity_proxy_hourly_equivalent": 32632111.12814283,
+        "depth_proxy_hourly_equivalent_q25": 30550556.510721922,
+        "result": "used"
+      }
+    ]
+  },
+  "audit_pass": true
+}

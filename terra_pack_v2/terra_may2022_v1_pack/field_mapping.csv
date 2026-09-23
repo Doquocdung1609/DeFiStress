@@ -1,0 +1,17 @@
+field,meaning,preferred_source,allowed_derivation,strict_real_historical_rule
+block_height,Terra Classic block nearest hour,Terra Classic block/event timestamp,Nearest block at or before hourly timestamp,Must come from historical Terra chain-derived table
+ust_price,UST/USD price,CoinGecko or exchange/DEX replication time series,Hourly last/median price,Historical timestamped price required
+luna_price,LUNA/USD price,CoinGecko or exchange replication time series,Hourly last/median price,Historical timestamped price required
+ust_supply,UST circulating/outstanding supply,Terra chain supply or CoinGecko supply-derived source,Market cap divided by price only if source documents both,Provenance must identify exact derivation
+luna_supply,LUNA circulating/outstanding supply,Terra chain supply,Hourly last supply,Historical supply required
+anchor_total_deposits,UST outstanding in Anchor,Anchor on-chain state/replication series,Hourly last balance,Historical Anchor balance required
+anchor_deposit_flow,UST deposited into Anchor during hour,Anchor deposit events,Sum event amounts by hour,Historical event aggregation required
+anchor_withdrawal_flow,UST withdrawn from Anchor during hour,Anchor withdrawal events,Sum event amounts by hour,Historical event aggregation required
+ust_native_redemption_volume,UST redeemed/swapped through native Terra mechanism,Terra market MsgSwap/events,Sum qualifying UST->LUNA events by hour,Historical protocol event aggregation required
+luna_minted_from_redemption,LUNA minted due to UST redemption,Terra mint/supply event data,Sum minted LUNA associated with redemption,Must not be guessed from price only
+luna_burned,LUNA burned during hour,Terra mint/burn data,Sum burn events,Historical burn events required
+ust_dex_sell_volume,UST sold on DEX during hour,Terra/Curve swap events,Sum UST->other stable/asset sells,DEX event-level source required
+terra_dex_liquidity,Executable DEX liquidity state,Terra DEX pool state,Hourly last/median liquidity,Must represent named pool(s), not arbitrary TVL
+terra_dex_depth,Executable depth around peg/market price,DEX pool state/order-depth calculation,Computed from pool state under documented +/- band,Formula and pool must be documented
+top10_anchor_share,Share of Anchor deposits held by top 10 addresses,Anchor wallet balances,Recompute from wallet-level balances by hour or fixed pre-run snapshot if explicitly configured,Exact denominator and time definition required
+top100_anchor_share,Share of Anchor deposits held by top 100 addresses,Anchor wallet balances,Recompute from wallet-level balances by hour or fixed pre-run snapshot if explicitly configured,Exact denominator and time definition required

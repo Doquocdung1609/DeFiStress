@@ -1,0 +1,908 @@
+{
+  "block_height": [
+    {
+      "file": "terra-luna-run-replication\\data\\anchor\\Anchor_global_stats_fullnode.parquet",
+      "time_col": "__index__",
+      "block_col": "height",
+      "rows_in_window_plus_24h": 1393,
+      "missing_hours_before_halt_carry_forward": [
+        "2022-05-13T02:00:00+00:00",
+        "2022-05-13T03:00:00+00:00",
+        "2022-05-13T04:00:00+00:00",
+        "2022-05-13T05:00:00+00:00",
+        "2022-05-13T06:00:00+00:00",
+        "2022-05-13T07:00:00+00:00",
+        "2022-05-13T08:00:00+00:00",
+        "2022-05-13T09:00:00+00:00",
+        "2022-05-13T10:00:00+00:00"
+      ],
+      "halt_interval_used": [
+        "2022-05-13T02:00:00+00:00",
+        "2022-05-13T10:00:00+00:00"
+      ],
+      "method": "hourly last observed height; carry last height through documented chain halt only"
+    }
+  ],
+  "ust_price": [
+    {
+      "score": 17,
+      "file": "terra-luna-run-replication\\data\\prices\\ust_price_may2022.parquet",
+      "value_col": "ust_price",
+      "time_col": "time",
+      "columns": [
+        "time",
+        "ust_price"
+      ]
+    }
+  ],
+  "luna_price": [
+    {
+      "score": 17,
+      "file": "terra-luna-run-replication\\data\\prices\\luna_price_may2022.parquet",
+      "value_col": "luna_price",
+      "time_col": "time",
+      "columns": [
+        "time",
+        "luna_price"
+      ]
+    }
+  ],
+  "ust_supply_exact": [
+    {
+      "file": "terra-luna-run-replication\\data\\daily_balances\\columbus-5-lunaust-supply-breakdown-fullnode.parquet",
+      "denom": "UST/USTC",
+      "daily_points": 239,
+      "window_min": "2021-09-30 00:00:00+00:00",
+      "window_max": "2022-05-26 00:00:00+00:00",
+      "method": "sum address/module balances by date; micro-denom conversion; forward-fill daily state to hourly grid"
+    }
+  ],
+  "luna_supply": [
+    {
+      "score": 17,
+      "file": "terra-luna-run-replication\\data\\native_swaps\\luna_total_supply_run.parquet",
+      "value_col": "luna_supply",
+      "time_col": "__index__",
+      "columns": [
+        "luna_supply"
+      ]
+    }
+  ],
+  "anchor_total_deposits_exact": [
+    {
+      "global_file": "terra-luna-run-replication\\data\\anchor\\Anchor_global_stats_fullnode.parquet",
+      "daily_validation_file": "terra-luna-run-replication\\data\\anchor\\Anchor_daily_stats.parquet",
+      "derived_from": "prev_aterra_supply * prev_exchange_rate",
+      "pre_cutoff_overlap_days": 6,
+      "median_raw_to_direct_ratio": 9.940905834822626e-07,
+      "chosen_power_of_ten_scale": 1e-06,
+      "median_relative_error_pre_cutoff": 0.0059473584152232905
+    },
+    {
+      "halt_state_carry_forward_hours": [
+        "2022-05-13T02:00:00+00:00",
+        "2022-05-13T03:00:00+00:00",
+        "2022-05-13T04:00:00+00:00",
+        "2022-05-13T05:00:00+00:00",
+        "2022-05-13T06:00:00+00:00",
+        "2022-05-13T07:00:00+00:00",
+        "2022-05-13T08:00:00+00:00",
+        "2022-05-13T09:00:00+00:00",
+        "2022-05-13T10:00:00+00:00"
+      ],
+      "halt_interval_used": [
+        "2022-05-13T02:00:00+00:00",
+        "2022-05-13T10:00:00+00:00"
+      ],
+      "method_note": "carry forward the last committed Anchor protocol state only during the documented chain halt"
+    }
+  ],
+  "anchor_deposit_flow": [
+    {
+      "score": 13,
+      "file": "terra-luna-run-replication\\data\\anchor_run\\may21_anchor_run_prices.parquet",
+      "time_col": null,
+      "action_col": null,
+      "amount_col": "sell_amount"
+    },
+    {
+      "score": 11,
+      "file": "terra-luna-run-replication\\data\\anchor\\anchor_cashflow_transfers.parquet",
+      "time_col": "time",
+      "action_col": null,
+      "amount_col": "amount"
+    }
+  ],
+  "anchor_withdrawal_flow": [
+    {
+      "score": 11,
+      "file": "terra-luna-run-replication\\data\\anchor\\anchor_cashflow_transfers.parquet",
+      "time_col": "time",
+      "action_col": null,
+      "amount_col": "amount"
+    }
+  ],
+  "ust_native_redemption_volume": [
+    {
+      "score": 13,
+      "file": "terra-luna-run-replication\\data\\native_swaps\\ust_luna_swaps_run.parquet",
+      "time_col": "time",
+      "action_col": null,
+      "amount_col": "offer_amount"
+    }
+  ],
+  "luna_minted_from_redemption": [
+    {
+      "score": 7,
+      "file": "terra-luna-run-replication\\data\\native_swaps\\ust_luna_swaps_run.parquet",
+      "time_col": "time",
+      "action_col": null,
+      "amount_col": "swap_amount"
+    }
+  ],
+  "luna_burned": [
+    {
+      "score": 7,
+      "file": "terra-luna-run-replication\\data\\native_swaps\\ust_luna_swaps_run.parquet",
+      "time_col": "time",
+      "action_col": null,
+      "amount_col": "swap_amount"
+    }
+  ],
+  "ust_dex_sell_volume": [
+    {
+      "score": 14,
+      "file": "terra-luna-run-replication\\data\\native_swaps\\ust_luna_swaps_run.parquet",
+      "time_col": "time",
+      "action_col": null,
+      "amount_col": "swap_amount"
+    }
+  ],
+  "terra_dex_liquidity": [
+    {
+      "score": 4,
+      "file": "terra-luna-run-replication\\data\\curve\\curve_ust_3pool_may7.parquet",
+      "value_col": null,
+      "time_col": "time",
+      "columns": [
+        "time",
+        "sell_amount",
+        "taker_side_sell",
+        "trader",
+        "price_native",
+        "quote_asset"
+      ]
+    },
+    {
+      "score": 3,
+      "file": "terra-luna-run-replication\\data\\anchor\\Anchor_global_stats_fullnode.parquet",
+      "value_col": "total_reserves",
+      "time_col": "last_reward_updated",
+      "columns": [
+        "height",
+        "total_liabilities",
+        "total_reserves",
+        "last_interest_updated",
+        "last_reward_updated",
+        "global_interest_index",
+        "global_reward_index",
+        "anc_emission_rate",
+        "deposit_rate",
+        "prev_aterra_supply",
+        "prev_exchange_rate",
+        "prev_interest_buffer",
+        "last_executed_height"
+      ]
+    }
+  ],
+  "terra_dex_depth": [
+    {
+      "score": 4,
+      "file": "terra-luna-run-replication\\data\\curve\\curve_ust_3pool_may7.parquet",
+      "value_col": null,
+      "time_col": "time",
+      "columns": [
+        "time",
+        "sell_amount",
+        "taker_side_sell",
+        "trader",
+        "price_native",
+        "quote_asset"
+      ]
+    }
+  ],
+  "dex_proxy": [
+    {
+      "tier": 1,
+      "source": "ust_native_redemption_volume",
+      "result": "unusable",
+      "reason": "pre-cutoff turnover is absent or non-positive",
+      "pre_cutoff_points": 144,
+      "positive_points": 0
+    },
+    {
+      "tier": 2,
+      "source": "terra-luna-run-replication\\data\\external\\ustc-usd-max.csv",
+      "time_column": "snapped_at",
+      "volume_column": "total_volume",
+      "pre_cutoff_days": 6,
+      "daily_volume_min": 624421400.153268,
+      "daily_volume_median": 783170667.075428,
+      "daily_volume_max": 996431869.9289768,
+      "liquidity_proxy_hourly_equivalent": 32632111.12814283,
+      "depth_proxy_hourly_equivalent_q25": 30550556.510721922,
+      "result": "used"
+    }
+  ],
+  "top10_anchor_share": [
+    {
+      "score": 10,
+      "file": "terra-luna-run-replication\\data\\anchor\\prerun_deposits.parquet",
+      "time_col": null,
+      "address_col": "address",
+      "balance_col": "balance"
+    },
+    {
+      "score": 10,
+      "file": "terra-luna-run-replication\\data\\anchor_run\\run_aust_flow_by_depositor.parquet",
+      "time_col": "time",
+      "address_col": "address",
+      "balance_col": null
+    },
+    {
+      "score": 10,
+      "file": "terra-luna-run-replication\\data\\anchor_run\\may2021_aust_run_balances.parquet",
+      "time_col": null,
+      "address_col": "address",
+      "balance_col": "balance"
+    },
+    {
+      "score": 10,
+      "file": "terra-luna-run-replication\\data\\anchor\\Anchor_daily_stats.parquet",
+      "time_col": null,
+      "address_col": null,
+      "balance_col": "deposit balance"
+    },
+    {
+      "score": 8,
+      "file": "terra-luna-run-replication\\data\\anchor\\anchor_deposit_concentration.parquet",
+      "time_col": null,
+      "address_col": null,
+      "balance_col": null
+    },
+    {
+      "score": 7,
+      "file": "terra-luna-run-replication\\data\\loss\\depositor_prerun_size.parquet",
+      "time_col": null,
+      "address_col": "address",
+      "balance_col": null
+    },
+    {
+      "score": 7,
+      "file": "terra-luna-run-replication\\data\\anchor_run\\anchor_run_tx_cleaned.parquet",
+      "time_col": "time",
+      "address_col": null,
+      "balance_col": null
+    },
+    {
+      "score": 7,
+      "file": "terra-luna-run-replication\\data\\loss\\anchor_loss_panel.parquet",
+      "time_col": null,
+      "address_col": "address",
+      "balance_col": null
+    },
+    {
+      "score": 7,
+      "file": "terra-luna-run-replication\\data\\anchor\\Anchor_global_stats_fullnode.parquet",
+      "time_col": "last_reward_updated",
+      "address_col": null,
+      "balance_col": "deposit_rate"
+    },
+    {
+      "score": 7,
+      "file": "terra-luna-run-replication\\data\\anchor\\anchor_cashflow_transfers.parquet",
+      "time_col": "time",
+      "address_col": null,
+      "balance_col": "amount"
+    },
+    {
+      "score": 7,
+      "file": "terra-luna-run-replication\\data\\anchor_run\\may21_anchor_run_prices.parquet",
+      "time_col": null,
+      "address_col": null,
+      "balance_col": "sell_amount"
+    },
+    {
+      "score": 7,
+      "file": "terra-luna-run-replication\\data\\labels\\interdm_addresses.parquet",
+      "time_col": null,
+      "address_col": "address",
+      "balance_col": null
+    },
+    {
+      "score": 7,
+      "file": "terra-luna-run-replication\\data\\labels\\anchor_contracts.csv",
+      "time_col": null,
+      "address_col": "address",
+      "balance_col": null
+    },
+    {
+      "score": 6,
+      "file": "terra-luna-run-replication\\data\\daily_balances\\columbus-4-lunaust-supply-breakdown-fullnode.parquet",
+      "time_col": "date",
+      "address_col": "address",
+      "balance_col": "balance"
+    },
+    {
+      "score": 6,
+      "file": "terra-luna-run-replication\\data\\anchor\\aust_rnk_col5.parquet",
+      "time_col": "date",
+      "address_col": "address",
+      "balance_col": "balance"
+    }
+  ],
+  "top100_anchor_share": [
+    {
+      "score": 10,
+      "file": "terra-luna-run-replication\\data\\anchor\\prerun_deposits.parquet",
+      "time_col": null,
+      "address_col": "address",
+      "balance_col": "balance"
+    },
+    {
+      "score": 10,
+      "file": "terra-luna-run-replication\\data\\anchor_run\\run_aust_flow_by_depositor.parquet",
+      "time_col": "time",
+      "address_col": "address",
+      "balance_col": null
+    },
+    {
+      "score": 10,
+      "file": "terra-luna-run-replication\\data\\anchor_run\\may2021_aust_run_balances.parquet",
+      "time_col": null,
+      "address_col": "address",
+      "balance_col": "balance"
+    },
+    {
+      "score": 10,
+      "file": "terra-luna-run-replication\\data\\anchor\\Anchor_daily_stats.parquet",
+      "time_col": null,
+      "address_col": null,
+      "balance_col": "deposit balance"
+    },
+    {
+      "score": 8,
+      "file": "terra-luna-run-replication\\data\\anchor\\anchor_deposit_concentration.parquet",
+      "time_col": null,
+      "address_col": null,
+      "balance_col": null
+    },
+    {
+      "score": 7,
+      "file": "terra-luna-run-replication\\data\\loss\\depositor_prerun_size.parquet",
+      "time_col": null,
+      "address_col": "address",
+      "balance_col": null
+    },
+    {
+      "score": 7,
+      "file": "terra-luna-run-replication\\data\\anchor_run\\anchor_run_tx_cleaned.parquet",
+      "time_col": "time",
+      "address_col": null,
+      "balance_col": null
+    },
+    {
+      "score": 7,
+      "file": "terra-luna-run-replication\\data\\loss\\anchor_loss_panel.parquet",
+      "time_col": null,
+      "address_col": "address",
+      "balance_col": null
+    },
+    {
+      "score": 7,
+      "file": "terra-luna-run-replication\\data\\anchor\\Anchor_global_stats_fullnode.parquet",
+      "time_col": "last_reward_updated",
+      "address_col": null,
+      "balance_col": "deposit_rate"
+    },
+    {
+      "score": 7,
+      "file": "terra-luna-run-replication\\data\\anchor\\anchor_cashflow_transfers.parquet",
+      "time_col": "time",
+      "address_col": null,
+      "balance_col": "amount"
+    },
+    {
+      "score": 7,
+      "file": "terra-luna-run-replication\\data\\anchor_run\\may21_anchor_run_prices.parquet",
+      "time_col": null,
+      "address_col": null,
+      "balance_col": "sell_amount"
+    },
+    {
+      "score": 7,
+      "file": "terra-luna-run-replication\\data\\labels\\interdm_addresses.parquet",
+      "time_col": null,
+      "address_col": "address",
+      "balance_col": null
+    },
+    {
+      "score": 7,
+      "file": "terra-luna-run-replication\\data\\labels\\anchor_contracts.csv",
+      "time_col": null,
+      "address_col": "address",
+      "balance_col": null
+    },
+    {
+      "score": 6,
+      "file": "terra-luna-run-replication\\data\\daily_balances\\columbus-4-lunaust-supply-breakdown-fullnode.parquet",
+      "time_col": "date",
+      "address_col": "address",
+      "balance_col": "balance"
+    },
+    {
+      "score": 6,
+      "file": "terra-luna-run-replication\\data\\anchor\\aust_rnk_col5.parquet",
+      "time_col": "date",
+      "address_col": "address",
+      "balance_col": "balance"
+    }
+  ],
+  "curve_ust_liquidity": [
+    {
+      "score": 8,
+      "file": "terra-luna-run-replication\\data\\curve\\curve_ust_may2021.parquet",
+      "value_col": null,
+      "time_col": "time",
+      "columns": [
+        "time",
+        "sell_amount",
+        "taker_side_sell",
+        "trader",
+        "price_native",
+        "quote_asset"
+      ]
+    },
+    {
+      "score": 8,
+      "file": "terra-luna-run-replication\\data\\curve\\curve_ust_3pool_may7.parquet",
+      "value_col": null,
+      "time_col": "time",
+      "columns": [
+        "time",
+        "sell_amount",
+        "taker_side_sell",
+        "trader",
+        "price_native",
+        "quote_asset"
+      ]
+    },
+    {
+      "score": 4,
+      "file": "terra-luna-run-replication\\data\\daily_balances\\columbus-4-lunaust-supply-breakdown-fullnode.parquet",
+      "value_col": null,
+      "time_col": "date",
+      "columns": [
+        "denom",
+        "balance",
+        "address",
+        "date"
+      ]
+    },
+    {
+      "score": 4,
+      "file": "terra-luna-run-replication\\data\\anchor_run\\run_aust_flow_by_depositor.parquet",
+      "value_col": null,
+      "time_col": "time",
+      "columns": [
+        "time",
+        "address",
+        "vol"
+      ]
+    },
+    {
+      "score": 4,
+      "file": "terra-luna-run-replication\\data\\native_swaps\\ust_luna_swaps_run.parquet",
+      "value_col": null,
+      "time_col": "time",
+      "columns": [
+        "time",
+        "offer_amount",
+        "swap_amount",
+        "fee_amount"
+      ]
+    },
+    {
+      "score": 4,
+      "file": "terra-luna-run-replication\\data\\anchor_run\\may2021_aust_run_balances.parquet",
+      "value_col": null,
+      "time_col": null,
+      "columns": [
+        "address",
+        "hour",
+        "balance"
+      ]
+    },
+    {
+      "score": 4,
+      "file": "terra-luna-run-replication\\data\\anchor\\aust_rnk_col5.parquet",
+      "value_col": null,
+      "time_col": "date",
+      "columns": [
+        "date",
+        "address",
+        "balance",
+        "rnk"
+      ]
+    },
+    {
+      "score": 4,
+      "file": "terra-luna-run-replication\\data\\daily_balances\\columbus-5-lunaust-supply-breakdown-fullnode.parquet",
+      "value_col": null,
+      "time_col": "date",
+      "columns": [
+        "denom",
+        "balance",
+        "address",
+        "date"
+      ]
+    },
+    {
+      "score": 4,
+      "file": "terra-luna-run-replication\\data\\prices\\ust_luna_minute_price_run.parquet",
+      "value_col": null,
+      "time_col": "time",
+      "columns": [
+        "time",
+        "UST",
+        "LUNA"
+      ]
+    },
+    {
+      "score": 4,
+      "file": "terra-luna-run-replication\\data\\exchange\\binance_ustusdt_may7.parquet",
+      "value_col": null,
+      "time_col": "time",
+      "columns": [
+        "time",
+        "price",
+        "amount",
+        "taker_side_sell"
+      ]
+    },
+    {
+      "score": 4,
+      "file": "terra-luna-run-replication\\data\\prices\\ust_price_may2022.parquet",
+      "value_col": null,
+      "time_col": "time",
+      "columns": [
+        "time",
+        "ust_price"
+      ]
+    },
+    {
+      "score": 4,
+      "file": "terra-luna-run-replication\\data\\external\\ustc-usd-max.csv",
+      "value_col": null,
+      "time_col": null,
+      "columns": [
+        "snapped_at",
+        "price",
+        "market_cap",
+        "total_volume"
+      ]
+    },
+    {
+      "score": 4,
+      "file": "terra-luna-run-replication\\data\\anchor\\aust_topk_col4.parquet",
+      "value_col": null,
+      "time_col": "__index__",
+      "columns": [
+        "total",
+        "t10",
+        "t100",
+        "t1000"
+      ]
+    },
+    {
+      "score": 4,
+      "file": "terra-luna-run-replication\\data\\anchor\\aust_supply_col5.parquet",
+      "value_col": null,
+      "time_col": "date",
+      "columns": [
+        "date",
+        "supply"
+      ]
+    },
+    {
+      "score": 4,
+      "file": "terra-luna-run-replication\\data\\hazard\\ust_discount_may6_12.parquet",
+      "value_col": null,
+      "time_col": null,
+      "columns": [
+        "hours_from_may6",
+        "ust_discount_bp"
+      ]
+    },
+    {
+      "score": 3,
+      "file": "terra-luna-run-replication\\data\\anchor\\Anchor_global_stats_fullnode.parquet",
+      "value_col": "total_reserves",
+      "time_col": "last_reward_updated",
+      "columns": [
+        "height",
+        "total_liabilities",
+        "total_reserves",
+        "last_interest_updated",
+        "last_reward_updated",
+        "global_interest_index",
+        "global_reward_index",
+        "anc_emission_rate",
+        "deposit_rate",
+        "prev_aterra_supply",
+        "prev_exchange_rate",
+        "prev_interest_buffer",
+        "last_executed_height"
+      ]
+    }
+  ],
+  "curve_pool_imbalance": [
+    {
+      "score": 8,
+      "file": "terra-luna-run-replication\\data\\curve\\curve_ust_may2021.parquet",
+      "value_col": null,
+      "time_col": "time",
+      "columns": [
+        "time",
+        "sell_amount",
+        "taker_side_sell",
+        "trader",
+        "price_native",
+        "quote_asset"
+      ]
+    },
+    {
+      "score": 8,
+      "file": "terra-luna-run-replication\\data\\curve\\curve_ust_3pool_may7.parquet",
+      "value_col": null,
+      "time_col": "time",
+      "columns": [
+        "time",
+        "sell_amount",
+        "taker_side_sell",
+        "trader",
+        "price_native",
+        "quote_asset"
+      ]
+    },
+    {
+      "score": 4,
+      "file": "terra-luna-run-replication\\data\\daily_balances\\columbus-4-lunaust-supply-breakdown-fullnode.parquet",
+      "value_col": null,
+      "time_col": "date",
+      "columns": [
+        "denom",
+        "balance",
+        "address",
+        "date"
+      ]
+    },
+    {
+      "score": 4,
+      "file": "terra-luna-run-replication\\data\\anchor_run\\run_aust_flow_by_depositor.parquet",
+      "value_col": null,
+      "time_col": "time",
+      "columns": [
+        "time",
+        "address",
+        "vol"
+      ]
+    },
+    {
+      "score": 4,
+      "file": "terra-luna-run-replication\\data\\native_swaps\\ust_luna_swaps_run.parquet",
+      "value_col": null,
+      "time_col": "time",
+      "columns": [
+        "time",
+        "offer_amount",
+        "swap_amount",
+        "fee_amount"
+      ]
+    },
+    {
+      "score": 4,
+      "file": "terra-luna-run-replication\\data\\anchor_run\\may2021_aust_run_balances.parquet",
+      "value_col": null,
+      "time_col": null,
+      "columns": [
+        "address",
+        "hour",
+        "balance"
+      ]
+    },
+    {
+      "score": 4,
+      "file": "terra-luna-run-replication\\data\\anchor\\aust_rnk_col5.parquet",
+      "value_col": null,
+      "time_col": "date",
+      "columns": [
+        "date",
+        "address",
+        "balance",
+        "rnk"
+      ]
+    },
+    {
+      "score": 4,
+      "file": "terra-luna-run-replication\\data\\daily_balances\\columbus-5-lunaust-supply-breakdown-fullnode.parquet",
+      "value_col": null,
+      "time_col": "date",
+      "columns": [
+        "denom",
+        "balance",
+        "address",
+        "date"
+      ]
+    },
+    {
+      "score": 4,
+      "file": "terra-luna-run-replication\\data\\prices\\ust_luna_minute_price_run.parquet",
+      "value_col": null,
+      "time_col": "time",
+      "columns": [
+        "time",
+        "UST",
+        "LUNA"
+      ]
+    },
+    {
+      "score": 4,
+      "file": "terra-luna-run-replication\\data\\exchange\\binance_ustusdt_may7.parquet",
+      "value_col": null,
+      "time_col": "time",
+      "columns": [
+        "time",
+        "price",
+        "amount",
+        "taker_side_sell"
+      ]
+    },
+    {
+      "score": 4,
+      "file": "terra-luna-run-replication\\data\\prices\\ust_price_may2022.parquet",
+      "value_col": null,
+      "time_col": "time",
+      "columns": [
+        "time",
+        "ust_price"
+      ]
+    },
+    {
+      "score": 4,
+      "file": "terra-luna-run-replication\\data\\external\\ustc-usd-max.csv",
+      "value_col": null,
+      "time_col": null,
+      "columns": [
+        "snapped_at",
+        "price",
+        "market_cap",
+        "total_volume"
+      ]
+    },
+    {
+      "score": 4,
+      "file": "terra-luna-run-replication\\data\\anchor\\aust_topk_col4.parquet",
+      "value_col": null,
+      "time_col": "__index__",
+      "columns": [
+        "total",
+        "t10",
+        "t100",
+        "t1000"
+      ]
+    },
+    {
+      "score": 4,
+      "file": "terra-luna-run-replication\\data\\anchor\\aust_supply_col5.parquet",
+      "value_col": null,
+      "time_col": "date",
+      "columns": [
+        "date",
+        "supply"
+      ]
+    },
+    {
+      "score": 4,
+      "file": "terra-luna-run-replication\\data\\hazard\\ust_discount_may6_12.parquet",
+      "value_col": null,
+      "time_col": null,
+      "columns": [
+        "hours_from_may6",
+        "ust_discount_bp"
+      ]
+    }
+  ],
+  "curve_ust_price": [
+    {
+      "score": 17,
+      "file": "terra-luna-run-replication\\data\\prices\\ust_price_may2022.parquet",
+      "value_col": "ust_price",
+      "time_col": "time",
+      "columns": [
+        "time",
+        "ust_price"
+      ]
+    }
+  ],
+  "bridge_outflow_terra_to_ethereum": [
+    {
+      "score": 6,
+      "file": "terra-luna-run-replication\\data\\anchor_run\\may21_anchor_run_prices.parquet",
+      "time_col": null,
+      "action_col": null,
+      "amount_col": "sell_amount"
+    },
+    {
+      "score": 6,
+      "file": "terra-luna-run-replication\\data\\anchor_run\\epoch_state_fig10.parquet",
+      "time_col": "time_utc",
+      "action_col": null,
+      "amount_col": "deposit_b_ust"
+    }
+  ],
+  "bridge_inflow_ethereum_to_terra": [
+    {
+      "score": 6,
+      "file": "terra-luna-run-replication\\data\\anchor\\Anchor_global_stats_fullnode.parquet",
+      "time_col": "last_reward_updated",
+      "action_col": null,
+      "amount_col": null
+    },
+    {
+      "score": 6,
+      "file": "terra-luna-run-replication\\data\\anchor_run\\may21_anchor_run_prices.parquet",
+      "time_col": null,
+      "action_col": null,
+      "amount_col": "sell_amount"
+    },
+    {
+      "score": 6,
+      "file": "terra-luna-run-replication\\data\\anchor\\Anchor_daily_stats.parquet",
+      "time_col": null,
+      "action_col": null,
+      "amount_col": "aUST/UST"
+    },
+    {
+      "score": 6,
+      "file": "terra-luna-run-replication\\data\\anchor\\luna_staking_stats.parquet",
+      "time_col": null,
+      "action_col": null,
+      "amount_col": "reward_adjusted"
+    },
+    {
+      "score": 6,
+      "file": "terra-luna-run-replication\\data\\anchor_run\\epoch_state_fig10.parquet",
+      "time_col": "time_utc",
+      "action_col": null,
+      "amount_col": "deposit_b_ust"
+    }
+  ],
+  "btc_reserve_value": [],
+  "reserve_intervention_volume": [
+    {
+      "score": 9,
+      "file": "terra-luna-run-replication\\data\\anchor_run\\may21_anchor_run_prices.parquet",
+      "time_col": null,
+      "action_col": null,
+      "amount_col": "sell_amount"
+    },
+    {
+      "score": 6,
+      "file": "terra-luna-run-replication\\data\\exchange\\binance_ustusdt_may7.parquet",
+      "time_col": "time",
+      "action_col": null,
+      "amount_col": "amount"
+    }
+  ]
+}

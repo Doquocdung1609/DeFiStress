@@ -1,0 +1,35 @@
+{
+  "manifest": {
+    "dataset_hash": "895ef9032e22824641cd2c02b52b22b6f3d1dd8b1b4b868d70db027707ba8708",
+    "dataset_version": "terra_may2022_v1",
+    "end_timestamp": "2022-05-13T23:00:00Z",
+    "git_commit": "1b192625d5cd984d01f375448805e97377c79d66",
+    "quality_report": {
+      "duplicate_timestamps": 0,
+      "missing_intervals": [],
+      "monotonic": true,
+      "negative_supply_rows": 0,
+      "quality_warning_rows": 312
+    },
+    "row_count": 312,
+    "source_manifest": {
+      "primary": {
+        "chain": "columbus-5",
+        "historical_evidence": false,
+        "raw_reference": "C:\\Users\\Admin\\Desktop\\DeFiStress\\data\\processed\\terra_may2022_v1.csv",
+        "source": "Liu-Makarov-Schoar replication + Terra Classic",
+        "source_type": "REPLICATION_ONCHAIN_WITH_PRECRISIS_PROXIES"
+      }
+    },
+    "start_timestamp": "2022-05-01T00:00:00Z",
+    "status": "QUALITY_WARNING",
+    "transformation_version": "terra-importer-1"
+  },
+  "quality_report": {
+    "duplicate_timestamps": 0,
+    "missing_intervals": [],
+    "monotonic": true,
+    "negative_supply_rows": 0,
+    "quality_warning_rows": 312
+  }
+}

@@ -8,6 +8,7 @@ import math
 import re
 import shutil
 import sys
+import time
 import zipfile
 from dataclasses import dataclass, asdict
 from datetime import UTC, datetime
@@ -72,35 +73,144 @@ def sha256(path: Path) -> str:
 
 
 def mendeley_download(work: Path) -> Path:
-    """Download current V4 replication zip through Mendeley public API."""
+    """Download the V4 replication ZIP with retries and resumable HTTP range requests.
+
+    A partially downloaded file is kept and reused. If the server supports Range,
+    the next attempt resumes from the current byte offset. If it does not, the
+    attempt safely restarts from byte 0 instead of treating the partial ZIP as
+    complete.
+    """
     work.mkdir(parents=True, exist_ok=True)
     metadata_url = f"https://data.mendeley.com/public-api/datasets/{DATASET_ID}/files"
     params = {"folder_id": "root", "version": str(DATASET_VERSION)}
-    with httpx.Client(timeout=90.0, follow_redirects=True) as client:
+
+    with httpx.Client(timeout=60.0, follow_redirects=True) as client:
         r = client.get(metadata_url, params=params)
         r.raise_for_status()
         files = r.json()
-        if not isinstance(files, list) or not files:
-            raise RuntimeError("Mendeley public API returned no files")
-        preferred = None
-        for item in files:
-            name = str(item.get("name") or item.get("filename") or "")
-            if name == "terra-luna-run-replication.zip":
-                preferred = item
-                break
-        preferred = preferred or next((x for x in files if str(x.get("name", "")).lower().endswith(".zip")), files[0])
-        details = preferred.get("content_details") or {}
-        url = details.get("download_url") or preferred.get("download_url")
-        if not url:
-            raise RuntimeError("Mendeley file metadata has no download_url")
-        out = work / "terra-luna-run-replication.zip"
-        if not out.exists():
-            with client.stream("GET", url) as rr:
-                rr.raise_for_status()
-                with out.open("wb") as f:
-                    for chunk in rr.iter_bytes():
-                        f.write(chunk)
-        return out
+
+    if not isinstance(files, list) or not files:
+        raise RuntimeError("Mendeley public API returned no files")
+
+    preferred = None
+    for item in files:
+        name = str(item.get("name") or item.get("filename") or "")
+        if name == "terra-luna-run-replication.zip":
+            preferred = item
+            break
+    preferred = preferred or next((x for x in files if str(x.get("name", "")).lower().endswith(".zip")), files[0])
+
+    details = preferred.get("content_details") or {}
+    url = details.get("download_url") or preferred.get("download_url")
+    if not url:
+        raise RuntimeError("Mendeley file metadata has no download_url")
+
+    expected_size_raw = (
+        preferred.get("size")
+        or preferred.get("file_size")
+        or details.get("size")
+        or details.get("file_size")
+    )
+    try:
+        expected_size = int(expected_size_raw) if expected_size_raw not in (None, "") else None
+    except (TypeError, ValueError):
+        expected_size = None
+
+    out = work / "terra-luna-run-replication.zip"
+    max_attempts = 10
+
+    for attempt in range(1, max_attempts + 1):
+        current_size = out.stat().st_size if out.exists() else 0
+        if expected_size is not None and current_size == expected_size:
+            print(f"DOWNLOAD complete: {current_size:,} bytes", flush=True)
+            return out
+        if expected_size is not None and current_size > expected_size:
+            print("Existing ZIP is larger than expected; restarting download.", flush=True)
+            out.unlink(missing_ok=True)
+            current_size = 0
+
+        headers = {}
+        if current_size > 0:
+            headers["Range"] = f"bytes={current_size}-"
+
+        print(
+            f"DOWNLOAD attempt {attempt}/{max_attempts}: "
+            f"starting at {current_size:,} bytes"
+            + (f" of {expected_size:,}" if expected_size else ""),
+            flush=True,
+        )
+
+        try:
+            timeout = httpx.Timeout(connect=30.0, read=120.0, write=30.0, pool=30.0)
+            with httpx.Client(timeout=timeout, follow_redirects=True) as client:
+                with client.stream("GET", url, headers=headers) as rr:
+                    rr.raise_for_status()
+                    resumed = current_size > 0 and rr.status_code == 206
+                    if current_size > 0 and not resumed:
+                        # Server ignored Range. Start clean instead of appending a full response.
+                        print("Server did not honor Range; restarting this attempt from byte 0.", flush=True)
+                        current_size = 0
+                    mode = "ab" if resumed else "wb"
+
+                    response_total = None
+                    content_range = rr.headers.get("content-range", "")
+                    if "/" in content_range:
+                        tail = content_range.rsplit("/", 1)[-1]
+                        if tail.isdigit():
+                            response_total = int(tail)
+                    if response_total is None and rr.headers.get("content-length", "").isdigit():
+                        length = int(rr.headers["content-length"])
+                        response_total = current_size + length if resumed else length
+                    if expected_size is None and response_total:
+                        expected_size = response_total
+
+                    downloaded_this_attempt = 0
+                    last_report = current_size
+                    with out.open(mode) as f:
+                        for chunk in rr.iter_bytes(chunk_size=1024 * 1024):
+                            if not chunk:
+                                continue
+                            f.write(chunk)
+                            downloaded_this_attempt += len(chunk)
+                            total_now = current_size + downloaded_this_attempt
+                            if total_now - last_report >= 5 * 1024 * 1024:
+                                pct = (100 * total_now / expected_size) if expected_size else None
+                                suffix = f" ({pct:.1f}%)" if pct is not None else ""
+                                print(f"  downloaded {total_now:,} bytes{suffix}", flush=True)
+                                last_report = total_now
+
+        except httpx.HTTPError as exc:
+            saved = out.stat().st_size if out.exists() else 0
+            print(
+                f"DOWNLOAD interrupted on attempt {attempt}: {exc}. "
+                f"Saved {saved:,} bytes; will retry/resume.",
+                flush=True,
+            )
+            if attempt == max_attempts:
+                raise RuntimeError(
+                    f"Mendeley download failed after {max_attempts} attempts; "
+                    f"partial file kept at {out} ({saved:,} bytes)."
+                ) from exc
+            time.sleep(min(2 * attempt, 15))
+            continue
+
+        final_size = out.stat().st_size if out.exists() else 0
+        if expected_size is None or final_size == expected_size:
+            # Verify it is actually a ZIP before returning.
+            if zipfile.is_zipfile(out):
+                print(f"DOWNLOAD complete: {final_size:,} bytes", flush=True)
+                return out
+            print("Downloaded file is not a valid ZIP yet; retrying.", flush=True)
+        else:
+            print(
+                f"DOWNLOAD incomplete: have {final_size:,} bytes, expected {expected_size:,}; retrying.",
+                flush=True,
+            )
+
+        if attempt < max_attempts:
+            time.sleep(min(2 * attempt, 15))
+
+    raise RuntimeError(f"Could not obtain a complete replication ZIP at {out}")
 
 
 def extract_zip(zip_path: Path, work: Path) -> Path:
@@ -175,6 +285,34 @@ def time_column(df: pd.DataFrame) -> str | None:
     return None
 
 
+def datetime_index_available(df: pd.DataFrame) -> bool:
+    """Return True when the DataFrame index is a real historical datetime axis."""
+    if isinstance(df.index, pd.DatetimeIndex):
+        return True
+    try:
+        parsed = pd.to_datetime(df.index, utc=True, errors="coerce")
+        # RangeIndex integers parse to 1970 nanoseconds; reject those explicitly.
+        if isinstance(df.index, pd.RangeIndex):
+            return False
+        return pd.Series(parsed).notna().mean() >= 0.8
+    except Exception:
+        return False
+
+
+def time_values(df: pd.DataFrame, time_col_name: str | None = None) -> tuple[pd.Series | pd.DatetimeIndex, str]:
+    tc = time_col_name or time_column(df)
+    if tc is not None:
+        return pd.to_datetime(df[tc], utc=True, errors="coerce"), tc
+    if datetime_index_available(df):
+        return pd.to_datetime(df.index, utc=True, errors="coerce"), "__index__"
+    raise RuntimeError("No valid historical timestamp column/index")
+
+
+def find_exact_file(root: Path, name: str) -> Path | None:
+    matches = list(root.rglob(name))
+    return matches[0] if matches else None
+
+
 def block_column(df: pd.DataFrame) -> str | None:
     for c in df.columns:
         n = norm(str(c))
@@ -222,16 +360,16 @@ def hourly_series(path: Path, value_col: str, agg: str = "last", time_col_name: 
     df = read_table(path)
     if df is None or df.empty:
         raise RuntimeError(f"Cannot read {path}")
-    tc = time_col_name or time_column(df)
-    if tc is None:
-        raise RuntimeError(f"No timestamp column in {path}")
-    ts = pd.to_datetime(df[tc], utc=True, errors="coerce")
+    ts, _ = time_values(df, time_col_name)
     values = pd.to_numeric(df[value_col], errors="coerce")
-    x = pd.DataFrame({"t": ts, "v": values}).dropna().set_index("t").sort_index()
+    x = pd.DataFrame({"t": list(ts), "v": values.to_numpy()}).dropna().set_index("t").sort_index()
     x = x[(x.index >= START - pd.Timedelta(days=2)) & (x.index <= END + pd.Timedelta(days=2))]
-    if agg == "sum": s = x["v"].resample("1h").sum(min_count=1)
-    elif agg == "mean": s = x["v"].resample("1h").mean()
-    else: s = x["v"].resample("1h").last()
+    if agg == "sum":
+        s = x["v"].resample("1h").sum(min_count=1)
+    elif agg == "mean":
+        s = x["v"].resample("1h").mean()
+    else:
+        s = x["v"].resample("1h").last()
     return s.reindex(GRID)
 
 
@@ -241,12 +379,14 @@ def select_direct_series(root: Path, field: str, file_kw: list[str], col_pattern
     for score, path, sample in candidates[:20]:
         vc = choose_value_col(sample, col_patterns, asset)
         tc = time_column(sample)
-        report[field].append({"score": score, "file": str(path.relative_to(root)), "value_col": vc, "time_col": tc, "columns": list(map(str, sample.columns))})
-        if vc and tc:
+        index_time = datetime_index_available(sample)
+        time_source = tc or ("__index__" if index_time else None)
+        report[field].append({"score": score, "file": str(path.relative_to(root)), "value_col": vc, "time_col": time_source, "columns": list(map(str, sample.columns))})
+        if vc and time_source:
             try:
                 s = hourly_series(path, vc, agg, tc)
                 if s.notna().sum() >= 3:
-                    evidence.append(Evidence(field, str(path.relative_to(root)), [tc, vc], f"hourly {agg}", True))
+                    evidence.append(Evidence(field, str(path.relative_to(root)), [time_source, vc], f"hourly {agg}", True))
                     return s
             except Exception:
                 continue
@@ -283,27 +423,83 @@ def event_flow(root: Path, field: str, file_kw: list[str], action_words: list[st
 
 
 def block_height_series(root: Path, evidence: list[Evidence], report: dict[str, Any]) -> pd.Series | None:
-    candidates = find_tables(root, ["terra", "block", "transaction", "anchor", "swap"], ["block", "height", "timestamp"])
+    """Build hourly Terra block height from the replication full-node state.
+
+    The package has a real ~9-hour observation gap on 13 May 2022 that aligns
+    with the documented Terra chain halt. Block height is a state variable:
+    while the chain is halted, the last produced height remains the current
+    height. Therefore we carry the last observed height through ONLY this
+    bounded halt interval instead of treating it as a statistical proxy.
+    """
+    path = find_exact_file(root, "Anchor_global_stats_fullnode.parquet")
     report["block_height"] = []
-    best = None
-    for score, path, sample in candidates[:30]:
-        tc = time_column(sample); bc = block_column(sample)
-        report["block_height"].append({"score": score, "file": str(path.relative_to(root)), "time_col": tc, "block_col": bc})
-        if not (tc and bc): continue
-        df = read_table(path)
-        if df is None: continue
-        ts = pd.to_datetime(df[tc], utc=True, errors="coerce")
-        bh = pd.to_numeric(df[bc], errors="coerce")
-        x = pd.DataFrame({"t": ts, "v": bh}).dropna().sort_values("t")
-        if len(x) < 10: continue
-        hourly = pd.merge_asof(pd.DataFrame({"t": GRID}), x, on="t", direction="backward", tolerance=pd.Timedelta(hours=6)).set_index("t")["v"]
-        if hourly.notna().sum() > (best.notna().sum() if best is not None else 0):
-            best = hourly
-            evidence_file = path
-            ev_cols = [tc, bc]
-    if best is not None:
-        evidence.append(Evidence("block_height", str(evidence_file.relative_to(root)), ev_cols, "nearest block/event at or before each UTC hour", True))
-    return best
+    if path is None:
+        report["block_height"].append({"error": "Anchor_global_stats_fullnode.parquet not found"})
+        return None
+
+    df = read_table(path)
+    if df is None or df.empty or "height" not in df.columns or not datetime_index_available(df):
+        report["block_height"].append({
+            "file": str(path.relative_to(root)),
+            "error": "height column or DatetimeIndex unavailable",
+        })
+        return None
+
+    idx = pd.DatetimeIndex(pd.to_datetime(df.index, utc=True, errors="coerce"))
+    try:
+        idx = idx.as_unit("ns")
+    except AttributeError:
+        pass
+
+    height = pd.to_numeric(df["height"], errors="coerce")
+    x = pd.DataFrame({"t": idx, "v": height.to_numpy()}).dropna().sort_values("t")
+    x = x[(x["t"] >= START - pd.Timedelta(hours=24)) & (x["t"] <= END + pd.Timedelta(hours=24))]
+    if len(x) < 10:
+        report["block_height"].append({"file": str(path.relative_to(root)), "error": "insufficient rows"})
+        return None
+
+    hourly = x.set_index("t")["v"].resample("1h").last().reindex(GRID)
+    missing_before = hourly[hourly.isna()].index
+
+    # Replication source gap corresponding to the historical ~9h chain halt.
+    halt_start = pd.Timestamp("2022-05-13T02:00:00Z")
+    halt_end = pd.Timestamp("2022-05-13T10:00:00Z")
+    allowed_halt_hours = set(pd.date_range(halt_start, halt_end, freq="1h", tz="UTC"))
+    missing_set = set(missing_before)
+
+    if missing_set and not missing_set.issubset(allowed_halt_hours):
+        report["block_height"].append({
+            "file": str(path.relative_to(root)),
+            "missing_hours": [t.isoformat() for t in missing_before],
+            "error": "missing hours occur outside the documented halt interval",
+        })
+        return None
+
+    if missing_set:
+        hourly = hourly.ffill()
+
+    if hourly.isna().any():
+        return None
+
+    report["block_height"].append({
+        "file": str(path.relative_to(root)),
+        "time_col": "__index__",
+        "block_col": "height",
+        "rows_in_window_plus_24h": int(len(x)),
+        "missing_hours_before_halt_carry_forward": [t.isoformat() for t in missing_before],
+        "halt_interval_used": [halt_start.isoformat(), halt_end.isoformat()],
+        "method": "hourly last observed height; carry last height through documented chain halt only",
+    })
+
+    evidence.append(Evidence(
+        "block_height",
+        str(path.relative_to(root)),
+        ["__index__", "height"],
+        "hourly last observed Terra height; carry-forward only during the documented 13-May chain halt",
+        True,
+        "Historical state carry-forward during a no-block interval; not statistical interpolation.",
+    ))
+    return hourly
 
 
 def concentration_series(root: Path, field: str, top_n: int, evidence: list[Evidence], report: dict[str, Any]) -> pd.Series | None:
@@ -337,6 +533,359 @@ def concentration_series(root: Path, field: str, top_n: int, evidence: list[Evid
     return None
 
 
+
+def ust_supply_from_fullnode(root: Path, evidence: list[Evidence], report: dict[str, Any]) -> pd.Series | None:
+    """Reconstruct UST supply from the Columbus-5 full-node supply breakdown.
+
+    The source uses Terra native denom `uusd`, i.e. micro-UST. Summing balances
+    across addresses/modules for each daily snapshot and dividing by 1e6 yields
+    UST units. Daily state is carried forward within the same/next day to the
+    hourly research grid.
+    """
+    path = find_exact_file(root, "columbus-5-lunaust-supply-breakdown-fullnode.parquet")
+    report.setdefault("ust_supply_exact", [])
+    if path is None:
+        report["ust_supply_exact"].append({"error": "source file not found"})
+        return None
+    df = read_table(path)
+    if df is None or df.empty:
+        return None
+    required = {"denom", "balance", "date"}
+    if not required.issubset(df.columns):
+        report["ust_supply_exact"].append({"file": str(path.relative_to(root)), "error": "missing denom/balance/date"})
+        return None
+
+    denom = df["denom"].astype(str).str.lower().str.strip()
+    # Terra Classic native UST micro-denom.
+    mask = denom.eq("uusd")
+    if not mask.any():
+        # Conservative fallback only if the package spells it explicitly as UST/USTC.
+        mask = denom.isin({"ust", "ustc"})
+    sub = df.loc[mask, ["date", "balance", "denom"]].copy()
+    sub["date"] = pd.to_datetime(sub["date"], utc=True, errors="coerce").dt.floor("D")
+    sub["balance"] = pd.to_numeric(sub["balance"], errors="coerce")
+    sub = sub.dropna(subset=["date", "balance"])
+    if sub.empty:
+        return None
+
+    daily = sub.groupby("date", observed=True)["balance"].sum().sort_index()
+    micro = sub["denom"].astype(str).str.lower().eq("uusd").all()
+    if micro:
+        daily = daily / 1_000_000.0
+
+    # Daily snapshots are state variables, not flows.
+    hourly = daily.reindex(daily.index.union(GRID)).sort_index().ffill().reindex(GRID)
+    report["ust_supply_exact"].append({
+        "file": str(path.relative_to(root)),
+        "denom": "uusd" if micro else "UST/USTC",
+        "daily_points": int(daily.notna().sum()),
+        "window_min": str(daily.index.min()),
+        "window_max": str(daily.index.max()),
+        "method": "sum address/module balances by date; micro-denom conversion; forward-fill daily state to hourly grid",
+    })
+    if hourly.notna().sum() == len(GRID):
+        evidence.append(Evidence(
+            "ust_supply",
+            str(path.relative_to(root)),
+            ["date", "denom", "balance"],
+            "sum Columbus-5 uusd balances by daily snapshot; divide microUST by 1e6; forward-fill state within day",
+            True,
+            "Protocol-native denom conversion; no market-price inference.",
+        ))
+        return hourly
+    return None
+
+
+def anchor_total_deposits_from_protocol_state(root: Path, evidence: list[Evidence], report: dict[str, Any]) -> pd.Series | None:
+    """Build hourly Anchor deposits from aTerra supply × exchange rate.
+
+    Scale is validated using only PRE-CUTOFF daily `deposit balance` observations,
+    so the unit-normalization step does not use evaluation-period outcomes.
+    """
+    global_path = find_exact_file(root, "Anchor_global_stats_fullnode.parquet")
+    daily_path = find_exact_file(root, "Anchor_daily_stats.parquet")
+    report.setdefault("anchor_total_deposits_exact", [])
+    if global_path is None or daily_path is None:
+        report["anchor_total_deposits_exact"].append({"error": "required Anchor source file missing"})
+        return None
+
+    g = read_table(global_path)
+    d = read_table(daily_path)
+    if g is None or d is None:
+        return None
+    if not {"prev_aterra_supply", "prev_exchange_rate"}.issubset(g.columns) or "deposit balance" not in d.columns:
+        return None
+    if not datetime_index_available(g) or not datetime_index_available(d):
+        return None
+
+    g_ts = pd.to_datetime(g.index, utc=True, errors="coerce")
+    a_supply = pd.to_numeric(g["prev_aterra_supply"], errors="coerce")
+    exch = pd.to_numeric(g["prev_exchange_rate"], errors="coerce")
+    gx = pd.DataFrame({"t": g_ts, "raw": a_supply.to_numpy() * exch.to_numpy()}).dropna().set_index("t").sort_index()
+    gx = gx[(gx.index >= START - pd.Timedelta(days=2)) & (gx.index <= END + pd.Timedelta(days=1))]
+    raw_hourly = gx["raw"].resample("1h").last().reindex(GRID)
+
+    d_ts = pd.to_datetime(d.index, utc=True, errors="coerce").floor("D")
+    direct = pd.Series(pd.to_numeric(d["deposit balance"], errors="coerce").to_numpy(), index=d_ts).dropna().sort_index()
+    direct = direct[~direct.index.duplicated(keep="last")]
+
+    # Cross-check scale using PRE-CUTOFF dates only.
+    raw_daily = gx["raw"].resample("1D").last()
+    cutoff_day = pd.Timestamp("2022-05-06T00:00:00Z")
+    joined = pd.concat(
+        [direct.rename("direct"), raw_daily.rename("raw")],
+        axis=1,
+        join="inner",
+    ).dropna()
+    joined = joined[(joined.index >= START.floor("D")) & (joined.index <= cutoff_day)]
+    joined = joined[(joined["direct"] > 0) & (joined["raw"] > 0)]
+    if len(joined) < 3:
+        report["anchor_total_deposits_exact"].append({"error": "insufficient pre-cutoff overlap for unit validation"})
+        return None
+
+    ratio = (joined["direct"] / joined["raw"]).median()
+    # Unit conversions should be powers of ten in this protocol export.
+    candidates = [10.0 ** p for p in range(-12, 13, 3)]
+    scale = min(candidates, key=lambda x: abs(math.log10(max(ratio, 1e-30)) - math.log10(x)))
+    predicted = joined["raw"] * scale
+    rel_error = ((predicted - joined["direct"]).abs() / joined["direct"]).median()
+
+    report["anchor_total_deposits_exact"].append({
+        "global_file": str(global_path.relative_to(root)),
+        "daily_validation_file": str(daily_path.relative_to(root)),
+        "derived_from": "prev_aterra_supply * prev_exchange_rate",
+        "pre_cutoff_overlap_days": int(len(joined)),
+        "median_raw_to_direct_ratio": float(ratio),
+        "chosen_power_of_ten_scale": float(scale),
+        "median_relative_error_pre_cutoff": float(rel_error),
+    })
+
+    # Reject the derivation if protocol-state arithmetic does not reproduce the
+    # independently supplied daily deposit-balance series closely enough.
+    if not math.isfinite(float(rel_error)) or float(rel_error) > 0.05:
+        return None
+
+    hourly = raw_hourly * scale
+    missing_before = hourly[hourly.isna()].index
+
+    halt_start = pd.Timestamp("2022-05-13T02:00:00Z")
+    halt_end = pd.Timestamp("2022-05-13T10:00:00Z")
+    allowed_halt_hours = set(pd.date_range(halt_start, halt_end, freq="1h", tz="UTC"))
+    missing_set = set(missing_before)
+
+    if missing_set and not missing_set.issubset(allowed_halt_hours):
+        report["anchor_total_deposits_exact"].append({
+            "error": "hourly protocol-state gaps occur outside the documented chain halt",
+            "missing_hours": [t.isoformat() for t in missing_before],
+        })
+        return None
+
+    # During the halt no new on-chain state can be committed, so the last
+    # observed protocol state remains current until block production resumes.
+    if missing_set:
+        hourly = hourly.ffill()
+
+    if hourly.notna().sum() != len(GRID):
+        return None
+
+    report["anchor_total_deposits_exact"].append({
+        "halt_state_carry_forward_hours": [t.isoformat() for t in missing_before],
+        "halt_interval_used": [halt_start.isoformat(), halt_end.isoformat()],
+        "method_note": "carry forward the last committed Anchor protocol state only during the documented chain halt",
+    })
+
+    evidence.append(Evidence(
+        "anchor_total_deposits",
+        str(global_path.relative_to(root)),
+        ["__index__", "prev_aterra_supply", "prev_exchange_rate"],
+        "hourly protocol state: prev_aterra_supply × prev_exchange_rate × 1e-6; unit scale validated pre-cutoff against Anchor_daily_stats deposit balance; state carried through chain halt",
+        True,
+        f"scale={scale:g}; pre-cutoff median relative validation error={float(rel_error):.4%}; no post-cutoff calibration.",
+    ))
+    return hourly
+
+
+def dex_execution_capacity_proxies(
+    root: Path,
+    redemption_flow: pd.Series | None,
+    evidence: list[Evidence],
+    report: dict[str, Any],
+) -> tuple[pd.Series | None, pd.Series | None]:
+    """Create explicitly labelled pre-cutoff execution-capacity proxies.
+
+    Priority:
+    1) Historical native UST redemption turnover at/before T0, if positive.
+    2) Otherwise, pre-cutoff CoinGecko UST 24h market volume from
+       `ustc-usd-max.csv`, converted to an hourly-equivalent turnover scale.
+
+    Neither result is an observed Terra DEX reserve or true order-book depth.
+    The dataset MUST remain QUALITY_WARNING when these proxies are used.
+    """
+    cutoff_hour = pd.Timestamp("2022-05-06T23:00:00Z")
+    report.setdefault("dex_proxy", [])
+
+    # ---- Tier 1: native redemption turnover, strictly pre-cutoff ----
+    if redemption_flow is not None:
+        pre = (
+            pd.to_numeric(
+                redemption_flow.loc[redemption_flow.index <= cutoff_hour],
+                errors="coerce",
+            )
+            .dropna()
+            .clip(lower=0)
+        )
+        if len(pre) >= 24:
+            rolling_24h = pre.rolling(24, min_periods=12).sum().dropna()
+            liquidity = float(rolling_24h.median()) if len(rolling_24h) else 0.0
+            depth = float(pre.quantile(0.25)) if len(pre) else 0.0
+            if math.isfinite(liquidity) and liquidity > 0 and math.isfinite(depth) and depth > 0:
+                liq_series = pd.Series(liquidity, index=GRID, dtype=float)
+                depth_series = pd.Series(depth, index=GRID, dtype=float)
+                note = (
+                    "MODEL-INPUT PROXY ONLY; not observed Terra DEX TVL/depth. "
+                    "Calibrated exclusively with t<=2022-05-06 23:00 UTC native UST redemption turnover."
+                )
+                report["dex_proxy"].append({
+                    "tier": 1,
+                    "source": "ust_native_redemption_volume",
+                    "pre_cutoff_points": int(len(pre)),
+                    "liquidity_proxy": liquidity,
+                    "depth_proxy": depth,
+                    "method": "median trailing-24h redemption turnover; q25 hourly redemption turnover",
+                })
+                evidence.append(Evidence(
+                    "terra_dex_liquidity",
+                    "derived pre-cutoff execution-capacity proxy",
+                    ["ust_native_redemption_volume"],
+                    "median trailing-24h pre-cutoff native UST redemption turnover, held fixed through replay",
+                    False,
+                    note,
+                ))
+                evidence.append(Evidence(
+                    "terra_dex_depth",
+                    "derived pre-cutoff conservative execution-capacity proxy",
+                    ["ust_native_redemption_volume"],
+                    "25th percentile hourly pre-cutoff native UST redemption turnover, held fixed through replay",
+                    False,
+                    note,
+                ))
+                return liq_series, depth_series
+
+        report["dex_proxy"].append({
+            "tier": 1,
+            "source": "ust_native_redemption_volume",
+            "result": "unusable",
+            "reason": "pre-cutoff turnover is absent or non-positive",
+            "pre_cutoff_points": int(len(pre)) if redemption_flow is not None else 0,
+            "positive_points": int((pre > 0).sum()) if redemption_flow is not None and len(pre) else 0,
+        })
+
+    # ---- Tier 2: pre-cutoff market-wide UST turnover (CoinGecko) ----
+    path = find_exact_file(root, "ustc-usd-max.csv")
+    if path is None:
+        report["dex_proxy"].append({
+            "tier": 2,
+            "source": "ustc-usd-max.csv",
+            "result": "unusable",
+            "reason": "file not found",
+        })
+        return None, None
+
+    df = read_table(path)
+    if df is None or df.empty:
+        return None, None
+
+    time_col_name = next(
+        (c for c in ["snapped_at", "timestamp", "time", "date"] if c in df.columns),
+        None,
+    )
+    if time_col_name is None or "total_volume" not in df.columns:
+        report["dex_proxy"].append({
+            "tier": 2,
+            "source": str(path.relative_to(root)),
+            "result": "unusable",
+            "reason": "missing snapped_at/time or total_volume",
+            "columns": list(map(str, df.columns)),
+        })
+        return None, None
+
+    ts = pd.to_datetime(df[time_col_name], utc=True, errors="coerce")
+    vol = pd.to_numeric(df["total_volume"], errors="coerce")
+    x = pd.DataFrame({"t": ts, "total_volume": vol}).dropna()
+    x = x[(x["t"] >= START) & (x["t"] <= cutoff_hour)]
+    x = x[x["total_volume"] > 0]
+    if x.empty:
+        report["dex_proxy"].append({
+            "tier": 2,
+            "source": str(path.relative_to(root)),
+            "result": "unusable",
+            "reason": "no positive pre-cutoff market volume",
+        })
+        return None, None
+
+    # CoinGecko `total_volume` is a rolling 24h market-wide volume snapshot.
+    # Use one observation per UTC day to avoid overweighting intraday snapshots.
+    daily = x.set_index("t")["total_volume"].resample("1D").last().dropna()
+    daily = daily[daily > 0]
+    if len(daily) < 3:
+        report["dex_proxy"].append({
+            "tier": 2,
+            "source": str(path.relative_to(root)),
+            "result": "unusable",
+            "reason": "fewer than 3 positive pre-cutoff daily volume snapshots",
+            "days": int(len(daily)),
+        })
+        return None, None
+
+    hourly_equivalent = daily / 24.0
+    liquidity = float(hourly_equivalent.median())
+    depth = float(hourly_equivalent.quantile(0.25))
+
+    if not (math.isfinite(liquidity) and liquidity > 0 and math.isfinite(depth) and depth > 0):
+        return None, None
+
+    liq_series = pd.Series(liquidity, index=GRID, dtype=float)
+    depth_series = pd.Series(depth, index=GRID, dtype=float)
+
+    note = (
+        "MODEL-INPUT PROXY ONLY; NOT observed Terra DEX liquidity/depth. "
+        "Fallback uses pre-cutoff CoinGecko UST market-wide 24h volume. "
+        "Liquidity proxy = median daily 24h volume / 24; depth proxy = q25 daily 24h volume / 24. "
+        "Only observations through 2022-05-06 are used; values are held fixed through evaluation."
+    )
+    report["dex_proxy"].append({
+        "tier": 2,
+        "source": str(path.relative_to(root)),
+        "time_column": time_col_name,
+        "volume_column": "total_volume",
+        "pre_cutoff_days": int(len(daily)),
+        "daily_volume_min": float(daily.min()),
+        "daily_volume_median": float(daily.median()),
+        "daily_volume_max": float(daily.max()),
+        "liquidity_proxy_hourly_equivalent": liquidity,
+        "depth_proxy_hourly_equivalent_q25": depth,
+        "result": "used",
+    })
+
+    evidence.append(Evidence(
+        "terra_dex_liquidity",
+        str(path.relative_to(root)),
+        [time_col_name, "total_volume"],
+        "PRE-CUTOFF MARKET-CAPACITY PROXY: median CoinGecko UST 24h total_volume / 24, held fixed through replay",
+        False,
+        note,
+    ))
+    evidence.append(Evidence(
+        "terra_dex_depth",
+        str(path.relative_to(root)),
+        [time_col_name, "total_volume"],
+        "PRE-CUTOFF CONSERVATIVE CAPACITY PROXY: q25 CoinGecko UST 24h total_volume / 24, held fixed through replay",
+        False,
+        note,
+    ))
+    return liq_series, depth_series
+
+
 def direct_or_marketcap_supply(root: Path, asset: str, price: pd.Series | None, evidence: list[Evidence], report: dict[str, Any]) -> pd.Series | None:
     field = f"{asset}_supply"
     direct = select_direct_series(root, field, [asset, "supply", "coingecko", "market"], [f"{asset}_supply", "circulating_supply", "total_supply", "supply"], asset, "last", evidence, report)
@@ -359,10 +908,25 @@ def build(root: Path, allow_proxy: bool, report: dict[str, Any]) -> tuple[pd.Dat
     out["block_height"] = block_height_series(root, evidence, report)
     out["ust_price"] = select_direct_series(root, "ust_price", ["ust", "price", "coingecko", "market"], ["ust_price", "price", "usd"], "ust", "last", evidence, report)
     out["luna_price"] = select_direct_series(root, "luna_price", ["luna", "price", "coingecko", "market"], ["luna_price", "price", "usd"], "luna", "last", evidence, report)
-    out["ust_supply"] = direct_or_marketcap_supply(root, "ust", out["ust_price"], evidence, report)
+    _ust_supply = ust_supply_from_fullnode(root, evidence, report)
+    if _ust_supply is None:
+        _ust_supply = direct_or_marketcap_supply(root, "ust", out["ust_price"], evidence, report)
+    out["ust_supply"] = _ust_supply
     out["luna_supply"] = direct_or_marketcap_supply(root, "luna", out["luna_price"], evidence, report)
 
-    out["anchor_total_deposits"] = select_direct_series(root, "anchor_total_deposits", ["anchor", "deposit", "balance"], ["anchor_total_deposits", "total_ust_deposits", "deposit_balance", "outstanding_deposit", "deposits"], None, "last", evidence, report)
+    _anchor_total_deposits = anchor_total_deposits_from_protocol_state(root, evidence, report)
+    if _anchor_total_deposits is None:
+        _anchor_total_deposits = select_direct_series(
+            root,
+            "anchor_total_deposits",
+            ["anchor", "deposit", "balance"],
+            ["anchor_total_deposits", "total_ust_deposits", "deposit_balance", "outstanding_deposit", "deposits"],
+            None,
+            "last",
+            evidence,
+            report,
+        )
+    out["anchor_total_deposits"] = _anchor_total_deposits
     out["anchor_deposit_flow"] = event_flow(root, "anchor_deposit_flow", ["anchor", "deposit", "transaction", "flow"], ["deposit", "mint"], ["amount", "ust", "value"], evidence, report)
     out["anchor_withdrawal_flow"] = event_flow(root, "anchor_withdrawal_flow", ["anchor", "withdraw", "redeem", "transaction", "flow"], ["withdraw", "redeem"], ["amount", "ust", "value"], evidence, report)
 
@@ -373,6 +937,12 @@ def build(root: Path, allow_proxy: bool, report: dict[str, Any]) -> tuple[pd.Dat
     out["ust_dex_sell_volume"] = event_flow(root, "ust_dex_sell_volume", ["curve", "terraswap", "astroport", "dex", "swap", "ust"], ["sell", "swap", "ust"], ["ust_amount", "amount", "volume", "sold"], evidence, report)
     out["terra_dex_liquidity"] = select_direct_series(root, "terra_dex_liquidity", ["terraswap", "astroport", "dex", "pool", "liquidity"], ["liquidity", "tvl", "pool_balance", "reserve"], None, "last", evidence, report)
     out["terra_dex_depth"] = select_direct_series(root, "terra_dex_depth", ["terraswap", "astroport", "dex", "depth", "pool"], ["depth", "market_depth", "executable_depth"], None, "last", evidence, report)
+    if allow_proxy and (out["terra_dex_liquidity"].isna().all() or out["terra_dex_depth"].isna().all()):
+        proxy_liq, proxy_depth = dex_execution_capacity_proxies(root, out["ust_native_redemption_volume"], evidence, report)
+        if proxy_liq is not None and out["terra_dex_liquidity"].isna().all():
+            out["terra_dex_liquidity"] = proxy_liq
+        if proxy_depth is not None and out["terra_dex_depth"].isna().all():
+            out["terra_dex_depth"] = proxy_depth
 
     out["top10_anchor_share"] = concentration_series(root, "top10_anchor_share", 10, evidence, report)
     out["top100_anchor_share"] = concentration_series(root, "top100_anchor_share", 100, evidence, report)
@@ -387,19 +957,22 @@ def build(root: Path, allow_proxy: bool, report: dict[str, Any]) -> tuple[pd.Dat
     out["reserve_intervention_volume"] = event_flow(root, "reserve_intervention_volume", ["reserve", "lfg", "intervention", "defend"], ["intervention", "sell", "buy", "defend"], ["amount", "value", "ust"], evidence, report)
 
     missing = [c for c in REQUIRED[1:] if c not in out or out[c].isna().any()]
-    proxy_fields: list[str] = []
+    proxy_fields: list[str] = [
+        ev.field for ev in evidence
+        if not ev.exact and ev.field in {"terra_dex_liquidity", "terra_dex_depth"}
+    ]
 
     if allow_proxy:
         # Fill *only* mathematically explicit proxies and mark the entire dataset QUALITY_WARNING.
         # Never use 0 as an "unknown" filler.
         if "block_height" in missing and out["block_height"].notna().any():
             out["block_height"] = out["block_height"].interpolate(limit_direction="both").round()
-            proxy_fields.append("block_height")
+            proxy_fields.append("block_height") if "block_height" not in proxy_fields else None
         # State variables may be forward/backward filled between observed hourly snapshots.
         for c in ["ust_price", "luna_price", "ust_supply", "luna_supply", "anchor_total_deposits", "terra_dex_liquidity", "terra_dex_depth", "top10_anchor_share", "top100_anchor_share"]:
             if out[c].notna().any() and out[c].isna().any():
                 out[c] = out[c].ffill().bfill()
-                proxy_fields.append(c)
+                proxy_fields.append(c) if c not in proxy_fields else None
         # Flow variables may use zero only when source events are known and the series exists; absence of source remains NaN.
         flow_cols = ["anchor_deposit_flow", "anchor_withdrawal_flow", "ust_native_redemption_volume", "luna_minted_from_redemption", "luna_burned", "ust_dex_sell_volume"]
         for c in flow_cols:
@@ -458,7 +1031,7 @@ def write_outputs(df: pd.DataFrame, evidence: list[Evidence], missing: list[str]
     final["timestamp"] = final["timestamp"].dt.strftime("%Y-%m-%dT%H:%M:%SZ")
     final["block_height"] = pd.to_numeric(final["block_height"], errors="raise").round().astype("int64")
     final["source_name"] = "Liu-Makarov-Schoar Terra/LUNA replication package"
-    final["source_type"] = "REPLICATION_ONCHAIN"
+    final["source_type"] = "REPLICATION_ONCHAIN_WITH_PRECRISIS_PROXIES" if proxy_fields else "REPLICATION_ONCHAIN"
     final["chain_id"] = "columbus-5"
     final["raw_reference"] = f"doi:{DOI}"
     final["quality_flag"] = status
