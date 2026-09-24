@@ -125,6 +125,7 @@ export type TerraExtendedObservation = {
 
 export type TerraHistoricalFit = {
   label: string;
+  model_family: string;
   objective: { formula: string; value: number; component_losses: Record<string, number> };
   parameters: Record<string, number>;
   bounds: Record<string, [number, number]>;
@@ -137,6 +138,7 @@ export type TerraHistoricalFit = {
   actual_timeseries: Array<Record<string, number | string>>;
   simulated_timeseries: Array<Record<string, number | string>>;
   input_policy: Record<string, string | string[]>;
+  evaluation_windows: Record<string, { start: string | null; end: string | null; rows: number; mask_rule: string }>;
 };
 
 export type TerraEarlyWarning = {
@@ -145,7 +147,12 @@ export type TerraEarlyWarning = {
   weights: Record<string, number>;
   event_markers: Record<string, string | null>;
   lead_times: Record<string, Record<string, { lead_time_hours: number | null; wording: string }>>;
-  leakage_audit: { status: string; checked_timestamps: number; violations: number };
+  leakage_audit: {
+    status: string;
+    checked_timestamps: number;
+    violations: number;
+    future_perturbation: { status: string; cutoffs_tested: number; violations: number };
+  };
   timeline: Array<{
     timestamp: string;
     risk_score: number;
@@ -158,14 +165,28 @@ export type TerraEarlyWarning = {
 };
 
 export type TerraStressResult = {
+  initial_state_timestamp: string;
+  initial_state_source: string;
+  initial_state: Record<string, number | string | null>;
+  preset_definitions: Record<string, Record<string, number>>;
+  frozen_parameter_mapping: Record<string, unknown>;
+  counterfactual_conversion: {
+    name: string;
+    claim_boundary: string;
+    formula: string;
+    validation_metrics: Record<string, number>;
+  };
   scenario: Record<string, number>;
   runs: number;
   summary: {
     collapse_count: number;
     noncollapse_count: number;
+    probability_estimate: false;
     wording: string;
     minimum_ust: Record<string, number>;
+    minimum_luna: Record<string, number>;
     final_luna_supply: Record<string, number>;
+    max_withdrawal_stress: Record<string, number>;
   };
   fan_chart: Array<{
     hour: number;
@@ -181,6 +202,13 @@ export type TerraMechanismCheck = {
   gross_mint_identity: string;
   old_offchain_approximation: Record<string, number>;
   direct_event_output_gross_mint: Record<string, number>;
+  validation_window: {
+    start: string;
+    end: string;
+    aligned_hours: number;
+    supply_delta_definition: string;
+    event_aggregation: string;
+  };
   interpretation: string;
   limitations: string[];
 };
