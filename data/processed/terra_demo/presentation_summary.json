@@ -164,47 +164,53 @@
       "0.9": {
         "actual": "2022-05-09T22:00:00Z",
         "error_hours": -48.0,
+        "interpretation": "EARLY",
         "simulated": "2022-05-07T22:00:00Z"
       },
       "0.95": {
         "actual": "2022-05-09T19:00:00Z",
         "error_hours": -62.0,
+        "interpretation": "EARLY",
         "simulated": "2022-05-07T05:00:00Z"
       },
       "0.99": {
         "actual": "2022-05-07T23:00:00Z",
         "error_hours": -44.0,
+        "interpretation": "EARLY",
         "simulated": "2022-05-06T03:00:00Z"
       },
       "0.995": {
         "actual": "2022-05-07T22:00:00Z",
         "error_hours": -45.0,
+        "interpretation": "EARLY",
         "simulated": "2022-05-06T01:00:00Z"
       }
     },
     "luna_price": {
-      "correlation": 0.9918013664201399,
-      "log_rmse": 0.6778927901465109,
-      "mae": 4.718354329088086,
-      "rmse": 6.170014726766989
+      "correlation": 0.991805236578033,
+      "log_rmse": 0.6782972671682378,
+      "mae": 4.717582793610542,
+      "rmse": 6.1698347442526424
     },
     "luna_supply": {
-      "correlation": 0.9999987381541114,
-      "final_relative_error": 0.006476045570644189,
-      "mae": 0.0043788958970726695,
-      "rmse": 0.005246953611802079
+      "correlation": 0.9999990253374204,
+      "evaluation_rows": 168,
+      "final_relative_error": 0.006476487921914013,
+      "mae": 0.004057702750445834,
+      "rmse": 0.005850589434881359
     },
     "ust_price": {
-      "correlation": 0.7601387144195368,
-      "mae": 0.0955453079084817,
-      "rmse": 0.17784807550674878
+      "correlation": 0.7601147855635195,
+      "mae": 0.09554821294532038,
+      "rmse": 0.1778469471274617
     }
   },
   "limitations": [
-    "Historical Fit is reconstruction, not forecasting.",
+    "Historical Fit is a calibrated feedback reconstruction conditioned on observed historical flows where available; it is neither a pure ABM nor forecasting.",
     "Retrospective Early Warning uses weights developed with knowledge of the event.",
     "DEX depth and LFG peg-defense are scenario assumptions, not observed historical channels.",
-    "March-April market prices include lower-frequency carried state."
+    "March-April market prices include lower-frequency carried state.",
+    "Counterfactual UST-to-LUNA conversion is calibrated from historical swaps but is not an audited future accounting identity."
   ],
   "mechanism_summary": {
     "analysis_type": "PROTOCOL_MECHANISM_VALIDATION",
@@ -218,7 +224,8 @@
     "interpretation": "Direct event outputs strongly support the gross-mint accounting identity. Correlation with net supply change is mechanism validation, not proof that minting alone caused market prices.",
     "limitations": [
       "The extract omits transaction hash, trader, denoms, and action fields.",
-      "Gross issuance and observed net supply change are distinct accounting concepts."
+      "Gross issuance and observed net supply change are distinct accounting concepts.",
+      "Results from different historical windows are not directly comparable without matching the evaluation window."
     ],
     "old_offchain_approximation": {
       "final_cumulative_relative_error": 0.5508629434941491,
@@ -228,27 +235,131 @@
     },
     "raw_swap_rows": 277342,
     "source_file": "data/processed/terra_extended/terra_native_swaps.parquet",
-    "source_sha256": "e1e01ed390eb82356141e924c99d7af8bd0549534defb40dd172d797a0a485a1"
+    "source_sha256": "e1e01ed390eb82356141e924c99d7af8bd0549534defb40dd172d797a0a485a1",
+    "validation_window": {
+      "aligned_hours": 168,
+      "end": "2022-05-13T23:00:00Z",
+      "event_aggregation": "hourly",
+      "start": "2022-05-07T00:00:00Z",
+      "supply_delta_definition": "hourly observed LUNA supply first difference within the aligned window; the first aligned hour has zero within-window delta"
+    }
+  },
+  "source_availability": {
+    "anchor_event_hours": 192,
+    "holder_concentration_hours": 1608,
+    "luna_supply_hours": 312,
+    "native_issuance_hours": 168
+  },
+  "stress_preset_summaries": {
+    "adverse": {
+      "collapse_count": 0,
+      "final_luna_supply": {
+        "median": 754566420.5204246,
+        "p05": 754381286.6974486,
+        "p95": 754688006.4120212
+      },
+      "max_withdrawal_stress": {
+        "median": 20401999.597318545,
+        "p05": 19330802.59179313,
+        "p95": 21344816.49464726
+      },
+      "minimum_luna": {
+        "median": 73.2288657711376,
+        "p05": 73.20485412004525,
+        "p95": 73.26512793663254
+      },
+      "minimum_ust": {
+        "median": 0.9710652900152915,
+        "p05": 0.9710370111926897,
+        "p95": 0.9710956934103008
+      },
+      "noncollapse_count": 100,
+      "probability_estimate": false,
+      "wording": "0 of 100 simulated runs reached the collapse condition."
+    },
+    "baseline": {
+      "collapse_count": 0,
+      "final_luna_supply": {
+        "median": 748660741.4661114,
+        "p05": 748660741.4661114,
+        "p95": 748660741.4661114
+      },
+      "max_withdrawal_stress": {
+        "median": 9533083.928217933,
+        "p05": 9097728.361919655,
+        "p95": 9823713.161958704
+      },
+      "minimum_luna": {
+        "median": 77.1082660426341,
+        "p05": 77.1082660426341,
+        "p95": 77.1082660426341
+      },
+      "minimum_ust": {
+        "median": 0.9856514532360362,
+        "p05": 0.9856514532360362,
+        "p95": 0.9856514532360362
+      },
+      "noncollapse_count": 100,
+      "probability_estimate": false,
+      "wording": "0 of 100 simulated runs reached the collapse condition."
+    },
+    "severe": {
+      "collapse_count": 100,
+      "final_luna_supply": {
+        "median": 6.40127669979863e+16,
+        "p05": 6.188400673542171e+16,
+        "p95": 6.588333336935643e+16
+      },
+      "max_withdrawal_stress": {
+        "median": 427329227.3244764,
+        "p05": 390720899.19525975,
+        "p95": 457353334.0756644
+      },
+      "minimum_luna": {
+        "median": 1e-08,
+        "p05": 1e-08,
+        "p95": 1e-08
+      },
+      "minimum_ust": {
+        "median": 0.0050000000000000044,
+        "p05": 0.0050000000000000044,
+        "p95": 0.0050000000000000044
+      },
+      "noncollapse_count": 0,
+      "probability_estimate": false,
+      "wording": "100 of 100 simulated runs reached the collapse condition."
+    }
   },
   "stress_summary": {
     "collapse_count": 0,
     "final_luna_supply": {
-      "median": 750000000.0,
-      "p05": 750000000.0,
-      "p95": 750000000.0
+      "median": 748660741.4661114,
+      "p05": 748660741.4661114,
+      "p95": 748660741.4661114
+    },
+    "max_withdrawal_stress": {
+      "median": 9533083.928217933,
+      "p05": 9097728.361919655,
+      "p95": 9823713.161958704
+    },
+    "minimum_luna": {
+      "median": 77.1082660426341,
+      "p05": 77.1082660426341,
+      "p95": 77.1082660426341
     },
     "minimum_ust": {
-      "median": 0.9958760380874138,
-      "p05": 0.9948646028011687,
-      "p95": 0.9967834985682155
+      "median": 0.9856514532360362,
+      "p05": 0.9856514532360362,
+      "p95": 0.9856514532360362
     },
     "noncollapse_count": 100,
-    "wording": "0 of 100 simulated runs crossed the collapse condition; this is not a probability estimate."
+    "probability_estimate": false,
+    "wording": "0 of 100 simulated runs reached the collapse condition."
   },
   "three_layers": [
     {
-      "name": "Historical Fit",
-      "question": "Can the mechanism reconstruct the known crisis?"
+      "name": "Historical Fit \u2014 Calibrated Feedback Reconstruction",
+      "question": "Can a feedback model conditioned on available historical flows reconstruct the crisis?"
     },
     {
       "name": "Early Warning",

@@ -10,7 +10,8 @@
   "interpretation": "Direct event outputs strongly support the gross-mint accounting identity. Correlation with net supply change is mechanism validation, not proof that minting alone caused market prices.",
   "limitations": [
     "The extract omits transaction hash, trader, denoms, and action fields.",
-    "Gross issuance and observed net supply change are distinct accounting concepts."
+    "Gross issuance and observed net supply change are distinct accounting concepts.",
+    "Results from different historical windows are not directly comparable without matching the evaluation window."
   ],
   "old_offchain_approximation": {
     "final_cumulative_relative_error": 0.5508629434941491,
@@ -20,5 +21,12 @@
   },
   "raw_swap_rows": 277342,
   "source_file": "data/processed/terra_extended/terra_native_swaps.parquet",
-  "source_sha256": "e1e01ed390eb82356141e924c99d7af8bd0549534defb40dd172d797a0a485a1"
+  "source_sha256": "e1e01ed390eb82356141e924c99d7af8bd0549534defb40dd172d797a0a485a1",
+  "validation_window": {
+    "aligned_hours": 168,
+    "end": "2022-05-13T23:00:00Z",
+    "event_aggregation": "hourly",
+    "start": "2022-05-07T00:00:00Z",
+    "supply_delta_definition": "hourly observed LUNA supply first difference within the aligned window; the first aligned hour has zero within-window delta"
+  }
 }

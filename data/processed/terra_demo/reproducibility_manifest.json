@@ -1,6 +1,6 @@
 {
-  "artifact_bundle_commit": null,
-  "artifact_bundle_commit_resolution": "Resolve after committing with: git log -1 --format=%H -- data/processed/terra_demo/reproducibility_manifest.json",
+  "artifact_bundle_commit": "e71c5e2e0850d4ca94066c6a5909da7b65b84907",
+  "artifact_bundle_commit_note": "Commit whose tree first contains this generated artifact bundle. A later metadata-only manifest correction may record that commit without changing model logic, parameters, metrics, or artifacts.",
   "frozen_artifacts_policy": "Existing V1/V2/V4 artifacts are read-only and were not overwritten.",
   "inputs": {
     "data/processed/terra_extended/terra_native_swaps.parquet": "e1e01ed390eb82356141e924c99d7af8bd0549534defb40dd172d797a0a485a1",
@@ -8,11 +8,11 @@
   },
   "mode": "RESEARCH_100_RUNS",
   "outputs": {
-    "early_warning_timeline.json": "37decc14bb97bd750e5491d0a54e850375b6f53098f98bb03453ad286e0a4d1c",
-    "historical_fit.json": "1dde090f3807e36545548410c1818a914e75ad4f95330cb5ef4225f03d2f8334",
-    "mechanism_check.json": "74f7e1bfc43b55782069b68933cf5851eb3958b639cf62ce32c2260df9e39152",
-    "presentation_summary.json": "fdb37879a08d4981ea24e21b22294cd0778d6d142f732659632453d50447bbf3",
-    "stress_test.json": "6be840d117d5a192c274eda9ff5fbed7e61f65ea9da6a22b3c2589b8d4b20299"
+    "early_warning_timeline.json": "1e6e886739cfd545fd81400b9366fee38cd19239c419406bc1a3ef04c9996def",
+    "historical_fit.json": "6c149a1766a705b6d9573b8ec63413977fe147b626e755f49b1ebba1ccf3b32b",
+    "mechanism_check.json": "7b1a033cdceccd8264a6160fac6610a94c3b50f33a4fedb514f843c0058bead4",
+    "presentation_summary.json": "781cc6022d4a41a6680374e661305b67f5e4f7a9bc1583a3bf0ebc8cdc098e7c",
+    "stress_test.json": "e6d23ba23eff26e72feca4473c83d9fe37d7f6569c085d4731c9d7f9a793de64"
   },
   "packages": {
     "fastapi": "0.141.1",
@@ -24,5 +24,5 @@
   "platform": "Windows-11-10.0.26200-SP0",
   "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
   "reproduce_command": ".\\.venv\\Scripts\\python.exe scripts\\terra\\run_demo_pipeline.py --research",
-  "source_code_commit": "42eb0d5264bb8399331c0acce0f6e6282c23e5ca"
+  "source_code_commit": "e71c5e2e0850d4ca94066c6a5909da7b65b84907"
 }
