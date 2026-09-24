@@ -2298,14 +2298,14 @@
   {
     "file_path": "scripts/terra/complete_historical_data.py",
     "file_format": "py",
-    "row_count": 1419,
+    "row_count": 1420,
     "column_names": "[]",
     "index_type": "N/A",
     "timestamp_column": "",
     "start_timestamp": "",
     "end_timestamp": "",
     "estimated_frequency": "N/A",
-    "file_size_bytes": 72125,
+    "file_size_bytes": 72267,
     "candidate_use": "metadata/code/audit context",
     "source_provenance": "Repository source/documentation"
   },

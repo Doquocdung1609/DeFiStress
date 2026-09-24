@@ -1,6 +1,6 @@
 {
   "dataset_version": "terra_extended_20220301_20220513_v1",
-  "git_commit": "676f0cf6b307da4e03b8d884ba8764765a525fbc",
+  "git_commit": "59ec422e5aa7ea65fa9ced620538a51de9f315b1",
   "git_commit_meaning": "source-code commit used to build this artifact bundle",
   "replication_package": {
     "title": "Anatomy of a Run: The Terra Luna Crash replication package",

@@ -163,7 +163,7 @@ scripts/terra/_fetch_normalized.py,py,111.0,[],N/A,,,,N/A,4259,metadata/code/aud
 scripts/terra/_fetch_unavailable.py,py,37.0,[],N/A,,,,N/A,1706,metadata/code/audit context,Repository source/documentation
 scripts/terra/benchmark_abm.py,py,48.0,[],N/A,,,,N/A,1733,metadata/code/audit context,Repository source/documentation
 scripts/terra/build_hourly_dataset.py,py,41.0,[],N/A,,,,N/A,1532,metadata/code/audit context,Repository source/documentation
-scripts/terra/complete_historical_data.py,py,1419.0,[],N/A,,,,N/A,72125,metadata/code/audit context,Repository source/documentation
+scripts/terra/complete_historical_data.py,py,1420.0,[],N/A,,,,N/A,72267,metadata/code/audit context,Repository source/documentation
 scripts/terra/fetch_anchor_history.py,py,4.0,[],N/A,,,,N/A,152,"Anchor state, flow, concentration, or labels",Repository source/documentation
 scripts/terra/fetch_bridge_flows.py,py,8.0,[],N/A,,,,N/A,239,metadata/code/audit context,Repository source/documentation
 scripts/terra/fetch_curve_ethereum.py,py,8.0,[],N/A,,,,N/A,267,secondary Ethereum Curve trade channel,Repository source/documentation

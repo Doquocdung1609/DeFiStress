@@ -192,7 +192,7 @@ Raw files and the original ZIP were read only. Generated completion outputs are 
 | `scripts/terra/_fetch_unavailable.py` | py | 37 |  |  |  | metadata/code/audit context |
 | `scripts/terra/benchmark_abm.py` | py | 48 |  |  |  | metadata/code/audit context |
 | `scripts/terra/build_hourly_dataset.py` | py | 41 |  |  |  | metadata/code/audit context |
-| `scripts/terra/complete_historical_data.py` | py | 1419 |  |  |  | metadata/code/audit context |
+| `scripts/terra/complete_historical_data.py` | py | 1420 |  |  |  | metadata/code/audit context |
 | `scripts/terra/fetch_anchor_history.py` | py | 4 |  |  |  | Anchor state, flow, concentration, or labels |
 | `scripts/terra/fetch_bridge_flows.py` | py | 8 |  |  |  | metadata/code/audit context |
 | `scripts/terra/fetch_curve_ethereum.py` | py | 8 |  |  |  | secondary Ethereum Curve trade channel |
