@@ -209,6 +209,20 @@ def build_early_warning_from_frame(frame: pd.DataFrame, *, mode: str = "RETROSPE
             else "Leakage-safe monitoring score with fixed weights and availability normalization."
         ),
         "weights": weights,
+        "feature_policies": {
+            "anchor_deposit_stress": (
+                "clip(max(0, -pct_change(anchor_total_deposits, 24h)) / 0.10, 0, 1); "
+                "uses only t and t-24h"
+            ),
+            "holder_concentration": (
+                "mean(clip((top10_anchor_share-0.10)/0.15, 0, 1), "
+                "clip((top100_anchor_share-0.30)/0.30, 0, 1)); unavailable if either source is unavailable"
+            ),
+        },
+        "normalization_policy": (
+            "Fixed predeclared scales and trailing/expanding information only; no future-period min/max. "
+            "At each hour, unavailable features are excluded and active weights renormalized to one."
+        ),
         "risk_bands": {"normal": [0, 30], "watch": [30, 60], "high": [60, 80], "crisis": [80, 100]},
         "event_markers": markers,
         "lead_times": leads,

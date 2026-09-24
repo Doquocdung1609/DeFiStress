@@ -1,12 +1,17 @@
 from __future__ import annotations
 
+import hashlib
+import json
 import math
+import re
+import subprocess
 from dataclasses import replace
+from pathlib import Path
 
 import pandas as pd  # type: ignore[import-untyped]
 
 from sim.terra.demo_data import load_extended_frame
-from sim.terra.early_warning_v2 import build_early_warning
+from sim.terra.early_warning_v2 import build_early_warning, build_early_warning_from_frame
 from sim.terra.historical_fit import fit_historical, simulate_historical
 from sim.terra.mechanism_validation import validate_native_mint_mechanism
 from sim.terra.stress_test import STRESS_PRESETS, StressScenario, run_stress_test
@@ -98,6 +103,20 @@ def test_early_warning_is_hourly_availability_aware_and_leakage_safe() -> None:
     may7 = next(row for row in cutoff["timeline"] if row["timestamp"] == "2022-05-07T00:00:00Z")
     assert "holder_concentration" in may7["unavailable_features"]
     assert "holder_concentration" not in may7["components"]
+
+
+def test_early_warning_future_corruption_cannot_change_past_scores_or_features() -> None:
+    frame = load_extended_frame()
+    cutoff = pd.Timestamp("2022-05-06T12:00:00Z")
+    original = build_early_warning_from_frame(frame, mode="CUTOFF_SAFE")
+    corrupted = frame.copy()
+    future = corrupted["timestamp"] > cutoff
+    for offset, name in enumerate(corrupted.select_dtypes(include="number").columns, start=1):
+        corrupted.loc[future, name] = float(offset * 9_999_991)
+    changed = build_early_warning_from_frame(corrupted, mode="CUTOFF_SAFE")
+    original_prefix = [row for row in original["timeline"] if pd.Timestamp(row["timestamp"]) <= cutoff]
+    changed_prefix = [row for row in changed["timeline"] if pd.Timestamp(row["timestamp"]) <= cutoff]
+    assert original_prefix == changed_prefix
 
 
 def test_stress_reproducibility_scenario_effect_shape_and_wording() -> None:
@@ -203,3 +222,14 @@ def test_mechanism_check_uses_audited_direct_output() -> None:
         ),
         "event_aggregation": "hourly",
     }
+
+
+def test_demo_manifest_has_real_commits_and_matching_artifact_hashes() -> None:
+    output = Path("data/processed/terra_demo")
+    manifest = json.loads((output / "reproducibility_manifest.json").read_text(encoding="utf-8"))
+    for field in ("source_code_commit", "artifact_bundle_commit"):
+        value = manifest[field]
+        assert re.fullmatch(r"[0-9a-f]{40}", value)
+        subprocess.run(["git", "cat-file", "-e", f"{value}^{{commit}}"], check=True)
+    for name, expected in manifest["outputs"].items():
+        assert hashlib.sha256((output / name).read_bytes()).hexdigest() == expected
