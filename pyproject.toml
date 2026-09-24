@@ -45,6 +45,16 @@ testpaths = ["tests", "sim/tests"]
 [tool.ruff]
 line-length = 120
 target-version = "py312"
+exclude = [
+  "data/raw",
+  "diagnose_terra_v4_remaining*.py",
+  "terra_may2022_v1_pack",
+  "terra_pack_v2",
+  "terra_pack_v3",
+  "terra_pack_v4",
+  "terra_pack_v5",
+  "terra_pack_v6",
+]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B", "SIM"]
