@@ -445,9 +445,7 @@ def terra_demo_historical_data() -> dict[str, Any]:
 
 @router.post("/terra/historical-fit")
 def create_historical_fit() -> dict[str, Any]:
-    payload = fit_historical()
-    _write_demo_artifact("historical_fit.json", payload)
-    return payload
+    return fit_historical()
 
 
 @router.get("/terra/historical-fit/latest")
@@ -470,21 +468,17 @@ def terra_early_warning(mode: str = Query(default="RETROSPECTIVE")) -> dict[str,
 
 @router.post("/terra/early-warning/rebuild")
 def rebuild_terra_early_warning() -> dict[str, Any]:
-    payload = {
+    return {
         "retrospective": build_early_warning(mode="RETROSPECTIVE"),
         "cutoff_safe": build_early_warning(mode="CUTOFF_SAFE"),
     }
-    _write_demo_artifact("early_warning_timeline.json", payload)
-    return payload
 
 
 @router.post("/terra/stress-test")
 def create_terra_stress_test(request: TerraStressTestRequest) -> dict[str, Any]:
     values = request.model_dump(exclude={"runs", "seed"})
     scenario = StressScenario(**values)
-    payload = run_stress_test(scenario, runs=request.runs, seed=request.seed)
-    _write_demo_artifact("stress_test.json", payload)
-    return payload
+    return run_stress_test(scenario, runs=request.runs, seed=request.seed)
 
 
 @router.get("/terra/stress-test/latest")
