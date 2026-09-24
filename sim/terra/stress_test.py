@@ -243,7 +243,7 @@ def _run(
         dilution = math.log(max(luna_supply, 1.0) / max(previous_luna_supply, 1.0))
         mint_pressure = math.log1p(minted_luna / max(previous_luna_supply, 1.0))
         recovery = parameters.peg_recovery * peg_gap * (
-            executable_arb / max(gross_sell, 1.0)
+            (reserve_support + executable_arb) / max(gross_sell, 1.0)
         )
         next_gap = peg_gap + market_impact + parameters.mint_ust_impact * math.sqrt(mint_pressure) - recovery
         ust = min(1.01, max(0.005, 1.0 - min(0.995, next_gap)))
@@ -338,6 +338,8 @@ def run_stress_test(
         "label": "ENDOGENOUS_SCENARIO_SIMULATION_NOT_HISTORICAL_REPLAY",
         "model_version": MODEL_VERSION,
         "initial_state": initial,
+        "initial_state_timestamp": initial["timestamp"],
+        "initial_state_source": initial["source"],
         "frozen_parameter_mapping": _parameter_mapping(fitted),
         "counterfactual_conversion": conversion,
         "preset_definitions": {name: asdict(value) for name, value in STRESS_PRESETS.items()},

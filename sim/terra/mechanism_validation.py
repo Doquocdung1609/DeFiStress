@@ -46,6 +46,16 @@ def validate_native_mint_mechanism(
         "source_file": native_swaps_path.as_posix(),
         "source_sha256": sha256_file(native_swaps_path),
         "gross_mint_identity": "swap_amount + fee_amount",
+        "validation_window": {
+            "start": aligned.index[0].isoformat().replace("+00:00", "Z"),
+            "end": aligned.index[-1].isoformat().replace("+00:00", "Z"),
+            "aligned_hours": len(aligned),
+            "supply_delta_definition": (
+                "hourly observed LUNA supply first difference within the aligned window; "
+                "the first aligned hour has zero within-window delta"
+            ),
+            "event_aggregation": "hourly",
+        },
         "old_offchain_approximation": compare(old),
         "direct_event_output_gross_mint": compare(direct),
         "interpretation": (
@@ -55,5 +65,9 @@ def validate_native_mint_mechanism(
         "limitations": [
             "The extract omits transaction hash, trader, denoms, and action fields.",
             "Gross issuance and observed net supply change are distinct accounting concepts.",
+            (
+                "Results from different historical windows are not directly comparable without matching "
+                "the evaluation window."
+            ),
         ],
     }

@@ -137,6 +137,37 @@ def test_stress_uses_observed_initial_state_frozen_fit_and_no_future_observation
     assert result["frozen_parameter_mapping"]["not_reused"]["supply_realization"]
 
 
+def test_stress_start_timestamp_changes_observed_initial_state() -> None:
+    first = run_stress_test(StressScenario(horizon_hours=1), runs=1, start_timestamp="2022-05-06T22:00:00Z")
+    second = run_stress_test(StressScenario(horizon_hours=1), runs=1, start_timestamp="2022-05-06T23:00:00Z")
+    assert first["initial_state_timestamp"] != second["initial_state_timestamp"]
+    assert first["initial_state"]["luna_price"] != second["initial_state"]["luna_price"]
+    assert first["frozen_parameter_mapping"] == second["frozen_parameter_mapping"]
+
+
+def test_stress_one_factor_directions_are_not_sign_inverted() -> None:
+    base = StressScenario(horizon_hours=24)
+    lower_liquidity = replace(base, liquidity_capacity=0.20)
+    higher_selling = replace(base, outside_holder_exit=0.02)
+    higher_reserve = replace(base, reserve_intervention=0.40)
+    results = {
+        "base": run_stress_test(base, runs=4, seed=29),
+        "lower_liquidity": run_stress_test(lower_liquidity, runs=4, seed=29),
+        "higher_selling": run_stress_test(higher_selling, runs=4, seed=29),
+        "higher_reserve": run_stress_test(higher_reserve, runs=4, seed=29),
+    }
+    def minimum(name: str) -> float:
+        return float(results[name]["summary"]["minimum_ust"]["median"])
+
+    assert minimum("lower_liquidity") <= minimum("base")
+    assert minimum("higher_selling") <= minimum("base")
+    assert minimum("higher_reserve") >= minimum("base")
+    assert all(
+        result["frozen_parameter_mapping"] == results["base"]["frozen_parameter_mapping"]
+        for result in results.values()
+    )
+
+
 def test_stress_presets_have_directional_severity() -> None:
     outputs = {
         name: run_stress_test(replace(scenario, horizon_hours=24), runs=4, seed=17)
@@ -162,3 +193,13 @@ def test_mechanism_check_uses_audited_direct_output() -> None:
     assert result["gross_mint_identity"] == "swap_amount + fee_amount"
     assert result["direct_event_output_gross_mint"]["hourly_correlation"] > 0.999
     assert result["direct_event_output_gross_mint"]["final_cumulative_relative_error"] < 0.02
+    assert result["validation_window"] == {
+        "start": "2022-05-07T00:00:00Z",
+        "end": "2022-05-13T23:00:00Z",
+        "aligned_hours": 168,
+        "supply_delta_definition": (
+            "hourly observed LUNA supply first difference within the aligned window; "
+            "the first aligned hour has zero within-window delta"
+        ),
+        "event_aggregation": "hourly",
+    }
