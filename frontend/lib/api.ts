@@ -106,6 +106,85 @@ export type TerraBenchmark = {
   dataset_status: string;
 };
 
+export type TerraExtendedObservation = {
+  timestamp: string;
+  block_height: number;
+  ust_price: number;
+  luna_price: number;
+  ust_supply: number;
+  luna_supply: number | null;
+  anchor_total_deposits: number;
+  anchor_deposit_flow: number | null;
+  anchor_withdrawal_flow: number | null;
+  ust_native_redemption_volume: number | null;
+  gross_luna_issuance_from_native_swaps: number | null;
+  backing_ratio: number | null;
+  top10_anchor_share: number | null;
+  top100_anchor_share: number | null;
+};
+
+export type TerraHistoricalFit = {
+  label: string;
+  objective: { formula: string; value: number; component_losses: Record<string, number> };
+  parameters: Record<string, number>;
+  bounds: Record<string, [number, number]>;
+  metrics: {
+    ust_price: Record<string, number>;
+    luna_price: Record<string, number>;
+    luna_supply: Record<string, number>;
+    event_timing: Record<string, { actual: string | null; simulated: string | null; error_hours: number | null }>;
+  };
+  actual_timeseries: Array<Record<string, number | string>>;
+  simulated_timeseries: Array<Record<string, number | string>>;
+  input_policy: Record<string, string | string[]>;
+};
+
+export type TerraEarlyWarning = {
+  mode: "RETROSPECTIVE" | "CUTOFF_SAFE";
+  interpretation: string;
+  weights: Record<string, number>;
+  event_markers: Record<string, string | null>;
+  lead_times: Record<string, Record<string, { lead_time_hours: number | null; wording: string }>>;
+  leakage_audit: { status: string; checked_timestamps: number; violations: number };
+  timeline: Array<{
+    timestamp: string;
+    risk_score: number;
+    risk_band: string;
+    active_features: string[];
+    unavailable_features: string[];
+    normalized_active_weights: Record<string, number>;
+    components: Record<string, number>;
+  }>;
+};
+
+export type TerraStressResult = {
+  scenario: Record<string, number>;
+  runs: number;
+  summary: {
+    collapse_count: number;
+    noncollapse_count: number;
+    wording: string;
+    minimum_ust: Record<string, number>;
+    final_luna_supply: Record<string, number>;
+  };
+  fan_chart: Array<{
+    hour: number;
+    ust_price: { p05: number; median: number; p95: number };
+    luna_price: { p05: number; median: number; p95: number };
+    luna_supply: { p05: number; median: number; p95: number };
+  }>;
+  data_policy: Record<string, string>;
+};
+
+export type TerraMechanismCheck = {
+  raw_swap_rows: number;
+  gross_mint_identity: string;
+  old_offchain_approximation: Record<string, number>;
+  direct_event_output_gross_mint: Record<string, number>;
+  interpretation: string;
+  limitations: string[];
+};
+
 export async function api<T>(path: string, init?: RequestInit): Promise<T> {
   const request = () => fetch(`${API_URL}${path}`, {
       ...init,

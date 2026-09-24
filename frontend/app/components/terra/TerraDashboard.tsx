@@ -3,21 +3,40 @@
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
-import type { TerraBenchmark, TerraManifest, TerraObservation, TerraReplay } from "@/lib/api";
+import type {
+  TerraBenchmark,
+  TerraEarlyWarning,
+  TerraExtendedObservation,
+  TerraHistoricalFit,
+  TerraManifest,
+  TerraMechanismCheck,
+  TerraObservation,
+  TerraReplay,
+  TerraStressResult,
+} from "@/lib/api";
 import { API_URL, api, money } from "@/lib/api";
 import { terraStatusLabel } from "@/lib/terra";
-import { HistoricalChart, ReplayChart } from "./TerraCharts";
+import {
+  EarlyWarningTimeline,
+  ExtendedHistoricalChart,
+  FitComparisonChart,
+  HistoricalChart,
+  ReplayChart,
+  StressFanChart,
+} from "./TerraCharts";
 
 const nav = [
-  ["overview", "Event Overview"],
+  ["overview", "Overview"],
   ["historical-data", "Historical Data"],
-  ["wallet-dynamics", "Wallet / Run Dynamics"],
-  ["model-lab", "Model Lab"],
-  ["replay", "Replay"],
-  ["benchmark", "Model Benchmark"],
-  ["ablation", "Ablation"],
-  ["counterfactual", "Counterfactual"],
-  ["provenance", "Data Provenance"],
+  ["historical-fit", "Historical Fit"],
+  ["early-warning", "Early Warning"],
+  ["stress-test", "Stress Test"],
+  ["model-comparison", "Model Comparison"],
+  ["mechanism-check", "Mechanism Check"],
+  ["data-sources", "Data Sources"],
+  ["model-lab", "Advanced · Model Lab"],
+  ["replay", "Advanced · Strict Replay"],
+  ["ablation", "Advanced · Ablation"],
 ] as const;
 
 const defaultRequest = {
@@ -44,6 +63,24 @@ type Status = {
 type Cohorts = { status: string; warning?: string; cohorts: Array<{ cohort: string; anchor_balance: number; share: number }> };
 type ExperimentResult = { id: string; status: string; ablation_results?: Array<{ variant: string; metrics: Record<string, number | null> }>; label?: string; historical_replay?: TerraReplay; counterfactual_replay?: TerraReplay };
 
+type DemoData = {
+  dataset: { dataset_version: string; status: string; row_count: number; quality_classes: Record<string, string>; quarantined_variables: string[] };
+  observations: TerraExtendedObservation[];
+};
+
+const defaultStress = {
+  withdrawal_pressure: 1,
+  liquidity_capacity: 0.55,
+  arbitrage_capacity: 0.55,
+  confidence_sensitivity: 1,
+  outside_holder_exit: 0.004,
+  reserve_intervention: 0,
+  horizon_hours: 168,
+  initial_shock: 0.015,
+  runs: 100,
+  seed: 20220506,
+};
+
 export function TerraDashboard({ section }: { section: string }) {
   const [status, setStatus] = useState<Status | null>(null);
   const [datasetVersion, setDatasetVersion] = useState(defaultRequest.dataset_version);
@@ -52,6 +89,13 @@ export function TerraDashboard({ section }: { section: string }) {
   const [replay, setReplay] = useState<TerraReplay | null>(null);
   const [benchmark, setBenchmark] = useState<TerraBenchmark | null>(null);
   const [experiment, setExperiment] = useState<ExperimentResult | null>(null);
+  const [demoData, setDemoData] = useState<DemoData | null>(null);
+  const [historicalFit, setHistoricalFit] = useState<TerraHistoricalFit | null>(null);
+  const [earlyWarning, setEarlyWarning] = useState<TerraEarlyWarning | null>(null);
+  const [earlyWarningMode, setEarlyWarningMode] = useState<"RETROSPECTIVE" | "CUTOFF_SAFE">("RETROSPECTIVE");
+  const [stress, setStress] = useState<TerraStressResult | null>(null);
+  const [stressForm, setStressForm] = useState(defaultStress);
+  const [mechanism, setMechanism] = useState<TerraMechanismCheck | null>(null);
   const [model, setModel] = useState("ABM");
   const [seed, setSeed] = useState(20220506);
   const [reactionDelay, setReactionDelay] = useState(0);
@@ -72,9 +116,21 @@ export function TerraDashboard({ section }: { section: string }) {
   const load = useCallback(async () => {
     try {
       setBusy(true);
-      const statusData = await api<Status>("/api/v1/terra/status");
+      const [statusData, data, fit, warning, stressResult, mechanismResult] = await Promise.all([
+        api<Status>("/api/v1/terra/status"),
+        api<DemoData>("/api/v1/terra/demo/historical-data"),
+        api<TerraHistoricalFit>("/api/v1/terra/historical-fit/latest"),
+        api<TerraEarlyWarning>("/api/v1/terra/early-warning?mode=RETROSPECTIVE"),
+        api<TerraStressResult>("/api/v1/terra/stress-test/latest"),
+        api<TerraMechanismCheck>("/api/v1/terra/mechanism-check"),
+      ]);
       const preferred = preferredDataset(statusData.datasets);
       setStatus(statusData);
+      setDemoData(data);
+      setHistoricalFit(fit);
+      setEarlyWarning(warning);
+      setStress(stressResult);
+      setMechanism(mechanismResult);
       setDatasetVersion(preferred.dataset_version);
       await loadDataset(preferred.dataset_version);
       setError(null);
@@ -115,6 +171,20 @@ export function TerraDashboard({ section }: { section: string }) {
     await perform(async () => setExperiment(await api<ExperimentResult>("/api/v1/terra/counterfactual", { method: "POST", body: JSON.stringify(body) })));
   }
 
+  async function changeEarlyWarningMode(mode: "RETROSPECTIVE" | "CUTOFF_SAFE") {
+    setEarlyWarningMode(mode);
+    await perform(async () => setEarlyWarning(await api<TerraEarlyWarning>(`/api/v1/terra/early-warning?mode=${mode}`)));
+  }
+
+  async function runHistoricalFit() {
+    await perform(async () => setHistoricalFit(await api<TerraHistoricalFit>("/api/v1/terra/historical-fit", { method: "POST" })));
+  }
+
+  async function runStress(runs: number) {
+    const body = { ...stressForm, runs };
+    await perform(async () => setStress(await api<TerraStressResult>("/api/v1/terra/stress-test", { method: "POST", body: JSON.stringify(body) })));
+  }
+
   async function perform(action: () => Promise<void>) {
     try {
       setBusy(true);
@@ -128,7 +198,6 @@ export function TerraDashboard({ section }: { section: string }) {
   }
 
   const manifest = status?.datasets.find((dataset) => dataset.dataset_version === datasetVersion) ?? status?.datasets[0] ?? null;
-  const latest = observations.at(-1);
   return (
     <div className="shell terraShell">
       <aside className="sidebar terraSidebar">
@@ -145,21 +214,19 @@ export function TerraDashboard({ section }: { section: string }) {
       <main>
         <header className="topbar terraTopbar">
           <div><p className="eyebrow">TERRA CLASSIC · MAY 2022</p><h1>{title(section)}</h1></div>
-          <div className="headerMeta"><span className={`modeBadge ${(manifest?.status ?? "FIXTURE").toLowerCase()}`}>{manifest ? terraStatusLabel(manifest.status) : "LOADING"}</span><span className="safety">Historical replay — not a prediction</span></div>
+          <div className="headerMeta"><span className="modeBadge partial">READY WITH LIMITATIONS</span><span className="safety">Historical reconstruction and counterfactual stress — not a forecast</span></div>
         </header>
         {error ? <div className="errorBanner"><strong>Research API error.</strong> {error}<button onClick={() => void load()}>Retry</button></div> : null}
         {busy && !status ? <div className="loading"><span />Loading cutoff-safe research state…</div> : null}
         {status && manifest ? (
           <section className="content">
-            <div className={`dataBanner ${manifest.status.toLowerCase()}`}>
-              <strong>{terraStatusLabel(manifest.status)}</strong>
-              {manifest.status === "FIXTURE"
-                ? status.fixture_warning
-                : `Dataset ${manifest.dataset_version} is selected. Inspect provenance before presenting empirical claims.`}
+            <div className="dataBanner partial">
+              <strong>HISTORICAL DATA · READY WITH LIMITATIONS</strong>
+              1,776 hourly rows are available. Missing DEX depth and LFG peg-defense remain explicitly unavailable.
             </div>
-            <div className="datasetToolbar">
+            {section === "model-lab" || section === "replay" || section === "ablation" ? <div className="datasetToolbar">
               <label>
-                Research dataset
+                Advanced legacy dataset
                 <select
                   value={datasetVersion}
                   onChange={(event) => {
@@ -178,9 +245,15 @@ export function TerraDashboard({ section }: { section: string }) {
                   ))}
                 </select>
               </label>
-            </div>
-            {section === "overview" ? <Overview manifest={manifest} latest={latest} sources={status.historical_sources} /> : null}
-            {section === "historical-data" ? <HistoricalData rows={observations} manifest={manifest} /> : null}
+            </div> : null}
+            {section === "overview" && demoData ? <DemoOverview data={demoData} fit={historicalFit} warning={earlyWarning} stress={stress} /> : null}
+            {section === "historical-data" && demoData ? <DemoHistoricalData data={demoData} /> : null}
+            {section === "historical-fit" ? <HistoricalFitScreen fit={historicalFit} busy={busy} onRun={runHistoricalFit} /> : null}
+            {section === "early-warning" ? <EarlyWarningScreen warning={earlyWarning} mode={earlyWarningMode} busy={busy} onMode={changeEarlyWarningMode} /> : null}
+            {section === "stress-test" ? <StressTestScreen result={stress} form={stressForm} setForm={setStressForm} busy={busy} onRun={runStress} /> : null}
+            {section === "model-comparison" ? <ModelComparisonScreen fit={historicalFit} /> : null}
+            {section === "mechanism-check" ? <MechanismCheckScreen result={mechanism} /> : null}
+            {section === "data-sources" && demoData ? <DataSourcesScreen data={demoData} sources={status.historical_sources} /> : null}
             {section === "wallet-dynamics" ? <WalletDynamics cohorts={cohorts} rows={observations} replay={replay} /> : null}
             {section === "model-lab" ? <ModelLab model={model} setModel={setModel} seed={seed} setSeed={setSeed} reactionDelay={reactionDelay} setReactionDelay={setReactionDelay} priceImpact={priceImpact} setPriceImpact={setPriceImpact} busy={busy} onRun={runReplay} replay={replay} /> : null}
             {section === "replay" ? <ReplayScreen replay={replay} busy={busy} onRun={runReplay} /> : null}
@@ -193,6 +266,47 @@ export function TerraDashboard({ section }: { section: string }) {
       </main>
     </div>
   );
+}
+
+function DemoOverview({ data, fit, warning, stress }: { data: DemoData; fit: TerraHistoricalFit | null; warning: TerraEarlyWarning | null; stress: TerraStressResult | null }) {
+  const latest = data.observations.at(-1);
+  return <><SectionLead title="Three questions, three separate layers" text="Terra validates the crisis-modeling workflow against history; Aave V3 remains the contemporary lending–DEX stress-testing case." /><div className="researchFlow"><span>WHAT HAPPENED?</span><b>→</b><span>CAN THE MODEL RECONSTRUCT IT?</span><b>→</b><span>WHAT IF CONDITIONS CHANGE?</span></div><div className="layerGrid"><article className="layerCard"><p className="eyebrow">01 · HISTORICAL FIT</p><h3>Reconstruct the known crisis</h3><p>Jointly compares UST, LUNA and supply paths. This is calibration, not forecasting.</p><strong>{fit ? `UST RMSE ${fit.metrics.ust_price.rmse.toFixed(3)}` : "Loading…"}</strong></article><article className="layerCard"><p className="eyebrow">02 · EARLY WARNING</p><h3>Measure rising risk</h3><p>Retrospective and cutoff-safe scores remain distinct, including failed or late warnings.</p><strong>{warning ? `${warning.leakage_audit.checked_timestamps.toLocaleString()} hourly checks` : "Loading…"}</strong></article><article className="layerCard"><p className="eyebrow">03 · STRESS TEST</p><h3>Change market assumptions</h3><p>Liquidity, arbitrage, confidence, holder exits and reserve support are scenario controls.</p><strong>{stress ? `${stress.runs} seeded runs` : "Loading…"}</strong></article></div><div className="metricGrid wide"><Metric label="Historical hours" value={data.dataset.row_count.toLocaleString()} detail="Mar 1 → May 13" /><Metric label="Latest UST" value={latest ? `$${latest.ust_price.toFixed(3)}` : "—"} /><Metric label="Latest LUNA" value={latest ? `$${latest.luna_price.toFixed(6)}` : "—"} /><Metric label="LUNA supply" value={latest?.luna_supply ? new Intl.NumberFormat("en-US", { notation: "compact" }).format(latest.luna_supply) : "—"} /><Metric label="Data status" value="READY" detail="With documented limitations" /><Metric label="Mainnet case" value="Aave V3" detail="Preserved and functional" /></div></>;
+}
+
+function DemoHistoricalData({ data }: { data: DemoData }) {
+  const rows = data.observations;
+  return <><SectionLead title="What actually happened?" text="Observed state and event-flow series are shown with their quality class. Missing history stays missing; fixture cohorts never appear here." /><div className="eventStrip"><span>May 7 · UST &lt; $0.995</span><span>May 9 · UST &lt; $0.95</span><span>May 11–13 · supply explosion</span></div><div className="twoCol"><ExtendedHistoricalChart rows={rows} field="ust_price" title="UST / USD" quality="OBSERVED + LOWER-FREQUENCY CARRY BEFORE MAY" /><ExtendedHistoricalChart rows={rows} field="luna_price" title="LUNA / USD" quality="OBSERVED + LOWER-FREQUENCY CARRY BEFORE MAY" /><ExtendedHistoricalChart rows={rows} field="luna_supply" title="LUNA supply" quality="OBSERVED MAY 1 ONWARD" /><ExtendedHistoricalChart rows={rows} field="anchor_total_deposits" title="Anchor deposits" quality="OBSERVED STATE" /><ExtendedHistoricalChart rows={rows} field="anchor_withdrawal_flow" title="Anchor withdrawal events" quality="OBSERVED MAY 6 ONWARD · MISSING EARLIER" /><ExtendedHistoricalChart rows={rows} field="backing_ratio" title="Backing ratio" quality="DERIVED MAY 1 ONWARD" /></div></>;
+}
+
+function HistoricalFitScreen({ fit, busy, onRun }: { fit: TerraHistoricalFit | null; busy: boolean; onRun: () => Promise<void> }) {
+  if (!fit) return <Empty title="Historical Fit is not built" text="Run the bounded deterministic calibration against the known crisis." action="Build Historical Fit" busy={busy} onRun={onRun} />;
+  return <><SectionLead title="Can the mechanism reproduce the known crisis?" text="The model is calibrated on the full event. Observed withdrawals and direct event-output gross mint are exogenous inputs; future prices are never copied into simulation state." /><div className="actionRow"><button className="primary" disabled={busy} onClick={() => void onRun()}>{busy ? "Calibrating…" : "Rebuild Historical Fit"}</button><span className="modeBadge partial">RECONSTRUCTION · NOT FORECAST</span></div><div className="metricGrid"><Metric label="UST RMSE" value={fit.metrics.ust_price.rmse.toFixed(4)} /><Metric label="UST correlation" value={fit.metrics.ust_price.correlation.toFixed(3)} /><Metric label="LUNA log-RMSE" value={fit.metrics.luna_price.log_rmse.toFixed(3)} /><Metric label="Final supply error" value={`${(fit.metrics.luna_supply.final_relative_error * 100).toFixed(2)}%`} /></div><div className="twoCol"><FitComparisonChart fit={fit} field="ust_price" title="UST price" /><FitComparisonChart fit={fit} field="luna_price" title="LUNA price" logarithmic /><FitComparisonChart fit={fit} field="luna_supply" title="LUNA supply" logarithmic /></div><section className="panel"><header><div><p className="eyebrow">CALIBRATION RECORD</p><h3>Bounded, interpretable parameters</h3></div></header><div className="parameterGrid">{Object.entries(fit.parameters).map(([name, value]) => <div key={name}><span>{name.replaceAll("_", " ")}</span><strong>{value.toPrecision(4)}</strong><small>{fit.bounds[name]?.join(" → ")}</small></div>)}</div><p className="researchWarning">Objective: {fit.objective.formula}. No observed future price or supply is used as the next simulated state.</p></section></>;
+}
+
+function EarlyWarningScreen({ warning, mode, busy, onMode }: { warning: TerraEarlyWarning | null; mode: "RETROSPECTIVE" | "CUTOFF_SAFE"; busy: boolean; onMode: (mode: "RETROSPECTIVE" | "CUTOFF_SAFE") => Promise<void> }) {
+  if (!warning) return <div className="loading"><span />Loading hourly warning timeline…</div>;
+  const severe = warning.lead_times.ust_below_0_9;
+  return <><SectionLead title="Did warning signs appear before the severe depeg?" text="Every hourly score records active and unavailable components, then renormalizes weights only across available evidence." /><div className="presetRow" role="group" aria-label="Early-warning mode"><button className={mode === "RETROSPECTIVE" ? "selected" : ""} disabled={busy} onClick={() => void onMode("RETROSPECTIVE")}>Retrospective</button><button className={mode === "CUTOFF_SAFE" ? "selected" : ""} disabled={busy} onClick={() => void onMode("CUTOFF_SAFE")}>Cutoff-Safe</button></div><EarlyWarningTimeline warning={warning} /><div className="metricGrid"><Metric label="Leakage audit" value={warning.leakage_audit.status} detail={`${warning.leakage_audit.checked_timestamps.toLocaleString()} timestamps`} /><Metric label="High warning vs UST < $0.90" value={severe?.high.wording ?? "Not detected"} /><Metric label="Crisis warning vs UST < $0.90" value={severe?.crisis.wording ?? "Not detected"} /><Metric label="Mode" value={warning.mode.replace("_", " ")} /></div><section className="panel"><p className="researchWarning">{warning.interpretation}</p><div className="parameterGrid">{Object.entries(warning.weights).map(([name, value]) => <div key={name}><span>{name.replaceAll("_", " ")}</span><strong>{(value * 100).toFixed(0)}%</strong></div>)}</div></section></>;
+}
+
+function StressTestScreen({ result, form, setForm, busy, onRun }: { result: TerraStressResult | null; form: typeof defaultStress; setForm: (value: typeof defaultStress) => void; busy: boolean; onRun: (runs: number) => Promise<void> }) {
+  const controls: Array<[keyof typeof defaultStress, string, number, number, number]> = [["withdrawal_pressure", "Withdrawal pressure", 0, 5, 0.1], ["liquidity_capacity", "Liquidity capacity", 0, 2, 0.05], ["arbitrage_capacity", "Arbitrage capacity", 0, 2, 0.05], ["confidence_sensitivity", "Confidence sensitivity", 0, 5, 0.1], ["outside_holder_exit", "Outside-holder exit", 0, 0.1, 0.001], ["reserve_intervention", "Reserve intervention", 0, 5, 0.1]];
+  return <><SectionLead title="What happens if conditions get worse?" text="These are counterfactual assumptions. Liquidity and reserve support are not presented as observed historical Terra series." /><section className="panel"><div className="formGrid">{controls.map(([name, label, min, max, step]) => <label className="formField" key={name}>{label}<input aria-label={label} type="number" min={min} max={max} step={step} value={form[name]} onChange={(event) => setForm({ ...form, [name]: Number(event.target.value) })} /></label>)}</div><div className="actionRow"><button disabled={busy} onClick={() => void onRun(1)}>Run one scenario</button><button className="primary" disabled={busy} onClick={() => void onRun(100)}>Run 100 scenarios</button></div></section>{result ? <><div className="metricGrid"><Metric label="Runs" value={String(result.runs)} /><Metric label="Collapse count" value={`${result.summary.collapse_count} / ${result.runs}`} detail="Count, not probability" /><Metric label="Median minimum UST" value={`$${result.summary.minimum_ust.median.toFixed(3)}`} /><Metric label="Median final supply" value={new Intl.NumberFormat("en-US", { notation: "compact" }).format(result.summary.final_luna_supply.median)} /></div><StressFanChart result={result} /><p className="researchWarning">{result.summary.wording} This is not a probability estimate.</p></> : null}</>;
+}
+
+function ModelComparisonScreen({ fit }: { fit: TerraHistoricalFit | null }) {
+  return <><SectionLead title="What does each model result establish?" text="The dashboard does not auto-declare a winner. Each layer answers a different research question and carries a different evidence standard." /><section className="panel"><div className="tableWrap"><table><thead><tr><th>Model layer</th><th>Evaluation role</th><th>Main result</th><th>Claim boundary</th></tr></thead><tbody><tr><td>Strict OOS V2</td><td>Frozen pre-crisis replay</td><td>Preserved negative early-warning evidence</td><td>Does not forecast the historical collapse</td></tr><tr><td>Conditional V4</td><td>Post-trigger mechanism replay</td><td>High directional co-movement; misses severity</td><td>Not a prediction</td></tr><tr><td>Historical Fit</td><td>Full-event calibration</td><td>{fit ? `UST RMSE ${fit.metrics.ust_price.rmse.toFixed(4)}` : "Loading…"}</td><td>In-sample reconstruction</td></tr><tr><td>Stress Test</td><td>Counterfactual scenarios</td><td>Assumption-dependent path distribution</td><td>Collapse count is not probability</td></tr></tbody></table></div></section></>;
+}
+
+function MechanismCheckScreen({ result }: { result: TerraMechanismCheck | null }) {
+  if (!result) return <div className="loading"><span />Loading audited swap evidence…</div>;
+  const direct = result.direct_event_output_gross_mint;
+  const old = result.old_offchain_approximation;
+  return <><SectionLead title="Does on-chain evidence support the modeled mint mechanism?" text="Terra Core burns the UST offer and mints the LUNA recipient output plus fee output. This validates accounting identity, not price causality." /><div className="metricGrid"><Metric label="Audited swaps" value={result.raw_swap_rows.toLocaleString()} /><Metric label="Gross mint identity" value={result.gross_mint_identity} /><Metric label="Direct-output correlation" value={direct.hourly_correlation.toFixed(6)} /><Metric label="Direct cumulative error" value={`${(direct.final_cumulative_relative_error * 100).toFixed(2)}%`} /></div><section className="panel"><div className="comparisonCallout"><div><span>Old off-chain approximation</span><strong>{(old.final_cumulative_relative_error * 100).toFixed(2)}% cumulative error</strong></div><b>→</b><div><span>Direct event output</span><strong>{(direct.final_cumulative_relative_error * 100).toFixed(2)}% cumulative error</strong></div></div><p className="researchWarning">{result.interpretation}</p></section></>;
+}
+
+function DataSourcesScreen({ data, sources }: { data: DemoData; sources: Status["historical_sources"] }) {
+  return <><SectionLead title="Where does the evidence come from?" text="Observed, derived, proxy and unavailable channels remain visibly separate. Unavailable sources are limitations, not application failures." /><section className="panel"><header><div><p className="eyebrow">EXTENDED DATASET</p><h3>{data.dataset.dataset_version}</h3></div><span className="modeBadge partial">{data.dataset.status}</span></header><div className="sourceGrid">{Object.entries(data.dataset.quality_classes).map(([name, quality]) => <div className="sourceCard" key={name}><span className="modeBadge configured">{quality}</span><strong>{name.replaceAll("_", " ")}</strong></div>)}</div></section><section className="panel"><header><div><p className="eyebrow">UNAVAILABLE / SECONDARY CHANNELS</p><h3>Kept outside the primary historical fit</h3></div></header>{sources.slice(1).map((source) => <div className="quality" key={source.source}><strong>{source.status} · {source.source}</strong>{source.reason}</div>)}<div className="quality"><strong>UNAVAILABLE · Terra DEX depth</strong>No audited historical liquidity/depth series is available; stress controls are scenario assumptions.</div><div className="quality"><strong>UNAVAILABLE · LFG peg-defense flow</strong>Available reserve transfers do not identify actual peg-defense intervention.</div></section><section className="panel"><header><div><p className="eyebrow">QUARANTINED</p><h3>Legacy duplicate mappings excluded</h3></div></header><div className="runChips">{data.dataset.quarantined_variables.map((name) => <span key={name}>{name}</span>)}</div></section></>;
 }
 
 function Overview({ manifest, latest, sources }: { manifest: TerraManifest; latest?: TerraObservation; sources: Status["historical_sources"] }) {
@@ -241,7 +355,7 @@ function RunSummary({ replay }: { replay: TerraReplay }) {
 function SectionLead({ title: heading, text }: { title: string; text: string }) { return <div className="sectionLead"><div><p className="eyebrow">REPRODUCIBLE RESEARCH WORKFLOW</p><h2>{heading}</h2><p>{text}</p></div></div>; }
 function Metric({ label, value, detail }: { label: string; value: string; detail?: string }) { return <article className="metricCard"><p>{label}</p><strong>{value}</strong>{detail ? <small>{detail}</small> : null}</article>; }
 function Empty({ title: heading, text, action, busy, onRun }: { title: string; text: string; action: string; busy: boolean; onRun: () => Promise<void> }) { return <div className="emptyState"><div className="pulse"><i /></div><p className="eyebrow">HISTORICAL REPLAY</p><h2>{heading}</h2><p>{text}</p><button className="primary" disabled={busy} onClick={() => void onRun()}>{action}</button></div>; }
-function title(section: string) { return ({ overview: "Event Overview", "historical-data": "Historical Data", "wallet-dynamics": "Wallet / Run Dynamics", "model-lab": "Model Lab", replay: "Historical Replay", benchmark: "Model Benchmark", ablation: "Ablation Study", counterfactual: "Counterfactual", provenance: "Data Provenance" } as Record<string, string>)[section] ?? "Event Overview"; }
+function title(section: string) { return ({ overview: "Research Overview", "historical-data": "Historical Data", "historical-fit": "Historical Fit", "early-warning": "Early Warning", "stress-test": "Stress Test", "model-comparison": "Model Comparison", "mechanism-check": "Mechanism Check", "data-sources": "Data Sources", "wallet-dynamics": "Wallet / Run Dynamics", "model-lab": "Model Lab", replay: "Strict Historical Replay", benchmark: "Model Benchmark", ablation: "Ablation Study", counterfactual: "Counterfactual", provenance: "Data Provenance" } as Record<string, string>)[section] ?? "Research Overview"; }
 function formatMetric(value: unknown) { return typeof value === "number" && Number.isFinite(value) ? new Intl.NumberFormat("en-US", { maximumFractionDigits: 4 }).format(value) : "—"; }
 function formatHours(value: unknown) { return typeof value === "number" && Number.isFinite(value) ? `${value > 0 ? "+" : ""}${value.toFixed(1)}h` : "Not detected"; }
 

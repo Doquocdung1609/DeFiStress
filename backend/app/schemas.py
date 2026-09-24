@@ -96,3 +96,16 @@ class TerraSensitivityRequest(TerraReplayRequest):
 
 class TerraMonteCarloRequest(TerraReplayRequest):
     runs: int = Field(default=100, ge=1, le=10_000)
+
+
+class TerraStressTestRequest(BaseModel):
+    withdrawal_pressure: float = Field(default=1.0, ge=0.0, le=10.0)
+    liquidity_capacity: float = Field(default=0.55, ge=0.0, le=5.0)
+    arbitrage_capacity: float = Field(default=0.55, ge=0.0, le=5.0)
+    confidence_sensitivity: float = Field(default=1.0, ge=0.0, le=10.0)
+    outside_holder_exit: float = Field(default=0.004, ge=0.0, le=0.5)
+    reserve_intervention: float = Field(default=0.0, ge=0.0, le=10.0)
+    horizon_hours: int = Field(default=168, ge=1, le=720)
+    initial_shock: float = Field(default=0.015, ge=0.0, le=0.9)
+    runs: int = Field(default=100, ge=1, le=1000)
+    seed: int = 20220506

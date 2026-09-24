@@ -84,3 +84,28 @@ def test_terra_source_status_reflects_configured_providers(tmp_path) -> None:
     assert build.status_code == 200
     assert build.json()["status"] == "CONFIGURED"
     app.dependency_overrides.clear()
+
+
+def test_terra_demo_endpoints_serve_real_artifacts() -> None:
+    api = TestClient(app)
+    historical = api.get("/api/v1/terra/demo/historical-data")
+    assert historical.status_code == 200
+    assert historical.json()["dataset"]["row_count"] == 1776
+    assert historical.json()["dataset"]["status"] == "READY_WITH_LIMITATIONS"
+
+    fit = api.get("/api/v1/terra/historical-fit/latest")
+    assert fit.status_code == 200
+    assert fit.json()["label"] == "CALIBRATED_HISTORICAL_RECONSTRUCTION_NOT_FORECAST"
+
+    warning = api.get("/api/v1/terra/early-warning", params={"mode": "CUTOFF_SAFE"})
+    assert warning.status_code == 200
+    assert warning.json()["leakage_audit"]["violations"] == 0
+
+    stress = api.post("/api/v1/terra/stress-test", json={"runs": 2, "horizon_hours": 4})
+    assert stress.status_code == 200
+    assert stress.json()["runs"] == 2
+    assert "not a probability estimate" in stress.json()["summary"]["wording"]
+
+    mechanism = api.get("/api/v1/terra/mechanism-check")
+    assert mechanism.status_code == 200
+    assert mechanism.json()["gross_mint_identity"] == "swap_amount + fee_amount"

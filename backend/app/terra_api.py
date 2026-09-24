@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from typing import Any
 
 from fastapi import APIRouter, Depends, HTTPException, Query, Response, status
@@ -13,16 +14,35 @@ from backend.app.schemas import (
     TerraMonteCarloRequest,
     TerraReplayRequest,
     TerraSensitivityRequest,
+    TerraStressTestRequest,
 )
 from backend.app.services.terra_datasets import dataset_from_rows
 from backend.app.services.terra_export import build_terra_export
+from sim.terra.demo_data import DEMO_OUTPUT, dataset_summary, frame_records, load_extended_frame
+from sim.terra.early_warning_v2 import build_early_warning
 from sim.terra.experiments import run_ablation, run_benchmark, run_counterfactual, run_sensitivity
 from sim.terra.fixtures import FIXTURE_VERSION, terra_fixture_dataset
+from sim.terra.historical_fit import fit_historical
+from sim.terra.mechanism_validation import validate_native_mint_mechanism
 from sim.terra.monte_carlo import run_terra_monte_carlo
 from sim.terra.replay import HistoricalReplayExperiment, run_historical_replay
 from sim.terra.schemas import DataStatus, ExperimentMode
+from sim.terra.stress_test import StressScenario, run_stress_test
 
 router = APIRouter()
+
+
+def _read_demo_artifact(name: str) -> dict[str, Any] | None:
+    path = DEMO_OUTPUT / name
+    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else None
+
+
+def _write_demo_artifact(name: str, payload: dict[str, Any]) -> None:
+    DEMO_OUTPUT.mkdir(parents=True, exist_ok=True)
+    (DEMO_OUTPUT / name).write_text(
+        json.dumps(payload, indent=2, sort_keys=True, allow_nan=False) + "\n",
+        encoding="utf-8",
+    )
 
 
 def terra_repository(settings: Settings = Depends(get_settings)) -> Repository:
@@ -399,6 +419,90 @@ def terra_provenance(
 ) -> dict[str, Any]:
     dataset = _dataset_or_404(repository, dataset_version)
     return dataset.manifest.to_dict()
+
+
+@router.get("/terra/demo/historical-data")
+def terra_demo_historical_data() -> dict[str, Any]:
+    frame = load_extended_frame()
+    columns = [
+        "timestamp",
+        "block_height",
+        "ust_price",
+        "luna_price",
+        "ust_supply",
+        "luna_supply",
+        "anchor_total_deposits",
+        "anchor_deposit_flow",
+        "anchor_withdrawal_flow",
+        "ust_native_redemption_volume",
+        "gross_luna_issuance_from_native_swaps",
+        "backing_ratio",
+        "top10_anchor_share",
+        "top100_anchor_share",
+    ]
+    return {"dataset": dataset_summary(), "observations": frame_records(frame, columns)}
+
+
+@router.post("/terra/historical-fit")
+def create_historical_fit() -> dict[str, Any]:
+    payload = fit_historical()
+    _write_demo_artifact("historical_fit.json", payload)
+    return payload
+
+
+@router.get("/terra/historical-fit/latest")
+def latest_historical_fit() -> dict[str, Any]:
+    payload = _read_demo_artifact("historical_fit.json")
+    if payload is None:
+        payload = fit_historical(candidates=250)
+        _write_demo_artifact("historical_fit.json", payload)
+    return payload
+
+
+@router.get("/terra/early-warning")
+def terra_early_warning(mode: str = Query(default="RETROSPECTIVE")) -> dict[str, Any]:
+    artifact = _read_demo_artifact("early_warning_timeline.json")
+    key = mode.lower().replace("-", "_")
+    if artifact is not None and key in artifact:
+        return artifact[key]
+    return build_early_warning(mode=mode)
+
+
+@router.post("/terra/early-warning/rebuild")
+def rebuild_terra_early_warning() -> dict[str, Any]:
+    payload = {
+        "retrospective": build_early_warning(mode="RETROSPECTIVE"),
+        "cutoff_safe": build_early_warning(mode="CUTOFF_SAFE"),
+    }
+    _write_demo_artifact("early_warning_timeline.json", payload)
+    return payload
+
+
+@router.post("/terra/stress-test")
+def create_terra_stress_test(request: TerraStressTestRequest) -> dict[str, Any]:
+    values = request.model_dump(exclude={"runs", "seed"})
+    scenario = StressScenario(**values)
+    payload = run_stress_test(scenario, runs=request.runs, seed=request.seed)
+    _write_demo_artifact("stress_test.json", payload)
+    return payload
+
+
+@router.get("/terra/stress-test/latest")
+def latest_terra_stress_test() -> dict[str, Any]:
+    payload = _read_demo_artifact("stress_test.json")
+    if payload is None:
+        payload = run_stress_test(StressScenario(), runs=30)
+        _write_demo_artifact("stress_test.json", payload)
+    return payload
+
+
+@router.get("/terra/mechanism-check")
+def terra_mechanism_check() -> dict[str, Any]:
+    payload = _read_demo_artifact("mechanism_check.json")
+    if payload is None:
+        payload = validate_native_mint_mechanism()
+        _write_demo_artifact("mechanism_check.json", payload)
+    return payload
 
 
 @router.get("/terra/export/{replay_id}")

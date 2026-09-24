@@ -2,10 +2,20 @@
 
 DeFiStress Lab is a reproducible DeFi systemic-risk research platform with two deliberately separate case studies:
 
-1. **TerraUSD/LUNA, May 2022** — cutoff-safe historical replay, historical validation, competing-model benchmark, ablation, and counterfactual experiments.
+1. **TerraUSD/LUNA, May 2022** — Historical Fit, hourly Early Warning, counterfactual Stress Test, plus the preserved cutoff-safe replay and scientific-audit artifacts.
 2. **Aave V3 + Uniswap V3** — contemporary Ethereum liquidation and liquidity-feedback stress testing.
 
 Historical validation improves confidence in the research workflow; it does not transfer universal validity from Terra to Aave. A replay is never labelled a prediction.
+
+## Terra three-layer presentation design
+
+The presentation dashboard separates three questions that must not be conflated:
+
+1. **Historical Fit** — an in-sample, full-event calibrated reconstruction. It compares actual and simulated UST price, log LUNA price, and log LUNA supply. Observed Anchor withdrawals and audited direct event-output gross mint (`swap_amount + fee_amount`) are exogenous reconstruction inputs. It is not a forecast.
+2. **Early Warning** — an hourly 0–100 risk timeline from March 1 through May 13. Retrospective weights developed with event knowledge and cutoff-safe fixed weights are displayed as distinct modes. Every row records active/unavailable features and normalized active weights; failed and late warnings remain visible.
+3. **Stress Test** — counterfactual, seeded scenarios for withdrawal pressure, assumed liquidity, arbitrage capacity, confidence, outside-holder exits, and reserve intervention. Monte Carlo output reports p05/median/p95 paths and a collapse count, never a probability estimate.
+
+The extended data layer is `READY_WITH_LIMITATIONS`. March–April prices contain lower-frequency state carried forward; LUNA supply/backing begin May 1; Anchor event flows begin May 6; native redemption/direct issuance begins May 7. Audited historical Terra DEX depth and LFG peg-defense intervention remain unavailable, so they appear only as stress assumptions. Quarantined legacy duplicate mappings remain excluded.
 
 ## Research design
 
@@ -138,9 +148,34 @@ Final scientific-audit provenance distinguishes the model source from the genera
 Documentation-only follow-up commits do not change the model logic, parameters, metrics, or numerical
 artifact contents.
 
+## One-command Terra presentation build
+
+Build and validate the six presentation artifacts with the research-mode 100-run stress ensemble:
+
+```powershell
+.\.venv\Scripts\python.exe scripts\terra\run_demo_pipeline.py --research
+```
+
+For a quicker engineering iteration, use `--fast` (30 stress runs and a smaller bounded fit search). Outputs are written under `data/processed/terra_demo`:
+
+- `historical_fit.json`
+- `early_warning_timeline.json`
+- `stress_test.json`
+- `mechanism_check.json`
+- `presentation_summary.json`
+- `reproducibility_manifest.json`
+
+This command verifies the 1,776-row extended dataset and the 277,342-event native-swap extract before generating results. It never overwrites the frozen V1/V2/V4 research artifacts.
+
 ## Terra API
 
-Core endpoints include `/api/v1/case-studies`, `/api/v1/terra/status`, dataset import/list/timeseries/provenance, replay lifecycle/timeseries/metrics/events/export, benchmark, ablation, sensitivity, and counterfactual execution.
+Core endpoints include `/api/v1/case-studies`, `/api/v1/terra/status`, dataset import/list/timeseries/provenance, replay lifecycle/timeseries/metrics/events/export, benchmark, ablation, sensitivity, and counterfactual execution. Presentation endpoints are:
+
+- `GET /api/v1/terra/demo/historical-data`
+- `POST /api/v1/terra/historical-fit` and `GET /api/v1/terra/historical-fit/latest`
+- `GET /api/v1/terra/early-warning` and `POST /api/v1/terra/early-warning/rebuild`
+- `POST /api/v1/terra/stress-test` and `GET /api/v1/terra/stress-test/latest`
+- `GET /api/v1/terra/mechanism-check`
 
 The export ZIP contains `manifest.json`, source/cutoff/parameter/model files, simulation and ground-truth CSVs, validation metrics, agent events, quality report, and charts.
 

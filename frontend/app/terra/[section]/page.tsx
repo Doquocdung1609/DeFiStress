@@ -3,6 +3,12 @@ import { TerraDashboard } from "../../components/terra/TerraDashboard";
 const sections = new Set([
   "overview",
   "historical-data",
+  "historical-fit",
+  "early-warning",
+  "stress-test",
+  "model-comparison",
+  "mechanism-check",
+  "data-sources",
   "wallet-dynamics",
   "model-lab",
   "replay",
