@@ -1,5 +1,5 @@
 {
-  "artifact_bundle_commit": "e71c5e2e0850d4ca94066c6a5909da7b65b84907",
+  "artifact_bundle_commit": "005359538e9b2f678320136a9ee0507eeb72a46f",
   "artifact_bundle_commit_note": "Commit whose tree first contains this generated artifact bundle. A later metadata-only manifest correction may record that commit without changing model logic, parameters, metrics, or artifacts.",
   "frozen_artifacts_policy": "Existing V1/V2/V4 artifacts are read-only and were not overwritten.",
   "inputs": {
