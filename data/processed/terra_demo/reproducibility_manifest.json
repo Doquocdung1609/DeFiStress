@@ -1,0 +1,28 @@
+{
+  "artifact_bundle_commit": null,
+  "artifact_bundle_commit_resolution": "Resolve after committing with: git log -1 --format=%H -- data/processed/terra_demo/reproducibility_manifest.json",
+  "frozen_artifacts_policy": "Existing V1/V2/V4 artifacts are read-only and were not overwritten.",
+  "inputs": {
+    "data/processed/terra_extended/terra_native_swaps.parquet": "e1e01ed390eb82356141e924c99d7af8bd0549534defb40dd172d797a0a485a1",
+    "data/processed/terra_extended/terra_state_hourly_20220301_20220513.parquet": "0e338c3d096600d93bf29884370e46cb5e260820e910b483a7f19048521dcac1"
+  },
+  "mode": "RESEARCH_100_RUNS",
+  "outputs": {
+    "early_warning_timeline.json": "37decc14bb97bd750e5491d0a54e850375b6f53098f98bb03453ad286e0a4d1c",
+    "historical_fit.json": "1dde090f3807e36545548410c1818a914e75ad4f95330cb5ef4225f03d2f8334",
+    "mechanism_check.json": "74f7e1bfc43b55782069b68933cf5851eb3958b639cf62ce32c2260df9e39152",
+    "presentation_summary.json": "fdb37879a08d4981ea24e21b22294cd0778d6d142f732659632453d50447bbf3",
+    "stress_test.json": "6be840d117d5a192c274eda9ff5fbed7e61f65ea9da6a22b3c2589b8d4b20299"
+  },
+  "packages": {
+    "fastapi": "0.141.1",
+    "numpy": "2.5.3",
+    "pandas": "2.3.3",
+    "pyarrow": "23.0.1"
+  },
+  "pipeline_version": "terra-demo-1.0.0",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "reproduce_command": ".\\.venv\\Scripts\\python.exe scripts\\terra\\run_demo_pipeline.py --research",
+  "source_code_commit": "7c431b8cc04bc856bffb788081dac335274a6cb4"
+}

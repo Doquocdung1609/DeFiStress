@@ -1,0 +1,4487 @@
+{
+  "actual_timeseries": [
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-01T00:00:00Z",
+      "ust_price": 1.000024684950217
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.25770371219954,
+      "luna_supply": 751666758.0382203,
+      "timestamp": "2022-05-01T01:00:00Z",
+      "ust_price": 1.0000090955453649
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.59799291281495,
+      "luna_supply": 751654884.3009162,
+      "timestamp": "2022-05-01T02:00:00Z",
+      "ust_price": 1.0000115877692652
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.48452321035106,
+      "luna_supply": 751650235.7159643,
+      "timestamp": "2022-05-01T03:00:00Z",
+      "ust_price": 0.9999435748401595
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 79.38514390370308,
+      "luna_supply": 751644445.4303533,
+      "timestamp": "2022-05-01T04:00:00Z",
+      "ust_price": 0.9997257584867533
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 79.48981935238156,
+      "luna_supply": 751645118.2576573,
+      "timestamp": "2022-05-01T05:00:00Z",
+      "ust_price": 0.9999990527175545
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 80.15096771319489,
+      "luna_supply": 751644532.8674283,
+      "timestamp": "2022-05-01T06:00:00Z",
+      "ust_price": 0.9998624786127718
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 80.3086517213292,
+      "luna_supply": 751639279.6381923,
+      "timestamp": "2022-05-01T07:00:00Z",
+      "ust_price": 0.9998274378892901
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 80.0072070708661,
+      "luna_supply": 751605429.9816912,
+      "timestamp": "2022-05-01T08:00:00Z",
+      "ust_price": 0.9998990594663477
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 81.06074781271388,
+      "luna_supply": 751572104.2534703,
+      "timestamp": "2022-05-01T09:00:00Z",
+      "ust_price": 0.9999962482174591
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 80.68042667603673,
+      "luna_supply": 751539760.8478663,
+      "timestamp": "2022-05-01T10:00:00Z",
+      "ust_price": 0.9998140623584658
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 79.87793882531787,
+      "luna_supply": 751507083.8633642,
+      "timestamp": "2022-05-01T11:00:00Z",
+      "ust_price": 1.0001883216362482
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 79.28389470822023,
+      "luna_supply": 751473039.1286463,
+      "timestamp": "2022-05-01T12:00:00Z",
+      "ust_price": 1.0000456181523336
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 80.52199996070343,
+      "luna_supply": 751442465.1965303,
+      "timestamp": "2022-05-01T13:00:00Z",
+      "ust_price": 1.0000506710959478
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 79.91345687220955,
+      "luna_supply": 751408343.8015863,
+      "timestamp": "2022-05-01T14:00:00Z",
+      "ust_price": 0.9999811353227217
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 79.41580100633948,
+      "luna_supply": 751380689.0209943,
+      "timestamp": "2022-05-01T15:00:00Z",
+      "ust_price": 1.0000750760005992
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 81.17003400839675,
+      "luna_supply": 751356467.3245873,
+      "timestamp": "2022-05-01T16:00:00Z",
+      "ust_price": 1.0000321159184142
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 82.165139105708,
+      "luna_supply": 751324402.2819422,
+      "timestamp": "2022-05-01T17:00:00Z",
+      "ust_price": 0.9999948844491181
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 81.86548123772735,
+      "luna_supply": 751290884.8161013,
+      "timestamp": "2022-05-01T18:00:00Z",
+      "ust_price": 0.9999268914282516
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 80.69772669590279,
+      "luna_supply": 751258417.5520372,
+      "timestamp": "2022-05-01T19:00:00Z",
+      "ust_price": 0.9999295747884572
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 80.08017320270058,
+      "luna_supply": 751223926.6114093,
+      "timestamp": "2022-05-01T20:00:00Z",
+      "ust_price": 0.9997688316777716
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 81.29497999484404,
+      "luna_supply": 751189063.6477172,
+      "timestamp": "2022-05-01T21:00:00Z",
+      "ust_price": 1.0000339081169465
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 81.28147096717223,
+      "luna_supply": 751155582.5033523,
+      "timestamp": "2022-05-01T22:00:00Z",
+      "ust_price": 0.9999959930668046
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 81.69341839097191,
+      "luna_supply": 751124195.6250682,
+      "timestamp": "2022-05-01T23:00:00Z",
+      "ust_price": 1.0000591620978774
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 82.2910302229231,
+      "luna_supply": 751095911.0642192,
+      "timestamp": "2022-05-02T00:00:00Z",
+      "ust_price": 0.999976903671877
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 83.71813629893454,
+      "luna_supply": 751062742.5772213,
+      "timestamp": "2022-05-02T01:00:00Z",
+      "ust_price": 1.0000828916131104
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 82.96069592023352,
+      "luna_supply": 751026686.6743393,
+      "timestamp": "2022-05-02T02:00:00Z",
+      "ust_price": 1.000001646698557
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 82.90006740861755,
+      "luna_supply": 750993416.8821733,
+      "timestamp": "2022-05-02T03:00:00Z",
+      "ust_price": 0.99999555230385
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 82.90617694609455,
+      "luna_supply": 750958743.2497852,
+      "timestamp": "2022-05-02T04:00:00Z",
+      "ust_price": 1.0000274037723036
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 83.20659708864665,
+      "luna_supply": 750925407.8535773,
+      "timestamp": "2022-05-02T05:00:00Z",
+      "ust_price": 1.000024897901628
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 83.51388194991937,
+      "luna_supply": 750893548.3296093,
+      "timestamp": "2022-05-02T06:00:00Z",
+      "ust_price": 0.9997252519176166
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 82.83263291977039,
+      "luna_supply": 750860713.3612412,
+      "timestamp": "2022-05-02T07:00:00Z",
+      "ust_price": 1.0001957650071496
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 82.46003240065083,
+      "luna_supply": 750828652.6268033,
+      "timestamp": "2022-05-02T08:00:00Z",
+      "ust_price": 1.0000570575188361
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 82.87610501504217,
+      "luna_supply": 750795275.4851983,
+      "timestamp": "2022-05-02T09:00:00Z",
+      "ust_price": 1.000098595495839
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 82.58500373997853,
+      "luna_supply": 750762671.5365212,
+      "timestamp": "2022-05-02T10:00:00Z",
+      "ust_price": 0.9998936099800307
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 82.31016454227513,
+      "luna_supply": 750729840.3132663,
+      "timestamp": "2022-05-02T11:00:00Z",
+      "ust_price": 0.9999182954225425
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 82.710056152284,
+      "luna_supply": 750702504.5033312,
+      "timestamp": "2022-05-02T12:00:00Z",
+      "ust_price": 1.0000709900321432
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 83.77828851467315,
+      "luna_supply": 750656057.3012773,
+      "timestamp": "2022-05-02T13:00:00Z",
+      "ust_price": 1.0000791022196738
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 84.53879071770243,
+      "luna_supply": 750613660.9181182,
+      "timestamp": "2022-05-02T14:00:00Z",
+      "ust_price": 0.9999538193295018
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 83.83612144635221,
+      "luna_supply": 750569344.4615682,
+      "timestamp": "2022-05-02T15:00:00Z",
+      "ust_price": 1.0001004380447827
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 83.28836071215302,
+      "luna_supply": 750523973.9792793,
+      "timestamp": "2022-05-02T16:00:00Z",
+      "ust_price": 1.0000521301054883
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 82.99166160541388,
+      "luna_supply": 750476595.0301063,
+      "timestamp": "2022-05-02T17:00:00Z",
+      "ust_price": 0.9999326129955856
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 81.92866594181946,
+      "luna_supply": 750426243.4947903,
+      "timestamp": "2022-05-02T18:00:00Z",
+      "ust_price": 0.9999982494445592
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 81.15444428590645,
+      "luna_supply": 750378565.3210282,
+      "timestamp": "2022-05-02T19:00:00Z",
+      "ust_price": 1.0001439375393728
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 82.63954893204229,
+      "luna_supply": 750332302.0491662,
+      "timestamp": "2022-05-02T20:00:00Z",
+      "ust_price": 0.9999790196926093
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 83.0108827763376,
+      "luna_supply": 750286526.9436723,
+      "timestamp": "2022-05-02T21:00:00Z",
+      "ust_price": 0.9998650169170415
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 84.28349232912217,
+      "luna_supply": 750259861.3685522,
+      "timestamp": "2022-05-02T22:00:00Z",
+      "ust_price": 0.9998449370678628
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 84.35139123852821,
+      "luna_supply": 750228486.7468783,
+      "timestamp": "2022-05-02T23:00:00Z",
+      "ust_price": 0.999880492448757
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 84.24404363805782,
+      "luna_supply": 750220076.2540462,
+      "timestamp": "2022-05-03T00:00:00Z",
+      "ust_price": 0.9997862401155078
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 84.07775482008277,
+      "luna_supply": 750214329.4501113,
+      "timestamp": "2022-05-03T01:00:00Z",
+      "ust_price": 0.999820034644473
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 85.12223319524337,
+      "luna_supply": 750208064.1573102,
+      "timestamp": "2022-05-03T02:00:00Z",
+      "ust_price": 0.9999468409683254
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 84.79734081373469,
+      "luna_supply": 750204716.1141933,
+      "timestamp": "2022-05-03T03:00:00Z",
+      "ust_price": 0.9999372127862399
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 84.94571477463485,
+      "luna_supply": 750199780.2840163,
+      "timestamp": "2022-05-03T04:00:00Z",
+      "ust_price": 0.9999103808863372
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 84.655899397785,
+      "luna_supply": 750196129.4018333,
+      "timestamp": "2022-05-03T05:00:00Z",
+      "ust_price": 0.9998047020642595
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 84.62305267190034,
+      "luna_supply": 750209135.3839313,
+      "timestamp": "2022-05-03T06:00:00Z",
+      "ust_price": 0.9998083452276469
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 84.90328287066524,
+      "luna_supply": 750205130.2496963,
+      "timestamp": "2022-05-03T07:00:00Z",
+      "ust_price": 0.9999052379872038
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 85.11292957030307,
+      "luna_supply": 750200119.7952234,
+      "timestamp": "2022-05-03T08:00:00Z",
+      "ust_price": 0.9998727219783491
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 84.99468776697235,
+      "luna_supply": 750168860.7077973,
+      "timestamp": "2022-05-03T09:00:00Z",
+      "ust_price": 0.9997724276447141
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 84.14020621629683,
+      "luna_supply": 750136822.3962243,
+      "timestamp": "2022-05-03T10:00:00Z",
+      "ust_price": 0.999906209772367
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 84.17553905432909,
+      "luna_supply": 750104145.3787773,
+      "timestamp": "2022-05-03T11:00:00Z",
+      "ust_price": 0.9999188117992142
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 85.1993515695562,
+      "luna_supply": 750072077.0399983,
+      "timestamp": "2022-05-03T12:00:00Z",
+      "ust_price": 0.9998237222593312
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 84.43727166722759,
+      "luna_supply": 750036661.1397293,
+      "timestamp": "2022-05-03T13:00:00Z",
+      "ust_price": 0.9998152792381164
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 83.6486126883292,
+      "luna_supply": 750005062.4041963,
+      "timestamp": "2022-05-03T14:00:00Z",
+      "ust_price": 0.9998343258290251
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 83.3762344842659,
+      "luna_supply": 749973546.1479733,
+      "timestamp": "2022-05-03T15:00:00Z",
+      "ust_price": 0.9997549665947667
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 83.88291082030665,
+      "luna_supply": 749941812.1855493,
+      "timestamp": "2022-05-03T16:00:00Z",
+      "ust_price": 0.9998994643360957
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 83.34514565394844,
+      "luna_supply": 749910199.2963643,
+      "timestamp": "2022-05-03T17:00:00Z",
+      "ust_price": 0.9998090599483468
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 83.4829143928378,
+      "luna_supply": 749878489.5700502,
+      "timestamp": "2022-05-03T18:00:00Z",
+      "ust_price": 0.9997946049198655
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 82.78401737981096,
+      "luna_supply": 749847643.1405883,
+      "timestamp": "2022-05-03T19:00:00Z",
+      "ust_price": 0.999865321370842
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 82.19667034858563,
+      "luna_supply": 749836859.0397943,
+      "timestamp": "2022-05-03T20:00:00Z",
+      "ust_price": 0.9997496516276558
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 81.9704629038072,
+      "luna_supply": 749811933.9558483,
+      "timestamp": "2022-05-03T21:00:00Z",
+      "ust_price": 0.9997614739748478
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 82.1498900055126,
+      "luna_supply": 749784452.3925264,
+      "timestamp": "2022-05-03T22:00:00Z",
+      "ust_price": 0.9997189277007678
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 82.67463846042496,
+      "luna_supply": 749752332.0193183,
+      "timestamp": "2022-05-03T23:00:00Z",
+      "ust_price": 0.9997059628741577
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 82.48903626197337,
+      "luna_supply": 749721898.8919014,
+      "timestamp": "2022-05-04T00:00:00Z",
+      "ust_price": 0.9997410652611213
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 82.49563554588342,
+      "luna_supply": 749692465.7153673,
+      "timestamp": "2022-05-04T01:00:00Z",
+      "ust_price": 0.9998266821874948
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 82.41704896046667,
+      "luna_supply": 749669618.9622533,
+      "timestamp": "2022-05-04T02:00:00Z",
+      "ust_price": 0.9998380539451472
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 82.81365384546923,
+      "luna_supply": 749637574.4992044,
+      "timestamp": "2022-05-04T03:00:00Z",
+      "ust_price": 0.9998045876729151
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 83.4502970326422,
+      "luna_supply": 749604265.3786683,
+      "timestamp": "2022-05-04T04:00:00Z",
+      "ust_price": 0.9998690794069159
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 83.19875500146921,
+      "luna_supply": 749572781.8478683,
+      "timestamp": "2022-05-04T05:00:00Z",
+      "ust_price": 0.9998454273030538
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 83.63878797053367,
+      "luna_supply": 749548800.8854933,
+      "timestamp": "2022-05-04T06:00:00Z",
+      "ust_price": 0.9996034985260033
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 84.6124925068984,
+      "luna_supply": 749530553.2450473,
+      "timestamp": "2022-05-04T07:00:00Z",
+      "ust_price": 0.9997684378223534
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 85.08739479301623,
+      "luna_supply": 749521580.2590203,
+      "timestamp": "2022-05-04T08:00:00Z",
+      "ust_price": 0.9998345444187723
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 86.6311268662137,
+      "luna_supply": 749515991.8575124,
+      "timestamp": "2022-05-04T09:00:00Z",
+      "ust_price": 0.9998270243712318
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 86.20317236011675,
+      "luna_supply": 749492541.3101333,
+      "timestamp": "2022-05-04T10:00:00Z",
+      "ust_price": 0.9999125890835088
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 86.95366779572214,
+      "luna_supply": 749464470.2581444,
+      "timestamp": "2022-05-04T11:00:00Z",
+      "ust_price": 0.9997660604368926
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 87.09548903388574,
+      "luna_supply": 749435315.0187594,
+      "timestamp": "2022-05-04T12:00:00Z",
+      "ust_price": 0.9997118651779989
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 85.3600355829742,
+      "luna_supply": 749409351.0496143,
+      "timestamp": "2022-05-04T13:00:00Z",
+      "ust_price": 0.9997438575633337
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 84.27258665106805,
+      "luna_supply": 749385977.2287554,
+      "timestamp": "2022-05-04T14:00:00Z",
+      "ust_price": 0.9996999907722448
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 83.93228770528592,
+      "luna_supply": 749377322.0593153,
+      "timestamp": "2022-05-04T15:00:00Z",
+      "ust_price": 0.9997445755759666
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 83.71444502857709,
+      "luna_supply": 749381048.9100554,
+      "timestamp": "2022-05-04T16:00:00Z",
+      "ust_price": 0.9997013181395283
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 84.49960874125048,
+      "luna_supply": 749383003.6332364,
+      "timestamp": "2022-05-04T17:00:00Z",
+      "ust_price": 0.9997291122955436
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 83.97898762045904,
+      "luna_supply": 749400259.0135863,
+      "timestamp": "2022-05-04T18:00:00Z",
+      "ust_price": 0.9997321672153516
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 86.64667367169567,
+      "luna_supply": 749463402.6524043,
+      "timestamp": "2022-05-04T19:00:00Z",
+      "ust_price": 0.9999132648650575
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 87.60237926632462,
+      "luna_supply": 749480255.3067573,
+      "timestamp": "2022-05-04T20:00:00Z",
+      "ust_price": 0.9996660429764158
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 86.90013194317551,
+      "luna_supply": 749486255.7347213,
+      "timestamp": "2022-05-04T21:00:00Z",
+      "ust_price": 0.9995517420397659
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 86.38578260588467,
+      "luna_supply": 749487772.0326283,
+      "timestamp": "2022-05-04T22:00:00Z",
+      "ust_price": 0.9996364577419223
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 86.13454597185172,
+      "luna_supply": 749491520.4281023,
+      "timestamp": "2022-05-04T23:00:00Z",
+      "ust_price": 0.9997490548670515
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 86.16751847952851,
+      "luna_supply": 749499203.3756723,
+      "timestamp": "2022-05-05T00:00:00Z",
+      "ust_price": 0.9997475626359512
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 86.04361390479156,
+      "luna_supply": 749517297.6392103,
+      "timestamp": "2022-05-05T01:00:00Z",
+      "ust_price": 0.9995830038266256
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 87.14397051691722,
+      "luna_supply": 749526881.9069164,
+      "timestamp": "2022-05-05T02:00:00Z",
+      "ust_price": 0.9997313918272173
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 87.23262800642786,
+      "luna_supply": 749526335.0494044,
+      "timestamp": "2022-05-05T03:00:00Z",
+      "ust_price": 0.9996668135930742
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 86.89378415406985,
+      "luna_supply": 749527660.0118034,
+      "timestamp": "2022-05-05T04:00:00Z",
+      "ust_price": 0.9997745668640831
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 86.98217995450567,
+      "luna_supply": 749527983.0223783,
+      "timestamp": "2022-05-05T05:00:00Z",
+      "ust_price": 0.9998912214277673
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 86.049312658886,
+      "luna_supply": 749529704.4858943,
+      "timestamp": "2022-05-05T06:00:00Z",
+      "ust_price": 0.9997578831136342
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 85.8383566848539,
+      "luna_supply": 749526383.3924804,
+      "timestamp": "2022-05-05T07:00:00Z",
+      "ust_price": 0.9997869860740671
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 86.2008299058592,
+      "luna_supply": 749526641.5354884,
+      "timestamp": "2022-05-05T08:00:00Z",
+      "ust_price": 0.9997360852879325
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 85.37538617604632,
+      "luna_supply": 749525752.6741233,
+      "timestamp": "2022-05-05T09:00:00Z",
+      "ust_price": 0.9996894290017256
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 85.26735533713517,
+      "luna_supply": 749525515.1031973,
+      "timestamp": "2022-05-05T10:00:00Z",
+      "ust_price": 0.9997955539784867
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 85.5370506464682,
+      "luna_supply": 749524332.7655073,
+      "timestamp": "2022-05-05T11:00:00Z",
+      "ust_price": 0.9999028946909658
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 85.18126497606866,
+      "luna_supply": 749524163.8679492,
+      "timestamp": "2022-05-05T12:00:00Z",
+      "ust_price": 0.999775995729382
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 85.50959470570561,
+      "luna_supply": 749512919.2793543,
+      "timestamp": "2022-05-05T13:00:00Z",
+      "ust_price": 0.999662798930617
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 83.85797568956093,
+      "luna_supply": 749478945.7660403,
+      "timestamp": "2022-05-05T14:00:00Z",
+      "ust_price": 0.9997734218609671
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 81.9413768692131,
+      "luna_supply": 749452058.5642493,
+      "timestamp": "2022-05-05T15:00:00Z",
+      "ust_price": 0.9999040456678172
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 79.71445632845027,
+      "luna_supply": 749460315.1162943,
+      "timestamp": "2022-05-05T16:00:00Z",
+      "ust_price": 0.9995726491408529
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 81.39855199142647,
+      "luna_supply": 749458720.4487833,
+      "timestamp": "2022-05-05T17:00:00Z",
+      "ust_price": 0.9996202676601339
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 80.43718217627317,
+      "luna_supply": 749459236.9180603,
+      "timestamp": "2022-05-05T18:00:00Z",
+      "ust_price": 0.9995426787985381
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 80.33555824594103,
+      "luna_supply": 749460904.1920253,
+      "timestamp": "2022-05-05T19:00:00Z",
+      "ust_price": 0.9994585985073835
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 81.31244220379321,
+      "luna_supply": 749457159.9807673,
+      "timestamp": "2022-05-05T20:00:00Z",
+      "ust_price": 0.9991540147968259
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 81.88299043239007,
+      "luna_supply": 749459958.4266323,
+      "timestamp": "2022-05-05T21:00:00Z",
+      "ust_price": 0.9997471138123879
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 82.65105931635573,
+      "luna_supply": 749458922.2762663,
+      "timestamp": "2022-05-05T22:00:00Z",
+      "ust_price": 0.9996803172061369
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 82.30767071493027,
+      "luna_supply": 749457905.9555453,
+      "timestamp": "2022-05-05T23:00:00Z",
+      "ust_price": 0.9996972639399393
+    },
+    {
+      "anchor_withdrawal_flow": 18191338.00262847,
+      "luna_price": 82.30729864872987,
+      "luna_supply": 749459806.5681263,
+      "timestamp": "2022-05-06T00:00:00Z",
+      "ust_price": 0.9995677757207404
+    },
+    {
+      "anchor_withdrawal_flow": 7596577.117605475,
+      "luna_price": 81.8852953120317,
+      "luna_supply": 749423169.2088914,
+      "timestamp": "2022-05-06T01:00:00Z",
+      "ust_price": 0.9995976544527337
+    },
+    {
+      "anchor_withdrawal_flow": 10363360.564123945,
+      "luna_price": 80.85822974125824,
+      "luna_supply": 749386919.6177623,
+      "timestamp": "2022-05-06T02:00:00Z",
+      "ust_price": 0.9995688195048424
+    },
+    {
+      "anchor_withdrawal_flow": 18352051.404359944,
+      "luna_price": 81.07720184537303,
+      "luna_supply": 749353164.7248544,
+      "timestamp": "2022-05-06T03:00:00Z",
+      "ust_price": 0.9997928345291546
+    },
+    {
+      "anchor_withdrawal_flow": 11835021.868110487,
+      "luna_price": 80.90776029670837,
+      "luna_supply": 749317487.9321043,
+      "timestamp": "2022-05-06T04:00:00Z",
+      "ust_price": 0.9996398666689499
+    },
+    {
+      "anchor_withdrawal_flow": 3902376.3109473884,
+      "luna_price": 80.53916491765449,
+      "luna_supply": 749281528.8312204,
+      "timestamp": "2022-05-06T05:00:00Z",
+      "ust_price": 0.9995483905059593
+    },
+    {
+      "anchor_withdrawal_flow": 18702420.13809135,
+      "luna_price": 80.91852388786998,
+      "luna_supply": 749245811.1499283,
+      "timestamp": "2022-05-06T06:00:00Z",
+      "ust_price": 0.9996208150230449
+    },
+    {
+      "anchor_withdrawal_flow": 7972929.968537274,
+      "luna_price": 80.48204310497808,
+      "luna_supply": 749215852.8457873,
+      "timestamp": "2022-05-06T07:00:00Z",
+      "ust_price": 0.9995488852369888
+    },
+    {
+      "anchor_withdrawal_flow": 9088790.149665432,
+      "luna_price": 80.25454923201875,
+      "luna_supply": 749183398.8470043,
+      "timestamp": "2022-05-06T08:00:00Z",
+      "ust_price": 0.9995458450904483
+    },
+    {
+      "anchor_withdrawal_flow": 5679982.18875856,
+      "luna_price": 79.73121191308202,
+      "luna_supply": 749147589.8897253,
+      "timestamp": "2022-05-06T09:00:00Z",
+      "ust_price": 0.9996596982762888
+    },
+    {
+      "anchor_withdrawal_flow": 25349628.753928803,
+      "luna_price": 80.88172283139649,
+      "luna_supply": 749112517.9617304,
+      "timestamp": "2022-05-06T10:00:00Z",
+      "ust_price": 0.9996965955931841
+    },
+    {
+      "anchor_withdrawal_flow": 14466650.932083385,
+      "luna_price": 80.0072154143274,
+      "luna_supply": 749080119.1900283,
+      "timestamp": "2022-05-06T11:00:00Z",
+      "ust_price": 0.9996106303131926
+    },
+    {
+      "anchor_withdrawal_flow": 8166741.297454469,
+      "luna_price": 79.93748278088026,
+      "luna_supply": 749048314.3136263,
+      "timestamp": "2022-05-06T12:00:00Z",
+      "ust_price": 0.9996524950819157
+    },
+    {
+      "anchor_withdrawal_flow": 35308030.19732896,
+      "luna_price": 80.2897101521842,
+      "luna_supply": 749022452.7999964,
+      "timestamp": "2022-05-06T13:00:00Z",
+      "ust_price": 0.9996983391545065
+    },
+    {
+      "anchor_withdrawal_flow": 14387559.142426815,
+      "luna_price": 78.4678839553319,
+      "luna_supply": 748988618.5533494,
+      "timestamp": "2022-05-06T14:00:00Z",
+      "ust_price": 0.9994350584121077
+    },
+    {
+      "anchor_withdrawal_flow": 12810931.489553077,
+      "luna_price": 80.30178899261401,
+      "luna_supply": 748954531.3894724,
+      "timestamp": "2022-05-06T15:00:00Z",
+      "ust_price": 0.999597087163961
+    },
+    {
+      "anchor_withdrawal_flow": 10943814.612317186,
+      "luna_price": 79.92206490188426,
+      "luna_supply": 748918806.9306443,
+      "timestamp": "2022-05-06T16:00:00Z",
+      "ust_price": 0.9990941208507641
+    },
+    {
+      "anchor_withdrawal_flow": 35952702.52175814,
+      "luna_price": 80.58940880416527,
+      "luna_supply": 748882320.5703243,
+      "timestamp": "2022-05-06T17:00:00Z",
+      "ust_price": 0.9994045981454321
+    },
+    {
+      "anchor_withdrawal_flow": 6515582.043431903,
+      "luna_price": 79.89628351870319,
+      "luna_supply": 748845801.6725113,
+      "timestamp": "2022-05-06T18:00:00Z",
+      "ust_price": 0.9993401372961868
+    },
+    {
+      "anchor_withdrawal_flow": 10956623.558382569,
+      "luna_price": 79.56457643077805,
+      "luna_supply": 748809552.3371284,
+      "timestamp": "2022-05-06T19:00:00Z",
+      "ust_price": 0.9993861318709236
+    },
+    {
+      "anchor_withdrawal_flow": 4104261.085440853,
+      "luna_price": 79.31165787036146,
+      "luna_supply": 748772876.0146023,
+      "timestamp": "2022-05-06T20:00:00Z",
+      "ust_price": 0.9994397316467301
+    },
+    {
+      "anchor_withdrawal_flow": 2303962.5880625523,
+      "luna_price": 79.31911103688101,
+      "luna_supply": 748736051.5972214,
+      "timestamp": "2022-05-06T21:00:00Z",
+      "ust_price": 0.9996077590907796
+    },
+    {
+      "anchor_withdrawal_flow": 12081443.61413024,
+      "luna_price": 78.67426432178733,
+      "luna_supply": 748698992.9539263,
+      "timestamp": "2022-05-06T22:00:00Z",
+      "ust_price": 0.9994008901777742
+    },
+    {
+      "anchor_withdrawal_flow": 7703696.116099874,
+      "luna_price": 78.47970310197206,
+      "luna_supply": 748660741.4661114,
+      "timestamp": "2022-05-06T23:00:00Z",
+      "ust_price": 0.999478102440526
+    },
+    {
+      "anchor_withdrawal_flow": 7678461.718964458,
+      "luna_price": 77.37932914169743,
+      "luna_supply": 748622919.6596514,
+      "timestamp": "2022-05-07T00:00:00Z",
+      "ust_price": 0.9996001352744175
+    },
+    {
+      "anchor_withdrawal_flow": 30402803.60180689,
+      "luna_price": 76.72952717612952,
+      "luna_supply": 748584058.5790744,
+      "timestamp": "2022-05-07T01:00:00Z",
+      "ust_price": 0.9995320439078361
+    },
+    {
+      "anchor_withdrawal_flow": 25907502.651067607,
+      "luna_price": 76.4418888981089,
+      "luna_supply": 748546908.6517004,
+      "timestamp": "2022-05-07T02:00:00Z",
+      "ust_price": 0.9995291013330616
+    },
+    {
+      "anchor_withdrawal_flow": 26527038.65712405,
+      "luna_price": 76.45073259798968,
+      "luna_supply": 748510733.5561314,
+      "timestamp": "2022-05-07T03:00:00Z",
+      "ust_price": 0.9995625098755448
+    },
+    {
+      "anchor_withdrawal_flow": 27422357.051048994,
+      "luna_price": 75.49815370245372,
+      "luna_supply": 748468799.9655764,
+      "timestamp": "2022-05-07T04:00:00Z",
+      "ust_price": 0.9995401381047108
+    },
+    {
+      "anchor_withdrawal_flow": 81135011.80845553,
+      "luna_price": 72.75225198987638,
+      "luna_supply": 748439572.1309143,
+      "timestamp": "2022-05-07T05:00:00Z",
+      "ust_price": 0.9995040381112104
+    },
+    {
+      "anchor_withdrawal_flow": 13862921.402920451,
+      "luna_price": 73.6737147056711,
+      "luna_supply": 748403563.5385294,
+      "timestamp": "2022-05-07T06:00:00Z",
+      "ust_price": 0.9993484352913871
+    },
+    {
+      "anchor_withdrawal_flow": 25635526.966368675,
+      "luna_price": 72.2823877538656,
+      "luna_supply": 748364038.7626674,
+      "timestamp": "2022-05-07T07:00:00Z",
+      "ust_price": 0.9994691914775358
+    },
+    {
+      "anchor_withdrawal_flow": 20192872.64516345,
+      "luna_price": 73.06471032464468,
+      "luna_supply": 748325703.9093803,
+      "timestamp": "2022-05-07T08:00:00Z",
+      "ust_price": 0.9992956929607901
+    },
+    {
+      "anchor_withdrawal_flow": 5573160.855644574,
+      "luna_price": 73.46148050342042,
+      "luna_supply": 748287193.2221783,
+      "timestamp": "2022-05-07T09:00:00Z",
+      "ust_price": 0.9991654433377372
+    },
+    {
+      "anchor_withdrawal_flow": 6257413.691127203,
+      "luna_price": 73.16469740210718,
+      "luna_supply": 748257813.1504704,
+      "timestamp": "2022-05-07T10:00:00Z",
+      "ust_price": 0.9993388481205991
+    },
+    {
+      "anchor_withdrawal_flow": 92931521.23052968,
+      "luna_price": 73.83382068856598,
+      "luna_supply": 748255644.7669313,
+      "timestamp": "2022-05-07T11:00:00Z",
+      "ust_price": 0.9994444142480831
+    },
+    {
+      "anchor_withdrawal_flow": 109200661.96932521,
+      "luna_price": 73.82561174731768,
+      "luna_supply": 748256539.0886834,
+      "timestamp": "2022-05-07T12:00:00Z",
+      "ust_price": 0.9993410480498374
+    },
+    {
+      "anchor_withdrawal_flow": 29889151.04151411,
+      "luna_price": 73.56622744874912,
+      "luna_supply": 748257407.7263833,
+      "timestamp": "2022-05-07T13:00:00Z",
+      "ust_price": 0.9993616380565777
+    },
+    {
+      "anchor_withdrawal_flow": 30072955.96921927,
+      "luna_price": 73.0123454887446,
+      "luna_supply": 748259863.8889993,
+      "timestamp": "2022-05-07T14:00:00Z",
+      "ust_price": 0.9992670183186387
+    },
+    {
+      "anchor_withdrawal_flow": 50178937.75357664,
+      "luna_price": 73.05851762032914,
+      "luna_supply": 748259585.7166214,
+      "timestamp": "2022-05-07T15:00:00Z",
+      "ust_price": 0.9990725816646421
+    },
+    {
+      "anchor_withdrawal_flow": 50954164.6247975,
+      "luna_price": 73.41208083540882,
+      "luna_supply": 748261247.2013494,
+      "timestamp": "2022-05-07T16:00:00Z",
+      "ust_price": 0.9989168252774582
+    },
+    {
+      "anchor_withdrawal_flow": 38856174.08104807,
+      "luna_price": 73.19112870250004,
+      "luna_supply": 748257812.0263064,
+      "timestamp": "2022-05-07T17:00:00Z",
+      "ust_price": 0.9988939237183193
+    },
+    {
+      "anchor_withdrawal_flow": 168837708.7130568,
+      "luna_price": 72.59476847878051,
+      "luna_supply": 748254828.0183094,
+      "timestamp": "2022-05-07T18:00:00Z",
+      "ust_price": 0.9976007644179071
+    },
+    {
+      "anchor_withdrawal_flow": 57014984.319762535,
+      "luna_price": 72.60931478760774,
+      "luna_supply": 748255184.5373724,
+      "timestamp": "2022-05-07T19:00:00Z",
+      "ust_price": 0.9978902041366904
+    },
+    {
+      "anchor_withdrawal_flow": 87840140.92809315,
+      "luna_price": 72.3723803355271,
+      "luna_supply": 748264502.9502383,
+      "timestamp": "2022-05-07T20:00:00Z",
+      "ust_price": 0.9965084065097353
+    },
+    {
+      "anchor_withdrawal_flow": 231338760.27819994,
+      "luna_price": 70.61244627086454,
+      "luna_supply": 748249913.3249863,
+      "timestamp": "2022-05-07T21:00:00Z",
+      "ust_price": 0.9950483560838713
+    },
+    {
+      "anchor_withdrawal_flow": 392124756.3497337,
+      "luna_price": 66.58563664815836,
+      "luna_supply": 748218810.1494983,
+      "timestamp": "2022-05-07T22:00:00Z",
+      "ust_price": 0.9946504295722324
+    },
+    {
+      "anchor_withdrawal_flow": 112294874.30958968,
+      "luna_price": 65.25051734908128,
+      "luna_supply": 748255767.3570814,
+      "timestamp": "2022-05-07T23:00:00Z",
+      "ust_price": 0.9889272685779045
+    },
+    {
+      "anchor_withdrawal_flow": 143358709.35050982,
+      "luna_price": 68.03214924193306,
+      "luna_supply": 748297987.1929094,
+      "timestamp": "2022-05-08T00:00:00Z",
+      "ust_price": 0.9937664010116437
+    },
+    {
+      "anchor_withdrawal_flow": 573689930.084299,
+      "luna_price": 65.75878836110678,
+      "luna_supply": 748365389.3108684,
+      "timestamp": "2022-05-08T01:00:00Z",
+      "ust_price": 0.9923704505408273
+    },
+    {
+      "anchor_withdrawal_flow": 104086240.66759679,
+      "luna_price": 63.59140377836832,
+      "luna_supply": 748431247.8015103,
+      "timestamp": "2022-05-08T02:00:00Z",
+      "ust_price": 0.9891367414215244
+    },
+    {
+      "anchor_withdrawal_flow": 55545720.84294787,
+      "luna_price": 65.10450405113275,
+      "luna_supply": 748453668.6932304,
+      "timestamp": "2022-05-08T03:00:00Z",
+      "ust_price": 0.9933635603207307
+    },
+    {
+      "anchor_withdrawal_flow": 59582603.27403194,
+      "luna_price": 65.67558966914598,
+      "luna_supply": 748478492.8476954,
+      "timestamp": "2022-05-08T04:00:00Z",
+      "ust_price": 0.995521773653061
+    },
+    {
+      "anchor_withdrawal_flow": 44406214.78630347,
+      "luna_price": 65.22155252226955,
+      "luna_supply": 748496015.0954914,
+      "timestamp": "2022-05-08T05:00:00Z",
+      "ust_price": 0.9971429147544482
+    },
+    {
+      "anchor_withdrawal_flow": 41518119.1875543,
+      "luna_price": 65.0993952352013,
+      "luna_supply": 748521486.8594204,
+      "timestamp": "2022-05-08T06:00:00Z",
+      "ust_price": 0.9964064446756131
+    },
+    {
+      "anchor_withdrawal_flow": 44926711.576481245,
+      "luna_price": 65.12342027156868,
+      "luna_supply": 748551303.4691674,
+      "timestamp": "2022-05-08T07:00:00Z",
+      "ust_price": 0.9959008189096762
+    },
+    {
+      "anchor_withdrawal_flow": 49856339.4735736,
+      "luna_price": 64.1999261395864,
+      "luna_supply": 748578008.9663994,
+      "timestamp": "2022-05-08T08:00:00Z",
+      "ust_price": 0.9956209708763215
+    },
+    {
+      "anchor_withdrawal_flow": 56172263.682868235,
+      "luna_price": 63.95480095686251,
+      "luna_supply": 748592718.8962923,
+      "timestamp": "2022-05-08T09:00:00Z",
+      "ust_price": 0.9947805076167848
+    },
+    {
+      "anchor_withdrawal_flow": 39482011.4780942,
+      "luna_price": 62.79914603715005,
+      "luna_supply": 748640549.6652794,
+      "timestamp": "2022-05-08T10:00:00Z",
+      "ust_price": 0.9947575947199737
+    },
+    {
+      "anchor_withdrawal_flow": 22724069.07131275,
+      "luna_price": 63.66095280379018,
+      "luna_supply": 748691662.5414103,
+      "timestamp": "2022-05-08T11:00:00Z",
+      "ust_price": 0.9938078120731486
+    },
+    {
+      "anchor_withdrawal_flow": 109708280.4518677,
+      "luna_price": 63.25593421166162,
+      "luna_supply": 748726773.3135713,
+      "timestamp": "2022-05-08T12:00:00Z",
+      "ust_price": 0.992776612288833
+    },
+    {
+      "anchor_withdrawal_flow": 66326097.70813675,
+      "luna_price": 60.17851167562716,
+      "luna_supply": 748764746.6233563,
+      "timestamp": "2022-05-08T13:00:00Z",
+      "ust_price": 0.9924432391178579
+    },
+    {
+      "anchor_withdrawal_flow": 96157987.40259407,
+      "luna_price": 60.97271128101256,
+      "luna_supply": 748851683.2719693,
+      "timestamp": "2022-05-08T14:00:00Z",
+      "ust_price": 0.9913718015086579
+    },
+    {
+      "anchor_withdrawal_flow": 191165026.7688861,
+      "luna_price": 64.58547257363134,
+      "luna_supply": 748887771.2505724,
+      "timestamp": "2022-05-08T15:00:00Z",
+      "ust_price": 0.9967283780584676
+    },
+    {
+      "anchor_withdrawal_flow": 50688863.514698766,
+      "luna_price": 64.93476572576243,
+      "luna_supply": 748921890.3291273,
+      "timestamp": "2022-05-08T16:00:00Z",
+      "ust_price": 0.9975337749061376
+    },
+    {
+      "anchor_withdrawal_flow": 70303619.91940369,
+      "luna_price": 64.47132127927277,
+      "luna_supply": 748969194.6021764,
+      "timestamp": "2022-05-08T17:00:00Z",
+      "ust_price": 0.9966189624627471
+    },
+    {
+      "anchor_withdrawal_flow": 21224347.897669375,
+      "luna_price": 65.89841463217746,
+      "luna_supply": 749017938.5403454,
+      "timestamp": "2022-05-08T18:00:00Z",
+      "ust_price": 0.9953620281179902
+    },
+    {
+      "anchor_withdrawal_flow": 15660522.531566871,
+      "luna_price": 66.86645121065325,
+      "luna_supply": 749062781.6522853,
+      "timestamp": "2022-05-08T19:00:00Z",
+      "ust_price": 0.9948665145477996
+    },
+    {
+      "anchor_withdrawal_flow": 15449849.163335767,
+      "luna_price": 66.52757141558918,
+      "luna_supply": 749102822.6619424,
+      "timestamp": "2022-05-08T20:00:00Z",
+      "ust_price": 0.9948623332274378
+    },
+    {
+      "anchor_withdrawal_flow": 18087244.237327475,
+      "luna_price": 65.79089480587004,
+      "luna_supply": 749132159.9063894,
+      "timestamp": "2022-05-08T21:00:00Z",
+      "ust_price": 0.9948419363071477
+    },
+    {
+      "anchor_withdrawal_flow": 8877457.237651518,
+      "luna_price": 66.75968289184576,
+      "luna_supply": 749152493.2828563,
+      "timestamp": "2022-05-08T22:00:00Z",
+      "ust_price": 0.9953873192053087
+    },
+    {
+      "anchor_withdrawal_flow": 17098836.296202794,
+      "luna_price": 64.83132841394998,
+      "luna_supply": 749185655.3164394,
+      "timestamp": "2022-05-08T23:00:00Z",
+      "ust_price": 0.9950938440824346
+    },
+    {
+      "anchor_withdrawal_flow": 57386403.78527594,
+      "luna_price": 64.38939422174866,
+      "luna_supply": 749223268.9840513,
+      "timestamp": "2022-05-09T00:00:00Z",
+      "ust_price": 0.9950927705234828
+    },
+    {
+      "anchor_withdrawal_flow": 29911761.37614676,
+      "luna_price": 64.27357292945892,
+      "luna_supply": 749258428.0049053,
+      "timestamp": "2022-05-09T01:00:00Z",
+      "ust_price": 0.9947012823777398
+    },
+    {
+      "anchor_withdrawal_flow": 32733964.65925823,
+      "luna_price": 62.60302996916424,
+      "luna_supply": 749263367.0606773,
+      "timestamp": "2022-05-09T02:00:00Z",
+      "ust_price": 0.9951966197412955
+    },
+    {
+      "anchor_withdrawal_flow": 49119090.88674689,
+      "luna_price": 60.74309096264613,
+      "luna_supply": 749285933.6636773,
+      "timestamp": "2022-05-09T03:00:00Z",
+      "ust_price": 0.9948978163977675
+    },
+    {
+      "anchor_withdrawal_flow": 12660139.253003405,
+      "luna_price": 61.26557196752446,
+      "luna_supply": 749313254.5845643,
+      "timestamp": "2022-05-09T04:00:00Z",
+      "ust_price": 0.9952704095881342
+    },
+    {
+      "anchor_withdrawal_flow": 66993806.18320924,
+      "luna_price": 62.77437655406046,
+      "luna_supply": 749332855.6285362,
+      "timestamp": "2022-05-09T05:00:00Z",
+      "ust_price": 0.9952194304403532
+    },
+    {
+      "anchor_withdrawal_flow": 36638044.54532092,
+      "luna_price": 61.488440304397194,
+      "luna_supply": 749362898.8012323,
+      "timestamp": "2022-05-09T06:00:00Z",
+      "ust_price": 0.9947355705252605
+    },
+    {
+      "anchor_withdrawal_flow": 41552314.84983572,
+      "luna_price": 61.85998503209064,
+      "luna_supply": 749385417.1661503,
+      "timestamp": "2022-05-09T07:00:00Z",
+      "ust_price": 0.9945837885873731
+    },
+    {
+      "anchor_withdrawal_flow": 59550183.02896889,
+      "luna_price": 60.909699730287755,
+      "luna_supply": 749423761.9687682,
+      "timestamp": "2022-05-09T08:00:00Z",
+      "ust_price": 0.9946012392307803
+    },
+    {
+      "anchor_withdrawal_flow": 27823833.75117477,
+      "luna_price": 61.86222085743365,
+      "luna_supply": 749462018.4447132,
+      "timestamp": "2022-05-09T09:00:00Z",
+      "ust_price": 0.9943227859103251
+    },
+    {
+      "anchor_withdrawal_flow": 30175333.689740274,
+      "luna_price": 61.19096455841639,
+      "luna_supply": 749512400.3367913,
+      "timestamp": "2022-05-09T10:00:00Z",
+      "ust_price": 0.9946103284816067
+    },
+    {
+      "anchor_withdrawal_flow": 43111519.7657187,
+      "luna_price": 60.87644494505759,
+      "luna_supply": 749559847.6737382,
+      "timestamp": "2022-05-09T11:00:00Z",
+      "ust_price": 0.9946725257196
+    },
+    {
+      "anchor_withdrawal_flow": 146699658.46764466,
+      "luna_price": 59.408286642248406,
+      "luna_supply": 749613903.2120273,
+      "timestamp": "2022-05-09T12:00:00Z",
+      "ust_price": 0.9943431490901694
+    },
+    {
+      "anchor_withdrawal_flow": 92920778.27340823,
+      "luna_price": 59.376266000319895,
+      "luna_supply": 749679905.4548362,
+      "timestamp": "2022-05-09T13:00:00Z",
+      "ust_price": 0.9942834429346765
+    },
+    {
+      "anchor_withdrawal_flow": 102317169.97028911,
+      "luna_price": 60.0864656136681,
+      "luna_supply": 749760054.3376123,
+      "timestamp": "2022-05-09T14:00:00Z",
+      "ust_price": 0.9903156126641824
+    },
+    {
+      "anchor_withdrawal_flow": 282577288.35890424,
+      "luna_price": 58.85840020596083,
+      "luna_supply": 749814020.5130123,
+      "timestamp": "2022-05-09T15:00:00Z",
+      "ust_price": 0.9876596240998726
+    },
+    {
+      "anchor_withdrawal_flow": 346308577.91195774,
+      "luna_price": 57.37529543104916,
+      "luna_supply": 749959282.7724732,
+      "timestamp": "2022-05-09T16:00:00Z",
+      "ust_price": 0.9842062668066508
+    },
+    {
+      "anchor_withdrawal_flow": 308760536.0914653,
+      "luna_price": 53.45377997273803,
+      "luna_supply": 750024213.3334222,
+      "timestamp": "2022-05-09T17:00:00Z",
+      "ust_price": 0.9782830284589196
+    },
+    {
+      "anchor_withdrawal_flow": 658823050.7420332,
+      "luna_price": 51.34399331881238,
+      "luna_supply": 750153006.1174102,
+      "timestamp": "2022-05-09T18:00:00Z",
+      "ust_price": 0.9789445877007055
+    },
+    {
+      "anchor_withdrawal_flow": 325234337.8203387,
+      "luna_price": 46.69266081849995,
+      "luna_supply": 750357627.1139282,
+      "timestamp": "2022-05-09T19:00:00Z",
+      "ust_price": 0.9474022976150093
+    },
+    {
+      "anchor_withdrawal_flow": 178128942.83397195,
+      "luna_price": 47.39835507291525,
+      "luna_supply": 750700525.9745002,
+      "timestamp": "2022-05-09T20:00:00Z",
+      "ust_price": 0.94522555413574
+    },
+    {
+      "anchor_withdrawal_flow": 319025816.89258176,
+      "luna_price": 48.59319646440618,
+      "luna_supply": 751266409.6007903,
+      "timestamp": "2022-05-09T21:00:00Z",
+      "ust_price": 0.9315130046034403
+    },
+    {
+      "anchor_withdrawal_flow": 246070146.7623031,
+      "luna_price": 42.09979575179295,
+      "luna_supply": 751513006.3989923,
+      "timestamp": "2022-05-09T22:00:00Z",
+      "ust_price": 0.8653356689090781
+    },
+    {
+      "anchor_withdrawal_flow": 180862570.08086103,
+      "luna_price": 41.62720985300878,
+      "luna_supply": 752133705.7234433,
+      "timestamp": "2022-05-09T23:00:00Z",
+      "ust_price": 0.8854505223491587
+    },
+    {
+      "anchor_withdrawal_flow": 491406438.4989753,
+      "luna_price": 30.878555241713336,
+      "luna_supply": 753171106.3212652,
+      "timestamp": "2022-05-10T00:00:00Z",
+      "ust_price": 0.7552402507853683
+    },
+    {
+      "anchor_withdrawal_flow": 106148888.5115742,
+      "luna_price": 37.71703873590365,
+      "luna_supply": 754463667.4687322,
+      "timestamp": "2022-05-10T01:00:00Z",
+      "ust_price": 0.8056067894298176
+    },
+    {
+      "anchor_withdrawal_flow": 106709686.65999703,
+      "luna_price": 35.14353413126031,
+      "luna_supply": 756313459.0048232,
+      "timestamp": "2022-05-10T02:00:00Z",
+      "ust_price": 0.7887395066527269
+    },
+    {
+      "anchor_withdrawal_flow": 211931890.98478872,
+      "luna_price": 30.797765008130582,
+      "luna_supply": 759312988.2831743,
+      "timestamp": "2022-05-10T03:00:00Z",
+      "ust_price": 0.7455394295514911
+    },
+    {
+      "anchor_withdrawal_flow": 133206753.14370711,
+      "luna_price": 24.881945401672144,
+      "luna_supply": 762111428.3631363,
+      "timestamp": "2022-05-10T04:00:00Z",
+      "ust_price": 0.7481368740886781
+    },
+    {
+      "anchor_withdrawal_flow": 57398599.142763786,
+      "luna_price": 29.736151857194272,
+      "luna_supply": 763993245.1776773,
+      "timestamp": "2022-05-10T05:00:00Z",
+      "ust_price": 0.843592120382322
+    },
+    {
+      "anchor_withdrawal_flow": 124439226.74813731,
+      "luna_price": 32.60022634583673,
+      "luna_supply": 764973010.2187482,
+      "timestamp": "2022-05-10T06:00:00Z",
+      "ust_price": 0.8995907951399709
+    },
+    {
+      "anchor_withdrawal_flow": 161556486.7806801,
+      "luna_price": 34.61430997355257,
+      "luna_supply": 766262502.7596383,
+      "timestamp": "2022-05-10T07:00:00Z",
+      "ust_price": 0.9367507946194441
+    },
+    {
+      "anchor_withdrawal_flow": 115855998.26574562,
+      "luna_price": 30.863194379963875,
+      "luna_supply": 767431104.0478163,
+      "timestamp": "2022-05-10T08:00:00Z",
+      "ust_price": 0.9032390677885034
+    },
+    {
+      "anchor_withdrawal_flow": 46816274.856605224,
+      "luna_price": 31.842347684105597,
+      "luna_supply": 768866055.8090203,
+      "timestamp": "2022-05-10T09:00:00Z",
+      "ust_price": 0.9169518966235712
+    },
+    {
+      "anchor_withdrawal_flow": 194828121.46601152,
+      "luna_price": 28.78190405214281,
+      "luna_supply": 770394896.6269642,
+      "timestamp": "2022-05-10T10:00:00Z",
+      "ust_price": 0.8946182260452102
+    },
+    {
+      "anchor_withdrawal_flow": 32735761.336937867,
+      "luna_price": 29.168065125416472,
+      "luna_supply": 771841917.0489162,
+      "timestamp": "2022-05-10T11:00:00Z",
+      "ust_price": 0.9019829689519225
+    },
+    {
+      "anchor_withdrawal_flow": 36210447.70983761,
+      "luna_price": 32.57739639399231,
+      "luna_supply": 773026045.4681833,
+      "timestamp": "2022-05-10T12:00:00Z",
+      "ust_price": 0.9168195478419955
+    },
+    {
+      "anchor_withdrawal_flow": 87269780.99043272,
+      "luna_price": 33.467924421621184,
+      "luna_supply": 774034440.3785843,
+      "timestamp": "2022-05-10T13:00:00Z",
+      "ust_price": 0.9217613775858493
+    },
+    {
+      "anchor_withdrawal_flow": 67203549.63419423,
+      "luna_price": 31.60260764149729,
+      "luna_supply": 775166911.4133493,
+      "timestamp": "2022-05-10T14:00:00Z",
+      "ust_price": 0.9269352379590226
+    },
+    {
+      "anchor_withdrawal_flow": 90384881.04044466,
+      "luna_price": 29.171007674982345,
+      "luna_supply": 776708136.3485702,
+      "timestamp": "2022-05-10T15:00:00Z",
+      "ust_price": 0.9069622692285271
+    },
+    {
+      "anchor_withdrawal_flow": 36633808.04432894,
+      "luna_price": 31.60226024815263,
+      "luna_supply": 778235625.2603152,
+      "timestamp": "2022-05-10T16:00:00Z",
+      "ust_price": 0.9067803312737552
+    },
+    {
+      "anchor_withdrawal_flow": 19265044.19954752,
+      "luna_price": 30.13325852081701,
+      "luna_supply": 779664459.3009332,
+      "timestamp": "2022-05-10T17:00:00Z",
+      "ust_price": 0.905829141912694
+    },
+    {
+      "anchor_withdrawal_flow": 11658052.512638751,
+      "luna_price": 30.852548359160075,
+      "luna_supply": 781022610.0139552,
+      "timestamp": "2022-05-10T18:00:00Z",
+      "ust_price": 0.9152432840332346
+    },
+    {
+      "anchor_withdrawal_flow": 42305994.8560821,
+      "luna_price": 28.125878574132994,
+      "luna_supply": 782477913.9849203,
+      "timestamp": "2022-05-10T19:00:00Z",
+      "ust_price": 0.9160247785929873
+    },
+    {
+      "anchor_withdrawal_flow": 32487889.225835748,
+      "luna_price": 24.68891476245755,
+      "luna_supply": 784091187.3505023,
+      "timestamp": "2022-05-10T20:00:00Z",
+      "ust_price": 0.9147024731755009
+    },
+    {
+      "anchor_withdrawal_flow": 102681974.60283768,
+      "luna_price": 22.550447496140745,
+      "luna_supply": 786791245.6131492,
+      "timestamp": "2022-05-10T21:00:00Z",
+      "ust_price": 0.9028750277733989
+    },
+    {
+      "anchor_withdrawal_flow": 137388176.38838586,
+      "luna_price": 15.709701920634561,
+      "luna_supply": 792602796.7303393,
+      "timestamp": "2022-05-10T22:00:00Z",
+      "ust_price": 0.8019811958074206
+    },
+    {
+      "anchor_withdrawal_flow": 87693412.3694512,
+      "luna_price": 15.1387706270755,
+      "luna_supply": 799076267.7001143,
+      "timestamp": "2022-05-10T23:00:00Z",
+      "ust_price": 0.71252387971399
+    },
+    {
+      "anchor_withdrawal_flow": 61496219.38544405,
+      "luna_price": 17.176637100225353,
+      "luna_supply": 804345781.1655612,
+      "timestamp": "2022-05-11T00:00:00Z",
+      "ust_price": 0.7971761038837192
+    },
+    {
+      "anchor_withdrawal_flow": 49973822.08290087,
+      "luna_price": 16.504982263918837,
+      "luna_supply": 810923411.3456042,
+      "timestamp": "2022-05-11T01:00:00Z",
+      "ust_price": 0.7980685139526329
+    },
+    {
+      "anchor_withdrawal_flow": 70292469.92033832,
+      "luna_price": 14.281432227881707,
+      "luna_supply": 817122142.0002803,
+      "timestamp": "2022-05-11T02:00:00Z",
+      "ust_price": 0.7735718975322919
+    },
+    {
+      "anchor_withdrawal_flow": 54880289.431762315,
+      "luna_price": 15.253133994144237,
+      "luna_supply": 823083588.2238183,
+      "timestamp": "2022-05-11T03:00:00Z",
+      "ust_price": 0.8443894349272684
+    },
+    {
+      "anchor_withdrawal_flow": 75135737.35565662,
+      "luna_price": 13.669350523880082,
+      "luna_supply": 830640579.9181943,
+      "timestamp": "2022-05-11T04:00:00Z",
+      "ust_price": 0.8322857572142843
+    },
+    {
+      "anchor_withdrawal_flow": 166269533.95654857,
+      "luna_price": 10.423082609142508,
+      "luna_supply": 842450819.2327492,
+      "timestamp": "2022-05-11T05:00:00Z",
+      "ust_price": 0.7715125134671146
+    },
+    {
+      "anchor_withdrawal_flow": 312836817.3669967,
+      "luna_price": 9.230072078177582,
+      "luna_supply": 863285471.2225403,
+      "timestamp": "2022-05-11T06:00:00Z",
+      "ust_price": 0.6961445936094646
+    },
+    {
+      "anchor_withdrawal_flow": 509885627.5635283,
+      "luna_price": 5.826922016019022,
+      "luna_supply": 916261657.0001982,
+      "timestamp": "2022-05-11T07:00:00Z",
+      "ust_price": 0.47774648415709864
+    },
+    {
+      "anchor_withdrawal_flow": 120221396.11996204,
+      "luna_price": 4.718058551596398,
+      "luna_supply": 963959702.2086712,
+      "timestamp": "2022-05-11T08:00:00Z",
+      "ust_price": 0.376879666104394
+    },
+    {
+      "anchor_withdrawal_flow": 111891161.47912543,
+      "luna_price": 4.873597230217563,
+      "luna_supply": 1023867039.3704312,
+      "timestamp": "2022-05-11T09:00:00Z",
+      "ust_price": 0.5024650955233567
+    },
+    {
+      "anchor_withdrawal_flow": 137989956.92876613,
+      "luna_price": 3.8229542072008806,
+      "luna_supply": 1089018912.2855823,
+      "timestamp": "2022-05-11T10:00:00Z",
+      "ust_price": 0.4816311836680136
+    },
+    {
+      "anchor_withdrawal_flow": 108530880.25103153,
+      "luna_price": 2.322731718149494,
+      "luna_supply": 1200523464.9879313,
+      "timestamp": "2022-05-11T11:00:00Z",
+      "ust_price": 0.4803587028002566
+    },
+    {
+      "anchor_withdrawal_flow": 198584769.23170704,
+      "luna_price": 1.4365777925804468,
+      "luna_supply": 1428727080.4574342,
+      "timestamp": "2022-05-11T12:00:00Z",
+      "ust_price": 0.44724697207005565
+    },
+    {
+      "anchor_withdrawal_flow": 269184812.32205,
+      "luna_price": 0.6721498070608746,
+      "luna_supply": 1603048262.1516492,
+      "timestamp": "2022-05-11T13:00:00Z",
+      "ust_price": 0.2917027226906529
+    },
+    {
+      "anchor_withdrawal_flow": 76722913.27331944,
+      "luna_price": 2.520114755326546,
+      "luna_supply": 1652082733.020656,
+      "timestamp": "2022-05-11T14:00:00Z",
+      "ust_price": 0.47041536298486575
+    },
+    {
+      "anchor_withdrawal_flow": 51180142.91303532,
+      "luna_price": 3.209491694640788,
+      "luna_supply": 1764756293.4679892,
+      "timestamp": "2022-05-11T15:00:00Z",
+      "ust_price": 0.4903067422735865
+    },
+    {
+      "anchor_withdrawal_flow": 49233720.490539454,
+      "luna_price": 2.361233595543371,
+      "luna_supply": 1856175975.2822762,
+      "timestamp": "2022-05-11T16:00:00Z",
+      "ust_price": 0.5707824144861879
+    },
+    {
+      "anchor_withdrawal_flow": 56272966.41859296,
+      "luna_price": 2.2114933815988076,
+      "luna_supply": 1949175365.6310291,
+      "timestamp": "2022-05-11T17:00:00Z",
+      "ust_price": 0.649710341020001
+    },
+    {
+      "anchor_withdrawal_flow": 69899506.31913747,
+      "luna_price": 1.7715629660355425,
+      "luna_supply": 2047868281.046206,
+      "timestamp": "2022-05-11T18:00:00Z",
+      "ust_price": 0.6776925657251975
+    },
+    {
+      "anchor_withdrawal_flow": 52890502.214002825,
+      "luna_price": 1.2953782107829468,
+      "luna_supply": 2194848906.3986454,
+      "timestamp": "2022-05-11T19:00:00Z",
+      "ust_price": 0.659244333083059
+    },
+    {
+      "anchor_withdrawal_flow": 131857405.7923986,
+      "luna_price": 1.2285018835444284,
+      "luna_supply": 2326407786.125147,
+      "timestamp": "2022-05-11T20:00:00Z",
+      "ust_price": 0.6577481487341534
+    },
+    {
+      "anchor_withdrawal_flow": 55382033.703142814,
+      "luna_price": 1.0534665047599794,
+      "luna_supply": 2457679109.354192,
+      "timestamp": "2022-05-11T21:00:00Z",
+      "ust_price": 0.6887492036731068
+    },
+    {
+      "anchor_withdrawal_flow": 47267537.79247832,
+      "luna_price": 1.070165908012867,
+      "luna_supply": 2543873002.887364,
+      "timestamp": "2022-05-11T22:00:00Z",
+      "ust_price": 0.7521980651049306
+    },
+    {
+      "anchor_withdrawal_flow": 74601937.63107033,
+      "luna_price": 1.0729001931722908,
+      "luna_supply": 2624608996.727431,
+      "timestamp": "2022-05-11T23:00:00Z",
+      "ust_price": 0.7472499799901045
+    },
+    {
+      "anchor_withdrawal_flow": 27255579.449415725,
+      "luna_price": 1.0850966401049824,
+      "luna_supply": 2696025395.977071,
+      "timestamp": "2022-05-12T00:00:00Z",
+      "ust_price": 0.7678638112188122
+    },
+    {
+      "anchor_withdrawal_flow": 42498139.354038164,
+      "luna_price": 1.1133787838035218,
+      "luna_supply": 2773511230.569889,
+      "timestamp": "2022-05-12T01:00:00Z",
+      "ust_price": 0.7966706119599304
+    },
+    {
+      "anchor_withdrawal_flow": 57486196.97136665,
+      "luna_price": 0.8433505340251279,
+      "luna_supply": 2947366766.309411,
+      "timestamp": "2022-05-12T02:00:00Z",
+      "ust_price": 0.7363423513015017
+    },
+    {
+      "anchor_withdrawal_flow": 60958282.6163945,
+      "luna_price": 0.5368050033555323,
+      "luna_supply": 3181640681.1599607,
+      "timestamp": "2022-05-12T03:00:00Z",
+      "ust_price": 0.6105381786686076
+    },
+    {
+      "anchor_withdrawal_flow": 53638190.58784441,
+      "luna_price": 0.3744696959516234,
+      "luna_supply": 3372142924.597456,
+      "timestamp": "2022-05-12T04:00:00Z",
+      "ust_price": 0.6854943144339023
+    },
+    {
+      "anchor_withdrawal_flow": 49423053.5564098,
+      "luna_price": 0.27717267972092763,
+      "luna_supply": 3574572323.701465,
+      "timestamp": "2022-05-12T05:00:00Z",
+      "ust_price": 0.6504695373679554
+    },
+    {
+      "anchor_withdrawal_flow": 55152445.792431556,
+      "luna_price": 0.2670320312959229,
+      "luna_supply": 3943056880.877903,
+      "timestamp": "2022-05-12T06:00:00Z",
+      "ust_price": 0.5651364901330294
+    },
+    {
+      "anchor_withdrawal_flow": 41760072.88630653,
+      "luna_price": 0.14981477355382208,
+      "luna_supply": 4616743968.01926,
+      "timestamp": "2022-05-12T07:00:00Z",
+      "ust_price": 0.511033843327201
+    },
+    {
+      "anchor_withdrawal_flow": 70580314.44201727,
+      "luna_price": 0.13106192916323461,
+      "luna_supply": 5575223415.937475,
+      "timestamp": "2022-05-12T08:00:00Z",
+      "ust_price": 0.5984241910099126
+    },
+    {
+      "anchor_withdrawal_flow": 81475040.41213763,
+      "luna_price": 0.06932949772378577,
+      "luna_supply": 7832898920.256468,
+      "timestamp": "2022-05-12T09:00:00Z",
+      "ust_price": 0.6002888550579556
+    },
+    {
+      "anchor_withdrawal_flow": 40012458.091593415,
+      "luna_price": 0.021227894629433502,
+      "luna_supply": 9405450995.620392,
+      "timestamp": "2022-05-12T10:00:00Z",
+      "ust_price": 0.40594301166006463
+    },
+    {
+      "anchor_withdrawal_flow": 26690798.775886912,
+      "luna_price": 0.04674124093840011,
+      "luna_supply": 10898026585.396193,
+      "timestamp": "2022-05-12T11:00:00Z",
+      "ust_price": 0.4299183244072277
+    },
+    {
+      "anchor_withdrawal_flow": 39638857.20720517,
+      "luna_price": 0.029621268997566313,
+      "luna_supply": 15217699839.018929,
+      "timestamp": "2022-05-12T12:00:00Z",
+      "ust_price": 0.5780088931550077
+    },
+    {
+      "anchor_withdrawal_flow": 63131117.34754875,
+      "luna_price": 0.021191652000949524,
+      "luna_supply": 22342220407.436462,
+      "timestamp": "2022-05-12T13:00:00Z",
+      "ust_price": 0.6368786732336186
+    },
+    {
+      "anchor_withdrawal_flow": 93641649.03907987,
+      "luna_price": 0.011131398528654085,
+      "luna_supply": 33274842229.948357,
+      "timestamp": "2022-05-12T14:00:00Z",
+      "ust_price": 0.6071568162012626
+    },
+    {
+      "anchor_withdrawal_flow": 83974274.5869277,
+      "luna_price": 0.005383071555808581,
+      "luna_supply": 38752082012.026474,
+      "timestamp": "2022-05-12T15:00:00Z",
+      "ust_price": 0.4353312708411146
+    },
+    {
+      "anchor_withdrawal_flow": 965051.8844391758,
+      "luna_price": 0.0054669298281570244,
+      "luna_supply": 38809127588.10368,
+      "timestamp": "2022-05-12T16:00:00Z",
+      "ust_price": 0.4057754066807226
+    },
+    {
+      "anchor_withdrawal_flow": 6433941.338942003,
+      "luna_price": 0.011509128993888729,
+      "luna_supply": 39107376983.27973,
+      "timestamp": "2022-05-12T17:00:00Z",
+      "ust_price": 0.34415751269557415
+    },
+    {
+      "anchor_withdrawal_flow": 37936701.099815115,
+      "luna_price": 0.018049046395414492,
+      "luna_supply": 40678717184.58212,
+      "timestamp": "2022-05-12T18:00:00Z",
+      "ust_price": 0.3759431526425083
+    },
+    {
+      "anchor_withdrawal_flow": 17218196.938324124,
+      "luna_price": 0.018176694272614962,
+      "luna_supply": 41739298703.98398,
+      "timestamp": "2022-05-12T19:00:00Z",
+      "ust_price": 0.3446712089461575
+    },
+    {
+      "anchor_withdrawal_flow": 13709160.24423758,
+      "luna_price": 0.022114697439290027,
+      "luna_supply": 43098266489.103455,
+      "timestamp": "2022-05-12T20:00:00Z",
+      "ust_price": 0.38370029774205305
+    },
+    {
+      "anchor_withdrawal_flow": 21386699.836802226,
+      "luna_price": 0.013812137371547666,
+      "luna_supply": 64762111907.856995,
+      "timestamp": "2022-05-12T21:00:00Z",
+      "ust_price": 0.4155455691516807
+    },
+    {
+      "anchor_withdrawal_flow": 19644450.57314384,
+      "luna_price": 0.00296605165638708,
+      "luna_supply": 108524894731.84442,
+      "timestamp": "2022-05-12T22:00:00Z",
+      "ust_price": 0.43672930081139977
+    },
+    {
+      "anchor_withdrawal_flow": 27903368.128017686,
+      "luna_price": 0.0016784538946873022,
+      "luna_supply": 198770095354.31424,
+      "timestamp": "2022-05-12T23:00:00Z",
+      "ust_price": 0.4475654998485564
+    },
+    {
+      "anchor_withdrawal_flow": 34340558.8085926,
+      "luna_price": 0.0002114529584639951,
+      "luna_supply": 918173266715.8107,
+      "timestamp": "2022-05-13T00:00:00Z",
+      "ust_price": 0.3690855144808253
+    },
+    {
+      "anchor_withdrawal_flow": 52941679.540554285,
+      "luna_price": 8.837880314950147e-06,
+      "luna_supply": 6800423504721.432,
+      "timestamp": "2022-05-13T01:00:00Z",
+      "ust_price": 0.21014370843024313
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 2.006178958065839e-06,
+      "luna_supply": 6800423504721.432,
+      "timestamp": "2022-05-13T02:00:00Z",
+      "ust_price": 0.09808014237236569
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 1.1056264029398343e-05,
+      "luna_supply": 6800423504721.432,
+      "timestamp": "2022-05-13T03:00:00Z",
+      "ust_price": 0.09842631420572492
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 7.623266050943824e-05,
+      "luna_supply": 6800423504721.432,
+      "timestamp": "2022-05-13T04:00:00Z",
+      "ust_price": 0.11752646823753321
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 4.193097827779669e-05,
+      "luna_supply": 6800423504721.432,
+      "timestamp": "2022-05-13T05:00:00Z",
+      "ust_price": 0.08824882055430266
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 3.550393491225771e-05,
+      "luna_supply": 6800423504721.432,
+      "timestamp": "2022-05-13T06:00:00Z",
+      "ust_price": 0.09847596177031291
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 4.0167188866801176e-05,
+      "luna_supply": 6800423504721.432,
+      "timestamp": "2022-05-13T07:00:00Z",
+      "ust_price": 0.15242028313040734
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 4.700735641726576e-05,
+      "luna_supply": 6800423504721.432,
+      "timestamp": "2022-05-13T08:00:00Z",
+      "ust_price": 0.10131477698254548
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 1.1065654032757936e-05,
+      "luna_supply": 6800423504721.432,
+      "timestamp": "2022-05-13T09:00:00Z",
+      "ust_price": 0.09889477832022604
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 1.2740274548744867e-05,
+      "luna_supply": 6800423504721.432,
+      "timestamp": "2022-05-13T10:00:00Z",
+      "ust_price": 0.11186225452617496
+    },
+    {
+      "anchor_withdrawal_flow": 10081485.891699297,
+      "luna_price": 4.1939546407647684e-05,
+      "luna_supply": 6800423504721.432,
+      "timestamp": "2022-05-13T11:00:00Z",
+      "ust_price": 0.08231475169875989
+    },
+    {
+      "anchor_withdrawal_flow": 19864766.160776407,
+      "luna_price": 1.8785458569725992e-05,
+      "luna_supply": 6800423504721.432,
+      "timestamp": "2022-05-13T12:00:00Z",
+      "ust_price": 0.09599918065958547
+    },
+    {
+      "anchor_withdrawal_flow": 40975233.55172089,
+      "luna_price": 5.327975946018332e-05,
+      "luna_supply": 6800423504721.432,
+      "timestamp": "2022-05-13T13:00:00Z",
+      "ust_price": 0.11080580214935036
+    },
+    {
+      "anchor_withdrawal_flow": 13406655.631382704,
+      "luna_price": 0.0003460844803244158,
+      "luna_supply": 6800423504721.432,
+      "timestamp": "2022-05-13T14:00:00Z",
+      "ust_price": 0.10854622194828105
+    },
+    {
+      "anchor_withdrawal_flow": 14529285.648762694,
+      "luna_price": 4.919633306361142e-05,
+      "luna_supply": 6800423504721.432,
+      "timestamp": "2022-05-13T15:00:00Z",
+      "ust_price": 0.10490916181100031
+    },
+    {
+      "anchor_withdrawal_flow": 17637977.08038759,
+      "luna_price": 6.304168828833836e-05,
+      "luna_supply": 6800423504721.432,
+      "timestamp": "2022-05-13T16:00:00Z",
+      "ust_price": 0.09368714739700884
+    },
+    {
+      "anchor_withdrawal_flow": 26682502.894419156,
+      "luna_price": 0.00013031905930585818,
+      "luna_supply": 6800423504721.432,
+      "timestamp": "2022-05-13T17:00:00Z",
+      "ust_price": 0.10309673889269341
+    },
+    {
+      "anchor_withdrawal_flow": 24227098.199406072,
+      "luna_price": 7.13350861331242e-05,
+      "luna_supply": 6800423504721.432,
+      "timestamp": "2022-05-13T18:00:00Z",
+      "ust_price": 0.1333092713183211
+    },
+    {
+      "anchor_withdrawal_flow": 10268377.406609125,
+      "luna_price": 9.061823267836788e-05,
+      "luna_supply": 6800423504721.432,
+      "timestamp": "2022-05-13T19:00:00Z",
+      "ust_price": 0.15110000394053397
+    },
+    {
+      "anchor_withdrawal_flow": 10092746.101480225,
+      "luna_price": 0.00011061998535950581,
+      "luna_supply": 6800423504721.432,
+      "timestamp": "2022-05-13T20:00:00Z",
+      "ust_price": 0.13116865681975903
+    },
+    {
+      "anchor_withdrawal_flow": 10545364.027826909,
+      "luna_price": 0.00010245469828165998,
+      "luna_supply": 6800423504721.432,
+      "timestamp": "2022-05-13T21:00:00Z",
+      "ust_price": 0.10946281075292942
+    },
+    {
+      "anchor_withdrawal_flow": 5280778.380446287,
+      "luna_price": 0.00011635346325415986,
+      "luna_supply": 6800423504721.432,
+      "timestamp": "2022-05-13T22:00:00Z",
+      "ust_price": 0.1353279599888297
+    },
+    {
+      "anchor_withdrawal_flow": 3283278.236199793,
+      "luna_price": 0.00011927211927606815,
+      "luna_supply": 6800423504721.432,
+      "timestamp": "2022-05-13T23:00:00Z",
+      "ust_price": 0.12349421057456318
+    }
+  ],
+  "analysis_type": "HISTORICAL_FIT",
+  "bounds": {
+    "confidence_feedback": [
+      0.01,
+      0.8
+    ],
+    "luna_dilution_elasticity": [
+      0.2,
+      2.5
+    ],
+    "mint_ust_impact": [
+      0.005,
+      0.25
+    ],
+    "peg_recovery": [
+      0.01,
+      0.65
+    ],
+    "supply_realization": [
+      0.95,
+      1.05
+    ],
+    "withdrawal_price_impact": [
+      0.005,
+      0.3
+    ],
+    "withdrawal_sell_fraction": [
+      0.2,
+      0.9
+    ]
+  },
+  "checks": {
+    "direct_event_gross_mint_used": true,
+    "finite_states": true,
+    "future_prices_not_accepted_by_simulator": true,
+    "nondecreasing_supply": true,
+    "positive_prices": true
+  },
+  "input_policy": {
+    "forbidden_state_input": "No observed future UST price, LUNA price, or LUNA supply is used as next state.",
+    "interpretation": "In-sample historical reconstruction; not an ex-ante forecast.",
+    "observed_exogenous_inputs": [
+      "anchor_withdrawal_flow",
+      "gross_luna_issuance_from_native_swaps (swap_amount + fee_amount)"
+    ]
+  },
+  "label": "CALIBRATED_HISTORICAL_RECONSTRUCTION_NOT_FORECAST",
+  "metrics": {
+    "event_timing": {
+      "0.9": {
+        "actual": "2022-05-09T22:00:00Z",
+        "error_hours": -48.0,
+        "simulated": "2022-05-07T22:00:00Z"
+      },
+      "0.95": {
+        "actual": "2022-05-09T19:00:00Z",
+        "error_hours": -62.0,
+        "simulated": "2022-05-07T05:00:00Z"
+      },
+      "0.99": {
+        "actual": "2022-05-07T23:00:00Z",
+        "error_hours": -44.0,
+        "simulated": "2022-05-06T03:00:00Z"
+      },
+      "0.995": {
+        "actual": "2022-05-07T22:00:00Z",
+        "error_hours": -45.0,
+        "simulated": "2022-05-06T01:00:00Z"
+      }
+    },
+    "luna_price": {
+      "correlation": 0.9918013664201399,
+      "log_rmse": 0.6778927901465109,
+      "mae": 4.718354329088086,
+      "rmse": 6.170014726766989
+    },
+    "luna_supply": {
+      "correlation": 0.9999987381541114,
+      "final_relative_error": 0.006476045570644189,
+      "mae": 0.0043788958970726695,
+      "rmse": 0.005246953611802079
+    },
+    "ust_price": {
+      "correlation": 0.7601387144195368,
+      "mae": 0.0955453079084817,
+      "rmse": 0.17784807550674878
+    }
+  },
+  "model_version": "terra-historical-fit-1.0.0",
+  "objective": {
+    "component_losses": {
+      "luna_log_rmse": 0.6778927901465109,
+      "luna_supply_log_rmse": 0.005246953611802079,
+      "physical_state_penalty": 0.0,
+      "ust_price_rmse": 0.17784807550674878
+    },
+    "formula": "4*UST_RMSE + log_LUNA_RMSE + log_supply_RMSE + physical_state_penalty",
+    "value": 1.394532045785308
+  },
+  "optimizer": {
+    "candidates": 900,
+    "method": "DETERMINISTIC_BOUNDED_RANDOM_SEARCH"
+  },
+  "parameters": {
+    "confidence_feedback": 0.07953246633403249,
+    "luna_dilution_elasticity": 1.401786574315954,
+    "mint_ust_impact": 0.022972894051052132,
+    "peg_recovery": 0.07559325726859753,
+    "supply_realization": 0.9830516241448675,
+    "withdrawal_price_impact": 0.19564460645878093,
+    "withdrawal_sell_fraction": 0.32482477422606826
+  },
+  "seed": 20220513,
+  "simulated_timeseries": [
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-01T00:00:00Z",
+      "ust_price": 1.000024684950217
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-01T01:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-01T02:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-01T03:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-01T04:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-01T05:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-01T06:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-01T07:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-01T08:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-01T09:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-01T10:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-01T11:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-01T12:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-01T13:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-01T14:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-01T15:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-01T16:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-01T17:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-01T18:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-01T19:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-01T20:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-01T21:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-01T22:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-01T23:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-02T00:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-02T01:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-02T02:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-02T03:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-02T04:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-02T05:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-02T06:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-02T07:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-02T08:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-02T09:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-02T10:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-02T11:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-02T12:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-02T13:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-02T14:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-02T15:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-02T16:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-02T17:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-02T18:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-02T19:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-02T20:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-02T21:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-02T22:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-02T23:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-03T00:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-03T01:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-03T02:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-03T03:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-03T04:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-03T05:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-03T06:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-03T07:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-03T08:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-03T09:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-03T10:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-03T11:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-03T12:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-03T13:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-03T14:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-03T15:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-03T16:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-03T17:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-03T18:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-03T19:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-03T20:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-03T21:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-03T22:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-03T23:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-04T00:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-04T01:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-04T02:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-04T03:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-04T04:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-04T05:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-04T06:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-04T07:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-04T08:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-04T09:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-04T10:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-04T11:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-04T12:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-04T13:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-04T14:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-04T15:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-04T16:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-04T17:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-04T18:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-04T19:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-04T20:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-04T21:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-04T22:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-04T23:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-05T00:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-05T01:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-05T02:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-05T03:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-05T04:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-05T05:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-05T06:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-05T07:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-05T08:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-05T09:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-05T10:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-05T11:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-05T12:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-05T13:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-05T14:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-05T15:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-05T16:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-05T17:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-05T18:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-05T19:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-05T20:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-05T21:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-05T22:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 78.12584722310493,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-05T23:00:00Z",
+      "ust_price": 1.0
+    },
+    {
+      "anchor_withdrawal_flow": 18191338.00262847,
+      "luna_price": 78.09451000473204,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-06T00:00:00Z",
+      "ust_price": 0.9959893614324551
+    },
+    {
+      "anchor_withdrawal_flow": 7596577.117605475,
+      "luna_price": 78.05260633147344,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-06T01:00:00Z",
+      "ust_price": 0.9936834978673881
+    },
+    {
+      "anchor_withdrawal_flow": 10363360.564123945,
+      "luna_price": 77.9937355301979,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-06T02:00:00Z",
+      "ust_price": 0.9911022882887013
+    },
+    {
+      "anchor_withdrawal_flow": 18352051.404359944,
+      "luna_price": 77.91093751626978,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-06T03:00:00Z",
+      "ust_price": 0.9876884000285744
+    },
+    {
+      "anchor_withdrawal_flow": 11835021.868110487,
+      "luna_price": 77.81589602638954,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-06T04:00:00Z",
+      "ust_price": 0.9853238661196906
+    },
+    {
+      "anchor_withdrawal_flow": 3902376.3109473884,
+      "luna_price": 77.7188688074167,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-06T05:00:00Z",
+      "ust_price": 0.9845339558800993
+    },
+    {
+      "anchor_withdrawal_flow": 18702420.13809135,
+      "luna_price": 77.59831027912638,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-06T06:00:00Z",
+      "ust_price": 0.9815411198569481
+    },
+    {
+      "anchor_withdrawal_flow": 7972929.968537274,
+      "luna_price": 77.47346581325203,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-06T07:00:00Z",
+      "ust_price": 0.9802067486660294
+    },
+    {
+      "anchor_withdrawal_flow": 9088790.149665432,
+      "luna_price": 77.3396694032714,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-06T08:00:00Z",
+      "ust_price": 0.9787821781161739
+    },
+    {
+      "anchor_withdrawal_flow": 5679982.18875856,
+      "luna_price": 77.20292873741712,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-06T09:00:00Z",
+      "ust_price": 0.9780718327887911
+    },
+    {
+      "anchor_withdrawal_flow": 25349628.753928803,
+      "luna_price": 77.03976560947044,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-06T10:00:00Z",
+      "ust_price": 0.974835763182268
+    },
+    {
+      "anchor_withdrawal_flow": 14466650.932083385,
+      "luna_price": 76.86962008595042,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-06T11:00:00Z",
+      "ust_price": 0.9730210864529741
+    },
+    {
+      "anchor_withdrawal_flow": 8166741.297454469,
+      "luna_price": 76.69738335415678,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-06T12:00:00Z",
+      "ust_price": 0.9722594155522075
+    },
+    {
+      "anchor_withdrawal_flow": 35308030.19732896,
+      "luna_price": 76.49344116104757,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-06T13:00:00Z",
+      "ust_price": 0.9685259267209708
+    },
+    {
+      "anchor_withdrawal_flow": 14387559.142426815,
+      "luna_price": 76.28890731792582,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-06T14:00:00Z",
+      "ust_price": 0.9671548344252096
+    },
+    {
+      "anchor_withdrawal_flow": 12810931.489553077,
+      "luna_price": 76.07907766501131,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-06T15:00:00Z",
+      "ust_price": 0.96609710873814
+    },
+    {
+      "anchor_withdrawal_flow": 10943814.612317186,
+      "luna_price": 75.86616178851712,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-06T16:00:00Z",
+      "ust_price": 0.9653834821075211
+    },
+    {
+      "anchor_withdrawal_flow": 35952702.52175814,
+      "luna_price": 75.62529350403575,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-06T17:00:00Z",
+      "ust_price": 0.9620564722029138
+    },
+    {
+      "anchor_withdrawal_flow": 6515582.043431903,
+      "luna_price": 75.39713569469554,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-06T18:00:00Z",
+      "ust_price": 0.9623794046330508
+    },
+    {
+      "anchor_withdrawal_flow": 10956623.558382569,
+      "luna_price": 75.16543744112045,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-06T19:00:00Z",
+      "ust_price": 0.961924372610202
+    },
+    {
+      "anchor_withdrawal_flow": 4104261.085440853,
+      "luna_price": 74.94189003317933,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-06T20:00:00Z",
+      "ust_price": 0.9627829191517877
+    },
+    {
+      "anchor_withdrawal_flow": 2303962.5880625523,
+      "luna_price": 74.72735089164844,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-06T21:00:00Z",
+      "ust_price": 0.9640846644889971
+    },
+    {
+      "anchor_withdrawal_flow": 12081443.61413024,
+      "luna_price": 74.50575177223581,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-06T22:00:00Z",
+      "ust_price": 0.9633450649093831
+    },
+    {
+      "anchor_withdrawal_flow": 7703696.116099874,
+      "luna_price": 74.28632230106915,
+      "luna_supply": 751668917.4396232,
+      "timestamp": "2022-05-06T23:00:00Z",
+      "ust_price": 0.9633528469663616
+    },
+    {
+      "anchor_withdrawal_flow": 7678461.718964458,
+      "luna_price": 74.06747642895037,
+      "luna_supply": 751669210.6907549,
+      "timestamp": "2022-05-07T00:00:00Z",
+      "ust_price": 0.9633480457223043
+    },
+    {
+      "anchor_withdrawal_flow": 30402803.60180689,
+      "luna_price": 73.82559350989287,
+      "luna_supply": 751669486.7824836,
+      "timestamp": "2022-05-07T01:00:00Z",
+      "ust_price": 0.9606098888730756
+    },
+    {
+      "anchor_withdrawal_flow": 25907502.651067607,
+      "luna_price": 73.57273108785354,
+      "luna_supply": 751673571.6446731,
+      "timestamp": "2022-05-07T02:00:00Z",
+      "ust_price": 0.95843402961223
+    },
+    {
+      "anchor_withdrawal_flow": 26527038.65712405,
+      "luna_price": 73.3089999205143,
+      "luna_supply": 751674358.2530421,
+      "timestamp": "2022-05-07T03:00:00Z",
+      "ust_price": 0.9563787384621588
+    },
+    {
+      "anchor_withdrawal_flow": 27422357.051048994,
+      "luna_price": 73.03421718332288,
+      "luna_supply": 751675439.5106044,
+      "timestamp": "2022-05-07T04:00:00Z",
+      "ust_price": 0.95437156001828
+    },
+    {
+      "anchor_withdrawal_flow": 81135011.80845553,
+      "luna_price": 72.7074726598674,
+      "luna_supply": 751690526.2895355,
+      "timestamp": "2022-05-07T05:00:00Z",
+      "ust_price": 0.9486055826001498
+    },
+    {
+      "anchor_withdrawal_flow": 13862921.402920451,
+      "luna_price": 72.40438138370611,
+      "luna_supply": 751703789.9726803,
+      "timestamp": "2022-05-07T06:00:00Z",
+      "ust_price": 0.9485817075395386
+    },
+    {
+      "anchor_withdrawal_flow": 25635526.966368675,
+      "luna_price": 72.09249702719174,
+      "luna_supply": 751706192.0590664,
+      "timestamp": "2022-05-07T07:00:00Z",
+      "ust_price": 0.9472491309012945
+    },
+    {
+      "anchor_withdrawal_flow": 20192872.64516345,
+      "luna_price": 71.77947560901637,
+      "luna_supply": 751711243.4300137,
+      "timestamp": "2022-05-07T08:00:00Z",
+      "ust_price": 0.9465663878840475
+    },
+    {
+      "anchor_withdrawal_flow": 5573160.855644574,
+      "luna_price": 71.48200380041682,
+      "luna_supply": 751713050.0466932,
+      "timestamp": "2022-05-07T09:00:00Z",
+      "ust_price": 0.9481462919151933
+    },
+    {
+      "anchor_withdrawal_flow": 6257413.691127203,
+      "luna_price": 71.19302758767687,
+      "luna_supply": 751714861.3914362,
+      "timestamp": "2022-05-07T10:00:00Z",
+      "ust_price": 0.9494684331013752
+    },
+    {
+      "anchor_withdrawal_flow": 92931521.23052968,
+      "luna_price": 70.84315665505285,
+      "luna_supply": 751716169.571781,
+      "timestamp": "2022-05-07T11:00:00Z",
+      "ust_price": 0.9434167913082853
+    },
+    {
+      "anchor_withdrawal_flow": 109200661.96932521,
+      "luna_price": 70.45284877288996,
+      "luna_supply": 751717578.2860924,
+      "timestamp": "2022-05-07T12:00:00Z",
+      "ust_price": 0.936867868157502
+    },
+    {
+      "anchor_withdrawal_flow": 29889151.04151411,
+      "luna_price": 70.08395893219189,
+      "luna_supply": 751722728.841527,
+      "timestamp": "2022-05-07T13:00:00Z",
+      "ust_price": 0.9358511524738796
+    },
+    {
+      "anchor_withdrawal_flow": 30072955.96921927,
+      "luna_price": 69.71173549591897,
+      "luna_supply": 751726874.8720591,
+      "timestamp": "2022-05-07T14:00:00Z",
+      "ust_price": 0.9348899652265799
+    },
+    {
+      "anchor_withdrawal_flow": 50178937.75357664,
+      "luna_price": 69.3214980110459,
+      "luna_supply": 751727269.2305182,
+      "timestamp": "2022-05-07T15:00:00Z",
+      "ust_price": 0.932350215935616
+    },
+    {
+      "anchor_withdrawal_flow": 50954164.6247975,
+      "luna_price": 68.91938428644485,
+      "luna_supply": 751729370.297387,
+      "timestamp": "2022-05-07T16:00:00Z",
+      "ust_price": 0.9298805486662358
+    },
+    {
+      "anchor_withdrawal_flow": 38856174.08104807,
+      "luna_price": 68.51601911510701,
+      "luna_supply": 751731402.6140469,
+      "timestamp": "2022-05-07T17:00:00Z",
+      "ust_price": 0.9285207432356877
+    },
+    {
+      "anchor_withdrawal_flow": 168837708.7130568,
+      "luna_price": 68.0278552984806,
+      "luna_supply": 751732682.2164961,
+      "timestamp": "2022-05-07T18:00:00Z",
+      "ust_price": 0.9200504591885859
+    },
+    {
+      "anchor_withdrawal_flow": 57014984.319762535,
+      "luna_price": 67.5669442767908,
+      "luna_supply": 751733536.0953974,
+      "timestamp": "2022-05-07T19:00:00Z",
+      "ust_price": 0.9179076450415252
+    },
+    {
+      "anchor_withdrawal_flow": 87840140.92809315,
+      "luna_price": 67.07503695779572,
+      "luna_supply": 751753494.2660118,
+      "timestamp": "2022-05-07T20:00:00Z",
+      "ust_price": 0.9138015855123177
+    },
+    {
+      "anchor_withdrawal_flow": 231338760.27819994,
+      "luna_price": 66.48663845436381,
+      "luna_supply": 751774855.1867065,
+      "timestamp": "2022-05-07T21:00:00Z",
+      "ust_price": 0.9035151689433801
+    },
+    {
+      "anchor_withdrawal_flow": 392124756.3497337,
+      "luna_price": 65.77112357060746,
+      "luna_supply": 751806128.7954061,
+      "timestamp": "2022-05-07T22:00:00Z",
+      "ust_price": 0.8884541715597556
+    },
+    {
+      "anchor_withdrawal_flow": 112294874.30958968,
+      "luna_price": 65.12309298434843,
+      "luna_supply": 751882698.8969568,
+      "timestamp": "2022-05-07T23:00:00Z",
+      "ust_price": 0.8843104669979742
+    },
+    {
+      "anchor_withdrawal_flow": 143358709.35050982,
+      "luna_price": 64.44532866279246,
+      "luna_supply": 751939743.5026954,
+      "timestamp": "2022-05-08T00:00:00Z",
+      "ust_price": 0.8788002477693919
+    },
+    {
+      "anchor_withdrawal_flow": 573689930.084299,
+      "luna_price": 63.53479057541061,
+      "luna_supply": 752016753.8621072,
+      "timestamp": "2022-05-08T01:00:00Z",
+      "ust_price": 0.8592937272298777
+    },
+    {
+      "anchor_withdrawal_flow": 104086240.66759679,
+      "luna_price": 62.770165848489434,
+      "luna_supply": 752106330.552525,
+      "timestamp": "2022-05-08T02:00:00Z",
+      "ust_price": 0.856855258950292
+    },
+    {
+      "anchor_withdrawal_flow": 55545720.84294787,
+      "luna_price": 62.0434188892422,
+      "luna_supply": 752138695.2780879,
+      "timestamp": "2022-05-08T03:00:00Z",
+      "ust_price": 0.8580965119009657
+    },
+    {
+      "anchor_withdrawal_flow": 59582603.27403194,
+      "luna_price": 61.32705712518148,
+      "luna_supply": 752176048.7510725,
+      "timestamp": "2022-05-08T04:00:00Z",
+      "ust_price": 0.858899883320887
+    },
+    {
+      "anchor_withdrawal_flow": 44406214.78630347,
+      "luna_price": 60.63638095898662,
+      "luna_supply": 752193823.8193755,
+      "timestamp": "2022-05-08T05:00:00Z",
+      "ust_price": 0.8610309425501408
+    },
+    {
+      "anchor_withdrawal_flow": 41518119.1875543,
+      "luna_price": 59.96423739770687,
+      "luna_supply": 752219390.6469967,
+      "timestamp": "2022-05-08T06:00:00Z",
+      "ust_price": 0.8632728705941787
+    },
+    {
+      "anchor_withdrawal_flow": 44926711.576481245,
+      "luna_price": 59.306613080339375,
+      "luna_supply": 752249191.1565623,
+      "timestamp": "2022-05-08T07:00:00Z",
+      "ust_price": 0.8650727887935397
+    },
+    {
+      "anchor_withdrawal_flow": 49856339.4735736,
+      "luna_price": 58.660458020126,
+      "luna_supply": 752277914.8141096,
+      "timestamp": "2022-05-08T08:00:00Z",
+      "ust_price": 0.8663019325126302
+    },
+    {
+      "anchor_withdrawal_flow": 56172263.682868235,
+      "luna_price": 58.023123105189214,
+      "luna_supply": 752297928.4860846,
+      "timestamp": "2022-05-08T09:00:00Z",
+      "ust_price": 0.8669245391977558
+    },
+    {
+      "anchor_withdrawal_flow": 39482011.4780942,
+      "luna_price": 57.40401796380357,
+      "luna_supply": 752345379.35136,
+      "timestamp": "2022-05-08T10:00:00Z",
+      "ust_price": 0.8689220744845205
+    },
+    {
+      "anchor_withdrawal_flow": 22724069.07131275,
+      "luna_price": 56.81321408144392,
+      "luna_supply": 752396133.312001,
+      "timestamp": "2022-05-08T11:00:00Z",
+      "ust_price": 0.872663148487554
+    },
+    {
+      "anchor_withdrawal_flow": 109708280.4518677,
+      "luna_price": 56.184626668830674,
+      "luna_supply": 752457301.0408213,
+      "timestamp": "2022-05-08T12:00:00Z",
+      "ust_price": 0.8690451413399483
+    },
+    {
+      "anchor_withdrawal_flow": 66326097.70813675,
+      "luna_price": 55.5723020890863,
+      "luna_supply": 752524077.1502497,
+      "timestamp": "2022-05-08T13:00:00Z",
+      "ust_price": 0.8684173594409704
+    },
+    {
+      "anchor_withdrawal_flow": 96157987.40259407,
+      "luna_price": 54.94347235066544,
+      "luna_supply": 752610006.0491177,
+      "timestamp": "2022-05-08T14:00:00Z",
+      "ust_price": 0.8656734547716646
+    },
+    {
+      "anchor_withdrawal_flow": 191165026.7688861,
+      "luna_price": 54.265763782698905,
+      "luna_supply": 752646321.3023171,
+      "timestamp": "2022-05-08T15:00:00Z",
+      "ust_price": 0.8581425955842714
+    },
+    {
+      "anchor_withdrawal_flow": 50688863.514698766,
+      "luna_price": 53.643807056192365,
+      "luna_supply": 752682993.9261364,
+      "timestamp": "2022-05-08T16:00:00Z",
+      "ust_price": 0.8595077175893845
+    },
+    {
+      "anchor_withdrawal_flow": 70303619.91940369,
+      "luna_price": 53.019534002436956,
+      "luna_supply": 752738495.0341806,
+      "timestamp": "2022-05-08T17:00:00Z",
+      "ust_price": 0.8591065995858472
+    },
+    {
+      "anchor_withdrawal_flow": 21224347.897669375,
+      "luna_price": 52.43639147104391,
+      "luna_supply": 752786853.0480374,
+      "timestamp": "2022-05-08T18:00:00Z",
+      "ust_price": 0.8635888072087587
+    },
+    {
+      "anchor_withdrawal_flow": 15660522.531566871,
+      "luna_price": 51.882365215850285,
+      "luna_supply": 752831489.2815593,
+      "timestamp": "2022-05-08T19:00:00Z",
+      "ust_price": 0.8686084579063675
+    },
+    {
+      "anchor_withdrawal_flow": 15449849.163335767,
+      "luna_price": 51.353986617893504,
+      "luna_supply": 752871328.1389188,
+      "timestamp": "2022-05-08T20:00:00Z",
+      "ust_price": 0.8733286397920803
+    },
+    {
+      "anchor_withdrawal_flow": 18087244.237327475,
+      "luna_price": 50.84745501254545,
+      "luna_supply": 752900647.964037,
+      "timestamp": "2022-05-08T21:00:00Z",
+      "ust_price": 0.877343624016489
+    },
+    {
+      "anchor_withdrawal_flow": 8877457.237651518,
+      "luna_price": 50.36855367663635,
+      "luna_supply": 752943351.6599841,
+      "timestamp": "2022-05-08T22:00:00Z",
+      "ust_price": 0.8826512090046371
+    },
+    {
+      "anchor_withdrawal_flow": 17098836.296202794,
+      "luna_price": 49.90665614422416,
+      "luna_supply": 752976486.1438655,
+      "timestamp": "2022-05-08T23:00:00Z",
+      "ust_price": 0.8861632509721614
+    },
+    {
+      "anchor_withdrawal_flow": 57386403.78527594,
+      "luna_price": 49.43320001094138,
+      "luna_supply": 753013927.2812563,
+      "timestamp": "2022-05-09T00:00:00Z",
+      "ust_price": 0.8851326217240028
+    },
+    {
+      "anchor_withdrawal_flow": 29911761.37614676,
+      "luna_price": 48.97851366297593,
+      "luna_supply": 753048924.1127961,
+      "timestamp": "2022-05-09T01:00:00Z",
+      "ust_price": 0.8867851078363228
+    },
+    {
+      "anchor_withdrawal_flow": 32733964.65925823,
+      "luna_price": 48.53238281438722,
+      "luna_supply": 753079323.5449868,
+      "timestamp": "2022-05-09T02:00:00Z",
+      "ust_price": 0.8880185478309468
+    },
+    {
+      "anchor_withdrawal_flow": 49119090.88674689,
+      "luna_price": 48.084419640926896,
+      "luna_supply": 753102479.0544354,
+      "timestamp": "2022-05-09T03:00:00Z",
+      "ust_price": 0.8875326782440589
+    },
+    {
+      "anchor_withdrawal_flow": 12660139.253003405,
+      "luna_price": 47.66504270917852,
+      "luna_supply": 753129953.0477365,
+      "timestamp": "2022-05-09T04:00:00Z",
+      "ust_price": 0.8914168589329654
+    },
+    {
+      "anchor_withdrawal_flow": 66993806.18320924,
+      "luna_price": 47.22773297044077,
+      "luna_supply": 753149663.764724,
+      "timestamp": "2022-05-09T05:00:00Z",
+      "ust_price": 0.8893616440479064
+    },
+    {
+      "anchor_withdrawal_flow": 36638044.54532092,
+      "luna_price": 46.804035707290005,
+      "luna_supply": 753179716.7364143,
+      "timestamp": "2022-05-09T06:00:00Z",
+      "ust_price": 0.8900259011133238
+    },
+    {
+      "anchor_withdrawal_flow": 41552314.84983572,
+      "luna_price": 46.38365099400106,
+      "luna_supply": 753202350.9072782,
+      "timestamp": "2022-05-09T07:00:00Z",
+      "ust_price": 0.8901192697263678
+    },
+    {
+      "anchor_withdrawal_flow": 59550183.02896889,
+      "luna_price": 45.95512659688388,
+      "luna_supply": 753240815.2491026,
+      "timestamp": "2022-05-09T08:00:00Z",
+      "ust_price": 0.8885562428798995
+    },
+    {
+      "anchor_withdrawal_flow": 27823833.75117477,
+      "luna_price": 45.54471023427511,
+      "luna_supply": 753279121.2596396,
+      "timestamp": "2022-05-09T09:00:00Z",
+      "ust_price": 0.8901454138058874
+    },
+    {
+      "anchor_withdrawal_flow": 30175333.689740274,
+      "luna_price": 45.13956282176865,
+      "luna_supply": 753339970.2451422,
+      "timestamp": "2022-05-09T10:00:00Z",
+      "ust_price": 0.8912969861361484
+    },
+    {
+      "anchor_withdrawal_flow": 43111519.7657187,
+      "luna_price": 44.734838478831094,
+      "luna_supply": 753387096.4064381,
+      "timestamp": "2022-05-09T11:00:00Z",
+      "ust_price": 0.8910434619845562
+    },
+    {
+      "anchor_withdrawal_flow": 146699658.46764466,
+      "luna_price": 44.27931882722103,
+      "luna_supply": 753455242.8904302,
+      "timestamp": "2022-05-09T12:00:00Z",
+      "ust_price": 0.8837679422867107
+    },
+    {
+      "anchor_withdrawal_flow": 92920778.27340823,
+      "luna_price": 43.826508308097566,
+      "luna_supply": 753548903.0822623,
+      "timestamp": "2022-05-09T13:00:00Z",
+      "ust_price": 0.8799137900649076
+    },
+    {
+      "anchor_withdrawal_flow": 102317169.97028911,
+      "luna_price": 43.36216507040788,
+      "luna_supply": 753628245.7443523,
+      "timestamp": "2022-05-09T14:00:00Z",
+      "ust_price": 0.8756518677498579
+    },
+    {
+      "anchor_withdrawal_flow": 282577288.35890424,
+      "luna_price": 42.811198099777314,
+      "luna_supply": 753719264.8650048,
+      "timestamp": "2022-05-09T15:00:00Z",
+      "ust_price": 0.8628404103738907
+    },
+    {
+      "anchor_withdrawal_flow": 346308577.91195774,
+      "luna_price": 42.19196213332585,
+      "luna_supply": 753887301.0737132,
+      "timestamp": "2022-05-09T16:00:00Z",
+      "ust_price": 0.8477917515903839
+    },
+    {
+      "anchor_withdrawal_flow": 308760536.0914653,
+      "luna_price": 41.54236386590828,
+      "luna_supply": 754084394.9954088,
+      "timestamp": "2022-05-09T17:00:00Z",
+      "ust_price": 0.8343942746302517
+    },
+    {
+      "anchor_withdrawal_flow": 658823050.7420332,
+      "luna_price": 40.71939689655385,
+      "luna_supply": 754359300.3444765,
+      "timestamp": "2022-05-09T18:00:00Z",
+      "ust_price": 0.809505979242356
+    },
+    {
+      "anchor_withdrawal_flow": 325234337.8203387,
+      "luna_price": 39.95405589178722,
+      "luna_supply": 754589657.7781733,
+      "timestamp": "2022-05-09T19:00:00Z",
+      "ust_price": 0.795734314270899
+    },
+    {
+      "anchor_withdrawal_flow": 178128942.83397195,
+      "luna_price": 39.213997544035635,
+      "luna_supply": 754937128.995068,
+      "timestamp": "2022-05-09T20:00:00Z",
+      "ust_price": 0.7893844810589475
+    },
+    {
+      "anchor_withdrawal_flow": 319025816.89258176,
+      "luna_price": 38.38883679710522,
+      "luna_supply": 755496730.7278934,
+      "timestamp": "2022-05-09T21:00:00Z",
+      "ust_price": 0.7756325353628205
+    },
+    {
+      "anchor_withdrawal_flow": 246070146.7623031,
+      "luna_price": 37.5698269593606,
+      "luna_supply": 756043385.09688,
+      "timestamp": "2022-05-09T22:00:00Z",
+      "ust_price": 0.7655507796406549
+    },
+    {
+      "anchor_withdrawal_flow": 180862570.08086103,
+      "luna_price": 36.761667795718665,
+      "luna_supply": 756673773.8489224,
+      "timestamp": "2022-05-09T23:00:00Z",
+      "ust_price": 0.7593370167454951
+    },
+    {
+      "anchor_withdrawal_flow": 491406438.4989753,
+      "luna_price": 35.79077616434398,
+      "luna_supply": 757693552.1155653,
+      "timestamp": "2022-05-10T00:00:00Z",
+      "ust_price": 0.7376220198327064
+    },
+    {
+      "anchor_withdrawal_flow": 106148888.5115742,
+      "luna_price": 34.9265230674339,
+      "luna_supply": 759105608.5114605,
+      "timestamp": "2022-05-10T01:00:00Z",
+      "ust_price": 0.7370317535570359
+    },
+    {
+      "anchor_withdrawal_flow": 106709686.65999703,
+      "luna_price": 34.04014337344926,
+      "luna_supply": 761150313.7464268,
+      "timestamp": "2022-05-10T02:00:00Z",
+      "ust_price": 0.7359921280879702
+    },
+    {
+      "anchor_withdrawal_flow": 211931890.98478872,
+      "luna_price": 33.06035736599337,
+      "luna_supply": 764180108.1855035,
+      "timestamp": "2022-05-10T03:00:00Z",
+      "ust_price": 0.7265695492791043
+    },
+    {
+      "anchor_withdrawal_flow": 133206753.14370711,
+      "luna_price": 32.137884340930384,
+      "luna_supply": 766933949.8053029,
+      "timestamp": "2022-05-10T04:00:00Z",
+      "ust_price": 0.7230104449405645
+    },
+    {
+      "anchor_withdrawal_flow": 57398599.142763786,
+      "luna_price": 31.32606268818818,
+      "luna_supply": 768785301.4539595,
+      "timestamp": "2022-05-10T05:00:00Z",
+      "ust_price": 0.7275491208498998
+    },
+    {
+      "anchor_withdrawal_flow": 124439226.74813731,
+      "luna_price": 30.55984351106335,
+      "luna_supply": 769748323.0708627,
+      "timestamp": "2022-05-10T06:00:00Z",
+      "ust_price": 0.72533751205704
+    },
+    {
+      "anchor_withdrawal_flow": 161556486.7806801,
+      "luna_price": 29.77201713822553,
+      "luna_supply": 771017452.8783904,
+      "timestamp": "2022-05-10T07:00:00Z",
+      "ust_price": 0.7198854217211789
+    },
+    {
+      "anchor_withdrawal_flow": 115855998.26574562,
+      "luna_price": 29.01925304465441,
+      "luna_supply": 772166687.9214493,
+      "timestamp": "2022-05-10T08:00:00Z",
+      "ust_price": 0.7183542203168831
+    },
+    {
+      "anchor_withdrawal_flow": 46816274.856605224,
+      "luna_price": 28.304655482103602,
+      "luna_supply": 773577917.6804445,
+      "timestamp": "2022-05-10T09:00:00Z",
+      "ust_price": 0.7244718125596485
+    },
+    {
+      "anchor_withdrawal_flow": 194828121.46601152,
+      "luna_price": 27.544369569702265,
+      "luna_supply": 775081121.1337675,
+      "timestamp": "2022-05-10T10:00:00Z",
+      "ust_price": 0.7159737183196607
+    },
+    {
+      "anchor_withdrawal_flow": 32735761.336937867,
+      "luna_price": 26.868890710042177,
+      "luna_supply": 776504070.1684904,
+      "timestamp": "2022-05-10T11:00:00Z",
+      "ust_price": 0.7243103347857833
+    },
+    {
+      "anchor_withdrawal_flow": 36210447.70983761,
+      "luna_price": 26.236683283375623,
+      "luna_supply": 777668917.9879876,
+      "timestamp": "2022-05-10T12:00:00Z",
+      "ust_price": 0.7316605358349342
+    },
+    {
+      "anchor_withdrawal_flow": 87269780.99043272,
+      "luna_price": 25.614707720634264,
+      "luna_supply": 778660813.920699,
+      "timestamp": "2022-05-10T13:00:00Z",
+      "ust_price": 0.7319637790329263
+    },
+    {
+      "anchor_withdrawal_flow": 67203549.63419423,
+      "luna_price": 25.011788033550047,
+      "luna_supply": 779774595.7964455,
+      "timestamp": "2022-05-10T14:00:00Z",
+      "ust_price": 0.7343896405140428
+    },
+    {
+      "anchor_withdrawal_flow": 90384881.04044466,
+      "luna_price": 24.39856467733598,
+      "luna_supply": 781288859.2214947,
+      "timestamp": "2022-05-10T15:00:00Z",
+      "ust_price": 0.7338050908824392
+    },
+    {
+      "anchor_withdrawal_flow": 36633808.04432894,
+      "luna_price": 23.826095446766313,
+      "luna_supply": 782792566.7764179,
+      "timestamp": "2022-05-10T16:00:00Z",
+      "ust_price": 0.740168349954323
+    },
+    {
+      "anchor_withdrawal_flow": 19265044.19954752,
+      "luna_price": 23.29283925323941,
+      "luna_supply": 784197682.0577083,
+      "timestamp": "2022-05-10T17:00:00Z",
+      "ust_price": 0.7495411382552635
+    },
+    {
+      "anchor_withdrawal_flow": 11658052.512638751,
+      "luna_price": 22.795803419325374,
+      "luna_supply": 785533354.8918965,
+      "timestamp": "2022-05-10T18:00:00Z",
+      "ust_price": 0.7603186285074715
+    },
+    {
+      "anchor_withdrawal_flow": 42305994.8560821,
+      "luna_price": 22.305377432561293,
+      "luna_supply": 786964673.390651,
+      "timestamp": "2022-05-10T19:00:00Z",
+      "ust_price": 0.764205466621076
+    },
+    {
+      "anchor_withdrawal_flow": 32487889.225835748,
+      "luna_price": 21.830661705629726,
+      "luna_supply": 788552257.8776065,
+      "timestamp": "2022-05-10T20:00:00Z",
+      "ust_price": 0.7693429617256501
+    },
+    {
+      "anchor_withdrawal_flow": 102681974.60283768,
+      "luna_price": 21.30183179516005,
+      "luna_supply": 791226843.8582257,
+      "timestamp": "2022-05-10T21:00:00Z",
+      "ust_price": 0.7650079401401
+    },
+    {
+      "anchor_withdrawal_flow": 137388176.38838586,
+      "luna_price": 20.652937274316137,
+      "luna_supply": 796951504.1680063,
+      "timestamp": "2022-05-10T22:00:00Z",
+      "ust_price": 0.7566971682159074
+    },
+    {
+      "anchor_withdrawal_flow": 87693412.3694512,
+      "luna_price": 20.007591979662983,
+      "luna_supply": 803315222.8780869,
+      "timestamp": "2022-05-10T23:00:00Z",
+      "ust_price": 0.7531627639521847
+    },
+    {
+      "anchor_withdrawal_flow": 61496219.38544405,
+      "luna_price": 19.4292275225803,
+      "luna_supply": 808496036.1574421,
+      "timestamp": "2022-05-11T00:00:00Z",
+      "ust_price": 0.7531053557904192
+    },
+    {
+      "anchor_withdrawal_flow": 49973822.08290087,
+      "luna_price": 18.831005589195488,
+      "luna_supply": 814963946.9082751,
+      "timestamp": "2022-05-11T01:00:00Z",
+      "ust_price": 0.7542856964248367
+    },
+    {
+      "anchor_withdrawal_flow": 70292469.92033832,
+      "luna_price": 18.257846715704975,
+      "luna_supply": 821059774.0812222,
+      "timestamp": "2022-05-11T02:00:00Z",
+      "ust_price": 0.7527158305426151
+    },
+    {
+      "anchor_withdrawal_flow": 54880289.431762315,
+      "luna_price": 17.714234041085263,
+      "luna_supply": 826920953.6080391,
+      "timestamp": "2022-05-11T03:00:00Z",
+      "ust_price": 0.7532294691889692
+    },
+    {
+      "anchor_withdrawal_flow": 75135737.35565662,
+      "luna_price": 17.13463303171631,
+      "luna_supply": 834369356.6171184,
+      "timestamp": "2022-05-11T04:00:00Z",
+      "ust_price": 0.7506820716182768
+    },
+    {
+      "anchor_withdrawal_flow": 166269533.95654857,
+      "luna_price": 16.427959285941988,
+      "luna_supply": 845981179.7674223,
+      "timestamp": "2022-05-11T05:00:00Z",
+      "ust_price": 0.7384869442912892
+    },
+    {
+      "anchor_withdrawal_flow": 312836817.3669967,
+      "luna_price": 15.4712354559997,
+      "luna_supply": 866474657.2155432,
+      "timestamp": "2022-05-11T06:00:00Z",
+      "ust_price": 0.7147582456541839
+    },
+    {
+      "anchor_withdrawal_flow": 509885627.5635283,
+      "luna_price": 13.803873513478777,
+      "luna_supply": 918532089.5138595,
+      "timestamp": "2022-05-11T07:00:00Z",
+      "ust_price": 0.6763263642989761
+    },
+    {
+      "anchor_withdrawal_flow": 120221396.11996204,
+      "luna_price": 12.514008541500525,
+      "luna_supply": 965424278.7377396,
+      "timestamp": "2022-05-11T08:00:00Z",
+      "ust_price": 0.6653969541727127
+    },
+    {
+      "anchor_withdrawal_flow": 111891161.47912543,
+      "luna_price": 11.18721196668318,
+      "luna_supply": 1024318278.9342349,
+      "timestamp": "2022-05-11T09:00:00Z",
+      "ust_price": 0.6548049896526308
+    },
+    {
+      "anchor_withdrawal_flow": 137989956.92876613,
+      "luna_price": 9.96576964613581,
+      "luna_supply": 1088374390.4844258,
+      "timestamp": "2022-05-11T10:00:00Z",
+      "ust_price": 0.6411017969389619
+    },
+    {
+      "anchor_withdrawal_flow": 108530880.25103153,
+      "luna_price": 8.44397132601654,
+      "luna_supply": 1197991604.4265933,
+      "timestamp": "2022-05-11T11:00:00Z",
+      "ust_price": 0.6286928411544417
+    },
+    {
+      "anchor_withdrawal_flow": 198584769.23170704,
+      "luna_price": 6.411615810224413,
+      "luna_supply": 1422318712.1511998,
+      "timestamp": "2022-05-11T12:00:00Z",
+      "ust_price": 0.6022951573213017
+    },
+    {
+      "anchor_withdrawal_flow": 269184812.32205,
+      "luna_price": 5.26004033251151,
+      "luna_supply": 1593691217.313486,
+      "timestamp": "2022-05-11T13:00:00Z",
+      "ust_price": 0.5715692131476877
+    },
+    {
+      "anchor_withdrawal_flow": 76722913.27331944,
+      "luna_price": 4.868913919514964,
+      "luna_supply": 1641909925.7533472,
+      "timestamp": "2022-05-11T14:00:00Z",
+      "ust_price": 0.570816248541948
+    },
+    {
+      "anchor_withdrawal_flow": 51180142.91303532,
+      "luna_price": 4.2917195270466335,
+      "luna_supply": 1752292007.2541656,
+      "timestamp": "2022-05-11T15:00:00Z",
+      "ust_price": 0.5717110363759803
+    },
+    {
+      "anchor_withdrawal_flow": 49233720.490539454,
+      "luna_price": 3.8644009117067344,
+      "luna_supply": 1842165989.3530595,
+      "timestamp": "2022-05-11T16:00:00Z",
+      "ust_price": 0.5740323811726216
+    },
+    {
+      "anchor_withdrawal_flow": 56272966.41859296,
+      "luna_price": 3.4870450268614444,
+      "luna_supply": 1933607215.6765049,
+      "timestamp": "2022-05-11T17:00:00Z",
+      "ust_price": 0.5747577359134258
+    },
+    {
+      "anchor_withdrawal_flow": 69899506.31913747,
+      "luna_price": 3.1428777497725946,
+      "luna_supply": 2030637245.2185042,
+      "timestamp": "2022-05-11T18:00:00Z",
+      "ust_price": 0.5725628768598764
+    },
+    {
+      "anchor_withdrawal_flow": 52890502.214002825,
+      "luna_price": 2.7559405740971497,
+      "luna_supply": 2175138645.6678762,
+      "timestamp": "2022-05-11T19:00:00Z",
+      "ust_price": 0.572161101716564
+    },
+    {
+      "anchor_withdrawal_flow": 131857405.7923986,
+      "luna_price": 2.447891603630619,
+      "luna_supply": 2304475773.6957664,
+      "timestamp": "2022-05-11T20:00:00Z",
+      "ust_price": 0.5591787979991757
+    },
+    {
+      "anchor_withdrawal_flow": 55382033.703142814,
+      "luna_price": 2.187439774717957,
+      "luna_supply": 2433531273.2624326,
+      "timestamp": "2022-05-11T21:00:00Z",
+      "ust_price": 0.5597111317306758
+    },
+    {
+      "anchor_withdrawal_flow": 47267537.79247832,
+      "luna_price": 2.0119342381812073,
+      "luna_supply": 2518272933.2269506,
+      "timestamp": "2022-05-11T22:00:00Z",
+      "ust_price": 0.5636730008684323
+    },
+    {
+      "anchor_withdrawal_flow": 74601937.63107033,
+      "luna_price": 1.857495929004549,
+      "luna_supply": 2597643981.087814,
+      "timestamp": "2022-05-11T23:00:00Z",
+      "ust_price": 0.5617966637767242
+    },
+    {
+      "anchor_withdrawal_flow": 27255579.449415725,
+      "luna_price": 1.7283977048416395,
+      "luna_supply": 2667859651.8772655,
+      "timestamp": "2022-05-12T00:00:00Z",
+      "ust_price": 0.5714995517942907
+    },
+    {
+      "anchor_withdrawal_flow": 42498139.354038164,
+      "luna_price": 1.6049785536904932,
+      "luna_supply": 2744042175.45759,
+      "timestamp": "2022-05-12T01:00:00Z",
+      "ust_price": 0.5759408866755197
+    },
+    {
+      "anchor_withdrawal_flow": 57486196.97136665,
+      "luna_price": 1.4237031244366445,
+      "luna_supply": 2914959739.961235,
+      "timestamp": "2022-05-12T02:00:00Z",
+      "ust_price": 0.5734055439806469
+    },
+    {
+      "anchor_withdrawal_flow": 60958282.6163945,
+      "luna_price": 1.2349889991214604,
+      "luna_supply": 3145271506.086346,
+      "timestamp": "2022-05-12T03:00:00Z",
+      "ust_price": 0.568931302290552
+    },
+    {
+      "anchor_withdrawal_flow": 53638190.58784441,
+      "luna_price": 1.0990283547924504,
+      "luna_supply": 3332499424.1723695,
+      "timestamp": "2022-05-12T04:00:00Z",
+      "ust_price": 0.5675044861851647
+    },
+    {
+      "anchor_withdrawal_flow": 49423053.5564098,
+      "luna_price": 0.9777840784620809,
+      "luna_supply": 3531582407.576798,
+      "timestamp": "2022-05-12T05:00:00Z",
+      "ust_price": 0.5669245080761462
+    },
+    {
+      "anchor_withdrawal_flow": 55152445.792431556,
+      "luna_price": 0.822450747069205,
+      "luna_supply": 3893879853.7235007,
+      "timestamp": "2022-05-12T06:00:00Z",
+      "ust_price": 0.5620342204701663
+    },
+    {
+      "anchor_withdrawal_flow": 41760072.88630653,
+      "luna_price": 0.6365085227792467,
+      "luna_supply": 4555928222.116994,
+      "timestamp": "2022-05-12T07:00:00Z",
+      "ust_price": 0.5574572068781722
+    },
+    {
+      "anchor_withdrawal_flow": 70580314.44201727,
+      "luna_price": 0.47090375916205807,
+      "luna_supply": 5497940815.179452,
+      "timestamp": "2022-05-12T08:00:00Z",
+      "ust_price": 0.5447972910053323
+    },
+    {
+      "anchor_withdrawal_flow": 81475040.41213763,
+      "luna_price": 0.2813527236527096,
+      "luna_supply": 7716892677.200134,
+      "timestamp": "2022-05-12T09:00:00Z",
+      "ust_price": 0.5248376471759593
+    },
+    {
+      "anchor_withdrawal_flow": 40012458.091593415,
+      "luna_price": 0.2086152326157627,
+      "luna_supply": 9289836769.43596,
+      "timestamp": "2022-05-12T10:00:00Z",
+      "ust_price": 0.5214262746843499
+    },
+    {
+      "anchor_withdrawal_flow": 26690798.775886912,
+      "luna_price": 0.16327846828363474,
+      "luna_supply": 10764290753.29482,
+      "timestamp": "2022-05-12T11:00:00Z",
+      "ust_price": 0.5241208511785893
+    },
+    {
+      "anchor_withdrawal_flow": 39638857.20720517,
+      "luna_price": 0.09846907811828462,
+      "luna_supply": 15010518564.829185,
+      "timestamp": "2022-05-12T12:00:00Z",
+      "ust_price": 0.51505573246123
+    },
+    {
+      "anchor_withdrawal_flow": 63131117.34754875,
+      "luna_price": 0.055224241678706376,
+      "luna_supply": 22014488524.072433,
+      "timestamp": "2022-05-12T13:00:00Z",
+      "ust_price": 0.4987723546204271
+    },
+    {
+      "anchor_withdrawal_flow": 93641649.03907987,
+      "luna_price": 0.03022885291024842,
+      "luna_supply": 32788392553.55545,
+      "timestamp": "2022-05-12T14:00:00Z",
+      "ust_price": 0.47639162752052944
+    },
+    {
+      "anchor_withdrawal_flow": 83974274.5869277,
+      "luna_price": 0.023189066309538535,
+      "luna_supply": 38367468528.92659,
+      "timestamp": "2022-05-12T15:00:00Z",
+      "ust_price": 0.4657989420566323
+    },
+    {
+      "anchor_withdrawal_flow": 965051.8844391758,
+      "luna_price": 0.022228742445185266,
+      "luna_supply": 38437535145.654366,
+      "timestamp": "2022-05-12T16:00:00Z",
+      "ust_price": 0.5007201872776181
+    },
+    {
+      "anchor_withdrawal_flow": 6433941.338942003,
+      "luna_price": 0.021174287036989068,
+      "luna_supply": 38730719847.44386,
+      "timestamp": "2022-05-12T17:00:00Z",
+      "ust_price": 0.5252371844597996
+    },
+    {
+      "anchor_withdrawal_flow": 37936701.099815115,
+      "luna_price": 0.019195840389521948,
+      "luna_supply": 40411161861.04463,
+      "timestamp": "2022-05-12T18:00:00Z",
+      "ust_price": 0.5291886929423855
+    },
+    {
+      "anchor_withdrawal_flow": 17218196.938324124,
+      "luna_price": 0.01779953729549556,
+      "luna_supply": 41537740586.7929,
+      "timestamp": "2022-05-12T19:00:00Z",
+      "ust_price": 0.5417768756696107
+    },
+    {
+      "anchor_withdrawal_flow": 13709160.24423758,
+      "luna_price": 0.016406431820329234,
+      "luna_supply": 42912172904.26238,
+      "timestamp": "2022-05-12T20:00:00Z",
+      "ust_price": 0.5544935991957853
+    },
+    {
+      "anchor_withdrawal_flow": 21386699.836802226,
+      "luna_price": 0.008988031062322547,
+      "luna_supply": 64209724948.20647,
+      "timestamp": "2022-05-12T21:00:00Z",
+      "ust_price": 0.5451694063714387
+    },
+    {
+      "anchor_withdrawal_flow": 19644450.57314384,
+      "luna_price": 0.004208999299706822,
+      "luna_supply": 107391273542.57994,
+      "timestamp": "2022-05-12T22:00:00Z",
+      "ust_price": 0.5340891136390754
+    },
+    {
+      "anchor_withdrawal_flow": 27903368.128017686,
+      "luna_price": 0.0017377207691965473,
+      "luna_supply": 196283277945.64093,
+      "timestamp": "2022-05-12T23:00:00Z",
+      "ust_price": 0.5179486750256852
+    },
+    {
+      "anchor_withdrawal_flow": 34340558.8085926,
+      "luna_price": 0.0001929673656962307,
+      "luna_supply": 913476785999.1389,
+      "timestamp": "2022-05-13T00:00:00Z",
+      "ust_price": 0.4829328767539903
+    },
+    {
+      "anchor_withdrawal_flow": 52941679.540554285,
+      "luna_price": 1.1145165816052228e-05,
+      "luna_supply": 6756383652205.176,
+      "timestamp": "2022-05-13T01:00:00Z",
+      "ust_price": 0.4376429068552512
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 1.0693768145870192e-05,
+      "luna_supply": 6756383652205.176,
+      "timestamp": "2022-05-13T02:00:00Z",
+      "ust_price": 0.48015331127416283
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 1.0292771430437532e-05,
+      "luna_supply": 6756383652205.176,
+      "timestamp": "2022-05-13T03:00:00Z",
+      "ust_price": 0.5194502157552436
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 9.935474730916078e-06,
+      "luna_supply": 6756383652205.176,
+      "timestamp": "2022-05-13T04:00:00Z",
+      "ust_price": 0.5557765392260265
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 9.616229029542883e-06,
+      "luna_supply": 6756383652205.176,
+      "timestamp": "2022-05-13T05:00:00Z",
+      "ust_price": 0.5893568375810603
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 9.330247732829375e-06,
+      "luna_supply": 6756383652205.176,
+      "timestamp": "2022-05-13T06:00:00Z",
+      "ust_price": 0.6203986918033857
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 9.073455260722512e-06,
+      "luna_supply": 6756383652205.176,
+      "timestamp": "2022-05-13T07:00:00Z",
+      "ust_price": 0.6490939911533886
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 8.842365351181697e-06,
+      "luna_supply": 6756383652205.176,
+      "timestamp": "2022-05-13T08:00:00Z",
+      "ust_price": 0.6756201193572273
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 8.633982694301777e-06,
+      "luna_supply": 6756383652205.176,
+      "timestamp": "2022-05-13T09:00:00Z",
+      "ust_price": 0.7001410511274134
+    },
+    {
+      "anchor_withdrawal_flow": 0.0,
+      "luna_price": 8.445722992108459e-06,
+      "luna_supply": 6756383652205.176,
+      "timestamp": "2022-05-13T10:00:00Z",
+      "ust_price": 0.7228083657938301
+    },
+    {
+      "anchor_withdrawal_flow": 10081485.891699297,
+      "luna_price": 8.264359830262157e-06,
+      "luna_supply": 6756383652205.176,
+      "timestamp": "2022-05-13T11:00:00Z",
+      "ust_price": 0.7316199257941529
+    },
+    {
+      "anchor_withdrawal_flow": 19864766.160776407,
+      "luna_price": 8.086174744737001e-06,
+      "luna_supply": 6756383652205.176,
+      "timestamp": "2022-05-13T12:00:00Z",
+      "ust_price": 0.7349833525536176
+    },
+    {
+      "anchor_withdrawal_flow": 40975233.55172089,
+      "luna_price": 7.902877101467312e-06,
+      "luna_supply": 6756383652205.176,
+      "timestamp": "2022-05-13T13:00:00Z",
+      "ust_price": 0.7306251168249667
+    },
+    {
+      "anchor_withdrawal_flow": 13406655.631382704,
+      "luna_price": 7.735233105985786e-06,
+      "luna_supply": 6756383652205.176,
+      "timestamp": "2022-05-13T14:00:00Z",
+      "ust_price": 0.7367728649740352
+    },
+    {
+      "anchor_withdrawal_flow": 14529285.648762694,
+      "luna_price": 7.573885226552106e-06,
+      "luna_supply": 6756383652205.176,
+      "timestamp": "2022-05-13T15:00:00Z",
+      "ust_price": 0.7419127234594254
+    },
+    {
+      "anchor_withdrawal_flow": 17637977.08038759,
+      "luna_price": 7.416892093053914e-06,
+      "luna_supply": 6756383652205.176,
+      "timestamp": "2022-05-13T16:00:00Z",
+      "ust_price": 0.7451686559049397
+    },
+    {
+      "anchor_withdrawal_flow": 26682502.894419156,
+      "luna_price": 7.260106970096175e-06,
+      "luna_supply": 6756383652205.176,
+      "timestamp": "2022-05-13T17:00:00Z",
+      "ust_price": 0.7444080960839651
+    },
+    {
+      "anchor_withdrawal_flow": 24227098.199406072,
+      "luna_price": 7.107225855724795e-06,
+      "luna_supply": 6756383652205.176,
+      "timestamp": "2022-05-13T18:00:00Z",
+      "ust_price": 0.7444623838442501
+    },
+    {
+      "anchor_withdrawal_flow": 10268377.406609125,
+      "luna_price": 6.965064937197731e-06,
+      "luna_supply": 6756383652205.176,
+      "timestamp": "2022-05-13T19:00:00Z",
+      "ust_price": 0.7511411457432109
+    },
+    {
+      "anchor_withdrawal_flow": 10092746.101480225,
+      "luna_price": 6.829219892612417e-06,
+      "luna_supply": 6756383652205.176,
+      "timestamp": "2022-05-13T20:00:00Z",
+      "ust_price": 0.7574791384810645
+    },
+    {
+      "anchor_withdrawal_flow": 10545364.027826909,
+      "luna_price": 6.698884289272894e-06,
+      "luna_supply": 6756383652205.176,
+      "timestamp": "2022-05-13T21:00:00Z",
+      "ust_price": 0.7631128881231615
+    },
+    {
+      "anchor_withdrawal_flow": 5280778.380446287,
+      "luna_price": 6.577117610916894e-06,
+      "luna_supply": 6756383652205.176,
+      "timestamp": "2022-05-13T22:00:00Z",
+      "ust_price": 0.7720655463224392
+    },
+    {
+      "anchor_withdrawal_flow": 3283278.236199793,
+      "luna_price": 6.46332895348327e-06,
+      "luna_supply": 6756383652205.176,
+      "timestamp": "2022-05-13T23:00:00Z",
+      "ust_price": 0.7822734655642252
+    }
+  ]
+}

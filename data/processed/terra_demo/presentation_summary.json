@@ -1,0 +1,263 @@
+{
+  "dataset": {
+    "dataset_version": "terra_extended_20220301_20220513_v1",
+    "end_timestamp": "2022-05-13T23:00:00Z",
+    "quality_classes": {
+      "anchor_event_flows": "OBSERVED_MAY_6_ONWARD_OTHERWISE_MISSING",
+      "anchor_state": "OBSERVED_STATE",
+      "dex_liquidity": "UNAVAILABLE",
+      "lfg_peg_defense": "UNAVAILABLE_AS_OBSERVED_CHANNEL",
+      "luna_supply_and_backing": "OBSERVED_MAY_1_ONWARD_OTHERWISE_MISSING",
+      "native_redemptions_and_issuance": "OBSERVED_MAY_7_ONWARD_OTHERWISE_MISSING",
+      "prices_march_april": "LOWER_FREQUENCY_STATE_CARRIED_FORWARD",
+      "prices_may": "OBSERVED_MINUTE_OR_DAILY_COMPOSITE"
+    },
+    "quarantined_variables": [
+      "ust_dex_sell_volume",
+      "luna_minted_from_redemption",
+      "luna_burned",
+      "bridge_outflow_terra_to_ethereum",
+      "bridge_inflow_ethereum_to_terra",
+      "curve_ust_price"
+    ],
+    "row_count": 1776,
+    "sha256": "0e338c3d096600d93bf29884370e46cb5e260820e910b483a7f19048521dcac1",
+    "start_timestamp": "2022-03-01T00:00:00Z",
+    "status": "READY_WITH_LIMITATIONS"
+  },
+  "early_warning_lead_times": {
+    "cutoff_safe": {
+      "ust_below_0_9": {
+        "crisis": {
+          "event_time": "2022-05-09T22:00:00Z",
+          "lead_time_hours": -24.0,
+          "warning_threshold": 80.0,
+          "warning_time": "2022-05-10T22:00:00Z",
+          "wording": "Warning came 24.0 hours after the event."
+        },
+        "high": {
+          "event_time": "2022-05-09T22:00:00Z",
+          "lead_time_hours": 3.0,
+          "warning_threshold": 60.0,
+          "warning_time": "2022-05-09T19:00:00Z",
+          "wording": "Warning came 3.0 hours before the event."
+        }
+      },
+      "ust_below_0_95": {
+        "crisis": {
+          "event_time": "2022-05-09T19:00:00Z",
+          "lead_time_hours": -27.0,
+          "warning_threshold": 80.0,
+          "warning_time": "2022-05-10T22:00:00Z",
+          "wording": "Warning came 27.0 hours after the event."
+        },
+        "high": {
+          "event_time": "2022-05-09T19:00:00Z",
+          "lead_time_hours": 0.0,
+          "warning_threshold": 60.0,
+          "warning_time": "2022-05-09T19:00:00Z",
+          "wording": "Warning came 0.0 hours before the event."
+        }
+      },
+      "ust_below_0_99": {
+        "crisis": {
+          "event_time": "2022-05-07T23:00:00Z",
+          "lead_time_hours": -71.0,
+          "warning_threshold": 80.0,
+          "warning_time": "2022-05-10T22:00:00Z",
+          "wording": "Warning came 71.0 hours after the event."
+        },
+        "high": {
+          "event_time": "2022-05-07T23:00:00Z",
+          "lead_time_hours": -44.0,
+          "warning_threshold": 60.0,
+          "warning_time": "2022-05-09T19:00:00Z",
+          "wording": "Warning came 44.0 hours after the event."
+        }
+      },
+      "ust_below_0_995": {
+        "crisis": {
+          "event_time": "2022-05-07T22:00:00Z",
+          "lead_time_hours": -72.0,
+          "warning_threshold": 80.0,
+          "warning_time": "2022-05-10T22:00:00Z",
+          "wording": "Warning came 72.0 hours after the event."
+        },
+        "high": {
+          "event_time": "2022-05-07T22:00:00Z",
+          "lead_time_hours": -45.0,
+          "warning_threshold": 60.0,
+          "warning_time": "2022-05-09T19:00:00Z",
+          "wording": "Warning came 45.0 hours after the event."
+        }
+      }
+    },
+    "retrospective": {
+      "ust_below_0_9": {
+        "crisis": {
+          "event_time": "2022-05-09T22:00:00Z",
+          "lead_time_hours": -24.0,
+          "warning_threshold": 80.0,
+          "warning_time": "2022-05-10T22:00:00Z",
+          "wording": "Warning came 24.0 hours after the event."
+        },
+        "high": {
+          "event_time": "2022-05-09T22:00:00Z",
+          "lead_time_hours": 3.0,
+          "warning_threshold": 60.0,
+          "warning_time": "2022-05-09T19:00:00Z",
+          "wording": "Warning came 3.0 hours before the event."
+        }
+      },
+      "ust_below_0_95": {
+        "crisis": {
+          "event_time": "2022-05-09T19:00:00Z",
+          "lead_time_hours": -27.0,
+          "warning_threshold": 80.0,
+          "warning_time": "2022-05-10T22:00:00Z",
+          "wording": "Warning came 27.0 hours after the event."
+        },
+        "high": {
+          "event_time": "2022-05-09T19:00:00Z",
+          "lead_time_hours": 0.0,
+          "warning_threshold": 60.0,
+          "warning_time": "2022-05-09T19:00:00Z",
+          "wording": "Warning came 0.0 hours before the event."
+        }
+      },
+      "ust_below_0_99": {
+        "crisis": {
+          "event_time": "2022-05-07T23:00:00Z",
+          "lead_time_hours": -71.0,
+          "warning_threshold": 80.0,
+          "warning_time": "2022-05-10T22:00:00Z",
+          "wording": "Warning came 71.0 hours after the event."
+        },
+        "high": {
+          "event_time": "2022-05-07T23:00:00Z",
+          "lead_time_hours": -44.0,
+          "warning_threshold": 60.0,
+          "warning_time": "2022-05-09T19:00:00Z",
+          "wording": "Warning came 44.0 hours after the event."
+        }
+      },
+      "ust_below_0_995": {
+        "crisis": {
+          "event_time": "2022-05-07T22:00:00Z",
+          "lead_time_hours": -72.0,
+          "warning_threshold": 80.0,
+          "warning_time": "2022-05-10T22:00:00Z",
+          "wording": "Warning came 72.0 hours after the event."
+        },
+        "high": {
+          "event_time": "2022-05-07T22:00:00Z",
+          "lead_time_hours": -45.0,
+          "warning_threshold": 60.0,
+          "warning_time": "2022-05-09T19:00:00Z",
+          "wording": "Warning came 45.0 hours after the event."
+        }
+      }
+    }
+  },
+  "historical_fit_metrics": {
+    "event_timing": {
+      "0.9": {
+        "actual": "2022-05-09T22:00:00Z",
+        "error_hours": -48.0,
+        "simulated": "2022-05-07T22:00:00Z"
+      },
+      "0.95": {
+        "actual": "2022-05-09T19:00:00Z",
+        "error_hours": -62.0,
+        "simulated": "2022-05-07T05:00:00Z"
+      },
+      "0.99": {
+        "actual": "2022-05-07T23:00:00Z",
+        "error_hours": -44.0,
+        "simulated": "2022-05-06T03:00:00Z"
+      },
+      "0.995": {
+        "actual": "2022-05-07T22:00:00Z",
+        "error_hours": -45.0,
+        "simulated": "2022-05-06T01:00:00Z"
+      }
+    },
+    "luna_price": {
+      "correlation": 0.9918013664201399,
+      "log_rmse": 0.6778927901465109,
+      "mae": 4.718354329088086,
+      "rmse": 6.170014726766989
+    },
+    "luna_supply": {
+      "correlation": 0.9999987381541114,
+      "final_relative_error": 0.006476045570644189,
+      "mae": 0.0043788958970726695,
+      "rmse": 0.005246953611802079
+    },
+    "ust_price": {
+      "correlation": 0.7601387144195368,
+      "mae": 0.0955453079084817,
+      "rmse": 0.17784807550674878
+    }
+  },
+  "limitations": [
+    "Historical Fit is reconstruction, not forecasting.",
+    "Retrospective Early Warning uses weights developed with knowledge of the event.",
+    "DEX depth and LFG peg-defense are scenario assumptions, not observed historical channels.",
+    "March-April market prices include lower-frequency carried state."
+  ],
+  "mechanism_summary": {
+    "analysis_type": "PROTOCOL_MECHANISM_VALIDATION",
+    "direct_event_output_gross_mint": {
+      "final_cumulative_relative_error": 0.010651698316437683,
+      "hourly_correlation": 0.9999998920980017,
+      "observed_net_supply_change": 6799674881801.771,
+      "predicted_cumulative_luna": 6872102967292.583
+    },
+    "gross_mint_identity": "swap_amount + fee_amount",
+    "interpretation": "Direct event outputs strongly support the gross-mint accounting identity. Correlation with net supply change is mechanism validation, not proof that minting alone caused market prices.",
+    "limitations": [
+      "The extract omits transaction hash, trader, denoms, and action fields.",
+      "Gross issuance and observed net supply change are distinct accounting concepts."
+    ],
+    "old_offchain_approximation": {
+      "final_cumulative_relative_error": 0.5508629434941491,
+      "hourly_correlation": 0.9989235229217951,
+      "observed_net_supply_change": 6799674881801.771,
+      "predicted_cumulative_luna": 3053985961609.2173
+    },
+    "raw_swap_rows": 277342,
+    "source_file": "data/processed/terra_extended/terra_native_swaps.parquet",
+    "source_sha256": "e1e01ed390eb82356141e924c99d7af8bd0549534defb40dd172d797a0a485a1"
+  },
+  "stress_summary": {
+    "collapse_count": 0,
+    "final_luna_supply": {
+      "median": 750000000.0,
+      "p05": 750000000.0,
+      "p95": 750000000.0
+    },
+    "minimum_ust": {
+      "median": 0.9958760380874138,
+      "p05": 0.9948646028011687,
+      "p95": 0.9967834985682155
+    },
+    "noncollapse_count": 100,
+    "wording": "0 of 100 simulated runs crossed the collapse condition; this is not a probability estimate."
+  },
+  "three_layers": [
+    {
+      "name": "Historical Fit",
+      "question": "Can the mechanism reconstruct the known crisis?"
+    },
+    {
+      "name": "Early Warning",
+      "question": "Did measurable warning signs rise before severe depeg?"
+    },
+    {
+      "name": "Stress Test",
+      "question": "What happens under altered market assumptions?"
+    }
+  ],
+  "title": "DeFiStress Lab \u2014 Terra 2022 historical validation and counterfactual stress"
+}
