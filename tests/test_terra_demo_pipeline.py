@@ -23,7 +23,7 @@ def test_historical_fit_is_reproducible_and_does_not_copy_future_state() -> None
 
     baseline = simulate_historical(frame, FitParameters(**parameters))
     changed = frame.copy()
-    mask = changed["timestamp"] > pd.Timestamp("2022-05-01T00:00:00Z")
+    mask = changed["timestamp"] >= pd.Timestamp("2022-05-07T00:00:00Z")
     changed.loc[mask, "ust_price"] = 0.123
     changed.loc[mask, "luna_price"] = 999.0
     changed.loc[mask, "luna_supply"] = 42.0
@@ -40,11 +40,39 @@ def test_historical_fit_uses_direct_gross_mint_and_keeps_valid_states() -> None:
     parameters = FitParameters(**fit["parameters"])
     simulation = simulate_historical(frame, parameters)
     may = frame.loc[frame["timestamp"] >= pd.Timestamp("2022-05-01T00:00:00Z")].reset_index(drop=True)
-    expected_final = float(may["luna_supply"].iloc[0]) + parameters.supply_realization * float(
-        may["gross_luna_issuance_from_native_swaps"].fillna(0).sum()
+    first_native = may["gross_luna_issuance_from_native_swaps"].first_valid_index()
+    assert first_native is not None and first_native > 0
+    expected_final = float(may.loc[first_native - 1, "luna_supply"]) + parameters.supply_realization * float(
+        may.loc[first_native:, "gross_luna_issuance_from_native_swaps"].sum()
     )
     assert math.isclose(float(simulation["luna_supply"].iloc[-1]), expected_final, rel_tol=1e-12)
-    assert (simulation[["ust_price", "luna_price", "luna_supply"]] > 0).all().all()
+    assert (simulation[["ust_price", "luna_price"]] > 0).all().all()
+    assert (simulation.loc[simulation["luna_supply"].notna(), "luna_supply"] > 0).all()
+
+
+def test_historical_fit_preserves_missing_vs_event_zero_semantics() -> None:
+    fit = fit_historical(candidates=8)
+    actual = pd.DataFrame(fit["actual_timeseries"])
+    simulated = pd.DataFrame(fit["simulated_timeseries"])
+    pre_anchor = actual["timestamp"] < "2022-05-06T00:00:00Z"
+    pre_native = actual["timestamp"] < "2022-05-07T00:00:00Z"
+    assert actual.loc[pre_anchor, "anchor_withdrawal_flow"].isna().all()
+    assert (~actual.loc[pre_anchor, "anchor_withdrawal_available"]).all()
+    assert simulated.loc[pre_anchor, "anchor_channel_status"].eq(
+        "CHANNEL_INACTIVE_DUE_TO_NO_HISTORICAL_EVIDENCE"
+    ).all()
+    assert actual.loc[pre_native, "gross_luna_issuance_from_native_swaps"].isna().all()
+    assert (~actual.loc[pre_native, "native_issuance_available"]).all()
+    assert simulated.loc[pre_native, "luna_supply"].isna().all()
+
+    covered_anchor_zero = actual[actual["anchor_withdrawal_available"] & (actual["anchor_withdrawal_flow"] == 0)]
+    covered_native_zero = actual[
+        actual["native_issuance_available"] & (actual["gross_luna_issuance_from_native_swaps"] == 0)
+    ]
+    assert len(covered_anchor_zero) == 9
+    assert len(covered_native_zero) == 22
+    assert fit["evaluation_windows"]["anchor_flow"]["rows"] == 192
+    assert fit["evaluation_windows"]["luna_supply"]["rows"] == 168
 
 
 def test_early_warning_is_hourly_availability_aware_and_leakage_safe() -> None:
