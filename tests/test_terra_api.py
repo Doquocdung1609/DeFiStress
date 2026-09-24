@@ -95,7 +95,7 @@ def test_terra_demo_endpoints_serve_real_artifacts() -> None:
 
     fit = api.get("/api/v1/terra/historical-fit/latest")
     assert fit.status_code == 200
-    assert fit.json()["label"] == "CALIBRATED_HISTORICAL_RECONSTRUCTION_NOT_FORECAST"
+    assert fit.json()["label"] == "CALIBRATED_FEEDBACK_RECONSTRUCTION_NOT_FORECAST"
 
     warning = api.get("/api/v1/terra/early-warning", params={"mode": "CUTOFF_SAFE"})
     assert warning.status_code == 200
@@ -104,7 +104,8 @@ def test_terra_demo_endpoints_serve_real_artifacts() -> None:
     stress = api.post("/api/v1/terra/stress-test", json={"runs": 2, "horizon_hours": 4})
     assert stress.status_code == 200
     assert stress.json()["runs"] == 2
-    assert "not a probability estimate" in stress.json()["summary"]["wording"]
+    assert stress.json()["summary"]["probability_estimate"] is False
+    assert stress.json()["initial_state"]["timestamp"] == "2022-05-06T23:00:00Z"
 
     mechanism = api.get("/api/v1/terra/mechanism-check")
     assert mechanism.status_code == 200

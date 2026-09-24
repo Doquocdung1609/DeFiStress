@@ -107,5 +107,7 @@ class TerraStressTestRequest(BaseModel):
     reserve_intervention: float = Field(default=0.0, ge=0.0, le=10.0)
     horizon_hours: int = Field(default=168, ge=1, le=720)
     initial_shock: float = Field(default=0.015, ge=0.0, le=0.9)
+    redemption_friction: float = Field(default=0.02, ge=0.0, le=1.0)
+    stress_start_timestamp: str = "2022-05-06T23:00:00Z"
     runs: int = Field(default=100, ge=1, le=1000)
     seed: int = 20220506

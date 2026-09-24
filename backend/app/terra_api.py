@@ -476,9 +476,14 @@ def rebuild_terra_early_warning() -> dict[str, Any]:
 
 @router.post("/terra/stress-test")
 def create_terra_stress_test(request: TerraStressTestRequest) -> dict[str, Any]:
-    values = request.model_dump(exclude={"runs", "seed"})
+    values = request.model_dump(exclude={"runs", "seed", "stress_start_timestamp"})
     scenario = StressScenario(**values)
-    return run_stress_test(scenario, runs=request.runs, seed=request.seed)
+    return run_stress_test(
+        scenario,
+        runs=request.runs,
+        seed=request.seed,
+        start_timestamp=request.stress_start_timestamp,
+    )
 
 
 @router.get("/terra/stress-test/latest")

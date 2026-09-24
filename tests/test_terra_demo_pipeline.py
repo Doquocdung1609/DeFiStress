@@ -9,7 +9,7 @@ from sim.terra.demo_data import load_extended_frame
 from sim.terra.early_warning_v2 import build_early_warning
 from sim.terra.historical_fit import fit_historical, simulate_historical
 from sim.terra.mechanism_validation import validate_native_mint_mechanism
-from sim.terra.stress_test import StressScenario, run_stress_test
+from sim.terra.stress_test import STRESS_PRESETS, StressScenario, run_stress_test
 
 
 def test_historical_fit_is_reproducible_and_does_not_copy_future_state() -> None:
@@ -112,9 +112,43 @@ def test_stress_reproducibility_scenario_effect_shape_and_wording() -> None:
     assert severe["summary"]["minimum_ust"]["median"] < baseline["summary"]["minimum_ust"]["median"]
     assert len(severe["fan_chart"]) == 24
     assert len(severe["run_summaries"]) == 4
-    assert "not a probability estimate" in severe["summary"]["wording"]
+    assert severe["summary"]["wording"] == "0 of 4 simulated runs reached the collapse condition."
+    assert severe["summary"]["probability_estimate"] is False
     for run in severe["run_summaries"]:
         assert all(math.isfinite(float(run[field])) for field in ("minimum_ust", "minimum_luna", "final_luna_supply"))
+
+
+def test_stress_uses_observed_initial_state_frozen_fit_and_no_future_observations() -> None:
+    result = run_stress_test(StressScenario(horizon_hours=3), runs=2, seed=11)
+    initial = result["initial_state"]
+    assert initial["timestamp"] == "2022-05-06T23:00:00Z"
+    assert math.isclose(initial["ust_price"], 0.999478102440526)
+    assert math.isclose(initial["luna_price"], 78.47970310197206)
+    assert initial["source"].endswith("terra_state_hourly_20220301_20220513.parquet")
+    assert result["analysis_type"] == "CALIBRATED_COUNTERFACTUAL_STRESS_TEST"
+    assert result["counterfactual_conversion"]["name"].startswith("COUNTERFACTUAL")
+    assert "not a protocol accounting identity" in result["counterfactual_conversion"]["claim_boundary"]
+    assert "No future observed" in result["data_policy"]["future_observations"]
+    assert result["frozen_parameter_mapping"]["not_reused"]["supply_realization"]
+
+
+def test_stress_presets_have_directional_severity() -> None:
+    outputs = {
+        name: run_stress_test(replace(scenario, horizon_hours=24), runs=4, seed=17)
+        for name, scenario in STRESS_PRESETS.items()
+    }
+    assert (
+        outputs["SEVERE"]["summary"]["minimum_ust"]["median"]
+        < outputs["ADVERSE"]["summary"]["minimum_ust"]["median"]
+    )
+    assert (
+        outputs["ADVERSE"]["summary"]["minimum_ust"]["median"]
+        < outputs["BASELINE"]["summary"]["minimum_ust"]["median"]
+    )
+    assert (
+        outputs["SEVERE"]["summary"]["final_luna_supply"]["median"]
+        >= outputs["ADVERSE"]["summary"]["final_luna_supply"]["median"]
+    )
 
 
 def test_mechanism_check_uses_audited_direct_output() -> None:
