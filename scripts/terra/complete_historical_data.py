@@ -96,8 +96,9 @@ def sha256_file(path: Path) -> str:
 
 
 def git_commit() -> str:
+    """Return the code commit, not the later commit that merely bundles outputs."""
     result = subprocess.run(
-        ["git", "rev-parse", "HEAD"],
+        ["git", "log", "-1", "--format=%H", "--", "scripts/terra/complete_historical_data.py"],
         cwd=ROOT,
         check=True,
         capture_output=True,
