@@ -8,24 +8,28 @@ import pandas as pd  # type: ignore[import-untyped]
 
 from sim.terra.demo_data import EXTENDED_DATASET, frame_records, load_extended_frame
 
-MODEL_VERSION = "terra-early-warning-2.0.0"
+MODEL_VERSION = "terra-early-warning-2.1.0-future-perturbation-audited"
 RETROSPECTIVE_WEIGHTS = {
-    "depeg_severity": 0.27,
-    "depeg_persistence": 0.16,
-    "anchor_outflow": 0.16,
-    "native_redemption": 0.12,
-    "luna_drawdown": 0.14,
-    "supply_growth": 0.09,
-    "backing_stress": 0.06,
+    "depeg_severity": 0.20,
+    "depeg_persistence": 0.12,
+    "anchor_outflow": 0.12,
+    "anchor_deposit_stress": 0.11,
+    "native_redemption": 0.10,
+    "luna_drawdown": 0.12,
+    "supply_growth": 0.08,
+    "backing_stress": 0.05,
+    "holder_concentration": 0.10,
 }
 CUTOFF_SAFE_WEIGHTS = {
-    "depeg_severity": 0.24,
-    "depeg_persistence": 0.18,
-    "anchor_outflow": 0.14,
-    "native_redemption": 0.10,
-    "luna_drawdown": 0.16,
-    "supply_growth": 0.10,
-    "backing_stress": 0.08,
+    "depeg_severity": 0.18,
+    "depeg_persistence": 0.14,
+    "anchor_outflow": 0.10,
+    "anchor_deposit_stress": 0.12,
+    "native_redemption": 0.08,
+    "luna_drawdown": 0.13,
+    "supply_growth": 0.09,
+    "backing_stress": 0.07,
+    "holder_concentration": 0.09,
 }
 
 
@@ -42,6 +46,8 @@ def _features(frame: pd.DataFrame) -> pd.DataFrame:
     result["anchor_outflow"] = _bounded(
         frame["anchor_withdrawal_flow"] / frame["anchor_total_deposits"].replace(0, np.nan), 0.02
     )
+    deposit_change = frame["anchor_total_deposits"].pct_change(24, fill_method=None)
+    result["anchor_deposit_stress"] = _bounded(-deposit_change, 0.10)
     result["native_redemption"] = _bounded(
         frame["ust_native_redemption_volume"] / frame["ust_supply"].replace(0, np.nan), 0.01
     )
@@ -49,6 +55,9 @@ def _features(frame: pd.DataFrame) -> pd.DataFrame:
     result["luna_drawdown"] = _bounded(1.0 - luna / luna_peak.replace(0, np.nan), 0.50)
     result["supply_growth"] = _bounded(frame["luna_supply"].pct_change(24, fill_method=None), 0.25)
     result["backing_stress"] = _bounded(1.0 - frame["backing_ratio"], 0.50)
+    top10 = _bounded(frame["top10_anchor_share"] - 0.10, 0.15)
+    top100 = _bounded(frame["top100_anchor_share"] - 0.30, 0.30)
+    result["holder_concentration"] = (top10 + top100) / 2.0
     return result
 
 
@@ -85,15 +94,7 @@ def _lead_time(timeline: pd.DataFrame, event_time: str | None, threshold: float)
     }
 
 
-def build_early_warning(
-    dataset_path: Path = EXTENDED_DATASET,
-    *,
-    mode: str = "RETROSPECTIVE",
-) -> dict[str, Any]:
-    normalized_mode = mode.upper().replace("-", "_")
-    if normalized_mode not in {"RETROSPECTIVE", "CUTOFF_SAFE"}:
-        raise ValueError("mode must be RETROSPECTIVE or CUTOFF_SAFE")
-    frame = load_extended_frame(dataset_path)
+def _score_frame(frame: pd.DataFrame, normalized_mode: str) -> tuple[pd.DataFrame, dict[str, float]]:
     features = _features(frame)
     weights = RETROSPECTIVE_WEIGHTS if normalized_mode == "RETROSPECTIVE" else CUTOFF_SAFE_WEIGHTS
     rows: list[dict[str, Any]] = []
@@ -123,7 +124,67 @@ def build_early_warning(
                 "row_index": index,
             }
         )
-    timeline = pd.DataFrame(rows)
+    return pd.DataFrame(rows), weights
+
+
+def _future_perturbation_audit(frame: pd.DataFrame, normalized_mode: str) -> dict[str, Any]:
+    baseline, _ = _score_frame(frame, normalized_mode)
+    requested_cutoffs = (
+        "2022-03-15T00:00:00Z",
+        "2022-04-15T00:00:00Z",
+        "2022-05-03T00:00:00Z",
+        "2022-05-06T12:00:00Z",
+        "2022-05-10T00:00:00Z",
+    )
+    checks: list[dict[str, Any]] = []
+    for cutoff_text in requested_cutoffs:
+        cutoff = pd.Timestamp(cutoff_text)
+        perturbed = frame.copy()
+        future = perturbed["timestamp"] > cutoff
+        numeric = [name for name in perturbed.select_dtypes(include=[np.number]).columns if name != "block_height"]
+        for offset, name in enumerate(numeric, start=1):
+            perturbed.loc[future, name] = float(offset * 1_000_003)
+        rerun, _ = _score_frame(perturbed, normalized_mode)
+        prefix = frame["timestamp"] <= cutoff
+        score_diff = np.abs(
+            baseline.loc[prefix, "risk_score"].to_numpy(dtype=float)
+            - rerun.loc[prefix, "risk_score"].to_numpy(dtype=float)
+        )
+        structural_equal = all(
+            baseline.loc[index, field] == rerun.loc[index, field]
+            for index in baseline.index[prefix]
+            for field in (
+                "active_features",
+                "unavailable_features",
+                "normalized_active_weights",
+                "components",
+            )
+        )
+        max_difference = float(score_diff.max(initial=0.0))
+        checks.append(
+            {
+                "cutoff": cutoff_text,
+                "compared_rows": int(prefix.sum()),
+                "max_prior_score_difference": max_difference,
+                "prior_feature_structure_unchanged": structural_equal,
+                "status": "PASS" if max_difference == 0.0 and structural_equal else "FAIL",
+            }
+        )
+    violations = sum(check["status"] != "PASS" for check in checks)
+    return {
+        "status": "PASS" if violations == 0 else "FAIL",
+        "rule": "Perturbing every observation after a cutoff must not change any score or component at/before it.",
+        "cutoffs_tested": len(checks),
+        "violations": violations,
+        "checks": checks,
+    }
+
+
+def build_early_warning_from_frame(frame: pd.DataFrame, *, mode: str = "RETROSPECTIVE") -> dict[str, Any]:
+    normalized_mode = mode.upper().replace("-", "_")
+    if normalized_mode not in {"RETROSPECTIVE", "CUTOFF_SAFE"}:
+        raise ValueError("mode must be RETROSPECTIVE or CUTOFF_SAFE")
+    timeline, weights = _score_frame(frame, normalized_mode)
     markers = _event_markers(frame)
     leads = {
         event: {
@@ -156,6 +217,7 @@ def build_early_warning(
             "checked_timestamps": len(timeline),
             "rule": "latest_input_timestamp <= score_timestamp at every row",
             "violations": 0,
+            "future_perturbation": _future_perturbation_audit(frame, normalized_mode),
         },
         "timeline": frame_records(timeline.drop(columns=["row_index"])),
         "data_policy": {
@@ -163,5 +225,19 @@ def build_early_warning(
             "missing_features": "Excluded at that timestamp; remaining weights renormalized to one.",
             "dex_liquidity": "UNAVAILABLE and excluded",
             "lfg_intervention": "UNAVAILABLE as an observed peg-defense channel and excluded",
+            "anchor_deposit_stress": "Trailing 24-hour deposit-stock deterioration; first 24 hours unavailable.",
+            "holder_concentration": (
+                "Observed top-10/top-100 Anchor depositor shares through 2022-05-06T23:00:00Z; "
+                "unavailable rather than forward-filled after coverage ends."
+            ),
+            "normalization": "Backward-looking only; no future-window or full-sample normalization.",
         },
     }
+
+
+def build_early_warning(
+    dataset_path: Path = EXTENDED_DATASET,
+    *,
+    mode: str = "RETROSPECTIVE",
+) -> dict[str, Any]:
+    return build_early_warning_from_frame(load_extended_frame(dataset_path), mode=mode)

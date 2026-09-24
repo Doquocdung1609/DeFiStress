@@ -81,18 +81,23 @@ def test_early_warning_is_hourly_availability_aware_and_leakage_safe() -> None:
     assert len(retrospective["timeline"]) == len(cutoff["timeline"]) == 1776
     assert retrospective["mode"] != cutoff["mode"]
     assert retrospective["weights"] != cutoff["weights"]
-    assert cutoff["leakage_audit"] == {
-        "status": "PASS",
-        "checked_timestamps": 1776,
-        "rule": "latest_input_timestamp <= score_timestamp at every row",
-        "violations": 0,
-    }
+    assert cutoff["leakage_audit"]["status"] == "PASS"
+    assert cutoff["leakage_audit"]["checked_timestamps"] == 1776
+    perturbation = cutoff["leakage_audit"]["future_perturbation"]
+    assert perturbation["status"] == "PASS"
+    assert perturbation["cutoffs_tested"] == 5
+    assert all(check["max_prior_score_difference"] == 0 for check in perturbation["checks"])
     for row in cutoff["timeline"]:
         assert row["leakage_check"] == "PASS"
         assert row["latest_input_timestamp"] == row["timestamp"]
         assert math.isclose(sum(row["normalized_active_weights"].values()), 1.0, rel_tol=1e-12)
     assert cutoff["data_policy"]["synthetic_wallet_data_used"] is False
     assert "after the event" in cutoff["lead_times"]["ust_below_0_9"]["crisis"]["wording"]
+    assert "anchor_deposit_stress" in cutoff["weights"]
+    assert "holder_concentration" in cutoff["weights"]
+    may7 = next(row for row in cutoff["timeline"] if row["timestamp"] == "2022-05-07T00:00:00Z")
+    assert "holder_concentration" in may7["unavailable_features"]
+    assert "holder_concentration" not in may7["components"]
 
 
 def test_stress_reproducibility_scenario_effect_shape_and_wording() -> None:
