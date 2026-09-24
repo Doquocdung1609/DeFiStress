@@ -33,6 +33,8 @@ def test_position_normalizes_weth_and_usdc_token_decimals() -> None:
     assert position.collateral_weth == Decimal("2")
     assert position.debt_usdc == Decimal("3000")
     assert Decimal(evidence["aave_health_factor"]) == Decimal("2.75")
+    assert evidence["supplied_weth"] == "2"
+    assert evidence["weth_usage_as_collateral_enabled"] is True
 
 
 def test_position_with_zero_aave_debt_is_excluded() -> None:
@@ -49,3 +51,29 @@ def test_position_with_zero_aave_debt_is_excluded() -> None:
 
     assert load_position(pool, provider, "0xuser", "0xweth", "0xusdc", 123) is None
     provider.functions.getUserReserveData.assert_not_called()
+
+
+def test_supplied_weth_is_not_collateral_when_usage_is_disabled() -> None:
+    pool = MagicMock()
+    provider = MagicMock()
+    pool.functions.getUserAccountData.return_value.call.return_value = (
+        2_259_588,
+        2_170_777,
+        0,
+        7_800,
+        7_500,
+        811_911_421_578_540_771,
+    )
+    provider.functions.getUserReserveData.side_effect = [
+        MagicMock(call=MagicMock(return_value=(509_652_821_169_221, 0, 0, 0, 0, 0, 0, 0, False))),
+        MagicMock(call=MagicMock(return_value=(0, 0, 0, 0, 0, 0, 0, 0, False))),
+    ]
+
+    loaded = load_position(pool, provider, "0xuser", "0xweth", "0xusdc", 123)
+
+    assert loaded is not None
+    position, evidence = loaded
+    assert Decimal(evidence["supplied_weth"]) == Decimal("0.000509652821169221")
+    assert evidence["weth_usage_as_collateral_enabled"] is False
+    assert position.collateral_weth == 0
+    assert evidence["collateral_weth"] == "0"

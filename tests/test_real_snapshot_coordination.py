@@ -9,7 +9,7 @@ import pytest
 from backend.app.adapters.rpc import RpcHealth
 from backend.app.config import Settings
 from backend.app.services import real_snapshot
-from sim.schemas import DexState
+from sim.schemas import BorrowerPosition, DexState
 
 
 def test_snapshot_block_uses_confirmed_rpc_and_graph_minimum() -> None:
@@ -41,6 +41,28 @@ def test_snapshot_block_rejects_uncoordinated_explicit_block() -> None:
             confirmations=12,
             requested_block=989,
         )
+
+
+def test_health_factor_validation_compares_every_borrower() -> None:
+    position = BorrowerPosition(
+        borrower_hash="borrower-regression",
+        collateral_weth=Decimal(0),
+        debt_usdc=Decimal(0),
+        liquidation_threshold=Decimal("0.78"),
+        other_collateral_usd=Decimal("0.02259588"),
+        other_debt_usd=Decimal("0.02170777"),
+    )
+    evidence = {"aave_health_factor": "0.811911421578540771"}
+
+    result = real_snapshot._health_factor_validation([position], [evidence], Decimal("2698"))
+
+    assert result["borrowers_compared"] == 1
+    assert result["threshold_counts"]["1.00"] == {
+        "protocol_hf_below": 1,
+        "model_hf_below": 1,
+    }
+    assert Decimal(evidence["health_factor_absolute_error"]) < Decimal("1e-15")
+    assert result["protocol_hf_below_1_20"]["count"] == 1
 
 
 def test_real_snapshot_uses_graph_discovery_and_one_block(monkeypatch: pytest.MonkeyPatch) -> None:

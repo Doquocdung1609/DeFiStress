@@ -24,7 +24,9 @@ def load_position(
         return None
     weth_user = data_provider.functions.getUserReserveData(weth, user).call(block_identifier=block_identifier)
     usdc_user = data_provider.functions.getUserReserveData(usdc, user).call(block_identifier=block_identifier)
-    weth_collateral = D(int(weth_user[0])) / (D(10) ** weth_decimals)
+    supplied_weth = D(int(weth_user[0])) / (D(10) ** weth_decimals)
+    weth_usage_as_collateral_enabled = bool(weth_user[8])
+    collateral_weth = supplied_weth if weth_usage_as_collateral_enabled else D(0)
     usdc_debt = D(int(usdc_user[1]) + int(usdc_user[2])) / (D(10) ** usdc_decimals)
     # Aave base currency uses 8 decimals on Ethereum V3.
     total_collateral = D(int(account[0])) / D("1e8")
@@ -34,7 +36,7 @@ def load_position(
     borrower_hash = "borrower-" + sha256(user.lower().encode()).hexdigest()[:12]
     position = BorrowerPosition(
         borrower_hash=borrower_hash,
-        collateral_weth=weth_collateral,
+        collateral_weth=collateral_weth,
         debt_usdc=usdc_debt,
         liquidation_threshold=D(int(account[3])) / D(10_000),
         ltv=D(int(account[4])) / D(10_000),
@@ -50,5 +52,8 @@ def load_position(
         "ltv_bps": int(account[4]),
         "aave_health_factor_ray": str(account[5]),
         "aave_health_factor": str(D(int(account[5])) / D("1e18")),
+        "supplied_weth": str(supplied_weth),
+        "collateral_weth": str(collateral_weth),
+        "weth_usage_as_collateral_enabled": weth_usage_as_collateral_enabled,
     }
     return position, provenance

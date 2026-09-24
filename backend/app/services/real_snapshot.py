@@ -20,6 +20,7 @@ from sim.dex import V3Pool
 from sim.schemas import json_safe
 
 D = Decimal
+HF_THRESHOLDS = (D("1.00"), D("1.05"), D("1.10"), D("1.20"))
 
 
 def create_real_snapshot(
@@ -85,6 +86,9 @@ def create_real_snapshot(
     weth_price = D(weth_reserve["oracle_price"])
     for position, provenance in zip(positions, position_provenance, strict=False):
         total_collateral = D(provenance["total_collateral_base"]) / D("1e8")
+        # getUserAccountData returns the account-level collateral total and its
+        # weighted liquidation threshold. Subtract only enabled WETH collateral;
+        # disabled supplied WETH is not part of totalCollateralBase.
         position.other_collateral_usd = max(D(0), total_collateral - position.collateral_weth * weth_price)
 
     print(f"[UNISWAP] Loading pool state at block {pinned_block}...", flush=True)
@@ -123,7 +127,14 @@ def create_real_snapshot(
         )
 
     active = [position for position in positions if position.debt_value() > 0]
-    cohort = [position for position in active if position.collateral_weth > 0 and position.debt_usdc > 0]
+    cohort = [
+        position
+        for position, provenance in zip(positions, position_provenance, strict=False)
+        if D(provenance["supplied_weth"]) > 0
+        and bool(provenance["weth_usage_as_collateral_enabled"])
+        and position.debt_usdc > 0
+    ]
+    hf_validation = _health_factor_validation(positions, position_provenance, weth_price)
     data_quality = []
     if selected_meta["tick_window"]["status"] != "COMPLETE_WINDOW":
         data_quality.append(
@@ -152,7 +163,7 @@ def create_real_snapshot(
             }
         )
     for position, provenance in zip(positions, position_provenance, strict=False):
-        internal = position.health_factor(weth_price)
+        internal = D(provenance["model_health_factor"])
         protocol_hf = D(provenance["aave_health_factor"])
         if protocol_hf.is_finite() and abs(internal - protocol_hf) > D("0.02"):
             data_quality.append(
@@ -233,11 +244,16 @@ def create_real_snapshot(
             "price": float(D(usdc_reserve["oracle_price"])),
             "depeg_bps": float((D(usdc_reserve["oracle_price"]) - 1) * 10_000),
         },
+        "health_factor_validation": hf_validation,
         "coverage": {
             "candidates_discovered": len(candidate_users),
             "positions_loaded": len(positions),
             "active_borrowers": len(active),
-            "weth_collateral_borrowers": sum(position.collateral_weth > 0 for position in active),
+            "weth_collateral_borrowers": sum(
+                position.collateral_weth > 0
+                and bool(provenance["weth_usage_as_collateral_enabled"])
+                for position, provenance in zip(positions, position_provenance, strict=False)
+            ),
             "usdc_borrowers": sum(position.debt_usdc > 0 for position in active),
             "weth_usdc_cohort": len(cohort),
             "failed_reads": failed_reads,
@@ -274,6 +290,64 @@ def _select_snapshot_block(
             f"Requested block {requested_block} exceeds coordinated snapshot head {safe_head}"
         )
     return requested_block
+
+
+def _health_factor_validation(
+    positions: list[Any],
+    provenance_rows: list[dict[str, Any]],
+    weth_price: Decimal,
+) -> dict[str, Any]:
+    comparisons: list[tuple[Decimal, Decimal, Decimal, Decimal]] = []
+    for position, provenance in zip(positions, provenance_rows, strict=False):
+        model_hf = position.health_factor(weth_price)
+        protocol_hf = D(provenance["aave_health_factor"])
+        absolute_error = abs(model_hf - protocol_hf)
+        if protocol_hf != 0:
+            relative_error = absolute_error / abs(protocol_hf)
+        else:
+            relative_error = D(0) if absolute_error == 0 else D("Infinity")
+        provenance.update(
+            {
+                "model_health_factor": str(model_hf),
+                "health_factor_absolute_error": str(absolute_error),
+                "health_factor_relative_error_ratio": str(relative_error),
+            }
+        )
+        comparisons.append((protocol_hf, model_hf, absolute_error, relative_error))
+
+    vulnerable = [item for item in comparisons if item[0] < D("1.20")]
+    return {
+        "borrowers_compared": len(comparisons),
+        "threshold_counts": {
+            format(threshold, ".2f"): {
+                "protocol_hf_below": sum(protocol < threshold for protocol, *_ in comparisons),
+                "model_hf_below": sum(model < threshold for _, model, *_ in comparisons),
+            }
+            for threshold in HF_THRESHOLDS
+        },
+        "all_borrowers": _hf_error_summary(comparisons),
+        "protocol_hf_below_1_20": _hf_error_summary(vulnerable),
+    }
+
+
+def _hf_error_summary(
+    comparisons: list[tuple[Decimal, Decimal, Decimal, Decimal]],
+) -> dict[str, Any]:
+    if not comparisons:
+        return {
+            "count": 0,
+            "max_absolute_error": None,
+            "max_relative_error_ratio": None,
+            "max_relative_error_pct": None,
+        }
+    max_absolute_error = max(item[2] for item in comparisons)
+    max_relative_error = max(item[3] for item in comparisons)
+    return {
+        "count": len(comparisons),
+        "max_absolute_error": str(max_absolute_error),
+        "max_relative_error_ratio": str(max_relative_error),
+        "max_relative_error_pct": str(max_relative_error * D(100)),
+    }
 
 
 def _redacted_provider(url: str) -> str:
