@@ -4,6 +4,7 @@ import zipfile
 from fastapi.testclient import TestClient
 
 from backend.app.api import get_repository
+from backend.app.config import Settings, get_settings
 from backend.app.db import Repository
 from backend.app.main import app
 from sim import fixture_snapshot
@@ -12,6 +13,12 @@ from sim import fixture_snapshot
 def client(tmp_path) -> TestClient:
     repository = Repository(f"sqlite:///{tmp_path / 'test.db'}")
     app.dependency_overrides[get_repository] = lambda: repository
+    app.dependency_overrides[get_settings] = lambda: Settings(
+        _env_file=None,
+        eth_rpc_url="",
+        eth_archive_rpc_url="",
+        graph_api_key="",
+    )
     return TestClient(app)
 
 

@@ -27,3 +27,7 @@ def configure_logging(level: str) -> None:
     root = logging.getLogger()
     root.handlers = [handler]
     root.setLevel(level.upper())
+    # Provider URLs commonly carry RPC credentials in their path. httpx/httpcore
+    # log complete request URLs at INFO, so keep transport logs above that level.
+    logging.getLogger("httpx").setLevel(logging.WARNING)
+    logging.getLogger("httpcore").setLevel(logging.WARNING)

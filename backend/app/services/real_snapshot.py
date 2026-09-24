@@ -7,7 +7,11 @@ from typing import Any
 
 from web3 import HTTPProvider, Web3
 
-from backend.app.adapters.aave import AaveMarketReader, discover_borrowers, load_aave_ethereum_address_book
+from backend.app.adapters.aave import AaveMarketReader, load_aave_ethereum_address_book
+from backend.app.adapters.aave.subgraph import (
+    discover_borrowers_from_graph,
+)
+from backend.app.adapters.graph import GraphClient
 from backend.app.adapters.rpc import ReadOnlyRpcClient
 from backend.app.adapters.uniswap import find_weth_usdc_pools, read_pool_state
 from backend.app.adapters.uniswap.factory import UNISWAP_V3_FACTORY
@@ -25,47 +29,65 @@ def create_real_snapshot(
 ) -> dict[str, Any]:
     if not settings.eth_rpc_url:
         raise ValueError("ETH_RPC_URL is required for REAL_MAINNET mode")
-    rpc_url = (
+    if not settings.graph_api_key:
+        raise ValueError("GRAPH_API_KEY is required for REAL_MAINNET borrower discovery")
+    if not settings.aave_v3_subgraph_id:
+        raise ValueError("AAVE_V3_SUBGRAPH_ID is required for REAL_MAINNET borrower discovery")
+
+    coordination_rpc = ReadOnlyRpcClient(settings.eth_rpc_url)
+    health = coordination_rpc.health()
+    if not health.connected or health.chain_id != 1 or health.current_block is None:
+        raise ValueError(health.error or "Ethereum Mainnet RPC is unavailable")
+
+    graph = GraphClient(settings.graph_api_key, settings.aave_v3_subgraph_id)
+    graph_head = graph.indexed_block()
+    pinned_block = _select_snapshot_block(
+        rpc_head=health.current_block,
+        graph_head=graph_head,
+        confirmations=settings.snapshot_confirmations,
+        requested_block=block_number,
+    )
+    print(f"[SNAPSHOT] RPC head   : {health.current_block}", flush=True)
+    print(f"[SNAPSHOT] Graph head : {graph_head}", flush=True)
+    print(f"[SNAPSHOT] Block      : {pinned_block}", flush=True)
+
+    state_rpc_url = (
         settings.eth_archive_rpc_url
         if block_number is not None and settings.eth_archive_rpc_url
         else settings.eth_rpc_url
     )
-    rpc = ReadOnlyRpcClient(rpc_url)
-    health = rpc.health()
-    if not health.connected or health.chain_id != 1:
-        raise ValueError(health.error or "Ethereum Mainnet RPC is unavailable")
-
-    web3 = Web3(HTTPProvider(rpc_url, request_kwargs={"timeout": 30}))
+    web3 = Web3(HTTPProvider(state_rpc_url, request_kwargs={"timeout": 30}))
     addresses = load_aave_ethereum_address_book()
     if addresses.chain_id != 1:
         raise ValueError("Aave address-book module is not Ethereum Mainnet")
-    block = web3.eth.get_block(block_number if block_number is not None else "finalized")
-    pinned_block = int(block["number"])
+    block = web3.eth.get_block(pinned_block)
     block_hash = block["hash"].hex()
     block_time = datetime.fromtimestamp(int(block["timestamp"]), UTC).isoformat()
 
+    discovery_source = "The Graph"
     if candidate_users is None:
-        start = max(0, pinned_block - settings.discovery_lookback_blocks)
-        candidate_users = discover_borrowers(
-            rpc,
-            addresses.pool,
-            start,
-            pinned_block,
-            settings.rpc_block_chunk_size,
-            settings.borrower_max_users,
+        candidate_users = discover_borrowers_from_graph(
+            graph,
+            block_number=pinned_block,
+            page_size=settings.graph_page_size,
+            max_pages=settings.graph_max_pages,
+            max_users=settings.max_borrowers,
         )
     else:
-        candidate_users = candidate_users[: settings.borrower_max_users]
+        discovery_source = "Caller-provided candidate list"
+        candidate_users = sorted({user.lower() for user in candidate_users})[: settings.max_borrowers]
 
     aave = AaveMarketReader(web3, addresses)
     weth_reserve = aave.reserve("WETH", addresses.weth, pinned_block)
     usdc_reserve = aave.reserve("USDC", addresses.usdc, pinned_block)
+    print(f"[AAVE] Validating borrowers at block {pinned_block}...", flush=True)
     positions, position_provenance, failed_reads = aave.positions(candidate_users, pinned_block)
     weth_price = D(weth_reserve["oracle_price"])
     for position, provenance in zip(positions, position_provenance, strict=False):
         total_collateral = D(provenance["total_collateral_base"]) / D("1e8")
         position.other_collateral_usd = max(D(0), total_collateral - position.collateral_weth * weth_price)
 
+    print(f"[UNISWAP] Loading pool state at block {pinned_block}...", flush=True)
     pool_candidates = find_weth_usdc_pools(web3, addresses.weth, addresses.usdc, pinned_block)
     if not pool_candidates:
         raise ValueError("No Uniswap V3 WETH/USDC pool was resolved from the official factory")
@@ -159,7 +181,25 @@ def create_real_snapshot(
             "chain_id": 1,
             "block_number": pinned_block,
             "block_hash": block_hash,
-            "rpc_provider": _redacted_provider(rpc_url),
+            "rpc_provider": _redacted_provider(state_rpc_url),
+            "snapshot_coordination": {
+                "rpc_head": health.current_block,
+                "graph_head": graph_head,
+                "snapshot_confirmations": settings.snapshot_confirmations,
+                "confirmed_rpc_head": health.current_block - settings.snapshot_confirmations,
+                "snapshot_block": pinned_block,
+            },
+            "borrower_discovery": {
+                "source": discovery_source,
+                "subgraph_id": settings.aave_v3_subgraph_id if discovery_source == "The Graph" else None,
+                "block_number": pinned_block,
+                "candidate_count": len(candidate_users),
+            },
+            "state_verification": {
+                "source": "Ethereum Mainnet RPC",
+                "block_number": pinned_block,
+                "aave_method": "Pool.getUserAccountData",
+            },
             "aave": {
                 "market": "Aave V3 Ethereum",
                 "address_book_source": addresses.source_url,
@@ -203,13 +243,37 @@ def create_real_snapshot(
             "failed_reads": failed_reads,
             "excluded_positions": len(candidate_users) - len(positions) - failed_reads,
             "coverage_pct": 0 if not candidate_users else round(len(positions) / len(candidate_users) * 100, 2),
-            "cohort_label": f"Top {settings.borrower_max_users} event-discovered candidates within lookback"
-            if len(candidate_users) >= settings.borrower_max_users
-            else "Event-discovered lookback cohort",
+            "cohort_label": (
+                f"Top {settings.max_borrowers} Graph-discovered debt candidates"
+                if discovery_source == "The Graph" and len(candidate_users) >= settings.max_borrowers
+                else f"{discovery_source} debt-candidate cohort"
+            ),
         },
         "data_quality_flags": data_quality,
     }
     return json_safe(snapshot)
+
+
+def _select_snapshot_block(
+    *,
+    rpc_head: int,
+    graph_head: int,
+    confirmations: int,
+    requested_block: int | None,
+) -> int:
+    if confirmations < 0:
+        raise ValueError("SNAPSHOT_CONFIRMATIONS cannot be negative")
+    confirmed_rpc_head = rpc_head - confirmations
+    if confirmed_rpc_head < 0:
+        raise ValueError("Ethereum RPC head is below SNAPSHOT_CONFIRMATIONS")
+    safe_head = min(confirmed_rpc_head, graph_head)
+    if requested_block is None:
+        return safe_head
+    if requested_block > safe_head:
+        raise ValueError(
+            f"Requested block {requested_block} exceeds coordinated snapshot head {safe_head}"
+        )
+    return requested_block
 
 
 def _redacted_provider(url: str) -> str:

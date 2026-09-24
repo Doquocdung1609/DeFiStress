@@ -50,7 +50,12 @@ class ReadOnlyRpcClient:
             json={"jsonrpc": "2.0", "id": self._id, "method": method, "params": params or []},
             timeout=self.timeout,
         )
-        response.raise_for_status()
+        if response.status_code >= 400:
+            raise RuntimeError(
+                f"RPC HTTP {response.status_code}\n"
+                f"Request: {response.request.content.decode()}\n"
+                f"Response: {response.text}"
+            )
         payload = response.json()
         if "error" in payload:
             raise RpcError(str(payload["error"]))

@@ -33,3 +33,19 @@ def test_position_normalizes_weth_and_usdc_token_decimals() -> None:
     assert position.collateral_weth == Decimal("2")
     assert position.debt_usdc == Decimal("3000")
     assert Decimal(evidence["aave_health_factor"]) == Decimal("2.75")
+
+
+def test_position_with_zero_aave_debt_is_excluded() -> None:
+    pool = MagicMock()
+    provider = MagicMock()
+    pool.functions.getUserAccountData.return_value.call.return_value = (
+        10_000 * 10**8,
+        0,
+        7_000 * 10**8,
+        8_250,
+        8_000,
+        2**256 - 1,
+    )
+
+    assert load_position(pool, provider, "0xuser", "0xweth", "0xusdc", 123) is None
+    provider.functions.getUserReserveData.assert_not_called()

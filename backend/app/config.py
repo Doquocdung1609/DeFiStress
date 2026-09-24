@@ -16,6 +16,12 @@ class Settings(BaseSettings):
     eth_rpc_url: str = ""
     eth_archive_rpc_url: str = ""
     graph_api_key: str = ""
+    aave_v3_subgraph_id: str = "JCNWRypm7FYwV8fx5HhzZPSFaMxgkPuw4TnR3Gpi81zk"
+
+    graph_page_size: int = 100
+    graph_max_pages: int = 10
+    snapshot_confirmations: int = 12
+    max_borrowers: int = 500
 
     # Terra historical-source configuration. These values only indicate that a
     # provider has been configured; imported datasets still carry their own

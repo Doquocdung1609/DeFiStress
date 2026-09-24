@@ -59,8 +59,13 @@ def health(settings: Settings = Depends(get_settings)) -> dict[str, Any]:
         "ethereum_rpc": ethereum,
         "aave": "HEALTHY" if ethereum["connected"] else "UNAVAILABLE",
         "uniswap": "HEALTHY" if ethereum["connected"] else "UNAVAILABLE",
-        "subgraph": "CONFIGURED" if settings.graph_api_key else "UNAVAILABLE",
-        "can_create_real_snapshot": bool(ethereum["connected"] and ethereum["chain_id"] == 1),
+        "subgraph": "CONFIGURED" if settings.graph_api_key and settings.aave_v3_subgraph_id else "UNAVAILABLE",
+        "can_create_real_snapshot": bool(
+            ethereum["connected"]
+            and ethereum["chain_id"] == 1
+            and settings.graph_api_key
+            and settings.aave_v3_subgraph_id
+        ),
     }
 
 
