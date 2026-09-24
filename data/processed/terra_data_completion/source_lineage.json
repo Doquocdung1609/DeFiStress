@@ -1,0 +1,241 @@
+[
+  {
+    "field": "block_height",
+    "source_file": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor/Anchor_global_stats_fullnode.parquet",
+    "source_columns": [
+      "minute index",
+      "height"
+    ],
+    "source_code_reference": "Datasets.md §2",
+    "raw_unit": "Terra block height",
+    "final_unit": "integer block height",
+    "transformation": "backward as-of at each UTC hour; no linear interpolation",
+    "aggregation": "latest source record at or before timestamp",
+    "quality": "HISTORICAL_DIRECT",
+    "notes": "Source samples approximately every 15 minutes; carry during no-block intervals is state carry."
+  },
+  {
+    "field": "ust_price",
+    "source_file": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/external/ustc-usd-max.csv; data/prices/ust_price_may2022.parquet",
+    "source_columns": [
+      "snapped_at",
+      "price",
+      "time",
+      "ust_price"
+    ],
+    "source_code_reference": "Datasets.md §§external,35; figures/fig05_market_cap.py; figures/fig10_run_outflows.py",
+    "raw_unit": "USD/UST",
+    "final_unit": "USD/UST",
+    "transformation": "CoinGecko daily point carried backward-as-of through April; Kaiko minute point as-of from May 1",
+    "aggregation": "latest observation at or before each UTC hour",
+    "quality": "HISTORICAL_STATE_CARRIED_FORWARD",
+    "notes": "No interpolation and no future-day value is used."
+  },
+  {
+    "field": "luna_price",
+    "source_file": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/external/lunc-usd-max.csv; data/prices/luna_price_may2022.parquet",
+    "source_columns": [
+      "snapped_at",
+      "price",
+      "time",
+      "luna_price"
+    ],
+    "source_code_reference": "Datasets.md §§external,33; figures/fig05_market_cap.py; figures/fig12_death_spiral.py",
+    "raw_unit": "USD/LUNA",
+    "final_unit": "USD/LUNA",
+    "transformation": "CoinGecko daily point carried backward-as-of through April; Kaiko minute point as-of from May 1",
+    "aggregation": "latest observation at or before each UTC hour",
+    "quality": "HISTORICAL_STATE_CARRIED_FORWARD",
+    "notes": "No interpolation and no future-day value is used."
+  },
+  {
+    "field": "ust_supply",
+    "source_file": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/daily_balances/columbus-5-lunaust-supply-breakdown-fullnode.parquet",
+    "source_columns": [
+      "date",
+      "denom",
+      "balance",
+      "address"
+    ],
+    "source_code_reference": "Datasets.md §§16-17; figures/fig02_ust_supply_by_entity.py",
+    "raw_unit": "normalized UST per address (not micro-UST)",
+    "final_unit": "UST",
+    "transformation": "filter denom=UST and sum per-address balances by date; no 1e6 rescaling",
+    "aggregation": "daily state carried forward within its day",
+    "quality": "HISTORICAL_STATE_CARRIED_FORWARD",
+    "notes": "Figure code divides the summed token-unit value by 1e9 only for its billion-UST display axis."
+  },
+  {
+    "field": "luna_supply",
+    "source_file": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/native_swaps/luna_total_supply_run.parquet",
+    "source_columns": [
+      "time index",
+      "luna_supply"
+    ],
+    "source_code_reference": "Datasets.md §30; figures/fig12_death_spiral.py",
+    "raw_unit": "LUNA",
+    "final_unit": "LUNA",
+    "transformation": "direct hourly series; no pre-May backfill",
+    "aggregation": "none",
+    "quality": "PARTIAL_HISTORICAL",
+    "notes": "Coverage starts May 1. Daily holder-balance sums are not substituted because overlap is not identity."
+  },
+  {
+    "field": "anchor_total_deposits",
+    "source_file": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor/Anchor_global_stats_fullnode.parquet; data/anchor_run/epoch_state_fig10.parquet",
+    "source_columns": [
+      "prev_aterra_supply",
+      "prev_exchange_rate",
+      "deposit_b_ust"
+    ],
+    "source_code_reference": "Datasets.md §§2,13a; figures/fig10_run_outflows.py",
+    "raw_unit": "micro-aUST × UST/aUST; billion UST in epoch derivative",
+    "final_unit": "UST",
+    "transformation": "prev_aterra_supply × prev_exchange_rate / 1e6 through May 6 00:00; deposit_b_ust × 1e9 thereafter",
+    "aggregation": "backward as-of state",
+    "quality": "HISTORICAL_DERIVED",
+    "notes": "The live epoch-state series replaces stale cached prev_* fields during the run."
+  },
+  {
+    "field": "anchor_deposit_flow / anchor_withdrawal_flow",
+    "source_file": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor_run/anchor_run_tx_cleaned.parquet",
+    "source_columns": [
+      "time",
+      "action",
+      "ust_vol"
+    ],
+    "source_code_reference": "Datasets.md §10; figures/fig07_wallet_A_B.py",
+    "raw_unit": "UST",
+    "final_unit": "UST/hour",
+    "transformation": "filter explicit deposit/withdraw actions and sum ust_vol",
+    "aggregation": "event-to-UTC-hour sum",
+    "quality": "PARTIAL_HISTORICAL",
+    "notes": "EVENT_ZERO only May 6-13; earlier hours remain missing."
+  },
+  {
+    "field": "ust_native_redemption_volume",
+    "source_file": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/native_swaps/ust_luna_swaps_run.parquet",
+    "source_columns": [
+      "time",
+      "offer_amount"
+    ],
+    "source_code_reference": "Datasets.md §31; figures/fig11_swap_arbitrage.py",
+    "raw_unit": "UST",
+    "final_unit": "UST/hour",
+    "transformation": "sum UST offered into the native market module",
+    "aggregation": "event-to-UTC-hour sum",
+    "quality": "PARTIAL_HISTORICAL",
+    "notes": "2022 extract is UST-to-LUNA redemptions; no zeros before the documented May 7 run window."
+  },
+  {
+    "field": "gross_luna_issuance_from_native_swaps",
+    "source_file": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/native_swaps/ust_luna_swaps_run.parquet",
+    "source_columns": [
+      "time",
+      "swap_amount",
+      "fee_amount"
+    ],
+    "source_code_reference": "Datasets.md §31; figures/fig11_swap_arbitrage.py",
+    "raw_unit": "LUNA",
+    "final_unit": "LUNA/hour",
+    "transformation": "sum(swap_amount + fee_amount)",
+    "aggregation": "event-to-UTC-hour sum",
+    "quality": "HISTORICAL_DERIVED",
+    "notes": "Direct event-output accounting; offer_amount / off-chain LUNA price is not used."
+  },
+  {
+    "field": "top10_anchor_share / top100_anchor_share",
+    "source_file": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor/anchor_deposit_concentration.parquet",
+    "source_columns": [
+      "date index",
+      "Top 10",
+      "Top 100"
+    ],
+    "source_code_reference": "Datasets.md §3; prep/prep_fig06_concentration.py; figures/fig06_anchor_concentration.py",
+    "raw_unit": "percent of non-intermediary aUST balance",
+    "final_unit": "fraction [0,1]",
+    "transformation": "divide by 100",
+    "aggregation": "daily state carried forward; stops after May 6",
+    "quality": "HISTORICAL_STATE_CARRIED_FORWARD",
+    "notes": "Denominator excludes author-labelled intermediaries."
+  },
+  {
+    "field": "backing_ratio",
+    "source_file": "derived from luna_price, luna_supply, ust_price, ust_supply",
+    "source_columns": [
+      "luna_price",
+      "luna_supply",
+      "ust_price",
+      "ust_supply"
+    ],
+    "source_code_reference": "scripts/terra/complete_historical_data.py",
+    "raw_unit": "USD / USD",
+    "final_unit": "ratio",
+    "transformation": "(luna_price × luna_supply) / (ust_price × ust_supply)",
+    "aggregation": "hourly aligned inputs",
+    "quality": "PARTIAL_HISTORICAL",
+    "notes": "Risk indicator only; Terra was not literally collateralized one-for-one by LUNA."
+  },
+  {
+    "field": "anchor_wallet_events",
+    "source_file": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor_run/anchor_run_tx_cleaned.parquet",
+    "source_columns": [
+      "time",
+      "sender",
+      "action",
+      "ust_vol"
+    ],
+    "source_code_reference": "Datasets.md §10; figures/fig07_wallet_A_B.py",
+    "raw_unit": "wallet address, event type, UST",
+    "final_unit": "SHA-256 wallet ID, event type, UST",
+    "transformation": "deterministic address pseudonymization; backward-as-of block mapping",
+    "aggregation": "event level; none",
+    "quality": "PARTIAL_HISTORICAL",
+    "notes": "All May 6-13 deposit/withdraw events retained; balances before/after remain missing."
+  },
+  {
+    "field": "terra_dex_liquidity / terra_dex_depth",
+    "source_file": "none found",
+    "source_columns": [],
+    "source_code_reference": "repository-wide Terraswap/Astroport/pool/reserve search",
+    "raw_unit": "N/A",
+    "final_unit": "N/A",
+    "transformation": "none",
+    "aggregation": "none",
+    "quality": "UNAVAILABLE",
+    "notes": "The prior CoinGecko-volume construction is retained only as a LEGACY_PROXY description."
+  },
+  {
+    "field": "bridge_outflow / bridge_inflow",
+    "source_file": "data/raw/terra_may2022_v1/evidence_map.json (invalid prior mapping)",
+    "source_columns": [
+      "epoch_state_fig10.deposit_b_ust"
+    ],
+    "source_code_reference": "terra_pack_v6 build and repository duplicate audit",
+    "raw_unit": "not a bridge-flow unit",
+    "final_unit": "N/A",
+    "transformation": "omitted",
+    "aggregation": "none",
+    "quality": "QUARANTINED",
+    "notes": "Both directions were identical and came from Anchor state without an action filter."
+  },
+  {
+    "field": "lfg_reserve_events",
+    "source_file": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor/anchor_cashflow_transfers.parquet; data/labels/anchor_contracts.csv",
+    "source_columns": [
+      "time",
+      "sender",
+      "recipient",
+      "denom",
+      "amount",
+      "address_name"
+    ],
+    "source_code_reference": "Datasets.md §§8,26; figures/fig03_anchor_cashflow.py",
+    "raw_unit": "UST transfer event",
+    "final_unit": "UST transfer event",
+    "transformation": "filter author-labelled reserve funder (LFG)",
+    "aggregation": "event level; none",
+    "quality": "PARTIAL_HISTORICAL",
+    "notes": "Three February Anchor yield-reserve funding events; not classified as peg defense."
+  }
+]

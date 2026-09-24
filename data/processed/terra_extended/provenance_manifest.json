@@ -1,0 +1,767 @@
+{
+  "dataset_version": "terra_extended_20220301_20220513_v1",
+  "git_commit": "676f0cf6b307da4e03b8d884ba8764765a525fbc",
+  "git_commit_meaning": "source-code commit used to build this artifact bundle",
+  "replication_package": {
+    "title": "Anatomy of a Run: The Terra Luna Crash replication package",
+    "doi": "10.17632/j5d8n7hzdy.4",
+    "version": "UNKNOWN (the local README and Datasets.md do not state a release version)",
+    "locally_recorded_raw_reference": "doi:10.17632/j5d8n7hzdy.4",
+    "local_readme": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/README.md"
+  },
+  "target_window": {
+    "start": "2022-03-01T00:00:00+00:00",
+    "end": "2022-05-13T23:00:00+00:00",
+    "rows": 1776
+  },
+  "source_files": [
+    {
+      "role": "block_anchor_state",
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor/Anchor_global_stats_fullnode.parquet",
+      "sha256": "7e6aaf79bdc5865fb5b45b2a9cb970ec46c1d4e0a8826005153e5c2eaa9601d9",
+      "size_bytes": 2653157,
+      "row_count": 41714,
+      "timestamp_column": "__index__",
+      "source_start": "2021-03-17T04:59:00+00:00",
+      "source_end": "2022-05-26T19:12:00+00:00",
+      "raw_units": "contract-native numeric fields; aTerra supply in micro-aUST"
+    },
+    {
+      "role": "anchor_daily",
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor/Anchor_daily_stats.parquet",
+      "sha256": "046f939acf1e3df422f80685a867d52fbaf6c96382f7f32f98f88f371861d7bd",
+      "size_bytes": 92516,
+      "row_count": 419,
+      "timestamp_column": "__index__",
+      "source_start": "2021-03-18T00:00:00+00:00",
+      "source_end": "2022-05-10T00:00:00+00:00",
+      "raw_units": "UST, rates, ratios"
+    },
+    {
+      "role": "anchor_concentration",
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor/anchor_deposit_concentration.parquet",
+      "sha256": "8717912cb4800b2aa471474bd9d4cefa405b7827914331c0037cc31f29068651",
+      "size_bytes": 18121,
+      "row_count": 416,
+      "timestamp_column": "__index__",
+      "source_start": "2021-03-17T00:00:00+00:00",
+      "source_end": "2022-05-06T00:00:00+00:00",
+      "raw_units": "percent"
+    },
+    {
+      "role": "anchor_events",
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor_run/anchor_run_tx_cleaned.parquet",
+      "sha256": "a62d35b3f7d32996425ddd1506951061d0e57ace9d2ad8df5c6d20ed300587ce",
+      "size_bytes": 15297286,
+      "row_count": 293276,
+      "timestamp_column": "time",
+      "source_start": "2022-05-06T00:00:01+00:00",
+      "source_end": "2022-05-13T23:59:39+00:00",
+      "raw_units": "aUST and UST token units"
+    },
+    {
+      "role": "anchor_epoch",
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor_run/epoch_state_fig10.parquet",
+      "sha256": "29e6cb98fe7a3631e67f6e7e42289c1b11a1fc63a54255242e83367711774074",
+      "size_bytes": 40160,
+      "row_count": 917,
+      "timestamp_column": "time_utc",
+      "source_start": "2022-05-06T00:14:00+00:00",
+      "source_end": "2022-05-15T23:59:00+00:00",
+      "raw_units": "micro-aUST, exchange ratio, billion UST derivative"
+    },
+    {
+      "role": "anchor_cashflow",
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor/anchor_cashflow_transfers.parquet",
+      "sha256": "ad59acc38e823686ea9ba630d57b487f29916920863d7770cf668041b8a59874",
+      "size_bytes": 2168177,
+      "row_count": 221721,
+      "timestamp_column": "time",
+      "source_start": "2021-03-17T09:26:35+00:00",
+      "source_end": "2022-05-26T18:38:00+00:00",
+      "raw_units": "normalized token amount"
+    },
+    {
+      "role": "anchor_labels",
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/labels/anchor_contracts.csv",
+      "sha256": "79cffe3354e1b845b11181e35fb5da962f98dde369a6d9b8f7c5ffe9539408ae",
+      "size_bytes": 695,
+      "row_count": 11,
+      "timestamp_column": "",
+      "source_start": null,
+      "source_end": null,
+      "raw_units": "address labels"
+    },
+    {
+      "role": "daily_balances",
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/daily_balances/columbus-5-lunaust-supply-breakdown-fullnode.parquet",
+      "sha256": "c23cc9dbb40ea7cf77811bc16a20352a572f36a1b7765376eda12699282f114b",
+      "size_bytes": 940698,
+      "row_count": 159939,
+      "timestamp_column": "date",
+      "source_start": "2021-09-30T00:00:00+00:00",
+      "source_end": "2022-05-26T00:00:00+00:00",
+      "raw_units": "normalized UST/LUNA token units per address"
+    },
+    {
+      "role": "luna_supply",
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/native_swaps/luna_total_supply_run.parquet",
+      "sha256": "db340cb1cbdc8fb94d232fe114c990b11a047488ac6d4a61ba622edf99a173a1",
+      "size_bytes": 7864,
+      "row_count": 337,
+      "timestamp_column": "__index__",
+      "source_start": "2022-05-01T00:00:00+00:00",
+      "source_end": "2022-05-15T00:00:00+00:00",
+      "raw_units": "LUNA"
+    },
+    {
+      "role": "native_swaps",
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/native_swaps/ust_luna_swaps_run.parquet",
+      "sha256": "ecd470c77c314a79fb784f85b436f62e69f636343abd8ab98e6ad60c9347d124",
+      "size_bytes": 7307232,
+      "row_count": 277342,
+      "timestamp_column": "time",
+      "source_start": "2021-05-17T03:30:30+00:00",
+      "source_end": "2022-05-13T01:58:49+00:00",
+      "raw_units": "UST offer and LUNA output/fee"
+    },
+    {
+      "role": "ust_price_daily",
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/external/ustc-usd-max.csv",
+      "sha256": "a9f2d11e4c06f01952f17439ac0433d527f7d5516c0a4c5685f71aedd6db2dad",
+      "size_bytes": 58303,
+      "row_count": 739,
+      "timestamp_column": "snapped_at",
+      "source_start": "2020-10-02T00:00:00+00:00",
+      "source_end": "2022-10-10T00:00:00+00:00",
+      "raw_units": "USD/UST and USD market values"
+    },
+    {
+      "role": "luna_price_daily",
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/external/lunc-usd-max.csv",
+      "sha256": "06b114d0f8cde94b990585ad529ea945dccfdfe5bef393edd74bbad522766ac9",
+      "size_bytes": 96949,
+      "row_count": 1252,
+      "timestamp_column": "snapped_at",
+      "source_start": "2019-05-08T00:00:00+00:00",
+      "source_end": "2022-10-10T00:00:00+00:00",
+      "raw_units": "USD/LUNA and USD market values"
+    },
+    {
+      "role": "ust_price_minute",
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/prices/ust_price_may2022.parquet",
+      "sha256": "043c03404a9e53c352df645e192a360b30ce6f853d2006fdec298e950ecdd869",
+      "size_bytes": 383037,
+      "row_count": 21600,
+      "timestamp_column": "time",
+      "source_start": "2022-05-01T00:00:00+00:00",
+      "source_end": "2022-05-15T23:59:00+00:00",
+      "raw_units": "USD/UST"
+    },
+    {
+      "role": "luna_price_minute",
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/prices/luna_price_may2022.parquet",
+      "sha256": "2007339f3436f3b4690a6cfd3fa9bf324d2586eca081cdacaea5a42244027465",
+      "size_bytes": 385826,
+      "row_count": 21600,
+      "timestamp_column": "time",
+      "source_start": "2022-05-01T00:00:00+00:00",
+      "source_end": "2022-05-15T23:59:00+00:00",
+      "raw_units": "USD/LUNA"
+    },
+    {
+      "role": "curve",
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/curve/curve_ust_3pool_may7.parquet",
+      "sha256": "40adfe729e1cb039aab46798ebd95a9338be215e9f8f5ac330aec7e3a0ae26bf",
+      "size_bytes": 24074,
+      "row_count": 405,
+      "timestamp_column": "time",
+      "source_start": "2022-05-07T00:11:28+00:00",
+      "source_end": "2022-05-07T23:59:04+00:00",
+      "raw_units": "Ethereum Curve trade units"
+    }
+  ],
+  "outputs": {
+    "terra_state_hourly": {
+      "rows": 1776,
+      "columns": [
+        "timestamp",
+        "block_height",
+        "ust_price",
+        "luna_price",
+        "ust_supply",
+        "luna_supply",
+        "anchor_total_deposits",
+        "anchor_deposit_flow",
+        "anchor_withdrawal_flow",
+        "ust_native_redemption_volume",
+        "gross_luna_issuance_from_native_swaps",
+        "backing_ratio",
+        "top10_anchor_share",
+        "top100_anchor_share"
+      ]
+    },
+    "terra_native_swaps": {
+      "rows": 277342,
+      "columns": [
+        "timestamp",
+        "offer_amount",
+        "swap_amount",
+        "fee_amount",
+        "gross_luna_issuance",
+        "source_file",
+        "raw_reference",
+        "quality_class"
+      ]
+    },
+    "anchor_wallet_events": {
+      "rows": 293276,
+      "addresses_pseudonymized": true
+    },
+    "lfg_reserve_events": {
+      "rows": 3,
+      "scope": "Anchor yield-reserve funding only; not peg-defense executions"
+    },
+    "terra_dex_hourly": {
+      "quality_class": "UNAVAILABLE",
+      "created": false
+    },
+    "hashes": {
+      "anchor_wallet_events.parquet": "d079385f9768259c2ba3f5b6de8f14aeefdec0994a3f5e8722e546f524dfa1d5",
+      "lfg_reserve_events.parquet": "e3f3c5d23f62ab4a1bd79b65d047a20782e016f9b91eccbbeaf8810985105845",
+      "terra_native_swaps.parquet": "e1e01ed390eb82356141e924c99d7af8bd0549534defb40dd172d797a0a485a1",
+      "terra_state_hourly_20220301_20220513.parquet": "0e338c3d096600d93bf29884370e46cb5e260820e910b483a7f19048521dcac1",
+      "data_dictionary.csv": "a36b55f3889a7d0d899481cb6c179cd61b6411a8aa88907d8d0b891e347d7994",
+      "terra_state_hourly_20220301_20220513.csv": "a79582c60d6850314c10ae8da25c4894bc618c600c762203a07e3a57949bc740"
+    }
+  },
+  "quality_classes": [
+    "HISTORICAL_DERIVED",
+    "HISTORICAL_DIRECT",
+    "HISTORICAL_STATE_CARRIED_FORWARD",
+    "LEGACY_PROXY",
+    "PARTIAL_HISTORICAL",
+    "QUARANTINED",
+    "SYNTHETIC_FIXTURE",
+    "UNAVAILABLE"
+  ],
+  "transformations": [
+    {
+      "field": "block_height",
+      "source_file": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor/Anchor_global_stats_fullnode.parquet",
+      "source_columns": [
+        "minute index",
+        "height"
+      ],
+      "source_code_reference": "Datasets.md §2",
+      "raw_unit": "Terra block height",
+      "final_unit": "integer block height",
+      "transformation": "backward as-of at each UTC hour; no linear interpolation",
+      "aggregation": "latest source record at or before timestamp",
+      "quality": "HISTORICAL_DIRECT",
+      "notes": "Source samples approximately every 15 minutes; carry during no-block intervals is state carry."
+    },
+    {
+      "field": "ust_price",
+      "source_file": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/external/ustc-usd-max.csv; data/prices/ust_price_may2022.parquet",
+      "source_columns": [
+        "snapped_at",
+        "price",
+        "time",
+        "ust_price"
+      ],
+      "source_code_reference": "Datasets.md §§external,35; figures/fig05_market_cap.py; figures/fig10_run_outflows.py",
+      "raw_unit": "USD/UST",
+      "final_unit": "USD/UST",
+      "transformation": "CoinGecko daily point carried backward-as-of through April; Kaiko minute point as-of from May 1",
+      "aggregation": "latest observation at or before each UTC hour",
+      "quality": "HISTORICAL_STATE_CARRIED_FORWARD",
+      "notes": "No interpolation and no future-day value is used."
+    },
+    {
+      "field": "luna_price",
+      "source_file": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/external/lunc-usd-max.csv; data/prices/luna_price_may2022.parquet",
+      "source_columns": [
+        "snapped_at",
+        "price",
+        "time",
+        "luna_price"
+      ],
+      "source_code_reference": "Datasets.md §§external,33; figures/fig05_market_cap.py; figures/fig12_death_spiral.py",
+      "raw_unit": "USD/LUNA",
+      "final_unit": "USD/LUNA",
+      "transformation": "CoinGecko daily point carried backward-as-of through April; Kaiko minute point as-of from May 1",
+      "aggregation": "latest observation at or before each UTC hour",
+      "quality": "HISTORICAL_STATE_CARRIED_FORWARD",
+      "notes": "No interpolation and no future-day value is used."
+    },
+    {
+      "field": "ust_supply",
+      "source_file": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/daily_balances/columbus-5-lunaust-supply-breakdown-fullnode.parquet",
+      "source_columns": [
+        "date",
+        "denom",
+        "balance",
+        "address"
+      ],
+      "source_code_reference": "Datasets.md §§16-17; figures/fig02_ust_supply_by_entity.py",
+      "raw_unit": "normalized UST per address (not micro-UST)",
+      "final_unit": "UST",
+      "transformation": "filter denom=UST and sum per-address balances by date; no 1e6 rescaling",
+      "aggregation": "daily state carried forward within its day",
+      "quality": "HISTORICAL_STATE_CARRIED_FORWARD",
+      "notes": "Figure code divides the summed token-unit value by 1e9 only for its billion-UST display axis."
+    },
+    {
+      "field": "luna_supply",
+      "source_file": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/native_swaps/luna_total_supply_run.parquet",
+      "source_columns": [
+        "time index",
+        "luna_supply"
+      ],
+      "source_code_reference": "Datasets.md §30; figures/fig12_death_spiral.py",
+      "raw_unit": "LUNA",
+      "final_unit": "LUNA",
+      "transformation": "direct hourly series; no pre-May backfill",
+      "aggregation": "none",
+      "quality": "PARTIAL_HISTORICAL",
+      "notes": "Coverage starts May 1. Daily holder-balance sums are not substituted because overlap is not identity."
+    },
+    {
+      "field": "anchor_total_deposits",
+      "source_file": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor/Anchor_global_stats_fullnode.parquet; data/anchor_run/epoch_state_fig10.parquet",
+      "source_columns": [
+        "prev_aterra_supply",
+        "prev_exchange_rate",
+        "deposit_b_ust"
+      ],
+      "source_code_reference": "Datasets.md §§2,13a; figures/fig10_run_outflows.py",
+      "raw_unit": "micro-aUST × UST/aUST; billion UST in epoch derivative",
+      "final_unit": "UST",
+      "transformation": "prev_aterra_supply × prev_exchange_rate / 1e6 through May 6 00:00; deposit_b_ust × 1e9 thereafter",
+      "aggregation": "backward as-of state",
+      "quality": "HISTORICAL_DERIVED",
+      "notes": "The live epoch-state series replaces stale cached prev_* fields during the run."
+    },
+    {
+      "field": "anchor_deposit_flow / anchor_withdrawal_flow",
+      "source_file": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor_run/anchor_run_tx_cleaned.parquet",
+      "source_columns": [
+        "time",
+        "action",
+        "ust_vol"
+      ],
+      "source_code_reference": "Datasets.md §10; figures/fig07_wallet_A_B.py",
+      "raw_unit": "UST",
+      "final_unit": "UST/hour",
+      "transformation": "filter explicit deposit/withdraw actions and sum ust_vol",
+      "aggregation": "event-to-UTC-hour sum",
+      "quality": "PARTIAL_HISTORICAL",
+      "notes": "EVENT_ZERO only May 6-13; earlier hours remain missing."
+    },
+    {
+      "field": "ust_native_redemption_volume",
+      "source_file": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/native_swaps/ust_luna_swaps_run.parquet",
+      "source_columns": [
+        "time",
+        "offer_amount"
+      ],
+      "source_code_reference": "Datasets.md §31; figures/fig11_swap_arbitrage.py",
+      "raw_unit": "UST",
+      "final_unit": "UST/hour",
+      "transformation": "sum UST offered into the native market module",
+      "aggregation": "event-to-UTC-hour sum",
+      "quality": "PARTIAL_HISTORICAL",
+      "notes": "2022 extract is UST-to-LUNA redemptions; no zeros before the documented May 7 run window."
+    },
+    {
+      "field": "gross_luna_issuance_from_native_swaps",
+      "source_file": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/native_swaps/ust_luna_swaps_run.parquet",
+      "source_columns": [
+        "time",
+        "swap_amount",
+        "fee_amount"
+      ],
+      "source_code_reference": "Datasets.md §31; figures/fig11_swap_arbitrage.py",
+      "raw_unit": "LUNA",
+      "final_unit": "LUNA/hour",
+      "transformation": "sum(swap_amount + fee_amount)",
+      "aggregation": "event-to-UTC-hour sum",
+      "quality": "HISTORICAL_DERIVED",
+      "notes": "Direct event-output accounting; offer_amount / off-chain LUNA price is not used."
+    },
+    {
+      "field": "top10_anchor_share / top100_anchor_share",
+      "source_file": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor/anchor_deposit_concentration.parquet",
+      "source_columns": [
+        "date index",
+        "Top 10",
+        "Top 100"
+      ],
+      "source_code_reference": "Datasets.md §3; prep/prep_fig06_concentration.py; figures/fig06_anchor_concentration.py",
+      "raw_unit": "percent of non-intermediary aUST balance",
+      "final_unit": "fraction [0,1]",
+      "transformation": "divide by 100",
+      "aggregation": "daily state carried forward; stops after May 6",
+      "quality": "HISTORICAL_STATE_CARRIED_FORWARD",
+      "notes": "Denominator excludes author-labelled intermediaries."
+    },
+    {
+      "field": "backing_ratio",
+      "source_file": "derived from luna_price, luna_supply, ust_price, ust_supply",
+      "source_columns": [
+        "luna_price",
+        "luna_supply",
+        "ust_price",
+        "ust_supply"
+      ],
+      "source_code_reference": "scripts/terra/complete_historical_data.py",
+      "raw_unit": "USD / USD",
+      "final_unit": "ratio",
+      "transformation": "(luna_price × luna_supply) / (ust_price × ust_supply)",
+      "aggregation": "hourly aligned inputs",
+      "quality": "PARTIAL_HISTORICAL",
+      "notes": "Risk indicator only; Terra was not literally collateralized one-for-one by LUNA."
+    },
+    {
+      "field": "anchor_wallet_events",
+      "source_file": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor_run/anchor_run_tx_cleaned.parquet",
+      "source_columns": [
+        "time",
+        "sender",
+        "action",
+        "ust_vol"
+      ],
+      "source_code_reference": "Datasets.md §10; figures/fig07_wallet_A_B.py",
+      "raw_unit": "wallet address, event type, UST",
+      "final_unit": "SHA-256 wallet ID, event type, UST",
+      "transformation": "deterministic address pseudonymization; backward-as-of block mapping",
+      "aggregation": "event level; none",
+      "quality": "PARTIAL_HISTORICAL",
+      "notes": "All May 6-13 deposit/withdraw events retained; balances before/after remain missing."
+    },
+    {
+      "field": "terra_dex_liquidity / terra_dex_depth",
+      "source_file": "none found",
+      "source_columns": [],
+      "source_code_reference": "repository-wide Terraswap/Astroport/pool/reserve search",
+      "raw_unit": "N/A",
+      "final_unit": "N/A",
+      "transformation": "none",
+      "aggregation": "none",
+      "quality": "UNAVAILABLE",
+      "notes": "The prior CoinGecko-volume construction is retained only as a LEGACY_PROXY description."
+    },
+    {
+      "field": "bridge_outflow / bridge_inflow",
+      "source_file": "data/raw/terra_may2022_v1/evidence_map.json (invalid prior mapping)",
+      "source_columns": [
+        "epoch_state_fig10.deposit_b_ust"
+      ],
+      "source_code_reference": "terra_pack_v6 build and repository duplicate audit",
+      "raw_unit": "not a bridge-flow unit",
+      "final_unit": "N/A",
+      "transformation": "omitted",
+      "aggregation": "none",
+      "quality": "QUARANTINED",
+      "notes": "Both directions were identical and came from Anchor state without an action filter."
+    },
+    {
+      "field": "lfg_reserve_events",
+      "source_file": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor/anchor_cashflow_transfers.parquet; data/labels/anchor_contracts.csv",
+      "source_columns": [
+        "time",
+        "sender",
+        "recipient",
+        "denom",
+        "amount",
+        "address_name"
+      ],
+      "source_code_reference": "Datasets.md §§8,26; figures/fig03_anchor_cashflow.py",
+      "raw_unit": "UST transfer event",
+      "final_unit": "UST transfer event",
+      "transformation": "filter author-labelled reserve funder (LFG)",
+      "aggregation": "event level; none",
+      "quality": "PARTIAL_HISTORICAL",
+      "notes": "Three February Anchor yield-reserve funding events; not classified as peg defense."
+    }
+  ],
+  "missing_data_rules": {
+    "daily_prices": "STATE_FFILL until the next actual daily observation; no interpolation",
+    "ust_supply": "STATE_FFILL of daily on-chain balance state",
+    "luna_supply": "MISSING before direct hourly source begins",
+    "anchor_total_deposits": "STATE_FFILL/backward-as-of protocol state",
+    "anchor_flows": "MISSING outside May 6-13; EVENT_ZERO only inside coverage",
+    "native_swaps": "MISSING before May 7; EVENT_ZERO inside documented run extract",
+    "concentration": "STATE_FFILL through May 6; MISSING after source ends"
+  },
+  "validation": {
+    "native_issuance": {
+      "formula": "gross LUNA issuance = swap_amount + fee_amount",
+      "overlap_hours": 168,
+      "hourly_correlation": 0.9999998920980105,
+      "cumulative_issuance_luna": 6872102967292.583,
+      "cumulative_supply_increase_luna": 6799674843979.966,
+      "final_cumulative_relative_error": 0.0106517039379818,
+      "largest_absolute_discrepancy_hours": [
+        {
+          "timestamp": "2022-05-13T01:00:00+00:00",
+          "absolute_discrepancy_luna": 61391705812.57715
+        },
+        {
+          "timestamp": "2022-05-13T00:00:00+00:00",
+          "absolute_discrepancy_luna": 10155165594.985474
+        },
+        {
+          "timestamp": "2022-05-12T15:00:00+00:00",
+          "absolute_discrepancy_luna": 198022674.48334503
+        },
+        {
+          "timestamp": "2022-05-12T23:00:00+00:00",
+          "absolute_discrepancy_luna": 179353103.67448425
+        },
+        {
+          "timestamp": "2022-05-12T22:00:00+00:00",
+          "absolute_discrepancy_luna": 163240523.90750122
+        },
+        {
+          "timestamp": "2022-05-12T18:00:00+00:00",
+          "absolute_discrepancy_luna": 138073599.89299107
+        },
+        {
+          "timestamp": "2022-05-12T19:00:00+00:00",
+          "absolute_discrepancy_luna": 85420072.04890347
+        },
+        {
+          "timestamp": "2022-05-12T20:00:00+00:00",
+          "absolute_discrepancy_luna": 39160536.640907764
+        },
+        {
+          "timestamp": "2022-05-12T10:00:00+00:00",
+          "absolute_discrepancy_luna": 27510478.425245047
+        },
+        {
+          "timestamp": "2022-05-12T14:00:00+00:00",
+          "absolute_discrepancy_luna": 27030514.012111664
+        }
+      ],
+      "old_offchain_approximation_used": false
+    },
+    "anchor_deposits": {
+      "formula": "prev_aterra_supply * prev_exchange_rate / 1e6",
+      "overlap_rows": 419,
+      "mean_relative_error": 0.022845260920556536,
+      "median_relative_error": 0.012891899376319254,
+      "max_relative_error": 0.5827132323117882,
+      "correlation": 0.9998651323486243,
+      "pre_run_through_2022_05_05_overlap_rows": 66,
+      "pre_run_mean_relative_error": 0.0023005343496977546,
+      "pre_run_median_relative_error": 0.0009886342645371304,
+      "pre_run_max_relative_error": 0.04607448763876471,
+      "pre_run_correlation": 0.9988669649479622,
+      "decision": "Use cached state before the run; use live epoch_state from May 6 because prev_* is stale during run."
+    },
+    "supply": {
+      "luna_daily_holder_sum_vs_direct_total": {
+        "overlap_rows": 13,
+        "mean_relative_error": 0.03279929549158686,
+        "median_relative_error": 0.031101393215201795,
+        "max_relative_error": 0.09281523773419403,
+        "correlation": 0.9999975238754452,
+        "decision": "Do not use holder-balance sum as total supply before May 1."
+      },
+      "ust_node_supply_vs_coingecko_implied_supply": {
+        "overlap_rows": 74,
+        "mean_relative_error": 0.013952236624651277,
+        "median_relative_error": 0.006307743528652612,
+        "max_relative_error": 0.3266617036444903,
+        "correlation": 0.9465839715118056,
+        "decision": "Use node holder-balance sum; CoinGecko comparison is validation only."
+      }
+    },
+    "duplicate_identity_audit": {
+      "source": "data/processed/terra_may2022_v1.csv",
+      "named_pair_results": [
+        {
+          "left": "ust_dex_sell_volume",
+          "right": "luna_minted_from_redemption",
+          "overlap_rows": 312,
+          "correlation": 1.0,
+          "near_identical": true,
+          "disposition": "QUARANTINED"
+        },
+        {
+          "left": "ust_dex_sell_volume",
+          "right": "luna_burned",
+          "overlap_rows": 312,
+          "correlation": 1.0,
+          "near_identical": true,
+          "disposition": "QUARANTINED"
+        },
+        {
+          "left": "luna_minted_from_redemption",
+          "right": "luna_burned",
+          "overlap_rows": 312,
+          "correlation": 1.0,
+          "near_identical": true,
+          "disposition": "QUARANTINED"
+        },
+        {
+          "left": "bridge_outflow_terra_to_ethereum",
+          "right": "bridge_inflow_ethereum_to_terra",
+          "overlap_rows": 312,
+          "correlation": 1.0,
+          "near_identical": true,
+          "disposition": "QUARANTINED"
+        },
+        {
+          "left": "curve_ust_price",
+          "right": "ust_price",
+          "overlap_rows": 312,
+          "correlation": 1.0,
+          "near_identical": true,
+          "disposition": "QUARANTINED"
+        }
+      ],
+      "automatic_near_identical_pairs": [
+        {
+          "left": "ust_price",
+          "right": "curve_ust_price",
+          "correlation": 1.0,
+          "max_absolute_difference": 0.0,
+          "overlap_rows": 312
+        },
+        {
+          "left": "anchor_deposit_flow",
+          "right": "anchor_withdrawal_flow",
+          "correlation": 1.0,
+          "max_absolute_difference": 0.0,
+          "overlap_rows": 312
+        },
+        {
+          "left": "luna_minted_from_redemption",
+          "right": "luna_burned",
+          "correlation": 1.0,
+          "max_absolute_difference": 0.0,
+          "overlap_rows": 312
+        },
+        {
+          "left": "luna_minted_from_redemption",
+          "right": "ust_dex_sell_volume",
+          "correlation": 1.0,
+          "max_absolute_difference": 0.0,
+          "overlap_rows": 312
+        },
+        {
+          "left": "luna_burned",
+          "right": "ust_dex_sell_volume",
+          "correlation": 1.0,
+          "max_absolute_difference": 0.0,
+          "overlap_rows": 312
+        },
+        {
+          "left": "bridge_outflow_terra_to_ethereum",
+          "right": "bridge_inflow_ethereum_to_terra",
+          "correlation": 1.0,
+          "max_absolute_difference": 0.0,
+          "overlap_rows": 312
+        }
+      ],
+      "bridge_provenance_finding": "Prior evidence_map mapped both bridge directions to epoch_state_fig10.deposit_b_ust without an action filter; both fields are quarantined and omitted from the extended core table."
+    }
+  },
+  "early_warning_readiness": [
+    {
+      "feature": "UST depeg",
+      "status": "AVAILABLE",
+      "first_without_lookahead": "2022-03-01T00:00:00+00:00",
+      "basis": "1 - ust_price"
+    },
+    {
+      "feature": "depeg persistence",
+      "status": "AVAILABLE",
+      "first_without_lookahead": "2022-03-01T01:00:00+00:00",
+      "basis": "lagged UST price"
+    },
+    {
+      "feature": "Anchor outflow stress",
+      "status": "PARTIAL",
+      "first_without_lookahead": "2022-05-06T00:00:00+00:00",
+      "basis": "explicit withdrawal events only from May 6"
+    },
+    {
+      "feature": "Anchor outflow acceleration",
+      "status": "PARTIAL",
+      "first_without_lookahead": "2022-05-06T01:00:00+00:00",
+      "basis": "lagged explicit withdrawals"
+    },
+    {
+      "feature": "native redemption stress",
+      "status": "PARTIAL",
+      "first_without_lookahead": "2022-05-07T00:00:00+00:00",
+      "basis": "native UST→LUNA events from May 7"
+    },
+    {
+      "feature": "LUNA return 1h",
+      "status": "AVAILABLE",
+      "first_without_lookahead": "2022-03-01T01:00:00+00:00",
+      "basis": "lagged market price"
+    },
+    {
+      "feature": "LUNA return 6h",
+      "status": "AVAILABLE",
+      "first_without_lookahead": "2022-03-01T06:00:00+00:00",
+      "basis": "lagged market price"
+    },
+    {
+      "feature": "LUNA return 24h",
+      "status": "AVAILABLE",
+      "first_without_lookahead": "2022-03-02T00:00:00+00:00",
+      "basis": "lagged market price"
+    },
+    {
+      "feature": "LUNA volatility",
+      "status": "AVAILABLE",
+      "first_without_lookahead": "2022-03-02T00:00:00+00:00",
+      "basis": "trailing returns only"
+    },
+    {
+      "feature": "backing ratio",
+      "status": "PARTIAL",
+      "first_without_lookahead": "2022-05-01T00:00:00+00:00",
+      "basis": "direct LUNA supply starts May 1"
+    },
+    {
+      "feature": "backing deterioration",
+      "status": "PARTIAL",
+      "first_without_lookahead": "2022-05-01T01:00:00+00:00",
+      "basis": "lagged backing ratio"
+    },
+    {
+      "feature": "DEX liquidity stress",
+      "status": "UNAVAILABLE",
+      "first_without_lookahead": null,
+      "basis": "no Terra pool reserve/depth history"
+    },
+    {
+      "feature": "large-holder concentration",
+      "status": "PARTIAL",
+      "first_without_lookahead": "2022-03-01T00:00:00+00:00",
+      "basis": "daily series ends May 6"
+    },
+    {
+      "feature": "reserve-defense activity",
+      "status": "UNAVAILABLE",
+      "first_without_lookahead": null,
+      "basis": "LFG Anchor funding is not peg-defense execution"
+    }
+  ],
+  "known_limitations": [
+    "Direct LUNA total supply starts 2022-05-01.",
+    "March-April prices are daily market observations carried forward within day.",
+    "Anchor event flows start 2022-05-06; native swap flows start 2022-05-07.",
+    "No actual Terra DEX reserve/depth history was found.",
+    "No LFG peg-defense execution ledger was found.",
+    "Bridge fields from the prior dataset are quarantined."
+  ]
+}

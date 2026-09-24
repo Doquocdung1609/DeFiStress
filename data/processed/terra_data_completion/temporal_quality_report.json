@@ -1,0 +1,296 @@
+{
+  "target_start": "2022-03-01T00:00:00+00:00",
+  "target_end": "2022-05-13T23:00:00+00:00",
+  "expected_hourly_rows": 1776,
+  "actual_rows": 1776,
+  "missing_hourly_rows": 0,
+  "missing_hourly_timestamps": [],
+  "duplicate_timestamp_count": 0,
+  "timestamps_monotonic": true,
+  "timezone": "UTC",
+  "longest_output_gap": "0 days 01:00:00",
+  "block_height_coverage": {
+    "min_height": 6667327,
+    "max_height": 7614146,
+    "missing_hourly_rows": 0,
+    "largest_source_gap": "0 days 15:44:00",
+    "halt_handling_rows": 38,
+    "handling_note": "Backward state carry only; a constant height means no newer sampled block, not interpolation.",
+    "no_future_source_timestamp": true
+  },
+  "per_field": {
+    "block_height": {
+      "first_valid_timestamp": "2022-03-01T00:00:00+00:00",
+      "last_valid_timestamp": "2022-05-13T23:00:00+00:00",
+      "missing_count": 0,
+      "valid_count": 1776,
+      "positive_count": 1776
+    },
+    "ust_price": {
+      "first_valid_timestamp": "2022-03-01T00:00:00+00:00",
+      "last_valid_timestamp": "2022-05-13T23:00:00+00:00",
+      "missing_count": 0,
+      "valid_count": 1776,
+      "positive_count": 1776
+    },
+    "luna_price": {
+      "first_valid_timestamp": "2022-03-01T00:00:00+00:00",
+      "last_valid_timestamp": "2022-05-13T23:00:00+00:00",
+      "missing_count": 0,
+      "valid_count": 1776,
+      "positive_count": 1776
+    },
+    "ust_supply": {
+      "first_valid_timestamp": "2022-03-01T00:00:00+00:00",
+      "last_valid_timestamp": "2022-05-13T23:00:00+00:00",
+      "missing_count": 0,
+      "valid_count": 1776,
+      "positive_count": 1776
+    },
+    "luna_supply": {
+      "first_valid_timestamp": "2022-05-01T00:00:00+00:00",
+      "last_valid_timestamp": "2022-05-13T23:00:00+00:00",
+      "missing_count": 1464,
+      "valid_count": 312,
+      "positive_count": 312
+    },
+    "anchor_total_deposits": {
+      "first_valid_timestamp": "2022-03-01T00:00:00+00:00",
+      "last_valid_timestamp": "2022-05-13T23:00:00+00:00",
+      "missing_count": 0,
+      "valid_count": 1776,
+      "positive_count": 1776
+    },
+    "anchor_deposit_flow": {
+      "first_valid_timestamp": "2022-05-06T00:00:00+00:00",
+      "last_valid_timestamp": "2022-05-13T23:00:00+00:00",
+      "missing_count": 1584,
+      "valid_count": 192,
+      "positive_count": 183
+    },
+    "anchor_withdrawal_flow": {
+      "first_valid_timestamp": "2022-05-06T00:00:00+00:00",
+      "last_valid_timestamp": "2022-05-13T23:00:00+00:00",
+      "missing_count": 1584,
+      "valid_count": 192,
+      "positive_count": 183
+    },
+    "ust_native_redemption_volume": {
+      "first_valid_timestamp": "2022-05-07T00:00:00+00:00",
+      "last_valid_timestamp": "2022-05-13T23:00:00+00:00",
+      "missing_count": 1608,
+      "valid_count": 168,
+      "positive_count": 146
+    },
+    "gross_luna_issuance_from_native_swaps": {
+      "first_valid_timestamp": "2022-05-07T00:00:00+00:00",
+      "last_valid_timestamp": "2022-05-13T23:00:00+00:00",
+      "missing_count": 1608,
+      "valid_count": 168,
+      "positive_count": 146
+    },
+    "backing_ratio": {
+      "first_valid_timestamp": "2022-05-01T00:00:00+00:00",
+      "last_valid_timestamp": "2022-05-13T23:00:00+00:00",
+      "missing_count": 1464,
+      "valid_count": 312,
+      "positive_count": 312
+    },
+    "top10_anchor_share": {
+      "first_valid_timestamp": "2022-03-01T00:00:00+00:00",
+      "last_valid_timestamp": "2022-05-06T23:00:00+00:00",
+      "missing_count": 168,
+      "valid_count": 1608,
+      "positive_count": 1608
+    },
+    "top100_anchor_share": {
+      "first_valid_timestamp": "2022-03-01T00:00:00+00:00",
+      "last_valid_timestamp": "2022-05-06T23:00:00+00:00",
+      "missing_count": 168,
+      "valid_count": 1608,
+      "positive_count": 1608
+    }
+  },
+  "missing_policies": {
+    "daily_prices": "STATE_FFILL until the next actual daily observation; no interpolation",
+    "ust_supply": "STATE_FFILL of daily on-chain balance state",
+    "luna_supply": "MISSING before direct hourly source begins",
+    "anchor_total_deposits": "STATE_FFILL/backward-as-of protocol state",
+    "anchor_flows": "MISSING outside May 6-13; EVENT_ZERO only inside coverage",
+    "native_swaps": "MISSING before May 7; EVENT_ZERO inside documented run extract",
+    "concentration": "STATE_FFILL through May 6; MISSING after source ends"
+  },
+  "anchor_deposit_validation": {
+    "formula": "prev_aterra_supply * prev_exchange_rate / 1e6",
+    "overlap_rows": 419,
+    "mean_relative_error": 0.022845260920556536,
+    "median_relative_error": 0.012891899376319254,
+    "max_relative_error": 0.5827132323117882,
+    "correlation": 0.9998651323486243,
+    "pre_run_through_2022_05_05_overlap_rows": 66,
+    "pre_run_mean_relative_error": 0.0023005343496977546,
+    "pre_run_median_relative_error": 0.0009886342645371304,
+    "pre_run_max_relative_error": 0.04607448763876471,
+    "pre_run_correlation": 0.9988669649479622,
+    "decision": "Use cached state before the run; use live epoch_state from May 6 because prev_* is stale during run."
+  },
+  "supply_validation": {
+    "luna_daily_holder_sum_vs_direct_total": {
+      "overlap_rows": 13,
+      "mean_relative_error": 0.03279929549158686,
+      "median_relative_error": 0.031101393215201795,
+      "max_relative_error": 0.09281523773419403,
+      "correlation": 0.9999975238754452,
+      "decision": "Do not use holder-balance sum as total supply before May 1."
+    },
+    "ust_node_supply_vs_coingecko_implied_supply": {
+      "overlap_rows": 74,
+      "mean_relative_error": 0.013952236624651277,
+      "median_relative_error": 0.006307743528652612,
+      "max_relative_error": 0.3266617036444903,
+      "correlation": 0.9465839715118056,
+      "decision": "Use node holder-balance sum; CoinGecko comparison is validation only."
+    }
+  },
+  "native_issuance_validation": {
+    "formula": "gross LUNA issuance = swap_amount + fee_amount",
+    "overlap_hours": 168,
+    "hourly_correlation": 0.9999998920980105,
+    "cumulative_issuance_luna": 6872102967292.583,
+    "cumulative_supply_increase_luna": 6799674843979.966,
+    "final_cumulative_relative_error": 0.0106517039379818,
+    "largest_absolute_discrepancy_hours": [
+      {
+        "timestamp": "2022-05-13T01:00:00+00:00",
+        "absolute_discrepancy_luna": 61391705812.57715
+      },
+      {
+        "timestamp": "2022-05-13T00:00:00+00:00",
+        "absolute_discrepancy_luna": 10155165594.985474
+      },
+      {
+        "timestamp": "2022-05-12T15:00:00+00:00",
+        "absolute_discrepancy_luna": 198022674.48334503
+      },
+      {
+        "timestamp": "2022-05-12T23:00:00+00:00",
+        "absolute_discrepancy_luna": 179353103.67448425
+      },
+      {
+        "timestamp": "2022-05-12T22:00:00+00:00",
+        "absolute_discrepancy_luna": 163240523.90750122
+      },
+      {
+        "timestamp": "2022-05-12T18:00:00+00:00",
+        "absolute_discrepancy_luna": 138073599.89299107
+      },
+      {
+        "timestamp": "2022-05-12T19:00:00+00:00",
+        "absolute_discrepancy_luna": 85420072.04890347
+      },
+      {
+        "timestamp": "2022-05-12T20:00:00+00:00",
+        "absolute_discrepancy_luna": 39160536.640907764
+      },
+      {
+        "timestamp": "2022-05-12T10:00:00+00:00",
+        "absolute_discrepancy_luna": 27510478.425245047
+      },
+      {
+        "timestamp": "2022-05-12T14:00:00+00:00",
+        "absolute_discrepancy_luna": 27030514.012111664
+      }
+    ],
+    "old_offchain_approximation_used": false
+  },
+  "duplicate_identity_audit": {
+    "source": "data/processed/terra_may2022_v1.csv",
+    "named_pair_results": [
+      {
+        "left": "ust_dex_sell_volume",
+        "right": "luna_minted_from_redemption",
+        "overlap_rows": 312,
+        "correlation": 1.0,
+        "near_identical": true,
+        "disposition": "QUARANTINED"
+      },
+      {
+        "left": "ust_dex_sell_volume",
+        "right": "luna_burned",
+        "overlap_rows": 312,
+        "correlation": 1.0,
+        "near_identical": true,
+        "disposition": "QUARANTINED"
+      },
+      {
+        "left": "luna_minted_from_redemption",
+        "right": "luna_burned",
+        "overlap_rows": 312,
+        "correlation": 1.0,
+        "near_identical": true,
+        "disposition": "QUARANTINED"
+      },
+      {
+        "left": "bridge_outflow_terra_to_ethereum",
+        "right": "bridge_inflow_ethereum_to_terra",
+        "overlap_rows": 312,
+        "correlation": 1.0,
+        "near_identical": true,
+        "disposition": "QUARANTINED"
+      },
+      {
+        "left": "curve_ust_price",
+        "right": "ust_price",
+        "overlap_rows": 312,
+        "correlation": 1.0,
+        "near_identical": true,
+        "disposition": "QUARANTINED"
+      }
+    ],
+    "automatic_near_identical_pairs": [
+      {
+        "left": "ust_price",
+        "right": "curve_ust_price",
+        "correlation": 1.0,
+        "max_absolute_difference": 0.0,
+        "overlap_rows": 312
+      },
+      {
+        "left": "anchor_deposit_flow",
+        "right": "anchor_withdrawal_flow",
+        "correlation": 1.0,
+        "max_absolute_difference": 0.0,
+        "overlap_rows": 312
+      },
+      {
+        "left": "luna_minted_from_redemption",
+        "right": "luna_burned",
+        "correlation": 1.0,
+        "max_absolute_difference": 0.0,
+        "overlap_rows": 312
+      },
+      {
+        "left": "luna_minted_from_redemption",
+        "right": "ust_dex_sell_volume",
+        "correlation": 1.0,
+        "max_absolute_difference": 0.0,
+        "overlap_rows": 312
+      },
+      {
+        "left": "luna_burned",
+        "right": "ust_dex_sell_volume",
+        "correlation": 1.0,
+        "max_absolute_difference": 0.0,
+        "overlap_rows": 312
+      },
+      {
+        "left": "bridge_outflow_terra_to_ethereum",
+        "right": "bridge_inflow_ethereum_to_terra",
+        "correlation": 1.0,
+        "max_absolute_difference": 0.0,
+        "overlap_rows": 312
+      }
+    ],
+    "bridge_provenance_finding": "Prior evidence_map mapped both bridge directions to epoch_state_fig10.deposit_b_ust without an action filter; both fields are quarantined and omitted from the extended core table."
+  }
+}
