@@ -26,11 +26,18 @@ export function visibleEdges(
 
 export function frameNarrative(frame: ContagionFrame): string {
   if (frame.wave === 0) return "Initial snapshot topology before any modeled liquidation event.";
-  const before = frame.price_state.dex_price_before ?? 0;
-  const after = frame.price_state.dex_price_after ?? before;
-  const impact = before > 0 ? Math.abs(after - before) / before : 0;
+  const impact = frameImpactRatio(frame);
   const nextWave = frame.cascade_depth_so_far > frame.wave ? " A later wave followed." : "";
   return `${frame.label}: ${formatUsd(frame.liquidation_volume_usd)} liquidated, ${frame.forced_weth.toFixed(4)} WETH forced through the selected pool, ${(impact * 100).toFixed(2)}% execution-price impact.${nextWave}`;
+}
+
+export function frameImpactRatio(frame: ContagionFrame): number {
+  const impactEdge = frame.active_edges.find((edge) => edge.relation_type === "EXECUTION_PRICE_IMPACT");
+  const eventDerivedImpact = impactEdge?.raw_value.price_impact_ratio;
+  if (typeof eventDerivedImpact === "number" && Number.isFinite(eventDerivedImpact)) return eventDerivedImpact;
+  const before = frame.price_state.dex_price_before ?? 0;
+  const after = frame.price_state.dex_price_after ?? before;
+  return before > 0 ? Math.abs(after - before) / before : 0;
 }
 
 export function playbackNarrative(frame: ContagionFrame, totalFrames: number): string {

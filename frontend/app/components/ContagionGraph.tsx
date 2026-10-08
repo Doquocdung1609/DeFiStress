@@ -7,6 +7,7 @@ import type { ContagionEdge, ContagionFrame, ContagionGraph as GraphData, Snapsh
 import { API_URL, api } from "@/lib/api";
 import {
   formatUsd,
+  frameImpactRatio,
   graphBadge,
   playbackNarrative,
   type RelationFilter,
@@ -131,7 +132,7 @@ export function ContagionGraph({ snapshot }: { snapshot: Snapshot }) {
   const bridgeLabel = graph.nodes.find((node) => node.id === graph.centrality.structural_bridge_node)?.label ?? "Unavailable";
   const dynamicEdges = graph.edges.filter((edge) => edge.wave != null);
   const totalLiquidated = graph.frames.reduce((sum, item) => sum + item.liquidation_volume_usd, 0);
-  const currentImpact = framePriceImpact(frame);
+  const currentImpact = frameImpactRatio(frame);
 
   return (
     <div className="contagionPage">
@@ -436,12 +437,6 @@ function shortNode(id: string): string {
 
 function formatMetric(value: number | null | undefined): string {
   return value == null || !Number.isFinite(value) ? "—" : value.toFixed(3);
-}
-
-function framePriceImpact(frame: ContagionFrame): number {
-  const before = frame.price_state.dex_price_before ?? 0;
-  const after = frame.price_state.dex_price_after ?? before;
-  return before > 0 ? Math.abs(after - before) / before : 0;
 }
 
 function nodeMetric(nodeId: string, metrics: Record<string, number | string | boolean | null>): string {

@@ -6,6 +6,7 @@ import { describe, expect, it } from "vitest";
 import type { ContagionEdge, ContagionGraph, ContagionNode } from "./api";
 import {
   frameNarrative,
+  frameImpactRatio,
   graphBadge,
   playbackNarrative,
   scientificMetricSignature,
@@ -125,6 +126,7 @@ describe("contagion graph view helpers", () => {
     const data = graph("REAL_MAINNET");
     const before = scientificMetricSignature(data);
     expect(frameNarrative(data.frames[0])).toContain("$100");
+    expect(frameImpactRatio(data.frames[0])).toBe(0.01);
     expect(playbackNarrative(data.frames[0], 2)).toContain("No second-wave liquidation occurred.");
     visibleNodes(data.nodes, false);
     visibleEdges(data.edges, new Set(data.nodes.map((node) => node.id)), "LIQUIDATION");
