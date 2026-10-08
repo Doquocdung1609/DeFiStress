@@ -4,15 +4,82 @@ export type Snapshot = {
   id: string;
   mode: "FIXTURE" | "REAL_MAINNET" | "CACHED_MAINNET";
   label: string;
+  chain_id: number;
   block_number: number;
   block_hash: string;
   block_timestamp: string;
+  retrieved_at: string;
   aave_market: string;
   oracle_prices: { WETH: number; USDC: number };
   stablecoin_state: { symbol: string; price: number; depeg_bps: number };
   coverage: Record<string, number | string>;
   dex_pool: Record<string, unknown>;
   data_quality_flags: { code: string; severity: string; message: string }[];
+  source_manifest: {
+    snapshot_coordination?: {
+      graph_head?: number;
+      snapshot_block?: number;
+    };
+    borrower_discovery?: {
+      source?: string;
+      block_number?: number;
+      candidate_count?: number;
+    };
+    state_verification?: {
+      source?: string;
+      block_number?: number;
+      aave_method?: string;
+    };
+    uniswap?: {
+      pool?: string;
+      fee?: number;
+    };
+    aave?: {
+      market?: string;
+      pool?: string;
+      oracle?: string;
+      data_provider?: string;
+      address_book_version?: string;
+      address_book_commit?: string;
+    };
+  };
+};
+
+export type SnapshotSummary = Pick<
+  Snapshot,
+  "id" | "mode" | "label" | "chain_id" | "block_number" | "block_hash" | "block_timestamp" | "retrieved_at"
+> & {
+  coverage: Record<string, number | string | null>;
+  selected_uniswap_pool: { pool_address?: string; fee?: number };
+  quality_flag_count: number;
+};
+
+export type HealthStatus = {
+  safety_banner: string;
+  mode: string;
+  app_mode_role: string;
+  selection_policy: string;
+  ethereum_rpc: {
+    connected: boolean;
+    current_block: number | null;
+    finalized_block: number | null;
+    block_lag: number | null;
+    error: string | null;
+  };
+  eth_rpc_connected: boolean;
+  aave_rpc_ready: boolean;
+  uniswap_rpc_ready: boolean;
+  subgraph_configured: boolean;
+  aave: string;
+  uniswap: string;
+  subgraph: string;
+  can_create_real_snapshot: boolean;
+  mainnet_artifact: {
+    available: boolean;
+    loaded: boolean;
+    snapshot_id: string | null;
+    block_number?: number;
+  };
 };
 
 export type Position = {

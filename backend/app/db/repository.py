@@ -104,7 +104,9 @@ class Repository:
 
     def list_snapshots(self) -> list[dict[str, Any]]:
         with self.sessions() as session:
-            rows = session.scalars(select(DataSnapshot).order_by(DataSnapshot.block_number.desc())).all()
+            rows = session.scalars(
+                select(DataSnapshot).order_by(DataSnapshot.block_number.desc(), DataSnapshot.retrieved_at.desc())
+            ).all()
             return [row.payload for row in rows]
 
     def save_scenario(self, snapshot_id: str, config: dict[str, Any]) -> dict[str, Any]:

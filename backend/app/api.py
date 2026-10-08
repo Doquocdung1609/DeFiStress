@@ -20,6 +20,11 @@ from backend.app.schemas import (
     SnapshotCreate,
 )
 from backend.app.services.export import build_experiment_zip
+from backend.app.services.mainnet_artifacts import (
+    import_approved_mainnet_artifact,
+    mainnet_artifact_status,
+    snapshot_summary,
+)
 from backend.app.services.real_snapshot import create_real_snapshot
 from backend.app.services.runs import execute_run, scenario_from_dict
 from backend.app.services.snapshots import ensure_fixture_snapshot, simulation_inputs
@@ -38,7 +43,10 @@ def get_repository(settings: Settings = Depends(get_settings)) -> Repository:
 
 
 @router.get("/health")
-def health(settings: Settings = Depends(get_settings)) -> dict[str, Any]:
+def health(
+    settings: Settings = Depends(get_settings),
+    repository: Repository = Depends(get_repository),
+) -> dict[str, Any]:
     if settings.eth_rpc_url:
         rpc = ReadOnlyRpcClient(settings.eth_rpc_url).health()
         ethereum = asdict(rpc)
@@ -52,20 +60,27 @@ def health(settings: Settings = Depends(get_settings)) -> dict[str, Any]:
             "latency_ms": None,
             "error": "ETH_RPC_URL is not configured; Fixture mode remains available.",
         }
+    eth_rpc_connected = bool(ethereum["connected"] and ethereum["chain_id"] == 1)
+    subgraph_configured = bool(settings.graph_api_key and settings.aave_v3_subgraph_id)
+    can_create_real_snapshot = bool(eth_rpc_connected and subgraph_configured)
     return {
         "service": "healthy",
         "mode": settings.app_mode,
+        "app_mode_role": (
+            "Development/backend capability default only; it never overrides an explicitly selected snapshot ID."
+        ),
+        "selection_policy": "Selected snapshot mode and live source connectivity are independent.",
         "safety_banner": "Research Simulation — Mainnet Read-Only",
         "ethereum_rpc": ethereum,
-        "aave": "HEALTHY" if ethereum["connected"] else "UNAVAILABLE",
-        "uniswap": "HEALTHY" if ethereum["connected"] else "UNAVAILABLE",
-        "subgraph": "CONFIGURED" if settings.graph_api_key and settings.aave_v3_subgraph_id else "UNAVAILABLE",
-        "can_create_real_snapshot": bool(
-            ethereum["connected"]
-            and ethereum["chain_id"] == 1
-            and settings.graph_api_key
-            and settings.aave_v3_subgraph_id
-        ),
+        "eth_rpc_connected": eth_rpc_connected,
+        "aave_rpc_ready": eth_rpc_connected,
+        "uniswap_rpc_ready": eth_rpc_connected,
+        "subgraph_configured": subgraph_configured,
+        "aave": "RPC_READY" if eth_rpc_connected else "UNAVAILABLE",
+        "uniswap": "RPC_READY" if eth_rpc_connected else "UNAVAILABLE",
+        "subgraph": "CONFIGURED" if subgraph_configured else "UNAVAILABLE",
+        "can_create_real_snapshot": can_create_real_snapshot,
+        "mainnet_artifact": mainnet_artifact_status(repository),
     }
 
 
@@ -98,8 +113,16 @@ def create_snapshot(
 
 @router.get("/snapshots")
 def list_snapshots(repository: Repository = Depends(get_repository)) -> list[dict[str, Any]]:
-    ensure_fixture_snapshot(repository)
-    return repository.list_snapshots()
+    return [snapshot_summary(snapshot) for snapshot in repository.list_snapshots()]
+
+
+@router.post("/snapshots/import-mainnet-artifact", status_code=status.HTTP_201_CREATED)
+def import_mainnet_artifact(repository: Repository = Depends(get_repository)) -> dict[str, Any]:
+    try:
+        snapshot, imported = import_approved_mainnet_artifact(repository)
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+    return {"imported": imported, "snapshot": snapshot_summary(snapshot)}
 
 
 def _snapshot_or_404(repository: Repository, snapshot_id: str) -> dict[str, Any]:

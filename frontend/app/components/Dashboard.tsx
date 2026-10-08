@@ -17,7 +17,23 @@ import {
   YAxis,
 } from "recharts";
 
-import { API_URL, Position, Run, Snapshot, api, money, percent } from "@/lib/api";
+import {
+  API_URL,
+  HealthStatus,
+  Position,
+  Run,
+  Snapshot,
+  SnapshotSummary,
+  api,
+  money,
+  percent,
+} from "@/lib/api";
+import {
+  persistSnapshotSelection,
+  resolveSnapshotSelection,
+  shouldShowFixtureBanner,
+  shouldShowMainnetBanner,
+} from "@/lib/snapshot-selection";
 
 const nav = [
   ["overview", "Overview"],
@@ -29,14 +45,6 @@ const nav = [
   ["validation", "Validation"],
   ["provenance", "Provenance"],
 ] as const;
-
-type Health = {
-  safety_banner: string;
-  ethereum_rpc: { connected: boolean; current_block: number | null; finalized_block: number | null; block_lag: number | null; error: string | null };
-  aave: string;
-  uniswap: string;
-  subgraph: string;
-};
 
 type Liquidity = {
   pool: Record<string, unknown>;
@@ -104,46 +112,178 @@ const scenarioPresets: Record<string, ScenarioForm> = {
 export function Dashboard({ section, runId }: { section: string; runId?: string }) {
   const router = useRouter();
   const [snapshot, setSnapshot] = useState<Snapshot | null>(null);
+  const [snapshots, setSnapshots] = useState<SnapshotSummary[]>([]);
   const [positions, setPositions] = useState<Position[]>([]);
   const [liquidity, setLiquidity] = useState<Liquidity | null>(null);
-  const [health, setHealth] = useState<Health | null>(null);
+  const [health, setHealth] = useState<HealthStatus | null>(null);
   const [run, setRun] = useState<Run | null>(null);
   const [scenario, setScenario] = useState<ScenarioForm>(professorPreset);
   const [error, setError] = useState<string | null>(null);
+  const [notice, setNotice] = useState<string | null>(null);
+  const [activity, setActivity] = useState<string | null>(null);
   const [busy, setBusy] = useState(true);
+
+  const activateSnapshot = useCallback(async (selected: Snapshot, persist = true) => {
+    const [positionData, liquidityData] = await Promise.all([
+      api<{ positions: Position[] }>(`/api/v1/snapshots/${selected.id}/positions`),
+      api<Liquidity>(`/api/v1/snapshots/${selected.id}/liquidity`),
+    ]);
+    setSnapshot(selected);
+    setPositions(positionData.positions);
+    setLiquidity(liquidityData);
+    if (persist) persistSnapshotSelection(window.localStorage, selected.id);
+  }, []);
+
+  const refreshSnapshotOptions = useCallback(async () => {
+    const available = await api<SnapshotSummary[]>("/api/v1/snapshots");
+    setSnapshots(available);
+    return available;
+  }, []);
 
   const loadSnapshot = useCallback(async () => {
     try {
       setBusy(true);
+      setActivity("Discovering stored snapshots and live source capabilities…");
+      setError(null);
       const savedId = window.localStorage.getItem("defi-snapshot-id");
-      let selected: Snapshot;
+      let selected: Snapshot | null = null;
+      let staleSavedId = false;
       if (savedId) {
-        selected = await api<Snapshot>(`/api/v1/snapshots/${savedId}`).catch(() =>
-          api<Snapshot>("/api/v1/snapshots", { method: "POST", body: JSON.stringify({ mode: "FIXTURE" }) }),
+        try {
+          selected = await api<Snapshot>(`/api/v1/snapshots/${savedId}`);
+        } catch {
+          window.localStorage.removeItem("defi-snapshot-id");
+          staleSavedId = true;
+        }
+      }
+      const [available, healthData] = await Promise.all([
+        refreshSnapshotOptions(),
+        api<HealthStatus>("/api/v1/health"),
+      ]);
+      setHealth(healthData);
+      if (!selected) {
+        const decision = resolveSnapshotSelection(available, savedId, healthData.can_create_real_snapshot);
+        staleSavedId ||= decision.staleSavedId;
+        if (decision.snapshot) {
+          selected = await api<Snapshot>(`/api/v1/snapshots/${decision.snapshot.id}`);
+        } else if (decision.shouldCreateFixture) {
+          selected = await api<Snapshot>("/api/v1/snapshots", {
+            method: "POST",
+            body: JSON.stringify({ mode: "FIXTURE" }),
+          });
+          await refreshSnapshotOptions();
+        }
+      }
+      if (selected) {
+        await activateSnapshot(selected);
+        setNotice(
+          staleSavedId
+            ? `Previously selected snapshot is no longer available. Using ${sourceLabel(selected.mode)}.`
+            : selected.mode === "FIXTURE" && !healthData.can_create_real_snapshot
+              ? "No Mainnet snapshot or live Mainnet creation capability is available. Using the Fixture fallback."
+              : null,
         );
       } else {
-        selected = await api<Snapshot>("/api/v1/snapshots", {
-          method: "POST",
-          body: JSON.stringify({ mode: "FIXTURE" }),
-        });
+        setSnapshot(null);
+        setPositions([]);
+        setLiquidity(null);
+        setNotice(
+          staleSavedId
+            ? "Previously selected snapshot is no longer available. No Mainnet snapshot is currently loaded."
+            : "Mainnet sources are configured. No Mainnet snapshot is currently loaded.",
+        );
       }
-      window.localStorage.setItem("defi-snapshot-id", selected.id);
-      const [positionData, liquidityData, healthData] = await Promise.all([
-        api<{ positions: Position[] }>(`/api/v1/snapshots/${selected.id}/positions`),
-        api<Liquidity>(`/api/v1/snapshots/${selected.id}/liquidity`),
-        api<Health>("/api/v1/health"),
-      ]);
-      setSnapshot(selected);
-      setPositions(positionData.positions);
-      setLiquidity(liquidityData);
-      setHealth(healthData);
-      setError(null);
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : "The API is unavailable.");
     } finally {
+      setActivity(null);
       setBusy(false);
     }
-  }, []);
+  }, [activateSnapshot, refreshSnapshotOptions]);
+
+  async function chooseSnapshot(snapshotId: string) {
+    try {
+      setBusy(true);
+      setActivity("Loading selected snapshot evidence…");
+      setError(null);
+      const selected = await api<Snapshot>(`/api/v1/snapshots/${snapshotId}`);
+      await activateSnapshot(selected);
+      setNotice(`Selected ${sourceLabel(selected.mode)} at block ${selected.block_number.toLocaleString()}.`);
+    } catch (cause) {
+      setError(cause instanceof Error ? cause.message : "The selected snapshot could not be loaded.");
+    } finally {
+      setActivity(null);
+      setBusy(false);
+    }
+  }
+
+  async function createFreshMainnet() {
+    try {
+      setBusy(true);
+      setActivity("Building coordinated Mainnet snapshot…");
+      setError(null);
+      const selected = await api<Snapshot>("/api/v1/snapshots", {
+        method: "POST",
+        body: JSON.stringify({ mode: "REAL_MAINNET" }),
+      });
+      await activateSnapshot(selected);
+      await refreshSnapshotOptions();
+      setNotice(`Created and selected REAL MAINNET snapshot at block ${selected.block_number.toLocaleString()}.`);
+    } catch (cause) {
+      setError(cause instanceof Error ? cause.message : "The Mainnet snapshot could not be created.");
+    } finally {
+      setActivity(null);
+      setBusy(false);
+    }
+  }
+
+  async function useFixture() {
+    try {
+      setBusy(true);
+      setActivity("Loading synthetic Fixture dataset…");
+      setError(null);
+      const existing = snapshots.find((item) => item.mode === "FIXTURE");
+      const selected = existing
+        ? await api<Snapshot>(`/api/v1/snapshots/${existing.id}`)
+        : await api<Snapshot>("/api/v1/snapshots", {
+            method: "POST",
+            body: JSON.stringify({ mode: "FIXTURE" }),
+          });
+      await activateSnapshot(selected);
+      await refreshSnapshotOptions();
+      setNotice("Fixture data are synthetic and must not be cited as Mainnet evidence.");
+    } catch (cause) {
+      setError(cause instanceof Error ? cause.message : "The Fixture dataset could not be loaded.");
+    } finally {
+      setActivity(null);
+      setBusy(false);
+    }
+  }
+
+  async function importMainnetArtifact() {
+    try {
+      setBusy(true);
+      setActivity("Importing the approved verified Mainnet artifact…");
+      setError(null);
+      const result = await api<{ imported: boolean; snapshot: SnapshotSummary }>(
+        "/api/v1/snapshots/import-mainnet-artifact",
+        { method: "POST" },
+      );
+      await refreshSnapshotOptions();
+      const selected = await api<Snapshot>(`/api/v1/snapshots/${result.snapshot.id}`);
+      await activateSnapshot(selected);
+      setNotice(
+        result.imported
+          ? "Imported and selected the approved verified Mainnet artifact."
+          : "The approved Mainnet artifact was already loaded and is now selected.",
+      );
+    } catch (cause) {
+      setError(cause instanceof Error ? cause.message : "The Mainnet artifact could not be imported.");
+    } finally {
+      setActivity(null);
+      setBusy(false);
+    }
+  }
 
   const loadRun = useCallback(async (id: string) => {
     const current = await api<Run>(`/api/v1/runs/${id}`);
@@ -215,7 +355,7 @@ export function Dashboard({ section, runId }: { section: string; runId?: string 
           ))}
         </nav>
         <div className="sidebarFoot">
-          <span className="statusDot green" /> API {error ? "offline" : "connected"}
+          <span className={`statusDot ${health ? "green" : "amber"}`} /> API {health ? "connected" : "status pending"}
           <small>Model 0.1.0</small>
         </div>
       </aside>
@@ -226,36 +366,174 @@ export function Dashboard({ section, runId }: { section: string; runId?: string 
             <h1>{title(section)}</h1>
           </div>
           <div className="headerMeta">
-            <span className={`modeBadge ${snapshot?.mode === "FIXTURE" ? "fixture" : "real"}`}>
-              {snapshot?.mode ?? "LOADING"}
+            <span className={`modeBadge sourceBadge ${snapshotBadge(snapshot).tone}`}>
+              <strong>{snapshotBadge(snapshot).label}</strong>
+              <small>{snapshotBadge(snapshot).detail}</small>
             </span>
             <span className="safety">Research Simulation — Mainnet Read-Only</span>
           </div>
         </header>
         {error && (
           <div className="errorBanner">
-            <strong>API unavailable.</strong> {error} Start FastAPI on port 8000 and retry.
+            <strong>Request failed.</strong> {error}
             <button onClick={() => void loadSnapshot()}>Retry</button>
           </div>
         )}
         {busy && !snapshot ? <Loading /> : null}
-        {snapshot && (
+        {!busy || snapshot ? (
           <section className="content">
-            {snapshot.mode === "FIXTURE" && (
-              <div className="fixtureBanner"><strong>FIXTURE DATA</strong> Synthetic deterministic cohort for development and tests. It is not Mainnet evidence.</div>
+            <DataSourceSelector
+              snapshots={snapshots}
+              selectedId={snapshot?.id ?? null}
+              health={health}
+              busy={busy}
+              onSelect={chooseSnapshot}
+              onCreateMainnet={createFreshMainnet}
+              onUseFixture={useFixture}
+              onImportArtifact={importMainnetArtifact}
+            />
+            {notice && <div className="noticeBanner" role="status">{notice}</div>}
+            {activity && <div className="activityBanner"><span />{activity}</div>}
+            {shouldShowFixtureBanner(snapshot?.mode ?? null) && (
+              <div className="fixtureBanner"><strong>FIXTURE DATA</strong> Synthetic deterministic dataset for development and tests. This snapshot is not Mainnet evidence.</div>
             )}
-            {section === "overview" && <Overview snapshot={snapshot} positions={positions} liquidity={liquidity} health={health} />}
-            {section === "positions" && <Positions positions={positions} coverage={snapshot.coverage} />}
-            {section === "liquidity" && <LiquidityScreen liquidity={liquidity} snapshot={snapshot} />}
-            {section === "scenarios" && <ScenarioBuilder value={scenario} onChange={setScenario} onRun={execute} busy={busy} />}
-            {section === "simulator" && <Simulator onRun={execute} busy={busy} />}
-            {section === "results" && <Results run={run} />}
-            {section === "compare" && <Compare />}
-            {section === "validation" && <Validation snapshot={snapshot} />}
-            {section === "provenance" && <Provenance snapshot={snapshot} />}
+            {snapshot && shouldShowMainnetBanner(snapshot.mode) && <MainnetEvidenceBanner snapshot={snapshot} />}
+            {!snapshot && <MainnetReadyState health={health} />}
+            {snapshot && section === "overview" && <Overview snapshot={snapshot} positions={positions} liquidity={liquidity} health={health} />}
+            {snapshot && section === "positions" && <Positions positions={positions} coverage={snapshot.coverage} />}
+            {snapshot && section === "liquidity" && <LiquidityScreen liquidity={liquidity} snapshot={snapshot} />}
+            {snapshot && section === "scenarios" && <ScenarioBuilder value={scenario} onChange={setScenario} onRun={execute} busy={busy} />}
+            {snapshot && section === "simulator" && <Simulator onRun={execute} busy={busy} />}
+            {snapshot && section === "results" && <Results run={run} />}
+            {snapshot && section === "compare" && <Compare />}
+            {snapshot && section === "validation" && <Validation snapshot={snapshot} />}
+            {snapshot && section === "provenance" && <Provenance snapshot={snapshot} />}
           </section>
-        )}
+        ) : null}
       </main>
+    </div>
+  );
+}
+
+function sourceLabel(mode: Snapshot["mode"]): string {
+  return mode === "REAL_MAINNET"
+    ? "REAL MAINNET"
+    : mode === "CACHED_MAINNET"
+      ? "CACHED MAINNET"
+      : "FIXTURE";
+}
+
+function snapshotBadge(snapshot: Snapshot | null): { label: string; detail: string; tone: string } {
+  if (!snapshot) return { label: "SELECT SOURCE", detail: "No snapshot selected", tone: "configured" };
+  if (snapshot.mode === "REAL_MAINNET") {
+    return { label: "REAL MAINNET", detail: "Verified on-chain snapshot", tone: "real" };
+  }
+  if (snapshot.mode === "CACHED_MAINNET") {
+    return { label: "CACHED MAINNET", detail: "Verified historical Mainnet snapshot", tone: "cached" };
+  }
+  return { label: "FIXTURE", detail: "Synthetic development dataset", tone: "fixture" };
+}
+
+function DataSourceSelector({
+  snapshots,
+  selectedId,
+  health,
+  busy,
+  onSelect,
+  onCreateMainnet,
+  onUseFixture,
+  onImportArtifact,
+}: {
+  snapshots: SnapshotSummary[];
+  selectedId: string | null;
+  health: HealthStatus | null;
+  busy: boolean;
+  onSelect: (snapshotId: string) => Promise<void>;
+  onCreateMainnet: () => Promise<void>;
+  onUseFixture: () => Promise<void>;
+  onImportArtifact: () => Promise<void>;
+}) {
+  return (
+    <Panel title="Selected Data Source" eyebrow="SNAPSHOT EVIDENCE · SEPARATE FROM LIVE HEALTH">
+      <div className="snapshotOptions">
+        {snapshots.map((item) => (
+          <button
+            type="button"
+            key={item.id}
+            className={`snapshotOption ${selectedId === item.id ? "selected" : ""} ${item.mode.toLowerCase()}`}
+            disabled={busy}
+            onClick={() => void onSelect(item.id)}
+          >
+            <span>{sourceLabel(item.mode)}</span>
+            <strong>Block {item.block_number.toLocaleString()}</strong>
+            <small>
+              {item.mode === "FIXTURE"
+                ? "Synthetic development / testing dataset"
+                : `${Number(item.coverage.active_borrowers ?? item.coverage.positions_loaded ?? 0).toLocaleString()} verified borrowers · ${Number(item.coverage.weth_usdc_cohort ?? 0).toLocaleString()} research cohort`}
+            </small>
+          </button>
+        ))}
+        {!snapshots.length && <p className="emptySourceList">No stored snapshots are currently loaded.</p>}
+      </div>
+      <div className="actionRow sourceActions">
+        <button
+          type="button"
+          className="primary"
+          disabled={busy || !health?.can_create_real_snapshot}
+          onClick={() => void onCreateMainnet()}
+        >
+          Create Fresh Mainnet Snapshot
+        </button>
+        {health?.mainnet_artifact.available && !health.mainnet_artifact.loaded && (
+          <button type="button" disabled={busy} onClick={() => void onImportArtifact()}>
+            Import Verified Mainnet Artifact
+          </button>
+        )}
+        <button type="button" disabled={busy} onClick={() => void onUseFixture()}>
+          Use Fixture Dataset
+        </button>
+      </div>
+      <p className="sourceHelp">
+        {health?.can_create_real_snapshot
+          ? "Mainnet sources are configured. Creating a fresh snapshot requires an explicit action and may take several minutes."
+          : "Fresh Mainnet creation is unavailable. Stored REAL/CACHED snapshots remain reproducible and selectable while live sources are offline."}
+        {" "}Fixture data are synthetic and must not be cited as Mainnet evidence.
+      </p>
+    </Panel>
+  );
+}
+
+function MainnetEvidenceBanner({ snapshot }: { snapshot: Snapshot }) {
+  return (
+    <div className="mainnetBanner">
+      <div>
+        <strong>{sourceLabel(snapshot.mode)} SNAPSHOT</strong>
+        <span>Ethereum block {snapshot.block_number.toLocaleString()} · Snapshot ID {snapshot.id}</span>
+      </div>
+      <div>
+        <span>Verified borrowers</span>
+        <strong>{String(snapshot.coverage.positions_loaded ?? snapshot.coverage.active_borrowers ?? "—")}</strong>
+      </div>
+      <div>
+        <span>Target WETH/USDC cohort</span>
+        <strong>{String(snapshot.coverage.weth_usdc_cohort ?? "—")}</strong>
+      </div>
+      <p>Data sources: The Graph discovery · Aave contract verification · Uniswap V3 state</p>
+    </div>
+  );
+}
+
+function MainnetReadyState({ health }: { health: HealthStatus | null }) {
+  return (
+    <div className="emptyState sourceEmptyState">
+      <span className="pulse"><i /></span>
+      <p className="eyebrow">MAINNET-READY STATE</p>
+      <h2>No saved Mainnet snapshot is available</h2>
+      <p>
+        {health?.can_create_real_snapshot
+          ? "Mainnet sources are configured. Create a fresh Mainnet snapshot or deliberately use the Fixture dataset."
+          : "Live Mainnet creation is unavailable. Import the approved artifact if offered above, or use Fixture for development only."}
+      </p>
     </div>
   );
 }
@@ -282,7 +560,7 @@ function Card({ label, value, detail, tone }: { label: string; value: string; de
   return <article className={`metricCard ${tone ?? ""}`}><p>{label}</p><strong>{value}</strong>{detail && <small>{detail}</small>}</article>;
 }
 
-function Overview({ snapshot, positions, liquidity, health }: { snapshot: Snapshot; positions: Position[]; liquidity: Liquidity | null; health: Health | null }) {
+function Overview({ snapshot, positions, liquidity, health }: { snapshot: Snapshot; positions: Position[]; liquidity: Liquidity | null; health: HealthStatus | null }) {
   const totalDebt = positions.reduce((sum, item) => sum + item.total_debt, 0);
   const hist = hfHistogram(positions);
   const debt = [...positions].sort((a, b) => b.total_debt - a.total_debt).slice(0, 10).map((item, index) => ({ name: `B${index + 1}`, debt: item.total_debt }));
@@ -306,8 +584,9 @@ function Overview({ snapshot, positions, liquidity, health }: { snapshot: Snapsh
         <Chart><AreaChart data={debt}><defs><linearGradient id="debt" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor="#6f7cff" stopOpacity={0.8}/><stop offset="95%" stopColor="#6f7cff" stopOpacity={0.05}/></linearGradient></defs><CartesianGrid strokeDasharray="3 3" stroke="#1b3553" /><XAxis dataKey="name" stroke="#7590aa" /><YAxis stroke="#7590aa" tickFormatter={(v) => `${Math.round(v / 1000)}k`} /><Tooltip contentStyle={tooltipStyle} formatter={(v) => money(Number(v))} /><Area type="monotone" dataKey="debt" stroke="#8c96ff" fill="url(#debt)" /></AreaChart></Chart>
       </Panel>
     </div>
-    <Panel title="Source health" eyebrow="OBSERVABILITY">
-      <div className="healthRow"><HealthItem label="Ethereum RPC" value={health?.ethereum_rpc.connected ? `Block ${health.ethereum_rpc.current_block} · finalized lag ${health.ethereum_rpc.block_lag ?? "—"}` : "Not configured"} ok={Boolean(health?.ethereum_rpc.connected)} /><HealthItem label="Aave" value={health?.aave ?? "—"} ok={health?.aave === "HEALTHY"} /><HealthItem label="Uniswap" value={health?.uniswap ?? "—"} ok={health?.uniswap === "HEALTHY"} /><HealthItem label="Subgraph" value={health?.subgraph ?? "—"} ok={health?.subgraph === "CONFIGURED"} /></div>
+    <Panel title="Live source availability" eyebrow="CONNECTIVITY · NOT SNAPSHOT SELECTION">
+      <div className="healthRow"><HealthItem label="Ethereum RPC" value={health?.eth_rpc_connected ? `Connected · head ${health.ethereum_rpc.current_block?.toLocaleString() ?? "—"}` : "Unavailable or not configured"} ok={Boolean(health?.eth_rpc_connected)} /><HealthItem label="Aave RPC" value={health?.aave_rpc_ready ? "RPC ready" : "Unavailable"} ok={Boolean(health?.aave_rpc_ready)} /><HealthItem label="Uniswap RPC" value={health?.uniswap_rpc_ready ? "RPC ready" : "Unavailable"} ok={Boolean(health?.uniswap_rpc_ready)} /><HealthItem label="The Graph" value={health?.subgraph_configured ? "Configured" : "Not configured"} ok={Boolean(health?.subgraph_configured)} /></div>
+      <p className="sourceHealthNote">These indicators describe current source connectivity. They do not change or invalidate the stored snapshot selected above.</p>
     </Panel>
   </>;
 }
@@ -321,8 +600,15 @@ function Positions({ positions, coverage }: { positions: Position[]; coverage: S
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState<"hf" | "debt">("hf");
   const filtered = positions.filter((p) => p.health_factor < limit && p.borrower_hash.includes(search.trim().toLowerCase())).sort((a, b) => sort === "debt" ? b.total_debt - a.total_debt : a.health_factor - b.health_factor);
+  const coverageItems = [
+    ["Verified active borrowers", coverage.active_borrowers ?? coverage.positions_loaded ?? positions.length],
+    ["WETH collateral borrowers", coverage.weth_collateral_borrowers ?? "—"],
+    ["USDC borrowers", coverage.usdc_borrowers ?? "—"],
+    ["WETH / USDC research cohort", coverage.weth_usdc_cohort ?? "—"],
+    ["Candidate verification rate", coverage.coverage_pct == null ? "—" : `${coverage.coverage_pct}%`],
+  ];
   return <>
-    <div className="coverageStrip">{Object.entries(coverage).slice(0, 8).map(([key, value]) => <div key={key}><span>{key.replaceAll("_", " ")}</span><strong>{String(value)}</strong></div>)}</div>
+    <div className="coverageStrip researchCoverage">{coverageItems.map(([label, value]) => <div key={String(label)}><span>{label}</span><strong>{String(value)}</strong></div>)}</div>
     <Panel title="Position cohort" eyebrow="PSEUDONYMIZED PUBLIC ADDRESSES">
       <div className="controls"><label>HF threshold<select value={limit} onChange={(e) => setLimit(Number(e.target.value))}><option value={1.05}>Below 1.05</option><option value={1.1}>Below 1.10</option><option value={1.2}>Below 1.20</option><option value={10}>All</option></select></label><label>Order<select value={sort} onChange={(e) => setSort(e.target.value as "hf" | "debt")}><option value="hf">Lowest HF</option><option value="debt">Top debt</option></select></label><label>Search<input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="borrower-…" /></label></div>
       <div className="tableWrap"><table><thead><tr><th>Borrower</th><th>HF</th><th>WETH collateral</th><th>USDC debt</th><th>Liquidation price</th><th>Distance</th><th>Debt share</th></tr></thead><tbody>{filtered.map((p) => <tr key={p.borrower_hash}><td><code>{p.borrower_hash}</code></td><td><span className={`hf ${p.health_factor < 1.05 ? "danger" : p.health_factor < 1.2 ? "warn" : "ok"}`}>{p.health_factor.toFixed(3)}</span></td><td>{p.collateral_weth.toFixed(3)}</td><td>{money(p.debt_usdc)}</td><td>{money(p.liquidation_price)}</td><td>{percent(p.distance_to_liquidation)}</td><td>{percent(p.debt_share)}</td></tr>)}</tbody></table></div>
@@ -338,7 +624,7 @@ function LiquidityScreen({ liquidity, snapshot }: { liquidity: Liquidity | null;
     <div className="metricGrid"><Card label="Spot price" value={money(liquidity.spot_price)} /><Card label="Fee tier" value={String(liquidity.pool.fee ?? "—")} /><Card label="Current tick" value={String(liquidity.pool.tick ?? "—")} /><Card label="Active liquidity" value={compact(Number(liquidity.pool.liquidity ?? 0))} /></div>
     <Panel title="Executable depth" eyebrow="V3 SQUARE-ROOT-PRICE MODEL"><Chart><BarChart data={depth}><CartesianGrid strokeDasharray="3 3" stroke="#1b3553" /><XAxis dataKey="deviation" stroke="#7590aa" /><YAxis stroke="#7590aa" tickFormatter={(v) => compact(v)} /><Tooltip contentStyle={tooltipStyle} formatter={(v) => money(Number(v))} /><Bar dataKey="depth" fill="#31d4e8" radius={[5, 5, 0, 0]} /></BarChart></Chart></Panel>
     <Panel title="Resolved fee tiers" eyebrow="SELECTED BY ±2% EXECUTABLE DEPTH"><div className="tableWrap"><table><thead><tr><th>Pool</th><th>Fee</th><th>Spot</th><th>Active liquidity</th><th>Depth at 2%</th></tr></thead><tbody>{liquidity.pools.map((pool) => <tr key={String(pool.pool_address)}><td><code>{String(pool.pool_address)}</code></td><td>{String(pool.fee)}</td><td>{money(Number(pool.spot_price ?? liquidity.spot_price))}</td><td>{compact(Number(pool.liquidity ?? 0))}</td><td>{pool.depth_usdc_2pct == null ? "Selected fixture" : money(Number(pool.depth_usdc_2pct))}</td></tr>)}</tbody></table></div></Panel>
-    <Panel title="Pool identity and quality" eyebrow={snapshot.mode}><dl className="definition"><div><dt>Pool</dt><dd>{String(liquidity.pool.pool_address)}</dd></div><div><dt>sqrtPriceX96</dt><dd>{String(liquidity.pool.sqrt_price_x96)}</dd></div><div><dt>Tick spacing</dt><dd>{String(liquidity.pool.tick_spacing)}</dd></div><div><dt>Source</dt><dd>{String(liquidity.pool.source)}</dd></div></dl>{liquidity.quality_flags.map((flag) => <div className="quality" key={flag.code}><strong>{flag.code}</strong>{flag.message}</div>)}</Panel>
+    <Panel title="Pool identity and quality" eyebrow={snapshot.mode}><dl className="definition"><div><dt>Pool</dt><dd>{String(liquidity.pool.pool_address)}</dd></div><div><dt>sqrtPriceX96</dt><dd>{String(liquidity.pool.sqrt_price_x96)}</dd></div><div><dt>Tick spacing</dt><dd>{String(liquidity.pool.tick_spacing)}</dd></div><div><dt>Source</dt><dd>{String(liquidity.pool.source)}</dd></div></dl>{liquidity.quality_flags.map((flag, index) => <div className="quality" key={`${flag.code}-${index}`}><strong>{flag.code}</strong>{flag.message}</div>)}</Panel>
   </>;
 }
 
@@ -406,7 +692,24 @@ function Validation({ snapshot }: { snapshot: Snapshot }) {
 }
 
 function Provenance({ snapshot }: { snapshot: Snapshot }) {
-  return <><Panel title="Snapshot identity" eyebrow="IMMUTABLE"><dl className="definition"><div><dt>Mode</dt><dd>{snapshot.mode}</dd></div><div><dt>Block</dt><dd>{snapshot.block_number}</dd></div><div><dt>Block hash</dt><dd>{snapshot.block_hash}</dd></div><div><dt>Timestamp</dt><dd>{snapshot.block_timestamp}</dd></div></dl></Panel><Panel title="Metric formulas and sources" eyebrow="CLICK-THROUGH EXPLAINABILITY"><div className="formula"><strong>Health Factor</strong><code>Σ collateral × price × liquidation threshold / Σ debt × price</code><p>Cross-check: Aave Pool.getUserAccountData at the snapshot block.</p></div><div className="formula"><strong>Cascade amplification</strong><code>Total liquidated debt / direct-shock liquidated debt</code><p>A zero denominator returns null.</p></div><div className="formula"><strong>Bad debt</strong><code>Σ max(remaining debt − recoverable collateral, 0)</code><p>Reported separately from unliquidated debt.</p></div></Panel><Panel title="Source manifest" eyebrow="PROTOCOL ADDRESSES AND VERSIONS"><pre>{JSON.stringify(snapshot, ["mode", "block_number", "block_hash", "data_quality_flags"], 2)}</pre>{snapshot.data_quality_flags.map((flag) => <div className="quality" key={flag.code}><strong>{flag.code}</strong>{flag.message}</div>)}</Panel></>;
+  const manifest = snapshot.source_manifest;
+  const discovery = manifest.borrower_discovery;
+  const verification = manifest.state_verification;
+  const uniswap = manifest.uniswap;
+  return <>
+    <Panel title="Snapshot identity" eyebrow="IMMUTABLE RESEARCH EVIDENCE">
+      <dl className="definition"><div><dt>Mode</dt><dd>{sourceLabel(snapshot.mode)}</dd></div><div><dt>Chain ID</dt><dd>{snapshot.chain_id}</dd></div><div><dt>Block</dt><dd>{snapshot.block_number}</dd></div><div><dt>Block hash</dt><dd>{snapshot.block_hash}</dd></div><div><dt>Block timestamp</dt><dd>{snapshot.block_timestamp}</dd></div><div><dt>Retrieved at</dt><dd>{snapshot.retrieved_at}</dd></div></dl>
+    </Panel>
+    <Panel title="Coordinated Mainnet sources" eyebrow="ONE BLOCK ACROSS DISCOVERY AND VERIFICATION">
+      <dl className="definition"><div><dt>Borrower discovery</dt><dd>{discovery?.source ?? "Not recorded"}</dd></div><div><dt>Graph discovery block</dt><dd>{discovery?.block_number ?? manifest.snapshot_coordination?.graph_head ?? "—"}</dd></div><div><dt>Candidate borrowers</dt><dd>{discovery?.candidate_count ?? snapshot.coverage.candidates_discovered ?? "—"}</dd></div><div><dt>Aave verification</dt><dd>{verification?.source ?? "Not recorded"} · {verification?.aave_method ?? "—"}</dd></div><div><dt>Aave verification block</dt><dd>{verification?.block_number ?? "—"}</dd></div><div><dt>Uniswap V3 pool</dt><dd>{uniswap?.pool ?? String(snapshot.dex_pool.pool_address ?? "—")}</dd></div><div><dt>Uniswap fee tier</dt><dd>{uniswap?.fee ?? String(snapshot.dex_pool.fee ?? "—")}</dd></div></dl>
+    </Panel>
+    <Panel title="Coverage and interpretation" eyebrow="COHORT, NOT MARKET-WIDE COVERAGE">
+      <dl className="definition"><div><dt>Candidate set</dt><dd>{String(snapshot.coverage.candidates_discovered ?? "—")}</dd></div><div><dt>Verified active borrowers</dt><dd>{String(snapshot.coverage.active_borrowers ?? snapshot.coverage.positions_loaded ?? "—")}</dd></div><div><dt>WETH collateral borrowers</dt><dd>{String(snapshot.coverage.weth_collateral_borrowers ?? "—")}</dd></div><div><dt>USDC borrowers</dt><dd>{String(snapshot.coverage.usdc_borrowers ?? "—")}</dd></div><div><dt>WETH / USDC research cohort</dt><dd>{String(snapshot.coverage.weth_usdc_cohort ?? "—")}</dd></div><div><dt>Candidate verification rate</dt><dd>{snapshot.coverage.coverage_pct == null ? "—" : `${snapshot.coverage.coverage_pct}%`}</dd></div><div><dt>Cohort definition</dt><dd>{String(snapshot.coverage.cohort_label ?? "—")}</dd></div></dl>
+      <p className="sourceHealthNote">The candidate verification rate describes this bounded discovery cohort; it is not a claim of market-wide borrower coverage.</p>
+      {snapshot.data_quality_flags.map((flag, index) => <div className="quality" key={`${flag.code}-${index}`}><strong>{flag.code}</strong>{flag.message}</div>)}
+    </Panel>
+    <Panel title="Metric formulas and sources" eyebrow="CLICK-THROUGH EXPLAINABILITY"><div className="formula"><strong>Health Factor</strong><code>Σ collateral × price × liquidation threshold / Σ debt × price</code><p>Cross-check: Aave Pool.getUserAccountData at the snapshot block.</p></div><div className="formula"><strong>Cascade amplification</strong><code>Total liquidated debt / direct-shock liquidated debt</code><p>A zero denominator returns null.</p></div><div className="formula"><strong>Bad debt</strong><code>Σ max(remaining debt − recoverable collateral, 0)</code><p>Reported separately from unliquidated debt.</p></div></Panel>
+  </>;
 }
 
 function Panel({ title, eyebrow, children }: { title: string; eyebrow: string; children: React.ReactNode }) {

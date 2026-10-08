@@ -185,6 +185,26 @@ The original case remains intact. Create an immutable `FIXTURE`, `REAL_MAINNET`,
 
 The professor preset remains ETH −20%, liquidity haircut 40%, gas 2×, arbitrage capacity 50%, seed `20260914`. No-cascade results are reported as-is.
 
+### Aave snapshot selection and persistence
+
+The dashboard treats the selected simulation snapshot and current live connectivity as independent facts. `REAL_MAINNET` or `CACHED_MAINNET` is frozen, reproducible evidence and remains usable if RPC access later goes offline. The Live Source Availability panel only reports whether a new snapshot can currently be built; it never changes the selected snapshot mode. `APP_MODE` remains development/backend capability metadata and does not override the snapshot ID selected in the UI.
+
+On load, the dashboard respects a valid saved selection. If that ID is stale it clears the ID, shows a notice, and selects the newest stored `REAL_MAINNET` snapshot (then `CACHED_MAINNET`) by block and retrieval time. Fixture is automatic only when there is no stored Mainnet snapshot and a new Mainnet snapshot cannot be created.
+
+The Selected Data Source panel supports three explicit workflows:
+
+1. Select an existing verified `REAL_MAINNET` or `CACHED_MAINNET` snapshot from the runtime database.
+2. Choose **Create Fresh Mainnet Snapshot** to build coordinated The Graph, Aave RPC, and Uniswap V3 state. This is never started automatically on page load.
+3. Choose **Use Fixture Dataset** for development/testing. Fixture is synthetic and is not Mainnet evidence.
+
+The committed artifact and runtime SQLite record are intentionally distinct. To validate and idempotently import the approved repository artifact `data/processed/mainnet/aave_uniswap_snapshot_26045352.json` into the active database, use the UI action or:
+
+```powershell
+Invoke-RestMethod -Method Post http://localhost:8000/api/v1/snapshots/import-mainnet-artifact
+```
+
+The endpoint accepts no file path and only reads that approved artifact. It rejects malformed data, non-Mainnet modes, and non-Ethereum chain IDs. `GET /api/v1/snapshots` returns lightweight selector metadata rather than full borrower/tick payloads; retrieve a selected snapshot by ID for its complete immutable state.
+
 ## Database migrations
 
 ```powershell
