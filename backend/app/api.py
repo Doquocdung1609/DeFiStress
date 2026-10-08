@@ -14,6 +14,7 @@ from backend.app.db import Repository
 from backend.app.schemas import (
     CascadeThresholdRequest,
     CompareRuns,
+    ContagionGraphResponse,
     ForkValidationRequest,
     RunCreate,
     ScenarioCreate,
@@ -31,6 +32,7 @@ from backend.app.services.snapshots import ensure_fixture_snapshot, simulation_i
 from backend.app.terra_api import router as terra_router
 from sim.dex import V3Pool
 from sim.engine import MODEL_VERSION, find_cascade_threshold
+from sim.network import build_run_contagion_graph, build_snapshot_contagion_graph
 from sim.presets import scenario_presets
 from sim.schemas import json_safe
 
@@ -186,6 +188,12 @@ def get_liquidity(snapshot_id: str, repository: Repository = Depends(get_reposit
     }
 
 
+@router.get("/snapshots/{snapshot_id}/contagion-graph", response_model=ContagionGraphResponse)
+def get_snapshot_contagion_graph(snapshot_id: str, repository: Repository = Depends(get_repository)) -> dict[str, Any]:
+    snapshot = _snapshot_or_404(repository, snapshot_id)
+    return build_snapshot_contagion_graph(snapshot)
+
+
 @router.post("/scenarios", status_code=status.HTTP_201_CREATED)
 def create_scenario(request: ScenarioCreate, repository: Repository = Depends(get_repository)) -> dict[str, Any]:
     ensure_fixture_snapshot(repository)
@@ -258,6 +266,18 @@ def get_events(run_id: str, repository: Repository = Depends(get_repository)) ->
 def get_metrics(run_id: str, repository: Repository = Depends(get_repository)) -> dict[str, Any]:
     run = _run_or_404(repository, run_id)
     return (run.get("result") or {}).get("metrics", {})
+
+
+@router.get("/runs/{run_id}/contagion-graph", response_model=ContagionGraphResponse)
+def get_run_contagion_graph(run_id: str, repository: Repository = Depends(get_repository)) -> dict[str, Any]:
+    run = _run_or_404(repository, run_id)
+    if run["status"] != "COMPLETE" or not run.get("result"):
+        raise HTTPException(409, "Contagion graph requires a COMPLETE run")
+    scenario = repository.get_scenario(run["scenario_id"])
+    if not scenario:
+        raise HTTPException(404, "Scenario not found")
+    snapshot = _snapshot_or_404(repository, scenario["snapshot_id"])
+    return build_run_contagion_graph(snapshot, run, scenario["config"])
 
 
 @router.post("/runs/compare")

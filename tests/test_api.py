@@ -47,7 +47,16 @@ def test_fixture_scenario_run_and_export(tmp_path) -> None:
     assert exported.status_code == 200
     with zipfile.ZipFile(io.BytesIO(exported.content)) as archive:
         names = set(archive.namelist())
-        assert {"manifest.json", "metrics.json", "events.csv", "timeseries.csv", "charts/price.png"} <= names
+        assert {
+            "manifest.json",
+            "metrics.json",
+            "events.csv",
+            "timeseries.csv",
+            "charts/price.png",
+            "contagion_graph.json",
+            "contagion_matrix.csv",
+            "centrality.json",
+        } <= names
 
     provenance = api.get("/api/v1/provenance/fixture-main-v1")
     assert provenance.status_code == 200

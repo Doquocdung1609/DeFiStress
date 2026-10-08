@@ -62,6 +62,117 @@ class ForkValidationRequest(BaseModel):
     borrower_hash: str | None = None
 
 
+class ContagionNodeResponse(BaseModel):
+    id: str
+    label: str
+    layer: str
+    node_type: str
+    evidence_status: str
+    snapshot_id: str
+    description: str
+    raw_metrics: dict[str, float | int | str | None]
+    provenance: dict[str, Any]
+
+
+class ContagionEdgeResponse(BaseModel):
+    id: str
+    source: str
+    target: str
+    relation_type: str
+    layer: str
+    direction: str
+    raw_value: dict[str, float | int | str | None]
+    unit: str
+    normalized_strength: float = Field(ge=0, le=1)
+    evidence_status: str
+    provenance: dict[str, Any]
+    description: str
+    formula: str
+    active: bool
+    step: int | None = None
+    wave: int | None = None
+
+
+class ContagionFrameResponse(BaseModel):
+    index: int
+    label: str
+    wave: int
+    step: int
+    active_nodes: list[str]
+    active_edge_ids: list[str]
+    active_edges: list[ContagionEdgeResponse]
+    price_state: dict[str, float | None]
+    liquidation_volume_usd: float
+    forced_weth: float
+    liquidation_event_count: int
+    cumulative_liquidated_debt_usd: float
+    cascade_depth_so_far: int
+
+
+class ContagionCentralityNodeResponse(BaseModel):
+    in_degree_centrality: float
+    out_degree_centrality: float
+    betweenness_centrality: float
+    eigenvector_centrality: float | None
+    weighted_influence_strength: float
+
+
+class ContagionCentralityResponse(BaseModel):
+    aggregation_policy: str
+    weighted_influence_interpretation: str
+    nodes: dict[str, ContagionCentralityNodeResponse]
+    structural_bridge_node: str | None
+    eigenvector_unavailable_reason: str | None
+
+
+class ContagionMatrixEdgeResponse(BaseModel):
+    id: str
+    relation_type: str
+    raw_value: dict[str, float | int | str | None]
+    unit: str
+    evidence_status: str
+    formula: str
+
+
+class ContagionMatrixCellResponse(BaseModel):
+    source: str
+    target: str
+    relation_types: list[str]
+    raw_edges: list[ContagionMatrixEdgeResponse]
+    max_normalized_strength: float = Field(ge=0, le=1)
+
+
+class ContagionMatrixResponse(BaseModel):
+    node_order: list[str]
+    values: list[list[float]]
+    cells: list[list[ContagionMatrixCellResponse]]
+    metric: str
+    aggregation_policy: str
+
+
+class ContagionGraphResponse(BaseModel):
+    graph_type: str
+    graph_model_version: str
+    simulation_model_version: str | None
+    snapshot_id: str
+    run_id: str | None
+    scenario_id: str | None
+    seed: int | None
+    mode: str
+    evidence_mode: str
+    provenance: dict[str, Any]
+    nodes: list[ContagionNodeResponse]
+    edges: list[ContagionEdgeResponse]
+    layers: list[str]
+    relation_types: list[str]
+    centrality: ContagionCentralityResponse
+    contagion_matrix: ContagionMatrixResponse
+    frames: list[ContagionFrameResponse]
+    aggregate_summary: dict[str, Any] | None
+    graph_metadata: dict[str, Any]
+    claim_boundaries: list[str]
+
+
 class TerraDatasetImportRequest(BaseModel):
     dataset_version: str = Field(min_length=1, max_length=96)
     status: Literal["REAL_HISTORICAL", "FIXTURE", "PARTIAL", "QUALITY_WARNING"]

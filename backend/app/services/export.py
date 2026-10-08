@@ -9,6 +9,7 @@ import zipfile
 from typing import Any
 
 from backend.app.db import Repository
+from sim.network import build_run_contagion_graph
 
 
 def build_experiment_zip(repository: Repository, run_id: str) -> bytes:
@@ -49,6 +50,11 @@ def build_experiment_zip(repository: Repository, run_id: str) -> bytes:
         archive.writestr("events.csv", _csv(result.get("events", [])))
         archive.writestr("positions.csv", _csv(snapshot.get("borrowers", [])))
         archive.writestr("timeseries.csv", _csv(result.get("timeseries", [])))
+        if result.get("monte_carlo") is None:
+            graph = build_run_contagion_graph(snapshot, run, scenario["config"])
+            _json(archive, "contagion_graph.json", graph)
+            _json(archive, "centrality.json", graph["centrality"])
+            archive.writestr("contagion_matrix.csv", _matrix_csv(graph["contagion_matrix"]))
         archive.writestr(
             "README.txt",
             "DeFiStress Lab reproducible experiment export.\n"
@@ -98,6 +104,15 @@ def _csv(rows: list[dict[str, Any]]) -> str:
     writer.writeheader()
     writer.writerows(flat_rows)
     return stream.getvalue()
+
+
+def _matrix_csv(matrix: dict[str, Any]) -> str:
+    node_order = list(matrix["node_order"])
+    rows = [
+        {"source": source, **dict(zip(node_order, values, strict=True))}
+        for source, values in zip(node_order, matrix["values"], strict=True)
+    ]
+    return _csv(rows)
 
 
 def _charts(result: dict[str, Any]) -> dict[str, bytes]:
