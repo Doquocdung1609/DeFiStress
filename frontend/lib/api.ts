@@ -109,6 +109,88 @@ export type Run = {
   error?: string;
 };
 
+export type ContagionNode = {
+  id: string;
+  label: string;
+  layer: "PROTOCOL" | "ASSET" | "AGENT_ROLE" | "REFERENCE_MARKET";
+  node_type: string;
+  evidence_status: string;
+  snapshot_id: string;
+  description: string;
+  raw_metrics: Record<string, number | string | boolean | null>;
+  provenance: Record<string, unknown>;
+};
+
+export type ContagionEdge = {
+  id: string;
+  source: string;
+  target: string;
+  relation_type: string;
+  layer: string;
+  direction: string;
+  raw_value: Record<string, number | string | boolean | null>;
+  unit: string;
+  normalized_strength: number;
+  evidence_status: string;
+  provenance: Record<string, unknown>;
+  description: string;
+  formula: string;
+  active: boolean;
+  step: number | null;
+  wave: number | null;
+};
+
+export type ContagionFrame = {
+  index: number;
+  label: string;
+  step: number;
+  wave: number;
+  active_nodes: string[];
+  active_edge_ids: string[];
+  active_edges: ContagionEdge[];
+  price_state: Record<string, number | null>;
+  liquidation_volume_usd: number;
+  forced_weth: number;
+  liquidation_event_count: number;
+  cumulative_liquidated_debt_usd: number;
+  cascade_depth_so_far: number;
+};
+
+export type ContagionGraph = {
+  graph_model_version: string;
+  graph_type: string;
+  mode: "STRUCTURAL" | "RUN_WEIGHTED" | "AGGREGATE_SIMULATION_SUMMARY";
+  evidence_mode: Snapshot["mode"];
+  snapshot_id: string;
+  run_id: string | null;
+  nodes: ContagionNode[];
+  edges: ContagionEdge[];
+  frames: ContagionFrame[];
+  contagion_matrix: {
+    metric: string;
+    aggregation_policy: string;
+    node_order: string[];
+    values: number[][];
+    cells: Array<Array<{
+      source: string;
+      target: string;
+      max_normalized_strength: number;
+      relation_types: string[];
+      raw_edges: ContagionEdge[];
+    }>>;
+  };
+  centrality: {
+    structural_bridge_node: string | null;
+    aggregation_policy: string;
+    weighted_influence_interpretation: string;
+    eigenvector_unavailable_reason: string | null;
+    nodes: Record<string, Record<string, number | null>>;
+  };
+  graph_metadata: Record<string, unknown>;
+  provenance: Record<string, unknown>;
+  claim_boundaries: string[];
+};
+
 export type TerraManifest = {
   dataset_version: string;
   status: "REAL_HISTORICAL" | "FIXTURE" | "PARTIAL" | "UNAVAILABLE" | "QUALITY_WARNING";

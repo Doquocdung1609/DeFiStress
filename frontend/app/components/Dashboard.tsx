@@ -34,6 +34,7 @@ import {
   shouldShowFixtureBanner,
   shouldShowMainnetBanner,
 } from "@/lib/snapshot-selection";
+import { ContagionGraph } from "./ContagionGraph";
 
 const nav = [
   ["overview", "Overview"],
@@ -41,6 +42,7 @@ const nav = [
   ["liquidity", "Liquidity"],
   ["scenarios", "Scenarios"],
   ["simulator", "Simulator"],
+  ["contagion", "Contagion Graph"],
   ["compare", "Compare"],
   ["validation", "Validation"],
   ["provenance", "Provenance"],
@@ -404,6 +406,7 @@ export function Dashboard({ section, runId }: { section: string; runId?: string 
             {snapshot && section === "liquidity" && <LiquidityScreen liquidity={liquidity} snapshot={snapshot} />}
             {snapshot && section === "scenarios" && <ScenarioBuilder value={scenario} onChange={setScenario} onRun={execute} busy={busy} />}
             {snapshot && section === "simulator" && <Simulator onRun={execute} busy={busy} />}
+            {snapshot && section === "contagion" && <ContagionGraph snapshot={snapshot} />}
             {snapshot && section === "results" && <Results run={run} />}
             {snapshot && section === "compare" && <Compare />}
             {snapshot && section === "validation" && <Validation snapshot={snapshot} />}
@@ -545,6 +548,7 @@ function title(section: string) {
     liquidity: "Liquidity Surface",
     scenarios: "Scenario Builder",
     simulator: "Cascade Simulator",
+    contagion: "Contagion Graph",
     results: "Experiment Results",
     compare: "Scenario Comparison",
     validation: "Validation Evidence",

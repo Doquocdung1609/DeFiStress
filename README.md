@@ -205,6 +205,37 @@ Invoke-RestMethod -Method Post http://localhost:8000/api/v1/snapshots/import-mai
 
 The endpoint accepts no file path and only reads that approved artifact. It rejects malformed data, non-Mainnet modes, and non-Ethereum chain IDs. `GET /api/v1/snapshots` returns lightweight selector metadata rather than full borrower/tick payloads; retrieve a selected snapshot by ID for its complete immutable state.
 
+## Multi-Protocol / Multilayer Contagion Graph
+
+The Aave dashboard includes an evidence-backed cross-protocol network at `/contagion`. The current scientific core contains exactly two protocols—Aave V3 and Uniswap V3—plus WETH, USDC, an aggregated borrower cohort, simulated liquidator and arbitrageur roles, and a reference-market context node. It is not a full map of DeFi.
+
+The graph is a derived analysis layer over immutable snapshots and saved runs:
+
+```text
+WETH shock → Aave → liquidation → Uniswap → price impact → WETH → Aave
+```
+
+- Node layers are `PROTOCOL`, `ASSET`, `AGENT_ROLE`, and `REFERENCE_MARKET`. Borrowers remain aggregated in the main view; raw borrower addresses are never emitted.
+- Parallel directed edges preserve collateral, debt, borrower exposure, liquidation, execution-price, feedback, liquidator, arbitrage, and reference-price semantics instead of collapsing them in the scientific payload.
+- Every node and edge distinguishes observed on-chain/snapshot evidence, simulated run output, derived metrics, and scenario assumptions.
+- Structural graphs require only a stored snapshot. Run-weighted graphs consume the completed run's saved events and never rerun the simulation.
+- Wave playback starts at the initial state and adds only frames supported by deterministic run events. Monte Carlo output remains an aggregate summary and does not fabricate wave paths.
+
+Raw values are retained alongside bounded `[0, 1]` visualization scores. WETH and USDC exposure use shares of modeled collateral and debt. Liquidation pressure is execution value divided by selected-pool 2%-depth and visualized as `pressure / (1 + pressure)`. Price impact uses `min(1, absolute impact / 2%)`, where 2% is only a display reference. Later-wave feedback uses liquidated debt divided by sampled debt. Arbitrage recovery uses recovered spread divided by pre-arbitrage spread. These dimensionless scores are comparison indicators—not probabilities, correlations, causal probabilities, or a total systemic-risk score.
+
+Centrality is conditional on this small modeled topology. Parallel relations are collapsed with the maximum normalized channel score per directed pair. In/out degree and unweighted betweenness describe structure; weighted influence is exploratory. Eigenvector centrality is returned only if it converges, otherwise the API supplies an explicit unavailable reason. The structural bridge is the highest-betweenness node with deterministic lexicographic tie-breaking; it is not hard-coded.
+
+The contagion matrix is source-by-target and displays the maximum active normalized transmission score. Its cells retain all raw parallel-edge details, relation types, evidence statuses, and formulas. The optional Future Expansion display ghosts Compound, Maker, and Curve as `NOT_INGESTED`; those conceptual nodes are off by default and never enter the API graph, matrix, centrality, simulation, or protocol counts.
+
+API endpoints:
+
+- `GET /api/v1/snapshots/{snapshot_id}/contagion-graph`
+- `GET /api/v1/runs/{run_id}/contagion-graph`
+
+Completed deterministic run exports also include `contagion_graph.json`, `contagion_matrix.csv`, and `centrality.json` in the experiment ZIP.
+
+Research limitations: the core covers only two protocols; borrowers are aggregated; normalized scores are visualization indices; centrality depends on the modeled topology; simulated edges do not establish historical causality; scenario controls are not observed probabilities; and future protocols remain conceptual until separately ingested and verified.
+
 ## Database migrations
 
 ```powershell

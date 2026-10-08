@@ -6,6 +6,7 @@ const sections = new Set([
   "liquidity",
   "scenarios",
   "simulator",
+  "contagion",
   "compare",
   "validation",
   "provenance",
@@ -15,4 +16,3 @@ export default async function SectionPage({ params }: { params: Promise<{ sectio
   const { section } = await params;
   return <Dashboard section={sections.has(section) ? section : "overview"} />;
 }
-
