@@ -1,0 +1,9 @@
+# Table_19 — RQ6 — LTV capital-efficiency counterfactual
+
+| aggregate_current_debt_to_capacity | aggregate_max_borrowing_capacity_usd | borrowers_above_counterfactual_borrowing_capacity | change_from_baseline_percentage_points | liquidatable_interpretation | ltv_policy | median_borrower_max_borrowing_capacity_usd | median_current_debt_to_capacity |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 0.5071751170051094 | 50797988.977634266 | 7 | -5.0 | NOT_INFERRED_FROM_LTV | 0.755 | 6025.481615534755 | 0.44439674111140176 |
+| 0.49711777740122043 | 51825698.40499265 | 7 | -2.5 | NOT_INFERRED_FROM_LTV | 0.78 | 6155.775768527594 | 0.4325517041086563 |
+| 0.48745155818668634 | 52853407.83235103 | 7 | 0.0 | NOT_INFERRED_FROM_LTV | 0.805 | 6286.069921520431 | 0.4191184213723626 |
+| 0.4836895129918496 | 53264491.60329438 | 6 | 1.0 | NOT_INFERRED_FROM_LTV | 0.815 | 6338.187582717566 | 0.4139758640549103 |
+| 0.47998509235769504 | 53675575.37423773 | 5 | 2.0 | NOT_INFERRED_FROM_LTV | 0.825 | 6390.305243914701 | 0.40895797479363866 |

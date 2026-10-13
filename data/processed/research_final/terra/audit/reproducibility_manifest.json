@@ -179,7 +179,7 @@
     "ablation.json": "91af7b7d5af5e23452c200681e441d723925239be6ac5aaa9fa4960490159d9a",
     "conditional_abm_final.json": "79be4c2ce635a024f6f997f2621a5d58f49b92f4fc0d44ce47278cbb7196853a",
     "conditional_benchmark.json": "0bc6df507d9aee396c24787b097f6c421e7c6b5f370ada525226fe1cb114171f",
-    "data_quality.json": "1b64d2bde657fb8f82482b786d18a51d8c195bf4611affd00dc4d063f8975598",
+    "data_quality.json": "425d5622cc6651721a84014ca1b4d9909b1a2ffc7a2f15f97614b969171a9f31",
     "final_metrics.json": "aa3419c583211f5938954e0ff99221cc161c388f24f5631318ec0f16adb39912",
     "final_report.md": "a9b3e695335d8c876b7b47bc6c7f7a998c44cfcb8c5899f8bd5fc83d584ee3b3",
     "model_diagnostics.json": "d18185cd62e6d0fd9c09c6c93adb89ee52d409e78ea121e5e6cf486e8c60aa0f",
@@ -242,7 +242,7 @@
     "primary": 20220506
   },
   "reproduce_command": ".\\.venv\\Scripts\\python.exe scripts\\terra\\run_final_pipeline.py --overwrite-final",
-  "source_code_commit": "620746513dec3a7afad00eb8ce10b0d0add538cc",
+  "source_code_commit": "db01592c4213136d51aff47692691541bb1f7343",
   "strict_oos_window": {
     "calibration_start": "2022-05-01T00:00:00Z",
     "cutoff": "2022-05-06T23:59:59Z",

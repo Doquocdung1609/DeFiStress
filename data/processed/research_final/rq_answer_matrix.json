@@ -1,0 +1,91 @@
+{
+  "research_questions": [
+    {
+      "analysis_method": "L\u01b0\u1edbi r\u1eddi r\u1ea1c shock \u22125% \u0111\u1ebfn \u221240% \u00d7 liquidity haircut 0/25/50/75%.",
+      "answer_status": "NOT_OBSERVED_IN_TEST_RANGE",
+      "claim_boundary": "Kh\u00f4ng n\u1ed9i suy threshold ra ngo\u00e0i mi\u1ec1n ho\u1eb7c gi\u1eefa c\u00e1c cell.",
+      "key_evidence_ids": [
+        "RQ1_GRID_MAX_CASCADE_DEPTH"
+      ],
+      "limitation": "M\u1ed9t snapshot, m\u1ed9t venue th\u1ef1c thi v\u00e0 l\u01b0\u1edbi h\u1eefu h\u1ea1n.",
+      "main_result": "Kh\u00f4ng quan s\u00e1t \u0111\u01b0\u1ee3c ng\u01b0\u1ee1ng liquidation cascade trong mi\u1ec1n stress \u0111\u00e3 th\u1eed.",
+      "research_question": "C\u00fa s\u1ed1c ETH t\u1ed1i thi\u1ec3u n\u00e0o b\u1eaft \u0111\u1ea7u cascade depth \u2265 2?",
+      "rq": "RQ1"
+    },
+    {
+      "analysis_method": "Sweep liquidity haircut v\u00e0 shock \u00d7 liquidity grid.",
+      "answer_status": "SUPPORTED",
+      "claim_boundary": "Khu\u1ebfch \u0111\u1ea1i h\u1eadu qu\u1ea3 kh\u00e1c v\u1edbi t\u1ea1o wave liquidation m\u1edbi.",
+      "key_evidence_ids": [
+        "AAVE_SENS_LIQUIDITY_HAIRCUT_MAX_PRICE_IMPACT_RANGE",
+        "AAVE_SENS_LIQUIDITY_HAIRCUT_BAD_DEBT_RANGE",
+        "RQ1_GRID_MAX_CASCADE_DEPTH"
+      ],
+      "limitation": "Thanh kho\u1ea3n t\u0129nh, m\u1ed9t Uniswap V3 pool.",
+      "main_result": "Haircut l\u00e0m t\u0103ng price impact/bad debt trong range, nh\u01b0ng kh\u00f4ng t\u1ea1o Wave 2.",
+      "research_question": "DEX depth/haircut \u1ea3nh h\u01b0\u1edfng price impact, amplification v\u00e0 bad debt th\u1ebf n\u00e0o?",
+      "rq": "RQ2"
+    },
+    {
+      "analysis_method": "One-factor sweeps c\u1ed9ng delay 0/1/2/4 v\u00e0 capital 25/50/100/200% demand.",
+      "answer_status": "PARTIALLY_SUPPORTED",
+      "claim_boundary": "Professor Demo, canonical snapshot v\u00e0 tested ranges.",
+      "key_evidence_ids": [
+        "RQ3_DELAY_STATUS",
+        "RQ3_REQUIRED_CAPITAL_REFERENCE",
+        "RQ3_CAPITAL_0_25_TOTAL_LIQUIDATED_DEBT",
+        "RQ3_CAPITAL_1_0_TOTAL_LIQUIDATED_DEBT",
+        "AAVE_SENS_GAS_MULTIPLIER_TOTAL_LIQUIDATED_DEBT_RANGE",
+        "AAVE_SENS_LIQUIDATOR_CAPACITY_TOTAL_LIQUIDATED_DEBT_RANGE"
+      ],
+      "limitation": "Engine d\u00f9ng capital c\u1ed9ng d\u1ed3n, kh\u00f4ng t\u00e1i s\u1eed d\u1ee5ng.",
+      "main_result": "Capital 25%/50% binding; gas/capacity kh\u00f4ng binding; delay ch\u1ec9 d\u1ecbch th\u1eddi gian.",
+      "research_question": "Gas, capital/capacity v\u00e0 reaction delay \u1ea3nh h\u01b0\u1edfng x\u1eed l\u00fd v\u1ecb th\u1ebf th\u1ebf n\u00e0o?",
+      "rq": "RQ3"
+    },
+    {
+      "analysis_method": "One-factor arbitrage-capacity sweep 0\u2013100%.",
+      "answer_status": "NEGATIVE_FINDING",
+      "claim_boundary": "Kh\u00f4ng suy ra arbitrage ngo\u00e0i \u0111\u1eddi kh\u00f4ng quan tr\u1ecdng.",
+      "key_evidence_ids": [
+        "AAVE_SENS_ARBITRAGE_CAPACITY_MAX_PRICE_IMPACT_RANGE",
+        "AAVE_SENS_ARBITRAGE_CAPACITY_CASCADE_DEPTH_RANGE"
+      ],
+      "limitation": "Price deviation nh\u1ecf v\u00e0 agent/routing \u0111\u01a1n gi\u1ea3n.",
+      "main_result": "Kh\u00f4ng c\u00f3 response trong tested range; arbitrage kh\u00f4ng tr\u1edf th\u00e0nh binding.",
+      "research_question": "N\u0103ng l\u1ef1c arbitrage \u1ea3nh h\u01b0\u1edfng deviation, waves v\u00e0 recovery th\u1ebf n\u00e0o?",
+      "rq": "RQ4"
+    },
+    {
+      "analysis_method": "Pure USDC debt-valuation sensitivity, $0.90\u2013$1.10.",
+      "answer_status": "SUPPORTED",
+      "claim_boundary": "This experiment isolates the USDC debt-valuation channel.",
+      "key_evidence_ids": [
+        "RQ5_USDC_BASELINE_COMPATIBLE",
+        "RQ5_USDC_1_1_BORROWERS_HF_BELOW_1_00",
+        "RQ5_USDC_1_0_BORROWERS_HF_BELOW_1_00",
+        "RQ5_USDC_0_9_BORROWERS_HF_BELOW_1_20"
+      ],
+      "limitation": "Kh\u00f4ng m\u00f4 h\u00ecnh market liquidity, redemption, settlement hay confidence.",
+      "main_result": "Upward depeg l\u00e0m HF y\u1ebfu h\u01a1n; downward depeg l\u00e0m HF m\u1ea1nh h\u01a1n ho\u1eb7c kh\u00f4ng x\u1ea5u \u0111i.",
+      "research_question": "USDC depeg thay \u0111\u1ed5i stress khi USDC l\u00e0 debt asset th\u1ebf n\u00e0o?",
+      "rq": "RQ5"
+    },
+    {
+      "analysis_method": "LTV ex-ante capacity; LT HF boundary; bonus execution economics.",
+      "answer_status": "SUPPORTED",
+      "claim_boundary": "LTV kh\u00f4ng ph\u1ea3i direct frozen-snapshot liquidation trigger.",
+      "key_evidence_ids": [
+        "RQ6_LTV_0_755_AGGREGATE_MAX_BORROWING_CAPACITY_USD",
+        "RQ6_LTV_0_825_AGGREGATE_MAX_BORROWING_CAPACITY_USD",
+        "RQ6_LT_0_83_TOTAL_LIQUIDATED_DEBT",
+        "RQ6_LT_0_855_TOTAL_LIQUIDATED_DEBT",
+        "RQ6_BONUS_STATUS"
+      ],
+      "limitation": "Policy counterfactual tr\u00ean frozen cohort, kh\u00f4ng d\u1ef1 b\u00e1o h\u00e0nh vi t\u00e1i underwrite.",
+      "main_result": "LTV t\u0103ng capacity nh\u01b0ng gi\u1ea3m origination buffer; LT d\u1ecbch boundary; bonus \u0111\u1ed5i seizure/profit.",
+      "research_question": "LTV, LT v\u00e0 bonus t\u1ea1o trade-off capital efficiency/tail risk n\u00e0o?",
+      "rq": "RQ6"
+    }
+  ]
+}

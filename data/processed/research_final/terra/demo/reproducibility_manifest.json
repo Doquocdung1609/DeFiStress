@@ -1,5 +1,5 @@
 {
-  "artifact_bundle_commit": "620746513dec3a7afad00eb8ce10b0d0add538cc",
+  "artifact_bundle_commit": "db01592c4213136d51aff47692691541bb1f7343",
   "artifact_bundle_commit_note": "Commit whose tree first contains this generated artifact bundle. A later metadata-only manifest correction may record that commit without changing model logic, parameters, metrics, or artifacts.",
   "frozen_artifacts_policy": "Existing V1/V2/V4 artifacts are read-only and were not overwritten.",
   "inputs": {
@@ -24,5 +24,5 @@
   "platform": "Windows-11-10.0.26200-SP0",
   "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
   "reproduce_command": ".\\.venv\\Scripts\\python.exe scripts\\terra\\run_demo_pipeline.py --research",
-  "source_code_commit": "620746513dec3a7afad00eb8ce10b0d0add538cc"
+  "source_code_commit": "db01592c4213136d51aff47692691541bb1f7343"
 }

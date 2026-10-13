@@ -1611,6 +1611,7 @@
       "seed": 20260914,
       "shock_pct": -30.0,
       "timestep_seconds": 60,
+      "usdc_price_usd": 1.0,
       "volatility_pct": 2.0
     }
   },
@@ -1777,7 +1778,7 @@
     "run_id": "research-severe",
     "scenario_id": "research-severe",
     "seed": 20260914,
-    "simulation_model_version": "0.1.0-aave-v3.7-approx",
+    "simulation_model_version": "0.1.0-aave-v3.8-usdc-valuation",
     "snapshot_id": "real-18843e5d109b092f268a",
     "snapshot_mode": "REAL_MAINNET"
   },
@@ -1797,6 +1798,6 @@
   "run_id": "research-severe",
   "scenario_id": "research-severe",
   "seed": 20260914,
-  "simulation_model_version": "0.1.0-aave-v3.7-approx",
+  "simulation_model_version": "0.1.0-aave-v3.8-usdc-valuation",
   "snapshot_id": "real-18843e5d109b092f268a"
 }

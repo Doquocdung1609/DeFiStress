@@ -3,7 +3,7 @@
     "dataset_hash": "895ef9032e22824641cd2c02b52b22b6f3d1dd8b1b4b868d70db027707ba8708",
     "dataset_version": "terra_may2022_v1",
     "end_timestamp": "2022-05-13T23:00:00Z",
-    "git_commit": "620746513dec3a7afad00eb8ce10b0d0add538cc",
+    "git_commit": "db01592c4213136d51aff47692691541bb1f7343",
     "quality_report": {
       "duplicate_timestamps": 0,
       "missing_intervals": [],

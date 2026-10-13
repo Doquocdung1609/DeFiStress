@@ -1,85 +1,41 @@
 # HỎI–ĐÁP HỘI ĐỒNG
 
-## 1. Vì sao Terra và Aave cùng một nghiên cứu?
+## 1. 6 RQ ban đầu của nhóm đâu?
 
-Chúng là hai ca khác nhau cho cùng workflow nghiên cứu feedback-driven stress; không phải một ca xác thực ca kia.
+Nằm ở mục 1.4 và Table_22; Terra/network đã chuyển thành extension.
 
-## 2. Terra có validate Aave không?
+## 2. RQ3 đã kiểm tra delay/capital chưa?
 
-Không. Terra kiểm tra workflow lịch sử; Aave kiểm tra cơ chế lending–DEX riêng trên Mainnet.
+Có: delay 0/1/2/4 và capital 25/50/100/200% engine-derived demand reference.
 
-## 3. Vì sao không chỉ dự báo giá?
+## 3. Stablecoin depeg được test ở Aave hay chỉ nói Terra?
 
-Mục tiêu là cơ chế truyền stress, liquidation và liquidity; dự báo giá không quan sát trực tiếp các kênh này.
+Aave USDC được test trực tiếp từ $0.90 đến $1.10 qua debt-valuation channel.
 
-## 4. Vì sao ABM?
+## 4. LTV và liquidation threshold khác nhau thế nào?
 
-ABM biểu diễn vai trò borrower, liquidator và arbitrage theo sequence; kết quả vẫn phụ thuộc đặc tả.
+LTV giới hạn origination capacity; LT vào Health Factor và liquidation eligibility.
 
-## 5. Vì sao Monte Carlo?
+## 5. Tại sao LTV không trực tiếp làm HF đổi?
 
-Để mô tả biến thiên trong mô hình dưới nhiễu có seed, không để ước lượng xác suất thực tế.
+Frozen snapshot giữ debt; nếu không re-underwrite, LTV mới chỉ là ex-ante capacity rule.
 
-## 6. Vì sao Health Factor?
+## 6. Tại sao không tìm thấy cascade?
 
-Đó là điều kiện protocol trực tiếp liên hệ collateral, debt và liquidation threshold.
+Forced sale/price impact chưa đẩy thêm borrower qua HF<1 trong lưới và venue đã thử.
 
-## 7. Vì sao Uniswap V3?
+## 7. Negative findings có phải mô hình thất bại không?
 
-Snapshot có state/ticks cùng block và đây là venue execution được chứng minh; không khẳng định duy nhất trên thị trường.
+Không; chúng xác định parameter nào không binding trong scope, miễn boundary được công bố.
 
-## 8. Wave 2 hình thành thế nào?
+## 8. Capital reference là gì?
 
-Price impact sau Wave 1 làm thêm vị thế xuống dưới ngưỡng và bị thanh lý ở wave sau.
+Cumulative USDC funding consumed vì engine trừ capital và không recycle.
 
-## 9. Cascade amplification là gì?
+## 9. USDC downward depeg luôn tốt?
 
-Tỷ lệ model metric giữa tổng thanh lý và direct shock; định nghĩa cụ thể nằm trong engine/artifact.
+Không; chỉ pure debt-valuation channel cho debt-holder cohort này, không phải full depeg.
 
-## 10. Centrality có nghĩa gì?
+## 10. Centrality có phải total DeFi importance?
 
-Vai trò topology trong sub-network mô hình hóa, không phải tổng systemic importance.
-
-## 11. Vì sao Aave là bridge?
-
-Trong topology này, Aave nối exposure borrower/assets với liquidation route tới DEX.
-
-## 12. Score ma trận 0,8 là xác suất 80%?
-
-Không. Đó là normalized strength theo policy của graph.
-
-## 13. MC cascade frequency là probability?
-
-Không. Là sampling frequency có điều kiện trên model/scenario và số run.
-
-## 14. Mô hình dự báo Terra crash được không?
-
-Không có bằng chứng hỗ trợ; strict OOS âm và initial-depeg warning muộn.
-
-## 15. Historical Fit có overfit không?
-
-Có rủi ro vì conditioning/calibration; vì vậy được gọi là fit, không phải forecast.
-
-## 16. Vì sao collapse bắt đầu quá sớm?
-
-Feedback calibration tái dựng hướng nhưng không nhận dạng chính xác timing; sai số được công bố.
-
-## 17. Vì sao thiếu Terra DEX depth?
-
-Không có nguồn archival canonical được cấu hình/đóng băng; pipeline giữ UNAVAILABLE thay vì bịa.
-
-## 18. Vì sao không có Compound/Maker/Curve?
-
-Chưa ingest dữ liệu evidence-backed cùng scope; node khái niệm không được dùng trong scientific metrics.
-
-## 19. Hạn chế quan trọng nhất?
-
-Availability Terra, sample/venue Aave, topology nhỏ, scenario và model dependence.
-
-## 20. Nếu có thêm thời gian?
-
-Mở rộng multi-protocol/multi-venue, time-varying data và validation ngoài mẫu.
-
-## 21. Ứng dụng thực tiễn?
-
-Hỗ trợ scenario comparison, provenance audit và thảo luận kênh truyền stress; không phải lời khuyên đầu tư.
+Không; chỉ vị trí trong evidence-backed modeled sub-network.

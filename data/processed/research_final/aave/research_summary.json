@@ -107,6 +107,8 @@
       "cascade_depth": 0,
       "cascade_interpretation": "NO_ENDOGENOUS_SECOND_WAVE",
       "direct_shock_liquidated_debt": 0.0,
+      "direct_shock_liquidated_debt_usd": 0.0,
+      "direct_shock_liquidated_debt_usdc": 0.0,
       "final_dex_price": 2428.458120846,
       "final_reference_price": 2428.458120846,
       "forced_weth_sold": 0.0,
@@ -137,12 +139,16 @@
         "seed": 20260914,
         "shock_pct": -10.0,
         "timestep_seconds": 60,
+        "usdc_price_usd": 1.0,
         "volatility_pct": 2.0
       },
       "scenario_name": "Baseline",
       "time_to_recovery_seconds": 0,
       "total_liquidated_debt": 0.0,
+      "total_liquidated_debt_usd": 0.0,
+      "total_liquidated_debt_usdc": 0.0,
       "unliquidated_debt": 81116.59228547,
+      "usdc_price_usd": 1.0,
       "wave_1_liquidated_debt": 0,
       "wave_2_plus_liquidated_debt": 0
     },
@@ -152,6 +158,8 @@
       "cascade_depth": 0,
       "cascade_interpretation": "NO_ENDOGENOUS_SECOND_WAVE",
       "direct_shock_liquidated_debt": 0.0,
+      "direct_shock_liquidated_debt_usd": 0.0,
+      "direct_shock_liquidated_debt_usdc": 0.0,
       "final_dex_price": 2293.543780799,
       "final_reference_price": 2293.543780799,
       "forced_weth_sold": 0.0,
@@ -182,12 +190,16 @@
         "seed": 20260914,
         "shock_pct": -15.0,
         "timestep_seconds": 60,
+        "usdc_price_usd": 1.0,
         "volatility_pct": 2.0
       },
       "scenario_name": "Moderate",
       "time_to_recovery_seconds": 0,
       "total_liquidated_debt": 0.0,
+      "total_liquidated_debt_usd": 0.0,
+      "total_liquidated_debt_usdc": 0.0,
       "unliquidated_debt": 88212.0084099,
+      "usdc_price_usd": 1.0,
       "wave_1_liquidated_debt": 0,
       "wave_2_plus_liquidated_debt": 0
     },
@@ -197,6 +209,8 @@
       "cascade_depth": 1,
       "cascade_interpretation": "NO_ENDOGENOUS_SECOND_WAVE",
       "direct_shock_liquidated_debt": 18126.510874,
+      "direct_shock_liquidated_debt_usd": 18126.510874,
+      "direct_shock_liquidated_debt_usdc": 18126.510874,
       "final_dex_price": 1887.8366332762505,
       "final_reference_price": 1888.800760658,
       "forced_weth_sold": 10.07667765395729,
@@ -227,12 +241,16 @@
         "seed": 20260914,
         "shock_pct": -30.0,
         "timestep_seconds": 60,
+        "usdc_price_usd": 1.0,
         "volatility_pct": 2.0
       },
       "scenario_name": "Severe",
       "time_to_recovery_seconds": 60,
       "total_liquidated_debt": 18126.510874,
+      "total_liquidated_debt_usd": 18126.510874,
+      "total_liquidated_debt_usdc": 18126.510874,
       "unliquidated_debt": 220767.57271303,
+      "usdc_price_usd": 1.0,
       "wave_1_liquidated_debt": 18126.510874,
       "wave_2_plus_liquidated_debt": 0
     },
@@ -242,6 +260,8 @@
       "cascade_depth": 1,
       "cascade_interpretation": "NO_ENDOGENOUS_SECOND_WAVE",
       "direct_shock_liquidated_debt": 9063.255437,
+      "direct_shock_liquidated_debt_usd": 9063.255437,
+      "direct_shock_liquidated_debt_usdc": 9063.255437,
       "final_dex_price": 2158.0796658390677,
       "final_reference_price": 2158.629440752,
       "forced_weth_sold": 4.4085464736063145,
@@ -272,12 +292,16 @@
         "seed": 20260914,
         "shock_pct": -20.0,
         "timestep_seconds": 60,
+        "usdc_price_usd": 1.0,
         "volatility_pct": 2.0
       },
       "scenario_name": "Low Liquidity",
       "time_to_recovery_seconds": 60,
       "total_liquidated_debt": 9063.255437,
+      "total_liquidated_debt_usd": 9063.255437,
+      "total_liquidated_debt_usdc": 9063.255437,
       "unliquidated_debt": 221203.42824361,
+      "usdc_price_usd": 1.0,
       "wave_1_liquidated_debt": 9063.255437,
       "wave_2_plus_liquidated_debt": 0
     },
@@ -287,6 +311,8 @@
       "cascade_depth": 1,
       "cascade_interpretation": "NO_ENDOGENOUS_SECOND_WAVE",
       "direct_shock_liquidated_debt": 9063.255437,
+      "direct_shock_liquidated_debt_usd": 9063.255437,
+      "direct_shock_liquidated_debt_usdc": 9063.255437,
       "final_dex_price": 2158.171192864013,
       "final_reference_price": 2158.629440752,
       "forced_weth_sold": 4.4085464736063145,
@@ -317,12 +343,16 @@
         "seed": 20260914,
         "shock_pct": -20.0,
         "timestep_seconds": 60,
+        "usdc_price_usd": 1.0,
         "volatility_pct": 2.0
       },
       "scenario_name": "High Gas",
       "time_to_recovery_seconds": 60,
       "total_liquidated_debt": 9063.255437,
+      "total_liquidated_debt_usd": 9063.255437,
+      "total_liquidated_debt_usdc": 9063.255437,
       "unliquidated_debt": 221203.42824361,
+      "usdc_price_usd": 1.0,
       "wave_1_liquidated_debt": 9063.255437,
       "wave_2_plus_liquidated_debt": 0
     },
@@ -332,6 +362,8 @@
       "cascade_depth": 1,
       "cascade_interpretation": "NO_ENDOGENOUS_SECOND_WAVE",
       "direct_shock_liquidated_debt": 9063.255437,
+      "direct_shock_liquidated_debt_usd": 9063.255437,
+      "direct_shock_liquidated_debt_usdc": 9063.255437,
       "final_dex_price": 2158.171192864013,
       "final_reference_price": 2158.629440752,
       "forced_weth_sold": 4.4085464736063145,
@@ -362,12 +394,16 @@
         "seed": 20260914,
         "shock_pct": -20.0,
         "timestep_seconds": 60,
+        "usdc_price_usd": 1.0,
         "volatility_pct": 2.0
       },
       "scenario_name": "No Arbitrage",
       "time_to_recovery_seconds": 60,
       "total_liquidated_debt": 9063.255437,
+      "total_liquidated_debt_usd": 9063.255437,
+      "total_liquidated_debt_usdc": 9063.255437,
       "unliquidated_debt": 221203.42824361,
+      "usdc_price_usd": 1.0,
       "wave_1_liquidated_debt": 9063.255437,
       "wave_2_plus_liquidated_debt": 0
     },
@@ -377,6 +413,8 @@
       "cascade_depth": 1,
       "cascade_interpretation": "NO_ENDOGENOUS_SECOND_WAVE",
       "direct_shock_liquidated_debt": 9063.255437,
+      "direct_shock_liquidated_debt_usd": 9063.255437,
+      "direct_shock_liquidated_debt_usdc": 9063.255437,
       "final_dex_price": 2158.171192864013,
       "final_reference_price": 2158.629440752,
       "forced_weth_sold": 4.4085464736063145,
@@ -407,12 +445,16 @@
         "seed": 20260914,
         "shock_pct": -20.0,
         "timestep_seconds": 60,
+        "usdc_price_usd": 1.0,
         "volatility_pct": 2.0
       },
       "scenario_name": "Strong Arbitrage",
       "time_to_recovery_seconds": 60,
       "total_liquidated_debt": 9063.255437,
+      "total_liquidated_debt_usd": 9063.255437,
+      "total_liquidated_debt_usdc": 9063.255437,
       "unliquidated_debt": 221203.42824361,
+      "usdc_price_usd": 1.0,
       "wave_1_liquidated_debt": 9063.255437,
       "wave_2_plus_liquidated_debt": 0
     },
@@ -422,6 +464,8 @@
       "cascade_depth": 1,
       "cascade_interpretation": "NO_ENDOGENOUS_SECOND_WAVE",
       "direct_shock_liquidated_debt": 18126.510874,
+      "direct_shock_liquidated_debt_usd": 18126.510874,
+      "direct_shock_liquidated_debt_usdc": 18126.510874,
       "final_dex_price": 2157.7218152696555,
       "final_reference_price": 2158.629440752,
       "forced_weth_sold": 8.733120633429651,
@@ -452,12 +496,16 @@
         "seed": 20260914,
         "shock_pct": -20.0,
         "timestep_seconds": 60,
+        "usdc_price_usd": 1.0,
         "volatility_pct": 2.0
       },
       "scenario_name": "Policy Experiment",
       "time_to_recovery_seconds": 60,
       "total_liquidated_debt": 18126.510874,
+      "total_liquidated_debt_usd": 18126.510874,
+      "total_liquidated_debt_usdc": 18126.510874,
       "unliquidated_debt": 212140.17280661,
+      "usdc_price_usd": 1.0,
       "wave_1_liquidated_debt": 18126.510874,
       "wave_2_plus_liquidated_debt": 0
     },
@@ -467,6 +515,8 @@
       "cascade_depth": 1,
       "cascade_interpretation": "NO_ENDOGENOUS_SECOND_WAVE",
       "direct_shock_liquidated_debt": 9063.255437,
+      "direct_shock_liquidated_debt_usd": 9063.255437,
+      "direct_shock_liquidated_debt_usdc": 9063.255437,
       "final_dex_price": 2158.171192864013,
       "final_reference_price": 2158.629440752,
       "forced_weth_sold": 4.4085464736063145,
@@ -497,12 +547,16 @@
         "seed": 20260914,
         "shock_pct": -20.0,
         "timestep_seconds": 60,
+        "usdc_price_usd": 1.0,
         "volatility_pct": 2.0
       },
       "scenario_name": "PROFESSOR_DEMO",
       "time_to_recovery_seconds": 60,
       "total_liquidated_debt": 9063.255437,
+      "total_liquidated_debt_usd": 9063.255437,
+      "total_liquidated_debt_usdc": 9063.255437,
       "unliquidated_debt": 221203.42824361,
+      "usdc_price_usd": 1.0,
       "wave_1_liquidated_debt": 9063.255437,
       "wave_2_plus_liquidated_debt": 0
     }
@@ -514,7 +568,39 @@
     "deterministic": true,
     "monte_carlo": true
   },
-  "runtime_seconds": 280.22756860000663,
+  "rq_completion": {
+    "claim_boundary": "All results are conditional on the canonical snapshot and tested ranges.",
+    "rq3": {
+      "binding_capital_levels": [
+        0.25,
+        0.5
+      ],
+      "non_binding_capital_levels": [
+        1.0,
+        2.0
+      ],
+      "reaction_delay_status": "REACTION_DELAY_TIME_SHIFT_ONLY_NOT_SEVERITY_BINDING"
+    },
+    "rq5": {
+      "backward_compatibility": {
+        "comparison": "metrics, events, timeseries and final positions",
+        "usdc_price_1_matches_legacy": true
+      },
+      "channel": "USDC_DEBT_VALUATION_ONLY",
+      "directional_checks": {
+        "downward_depeg_does_not_worsen_hf": true,
+        "upward_depeg_does_not_improve_hf": true
+      }
+    },
+    "rq6": {
+      "liquidation_bonus_status": "LIQUIDATION_BONUS_BINDING_IN_TESTED_RANGE",
+      "liquidation_threshold_role": "HEALTH_FACTOR_AND_LIQUIDATION_BOUNDARY",
+      "ltv_role": "EX_ANTE_CAPITAL_EFFICIENCY_NOT_FROZEN_SNAPSHOT_LIQUIDATION_TRIGGER"
+    },
+    "version": "aave-rq-completion-1.0.0"
+  },
+  "rq_completion_version": "aave-rq-completion-1.0.0",
+  "runtime_seconds": 215.43652789999987,
   "seed_robustness": {
     "PROFESSOR_DEMO": [
       {
@@ -711,6 +797,6 @@
       "spearman_rank_correlation": null
     }
   ],
-  "simulation_model_version": "0.1.0-aave-v3.7-approx",
-  "suite_version": "aave-mainnet-research-suite-1.0.0"
+  "simulation_model_version": "0.1.0-aave-v3.8-usdc-valuation",
+  "suite_version": "aave-mainnet-research-suite-1.1.0"
 }

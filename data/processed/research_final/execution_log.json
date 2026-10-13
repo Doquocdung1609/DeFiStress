@@ -1,61 +1,61 @@
 {
-  "finished_at": "2026-10-13T04:31:01.109359Z",
+  "finished_at": "2026-10-13T06:52:37.675586Z",
   "stages": [
     {
-      "runtime_seconds": 80.98285759999999,
+      "runtime_seconds": 65.4984056000003,
       "stage": "preflight",
       "status": "PASS"
     },
     {
-      "runtime_seconds": 0.5614533000043593,
+      "runtime_seconds": 0.49449300000014773,
       "stage": "canonical_data_validation",
       "status": "PASS"
     },
     {
-      "runtime_seconds": 38.97348889999557,
+      "runtime_seconds": 27.818768600000112,
       "stage": "terra_demo",
       "status": "PASS"
     },
     {
       "monte_carlo_runs": 100,
-      "runtime_seconds": 2.5324500999995507,
+      "runtime_seconds": 1.9494660999998814,
       "stage": "terra_final_audit",
       "status": "PASS"
     },
     {
-      "runtime_seconds": 280.2376290999964,
+      "runtime_seconds": 215.44478479999998,
       "stage": "aave_deterministic_sensitivity_monte_carlo_network",
       "status": "PASS"
     },
     {
-      "runtime_seconds": 0.08641659999557305,
+      "runtime_seconds": 0.0770804999997381,
       "stage": "results_and_claim_registries",
       "status": "PASS"
     },
     {
-      "count": 15,
-      "runtime_seconds": 0.11998469999525696,
+      "count": 22,
+      "runtime_seconds": 0.14333239999996295,
       "stage": "tables",
       "status": "PASS"
     },
     {
-      "count": 29,
-      "runtime_seconds": 10.802887799989549,
+      "count": 35,
+      "runtime_seconds": 10.251196400000026,
       "stage": "figures",
       "status": "PASS"
     },
     {
-      "count": 15,
-      "runtime_seconds": 0.08571800000208896,
+      "count": 16,
+      "runtime_seconds": 0.07097550000025876,
       "stage": "documents",
       "status": "PASS"
     },
     {
-      "runtime_seconds": 1.1874704000074416,
+      "runtime_seconds": 1.2782525000002352,
       "stage": "quality_gate",
       "status": "PASS"
     }
   ],
-  "started_from_commit": "620746513dec3a7afad00eb8ce10b0d0add538cc",
-  "total_runtime_seconds": 415.7281004999968
+  "started_from_commit": "db01592c4213136d51aff47692691541bb1f7343",
+  "total_runtime_seconds": 323.57686349999994
 }

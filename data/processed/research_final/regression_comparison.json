@@ -1,0 +1,106 @@
+{
+  "all_passed": true,
+  "comparison_policy": "Every numeric leaf present in the previous core artifact must remain exactly equal; additive fields in the new artifacts are permitted.",
+  "files": [
+    {
+      "artifact": "terra/demo/early_warning_timeline.json",
+      "changed_paths": [],
+      "compared_numeric_leaves": 42238,
+      "old_numeric_leaves": 42238,
+      "status": "PASS"
+    },
+    {
+      "artifact": "terra/demo/historical_fit.json",
+      "changed_paths": [],
+      "compared_numeric_leaves": 2952,
+      "old_numeric_leaves": 2952,
+      "status": "PASS"
+    },
+    {
+      "artifact": "terra/demo/mechanism_check.json",
+      "changed_paths": [],
+      "compared_numeric_leaves": 10,
+      "old_numeric_leaves": 10,
+      "status": "PASS"
+    },
+    {
+      "artifact": "terra/demo/stress_test.json",
+      "changed_paths": [],
+      "compared_numeric_leaves": 5780,
+      "old_numeric_leaves": 5780,
+      "status": "PASS"
+    },
+    {
+      "artifact": "terra/audit/final_metrics.json",
+      "changed_paths": [],
+      "compared_numeric_leaves": 37,
+      "old_numeric_leaves": 37,
+      "status": "PASS"
+    },
+    {
+      "artifact": "terra/audit/monte_carlo.json",
+      "changed_paths": [],
+      "compared_numeric_leaves": 2685,
+      "old_numeric_leaves": 2685,
+      "status": "PASS"
+    },
+    {
+      "artifact": "terra/audit/strict_oos_v2.json",
+      "changed_paths": [],
+      "compared_numeric_leaves": 9976,
+      "old_numeric_leaves": 9976,
+      "status": "PASS"
+    },
+    {
+      "artifact": "aave/deterministic_scenarios.json",
+      "changed_paths": [],
+      "compared_numeric_leaves": 313,
+      "old_numeric_leaves": 313,
+      "status": "PASS"
+    },
+    {
+      "artifact": "aave/sensitivity.json",
+      "changed_paths": [],
+      "compared_numeric_leaves": 864,
+      "old_numeric_leaves": 864,
+      "status": "PASS"
+    },
+    {
+      "artifact": "aave/shock_liquidity_grid.json",
+      "changed_paths": [],
+      "compared_numeric_leaves": 1164,
+      "old_numeric_leaves": 1164,
+      "status": "PASS"
+    },
+    {
+      "artifact": "aave/monte_carlo.json",
+      "changed_paths": [],
+      "compared_numeric_leaves": 4166,
+      "old_numeric_leaves": 4166,
+      "status": "PASS"
+    },
+    {
+      "artifact": "network/structural_graph.json",
+      "changed_paths": [],
+      "compared_numeric_leaves": 273,
+      "old_numeric_leaves": 273,
+      "status": "PASS"
+    },
+    {
+      "artifact": "network/professor_demo_graph.json",
+      "changed_paths": [],
+      "compared_numeric_leaves": 374,
+      "old_numeric_leaves": 374,
+      "status": "PASS"
+    },
+    {
+      "artifact": "network/severe_graph.json",
+      "changed_paths": [],
+      "compared_numeric_leaves": 396,
+      "old_numeric_leaves": 396,
+      "status": "PASS"
+    }
+  ],
+  "previous_research_package_commit": "df8df8d24eb257262a8514d233bb59677d162380",
+  "status": "PASS"
+}

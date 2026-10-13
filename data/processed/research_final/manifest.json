@@ -11,26 +11,27 @@
     "sha256": "0e338c3d096600d93bf29884370e46cb5e260820e910b483a7f19048521dcac1"
   },
   "document_hashes": {
-    ".defistress_research_output": "45c2146f29b67fbb0c48e09aac7bf747ac0d8cc0753731a95b6b135f39d3861b",
-    "ABSTRACT_DRAFT.md": "230178bd4777de613caf37c3bf4a2c059572fc7a9e9c3e3bc6db3df351cb98e0",
-    "DATA_QUALITY.md": "ae72c8201d3ca0394e206b8b25cf4aa8917c1e023643798916f1332f5344cd5a",
-    "DEFENSE_QA.md": "bb8f7c476f9b5f9e7b48ebb315939f17622b4faab8a5f98dc3ea2d7dcada2c02",
-    "DEFENSE_SCRIPT_10_MIN.md": "e05cfc22282e172087a51fcd9d7dff46eca3b6f02c6be9f3a3d8b8c66524bfab",
-    "EVIDENCE_CLAIM_MATRIX.md": "06b31098fe52ebe49f3758b029d8ff2faff9a034e999bdfce1f4b7d6f82380f8",
-    "EXECUTIVE_SUMMARY.md": "2c062c2519a36a5b1a48d1e2f7858e8e680092eb106957a23d3c837387d309f4",
-    "FINAL_RESEARCH_REPORT.md": "c86157d74ceda83d703b78f05c47af81ca0a882eff16420cb61685d30523b019",
-    "FUTURE_RESEARCH.md": "7e2d9a85896dc29a310761ca8bb08cde75e69f1260e0d38f8621ccf08b38f343",
-    "LIMITATIONS.md": "4493817a82a1096e69fe5304f4319ecf71b362731738541cfe22f3807b2b4981",
-    "LITERATURE_GAPS.md": "c6acfb1e31a1b4203dc976abb249c13505eea033b60b551b2109589e33a9a954",
-    "METHODOLOGY.md": "ea29d6ca7f6e47243f9a9bcb532ae5ceabb948b28ac9d748c68d1a1847b7fa94",
-    "PRESENTATION_BRIEF.md": "effa76c9e8e89aacb85e1fb7f2913d7d299905ed03c9030216a3c66c4bf9c266",
-    "REPRODUCIBILITY.md": "7afee614178baee1820f7f3add6edd09f360351eb65d32557f59d7a31e5d8f10",
-    "RESULTS_AND_DISCUSSION.md": "a2f43c2dba9c141e67aa9a07662576658a2815046f89fe33892fb96494b7043a",
-    "TABLE_FIGURE_INDEX.md": "2e9d7d450021feb023619cdf072be9a565f738df3df290942637cb4e4815fdee"
+    ".defistress_research_output": "c9c9e8a66bbeb93fc39862e4080ee456c411fcfe6ceca0072475e352c4b70c1b",
+    "ABSTRACT_DRAFT.md": "2a1505241f47184a1fce54d79c07e301ff98e3887c66d559d772f7d18fd319ad",
+    "DATA_QUALITY.md": "874d463168ca14902475c38756d227c443cefc408e5013f3ae3fedc3d62a9936",
+    "DEFENSE_QA.md": "02e0c086d31f99ebb6b6d24ec7239ed258a4e338edc5b7ca231cf4c202a25628",
+    "DEFENSE_SCRIPT_10_MIN.md": "20e04ffb577b0507584e92a7e02b6cf73aa3bab6555bad8fa48587b8dccb8d4d",
+    "EVIDENCE_CLAIM_MATRIX.md": "1119860f34eb069e977468c9c2dba76d5c470dcb40e5e764985d3189c01ea0d8",
+    "EXECUTIVE_SUMMARY.md": "6df6b699f7ef9d32558dc668e6667cc05d03340fbd361c86b663b7c7bb91ed2c",
+    "FINAL_RESEARCH_REPORT.md": "88f6e0d097d2ac543d2eb5f975503279b3771b75ece097250be0dd2f2a4586c7",
+    "FUTURE_RESEARCH.md": "fc1e6fe6f411f85a38507edb28d90a56561592ac6986b46a6500427ae8b3ef8f",
+    "LIMITATIONS.md": "2f6ce6298288358f1aced9390be5ffa391d0d9a1283d76fe09f386f3a6fc5839",
+    "LITERATURE_GAPS.md": "88c42bb4c516dda8065a5b2f53ebf8505dff2008422f121b31e3119442e3fe12",
+    "METHODOLOGY.md": "d18ea83e3ef79e4a24085de9d8d33327e0c3d75228d4d2bc97763f54b2f9ba7f",
+    "PRESENTATION_BRIEF.md": "8b57fa09fa2f1e387e7703ca265e137dff2a4b96620d3e975f467da41d5a13a4",
+    "REPRODUCIBILITY.md": "17be3e09fcea08e3aad9842f857e6c21aed74cf54b76318095f89f5222535752",
+    "RESULTS_AND_DISCUSSION.md": "921f70df42171bd4ffb4bd04e14a59738d0ada4044bf13efb3e59a02435b3ede",
+    "RQ_ANSWER_MATRIX.md": "d79341aa7f698bf7bf1570e61565c4b99e5842e179bef513cff50f481fb480ab",
+    "TABLE_FIGURE_INDEX.md": "4a109c82fbc69e4fa9f82c622059b6b91ef5f21fa8c920ef92a4025f4c934ae5"
   },
-  "execution_time": "2026-10-13T04:31:01.111865Z",
+  "execution_time": "2026-10-13T06:52:37.677596Z",
   "fast_mode": false,
-  "generated_artifact_commit": "c4c9a363adfc55addd6da1fd1bf5c15f500eff97",
+  "generated_artifact_commit": null,
   "input_hashes": {
     "data/processed/mainnet/aave_uniswap_snapshot_26045352.json": "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99",
     "data/processed/model_v2/terra_abm_v2_strict_oos.json": "2aa642b7cad12a7ba4d2c910f3ab788a9d7868d04106ccd4089e1c1a31989fbc",
@@ -51,26 +52,26 @@
     "terra_final": 100
   },
   "output_hashes": {
-    ".defistress_research_output": "45c2146f29b67fbb0c48e09aac7bf747ac0d8cc0753731a95b6b135f39d3861b",
-    "aave/deterministic_scenarios.csv": "3273733a635b965a5188337639e9e129c340c4ca2a85d28ad3f9060971bfb443",
-    "aave/deterministic_scenarios.json": "8c9e29977b211e3942ddcb419439a5a7c035245d7d48716319b1f7acf75454cd",
+    ".defistress_research_output": "c9c9e8a66bbeb93fc39862e4080ee456c411fcfe6ceca0072475e352c4b70c1b",
+    "aave/deterministic_scenarios.csv": "a5fa46469bfd642826a7c5514b0ab2197d23c419bf7807f7ac752013ea7b4654",
+    "aave/deterministic_scenarios.json": "308d3ba970f77ed0ee59119f2b76eca4a46060902627894cd45f1e5af5d09723",
     "aave/fresh_mainnet_appendix.json": "80f5c9ed6d76ee296e9fbcfd5defdb9ef994ade290562790aedb741f74fcf94c",
     "aave/monte_carlo.json": "78810db65358cafb408863661455a620c3a6e17aa8f85ed7b94a0bf615a5c130",
     "aave/reproducibility_check.json": "6eaa18c2524dce052df894cbb562592caf15b3298e9cd67e17dfdba76f190acb",
-    "aave/research_summary.json": "32aa9c452e0d81a1060dab1ea8ebb733b7ba803603d165e52e2aa6d97f2c5b26",
+    "aave/research_summary.json": "79f43019f73cc116607f82f403390276cb10ee4206d081fe13ba1509b4f7024c",
     "aave/seed_robustness.json": "55940530d0c839bfb1376a8c736c087b712d8939ca568882e608a4aaf7dcec27",
-    "aave/sensitivity.csv": "df8534e09029c01f7bfe6c35a907e0444ab976a7dd31452baaec3a3da444a9af",
-    "aave/sensitivity.json": "ca24cf2b5aa330079bd883323d22f7ef43f98d93f4eee9514d02f8d80ed31a0b",
-    "aave/shock_liquidity_grid.csv": "62260403516145762a4125197ea370f2cce90e39ef2746fc676ee5b16a124477",
-    "aave/shock_liquidity_grid.json": "172f575b2d782cf42ae951955a0d11c1e23f51c3a28cb2b8c4a32ed9e0545144",
+    "aave/sensitivity.csv": "e017e99efd93d19acb0535c091947811887841c3b5a68bb563c0fdb82b19e94a",
+    "aave/sensitivity.json": "f971c60d3d9f9bcd41fa74bf4af266986a2d25d013f2b34ba1985c211a1cb093",
+    "aave/shock_liquidity_grid.csv": "8a1108c52dcb097ff1d347c7cb4b0a480dc40afd453e05d83c4169e635fe443f",
+    "aave/shock_liquidity_grid.json": "c63677225500c5b0ed9c17339ec195e867b36143ccbac8aa888cf1e8192336f1",
     "aave/snapshot_quality.json": "f1dd6dff1e8658d609f22127c0cd158f57b5dfc814126719a64655bc6ef8993e",
-    "claim_ledger.csv": "c1d9f19800bc7c1ba0d27d67cf7de7269cf253951f28cae8dff961b00fc76aa5",
-    "claim_ledger.json": "3b3eec8900505d2245dd7e93e56ad9df8502bc426786fddcc6456057d6711e6d",
+    "claim_ledger.csv": "fc0ae1ab7e2bfd2fcd13a7c20dbff245bd68c7f9e0742dcbb867cdd4009508ad",
+    "claim_ledger.json": "2422ba114c531417c673d20f39234c9eb4d62f86d2ffeff99748ac18f5393354",
     "cross_case/synthesis.json": "5b3f86fb1c2afe44b8ca1d0183d34c8e917a64e978388ce55724983d7495b053",
     "data_quality_summary.json": "fb55b0b7235a7ba6bd77f6f1273bed1584b1cd59176046ef62eab0266df50df0",
-    "document_claim_index.json": "d41205235990223fb2c0d0f5ef59f04d1383ca9649240bb2d74784dd9c49697c",
-    "execution_log.json": "ff028e5d59c7c90bf8dc753ce267e9bcbf2305abc7c47021b11e5c9c5f438f54",
-    "figure_registry.json": "2923d9408a9ef5f66cd6b911c316a792e8930464c18d5db29328eb4fc7a1d8ff",
+    "document_claim_index.json": "fe127f13450dfc7c33007a0b7ee36ed50fcf444d91575efeae24249eba4d2ec1",
+    "execution_log.json": "808a2254b370943f4796b38b9409392cb356ecf665bea938be810e9fc47309cc",
+    "figure_registry.json": "3da9cdb475c943292476010460ab23dc936af8b36662ca201beac0e30a9e35a6",
     "figures/A01_health_factor_distribution.png": "b63a3756394c35f3814f5dad966d7f69c95f7588cdb66a33fc9c5e55dbbcc58d",
     "figures/A02_debt_concentration.png": "5a856d1d67e96476abbfc145b405253184effb1279595b9996c684457a784108",
     "figures/A03_pool_depth.png": "56acdf37b251643affb5be02158206e8a71fb749b94b42626e76d1f3658b4e23",
@@ -87,6 +88,12 @@
     "figures/A14_professor_wave2.png": "ae7c27349df3d53952792a8451396a89240366c22c35a0cda0fe10ad8e77be4e",
     "figures/A15_contagion_matrix.png": "4e3322a696d7d61f0c4345617d0efd7dac96e174f7cb5df62d7e9b560ea65278",
     "figures/A16_centrality.png": "a466d7b2d6b1c2b4f62dc1fb5aa9a1115e25588e3d2cf46412088ba57fb592bc",
+    "figures/A17_reaction_delay_sensitivity.png": "f40f8891eaeb46cac319c85fcc3420d4bb19cd08b678e3b87bdf39afd0aa679c",
+    "figures/A18_binding_capital_sensitivity.png": "b928a03456b0e1449a8754f4f71bf46f048d0cc387ff42cc3db3636929ba6933",
+    "figures/A19_usdc_depeg_hf.png": "a7ba4e3c7bb34f4cbed1802cf8141c612b647939654fbd064ed5ac9eacc2b86f",
+    "figures/A20_lt_policy_sensitivity.png": "73a1329c0908003ddc18d32a7d0060d5b2459fcb1df9e42b71c5372d88fd2979",
+    "figures/A21_liquidation_bonus_sensitivity.png": "0a117fc699ba3f5dc62b12626e17c92127e85b7a034d68f4a734db70e2629a42",
+    "figures/A22_ltv_capital_efficiency.png": "b3747a3404c054a89e1d20ec9df2fb561f660fe49f2b8c9c5ee9e7d49f69b8d2",
     "figures/C01_cross_case_feedback.png": "13a2c45a964c5209486b5be6c91c94ec3bca6064aef4bffc29b3af94222256e0",
     "figures/T01_terra_prices.png": "9d1adac2d8a0c0d42d9c5ef65a80b926993e209f10503bd616bd96d064b9c4c7",
     "figures/T02_terra_supply.png": "cd7926e5e47dc6c57318962ae0e8995123530ca83ba9856e10d1a59e4d37070c",
@@ -101,26 +108,41 @@
     "figures/T11_mechanism_comparison.png": "73be12053b8402a2f01ad4154486e2cfac793e3f5b2725a5cb99e0f6ad2bd8fc",
     "figures/T12_robustness.png": "b66db02eb6a7e20be496f7193b2c0d3009e4989968a6433e976c49887c4e0361",
     "network/professor_demo_centrality.json": "85dcfb5686e1d18f1fd2e8623652984af9e0467bddaa8c75760bed4afccbae8b",
-    "network/professor_demo_graph.json": "b6a4f4f44d3ecf462c553885f3eec7e4e2323c76c271c46395894a823d98c084",
+    "network/professor_demo_graph.json": "19fec0b94e486abd84ba6a11bceec6ff0b1c252e6ad1fcf48576813a55af1aca",
     "network/professor_demo_matrix.csv": "f5aaf04d6a5554c147dcc43448df778c1b0149cdee822240f7abe5129ed24340",
     "network/severe_centrality.json": "df99a684667841991480be9800f87eaa5e3a464c9c44f2ad9ba202be89f972c2",
-    "network/severe_graph.json": "da0a3f91ee23f10f6f02785619948195ddade9bcf50bd44bd4ce76abb7368b19",
+    "network/severe_graph.json": "2f35dd973b532dabf8eaa959228699f13ddf9bb57aecf02ad89e8d533097b09a",
     "network/severe_matrix.csv": "75853ce7aa8e38d1771dde7b30e10983a8adbbddff0aa668bbadf5eeadf46b8d",
     "network/structural_centrality.json": "99fddb131d4b79c9cafc32fe6821f994c7aef595ca617a772deb875f9b48aab2",
     "network/structural_graph.json": "c20a5f8f0892cff0cc8a4583ce8d26579a60ec32e4f591aa9474111f318668c8",
     "network/structural_matrix.csv": "3337f34bd3ece246d1fee54d2da4f57db26ba2131256dcff039efaf57087d03a",
-    "preflight.json": "2c61fe73323f2dba7cff1861f87f4cdbb539623257dac925f40452dd38ea7cfa",
-    "quality_gate.json": "85fcda8eeeb639da17e35f4530ec30915469eb63db228bf5c1cbf9c22834ae5a",
-    "results_registry.json": "e7bd326499a523ec8792e92a6ec69dcf875dd5bd7cb597b5b648d0025fc6e3ba",
-    "table_registry.json": "2e5a9e481083ce4cd088217591c0be6b90f3fbad0813c5af9299229b4d4d9785",
+    "preflight.json": "5e2bfcd88ab5ea95a3a282c779dea11d5599324f4c59ad435805e7b4a117ab4a",
+    "quality_gate.json": "0059ad34d3ab61886ce30409c56aab452da9827106a5fdd6ba77dc055298f4ea",
+    "regression_comparison.json": "c70be5efa519b0131d55bf61dd0fc5191b2fe9c65afab7d823b5da6a3f1fc46c",
+    "results_registry.json": "0f177415fdd8156dac85cf17c82209d0ac2ced086cc36683a1ce22446bce0028",
+    "rq_answer_matrix.json": "be8bc73477f7909ad2ffd036709a46bf1b69a1bca8f183aef4fbd12137802ec0",
+    "rq_completion/rq3_capital_constraint.csv": "8dda58e6b1ce44aee39f95f22366b8bf7e0045e5c672649f808c401f7bd2b264",
+    "rq_completion/rq3_capital_constraint.json": "ec08c7f2c09c048654b8f174aea1f5336df542550dfe095e863217daa6cbfb96",
+    "rq_completion/rq3_reaction_delay.csv": "bfe16248883b238b3652aad0209de91cc189d91ce63d75a0b51f60e1a68244d9",
+    "rq_completion/rq3_reaction_delay.json": "3e2ecdee0938aa8a65925c7f5b1590f811ffd9313f2eab24adf5c20f6f07ba55",
+    "rq_completion/rq5_usdc_depeg.csv": "80b55d1aebba63bca9d5ccae636e2b194c8f64596d84e17f9ec4d87f7dbe6234",
+    "rq_completion/rq5_usdc_depeg.json": "1053dd0a02d93145f4de35300330dcc7262eb1e4ff61c7ae59f66547f42341ca",
+    "rq_completion/rq6_liquidation_bonus.csv": "7a99b17103bdbba457c5215fab313a7e2ba7307827a288ff47af1c1672365981",
+    "rq_completion/rq6_liquidation_bonus.json": "6e64c1045cfbbf06e37729b223601ec8d88eb107307cda836772991e112e8675",
+    "rq_completion/rq6_liquidation_threshold.csv": "8ca66e3405a4ec0d0091851e0414a49a5a064dccfdfa5a93994c47d7eb3b085c",
+    "rq_completion/rq6_liquidation_threshold.json": "02725eb09f633fcc2c3ba79632ae0df4302f1ae5a871d016d33cde4ebd18dd41",
+    "rq_completion/rq6_ltv_capital_efficiency.csv": "ab1d6cda32106ef695a5e8e88cc9f7d9f9c42f519ea3416c0c37f52d8587db67",
+    "rq_completion/rq6_ltv_capital_efficiency.json": "a9d1a721860b14a5e3056297c6833b6ad5cf2652a334a40bc286ec6c81404c8e",
+    "rq_completion/rq_completion_summary.json": "5287066a24292b11c81d137f3c3e0fca22db8c644635dea6acff53bd68d8f1d5",
+    "table_registry.json": "60e7c6f543b48363c3c2d4e2ad4846ff57a3e4f375e9fdbc3c151158340a20ae",
     "tables/Table_01_data_sources.csv": "36c94fba4ac9e29b76d140573e0f0843ce4373f50c47705b7ec2e07fe6a21e87",
     "tables/Table_01_data_sources.md": "36fc8145c60f0848ffb11f1cdd3bd2b5e3f5530977c327f95510edfc1d5bbce5",
     "tables/Table_02_aave_provenance.csv": "ea89f939f759ce7c86fd8ca36cffd87cbc153ce951dacc15e058f94cf11d5984",
     "tables/Table_02_aave_provenance.md": "3d4930ece52f1173176ba5b9f03b5b86d4f4606606d2bd4ccef133efaf8f950d",
     "tables/Table_03_aave_hf_validation.csv": "fff6ab501bde55ddea6f798c43d00fe650af3473574be3f476ed07c0a0b29200",
     "tables/Table_03_aave_hf_validation.md": "2bfb53a62c2de20e4e79ae6d8a69d2994cc73fef17bca08b9a51b344a5d5e198",
-    "tables/Table_04_aave_deterministic.csv": "06f16f2714d3fe4bceb61977d35b07402af6ef0c6cb069a281f3e9bbae16f231",
-    "tables/Table_04_aave_deterministic.md": "1667740aa13dc1d2f7796e825b19c2631197d0422b55b772bde5eac8ff447fe3",
+    "tables/Table_04_aave_deterministic.csv": "9e4cc9a18649c0bfb2780a4d41ca410740d570afdd80f9c252e1d0648492ae04",
+    "tables/Table_04_aave_deterministic.md": "af6b8f8be8126ae8f731e8708ccfe9efac114c39c7ecd6a28e2b514239a0af3c",
     "tables/Table_05_aave_sensitivity.csv": "0cd0700e24ef35d3b1c634c8577a767d6819b94132b40c432bffdc6b3ae19dd1",
     "tables/Table_05_aave_sensitivity.md": "b81c09f0f700fefc2fbe4e5be63812f1d7ab6de4880f037f802297d399c9b776",
     "tables/Table_06_aave_monte_carlo.csv": "49a00158392f5177d23e40eef3c9f8a4c9ecf3731685634b9909525b7cee66b7",
@@ -143,17 +165,31 @@
     "tables/Table_14_terra_robustness.md": "3f655bc0fc4afc6680c81c54ea1cb39d4a7ae310752859b75c4739d8a88fe7c1",
     "tables/Table_15_cross_case.csv": "6ec85bdb4d76f2c7bf51ce9f40f71577ad705288f8956be7636247b2d1388bae",
     "tables/Table_15_cross_case.md": "03ea7119cab7575faf81e9e7a9be93c3e21490ffcad41dade0e3b5a220927e03",
+    "tables/Table_16_rq3_reaction_delay.csv": "58f1e8da5166ffb982b45e421c4ac3d7be539eb12326d5be3679a823ba8c5f38",
+    "tables/Table_16_rq3_reaction_delay.md": "337e722c88e90cf7f8bf724bac5c8deba3b61304396cb4f90f4b7abcc09e373d",
+    "tables/Table_17_rq3_capital_constraint.csv": "76ce44eac877fd28cb97227239d78652e4c14a2aca0aafb13110389fbc187d18",
+    "tables/Table_17_rq3_capital_constraint.md": "b73bcaa85668c4ef3054dcd50dcc59cdccbdd4d0cc021a88d5ca15ca6d779846",
+    "tables/Table_18_rq5_usdc_depeg.csv": "b9313198eb30e9de32ea33aafac840acfafe4375f58f637d73b2b74150ff3aa7",
+    "tables/Table_18_rq5_usdc_depeg.md": "f699889e3d0909f174b1940e6acc1c51144b2cba462c0997796d9131907a9604",
+    "tables/Table_19_rq6_ltv_capital_efficiency.csv": "ab1d6cda32106ef695a5e8e88cc9f7d9f9c42f519ea3416c0c37f52d8587db67",
+    "tables/Table_19_rq6_ltv_capital_efficiency.md": "4418e3852587d8270281ce7aae946cd1a419ca98cb478ad7befcec8938c9eaec",
+    "tables/Table_20_rq6_liquidation_threshold.csv": "bf83ef3ba5419294212c2e40c759b91f6f50266814bd43f026f0c1f84494df72",
+    "tables/Table_20_rq6_liquidation_threshold.md": "d4d8fd3da845a90c83131960e4d57875b4c9ea18c4c379623b9f9affafe53b58",
+    "tables/Table_21_rq6_liquidation_bonus.csv": "b229ffb34bb0d6bd2e8b263be479c79ed6569f4be3f42037a5b6ff0102e6512e",
+    "tables/Table_21_rq6_liquidation_bonus.md": "cae0c7de5a20830b9af1688a271a5b9cdb4d3e1a68961edd1d9aed5dddbc925c",
+    "tables/Table_22_rq_answer_matrix.csv": "4b277660b5912779ee5f1ad770c8011c30ca65d15daa35d7943148a6a2d430f2",
+    "tables/Table_22_rq_answer_matrix.md": "9116033438196e499d71402141a5933a65197d4289fbc53c3339a045b6e480b9",
     "terra/audit/ablation.json": "91af7b7d5af5e23452c200681e441d723925239be6ac5aaa9fa4960490159d9a",
     "terra/audit/conditional_abm_final.json": "79be4c2ce635a024f6f997f2621a5d58f49b92f4fc0d44ce47278cbb7196853a",
     "terra/audit/conditional_benchmark.json": "0bc6df507d9aee396c24787b097f6c421e7c6b5f370ada525226fe1cb114171f",
-    "terra/audit/data_quality.json": "1b64d2bde657fb8f82482b786d18a51d8c195bf4611affd00dc4d063f8975598",
+    "terra/audit/data_quality.json": "425d5622cc6651721a84014ca1b4d9909b1a2ffc7a2f15f97614b969171a9f31",
     "terra/audit/final_metrics.json": "aa3419c583211f5938954e0ff99221cc161c388f24f5631318ec0f16adb39912",
     "terra/audit/final_report.md": "a9b3e695335d8c876b7b47bc6c7f7a998c44cfcb8c5899f8bd5fc83d584ee3b3",
     "terra/audit/model_diagnostics.json": "d18185cd62e6d0fd9c09c6c93adb89ee52d409e78ea121e5e6cf486e8c60aa0f",
     "terra/audit/monte_carlo.json": "4f6467b9e9b947b2098db2c853078b623f4272e09141ca74e25c55681c3516e4",
     "terra/audit/parameter_uncertainty_ensemble.json": "3b98ba0e076040fd9475c5fcf318129d2bd26f2bfbdd863aa2d1d9bfad4be4ba",
     "terra/audit/protocol_mechanism_validation.json": "9ee4b9b2b51ffe0c9e2bc9cf98a60c539eb97158c2b7b7ce6aafc58b9c75e830",
-    "terra/audit/reproducibility_manifest.json": "3f73880d210dce858fbcf9ea501f4fc066490c35e0f40577e303df1f58874914",
+    "terra/audit/reproducibility_manifest.json": "e5ff826470e7121f6d899e111669549c2db5590efa01ca407e125320a178e064",
     "terra/audit/rolling_origin.json": "33707cde822429daecad7a53bf80fc9a83a754912fb97e21f13f384800b7c7fb",
     "terra/audit/sensitivity.json": "37d40d14ad19594ab215ad4c10e9d3389850c0a0513c3af21f6efaecc343e62f",
     "terra/audit/strict_oos_v2.json": "2aa642b7cad12a7ba4d2c910f3ab788a9d7868d04106ccd4089e1c1a31989fbc",
@@ -161,11 +197,118 @@
     "terra/demo/historical_fit.json": "6c149a1766a705b6d9573b8ec63413977fe147b626e755f49b1ebba1ccf3b32b",
     "terra/demo/mechanism_check.json": "7b1a033cdceccd8264a6160fac6610a94c3b50f33a4fedb514f843c0058bead4",
     "terra/demo/presentation_summary.json": "781cc6022d4a41a6680374e661305b67f5e4f7a9bc1583a3bf0ebc8cdc098e7c",
-    "terra/demo/reproducibility_manifest.json": "f483784e34960e2a45e2be3181d6e0225fdbb944adb6413f7cb926fb38a8d019",
+    "terra/demo/reproducibility_manifest.json": "d24269812f53ee83bf7d7cdce91621c69f2799b2a3af6be9d0f11b03a638603d",
     "terra/demo/stress_test.json": "e6d23ba23eff26e72feca4473c83d9fe37d7f6569c085d4731c9d7f9a793de64"
   },
-  "pipeline_version": "defistress-final-research-orchestrator-1.0.0",
-  "provenance_note": "source_code_commit identifies executable source; generated_artifact_commit identifies the first bundle commit; the metadata finalization commit is the Git commit containing this update and is intentionally not self-recorded.",
+  "pipeline_version": "defistress-final-research-orchestrator-1.1.0",
+  "previous_research_package_commit": "df8df8d24eb257262a8514d233bb59677d162380",
+  "provenance_note": "Artifact and metadata commit fields are finalized only after the corresponding Git commits; no SHA is fabricated.",
+  "regression_comparison": {
+    "all_passed": true,
+    "comparison_policy": "Every numeric leaf present in the previous core artifact must remain exactly equal; additive fields in the new artifacts are permitted.",
+    "files": [
+      {
+        "artifact": "terra/demo/early_warning_timeline.json",
+        "changed_paths": [],
+        "compared_numeric_leaves": 42238,
+        "old_numeric_leaves": 42238,
+        "status": "PASS"
+      },
+      {
+        "artifact": "terra/demo/historical_fit.json",
+        "changed_paths": [],
+        "compared_numeric_leaves": 2952,
+        "old_numeric_leaves": 2952,
+        "status": "PASS"
+      },
+      {
+        "artifact": "terra/demo/mechanism_check.json",
+        "changed_paths": [],
+        "compared_numeric_leaves": 10,
+        "old_numeric_leaves": 10,
+        "status": "PASS"
+      },
+      {
+        "artifact": "terra/demo/stress_test.json",
+        "changed_paths": [],
+        "compared_numeric_leaves": 5780,
+        "old_numeric_leaves": 5780,
+        "status": "PASS"
+      },
+      {
+        "artifact": "terra/audit/final_metrics.json",
+        "changed_paths": [],
+        "compared_numeric_leaves": 37,
+        "old_numeric_leaves": 37,
+        "status": "PASS"
+      },
+      {
+        "artifact": "terra/audit/monte_carlo.json",
+        "changed_paths": [],
+        "compared_numeric_leaves": 2685,
+        "old_numeric_leaves": 2685,
+        "status": "PASS"
+      },
+      {
+        "artifact": "terra/audit/strict_oos_v2.json",
+        "changed_paths": [],
+        "compared_numeric_leaves": 9976,
+        "old_numeric_leaves": 9976,
+        "status": "PASS"
+      },
+      {
+        "artifact": "aave/deterministic_scenarios.json",
+        "changed_paths": [],
+        "compared_numeric_leaves": 313,
+        "old_numeric_leaves": 313,
+        "status": "PASS"
+      },
+      {
+        "artifact": "aave/sensitivity.json",
+        "changed_paths": [],
+        "compared_numeric_leaves": 864,
+        "old_numeric_leaves": 864,
+        "status": "PASS"
+      },
+      {
+        "artifact": "aave/shock_liquidity_grid.json",
+        "changed_paths": [],
+        "compared_numeric_leaves": 1164,
+        "old_numeric_leaves": 1164,
+        "status": "PASS"
+      },
+      {
+        "artifact": "aave/monte_carlo.json",
+        "changed_paths": [],
+        "compared_numeric_leaves": 4166,
+        "old_numeric_leaves": 4166,
+        "status": "PASS"
+      },
+      {
+        "artifact": "network/structural_graph.json",
+        "changed_paths": [],
+        "compared_numeric_leaves": 273,
+        "old_numeric_leaves": 273,
+        "status": "PASS"
+      },
+      {
+        "artifact": "network/professor_demo_graph.json",
+        "changed_paths": [],
+        "compared_numeric_leaves": 374,
+        "old_numeric_leaves": 374,
+        "status": "PASS"
+      },
+      {
+        "artifact": "network/severe_graph.json",
+        "changed_paths": [],
+        "compared_numeric_leaves": 396,
+        "old_numeric_leaves": 396,
+        "status": "PASS"
+      }
+    ],
+    "previous_research_package_commit": "df8df8d24eb257262a8514d233bb59677d162380",
+    "status": "PASS"
+  },
   "reproduce_command": ".\\.venv\\Scripts\\python.exe scripts\\run_full_research_pipeline.py --research",
   "scenario_definitions": {
     "Baseline": {
@@ -188,6 +331,7 @@
       "seed": 20260914,
       "shock_pct": -10.0,
       "timestep_seconds": 60,
+      "usdc_price_usd": 1.0,
       "volatility_pct": 2.0
     },
     "High Gas": {
@@ -210,6 +354,7 @@
       "seed": 20260914,
       "shock_pct": -20.0,
       "timestep_seconds": 60,
+      "usdc_price_usd": 1.0,
       "volatility_pct": 2.0
     },
     "Low Liquidity": {
@@ -232,6 +377,7 @@
       "seed": 20260914,
       "shock_pct": -20.0,
       "timestep_seconds": 60,
+      "usdc_price_usd": 1.0,
       "volatility_pct": 2.0
     },
     "Moderate": {
@@ -254,6 +400,7 @@
       "seed": 20260914,
       "shock_pct": -15.0,
       "timestep_seconds": 60,
+      "usdc_price_usd": 1.0,
       "volatility_pct": 2.0
     },
     "No Arbitrage": {
@@ -276,6 +423,7 @@
       "seed": 20260914,
       "shock_pct": -20.0,
       "timestep_seconds": 60,
+      "usdc_price_usd": 1.0,
       "volatility_pct": 2.0
     },
     "PROFESSOR_DEMO": {
@@ -298,6 +446,7 @@
       "seed": 20260914,
       "shock_pct": -20.0,
       "timestep_seconds": 60,
+      "usdc_price_usd": 1.0,
       "volatility_pct": 2.0
     },
     "Policy Experiment": {
@@ -320,6 +469,7 @@
       "seed": 20260914,
       "shock_pct": -20.0,
       "timestep_seconds": 60,
+      "usdc_price_usd": 1.0,
       "volatility_pct": 2.0
     },
     "Severe": {
@@ -342,6 +492,7 @@
       "seed": 20260914,
       "shock_pct": -30.0,
       "timestep_seconds": 60,
+      "usdc_price_usd": 1.0,
       "volatility_pct": 2.0
     },
     "Strong Arbitrage": {
@@ -364,6 +515,7 @@
       "seed": 20260914,
       "shock_pct": -20.0,
       "timestep_seconds": 60,
+      "usdc_price_usd": 1.0,
       "volatility_pct": 2.0
     }
   },
@@ -375,7 +527,7 @@
     ],
     "terra": "recorded in child manifests"
   },
-  "source_code_commit": "620746513dec3a7afad00eb8ce10b0d0add538cc",
+  "source_code_commit": "db01592c4213136d51aff47692691541bb1f7343",
   "tests": {
     "all_required_passed": true,
     "checks": [
@@ -383,16 +535,16 @@
         "command": "C:\\Users\\Admin\\Desktop\\DeFiStress\\.venv\\Scripts\\python.exe -m pytest",
         "name": "pytest",
         "return_code": 0,
-        "runtime_seconds": 42.95977820000553,
+        "runtime_seconds": 26.47844699999996,
         "status": "PASS",
         "stderr_tail": "",
-        "stdout_tail": "........................................................................ [ 59%]\n..................................................                       [100%]\n============================== warnings summary ===============================\n.venv\\Lib\\site-packages\\websockets\\legacy\\__init__.py:6\n  C:\\Users\\Admin\\Desktop\\DeFiStress\\.venv\\Lib\\site-packages\\websockets\\legacy\\__init__.py:6: DeprecationWarning: websockets.legacy is deprecated; see https://websockets.readthedocs.io/en/stable/howto/upgrade.html for upgrade instructions\n    warnings.warn(  # deprecated in 14.0 - 2024-11-09\n\n.venv\\Lib\\site-packages\\fastapi\\testclient.py:1\n  C:\\Users\\Admin\\Desktop\\DeFiStress\\.venv\\Lib\\site-packages\\fastapi\\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n    from starlette.testclient import TestClient as TestClient  # noqa\n\n.venv\\Lib\\site-packages\\starlette\\testclient.py:53\n  C:\\Users\\Admin\\Desktop\\DeFiStress\\.venv\\Lib\\site-packages\\starlette\\testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.\n    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n122 passed, 3 warnings in 40.97s\n"
+        "stdout_tail": "........................................................................ [ 55%]\n..........................................................               [100%]\n============================== warnings summary ===============================\n.venv\\Lib\\site-packages\\websockets\\legacy\\__init__.py:6\n  C:\\Users\\Admin\\Desktop\\DeFiStress\\.venv\\Lib\\site-packages\\websockets\\legacy\\__init__.py:6: DeprecationWarning: websockets.legacy is deprecated; see https://websockets.readthedocs.io/en/stable/howto/upgrade.html for upgrade instructions\n    warnings.warn(  # deprecated in 14.0 - 2024-11-09\n\n.venv\\Lib\\site-packages\\fastapi\\testclient.py:1\n  C:\\Users\\Admin\\Desktop\\DeFiStress\\.venv\\Lib\\site-packages\\fastapi\\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n    from starlette.testclient import TestClient as TestClient  # noqa\n\n.venv\\Lib\\site-packages\\starlette\\testclient.py:53\n  C:\\Users\\Admin\\Desktop\\DeFiStress\\.venv\\Lib\\site-packages\\starlette\\testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.\n    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n130 passed, 3 warnings in 25.01s\n"
       },
       {
         "command": "C:\\Users\\Admin\\Desktop\\DeFiStress\\.venv\\Scripts\\python.exe -m ruff check .",
         "name": "ruff",
         "return_code": 0,
-        "runtime_seconds": 0.2089179000031436,
+        "runtime_seconds": 0.24475029999985054,
         "status": "PASS",
         "stderr_tail": "",
         "stdout_tail": "All checks passed!\n"
@@ -401,25 +553,25 @@
         "command": "C:\\Users\\Admin\\Desktop\\DeFiStress\\.venv\\Scripts\\python.exe -m mypy",
         "name": "mypy",
         "return_code": 0,
-        "runtime_seconds": 2.3818061999918427,
+        "runtime_seconds": 0.517850300000191,
         "status": "PASS",
         "stderr_tail": "",
-        "stdout_tail": "Success: no issues found in 46 source files\n"
+        "stdout_tail": "Success: no issues found in 47 source files\n"
       },
       {
         "command": "pnpm.cmd test -- --run",
         "name": "vitest",
         "return_code": 0,
-        "runtime_seconds": 3.634741899993969,
+        "runtime_seconds": 3.9097200000001067,
         "status": "PASS",
         "stderr_tail": "$ vitest run \"--\" \"--run\"\n",
-        "stdout_tail": "\n RUN  v3.2.7 C:/Users/Admin/Desktop/DeFiStress/frontend\n\n \u00e2\u0153\u201c lib/terra-demo.test.ts (2 tests) 9ms\n \u00e2\u0153\u201c lib/terra.test.ts (2 tests) 8ms\n \u00e2\u0153\u201c lib/snapshot-selection.test.ts (11 tests) 17ms\n \u00e2\u0153\u201c lib/contagion.test.ts (4 tests) 167ms\n \u00e2\u0153\u201c lib/api.test.ts (2 tests) 176ms\n\n Test Files  5 passed (5)\n      Tests  21 passed (21)\n   Start at  11:24:52\n   Duration  1.67s (transform 1.21s, setup 0ms, collect 1.62s, tests 377ms, environment 3ms, prepare 2.62s)\n\n"
+        "stdout_tail": "\n RUN  v3.2.7 C:/Users/Admin/Desktop/DeFiStress/frontend\n\n \u00e2\u0153\u201c lib/terra-demo.test.ts (2 tests) 6ms\n \u00e2\u0153\u201c lib/terra.test.ts (2 tests) 6ms\n \u00e2\u0153\u201c lib/snapshot-selection.test.ts (11 tests) 10ms\n \u00e2\u0153\u201c lib/contagion.test.ts (4 tests) 131ms\n \u00e2\u0153\u201c lib/api.test.ts (2 tests) 134ms\n\n Test Files  5 passed (5)\n      Tests  21 passed (21)\n   Start at  13:47:43\n   Duration  1.50s (transform 971ms, setup 0ms, collect 1.40s, tests 287ms, environment 2ms, prepare 1.79s)\n\n"
       },
       {
         "command": "pnpm.cmd lint",
         "name": "eslint",
         "return_code": 0,
-        "runtime_seconds": 17.200206200010143,
+        "runtime_seconds": 13.70175590000008,
         "status": "PASS",
         "stderr_tail": "$ eslint .\n",
         "stdout_tail": ""
@@ -428,13 +580,13 @@
         "command": "pnpm.cmd build",
         "name": "next_build",
         "return_code": 0,
-        "runtime_seconds": 14.370733100004145,
+        "runtime_seconds": 20.469559000000118,
         "status": "PASS",
         "stderr_tail": "$ next build\n",
-        "stdout_tail": "\u00e2\u2013\u00b2 Next.js 16.3.5 (Turbopack)\n\u00e2\u0153\u201c Running next.config.ts took 55ms\n\n  Creating an optimized production build ...\n\u00e2\u0153\u201c Compiled successfully in 1253ms\n  Running TypeScript ...\n  Finished TypeScript in 5.6s ...\n  Collecting page data using 7 workers ...\n  Generating static pages using 7 workers (0/3) ...\n\u00e2\u0153\u201c Generating static pages using 7 workers (3/3) in 1379ms\n  Finalizing page optimization ...\n\nRoute (app)\n\u00e2\u201d\u0152 \u00e2\u2014\u2039 /\n\u00e2\u201d\u0153 \u00e2\u2014\u2039 /_not-found\n\u00e2\u201d\u0153 \u00c6\u2019 /[section]\n\u00e2\u201d\u0153 \u00c6\u2019 /results/[runId]\n\u00e2\u201d\u201d \u00c6\u2019 /terra/[section]\n\n\n\u00e2\u2014\u2039  (Static)   prerendered as static content\n\u00c6\u2019  (Dynamic)  server-rendered on demand\n\n"
+        "stdout_tail": "\u00e2\u2013\u00b2 Next.js 16.3.5 (Turbopack)\n\u00e2\u0153\u201c Running next.config.ts took 214ms\n\n  Creating an optimized production build ...\n\u00e2\u0153\u201c Compiled successfully in 1993ms\n  Running TypeScript ...\n  Finished TypeScript in 4.0s ...\n  Collecting page data using 7 workers ...\n  Generating static pages using 7 workers (0/3) ...\n\u00e2\u0153\u201c Generating static pages using 7 workers (3/3) in 898ms\n  Finalizing page optimization ...\n\nRoute (app)\n\u00e2\u201d\u0152 \u00e2\u2014\u2039 /\n\u00e2\u201d\u0153 \u00e2\u2014\u2039 /_not-found\n\u00e2\u201d\u0153 \u00c6\u2019 /[section]\n\u00e2\u201d\u0153 \u00c6\u2019 /results/[runId]\n\u00e2\u201d\u201d \u00c6\u2019 /terra/[section]\n\n\n\u00e2\u2014\u2039  (Static)   prerendered as static content\n\u00c6\u2019  (Dynamic)  server-rendered on demand\n\n"
       }
     ],
-    "generated_at": "2026-10-13T04:25:26.363032Z",
+    "generated_at": "2026-10-13T06:48:19.796473Z",
     "node": "v22.13.1",
     "packages": {
       "matplotlib": "3.11.2",
@@ -447,13 +599,14 @@
     },
     "platform": "Windows-11-10.0.26200-SP0",
     "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
-    "source_code_commit": "620746513dec3a7afad00eb8ce10b0d0add538cc"
+    "source_code_commit": "db01592c4213136d51aff47692691541bb1f7343"
   },
-  "total_runtime_seconds": 415.7281004999968,
+  "total_runtime_seconds": 323.57686349999994,
   "versions": {
-    "aave_suite": "aave-mainnet-research-suite-1.0.0",
+    "aave_suite": "aave-mainnet-research-suite-1.1.0",
     "graph": "0.1.0-multilayer-contagion",
-    "orchestrator": "defistress-final-research-orchestrator-1.0.0",
+    "orchestrator": "defistress-final-research-orchestrator-1.1.0",
+    "rq_completion": "aave-rq-completion-1.0.0",
     "terra_final": "terra-final-research-pipeline-1.1.0"
   }
 }

@@ -1,9 +1,11 @@
 {
   "claims": [
     {
+      "allowed_wording": "Terra Historical Fit t\u00e1i d\u1ef1ng \u0111\u01b0\u1ee3c h\u01b0\u1edbng bi\u1ebfn \u0111\u1ed9ng nh\u01b0ng ch\u1ea1m c\u00e1c ng\u01b0\u1ee1ng UST s\u1edbm h\u01a1n l\u1ecbch s\u1eed.",
       "claim_boundary": "Fit c\u00f3 \u0111i\u1ec1u ki\u1ec7n; kh\u00f4ng ph\u1ea3i d\u1ef1 b\u00e1o ngo\u00e0i m\u1eabu.",
       "claim_id": "C01",
       "evidence_type": "DERIVED_OR_SIMULATED",
+      "prohibited_wording": "Kh\u00f4ng \u0111\u01b0\u1ee3c b\u1ecf claim boundary, n\u00e2ng model-implied th\u00e0nh observed fact, ho\u1eb7c kh\u00e1i qu\u00e1t ngo\u00e0i snapshot/range \u0111\u00e3 th\u1eed.",
       "result_ids": [
         "TERRA_HF_UST_CORRELATION",
         "TERRA_TIMING_0_995",
@@ -13,9 +15,11 @@
       "status": "PARTIALLY_SUPPORTED"
     },
     {
+      "allowed_wording": "Ch\u1ec9 b\u00e1o cutoff-safe kh\u00f4ng c\u1ea3nh b\u00e1o tr\u01b0\u1edbc depeg ban \u0111\u1ea7u \u1edf ng\u01b0\u1ee1ng High Risk.",
       "claim_boundary": "K\u1ebft lu\u1eadn gi\u1edbi h\u1ea1n \u1edf \u0111\u1ecbnh ngh\u0129a ch\u1ec9 b\u00e1o v\u00e0 cutoff \u0111\u00e3 tri\u1ec3n khai.",
       "claim_id": "C02",
       "evidence_type": "OBSERVED",
+      "prohibited_wording": "Kh\u00f4ng \u0111\u01b0\u1ee3c b\u1ecf claim boundary, n\u00e2ng model-implied th\u00e0nh observed fact, ho\u1eb7c kh\u00e1i qu\u00e1t ngo\u00e0i snapshot/range \u0111\u00e3 th\u1eed.",
       "result_ids": [
         "TERRA_EW_CUTOFF_SAFE_UST_BELOW_0_995_HIGH",
         "TERRA_EW_LEAKAGE"
@@ -24,9 +28,11 @@
       "status": "SUPPORTED_NEGATIVE_FINDING"
     },
     {
+      "allowed_wording": "Ch\u1ec9 b\u00e1o cutoff-safe High Risk xu\u1ea5t hi\u1ec7n tr\u01b0\u1edbc severe depeg UST d\u01b0\u1edbi 0,90.",
       "claim_boundary": "Kh\u00f4ng \u0111\u1ed3ng ngh\u0129a d\u1ef1 b\u00e1o kh\u1ee7ng ho\u1ea3ng n\u00f3i chung.",
       "claim_id": "C03",
       "evidence_type": "DERIVED_OR_SIMULATED",
+      "prohibited_wording": "Kh\u00f4ng \u0111\u01b0\u1ee3c b\u1ecf claim boundary, n\u00e2ng model-implied th\u00e0nh observed fact, ho\u1eb7c kh\u00e1i qu\u00e1t ngo\u00e0i snapshot/range \u0111\u00e3 th\u1eed.",
       "result_ids": [
         "TERRA_EW_CUTOFF_SAFE_UST_BELOW_0_9_HIGH"
       ],
@@ -34,9 +40,11 @@
       "status": "SUPPORTED"
     },
     {
+      "allowed_wording": "Native-swap event output h\u1ed7 tr\u1ee3 nh\u1ea5t qu\u00e1n k\u1ebf to\u00e1n gross mint swap_amount + fee_amount.",
       "claim_boundary": "Kh\u00f4ng ch\u1ee9ng minh gross mint g\u00e2y ra bi\u1ebfn \u0111\u1ed9ng gi\u00e1.",
       "claim_id": "C04",
       "evidence_type": "OBSERVED",
+      "prohibited_wording": "Kh\u00f4ng \u0111\u01b0\u1ee3c b\u1ecf claim boundary, n\u00e2ng model-implied th\u00e0nh observed fact, ho\u1eb7c kh\u00e1i qu\u00e1t ngo\u00e0i snapshot/range \u0111\u00e3 th\u1eed.",
       "result_ids": [
         "TERRA_MECH_EVENT_COUNT",
         "TERRA_MECH_DIRECT_CORRELATION",
@@ -46,9 +54,11 @@
       "status": "SUPPORTED"
     },
     {
+      "allowed_wording": "C\u00e1c preset stress Terra cho th\u1ea5y regime b\u00ecnh th\u01b0\u1eddng v\u00e0 runaway kh\u00e1c nhau r\u00f5 r\u1ec7t.",
       "claim_boundary": "T\u1ea7n su\u1ea5t \u0111\u01b0\u1eddng m\u00f4 ph\u1ecfng kh\u00f4ng ph\u1ea3i x\u00e1c su\u1ea5t ngo\u00e0i \u0111\u1eddi.",
       "claim_id": "C05",
       "evidence_type": "DERIVED_OR_SIMULATED",
+      "prohibited_wording": "Kh\u00f4ng \u0111\u01b0\u1ee3c b\u1ecf claim boundary, n\u00e2ng model-implied th\u00e0nh observed fact, ho\u1eb7c kh\u00e1i qu\u00e1t ngo\u00e0i snapshot/range \u0111\u00e3 th\u1eed.",
       "result_ids": [
         "TERRA_STRESS_BASELINE_COLLAPSE_COUNT",
         "TERRA_STRESS_SEVERE_COLLAPSE_COUNT"
@@ -57,9 +67,11 @@
       "status": "MODEL_CONDITIONAL"
     },
     {
+      "allowed_wording": "Snapshot Aave ch\u00ednh l\u00e0 REAL_MAINNET c\u00f9ng block v\u00e0 kh\u00f4ng d\u00f9ng Fixture l\u00e0m b\u1eb1ng ch\u1ee9ng ch\u00ednh.",
       "claim_boundary": "Cohort \u1ee9ng vi\u00ean kh\u00f4ng ph\u1ea3i to\u00e0n b\u1ed9 th\u1ecb tr\u01b0\u1eddng Aave.",
       "claim_id": "C06",
       "evidence_type": "OBSERVED",
+      "prohibited_wording": "Kh\u00f4ng \u0111\u01b0\u1ee3c b\u1ecf claim boundary, n\u00e2ng model-implied th\u00e0nh observed fact, ho\u1eb7c kh\u00e1i qu\u00e1t ngo\u00e0i snapshot/range \u0111\u00e3 th\u1eed.",
       "result_ids": [
         "AAVE_DATA_BLOCK_NUMBER",
         "AAVE_DATA_VERIFIED_BORROWERS",
@@ -69,9 +81,11 @@
       "status": "SUPPORTED"
     },
     {
+      "allowed_wording": "Professor Demo cho th\u1ea5y m\u1ee9c thanh l\u00fd v\u00e0 cascade theo ch\u00ednh gi\u1ea3 \u0111\u1ecbnh k\u1ecbch b\u1ea3n \u0111\u00e3 \u0111\u00f3ng b\u0103ng.",
       "claim_boundary": "Kh\u00f4ng suy r\u1ed9ng th\u00e0nh d\u1ef1 b\u00e1o Mainnet t\u01b0\u01a1ng lai.",
       "claim_id": "C07",
       "evidence_type": "DERIVED_OR_SIMULATED",
+      "prohibited_wording": "Kh\u00f4ng \u0111\u01b0\u1ee3c b\u1ecf claim boundary, n\u00e2ng model-implied th\u00e0nh observed fact, ho\u1eb7c kh\u00e1i qu\u00e1t ngo\u00e0i snapshot/range \u0111\u00e3 th\u1eed.",
       "result_ids": [
         "AAVE_DET_PROFESSOR_DEMO_TOTAL_LIQUIDATED_DEBT",
         "AAVE_DET_PROFESSOR_DEMO_CASCADE_DEPTH",
@@ -81,9 +95,11 @@
       "status": "MODEL_CONDITIONAL"
     },
     {
+      "allowed_wording": "\u0110\u1ed9 nh\u1ea1y Aave \u0111\u01b0\u1ee3c \u0111\u00e1nh gi\u00e1 b\u1eb1ng sweep m\u1ed9t y\u1ebfu t\u1ed1 v\u00e0 b\u1ec1 m\u1eb7t shock \u00d7 liquidity.",
       "claim_boundary": "Association trong m\u00f4 h\u00ecnh, kh\u00f4ng ph\u1ea3i quan h\u1ec7 nh\u00e2n qu\u1ea3.",
       "claim_id": "C08",
       "evidence_type": "DERIVED_OR_SIMULATED",
+      "prohibited_wording": "Kh\u00f4ng \u0111\u01b0\u1ee3c b\u1ecf claim boundary, n\u00e2ng model-implied th\u00e0nh observed fact, ho\u1eb7c kh\u00e1i qu\u00e1t ngo\u00e0i snapshot/range \u0111\u00e3 th\u1eed.",
       "result_ids": [
         "AAVE_DET_PROFESSOR_DEMO_MAX_PRICE_IMPACT",
         "AAVE_DET_PROFESSOR_DEMO_BAD_DEBT"
@@ -92,9 +108,11 @@
       "status": "MODEL_CONDITIONAL"
     },
     {
+      "allowed_wording": "T\u1ea7n su\u1ea5t cascade Monte Carlo c\u00f3 kho\u1ea3ng Wilson nh\u01b0ng v\u1eabn l\u00e0 t\u1ea7n su\u1ea5t l\u1ea5y m\u1eabu trong m\u00f4 h\u00ecnh.",
       "claim_boundary": "Kh\u00f4ng g\u1ecdi l\u00e0 x\u00e1c su\u1ea5t th\u1ef1c t\u1ebf.",
       "claim_id": "C09",
       "evidence_type": "DERIVED_OR_SIMULATED",
+      "prohibited_wording": "Kh\u00f4ng \u0111\u01b0\u1ee3c b\u1ecf claim boundary, n\u00e2ng model-implied th\u00e0nh observed fact, ho\u1eb7c kh\u00e1i qu\u00e1t ngo\u00e0i snapshot/range \u0111\u00e3 th\u1eed.",
       "result_ids": [
         "AAVE_MC_PROFESSOR_DEMO_CASCADE_FREQUENCY",
         "AAVE_MC_PROFESSOR_DEMO_CASCADE_WILSON_LOWER",
@@ -104,28 +122,126 @@
       "status": "MODEL_CONDITIONAL"
     },
     {
+      "allowed_wording": "Centrality ch\u1ec9 m\u00f4 t\u1ea3 vai tr\u00f2 c\u1ea7u n\u1ed1i trong sub-network Aave\u2013Uniswap nh\u1ecf.",
       "claim_boundary": "Kh\u00f4ng \u0111\u1ea1i di\u1ec7n t\u1ea7m quan tr\u1ecdng h\u1ec7 th\u1ed1ng tr\u00ean to\u00e0n DeFi.",
       "claim_id": "C10",
       "evidence_type": "DERIVED_OR_SIMULATED",
-      "result_ids": [],
+      "prohibited_wording": "Kh\u00f4ng \u0111\u01b0\u1ee3c b\u1ecf claim boundary, n\u00e2ng model-implied th\u00e0nh observed fact, ho\u1eb7c kh\u00e1i qu\u00e1t ngo\u00e0i snapshot/range \u0111\u00e3 th\u1eed.",
+      "result_ids": [
+        "NETWORK_AAVE_BETWEENNESS"
+      ],
       "statement_vi": "Centrality ch\u1ec9 m\u00f4 t\u1ea3 vai tr\u00f2 c\u1ea7u n\u1ed1i trong sub-network Aave\u2013Uniswap nh\u1ecf.",
       "status": "SUPPORTED_WITH_BOUNDARY"
     },
     {
+      "allowed_wording": "Terra kh\u00f4ng \u0111\u1ecbnh l\u01b0\u1ee3ng ki\u1ec3m ch\u1ee9ng c\u01a1 ch\u1ebf Aave v\u00e0 Aave kh\u00f4ng ch\u1ee9ng minh c\u01a1 ch\u1ebf Terra.",
       "claim_boundary": "T\u1ed5ng h\u1ee3p ch\u00e9o ch\u1ec9 \u1edf m\u1ee9c ph\u1ea3n h\u1ed3i phi tuy\u1ebfn v\u00e0 khu\u1ebfch \u0111\u1ea1i n\u1ed9i sinh.",
       "claim_id": "C11",
       "evidence_type": "DERIVED_OR_SIMULATED",
-      "result_ids": [],
+      "prohibited_wording": "Kh\u00f4ng \u0111\u01b0\u1ee3c b\u1ecf claim boundary, n\u00e2ng model-implied th\u00e0nh observed fact, ho\u1eb7c kh\u00e1i qu\u00e1t ngo\u00e0i snapshot/range \u0111\u00e3 th\u1eed.",
+      "result_ids": [
+        "CROSS_CASE_SYNTHESIS_BOUNDARY"
+      ],
       "statement_vi": "Terra kh\u00f4ng \u0111\u1ecbnh l\u01b0\u1ee3ng ki\u1ec3m ch\u1ee9ng c\u01a1 ch\u1ebf Aave v\u00e0 Aave kh\u00f4ng ch\u1ee9ng minh c\u01a1 ch\u1ebf Terra.",
       "status": "SUPPORTED_BOUNDARY"
     },
     {
+      "allowed_wording": "M\u00f4 h\u00ecnh d\u1ef1 b\u00e1o \u0111\u01b0\u1ee3c ch\u00ednh x\u00e1c v\u1ee5 s\u1ee5p \u0111\u1ed5 Terra.",
       "claim_boundary": "Strict OOS \u00e2m v\u00e0 c\u1ea3nh b\u00e1o depeg ban \u0111\u1ea7u mu\u1ed9n; kh\u00f4ng \u0111\u01b0\u1ee3c s\u1eed d\u1ee5ng claim n\u00e0y.",
       "claim_id": "C12",
       "evidence_type": "DERIVED_OR_SIMULATED",
-      "result_ids": [],
+      "prohibited_wording": "Kh\u00f4ng \u0111\u01b0\u1ee3c b\u1ecf claim boundary, n\u00e2ng model-implied th\u00e0nh observed fact, ho\u1eb7c kh\u00e1i qu\u00e1t ngo\u00e0i snapshot/range \u0111\u00e3 th\u1eed.",
+      "result_ids": [
+        "TERRA_TIMING_0_995",
+        "TERRA_EW_CUTOFF_SAFE_UST_BELOW_0_995_HIGH"
+      ],
       "statement_vi": "M\u00f4 h\u00ecnh d\u1ef1 b\u00e1o \u0111\u01b0\u1ee3c ch\u00ednh x\u00e1c v\u1ee5 s\u1ee5p \u0111\u1ed5 Terra.",
       "status": "UNSUPPORTED"
+    },
+    {
+      "allowed_wording": "Reaction delay 0\u20134 b\u01b0\u1edbc ch\u1ec9 d\u1ecbch th\u1eddi gian x\u1eed l\u00fd, kh\u00f4ng \u0111\u1ed5i severity trong tested range.",
+      "claim_boundary": "Canonical snapshot v\u00e0 Professor Demo; kh\u00f4ng kh\u00e1i qu\u00e1t ngo\u00e0i 0\u20134 b\u01b0\u1edbc.",
+      "claim_id": "C13",
+      "evidence_type": "DERIVED_OR_SIMULATED",
+      "prohibited_wording": "Kh\u00f4ng \u0111\u01b0\u1ee3c b\u1ecf claim boundary, n\u00e2ng model-implied th\u00e0nh observed fact, ho\u1eb7c kh\u00e1i qu\u00e1t ngo\u00e0i snapshot/range \u0111\u00e3 th\u1eed.",
+      "result_ids": [
+        "RQ3_DELAY_STATUS",
+        "RQ3_DELAY_0_TIME_TO_RECOVERY_SECONDS",
+        "RQ3_DELAY_4_TIME_TO_RECOVERY_SECONDS"
+      ],
+      "statement_vi": "Reaction delay 0\u20134 b\u01b0\u1edbc ch\u1ec9 d\u1ecbch th\u1eddi gian x\u1eed l\u00fd, kh\u00f4ng \u0111\u1ed5i severity trong tested range.",
+      "status": "MODEL_CONDITIONAL"
+    },
+    {
+      "allowed_wording": "Liquidator capital 25% v\u00e0 50% demand reference l\u00e0 binding; 100% v\u00e0 200% kh\u00f4ng binding.",
+      "claim_boundary": "Capital l\u00e0 funding c\u1ed9ng d\u1ed3n kh\u00f4ng t\u00e1i s\u1eed d\u1ee5ng theo engine hi\u1ec7n t\u1ea1i.",
+      "claim_id": "C14",
+      "evidence_type": "DERIVED_OR_SIMULATED",
+      "prohibited_wording": "Kh\u00f4ng \u0111\u01b0\u1ee3c b\u1ecf claim boundary, n\u00e2ng model-implied th\u00e0nh observed fact, ho\u1eb7c kh\u00e1i qu\u00e1t ngo\u00e0i snapshot/range \u0111\u00e3 th\u1eed.",
+      "result_ids": [
+        "RQ3_REQUIRED_CAPITAL_REFERENCE",
+        "RQ3_CAPITAL_0_25_TOTAL_LIQUIDATED_DEBT",
+        "RQ3_CAPITAL_0_5_TOTAL_LIQUIDATED_DEBT",
+        "RQ3_CAPITAL_1_0_TOTAL_LIQUIDATED_DEBT",
+        "RQ3_CAPITAL_2_0_TOTAL_LIQUIDATED_DEBT"
+      ],
+      "statement_vi": "Liquidator capital 25% v\u00e0 50% demand reference l\u00e0 binding; 100% v\u00e0 200% kh\u00f4ng binding.",
+      "status": "MODEL_CONDITIONAL"
+    },
+    {
+      "allowed_wording": "USDC upward depeg l\u00e0m HF y\u1ebfu h\u01a1n c\u00f2n downward depeg l\u00e0m HF m\u1ea1nh h\u01a1n qua debt valuation.",
+      "claim_boundary": "This experiment isolates the USDC debt-valuation channel.",
+      "claim_id": "C15",
+      "evidence_type": "DERIVED_OR_SIMULATED",
+      "prohibited_wording": "Kh\u00f4ng \u0111\u01b0\u1ee3c b\u1ecf claim boundary, n\u00e2ng model-implied th\u00e0nh observed fact, ho\u1eb7c kh\u00e1i qu\u00e1t ngo\u00e0i snapshot/range \u0111\u00e3 th\u1eed.",
+      "result_ids": [
+        "RQ5_USDC_BASELINE_COMPATIBLE",
+        "RQ5_USDC_1_1_BORROWERS_HF_BELOW_1_00",
+        "RQ5_USDC_1_0_BORROWERS_HF_BELOW_1_00",
+        "RQ5_USDC_0_9_BORROWERS_HF_BELOW_1_20"
+      ],
+      "statement_vi": "USDC upward depeg l\u00e0m HF y\u1ebfu h\u01a1n c\u00f2n downward depeg l\u00e0m HF m\u1ea1nh h\u01a1n qua debt valuation.",
+      "status": "MODEL_CONDITIONAL"
+    },
+    {
+      "allowed_wording": "LTV cao h\u01a1n t\u0103ng ex-ante borrowing capacity nh\u01b0ng gi\u1ea3m origination safety buffer.",
+      "claim_boundary": "Above counterfactual capacity kh\u00f4ng \u0111\u1ed3ng ngh\u0129a liquidatable; frozen debt kh\u00f4ng \u0111\u1ed5i.",
+      "claim_id": "C16",
+      "evidence_type": "DERIVED_OR_SIMULATED",
+      "prohibited_wording": "Kh\u00f4ng \u0111\u01b0\u1ee3c b\u1ecf claim boundary, n\u00e2ng model-implied th\u00e0nh observed fact, ho\u1eb7c kh\u00e1i qu\u00e1t ngo\u00e0i snapshot/range \u0111\u00e3 th\u1eed.",
+      "result_ids": [
+        "RQ6_LTV_0_755_AGGREGATE_MAX_BORROWING_CAPACITY_USD",
+        "RQ6_LTV_0_825_AGGREGATE_MAX_BORROWING_CAPACITY_USD"
+      ],
+      "statement_vi": "LTV cao h\u01a1n t\u0103ng ex-ante borrowing capacity nh\u01b0ng gi\u1ea3m origination safety buffer.",
+      "status": "MODEL_CONDITIONAL"
+    },
+    {
+      "allowed_wording": "Liquidation Threshold tr\u1ef1c ti\u1ebfp d\u1ecbch Health Factor v\u00e0 liquidation boundary.",
+      "claim_boundary": "WETH override kh\u00f4ng g\u00e1n l\u1ea1i threshold c\u1ee7a other collateral.",
+      "claim_id": "C17",
+      "evidence_type": "DERIVED_OR_SIMULATED",
+      "prohibited_wording": "Kh\u00f4ng \u0111\u01b0\u1ee3c b\u1ecf claim boundary, n\u00e2ng model-implied th\u00e0nh observed fact, ho\u1eb7c kh\u00e1i qu\u00e1t ngo\u00e0i snapshot/range \u0111\u00e3 th\u1eed.",
+      "result_ids": [
+        "RQ6_LT_0_83_TOTAL_LIQUIDATED_DEBT",
+        "RQ6_LT_0_855_TOTAL_LIQUIDATED_DEBT"
+      ],
+      "statement_vi": "Liquidation Threshold tr\u1ef1c ti\u1ebfp d\u1ecbch Health Factor v\u00e0 liquidation boundary.",
+      "status": "MODEL_CONDITIONAL"
+    },
+    {
+      "allowed_wording": "Liquidation bonus thay \u0111\u1ed5i collateral seized v\u00e0 liquidator expected profit trong tested range.",
+      "claim_boundary": "K\u1ebft qu\u1ea3 policy counterfactual; kh\u00f4ng suy ra execution behavior ngo\u00e0i m\u00f4 h\u00ecnh.",
+      "claim_id": "C18",
+      "evidence_type": "DERIVED_OR_SIMULATED",
+      "prohibited_wording": "Kh\u00f4ng \u0111\u01b0\u1ee3c b\u1ecf claim boundary, n\u00e2ng model-implied th\u00e0nh observed fact, ho\u1eb7c kh\u00e1i qu\u00e1t ngo\u00e0i snapshot/range \u0111\u00e3 th\u1eed.",
+      "result_ids": [
+        "RQ6_BONUS_STATUS",
+        "RQ6_BONUS_1_03_COLLATERAL_SEIZED_WETH",
+        "RQ6_BONUS_1_07_COLLATERAL_SEIZED_WETH"
+      ],
+      "statement_vi": "Liquidation bonus thay \u0111\u1ed5i collateral seized v\u00e0 liquidator expected profit trong tested range.",
+      "status": "MODEL_CONDITIONAL"
     }
   ]
 }

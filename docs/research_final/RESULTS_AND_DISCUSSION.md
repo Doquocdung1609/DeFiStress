@@ -1,57 +1,80 @@
 # KẾT QUẢ VÀ THẢO LUẬN
 
-## 5.1 Độ tin cậy dữ liệu — Table_01, Table_02; T01, A01
+## 5.1 Data validation
 
-Terra và Aave được đóng băng bằng hash. Aave có 500 ứng viên và 454 borrower xác minh, tương ứng tỷ lệ ứng viên 0.908; đây không phải độ phủ thị trường. Terra giữ missingness theo availability thay vì điền unavailable thành zero.
+Snapshot Aave block 26,045,352 có 454 borrower xác minh và cohort WETH/USDC 109; đây không phải market coverage.
 
-## 5.2 Cơ chế Terra — Table_12; T11
+## 5.2 RQ1 — Shock threshold / cascade
 
-277,342 event hỗ trợ identity gross mint trực tiếp. Tương quan theo giờ là 1 và sai số tích lũy tương đối 0.01065. Kết quả là accounting consistency, không phải price causality.
+**Question.** Shock tối thiểu nào tạo cascade depth ≥2?
 
-## 5.3 Historical Fit Terra — Table_10; T05–T07
+**Method.** Lưới shock −5%…−40% × haircut 0/25/50/75%.
 
-1. Historical Fit Terra đạt UST RMSE 0.1778 và tương quan 0.7601, nhưng sai số thời điểm tại ngưỡng 0,995 là -45 giờ (dấu âm nghĩa là mô phỏng sớm); do đó bằng chứng chỉ hỗ trợ tái dựng có điều kiện, không hỗ trợ claim dự báo chính xác.
+**Evidence/Finding.** `RQ1_GRID_MAX_CASCADE_DEPTH` = 1. Không quan sát được ngưỡng liquidation cascade trong miền stress đã thử.
 
-## 5.4 Early Warning — Table_11; T08–T09
+**Interpretation/Limitation/Answer.** Đây là negative finding trên lưới rời rạc, không phải bằng chứng threshold nằm ngoài −40%.
 
-2. Cảnh báo cutoff-safe High Risk cho ngưỡng 0,995 có lead time -45 giờ: cảnh báo xuất hiện sau depeg ban đầu. Với ngưỡng 0,90, lead time là 3 giờ.
+## 5.3 RQ2 — Liquidity
 
-## 5.5 Stress phản thực Terra — Table_13; T10
+**Question/Method.** Sweep haircut và shock × liquidity grid kiểm tra price impact, bad debt, liquidated debt và depth.
 
-Baseline có 0 đường chạm điều kiện collapse; Severe có 100. Cách viết đúng là số đường mô phỏng đạt điều kiện, không phải xác suất crash thực tế. Severe chạm floor biểu diễn runaway regime, không phải dự báo tail chính xác.
+**Evidence/Finding.** Range response của max price impact và bad debt lần lượt được ghi ở `AAVE_SENS_LIQUIDITY_HAIRCUT_MAX_PRICE_IMPACT_RANGE` và `AAVE_SENS_LIQUIDITY_HAIRCUT_BAD_DEBT_RANGE`; depth vẫn dưới 2.
 
-## 5.6 Vulnerability Aave Mainnet — Table_02–Table_04; A01–A03
+**Interpretation/Limitation/Answer.** Liquidity làm khuếch đại hậu quả nhưng chưa tạo liquidation wave mới trong range/snapshot/venue này.
 
-Snapshot block 26,045,352 có cohort WETH/USDC 109. Sai khác HF lớn nhất được giữ ở mức 0.6031; cờ mismatch không bị che hoặc loại borrower thủ công.
+## 5.4 RQ3 — Liquidator frictions
 
-## 5.7 Cascade lending–DEX — Table_04; A04–A08
+**Question/Method.** Kết hợp gas/capacity sweep, delay 0/1/2/4 và capital bằng 25/50/100/200% funding reference.
 
-Professor Demo có Wave 1 9063 và Wave 2+ 0. Nếu Wave 2+ bằng zero, kết luận là **NO ENDOGENOUS SECOND WAVE**.
+**Evidence/Finding.** Delay status `REACTION_DELAY_TIME_SHIFT_ONLY_NOT_SEVERITY_BINDING`; recovery time tăng từ 60 lên 300 giây trong khi severity không đổi. Required capital reference = 9063 USDC. Capital 25/50% làm total liquidated debt bằng 0/0; 100% khôi phục 9063.
 
-## 5.8 Thanh khoản như kênh khuếch đại — Table_05, Table_07; A07–A08
+**Interpretation/Limitation/Answer.** Binding: capital 25/50%. Non-binding: gas/capacity ranges cũ; delay không binding cho severity nhưng binding cho simulated processing time. Engine dùng funding cộng dồn, không tái sử dụng.
 
-Grid rời rạc đánh giá shock từ −5% đến −40% và haircut 0/25/50/75%. Chỉ báo ngưỡng không được nội suy ngoài các cell thử.
+## 5.5 RQ4 — Arbitrage
 
-## 5.9 Arbitrage như cơ chế ổn định — Table_05; A11
+**Question/Method.** Arbitrage-capacity one-factor sweep.
 
-Sweep arbitrage so sánh capacity trong khi giữ các giả định khác. Đây là phản ứng mô hình, không chứng minh arbitrage quan sát được đã gây ổn định lịch sử.
+**Evidence/Finding.** Range response max price impact = 0; cascade depth range = 0.
 
-## 5.10 Monte Carlo tail behavior — Table_06; A09–A10
+**Interpretation/Limitation/Answer.** Arbitrage capacity không binding trong tested range; không suy ra arbitrage thị trường thực không quan trọng.
 
-6. Monte Carlo Professor Demo có tần suất cascade 0, khoảng Wilson 95% [0, 0.01885]. Khoảng này chỉ mô tả lấy mẫu trong mô hình.
+## 5.6 RQ5 — Stablecoin debt valuation
 
-## 5.11 Mạng contagion đa lớp — Table_08–Table_09; A12–A16
+**Question/Method.** USDC/USD $0.90, $0.95, $0.99, $1.00, $1.01, $1.05, $1.10; chỉ revalue USDC debt tokens, không reprice `other_debt_usd`.
 
-Aave có vai trò cầu nối cấu trúc giữa exposure và execution venue trong topology đã mô hình hóa. Centrality không phải “tầm quan trọng hệ thống toàn DeFi”; score ma trận không phải xác suất.
+**Evidence/Finding.** Explicit $1 baseline tương thích legacy = True. HF<1 là 3 tại $1.10 và 1 tại $1.00; HF<1.20 tại $0.90 là 4.
 
-## 5.12 Độ bền và độ nhạy — Table_05, Table_14; T12, A11
+**Interpretation/Limitation/Answer.** Upward depeg làm USDC debt đắt hơn theo USD và làm HF yếu đi; downward depeg làm debt value giảm và HF mạnh lên hoặc không xấu đi. **This experiment isolates the USDC debt-valuation channel.** It does not represent the full market-liquidity, redemption, settlement or confidence consequences of a real stablecoin depeg.
 
-Strict OOS âm được giữ nguyên. Conditional replay, rolling origin, ablation, parameter uncertainty và seed robustness bổ sung kiểm tra nhưng không biến fit thành forecast.
+## 5.7 RQ6 — Policy parameters
 
-## 5.13 Tổng hợp hai ca — Table_15; C01
+### LTV — ex-ante capital efficiency
 
-Điểm chung hợp lệ là vòng phản hồi phi tuyến và khuếch đại nội sinh. Terra không định lượng xác thực engine Aave; snapshot Aave 2026 không chứng minh cơ chế Terra 2022.
+Capacity aggregate tăng từ 50,797,988.98 USD ở LTV 0.755 lên 53,675,575.37 USD ở 0.825. Higher LTV tăng capacity nhưng giảm origination buffer. Borrower above counterfactual capacity không được gọi là liquidatable.
 
-## 5.14 Mô hình có thể và không thể thiết lập
+### Liquidation Threshold — Health Factor boundary
 
-Mô hình có thể tái lập stress có điều kiện, kiểm tra consistency, so sánh scenario và làm rõ kênh truyền dẫn. Mô hình không thiết lập causal effect lịch sử, xác suất khủng hoảng thực tế, forecast chính xác hoặc systemic importance toàn DeFi.
+Total liquidated debt là 9063 tại LT 0.83 và 0 tại LT 0.855. LT trực tiếp thay đổi WETH collateral term trong HF; other collateral giữ threshold quan sát.
+
+### Liquidation Bonus — execution economics
+
+Status `LIQUIDATION_BONUS_BINDING_IN_TESTED_RANGE`. Collateral seized tăng từ 4.325 WETH tại 1.03 lên 4.493 WETH tại 1.07; bonus đi qua quote/profitability path.
+
+**Answer.** Ba parameter không thể gộp: LTV điều khiển ex-ante capital efficiency; LT điều khiển liquidation boundary; bonus điều khiển execution incentive/collateral economics.
+
+
+## 5.8 Terra Historical Validation Extension
+
+Terra giữ vai trò historical mechanism validation, reconstruction, cutoff-safe warning và counterfactual stress. Initial-depeg warning muộn và timing fit chưa hoàn hảo được giữ như negative evidence; Terra không trả lời thay RQ5 Aave.
+
+## 5.9 Multilayer Network Analysis Extension
+
+`NETWORK_AAVE_BETWEENNESS` = 0.1905; kết luận chỉ là structural bridge trong modeled sub-network.
+
+## 5.10 Robustness / Monte Carlo
+
+Fixed-seed Monte Carlo là model-implied sampling, không phải real-world probability.
+
+## 5.11 Cross-case discussion
+
+Điểm chung hợp lệ là phản hồi phi tuyến. `CROSS_CASE_SYNTHESIS_BOUNDARY` ngăn suy luận Terra kiểm chứng Aave hoặc ngược lại.
