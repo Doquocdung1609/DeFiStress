@@ -24,14 +24,14 @@
     "LITERATURE_GAPS.md": "88c42bb4c516dda8065a5b2f53ebf8505dff2008422f121b31e3119442e3fe12",
     "METHODOLOGY.md": "d18ea83e3ef79e4a24085de9d8d33327e0c3d75228d4d2bc97763f54b2f9ba7f",
     "PRESENTATION_BRIEF.md": "8b57fa09fa2f1e387e7703ca265e137dff2a4b96620d3e975f467da41d5a13a4",
-    "REPRODUCIBILITY.md": "17be3e09fcea08e3aad9842f857e6c21aed74cf54b76318095f89f5222535752",
+    "REPRODUCIBILITY.md": "361dbf83e926643c9160f0233049fd810550f12c693d90354b5fb7b4df096e9a",
     "RESULTS_AND_DISCUSSION.md": "921f70df42171bd4ffb4bd04e14a59738d0ada4044bf13efb3e59a02435b3ede",
     "RQ_ANSWER_MATRIX.md": "d79341aa7f698bf7bf1570e61565c4b99e5842e179bef513cff50f481fb480ab",
     "TABLE_FIGURE_INDEX.md": "4a109c82fbc69e4fa9f82c622059b6b91ef5f21fa8c920ef92a4025f4c934ae5"
   },
   "execution_time": "2026-10-13T06:52:37.677596Z",
   "fast_mode": false,
-  "generated_artifact_commit": null,
+  "generated_artifact_commit": "ea47d3841bbcfe27af1e1e500fdedb057b7bed2d",
   "input_hashes": {
     "data/processed/mainnet/aave_uniswap_snapshot_26045352.json": "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99",
     "data/processed/model_v2/terra_abm_v2_strict_oos.json": "2aa642b7cad12a7ba4d2c910f3ab788a9d7868d04106ccd4089e1c1a31989fbc",
@@ -202,7 +202,7 @@
   },
   "pipeline_version": "defistress-final-research-orchestrator-1.1.0",
   "previous_research_package_commit": "df8df8d24eb257262a8514d233bb59677d162380",
-  "provenance_note": "Artifact and metadata commit fields are finalized only after the corresponding Git commits; no SHA is fabricated.",
+  "provenance_note": "The artifact bundle SHA identifies the generated evidence commit. The metadata-finalization SHA identifies the subsequent provenance-only commit and is recorded by a final pointer commit; no commit self-reference is fabricated.",
   "regression_comparison": {
     "all_passed": true,
     "comparison_policy": "Every numeric leaf present in the previous core artifact must remain exactly equal; additive fields in the new artifacts are permitted.",
