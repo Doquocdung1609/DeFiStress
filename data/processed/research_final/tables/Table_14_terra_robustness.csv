@@ -1,0 +1,5 @@
+test,purpose,finding,supports_claim,limitation
+strict OOS V2,forecast audit,negative evidence retained,NO,frozen historical window
+conditional replay,mechanism reconstruction,UST RMSE=0.389604,PARTIAL,not prediction
+rolling origin,short-horizon robustness,four expanding windows,PARTIAL,six-hour horizon
+ablation/sensitivity,component dependence,reported without holdout selection,PARTIAL,model-dependent

@@ -1,0 +1,24 @@
+# Table_05 — Độ nhạy một yếu tố
+
+| claim_boundary | metric | parameter | sensitivity_family | spearman_rank_correlation |
+| --- | --- | --- | --- | --- |
+| Association within a controlled one-factor sweep; not causal inference. | total_liquidated_debt | shock_pct | ETH_SHOCK | -0.9697815168769668 |
+| Association within a controlled one-factor sweep; not causal inference. | bad_debt | shock_pct | ETH_SHOCK | -1.0 |
+| Association within a controlled one-factor sweep; not causal inference. | max_price_impact | shock_pct | ETH_SHOCK | -0.8095238095238096 |
+| Association within a controlled one-factor sweep; not causal inference. | cascade_depth | shock_pct | ETH_SHOCK | -0.8451542547285167 |
+| Association within a controlled one-factor sweep; not causal inference. | total_liquidated_debt | liquidity_haircut_pct | LIQUIDITY_HAIRCUT | None |
+| Association within a controlled one-factor sweep; not causal inference. | bad_debt | liquidity_haircut_pct | LIQUIDITY_HAIRCUT | 0.7999999999999999 |
+| Association within a controlled one-factor sweep; not causal inference. | max_price_impact | liquidity_haircut_pct | LIQUIDITY_HAIRCUT | 0.7999999999999999 |
+| Association within a controlled one-factor sweep; not causal inference. | cascade_depth | liquidity_haircut_pct | LIQUIDITY_HAIRCUT | None |
+| Association within a controlled one-factor sweep; not causal inference. | total_liquidated_debt | gas_multiplier | GAS_MULTIPLIER | None |
+| Association within a controlled one-factor sweep; not causal inference. | bad_debt | gas_multiplier | GAS_MULTIPLIER | None |
+| Association within a controlled one-factor sweep; not causal inference. | max_price_impact | gas_multiplier | GAS_MULTIPLIER | None |
+| Association within a controlled one-factor sweep; not causal inference. | cascade_depth | gas_multiplier | GAS_MULTIPLIER | None |
+| Association within a controlled one-factor sweep; not causal inference. | total_liquidated_debt | arbitrage_capacity_pct | ARBITRAGE_CAPACITY | None |
+| Association within a controlled one-factor sweep; not causal inference. | bad_debt | arbitrage_capacity_pct | ARBITRAGE_CAPACITY | None |
+| Association within a controlled one-factor sweep; not causal inference. | max_price_impact | arbitrage_capacity_pct | ARBITRAGE_CAPACITY | None |
+| Association within a controlled one-factor sweep; not causal inference. | cascade_depth | arbitrage_capacity_pct | ARBITRAGE_CAPACITY | None |
+| Association within a controlled one-factor sweep; not causal inference. | total_liquidated_debt | liquidator_capacity_usdc | LIQUIDATOR_CAPACITY | None |
+| Association within a controlled one-factor sweep; not causal inference. | bad_debt | liquidator_capacity_usdc | LIQUIDATOR_CAPACITY | None |
+| Association within a controlled one-factor sweep; not causal inference. | max_price_impact | liquidator_capacity_usdc | LIQUIDATOR_CAPACITY | None |
+| Association within a controlled one-factor sweep; not causal inference. | cascade_depth | liquidator_capacity_usdc | LIQUIDATOR_CAPACITY | None |

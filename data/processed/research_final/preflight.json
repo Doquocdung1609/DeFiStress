@@ -1,0 +1,73 @@
+{
+  "all_required_passed": true,
+  "checks": [
+    {
+      "command": "C:\\Users\\Admin\\Desktop\\DeFiStress\\.venv\\Scripts\\python.exe -m pytest",
+      "name": "pytest",
+      "return_code": 0,
+      "runtime_seconds": 42.95977820000553,
+      "status": "PASS",
+      "stderr_tail": "",
+      "stdout_tail": "........................................................................ [ 59%]\n..................................................                       [100%]\n============================== warnings summary ===============================\n.venv\\Lib\\site-packages\\websockets\\legacy\\__init__.py:6\n  C:\\Users\\Admin\\Desktop\\DeFiStress\\.venv\\Lib\\site-packages\\websockets\\legacy\\__init__.py:6: DeprecationWarning: websockets.legacy is deprecated; see https://websockets.readthedocs.io/en/stable/howto/upgrade.html for upgrade instructions\n    warnings.warn(  # deprecated in 14.0 - 2024-11-09\n\n.venv\\Lib\\site-packages\\fastapi\\testclient.py:1\n  C:\\Users\\Admin\\Desktop\\DeFiStress\\.venv\\Lib\\site-packages\\fastapi\\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n    from starlette.testclient import TestClient as TestClient  # noqa\n\n.venv\\Lib\\site-packages\\starlette\\testclient.py:53\n  C:\\Users\\Admin\\Desktop\\DeFiStress\\.venv\\Lib\\site-packages\\starlette\\testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.\n    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n122 passed, 3 warnings in 40.97s\n"
+    },
+    {
+      "command": "C:\\Users\\Admin\\Desktop\\DeFiStress\\.venv\\Scripts\\python.exe -m ruff check .",
+      "name": "ruff",
+      "return_code": 0,
+      "runtime_seconds": 0.2089179000031436,
+      "status": "PASS",
+      "stderr_tail": "",
+      "stdout_tail": "All checks passed!\n"
+    },
+    {
+      "command": "C:\\Users\\Admin\\Desktop\\DeFiStress\\.venv\\Scripts\\python.exe -m mypy",
+      "name": "mypy",
+      "return_code": 0,
+      "runtime_seconds": 2.3818061999918427,
+      "status": "PASS",
+      "stderr_tail": "",
+      "stdout_tail": "Success: no issues found in 46 source files\n"
+    },
+    {
+      "command": "pnpm.cmd test -- --run",
+      "name": "vitest",
+      "return_code": 0,
+      "runtime_seconds": 3.634741899993969,
+      "status": "PASS",
+      "stderr_tail": "$ vitest run \"--\" \"--run\"\n",
+      "stdout_tail": "\n RUN  v3.2.7 C:/Users/Admin/Desktop/DeFiStress/frontend\n\n \u00e2\u0153\u201c lib/terra-demo.test.ts (2 tests) 9ms\n \u00e2\u0153\u201c lib/terra.test.ts (2 tests) 8ms\n \u00e2\u0153\u201c lib/snapshot-selection.test.ts (11 tests) 17ms\n \u00e2\u0153\u201c lib/contagion.test.ts (4 tests) 167ms\n \u00e2\u0153\u201c lib/api.test.ts (2 tests) 176ms\n\n Test Files  5 passed (5)\n      Tests  21 passed (21)\n   Start at  11:24:52\n   Duration  1.67s (transform 1.21s, setup 0ms, collect 1.62s, tests 377ms, environment 3ms, prepare 2.62s)\n\n"
+    },
+    {
+      "command": "pnpm.cmd lint",
+      "name": "eslint",
+      "return_code": 0,
+      "runtime_seconds": 17.200206200010143,
+      "status": "PASS",
+      "stderr_tail": "$ eslint .\n",
+      "stdout_tail": ""
+    },
+    {
+      "command": "pnpm.cmd build",
+      "name": "next_build",
+      "return_code": 0,
+      "runtime_seconds": 14.370733100004145,
+      "status": "PASS",
+      "stderr_tail": "$ next build\n",
+      "stdout_tail": "\u00e2\u2013\u00b2 Next.js 16.3.5 (Turbopack)\n\u00e2\u0153\u201c Running next.config.ts took 55ms\n\n  Creating an optimized production build ...\n\u00e2\u0153\u201c Compiled successfully in 1253ms\n  Running TypeScript ...\n  Finished TypeScript in 5.6s ...\n  Collecting page data using 7 workers ...\n  Generating static pages using 7 workers (0/3) ...\n\u00e2\u0153\u201c Generating static pages using 7 workers (3/3) in 1379ms\n  Finalizing page optimization ...\n\nRoute (app)\n\u00e2\u201d\u0152 \u00e2\u2014\u2039 /\n\u00e2\u201d\u0153 \u00e2\u2014\u2039 /_not-found\n\u00e2\u201d\u0153 \u00c6\u2019 /[section]\n\u00e2\u201d\u0153 \u00c6\u2019 /results/[runId]\n\u00e2\u201d\u201d \u00c6\u2019 /terra/[section]\n\n\n\u00e2\u2014\u2039  (Static)   prerendered as static content\n\u00c6\u2019  (Dynamic)  server-rendered on demand\n\n"
+    }
+  ],
+  "generated_at": "2026-10-13T04:25:26.363032Z",
+  "node": "v22.13.1",
+  "packages": {
+    "matplotlib": "3.11.2",
+    "mypy": "1.20.2",
+    "networkx": "3.7",
+    "numpy": "2.5.3",
+    "pandas": "2.3.3",
+    "pytest": "8.4.2",
+    "ruff": "0.16.7"
+  },
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "source_code_commit": "620746513dec3a7afad00eb8ce10b0d0add538cc"
+}

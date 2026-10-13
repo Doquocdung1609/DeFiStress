@@ -1,0 +1,8 @@
+{
+  "configured_presence_only": {
+    "AAVE_V3_SUBGRAPH_ID": false,
+    "ETH_RPC_URL": false,
+    "GRAPH_API_KEY": false
+  },
+  "status": "NOT_REQUESTED"
+}

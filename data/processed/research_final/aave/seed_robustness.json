@@ -1,0 +1,54 @@
+{
+  "PROFESSOR_DEMO": [
+    {
+      "expected_shortfall_95": 21393.226144388645,
+      "median_liquidated_debt": 9063.255437,
+      "model_implied_cascade_frequency": 0.0,
+      "p95_liquidated_debt": 18126.510874,
+      "runs": 200,
+      "seed": 20260914
+    },
+    {
+      "expected_shortfall_95": 21264.375612460695,
+      "median_liquidated_debt": 9063.255437,
+      "model_implied_cascade_frequency": 0.0,
+      "p95_liquidated_debt": 18126.510874,
+      "runs": 200,
+      "seed": 20260915
+    },
+    {
+      "expected_shortfall_95": 21328.82846242683,
+      "median_liquidated_debt": 9063.255437,
+      "model_implied_cascade_frequency": 0.0,
+      "p95_liquidated_debt": 18126.510874,
+      "runs": 200,
+      "seed": 20260916
+    }
+  ],
+  "Severe": [
+    {
+      "expected_shortfall_95": 38133.73511851763,
+      "median_liquidated_debt": 18126.510874,
+      "model_implied_cascade_frequency": 0.0,
+      "p95_liquidated_debt": 20602.55083,
+      "runs": 200,
+      "seed": 20260914
+    },
+    {
+      "expected_shortfall_95": 36482.49454166697,
+      "median_liquidated_debt": 18126.510874,
+      "model_implied_cascade_frequency": 0.0,
+      "p95_liquidated_debt": 20602.55083,
+      "runs": 200,
+      "seed": 20260915
+    },
+    {
+      "expected_shortfall_95": 37311.28891784251,
+      "median_liquidated_debt": 18126.510874,
+      "model_implied_cascade_frequency": 0.005,
+      "p95_liquidated_debt": 20602.55083,
+      "runs": 200,
+      "seed": 20260916
+    }
+  ]
+}

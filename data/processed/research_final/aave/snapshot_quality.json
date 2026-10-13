@@ -1,0 +1,75 @@
+{
+  "artifact": "data/processed/mainnet/aave_uniswap_snapshot_26045352.json",
+  "block_hash": "4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+  "block_number": 26045352,
+  "block_timestamp": "2026-09-24T05:50:35+00:00",
+  "candidate_verification_rate": 0.908,
+  "candidate_verification_rate_boundary": "Rate within the top Graph-discovered debt candidates; not total-market coverage.",
+  "candidates_discovered": 500,
+  "chain_id": 1,
+  "failed_reads": 0,
+  "health_factor_validation": {
+    "compared_borrowers": 454,
+    "max_absolute_error": 0.6030771587253917,
+    "max_relative_error_ratio": 0.005823952066257817,
+    "median_absolute_error": 3.03122167894885e-05,
+    "median_relative_error_ratio": 1.303416619792842e-05,
+    "quality_flag_count": 6
+  },
+  "mode": "REAL_MAINNET",
+  "sha256": "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99",
+  "source_manifest": {
+    "aave": {
+      "address_book_commit": "f08dbd218a1da7ea1ac3bb0e387652fdb9f98042",
+      "address_book_source": "https://assets.aave.com/address-book/releases/latest/modules/AaveV3Ethereum.json",
+      "address_book_version": "4.70.2",
+      "data_provider": "0x0a16f2FCC0D44FaE41cc54e079281D84A363bECD",
+      "market": "Aave V3 Ethereum",
+      "oracle": "0x54586bE62E3c3580375aE3723C145253060Ca0C2",
+      "pool": "0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2"
+    },
+    "application": {
+      "model_version": "0.1.0-aave-v3.7-approx"
+    },
+    "block_hash": "4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+    "block_number": 26045352,
+    "borrower_discovery": {
+      "block_number": 26045352,
+      "candidate_count": 500,
+      "source": "The Graph",
+      "subgraph_id": "JCNWRypm7FYwV8fx5HhzZPSFaMxgkPuw4TnR3Gpi81zk"
+    },
+    "chain_id": 1,
+    "rpc_provider": "https://eth-mainnet.g.alchemy.com",
+    "snapshot_coordination": {
+      "confirmed_rpc_head": 26045352,
+      "graph_head": 26045364,
+      "rpc_head": 26045364,
+      "snapshot_block": 26045352,
+      "snapshot_confirmations": 12
+    },
+    "state_verification": {
+      "aave_method": "Pool.getUserAccountData",
+      "block_number": 26045352,
+      "source": "Ethereum Mainnet RPC"
+    },
+    "uniswap": {
+      "factory": "0x1F98431c8aD98523631AE4a59f267346ea31F984",
+      "fee": 3000,
+      "pool": "0x8ad599c3A0ff1De082011EFDDc58f1908eb6e6D8"
+    }
+  },
+  "uniswap": {
+    "depth_usdc_2pct": 1667709.859389457,
+    "fee": 3000,
+    "pool_address": "0x8ad599c3A0ff1De082011EFDDc58f1908eb6e6D8",
+    "source": "REAL_MAINNET",
+    "spot_price": 2694.008050568294,
+    "tick": 197332,
+    "tick_count": 600
+  },
+  "usdc_borrowers": 182,
+  "verified_borrowers": 454,
+  "weth_collateral_borrowers": 255,
+  "weth_usdc_cohort": 109
+}

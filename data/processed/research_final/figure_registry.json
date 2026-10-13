@@ -1,0 +1,292 @@
+[
+  {
+    "caption": "Terra: gi\u00e1 UST v\u00e0 LUNA l\u1ecbch s\u1eed. Hai t\u00e0i s\u1ea3n gi\u1ea3m theo thang \u0111o r\u1ea5t kh\u00e1c nhau; h\u00ecnh n\u00e0y ch\u1ec9 m\u00f4 t\u1ea3 l\u1ecbch s\u1eed.",
+    "data_status": "OBSERVED",
+    "id": "T01",
+    "main_takeaway": "Hai t\u00e0i s\u1ea3n gi\u1ea3m theo thang \u0111o r\u1ea5t kh\u00e1c nhau; h\u00ecnh n\u00e0y ch\u1ec9 m\u00f4 t\u1ea3 l\u1ecbch s\u1eed.",
+    "path": "data/processed/research_final/figures/T01_terra_prices.png",
+    "presentation_priority": "CORE",
+    "research_question": "RQ3",
+    "title": "Terra: gi\u00e1 UST v\u00e0 LUNA l\u1ecbch s\u1eed"
+  },
+  {
+    "caption": "Terra: ngu\u1ed3n cung LUNA. Ngu\u1ed3n cung t\u0103ng m\u1ea1nh trong c\u1eeda s\u1ed5 s\u1ee5p \u0111\u1ed5.",
+    "data_status": "OBSERVED",
+    "id": "T02",
+    "main_takeaway": "Ngu\u1ed3n cung t\u0103ng m\u1ea1nh trong c\u1eeda s\u1ed5 s\u1ee5p \u0111\u1ed5.",
+    "path": "data/processed/research_final/figures/T02_terra_supply.png",
+    "presentation_priority": "CORE",
+    "research_question": "RQ3",
+    "title": "Terra: ngu\u1ed3n cung LUNA"
+  },
+  {
+    "caption": "Anchor: ti\u1ec1n g\u1eedi v\u00e0 d\u00f2ng r\u00fat. D\u00f2ng r\u00fat ch\u1ec9 \u0111\u01b0\u1ee3c coi l\u00e0 quan s\u00e1t trong kho\u1ea3ng availability \u0111\u00e3 c\u00f4ng b\u1ed1.",
+    "data_status": "MIXED_AVAILABILITY",
+    "id": "T03",
+    "main_takeaway": "D\u00f2ng r\u00fat ch\u1ec9 \u0111\u01b0\u1ee3c coi l\u00e0 quan s\u00e1t trong kho\u1ea3ng availability \u0111\u00e3 c\u00f4ng b\u1ed1.",
+    "path": "data/processed/research_final/figures/T03_anchor_flows.png",
+    "presentation_priority": "APPENDIX",
+    "research_question": "RQ4",
+    "title": "Anchor: ti\u1ec1n g\u1eedi v\u00e0 d\u00f2ng r\u00fat"
+  },
+  {
+    "caption": "Terra: t\u1ef7 l\u1ec7 b\u1ea3o ch\u1ee9ng kh\u1ea3 d\u1ee5ng. Chu\u1ed7i c\u00f3 kho\u1ea3ng unavailable; kh\u00f4ng n\u1ed9i suy th\u00e0nh quan s\u00e1t.",
+    "data_status": "PARTIALLY_OBSERVED",
+    "id": "T04",
+    "main_takeaway": "Chu\u1ed7i c\u00f3 kho\u1ea3ng unavailable; kh\u00f4ng n\u1ed9i suy th\u00e0nh quan s\u00e1t.",
+    "path": "data/processed/research_final/figures/T04_backing_ratio.png",
+    "presentation_priority": "APPENDIX",
+    "research_question": "RQ3",
+    "title": "Terra: t\u1ef7 l\u1ec7 b\u1ea3o ch\u1ee9ng kh\u1ea3 d\u1ee5ng"
+  },
+  {
+    "caption": "Historical Fit: UST quan s\u00e1t v\u00e0 m\u00f4 ph\u1ecfng. M\u00f4 h\u00ecnh t\u00e1i d\u1ef1ng h\u01b0\u1edbng \u0111i nh\u01b0ng ch\u1ea1m c\u00e1c ng\u01b0\u1ee1ng qu\u00e1 s\u1edbm.",
+    "data_status": "OBSERVED_AND_SIMULATED",
+    "id": "T05",
+    "main_takeaway": "M\u00f4 h\u00ecnh t\u00e1i d\u1ef1ng h\u01b0\u1edbng \u0111i nh\u01b0ng ch\u1ea1m c\u00e1c ng\u01b0\u1ee1ng qu\u00e1 s\u1edbm.",
+    "path": "data/processed/research_final/figures/T05_ust_fit.png",
+    "presentation_priority": "CORE",
+    "research_question": "RQ3",
+    "title": "Historical Fit: UST quan s\u00e1t v\u00e0 m\u00f4 ph\u1ecfng"
+  },
+  {
+    "caption": "Historical Fit: LUNA quan s\u00e1t v\u00e0 m\u00f4 ph\u1ecfng. T\u01b0\u01a1ng quan cao kh\u00f4ng \u0111\u1ed3ng ngh\u0129a d\u1ef1 b\u00e1o \u0111\u00fang th\u1eddi \u0111i\u1ec3m.",
+    "data_status": "OBSERVED_AND_SIMULATED",
+    "id": "T06",
+    "main_takeaway": "T\u01b0\u01a1ng quan cao kh\u00f4ng \u0111\u1ed3ng ngh\u0129a d\u1ef1 b\u00e1o \u0111\u00fang th\u1eddi \u0111i\u1ec3m.",
+    "path": "data/processed/research_final/figures/T06_luna_fit.png",
+    "presentation_priority": "CORE",
+    "research_question": "RQ3",
+    "title": "Historical Fit: LUNA quan s\u00e1t v\u00e0 m\u00f4 ph\u1ecfng"
+  },
+  {
+    "caption": "Historical Fit: ngu\u1ed3n cung LUNA. T\u00e1i d\u1ef1ng ngu\u1ed3n cung t\u1ed1t trong c\u1eeda s\u1ed5 c\u00f3 d\u1eef li\u1ec7u nh\u01b0ng v\u1eabn l\u00e0 fit c\u00f3 \u0111i\u1ec1u ki\u1ec7n.",
+    "data_status": "OBSERVED_AND_SIMULATED",
+    "id": "T07",
+    "main_takeaway": "T\u00e1i d\u1ef1ng ngu\u1ed3n cung t\u1ed1t trong c\u1eeda s\u1ed5 c\u00f3 d\u1eef li\u1ec7u nh\u01b0ng v\u1eabn l\u00e0 fit c\u00f3 \u0111i\u1ec1u ki\u1ec7n.",
+    "path": "data/processed/research_final/figures/T07_supply_fit.png",
+    "presentation_priority": "CORE",
+    "research_question": "RQ3",
+    "title": "Historical Fit: ngu\u1ed3n cung LUNA"
+  },
+  {
+    "caption": "\u0110i\u1ec3m c\u1ea3nh b\u00e1o s\u1edbm Terra. Cutoff-safe c\u1ea3nh b\u00e1o mu\u1ed9n cho depeg ban \u0111\u1ea7u nh\u01b0ng s\u1edbm h\u01a1n ng\u01b0\u1ee1ng 0,90 \u1edf m\u1ee9c High Risk.",
+    "data_status": "DERIVED_INDICATOR",
+    "id": "T08",
+    "main_takeaway": "Cutoff-safe c\u1ea3nh b\u00e1o mu\u1ed9n cho depeg ban \u0111\u1ea7u nh\u01b0ng s\u1edbm h\u01a1n ng\u01b0\u1ee1ng 0,90 \u1edf m\u1ee9c High Risk.",
+    "path": "data/processed/research_final/figures/T08_early_warning.png",
+    "presentation_priority": "CORE",
+    "research_question": "RQ4",
+    "title": "\u0110i\u1ec3m c\u1ea3nh b\u00e1o s\u1edbm Terra"
+  },
+  {
+    "caption": "Lead/lag c\u1ea3nh b\u00e1o. C\u1ea3nh b\u00e1o cutoff-safe kh\u00f4ng \u0111i tr\u01b0\u1edbc depeg ban \u0111\u1ea7u.",
+    "data_status": "DERIVED_INDICATOR",
+    "id": "T09",
+    "main_takeaway": "C\u1ea3nh b\u00e1o cutoff-safe kh\u00f4ng \u0111i tr\u01b0\u1edbc depeg ban \u0111\u1ea7u.",
+    "path": "data/processed/research_final/figures/T09_warning_timing.png",
+    "presentation_priority": "CORE",
+    "research_question": "RQ4",
+    "title": "Lead/lag c\u1ea3nh b\u00e1o"
+  },
+  {
+    "caption": "Fan chart stress Terra. Ph\u00e2n ph\u1ed1i l\u00e0 b\u1ea5t \u0111\u1ecbnh trong m\u00f4 h\u00ecnh, kh\u00f4ng ph\u1ea3i x\u00e1c su\u1ea5t th\u1ecb tr\u01b0\u1eddng.",
+    "data_status": "SIMULATED",
+    "id": "T10",
+    "main_takeaway": "Ph\u00e2n ph\u1ed1i l\u00e0 b\u1ea5t \u0111\u1ecbnh trong m\u00f4 h\u00ecnh, kh\u00f4ng ph\u1ea3i x\u00e1c su\u1ea5t th\u1ecb tr\u01b0\u1eddng.",
+    "path": "data/processed/research_final/figures/T10_stress_fan.png",
+    "presentation_priority": "APPENDIX",
+    "research_question": "RQ3",
+    "title": "Fan chart stress Terra"
+  },
+  {
+    "caption": "So s\u00e1nh ki\u1ec3m tra c\u01a1 ch\u1ebf. Direct event output ki\u1ec3m tra nh\u1ea5t qu\u00e1n k\u1ebf to\u00e1n, kh\u00f4ng ch\u1ee9ng minh nh\u00e2n qu\u1ea3 gi\u00e1.",
+    "data_status": "OBSERVED_DERIVED",
+    "id": "T11",
+    "main_takeaway": "Direct event output ki\u1ec3m tra nh\u1ea5t qu\u00e1n k\u1ebf to\u00e1n, kh\u00f4ng ch\u1ee9ng minh nh\u00e2n qu\u1ea3 gi\u00e1.",
+    "path": "data/processed/research_final/figures/T11_mechanism_comparison.png",
+    "presentation_priority": "CORE",
+    "research_question": "RQ3",
+    "title": "So s\u00e1nh ki\u1ec3m tra c\u01a1 ch\u1ebf"
+  },
+  {
+    "caption": "T\u00f3m t\u1eaft \u0111\u1ed9 b\u1ec1n Terra. C\u00e1c ch\u1ec9 s\u1ed1 c\u00f3 \u0111\u01a1n v\u1ecb kh\u00e1c nhau; d\u00f9ng \u0111\u1ec3 \u0111\u1ecbnh v\u1ecb sai s\u1ed1, kh\u00f4ng x\u1ebfp h\u1ea1ng chung.",
+    "data_status": "DERIVED",
+    "id": "T12",
+    "main_takeaway": "C\u00e1c ch\u1ec9 s\u1ed1 c\u00f3 \u0111\u01a1n v\u1ecb kh\u00e1c nhau; d\u00f9ng \u0111\u1ec3 \u0111\u1ecbnh v\u1ecb sai s\u1ed1, kh\u00f4ng x\u1ebfp h\u1ea1ng chung.",
+    "path": "data/processed/research_final/figures/T12_robustness.png",
+    "presentation_priority": "APPENDIX",
+    "research_question": "RQ3",
+    "title": "T\u00f3m t\u1eaft \u0111\u1ed9 b\u1ec1n Terra"
+  },
+  {
+    "caption": "Ph\u00e2n ph\u1ed1i Health Factor. Ph\u00e2n ph\u1ed1i m\u00f4 t\u1ea3 cohort \u0111\u00e3 x\u00e1c minh, kh\u00f4ng ph\u1ea3i to\u00e0n th\u1ecb tr\u01b0\u1eddng.",
+    "data_status": "REAL_MAINNET",
+    "id": "A01",
+    "main_takeaway": "Ph\u00e2n ph\u1ed1i m\u00f4 t\u1ea3 cohort \u0111\u00e3 x\u00e1c minh, kh\u00f4ng ph\u1ea3i to\u00e0n th\u1ecb tr\u01b0\u1eddng.",
+    "path": "data/processed/research_final/figures/A01_health_factor_distribution.png",
+    "presentation_priority": "CORE",
+    "research_question": "RQ1",
+    "title": "Ph\u00e2n ph\u1ed1i Health Factor"
+  },
+  {
+    "caption": "T\u1eadp trung n\u1ee3. Ch\u1ec9 d\u00f9ng x\u1ebfp h\u1ea1ng \u1ea9n danh; \u0111\u1ecba ch\u1ec9 borrower kh\u00f4ng \u0111\u01b0\u1ee3c xu\u1ea5t.",
+    "data_status": "REAL_MAINNET",
+    "id": "A02",
+    "main_takeaway": "Ch\u1ec9 d\u00f9ng x\u1ebfp h\u1ea1ng \u1ea9n danh; \u0111\u1ecba ch\u1ec9 borrower kh\u00f4ng \u0111\u01b0\u1ee3c xu\u1ea5t.",
+    "path": "data/processed/research_final/figures/A02_debt_concentration.png",
+    "presentation_priority": "APPENDIX",
+    "research_question": "RQ1",
+    "title": "T\u1eadp trung n\u1ee3"
+  },
+  {
+    "caption": "\u0110\u1ed9 s\u00e2u pool Uniswap. Venue th\u1ef1c thi \u0111\u01b0\u1ee3c ch\u1ecdn theo d\u1eef li\u1ec7u snapshot c\u00f9ng block.",
+    "data_status": "REAL_MAINNET",
+    "id": "A03",
+    "main_takeaway": "Venue th\u1ef1c thi \u0111\u01b0\u1ee3c ch\u1ecdn theo d\u1eef li\u1ec7u snapshot c\u00f9ng block.",
+    "path": "data/processed/research_final/figures/A03_pool_depth.png",
+    "presentation_priority": "CORE",
+    "research_question": "RQ3",
+    "title": "\u0110\u1ed9 s\u00e2u pool Uniswap"
+  },
+  {
+    "caption": "N\u1ee3 thanh l\u00fd theo k\u1ecbch b\u1ea3n. M\u1ee9c thanh l\u00fd ph\u1ee5 thu\u1ed9c m\u1ea1nh v\u00e0o gi\u1ea3 \u0111\u1ecbnh c\u00fa s\u1ed1c.",
+    "data_status": "SIMULATED_ON_REAL_MAINNET_STATE",
+    "id": "A04",
+    "main_takeaway": "M\u1ee9c thanh l\u00fd ph\u1ee5 thu\u1ed9c m\u1ea1nh v\u00e0o gi\u1ea3 \u0111\u1ecbnh c\u00fa s\u1ed1c.",
+    "path": "data/processed/research_final/figures/A04_scenario_comparison.png",
+    "presentation_priority": "CORE",
+    "research_question": "RQ1/RQ2",
+    "title": "N\u1ee3 thanh l\u00fd theo k\u1ecbch b\u1ea3n"
+  },
+  {
+    "caption": "Thanh l\u00fd theo c\u00fa s\u1ed1c ETH. B\u1ec1 m\u1eb7t ph\u1ea3n \u1ee9ng c\u00f3 th\u1ec3 phi tuy\u1ebfn v\u00e0 ch\u1ec9 \u0111\u01b0\u1ee3c \u0111\u00e1nh gi\u00e1 t\u1ea1i c\u00e1c \u0111i\u1ec3m th\u1eed.",
+    "data_status": "SIMULATED",
+    "id": "A05",
+    "main_takeaway": "B\u1ec1 m\u1eb7t ph\u1ea3n \u1ee9ng c\u00f3 th\u1ec3 phi tuy\u1ebfn v\u00e0 ch\u1ec9 \u0111\u01b0\u1ee3c \u0111\u00e1nh gi\u00e1 t\u1ea1i c\u00e1c \u0111i\u1ec3m th\u1eed.",
+    "path": "data/processed/research_final/figures/A05_liquidation_vs_shock.png",
+    "presentation_priority": "CORE",
+    "research_question": "RQ1",
+    "title": "Thanh l\u00fd theo c\u00fa s\u1ed1c ETH"
+  },
+  {
+    "caption": "N\u1ee3 x\u1ea5u theo c\u00fa s\u1ed1c ETH. N\u1ee3 x\u1ea5u l\u00e0 model-implied d\u01b0\u1edbi n\u0103ng l\u1ef1c liquidator \u0111\u00e3 \u0111\u1eb7t.",
+    "data_status": "SIMULATED",
+    "id": "A06",
+    "main_takeaway": "N\u1ee3 x\u1ea5u l\u00e0 model-implied d\u01b0\u1edbi n\u0103ng l\u1ef1c liquidator \u0111\u00e3 \u0111\u1eb7t.",
+    "path": "data/processed/research_final/figures/A06_bad_debt_vs_shock.png",
+    "presentation_priority": "CORE",
+    "research_question": "RQ1",
+    "title": "N\u1ee3 x\u1ea5u theo c\u00fa s\u1ed1c ETH"
+  },
+  {
+    "caption": "\u0110\u1ed9 s\u00e2u cascade: shock \u00d7 liquidity. Ng\u01b0\u1ee1ng ch\u1ec9 l\u00e0 chuy\u1ec3n ti\u1ebfp r\u1eddi r\u1ea1c trong l\u01b0\u1edbi th\u1eed.",
+    "data_status": "SIMULATED_GRID",
+    "id": "A07",
+    "main_takeaway": "Ng\u01b0\u1ee1ng ch\u1ec9 l\u00e0 chuy\u1ec3n ti\u1ebfp r\u1eddi r\u1ea1c trong l\u01b0\u1edbi th\u1eed.",
+    "path": "data/processed/research_final/figures/A07_cascade_heatmap.png",
+    "presentation_priority": "CORE",
+    "research_question": "RQ1/RQ2",
+    "title": "\u0110\u1ed9 s\u00e2u cascade: shock \u00d7 liquidity"
+  },
+  {
+    "caption": "N\u1ee3 x\u1ea5u: shock \u00d7 liquidity. Thanh kho\u1ea3n th\u1ea5p c\u00f3 th\u1ec3 khu\u1ebfch \u0111\u1ea1i h\u1eadu qu\u1ea3 t\u00f9y v\u00f9ng k\u1ecbch b\u1ea3n.",
+    "data_status": "SIMULATED_GRID",
+    "id": "A08",
+    "main_takeaway": "Thanh kho\u1ea3n th\u1ea5p c\u00f3 th\u1ec3 khu\u1ebfch \u0111\u1ea1i h\u1eadu qu\u1ea3 t\u00f9y v\u00f9ng k\u1ecbch b\u1ea3n.",
+    "path": "data/processed/research_final/figures/A08_bad_debt_heatmap.png",
+    "presentation_priority": "CORE",
+    "research_question": "RQ1/RQ2",
+    "title": "N\u1ee3 x\u1ea5u: shock \u00d7 liquidity"
+  },
+  {
+    "caption": "Ph\u00e2n ph\u1ed1i n\u1ee3 x\u1ea5u Monte Carlo. \u0110\u00e2y l\u00e0 ph\u00e2n ph\u1ed1i trong m\u00f4 h\u00ecnh, kh\u00f4ng ph\u1ea3i ph\u00e2n ph\u1ed1i x\u00e1c su\u1ea5t th\u1ef1c t\u1ebf.",
+    "data_status": "SIMULATED",
+    "id": "A09",
+    "main_takeaway": "\u0110\u00e2y l\u00e0 ph\u00e2n ph\u1ed1i trong m\u00f4 h\u00ecnh, kh\u00f4ng ph\u1ea3i ph\u00e2n ph\u1ed1i x\u00e1c su\u1ea5t th\u1ef1c t\u1ebf.",
+    "path": "data/processed/research_final/figures/A09_mc_bad_debt.png",
+    "presentation_priority": "CORE",
+    "research_question": "RQ1",
+    "title": "Ph\u00e2n ph\u1ed1i n\u1ee3 x\u1ea5u Monte Carlo"
+  },
+  {
+    "caption": "CDF n\u1ee3 thanh l\u00fd. CDF ph\u1ea3n \u00e1nh bi\u1ebfn thi\u00ean theo nhi\u1ec5u m\u00f4 ph\u1ecfng v\u1edbi seed/runs \u0111\u00e3 c\u00f4ng b\u1ed1.",
+    "data_status": "SIMULATED",
+    "id": "A10",
+    "main_takeaway": "CDF ph\u1ea3n \u00e1nh bi\u1ebfn thi\u00ean theo nhi\u1ec5u m\u00f4 ph\u1ecfng v\u1edbi seed/runs \u0111\u00e3 c\u00f4ng b\u1ed1.",
+    "path": "data/processed/research_final/figures/A10_liquidation_cdf.png",
+    "presentation_priority": "APPENDIX",
+    "research_question": "RQ1",
+    "title": "CDF n\u1ee3 thanh l\u00fd"
+  },
+  {
+    "caption": "T\u00f3m t\u1eaft \u0111\u1ed9 nh\u1ea1y. T\u01b0\u01a1ng quan sweep l\u00e0 association trong m\u00f4 h\u00ecnh, kh\u00f4ng ph\u1ea3i quan h\u1ec7 nh\u00e2n qu\u1ea3.",
+    "data_status": "SIMULATED",
+    "id": "A11",
+    "main_takeaway": "T\u01b0\u01a1ng quan sweep l\u00e0 association trong m\u00f4 h\u00ecnh, kh\u00f4ng ph\u1ea3i quan h\u1ec7 nh\u00e2n qu\u1ea3.",
+    "path": "data/processed/research_final/figures/A11_sensitivity_summary.png",
+    "presentation_priority": "APPENDIX",
+    "research_question": "RQ2",
+    "title": "T\u00f3m t\u1eaft \u0111\u1ed9 nh\u1ea1y"
+  },
+  {
+    "caption": "M\u1ea1ng contagion c\u1ea5u tr\u00fac. Centrality ch\u1ec9 \u00e1p d\u1ee5ng cho sub-network Aave\u2013Uniswap \u0111\u00e3 m\u00f4 h\u00ecnh h\u00f3a.",
+    "data_status": "EVIDENCE_BACKED_MODELED_SUBNETWORK",
+    "id": "A12",
+    "main_takeaway": "Centrality ch\u1ec9 \u00e1p d\u1ee5ng cho sub-network Aave\u2013Uniswap \u0111\u00e3 m\u00f4 h\u00ecnh h\u00f3a.",
+    "path": "data/processed/research_final/figures/A12_structural_network.png",
+    "presentation_priority": "CORE",
+    "research_question": "RQ5",
+    "title": "M\u1ea1ng contagion c\u1ea5u tr\u00fac"
+  },
+  {
+    "caption": "Professor Demo \u2014 Wave 1. Wave 1 bi\u1ec3u di\u1ec5n thanh l\u00fd tr\u1ef1c ti\u1ebfp sau c\u00fa s\u1ed1c.",
+    "data_status": "EVIDENCE_BACKED_MODELED_SUBNETWORK",
+    "id": "A13",
+    "main_takeaway": "Wave 1 bi\u1ec3u di\u1ec5n thanh l\u00fd tr\u1ef1c ti\u1ebfp sau c\u00fa s\u1ed1c.",
+    "path": "data/processed/research_final/figures/A13_professor_wave1.png",
+    "presentation_priority": "CORE",
+    "research_question": "RQ5",
+    "title": "Professor Demo \u2014 Wave 1"
+  },
+  {
+    "caption": "Professor Demo \u2014 Wave 2. N\u1ebfu kh\u00f4ng c\u00f3 wave th\u1ee9 hai, h\u00ecnh ghi nh\u1eadn b\u1eb1ng ch\u1ee9ng \u00e2m thay v\u00ec t\u1ea1o cascade gi\u1ea3.",
+    "data_status": "EVIDENCE_BACKED_MODELED_SUBNETWORK",
+    "id": "A14",
+    "main_takeaway": "N\u1ebfu kh\u00f4ng c\u00f3 wave th\u1ee9 hai, h\u00ecnh ghi nh\u1eadn b\u1eb1ng ch\u1ee9ng \u00e2m thay v\u00ec t\u1ea1o cascade gi\u1ea3.",
+    "path": "data/processed/research_final/figures/A14_professor_wave2.png",
+    "presentation_priority": "ADVANCED",
+    "research_question": "RQ5",
+    "title": "Professor Demo \u2014 Wave 2"
+  },
+  {
+    "caption": "Ma tr\u1eadn contagion. \u0110i\u1ec3m chu\u1ea9n h\u00f3a kh\u00f4ng ph\u1ea3i x\u00e1c su\u1ea5t truy\u1ec1n nhi\u1ec5m.",
+    "data_status": "MODELED_SCORE",
+    "id": "A15",
+    "main_takeaway": "\u0110i\u1ec3m chu\u1ea9n h\u00f3a kh\u00f4ng ph\u1ea3i x\u00e1c su\u1ea5t truy\u1ec1n nhi\u1ec5m.",
+    "path": "data/processed/research_final/figures/A15_contagion_matrix.png",
+    "presentation_priority": "ADVANCED",
+    "research_question": "RQ5",
+    "title": "Ma tr\u1eadn contagion"
+  },
+  {
+    "caption": "Centrality m\u1ea1ng. Aave l\u00e0 c\u1ea7u n\u1ed1i c\u1ea5u tr\u00fac trong topology nh\u1ecf; kh\u00f4ng suy r\u1ed9ng to\u00e0n DeFi.",
+    "data_status": "MODELED_SUBNETWORK",
+    "id": "A16",
+    "main_takeaway": "Aave l\u00e0 c\u1ea7u n\u1ed1i c\u1ea5u tr\u00fac trong topology nh\u1ecf; kh\u00f4ng suy r\u1ed9ng to\u00e0n DeFi.",
+    "path": "data/processed/research_final/figures/A16_centrality.png",
+    "presentation_priority": "CORE",
+    "research_question": "RQ5",
+    "title": "Centrality m\u1ea1ng"
+  },
+  {
+    "caption": "T\u1ed5ng h\u1ee3p v\u00f2ng ph\u1ea3n h\u1ed3i hai ca. Hai ca minh h\u1ecda nguy\u00ean l\u00fd chung nh\u01b0ng d\u00f9ng d\u1eef li\u1ec7u v\u00e0 c\u01a1 ch\u1ebf ri\u00eang bi\u1ec7t.",
+    "data_status": "SYNTHESIS",
+    "id": "C01",
+    "main_takeaway": "Hai ca minh h\u1ecda nguy\u00ean l\u00fd chung nh\u01b0ng d\u00f9ng d\u1eef li\u1ec7u v\u00e0 c\u01a1 ch\u1ebf ri\u00eang bi\u1ec7t.",
+    "path": "data/processed/research_final/figures/C01_cross_case_feedback.png",
+    "presentation_priority": "CORE",
+    "research_question": "RQ1\u2013RQ5",
+    "title": "T\u1ed5ng h\u1ee3p v\u00f2ng ph\u1ea3n h\u1ed3i hai ca"
+  }
+]

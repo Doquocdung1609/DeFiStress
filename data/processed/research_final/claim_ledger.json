@@ -1,0 +1,131 @@
+{
+  "claims": [
+    {
+      "claim_boundary": "Fit c\u00f3 \u0111i\u1ec1u ki\u1ec7n; kh\u00f4ng ph\u1ea3i d\u1ef1 b\u00e1o ngo\u00e0i m\u1eabu.",
+      "claim_id": "C01",
+      "evidence_type": "DERIVED_OR_SIMULATED",
+      "result_ids": [
+        "TERRA_HF_UST_CORRELATION",
+        "TERRA_TIMING_0_995",
+        "TERRA_TIMING_0_9"
+      ],
+      "statement_vi": "Terra Historical Fit t\u00e1i d\u1ef1ng \u0111\u01b0\u1ee3c h\u01b0\u1edbng bi\u1ebfn \u0111\u1ed9ng nh\u01b0ng ch\u1ea1m c\u00e1c ng\u01b0\u1ee1ng UST s\u1edbm h\u01a1n l\u1ecbch s\u1eed.",
+      "status": "PARTIALLY_SUPPORTED"
+    },
+    {
+      "claim_boundary": "K\u1ebft lu\u1eadn gi\u1edbi h\u1ea1n \u1edf \u0111\u1ecbnh ngh\u0129a ch\u1ec9 b\u00e1o v\u00e0 cutoff \u0111\u00e3 tri\u1ec3n khai.",
+      "claim_id": "C02",
+      "evidence_type": "OBSERVED",
+      "result_ids": [
+        "TERRA_EW_CUTOFF_SAFE_UST_BELOW_0_995_HIGH",
+        "TERRA_EW_LEAKAGE"
+      ],
+      "statement_vi": "Ch\u1ec9 b\u00e1o cutoff-safe kh\u00f4ng c\u1ea3nh b\u00e1o tr\u01b0\u1edbc depeg ban \u0111\u1ea7u \u1edf ng\u01b0\u1ee1ng High Risk.",
+      "status": "SUPPORTED_NEGATIVE_FINDING"
+    },
+    {
+      "claim_boundary": "Kh\u00f4ng \u0111\u1ed3ng ngh\u0129a d\u1ef1 b\u00e1o kh\u1ee7ng ho\u1ea3ng n\u00f3i chung.",
+      "claim_id": "C03",
+      "evidence_type": "DERIVED_OR_SIMULATED",
+      "result_ids": [
+        "TERRA_EW_CUTOFF_SAFE_UST_BELOW_0_9_HIGH"
+      ],
+      "statement_vi": "Ch\u1ec9 b\u00e1o cutoff-safe High Risk xu\u1ea5t hi\u1ec7n tr\u01b0\u1edbc severe depeg UST d\u01b0\u1edbi 0,90.",
+      "status": "SUPPORTED"
+    },
+    {
+      "claim_boundary": "Kh\u00f4ng ch\u1ee9ng minh gross mint g\u00e2y ra bi\u1ebfn \u0111\u1ed9ng gi\u00e1.",
+      "claim_id": "C04",
+      "evidence_type": "OBSERVED",
+      "result_ids": [
+        "TERRA_MECH_EVENT_COUNT",
+        "TERRA_MECH_DIRECT_CORRELATION",
+        "TERRA_MECH_DIRECT_CUMULATIVE_ERROR"
+      ],
+      "statement_vi": "Native-swap event output h\u1ed7 tr\u1ee3 nh\u1ea5t qu\u00e1n k\u1ebf to\u00e1n gross mint swap_amount + fee_amount.",
+      "status": "SUPPORTED"
+    },
+    {
+      "claim_boundary": "T\u1ea7n su\u1ea5t \u0111\u01b0\u1eddng m\u00f4 ph\u1ecfng kh\u00f4ng ph\u1ea3i x\u00e1c su\u1ea5t ngo\u00e0i \u0111\u1eddi.",
+      "claim_id": "C05",
+      "evidence_type": "DERIVED_OR_SIMULATED",
+      "result_ids": [
+        "TERRA_STRESS_BASELINE_COLLAPSE_COUNT",
+        "TERRA_STRESS_SEVERE_COLLAPSE_COUNT"
+      ],
+      "statement_vi": "C\u00e1c preset stress Terra cho th\u1ea5y regime b\u00ecnh th\u01b0\u1eddng v\u00e0 runaway kh\u00e1c nhau r\u00f5 r\u1ec7t.",
+      "status": "MODEL_CONDITIONAL"
+    },
+    {
+      "claim_boundary": "Cohort \u1ee9ng vi\u00ean kh\u00f4ng ph\u1ea3i to\u00e0n b\u1ed9 th\u1ecb tr\u01b0\u1eddng Aave.",
+      "claim_id": "C06",
+      "evidence_type": "OBSERVED",
+      "result_ids": [
+        "AAVE_DATA_BLOCK_NUMBER",
+        "AAVE_DATA_VERIFIED_BORROWERS",
+        "AAVE_DATA_WETH_USDC_COHORT"
+      ],
+      "statement_vi": "Snapshot Aave ch\u00ednh l\u00e0 REAL_MAINNET c\u00f9ng block v\u00e0 kh\u00f4ng d\u00f9ng Fixture l\u00e0m b\u1eb1ng ch\u1ee9ng ch\u00ednh.",
+      "status": "SUPPORTED"
+    },
+    {
+      "claim_boundary": "Kh\u00f4ng suy r\u1ed9ng th\u00e0nh d\u1ef1 b\u00e1o Mainnet t\u01b0\u01a1ng lai.",
+      "claim_id": "C07",
+      "evidence_type": "DERIVED_OR_SIMULATED",
+      "result_ids": [
+        "AAVE_DET_PROFESSOR_DEMO_TOTAL_LIQUIDATED_DEBT",
+        "AAVE_DET_PROFESSOR_DEMO_CASCADE_DEPTH",
+        "AAVE_DET_PROFESSOR_DEMO_WAVE_2_PLUS_LIQUIDATED_DEBT"
+      ],
+      "statement_vi": "Professor Demo cho th\u1ea5y m\u1ee9c thanh l\u00fd v\u00e0 cascade theo ch\u00ednh gi\u1ea3 \u0111\u1ecbnh k\u1ecbch b\u1ea3n \u0111\u00e3 \u0111\u00f3ng b\u0103ng.",
+      "status": "MODEL_CONDITIONAL"
+    },
+    {
+      "claim_boundary": "Association trong m\u00f4 h\u00ecnh, kh\u00f4ng ph\u1ea3i quan h\u1ec7 nh\u00e2n qu\u1ea3.",
+      "claim_id": "C08",
+      "evidence_type": "DERIVED_OR_SIMULATED",
+      "result_ids": [
+        "AAVE_DET_PROFESSOR_DEMO_MAX_PRICE_IMPACT",
+        "AAVE_DET_PROFESSOR_DEMO_BAD_DEBT"
+      ],
+      "statement_vi": "\u0110\u1ed9 nh\u1ea1y Aave \u0111\u01b0\u1ee3c \u0111\u00e1nh gi\u00e1 b\u1eb1ng sweep m\u1ed9t y\u1ebfu t\u1ed1 v\u00e0 b\u1ec1 m\u1eb7t shock \u00d7 liquidity.",
+      "status": "MODEL_CONDITIONAL"
+    },
+    {
+      "claim_boundary": "Kh\u00f4ng g\u1ecdi l\u00e0 x\u00e1c su\u1ea5t th\u1ef1c t\u1ebf.",
+      "claim_id": "C09",
+      "evidence_type": "DERIVED_OR_SIMULATED",
+      "result_ids": [
+        "AAVE_MC_PROFESSOR_DEMO_CASCADE_FREQUENCY",
+        "AAVE_MC_PROFESSOR_DEMO_CASCADE_WILSON_LOWER",
+        "AAVE_MC_PROFESSOR_DEMO_CASCADE_WILSON_UPPER"
+      ],
+      "statement_vi": "T\u1ea7n su\u1ea5t cascade Monte Carlo c\u00f3 kho\u1ea3ng Wilson nh\u01b0ng v\u1eabn l\u00e0 t\u1ea7n su\u1ea5t l\u1ea5y m\u1eabu trong m\u00f4 h\u00ecnh.",
+      "status": "MODEL_CONDITIONAL"
+    },
+    {
+      "claim_boundary": "Kh\u00f4ng \u0111\u1ea1i di\u1ec7n t\u1ea7m quan tr\u1ecdng h\u1ec7 th\u1ed1ng tr\u00ean to\u00e0n DeFi.",
+      "claim_id": "C10",
+      "evidence_type": "DERIVED_OR_SIMULATED",
+      "result_ids": [],
+      "statement_vi": "Centrality ch\u1ec9 m\u00f4 t\u1ea3 vai tr\u00f2 c\u1ea7u n\u1ed1i trong sub-network Aave\u2013Uniswap nh\u1ecf.",
+      "status": "SUPPORTED_WITH_BOUNDARY"
+    },
+    {
+      "claim_boundary": "T\u1ed5ng h\u1ee3p ch\u00e9o ch\u1ec9 \u1edf m\u1ee9c ph\u1ea3n h\u1ed3i phi tuy\u1ebfn v\u00e0 khu\u1ebfch \u0111\u1ea1i n\u1ed9i sinh.",
+      "claim_id": "C11",
+      "evidence_type": "DERIVED_OR_SIMULATED",
+      "result_ids": [],
+      "statement_vi": "Terra kh\u00f4ng \u0111\u1ecbnh l\u01b0\u1ee3ng ki\u1ec3m ch\u1ee9ng c\u01a1 ch\u1ebf Aave v\u00e0 Aave kh\u00f4ng ch\u1ee9ng minh c\u01a1 ch\u1ebf Terra.",
+      "status": "SUPPORTED_BOUNDARY"
+    },
+    {
+      "claim_boundary": "Strict OOS \u00e2m v\u00e0 c\u1ea3nh b\u00e1o depeg ban \u0111\u1ea7u mu\u1ed9n; kh\u00f4ng \u0111\u01b0\u1ee3c s\u1eed d\u1ee5ng claim n\u00e0y.",
+      "claim_id": "C12",
+      "evidence_type": "DERIVED_OR_SIMULATED",
+      "result_ids": [],
+      "statement_vi": "M\u00f4 h\u00ecnh d\u1ef1 b\u00e1o \u0111\u01b0\u1ee3c ch\u00ednh x\u00e1c v\u1ee5 s\u1ee5p \u0111\u1ed5 Terra.",
+      "status": "UNSUPPORTED"
+    }
+  ]
+}

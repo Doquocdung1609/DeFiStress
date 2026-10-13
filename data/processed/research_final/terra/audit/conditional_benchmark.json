@@ -1,0 +1,223 @@
+{
+  "common_calibration": {
+    "calibration_end_inclusive": "2022-05-08T09:00:00Z",
+    "calibration_hours": 12,
+    "calibration_rows": 12,
+    "calibration_start": "2022-05-07T22:00:00Z",
+    "dataset_status": "QUALITY_WARNING",
+    "dataset_version": "terra_may2022_v1",
+    "diagnostics": {
+      "external_exit_accounting": {
+        "anchor_deposit_change_when_old_proxy_positive": 85122333.58848,
+        "audit_conclusion": "STRUCTURALLY_CONFOUNDED_AND_DOUBLE_COUNT_CAPABLE; selected-window positive proxy is explained by Anchor stock change rather than independently observed holder selling",
+        "identity": "outside_ust = total_ust_supply - anchor_deposits; delta outside includes issuance, redemption burns, Anchor transfers, and other stock changes, not holder selling",
+        "main_scenario": 0.0025,
+        "old_proxy_positive_rows": 1,
+        "old_proxy_positive_total_in_calibration": 85122333.58848,
+        "old_proxy_rejected": true,
+        "predeclared_hourly_rate_scenarios": [
+          0.0,
+          0.0025,
+          0.01
+        ],
+        "same_hour_redemption_when_old_proxy_positive": 1965048.409379,
+        "source_status": "UNAVAILABLE_SCENARIO_PARAMETER",
+        "ust_supply_change_when_old_proxy_positive": 0.0
+      },
+      "luna_impact_candidate_selection": {
+        "candidates": {
+          "ELASTICITY": {
+            "beta": 309.895011110523,
+            "calibration_rmse": 0.013341890288635281,
+            "observations": 12,
+            "rolling_origin_rmse": 0.012137275929709394
+          },
+          "LINEAR_BOUNDED": {
+            "beta": 309.87794303376506,
+            "calibration_rmse": 0.013341963662293059,
+            "observations": 12,
+            "rolling_origin_rmse": 0.01213734060299957
+          },
+          "LOG_IMPACT": {
+            "beta": 309.8864770234723,
+            "calibration_rmse": 0.013341926975124678,
+            "observations": 12,
+            "rolling_origin_rmse": 0.012137308265722447
+          },
+          "SQUARE_ROOT": {
+            "beta": 2.0798488541262743,
+            "calibration_rmse": 0.01261656755981921,
+            "observations": 12,
+            "rolling_origin_rmse": 0.011926787336817523
+          }
+        },
+        "selection": "SQUARE_ROOT"
+      },
+      "mint_to_market_fraction_policy": "pre-specified 0.50; varied in sensitivity, not selected on holdout",
+      "parameter_policy": "12h post-trigger calibration only; no May 8 10:00 onward observations were used",
+      "protocol_mint_calibration": {
+        "event_output_rows": 12,
+        "event_output_to_offchain_approximation_multiplier": 0.9973053189399984,
+        "source": "DIRECT_EVENT_OUTPUT_SWAP_PLUS_FEE"
+      },
+      "redemption_provenance": "DIRECT_EVENT_OUTPUT_PROVENANCE_SUPPORTED_WITH_EXTRACT_LIMITATION",
+      "redemption_role": "UST absorption and protocol LUNA issuance; not direct UST sell pressure",
+      "ust_impact_beta_rows": 1,
+      "ust_impact_driver": "net sell pressure = Anchor/external sell - arbitrage absorption",
+      "ust_impact_identification": {
+        "main_scenario": 0.001,
+        "minimum_identifying_rows": 5,
+        "observable_anchor_only_rows": 1,
+        "predeclared_beta_scenarios": [
+          0.0001,
+          0.001,
+          0.01
+        ],
+        "reason": "external-holder sells and DEX sell flow are not independently observed in the 12h calibration window",
+        "scenario_augmented_rows": 7,
+        "single_observation_point_estimate_not_used": 0.005107420963408466,
+        "status": "UNDERIDENTIFIED"
+      }
+    },
+    "evaluation_end": "2022-05-13T23:00:00Z",
+    "evaluation_rows": 134,
+    "evaluation_start": "2022-05-08T10:00:00Z",
+    "initial_state": {
+      "anchor_deposit_flow": 64243.415808,
+      "anchor_net_flow": 0.0,
+      "anchor_total_deposits": 11855468933.918337,
+      "anchor_withdrawal_flow": 64243.415808,
+      "backing_ratio": 2.5092602193036173,
+      "block_hash": null,
+      "block_height": 7555016,
+      "bridge_inflow_ethereum_to_terra": 47.008498223960096,
+      "bridge_outflow_terra_to_ethereum": 47.008498223960096,
+      "btc_reserve_value": null,
+      "chain_id": "columbus-5",
+      "curve_pool_imbalance": null,
+      "curve_ust_liquidity": null,
+      "curve_ust_price": 0.9947208481893752,
+      "luna_burned": 20250.699982,
+      "luna_market_cap": 46945779126.74795,
+      "luna_minted_from_redemption": 20250.699982,
+      "luna_price": 62.712043467325884,
+      "luna_supply": 748592718.8962923,
+      "quality_flag": "QUALITY_WARNING",
+      "raw_reference": "doi:10.17632/j5d8n7hzdy.4",
+      "reserve_intervention_volume": 0.0,
+      "source_name": "Liu-Makarov-Schoar Terra/LUNA replication package",
+      "source_type": "REPLICATION_ONCHAIN_WITH_PRECRISIS_PROXIES",
+      "terra_dex_depth": 30550556.510721922,
+      "terra_dex_liquidity": 32632111.12814283,
+      "timestamp": "2022-05-08T09:00:00Z",
+      "top100_anchor_share": 0.5945578327367015,
+      "top10_anchor_share": 0.2362009546666057,
+      "ust_depeg_bps": 52.791518106248,
+      "ust_dex_sell_volume": 20250.699982,
+      "ust_market_cap": 18610244116.024616,
+      "ust_native_redemption_volume": 1284947.020854,
+      "ust_price": 0.9947208481893752,
+      "ust_supply": 18709011829.70038
+    },
+    "label": "CONDITIONAL_HISTORICAL_REPLAY",
+    "not_prediction": true,
+    "parameters": {
+      "anchor_exit_rate": 7.816738335387811e-05,
+      "arbitrage_hourly_capacity": 5285022.5707697,
+      "confidence_sensitivity": 1.0,
+      "execution_capacity_proxy": 32632111.12814283,
+      "execution_depth_proxy": 30550556.510721922,
+      "external_exit_rate": 0.0025,
+      "luna_impact_beta": 2.0798488541262743,
+      "luna_impact_cap": 0.7,
+      "luna_impact_form": "SQUARE_ROOT",
+      "mint_to_market_fraction": 0.5,
+      "price_floor_luna": 1e-08,
+      "price_floor_ust": 0.005,
+      "protocol_mint_multiplier": 0.9973053189399984,
+      "redemption_friction": 0.02,
+      "reserve_capacity": 0.0,
+      "ust_impact_beta": 0.001,
+      "ust_impact_cap": 0.12
+    },
+    "proxy_fields": [
+      "terra_dex_liquidity",
+      "terra_dex_depth"
+    ],
+    "quarantined_variables": [
+      "ust_dex_sell_volume",
+      "luna_minted_from_redemption",
+      "luna_burned",
+      "bridge_outflow_terra_to_ethereum",
+      "bridge_inflow_ethereum_to_terra",
+      "curve_ust_price",
+      "curve_ust_liquidity",
+      "curve_pool_imbalance"
+    ],
+    "trigger_rule": "first ust_price < 0.99",
+    "trigger_timestamp": "2022-05-07T22:00:00Z"
+  },
+  "comparators": [
+    {
+      "collapse_f1": 0.0,
+      "luna_log_rmse": 7.01258477069239,
+      "model": "THRESHOLD_STATIC",
+      "supply_final_relative_error": 0.9998899196912697,
+      "timing_error_hours": {
+        "0.9": null,
+        "0.95": null,
+        "0.99": null,
+        "0.995": 0.0
+      },
+      "ust_rmse": 0.463873372451355,
+      "withdrawal_rmse": 26885195.129359763
+    },
+    {
+      "collapse_f1": 0.0,
+      "luna_log_rmse": 6.986432972354632,
+      "model": "AGGREGATE_HAZARD",
+      "supply_final_relative_error": 0.999889852636341,
+      "timing_error_hours": {
+        "0.9": null,
+        "0.95": null,
+        "0.99": 4.0,
+        "0.995": 0.0
+      },
+      "ust_rmse": 0.45257206313986464,
+      "withdrawal_rmse": 26676861.131416816
+    },
+    {
+      "collapse_f1": 0.6614173228346457,
+      "luna_log_rmse": 5.418100760841835,
+      "model": "SYSTEM_DYNAMICS",
+      "supply_final_relative_error": 0.9998790562492551,
+      "timing_error_hours": {
+        "0.9": 57.0,
+        "0.95": 12.0,
+        "0.99": -23.0,
+        "0.995": 0.0
+      },
+      "ust_rmse": 0.3896111561794332,
+      "withdrawal_rmse": 26434328.03046089
+    },
+    {
+      "collapse_f1": 0.6614173228346457,
+      "luna_log_rmse": 5.418100760841835,
+      "model": "CONDITIONAL_ABM_FINAL",
+      "supply_final_relative_error": 0.9998790562492551,
+      "timing_error_hours": {
+        "0.9": 57.0,
+        "0.95": 12.0,
+        "0.99": -23.0,
+        "0.995": 0.0
+      },
+      "ust_rmse": 0.38960381350358814,
+      "withdrawal_rmse": 26433477.553028088
+    }
+  ],
+  "implementation": "All variants share ConditionalABM and differ by explicit component overrides.",
+  "independently_implemented_models": false,
+  "label": "CONDITIONAL_HISTORICAL_REPLAY_STRUCTURAL_COMPARATOR_VARIANTS",
+  "not_strict_oos": true,
+  "warning": "These are structural comparator variants, not four independently implemented model families and not separately holdout-tuned production models."
+}

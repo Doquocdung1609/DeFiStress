@@ -1,0 +1,5 @@
+claim_boundary,liquidity_haircut_pct,smallest_tested_shock_with_cascade,status
+Discrete model-implied transition under the selected Mainnet snapshot; no interpolation.,0,,NOT_OBSERVED_IN_TEST_GRID
+Discrete model-implied transition under the selected Mainnet snapshot; no interpolation.,25,,NOT_OBSERVED_IN_TEST_GRID
+Discrete model-implied transition under the selected Mainnet snapshot; no interpolation.,50,,NOT_OBSERVED_IN_TEST_GRID
+Discrete model-implied transition under the selected Mainnet snapshot; no interpolation.,75,,NOT_OBSERVED_IN_TEST_GRID

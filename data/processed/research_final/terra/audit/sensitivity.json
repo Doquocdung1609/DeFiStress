@@ -1,0 +1,195 @@
+{
+  "method": "ONE_AT_A_TIME_AROUND_CALIBRATION",
+  "no_holdout_selection": true,
+  "results": [
+    {
+      "collapse_hour": null,
+      "cumulative_withdrawals": 296411595.6142734,
+      "final_luna_price": 0.5390619290731975,
+      "final_luna_supply": 855591447.4706631,
+      "final_ust_price": 0.8072090622444025,
+      "parameter": "execution_depth_multiplier",
+      "value": 0.5
+    },
+    {
+      "collapse_hour": null,
+      "cumulative_withdrawals": 291252478.277693,
+      "final_luna_price": 1.0324508541967174,
+      "final_luna_supply": 822468725.3142405,
+      "final_ust_price": 0.8589315859522914,
+      "parameter": "execution_depth_multiplier",
+      "value": 1.0
+    },
+    {
+      "collapse_hour": null,
+      "cumulative_withdrawals": 283974993.49709684,
+      "final_luna_price": 2.3673551458534,
+      "final_luna_supply": 793473993.1772407,
+      "final_ust_price": 0.8973416185315672,
+      "parameter": "execution_depth_multiplier",
+      "value": 2.0
+    },
+    {
+      "collapse_hour": null,
+      "cumulative_withdrawals": 291276224.17229134,
+      "final_luna_price": 8.885730751893027,
+      "final_luna_supply": 761219117.5304017,
+      "final_ust_price": 0.8539223312592529,
+      "parameter": "execution_capacity_multiplier",
+      "value": 0.5
+    },
+    {
+      "collapse_hour": null,
+      "cumulative_withdrawals": 291252478.277693,
+      "final_luna_price": 1.0324508541967174,
+      "final_luna_supply": 822468725.3142405,
+      "final_ust_price": 0.8589315859522914,
+      "parameter": "execution_capacity_multiplier",
+      "value": 1.0
+    },
+    {
+      "collapse_hour": 114.0,
+      "cumulative_withdrawals": 291149685.3908328,
+      "final_luna_price": 3.3369222646524655e-08,
+      "final_luna_supply": 311622308320259.5,
+      "final_ust_price": 0.8696010192001988,
+      "parameter": "execution_capacity_multiplier",
+      "value": 2.0
+    },
+    {
+      "collapse_hour": null,
+      "cumulative_withdrawals": 291333359.98748976,
+      "final_luna_price": 0.26711161057182675,
+      "final_luna_supply": 906533571.4547788,
+      "final_ust_price": 0.860000392126194,
+      "parameter": "redemption_friction",
+      "value": 0.01
+    },
+    {
+      "collapse_hour": null,
+      "cumulative_withdrawals": 291252478.277693,
+      "final_luna_price": 1.0324508541967174,
+      "final_luna_supply": 822468725.3142405,
+      "final_ust_price": 0.8589315859522914,
+      "parameter": "redemption_friction",
+      "value": 0.02
+    },
+    {
+      "collapse_hour": null,
+      "cumulative_withdrawals": 291198813.2824445,
+      "final_luna_price": 4.291479165491691,
+      "final_luna_supply": 779071709.1557925,
+      "final_ust_price": 0.856997091292585,
+      "parameter": "redemption_friction",
+      "value": 0.04
+    },
+    {
+      "collapse_hour": null,
+      "cumulative_withdrawals": 291183551.79517996,
+      "final_luna_price": 8.969669744686177,
+      "final_luna_supply": 773761035.0923866,
+      "final_ust_price": 0.8589489236129392,
+      "parameter": "mint_to_market_fraction",
+      "value": 0.25
+    },
+    {
+      "collapse_hour": null,
+      "cumulative_withdrawals": 291252478.277693,
+      "final_luna_price": 1.0324508541967174,
+      "final_luna_supply": 822468725.3142405,
+      "final_ust_price": 0.8589315859522914,
+      "parameter": "mint_to_market_fraction",
+      "value": 0.5
+    },
+    {
+      "collapse_hour": 127.0,
+      "cumulative_withdrawals": 291300937.2617475,
+      "final_luna_price": 0.00013054719300544096,
+      "final_luna_supply": 40828387971.6612,
+      "final_ust_price": 0.8589193877917559,
+      "parameter": "mint_to_market_fraction",
+      "value": 0.75
+    },
+    {
+      "collapse_hour": null,
+      "cumulative_withdrawals": 272218910.0013567,
+      "final_luna_price": 1.2789191410972154,
+      "final_luna_supply": 813772664.0370799,
+      "final_ust_price": 0.863878355159854,
+      "parameter": "confidence_sensitivity",
+      "value": 0.5
+    },
+    {
+      "collapse_hour": null,
+      "cumulative_withdrawals": 291252478.277693,
+      "final_luna_price": 1.0324508541967174,
+      "final_luna_supply": 822468725.3142405,
+      "final_ust_price": 0.8589315859522914,
+      "parameter": "confidence_sensitivity",
+      "value": 1.0
+    },
+    {
+      "collapse_hour": null,
+      "cumulative_withdrawals": 297953487.83479196,
+      "final_luna_price": 0.9198233361289805,
+      "final_luna_supply": 827573841.0678105,
+      "final_ust_price": 0.8572399099909103,
+      "parameter": "confidence_sensitivity",
+      "value": 1.5
+    },
+    {
+      "collapse_hour": null,
+      "cumulative_withdrawals": 183221131.81965292,
+      "final_luna_price": 53.13315763439402,
+      "final_luna_supply": 749046334.5199938,
+      "final_ust_price": 0.9760786659778858,
+      "parameter": "external_exit_rate",
+      "value": 0.0
+    },
+    {
+      "collapse_hour": null,
+      "cumulative_withdrawals": 291252478.277693,
+      "final_luna_price": 1.0324508541967174,
+      "final_luna_supply": 822468725.3142405,
+      "final_ust_price": 0.8589315859522914,
+      "parameter": "external_exit_rate",
+      "value": 0.0025
+    },
+    {
+      "collapse_hour": null,
+      "cumulative_withdrawals": 306824577.87882286,
+      "final_luna_price": 0.17022674619885345,
+      "final_luna_supply": 950723205.6487986,
+      "final_ust_price": 0.7295737224443791,
+      "parameter": "external_exit_rate",
+      "value": 0.01
+    },
+    {
+      "collapse_hour": null,
+      "cumulative_withdrawals": 182189103.63421014,
+      "final_luna_price": 62.712043467325884,
+      "final_luna_supply": 748592718.8962923,
+      "final_ust_price": 0.9824129549343892,
+      "parameter": "ust_impact_beta",
+      "value": 0.0001
+    },
+    {
+      "collapse_hour": null,
+      "cumulative_withdrawals": 291252478.277693,
+      "final_luna_price": 1.0324508541967174,
+      "final_luna_supply": 822468725.3142405,
+      "final_ust_price": 0.8589315859522914,
+      "parameter": "ust_impact_beta",
+      "value": 0.001
+    },
+    {
+      "collapse_hour": null,
+      "cumulative_withdrawals": 307391348.15002644,
+      "final_luna_price": 0.01898946691219297,
+      "final_luna_supply": 1426977647.165101,
+      "final_ust_price": 0.22314170674315087,
+      "parameter": "ust_impact_beta",
+      "value": 0.01
+    }
+  ]
+}

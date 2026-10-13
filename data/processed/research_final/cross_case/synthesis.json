@@ -1,0 +1,18 @@
+{
+  "cases": {
+    "Aave_V3_Uniswap_V3": {
+      "feedback": "WETH shock -> Health Factor -> liquidation -> DEX impact -> revaluation",
+      "role": "contemporary REAL_MAINNET stress test and modeled contagion"
+    },
+    "Terra_Classic_May_2022": {
+      "feedback": "peg stress -> redemption -> gross issuance -> dilution/confidence",
+      "role": "historical validation, mechanism validation, reconstruction, warning and counterfactual stress"
+    }
+  },
+  "forbidden_inference": [
+    "Terra numerically validates Aave mechanics.",
+    "Aave proves the Terra historical mechanism.",
+    "The two case studies are contemporaneous."
+  ],
+  "legitimate_synthesis": "Both cases illustrate nonlinear financial feedback and endogenous amplification."
+}

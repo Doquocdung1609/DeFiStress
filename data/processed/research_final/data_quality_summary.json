@@ -1,0 +1,173 @@
+{
+  "aave": {
+    "artifact": "data/processed/mainnet/aave_uniswap_snapshot_26045352.json",
+    "block_hash": "4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+    "block_number": 26045352,
+    "block_timestamp": "2026-09-24T05:50:35+00:00",
+    "candidate_verification_rate": 0.908,
+    "candidate_verification_rate_boundary": "Rate within the top Graph-discovered debt candidates; not total-market coverage.",
+    "candidates_discovered": 500,
+    "chain_id": 1,
+    "failed_reads": 0,
+    "health_factor_validation": {
+      "compared_borrowers": 454,
+      "max_absolute_error": 0.6030771587253917,
+      "max_relative_error_ratio": 0.005823952066257817,
+      "median_absolute_error": 3.03122167894885e-05,
+      "median_relative_error_ratio": 1.303416619792842e-05,
+      "quality_flag_count": 6
+    },
+    "mode": "REAL_MAINNET",
+    "sha256": "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99",
+    "source_manifest": {
+      "aave": {
+        "address_book_commit": "f08dbd218a1da7ea1ac3bb0e387652fdb9f98042",
+        "address_book_source": "https://assets.aave.com/address-book/releases/latest/modules/AaveV3Ethereum.json",
+        "address_book_version": "4.70.2",
+        "data_provider": "0x0a16f2FCC0D44FaE41cc54e079281D84A363bECD",
+        "market": "Aave V3 Ethereum",
+        "oracle": "0x54586bE62E3c3580375aE3723C145253060Ca0C2",
+        "pool": "0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2"
+      },
+      "application": {
+        "model_version": "0.1.0-aave-v3.7-approx"
+      },
+      "block_hash": "4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+      "block_number": 26045352,
+      "borrower_discovery": {
+        "block_number": 26045352,
+        "candidate_count": 500,
+        "source": "The Graph",
+        "subgraph_id": "JCNWRypm7FYwV8fx5HhzZPSFaMxgkPuw4TnR3Gpi81zk"
+      },
+      "chain_id": 1,
+      "rpc_provider": "https://eth-mainnet.g.alchemy.com",
+      "snapshot_coordination": {
+        "confirmed_rpc_head": 26045352,
+        "graph_head": 26045364,
+        "rpc_head": 26045364,
+        "snapshot_block": 26045352,
+        "snapshot_confirmations": 12
+      },
+      "state_verification": {
+        "aave_method": "Pool.getUserAccountData",
+        "block_number": 26045352,
+        "source": "Ethereum Mainnet RPC"
+      },
+      "uniswap": {
+        "factory": "0x1F98431c8aD98523631AE4a59f267346ea31F984",
+        "fee": 3000,
+        "pool": "0x8ad599c3A0ff1De082011EFDDc58f1908eb6e6D8"
+      }
+    },
+    "uniswap": {
+      "depth_usdc_2pct": 1667709.859389457,
+      "fee": 3000,
+      "pool_address": "0x8ad599c3A0ff1De082011EFDDc58f1908eb6e6D8",
+      "source": "REAL_MAINNET",
+      "spot_price": 2694.008050568294,
+      "tick": 197332,
+      "tick_count": 600
+    },
+    "usdc_borrowers": 182,
+    "verified_borrowers": 454,
+    "weth_collateral_borrowers": 255,
+    "weth_usdc_cohort": 109
+  },
+  "terra": {
+    "dataset_version": "terra_extended_20220301_20220513_v1",
+    "end_timestamp": "2022-05-13T23:00:00Z",
+    "frequency": "hourly",
+    "missingness": {
+      "anchor_deposit_flow": {
+        "missing_rows": 1584,
+        "missing_share": 0.8918918918918919
+      },
+      "anchor_total_deposits": {
+        "missing_rows": 0,
+        "missing_share": 0.0
+      },
+      "anchor_withdrawal_flow": {
+        "missing_rows": 1584,
+        "missing_share": 0.8918918918918919
+      },
+      "backing_ratio": {
+        "missing_rows": 1464,
+        "missing_share": 0.8243243243243243
+      },
+      "block_height": {
+        "missing_rows": 0,
+        "missing_share": 0.0
+      },
+      "gross_luna_issuance_from_native_swaps": {
+        "missing_rows": 1608,
+        "missing_share": 0.9054054054054054
+      },
+      "luna_price": {
+        "missing_rows": 0,
+        "missing_share": 0.0
+      },
+      "luna_supply": {
+        "missing_rows": 1464,
+        "missing_share": 0.8243243243243243
+      },
+      "timestamp": {
+        "missing_rows": 0,
+        "missing_share": 0.0
+      },
+      "top100_anchor_share": {
+        "missing_rows": 168,
+        "missing_share": 0.0945945945945946
+      },
+      "top10_anchor_share": {
+        "missing_rows": 168,
+        "missing_share": 0.0945945945945946
+      },
+      "ust_native_redemption_volume": {
+        "missing_rows": 1608,
+        "missing_share": 0.9054054054054054
+      },
+      "ust_price": {
+        "missing_rows": 0,
+        "missing_share": 0.0
+      },
+      "ust_supply": {
+        "missing_rows": 0,
+        "missing_share": 0.0
+      }
+    },
+    "native_swaps": {
+      "columns": [
+        "fee_amount",
+        "offer_amount",
+        "swap_amount",
+        "timestamp"
+      ],
+      "path": "data/processed/terra_extended/terra_native_swaps.parquet",
+      "rows": 277342,
+      "sha256": "e1e01ed390eb82356141e924c99d7af8bd0549534defb40dd172d797a0a485a1"
+    },
+    "quality_classes": {
+      "anchor_event_flows": "OBSERVED_MAY_6_ONWARD_OTHERWISE_MISSING",
+      "anchor_state": "OBSERVED_STATE",
+      "dex_liquidity": "UNAVAILABLE",
+      "lfg_peg_defense": "UNAVAILABLE_AS_OBSERVED_CHANNEL",
+      "luna_supply_and_backing": "OBSERVED_MAY_1_ONWARD_OTHERWISE_MISSING",
+      "native_redemptions_and_issuance": "OBSERVED_MAY_7_ONWARD_OTHERWISE_MISSING",
+      "prices_march_april": "LOWER_FREQUENCY_STATE_CARRIED_FORWARD",
+      "prices_may": "OBSERVED_MINUTE_OR_DAILY_COMPOSITE"
+    },
+    "quarantined_variables": [
+      "ust_dex_sell_volume",
+      "luna_minted_from_redemption",
+      "luna_burned",
+      "bridge_outflow_terra_to_ethereum",
+      "bridge_inflow_ethereum_to_terra",
+      "curve_ust_price"
+    ],
+    "row_count": 1776,
+    "sha256": "0e338c3d096600d93bf29884370e46cb5e260820e910b483a7f19048521dcac1",
+    "start_timestamp": "2022-03-01T00:00:00Z",
+    "status": "READY_WITH_LIMITATIONS"
+  }
+}

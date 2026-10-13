@@ -1,0 +1,28 @@
+{
+  "artifact_bundle_commit": "620746513dec3a7afad00eb8ce10b0d0add538cc",
+  "artifact_bundle_commit_note": "Commit whose tree first contains this generated artifact bundle. A later metadata-only manifest correction may record that commit without changing model logic, parameters, metrics, or artifacts.",
+  "frozen_artifacts_policy": "Existing V1/V2/V4 artifacts are read-only and were not overwritten.",
+  "inputs": {
+    "data/processed/terra_extended/terra_native_swaps.parquet": "e1e01ed390eb82356141e924c99d7af8bd0549534defb40dd172d797a0a485a1",
+    "data/processed/terra_extended/terra_state_hourly_20220301_20220513.parquet": "0e338c3d096600d93bf29884370e46cb5e260820e910b483a7f19048521dcac1"
+  },
+  "mode": "RESEARCH_100_RUNS",
+  "outputs": {
+    "early_warning_timeline.json": "1e6e886739cfd545fd81400b9366fee38cd19239c419406bc1a3ef04c9996def",
+    "historical_fit.json": "6c149a1766a705b6d9573b8ec63413977fe147b626e755f49b1ebba1ccf3b32b",
+    "mechanism_check.json": "7b1a033cdceccd8264a6160fac6610a94c3b50f33a4fedb514f843c0058bead4",
+    "presentation_summary.json": "781cc6022d4a41a6680374e661305b67f5e4f7a9bc1583a3bf0ebc8cdc098e7c",
+    "stress_test.json": "e6d23ba23eff26e72feca4473c83d9fe37d7f6569c085d4731c9d7f9a793de64"
+  },
+  "packages": {
+    "fastapi": "0.141.1",
+    "numpy": "2.5.3",
+    "pandas": "2.3.3",
+    "pyarrow": "23.0.1"
+  },
+  "pipeline_version": "terra-demo-1.0.0",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "reproduce_command": ".\\.venv\\Scripts\\python.exe scripts\\terra\\run_demo_pipeline.py --research",
+  "source_code_commit": "620746513dec3a7afad00eb8ce10b0d0add538cc"
+}

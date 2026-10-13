@@ -1,0 +1,5 @@
+# Table_03 — Đối chiếu Health Factor
+
+| compared_borrowers | max_absolute_error | median_absolute_error | max_relative_error_ratio | median_relative_error_ratio | quality_flag_count |
+| --- | --- | --- | --- | --- | --- |
+| 454 | 0.6030771587253917 | 3.03122167894885e-05 | 0.005823952066257817 | 1.303416619792842e-05 | 6 |

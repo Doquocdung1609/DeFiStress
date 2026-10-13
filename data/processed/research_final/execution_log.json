@@ -1,0 +1,61 @@
+{
+  "finished_at": "2026-10-13T04:31:01.109359Z",
+  "stages": [
+    {
+      "runtime_seconds": 80.98285759999999,
+      "stage": "preflight",
+      "status": "PASS"
+    },
+    {
+      "runtime_seconds": 0.5614533000043593,
+      "stage": "canonical_data_validation",
+      "status": "PASS"
+    },
+    {
+      "runtime_seconds": 38.97348889999557,
+      "stage": "terra_demo",
+      "status": "PASS"
+    },
+    {
+      "monte_carlo_runs": 100,
+      "runtime_seconds": 2.5324500999995507,
+      "stage": "terra_final_audit",
+      "status": "PASS"
+    },
+    {
+      "runtime_seconds": 280.2376290999964,
+      "stage": "aave_deterministic_sensitivity_monte_carlo_network",
+      "status": "PASS"
+    },
+    {
+      "runtime_seconds": 0.08641659999557305,
+      "stage": "results_and_claim_registries",
+      "status": "PASS"
+    },
+    {
+      "count": 15,
+      "runtime_seconds": 0.11998469999525696,
+      "stage": "tables",
+      "status": "PASS"
+    },
+    {
+      "count": 29,
+      "runtime_seconds": 10.802887799989549,
+      "stage": "figures",
+      "status": "PASS"
+    },
+    {
+      "count": 15,
+      "runtime_seconds": 0.08571800000208896,
+      "stage": "documents",
+      "status": "PASS"
+    },
+    {
+      "runtime_seconds": 1.1874704000074416,
+      "stage": "quality_gate",
+      "status": "PASS"
+    }
+  ],
+  "started_from_commit": "620746513dec3a7afad00eb8ce10b0d0add538cc",
+  "total_runtime_seconds": 415.7281004999968
+}

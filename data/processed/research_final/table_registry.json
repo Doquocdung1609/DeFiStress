@@ -1,0 +1,107 @@
+[
+  {
+    "csv": "data/processed/research_final/tables/Table_01_data_sources.csv",
+    "id": "Table_01",
+    "markdown": "data/processed/research_final/tables/Table_01_data_sources.md",
+    "rows": 3,
+    "title": "Ngu\u1ed3n d\u1eef li\u1ec7u v\u00e0 \u0111\u1ed9 ph\u1ee7"
+  },
+  {
+    "csv": "data/processed/research_final/tables/Table_02_aave_provenance.csv",
+    "id": "Table_02",
+    "markdown": "data/processed/research_final/tables/Table_02_aave_provenance.md",
+    "rows": 1,
+    "title": "Provenance Aave Mainnet"
+  },
+  {
+    "csv": "data/processed/research_final/tables/Table_03_aave_hf_validation.csv",
+    "id": "Table_03",
+    "markdown": "data/processed/research_final/tables/Table_03_aave_hf_validation.md",
+    "rows": 1,
+    "title": "\u0110\u1ed1i chi\u1ebfu Health Factor"
+  },
+  {
+    "csv": "data/processed/research_final/tables/Table_04_aave_deterministic.csv",
+    "id": "Table_04",
+    "markdown": "data/processed/research_final/tables/Table_04_aave_deterministic.md",
+    "rows": 9,
+    "title": "K\u1ecbch b\u1ea3n Aave deterministic"
+  },
+  {
+    "csv": "data/processed/research_final/tables/Table_05_aave_sensitivity.csv",
+    "id": "Table_05",
+    "markdown": "data/processed/research_final/tables/Table_05_aave_sensitivity.md",
+    "rows": 20,
+    "title": "\u0110\u1ed9 nh\u1ea1y m\u1ed9t y\u1ebfu t\u1ed1"
+  },
+  {
+    "csv": "data/processed/research_final/tables/Table_06_aave_monte_carlo.csv",
+    "id": "Table_06",
+    "markdown": "data/processed/research_final/tables/Table_06_aave_monte_carlo.md",
+    "rows": 5,
+    "title": "T\u00f3m t\u1eaft Monte Carlo"
+  },
+  {
+    "csv": "data/processed/research_final/tables/Table_07_aave_grid_thresholds.csv",
+    "id": "Table_07",
+    "markdown": "data/processed/research_final/tables/Table_07_aave_grid_thresholds.md",
+    "rows": 4,
+    "title": "Ng\u01b0\u1ee1ng shock \u00d7 thanh kho\u1ea3n"
+  },
+  {
+    "csv": "data/processed/research_final/tables/Table_08_network_centrality.csv",
+    "id": "Table_08",
+    "markdown": "data/processed/research_final/tables/Table_08_network_centrality.md",
+    "rows": 8,
+    "title": "Centrality m\u1ea1ng c\u1ea5u tr\u00fac"
+  },
+  {
+    "csv": "data/processed/research_final/tables/Table_09_network_waves.csv",
+    "id": "Table_09",
+    "markdown": "data/processed/research_final/tables/Table_09_network_waves.md",
+    "rows": 2,
+    "title": "C\u00e1c khung truy\u1ec1n d\u1eabn theo wave"
+  },
+  {
+    "csv": "data/processed/research_final/tables/Table_10_terra_fit.csv",
+    "id": "Table_10",
+    "markdown": "data/processed/research_final/tables/Table_10_terra_fit.md",
+    "rows": 13,
+    "title": "Ch\u1ec9 s\u1ed1 Historical Fit Terra"
+  },
+  {
+    "csv": "data/processed/research_final/tables/Table_11_terra_early_warning.csv",
+    "id": "Table_11",
+    "markdown": "data/processed/research_final/tables/Table_11_terra_early_warning.md",
+    "rows": 16,
+    "title": "Lead/lag c\u1ea3nh b\u00e1o s\u1edbm"
+  },
+  {
+    "csv": "data/processed/research_final/tables/Table_12_terra_mechanism.csv",
+    "id": "Table_12",
+    "markdown": "data/processed/research_final/tables/Table_12_terra_mechanism.md",
+    "rows": 2,
+    "title": "Ki\u1ec3m tra c\u01a1 ch\u1ebf ph\u00e1t h\u00e0nh"
+  },
+  {
+    "csv": "data/processed/research_final/tables/Table_13_terra_stress.csv",
+    "id": "Table_13",
+    "markdown": "data/processed/research_final/tables/Table_13_terra_stress.md",
+    "rows": 3,
+    "title": "Preset stress Terra"
+  },
+  {
+    "csv": "data/processed/research_final/tables/Table_14_terra_robustness.csv",
+    "id": "Table_14",
+    "markdown": "data/processed/research_final/tables/Table_14_terra_robustness.md",
+    "rows": 4,
+    "title": "\u0110\u1ed9 b\u1ec1n Terra"
+  },
+  {
+    "csv": "data/processed/research_final/tables/Table_15_cross_case.csv",
+    "id": "Table_15",
+    "markdown": "data/processed/research_final/tables/Table_15_cross_case.md",
+    "rows": 3,
+    "title": "T\u1ed5ng h\u1ee3p hai ca nghi\u00ean c\u1ee9u"
+  }
+]

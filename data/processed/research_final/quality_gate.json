@@ -1,0 +1,41 @@
+{
+  "all_passed": true,
+  "checks": [
+    {
+      "check": "json_parse_and_finite",
+      "files": 42,
+      "status": "PASS"
+    },
+    {
+      "check": "csv_parse",
+      "files": 22,
+      "status": "PASS"
+    },
+    {
+      "check": "required_figures",
+      "files": 29,
+      "status": "PASS"
+    },
+    {
+      "check": "required_tables",
+      "files": 15,
+      "status": "PASS"
+    },
+    {
+      "check": "claim_traceability",
+      "indexed_results": 210,
+      "status": "PASS"
+    },
+    {
+      "check": "secret_and_borrower_address_scan",
+      "files": 126,
+      "status": "PASS"
+    },
+    {
+      "check": "required_documents",
+      "files": 15,
+      "status": "PASS"
+    }
+  ],
+  "generated_at": "2026-10-13T04:31:01.107361Z"
+}

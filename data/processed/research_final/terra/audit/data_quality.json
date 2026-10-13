@@ -1,0 +1,132 @@
+{
+  "dataset": {
+    "dataset_hash": "895ef9032e22824641cd2c02b52b22b6f3d1dd8b1b4b868d70db027707ba8708",
+    "dataset_version": "terra_may2022_v1",
+    "end_timestamp": "2022-05-13T23:00:00Z",
+    "git_commit": "620746513dec3a7afad00eb8ce10b0d0add538cc",
+    "quality_report": {
+      "duplicate_timestamps": 0,
+      "missing_intervals": [],
+      "monotonic": true,
+      "negative_supply_rows": 0,
+      "quality_warning_rows": 312
+    },
+    "row_count": 312,
+    "source_manifest": {
+      "primary": {
+        "chain": "columbus-5",
+        "historical_evidence": false,
+        "raw_reference": "doi:10.17632/j5d8n7hzdy.4",
+        "source": "Liu-Makarov-Schoar Terra/LUNA replication package",
+        "source_type": "REPLICATION_ONCHAIN_WITH_PRECRISIS_PROXIES"
+      }
+    },
+    "start_timestamp": "2022-05-01T00:00:00Z",
+    "status": "QUALITY_WARNING",
+    "transformation_version": "terra-importer-1"
+  },
+  "duplicate_or_suspect_field_checks": {
+    "bridge_outflow_equals_bridge_inflow": true,
+    "curve_ust_price_equals_ust_price": true,
+    "luna_minted_from_redemption_equals_luna_burned": true,
+    "luna_minted_from_redemption_equals_ust_dex_sell_volume": true
+  },
+  "execution_capacity_proxies": [
+    "terra_dex_liquidity",
+    "terra_dex_depth"
+  ],
+  "external_exit_accounting": {
+    "anchor_deposit_change_when_old_proxy_positive": 85122333.58848,
+    "audit_conclusion": "STRUCTURALLY_CONFOUNDED_AND_DOUBLE_COUNT_CAPABLE; selected-window positive proxy is explained by Anchor stock change rather than independently observed holder selling",
+    "identity": "outside_ust = total_ust_supply - anchor_deposits; delta outside includes issuance, redemption burns, Anchor transfers, and other stock changes, not holder selling",
+    "main_scenario": 0.0025,
+    "old_proxy_positive_rows": 1,
+    "old_proxy_positive_total_in_calibration": 85122333.58848,
+    "old_proxy_rejected": true,
+    "predeclared_hourly_rate_scenarios": [
+      0.0,
+      0.0025,
+      0.01
+    ],
+    "same_hour_redemption_when_old_proxy_positive": 1965048.409379,
+    "source_status": "UNAVAILABLE_SCENARIO_PARAMETER",
+    "ust_supply_change_when_old_proxy_positive": 0.0
+  },
+  "policy": "Suspect duplicate fields and unavailable sources are excluded, not imputed or fabricated.",
+  "quarantined_variables": [
+    "ust_dex_sell_volume",
+    "luna_minted_from_redemption",
+    "luna_burned",
+    "bridge_outflow_terra_to_ethereum",
+    "bridge_inflow_ethereum_to_terra",
+    "curve_ust_price",
+    "curve_ust_liquidity",
+    "curve_pool_imbalance"
+  ],
+  "scientific_status": "QUALITY_WARNING",
+  "source_availability": {
+    "bridge_flow_indexer": {
+      "impact": "Bridge variables are quarantined and are not consumed by the final model.",
+      "reason": "No indexed bridge dataset is configured.",
+      "status": "UNAVAILABLE"
+    },
+    "ethereum_archival_rpc_curve": {
+      "impact": "Curve variables are quarantined and are not consumed by the final model.",
+      "reason": "ETH_ARCHIVE_RPC_URL is not configured for this dataset.",
+      "status": "UNAVAILABLE"
+    },
+    "replication_native_redemptions": {
+      "columns_audited": [
+        "time",
+        "offer_amount",
+        "swap_amount",
+        "fee_amount"
+      ],
+      "direction": "offer='uusd', ask/swap='uluna' (UST burned; LUNA minted)",
+      "gross_mint_identity": "swap_amount + fee_amount",
+      "hourly_offer_aggregation_mismatches": 0,
+      "hourly_rows_checked": 312,
+      "limitation": "the extract omits transaction hash, trader, denoms, and action fields; direction is traced via package code",
+      "normalization_evidence": "Replication figure multiplies swap_amount by LUNA USD price and divides by 1e6 to plot USD millions; its fee percentage is fee/(fee+swap), confirming token-unit LUNA outputs.",
+      "raw_rows": 277342,
+      "replication_evidence": [
+        "Datasets.md native swap schema",
+        "code/figures/fig11_swap_arbitrage.py",
+        "code/tables/fmt_tableIA1_native_swap_run.py"
+      ],
+      "sha256": "ecd470c77c314a79fb784f85b436f62e69f636343abd8ab98e6ad60c9347d124",
+      "source_file": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/native_swaps/ust_luna_swaps_run.parquet",
+      "status": "DIRECT_EVENT_OUTPUT_PROVENANCE_SUPPORTED_WITH_EXTRACT_LIMITATION",
+      "terra_core_evidence": {
+        "file": "x/market/keeper/msg_server.go",
+        "logic": "burn offerCoin; mint swapCoin.Add(feeCoin); send swapCoin to recipient; send feeCoin to oracle module",
+        "repository": "https://github.com/terra-money/classic-core",
+        "tag": "v0.5.20"
+      },
+      "units": {
+        "fee_amount": "LUNA token units minted and sent to the oracle module, normalized from uluna",
+        "offer_amount": "UST token units, normalized from uusd before this extract",
+        "swap_amount": "LUNA token units delivered to the recipient, normalized from uluna"
+      }
+    },
+    "terra_classic_archival_lcd_rpc": {
+      "impact": "Not a blocker for the bundled replication extract; blocks independent full-node re-query.",
+      "reason": "No archival Terra endpoint is configured.",
+      "status": "UNAVAILABLE"
+    }
+  },
+  "ust_impact_identification": {
+    "main_scenario": 0.001,
+    "minimum_identifying_rows": 5,
+    "observable_anchor_only_rows": 1,
+    "predeclared_beta_scenarios": [
+      0.0001,
+      0.001,
+      0.01
+    ],
+    "reason": "external-holder sells and DEX sell flow are not independently observed in the 12h calibration window",
+    "scenario_augmented_rows": 7,
+    "single_observation_point_estimate_not_used": 0.005107420963408466,
+    "status": "UNDERIDENTIFIED"
+  }
+}
