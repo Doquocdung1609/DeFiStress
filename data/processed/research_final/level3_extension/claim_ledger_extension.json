@@ -1,0 +1,62 @@
+{
+  "claims": [
+    {
+      "claim": "27 Aave V3 LiquidationCall events in the preregistered week were verified by RPC log, receipt and block hash.",
+      "evidence": [
+        "historical/raw_event_index.json",
+        "historical/summary.json"
+      ],
+      "id": "L3-C01",
+      "status": "SUPPORTED"
+    },
+    {
+      "boundary": "A direct transaction path is not proof of a market-wide endogenous cascade.",
+      "claim": "Three liquidation events have receipt-level same-transaction Uniswap V3 Swap links.",
+      "evidence": [
+        "historical/observation_linkage.json"
+      ],
+      "id": "L3-C02",
+      "status": "SUPPORTED_WITH_BOUNDARY"
+    },
+    {
+      "claim": "Historical observations prove an endogenous cross-protocol liquidation cascade.",
+      "id": "L3-C03",
+      "reason": "Associations and three transaction links do not identify system-wide causality; controls and confounding remain limited.",
+      "status": "UNSUPPORTED"
+    },
+    {
+      "claim": "The maximum observed simulated depth was 2 despite a configured ceiling of 100.",
+      "evidence": [
+        "deep_stress/numerical_diagnostics.json",
+        "deep_stress/cascade_paths.json"
+      ],
+      "id": "L3-C04",
+      "status": "SUPPORTED_MODEL_CONDITIONAL"
+    },
+    {
+      "boundary": "Conditional on model, scenario, snapshot and RNG; not a real-world probability.",
+      "claim": "Severe seed 20260914 produced 280/10000 depth>=2 paths (2.8%).",
+      "evidence": [
+        "deep_stress/monte_carlo_batches.json"
+      ],
+      "id": "L3-C05",
+      "status": "SUPPORTED_MODEL_CONDITIONAL"
+    },
+    {
+      "claim": "Aave liquidation and Uniswap swap transactions passed local Mainnet-fork execution.",
+      "evidence": [
+        "fork/validation.json"
+      ],
+      "id": "L3-C06",
+      "reason": "Foundry and Anvil are absent; zero fork transactions were executed.",
+      "status": "UNAVAILABLE"
+    }
+  ],
+  "extension_name": "Level-3 Historical Evidence Extension",
+  "rq_scope": {
+    "RQ1_RQ6": "Existing corrected_run_v2 conclusions remain model-conditional and must be read with this extension.",
+    "new_extension": "Descriptive historical evidence extension; not a seventh replacement RQ."
+  },
+  "source_commit": "423bcfd4ebf910ef73b94d9deaf7cf746d8ed71c",
+  "status": "LIMITED"
+}

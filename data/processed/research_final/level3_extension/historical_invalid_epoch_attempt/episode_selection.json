@@ -1,0 +1,64 @@
+{
+  "attempted_graph_rows": 28,
+  "excluded_events": [],
+  "population_boundary": "event-level Aave V3 liquidations; not a historical borrower census",
+  "pre_registered_window": {
+    "end_exclusive": "2026-09-07T16:00:00Z",
+    "start": "2026-08-31T16:00:00Z"
+  },
+  "primary_cluster_window_seconds": 300,
+  "rpc_verified_events": 28,
+  "selected_episodes": [
+    {
+      "end_timestamp_utc": "2026-08-31T21:00:35Z",
+      "episode_id": "cluster-300s-001",
+      "event_ids": [
+        "event-68c27a2e0c692046116c"
+      ],
+      "start_timestamp_utc": "2026-08-31T21:00:35Z"
+    },
+    {
+      "end_timestamp_utc": "2026-09-01T01:13:47Z",
+      "episode_id": "cluster-300s-002",
+      "event_ids": [
+        "event-4f847b7e96655c01041f"
+      ],
+      "start_timestamp_utc": "2026-09-01T01:13:47Z"
+    },
+    {
+      "end_timestamp_utc": "2026-09-01T16:59:23Z",
+      "episode_id": "cluster-300s-003",
+      "event_ids": [
+        "event-e1b97e382cca9758a8b9"
+      ],
+      "start_timestamp_utc": "2026-09-01T16:59:23Z"
+    },
+    {
+      "end_timestamp_utc": "2026-09-01T18:38:59Z",
+      "episode_id": "cluster-300s-004",
+      "event_ids": [
+        "event-354a52d7f60e59f1d358",
+        "event-986a88b46e6bfb565dff"
+      ],
+      "start_timestamp_utc": "2026-09-01T18:38:59Z"
+    },
+    {
+      "end_timestamp_utc": "2026-09-01T18:46:23Z",
+      "episode_id": "cluster-300s-005",
+      "event_ids": [
+        "event-73afad4e8e3d8a92d2a7"
+      ],
+      "start_timestamp_utc": "2026-09-01T18:46:23Z"
+    }
+  ],
+  "selection_rule_applied": "first five chronological 5-minute clusters; preregistered fallback",
+  "sensitivity_cluster_counts": {
+    "1800": 20,
+    "300": 23,
+    "60": 25,
+    "900": 21
+  },
+  "source_commit": "423bcfd4ebf910ef73b94d9deaf7cf746d8ed71c",
+  "status": "PASS",
+  "usd_values_comparable_for_selection": false
+}

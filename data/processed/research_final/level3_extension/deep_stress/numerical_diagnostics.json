@@ -1,0 +1,65 @@
+{
+  "all_deterministic_no_duplicates": true,
+  "canonical_counts": {
+    "verified_borrowers": 454,
+    "weth_usdc_cohort": 109
+  },
+  "canonical_snapshot_sha256": "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99",
+  "configured_cap_is_not_observed_depth": true,
+  "cpu_count": 8,
+  "largest_configured_wave_cap": 100,
+  "largest_horizon_steps": 120,
+  "max_deterministic_observed_depth": 2,
+  "max_monte_carlo_observed_depth": 2,
+  "model_version": "0.1.0-aave-v3.10-metric-semantics",
+  "monte_carlo_invariants": [
+    {
+      "all_finite": true,
+      "cap_hits": 0,
+      "later_wave_new_eligibility_all_paths": true,
+      "no_duplicate_borrower_all_paths": true
+    },
+    {
+      "all_finite": true,
+      "cap_hits": 0,
+      "later_wave_new_eligibility_all_paths": true,
+      "no_duplicate_borrower_all_paths": true
+    },
+    {
+      "all_finite": true,
+      "cap_hits": 0,
+      "later_wave_new_eligibility_all_paths": true,
+      "no_duplicate_borrower_all_paths": true
+    },
+    {
+      "all_finite": true,
+      "cap_hits": 0,
+      "later_wave_new_eligibility_all_paths": true,
+      "no_duplicate_borrower_all_paths": true
+    },
+    {
+      "all_finite": true,
+      "cap_hits": 0,
+      "later_wave_new_eligibility_all_paths": true,
+      "no_duplicate_borrower_all_paths": true
+    },
+    {
+      "all_finite": true,
+      "cap_hits": 0,
+      "later_wave_new_eligibility_all_paths": true,
+      "no_duplicate_borrower_all_paths": true
+    },
+    {
+      "all_finite": true,
+      "cap_hits": 0,
+      "later_wave_new_eligibility_all_paths": true,
+      "no_duplicate_borrower_all_paths": true
+    }
+  ],
+  "numerical_floor_or_cap_artifacts": 0,
+  "runtime_seconds": 10.294778499999666,
+  "source_commit": "423bcfd4ebf910ef73b94d9deaf7cf746d8ed71c",
+  "status": "PASS",
+  "tail_assumption_warning": "Haircuts 90% and 95% are counterfactual tail assumptions, not observed Mainnet depth.",
+  "workers": 4
+}

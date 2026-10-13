@@ -1,0 +1,649 @@
+{
+  "batches": [
+    {
+      "actual_runs": 200,
+      "cascade_depth_quantiles": {
+        "p50": 1.0,
+        "p95": 1.0,
+        "p99": 2.0
+      },
+      "cascade_frequencies": {
+        "10": {
+          "frequency": 0.0,
+          "runs": 200,
+          "successes": 0,
+          "wilson_95": {
+            "lower": 0.0,
+            "upper": 0.018845326377266564
+          }
+        },
+        "2": {
+          "frequency": 0.04,
+          "runs": 200,
+          "successes": 8,
+          "wilson_95": {
+            "lower": 0.020405632066152313,
+            "upper": 0.07693206820093293
+          }
+        },
+        "3": {
+          "frequency": 0.0,
+          "runs": 200,
+          "successes": 0,
+          "wilson_95": {
+            "lower": 0.0,
+            "upper": 0.018845326377266564
+          }
+        },
+        "5": {
+          "frequency": 0.0,
+          "runs": 200,
+          "successes": 0,
+          "wilson_95": {
+            "lower": 0.0,
+            "upper": 0.018845326377266564
+          }
+        }
+      },
+      "checkpoint": "data/processed/research_final/level3_extension/deep_stress/checkpoints/severe_seed_20260914_200.json",
+      "invariants": {
+        "all_finite": true,
+        "cap_hits": 0,
+        "later_wave_new_eligibility_all_paths": true,
+        "no_duplicate_borrower_all_paths": true
+      },
+      "label": "Severe",
+      "loss_definition": "modeled uncovered debt + executed liquidated debt; not realized financial loss",
+      "loss_quantiles": {
+        "expected_shortfall_95": 39120.97060550944,
+        "p50": 25422.775973246702,
+        "p95": 37458.462733914246,
+        "p99": 40328.38474626515
+      },
+      "max_observed_cascade_depth": 2,
+      "new_paths_executed_this_stage": 200,
+      "reused_prefix_paths": 0,
+      "runtime_seconds_this_stage": 0.001724000001559034,
+      "scenario": {
+        "arbitrage_capacity_pct": "25",
+        "arbitrage_delay_steps": 0,
+        "gas_multiplier": "4",
+        "horizon_steps": 120,
+        "liquidation_bonus": "1.05",
+        "liquidation_bonus_override": null,
+        "liquidation_threshold_override": null,
+        "liquidator_capacity_usdc": "2500000",
+        "liquidator_capital_usdc": "10000000",
+        "liquidator_delay_steps": 0,
+        "liquidator_min_profit_usdc": "0",
+        "liquidity_haircut_pct": "60",
+        "ltv_override": null,
+        "max_waves": 100,
+        "monte_carlo_runs": 100,
+        "name": "Severe",
+        "seed": 20260914,
+        "shock_pct": "-30",
+        "timestep_seconds": 60,
+        "usdc_price_usd": "1",
+        "volatility_pct": "2"
+      },
+      "seed": 20260914,
+      "status": "PASS",
+      "target_runs": 200,
+      "workers": 4
+    },
+    {
+      "actual_runs": 1000,
+      "cascade_depth_quantiles": {
+        "p50": 1.0,
+        "p95": 1.0,
+        "p99": 2.0
+      },
+      "cascade_frequencies": {
+        "10": {
+          "frequency": 0.0,
+          "runs": 1000,
+          "successes": 0,
+          "wilson_95": {
+            "lower": 2.168404344971009e-19,
+            "upper": 0.0038267584855551217
+          }
+        },
+        "2": {
+          "frequency": 0.031,
+          "runs": 1000,
+          "successes": 31,
+          "wilson_95": {
+            "lower": 0.02192400344715857,
+            "upper": 0.04366549601229214
+          }
+        },
+        "3": {
+          "frequency": 0.0,
+          "runs": 1000,
+          "successes": 0,
+          "wilson_95": {
+            "lower": 2.168404344971009e-19,
+            "upper": 0.0038267584855551217
+          }
+        },
+        "5": {
+          "frequency": 0.0,
+          "runs": 1000,
+          "successes": 0,
+          "wilson_95": {
+            "lower": 2.168404344971009e-19,
+            "upper": 0.0038267584855551217
+          }
+        }
+      },
+      "checkpoint": "data/processed/research_final/level3_extension/deep_stress/checkpoints/severe_seed_20260914_1000.json",
+      "invariants": {
+        "all_finite": true,
+        "cap_hits": 0,
+        "later_wave_new_eligibility_all_paths": true,
+        "no_duplicate_borrower_all_paths": true
+      },
+      "label": "Severe",
+      "loss_definition": "modeled uncovered debt + executed liquidated debt; not realized financial loss",
+      "loss_quantiles": {
+        "expected_shortfall_95": 38596.63211161699,
+        "p50": 25401.227844636545,
+        "p95": 35952.02568748432,
+        "p99": 40323.98350976416
+      },
+      "max_observed_cascade_depth": 2,
+      "new_paths_executed_this_stage": 1000,
+      "reused_prefix_paths": 0,
+      "runtime_seconds_this_stage": 0.0014314000000013039,
+      "scenario": {
+        "arbitrage_capacity_pct": "25",
+        "arbitrage_delay_steps": 0,
+        "gas_multiplier": "4",
+        "horizon_steps": 120,
+        "liquidation_bonus": "1.05",
+        "liquidation_bonus_override": null,
+        "liquidation_threshold_override": null,
+        "liquidator_capacity_usdc": "2500000",
+        "liquidator_capital_usdc": "10000000",
+        "liquidator_delay_steps": 0,
+        "liquidator_min_profit_usdc": "0",
+        "liquidity_haircut_pct": "60",
+        "ltv_override": null,
+        "max_waves": 100,
+        "monte_carlo_runs": 100,
+        "name": "Severe",
+        "seed": 20260914,
+        "shock_pct": "-30",
+        "timestep_seconds": 60,
+        "usdc_price_usd": "1",
+        "volatility_pct": "2"
+      },
+      "seed": 20260914,
+      "status": "PASS",
+      "target_runs": 1000,
+      "workers": 4
+    },
+    {
+      "actual_runs": 5000,
+      "cascade_depth_quantiles": {
+        "p50": 1.0,
+        "p95": 1.0,
+        "p99": 2.0
+      },
+      "cascade_frequencies": {
+        "10": {
+          "frequency": 0.0,
+          "runs": 5000,
+          "successes": 0,
+          "wilson_95": {
+            "lower": 0.0,
+            "upper": 0.0007677019450571241
+          }
+        },
+        "2": {
+          "frequency": 0.0278,
+          "runs": 5000,
+          "successes": 139,
+          "wilson_95": {
+            "lower": 0.023593021362704494,
+            "upper": 0.032731996354207454
+          }
+        },
+        "3": {
+          "frequency": 0.0,
+          "runs": 5000,
+          "successes": 0,
+          "wilson_95": {
+            "lower": 0.0,
+            "upper": 0.0007677019450571241
+          }
+        },
+        "5": {
+          "frequency": 0.0,
+          "runs": 5000,
+          "successes": 0,
+          "wilson_95": {
+            "lower": 0.0,
+            "upper": 0.0007677019450571241
+          }
+        }
+      },
+      "checkpoint": "data/processed/research_final/level3_extension/deep_stress/checkpoints/severe_seed_20260914_5000.json",
+      "invariants": {
+        "all_finite": true,
+        "cap_hits": 0,
+        "later_wave_new_eligibility_all_paths": true,
+        "no_duplicate_borrower_all_paths": true
+      },
+      "label": "Severe",
+      "loss_definition": "modeled uncovered debt + executed liquidated debt; not realized financial loss",
+      "loss_quantiles": {
+        "expected_shortfall_95": 38966.54681631433,
+        "p50": 25388.707984020002,
+        "p95": 36333.423775672585,
+        "p99": 40810.81482234281
+      },
+      "max_observed_cascade_depth": 2,
+      "new_paths_executed_this_stage": 5000,
+      "reused_prefix_paths": 0,
+      "runtime_seconds_this_stage": 0.004375099997560028,
+      "scenario": {
+        "arbitrage_capacity_pct": "25",
+        "arbitrage_delay_steps": 0,
+        "gas_multiplier": "4",
+        "horizon_steps": 120,
+        "liquidation_bonus": "1.05",
+        "liquidation_bonus_override": null,
+        "liquidation_threshold_override": null,
+        "liquidator_capacity_usdc": "2500000",
+        "liquidator_capital_usdc": "10000000",
+        "liquidator_delay_steps": 0,
+        "liquidator_min_profit_usdc": "0",
+        "liquidity_haircut_pct": "60",
+        "ltv_override": null,
+        "max_waves": 100,
+        "monte_carlo_runs": 100,
+        "name": "Severe",
+        "seed": 20260914,
+        "shock_pct": "-30",
+        "timestep_seconds": 60,
+        "usdc_price_usd": "1",
+        "volatility_pct": "2"
+      },
+      "seed": 20260914,
+      "status": "PASS",
+      "target_runs": 5000,
+      "workers": 4
+    },
+    {
+      "actual_runs": 10000,
+      "cascade_depth_quantiles": {
+        "p50": 1.0,
+        "p95": 1.0,
+        "p99": 2.0
+      },
+      "cascade_frequencies": {
+        "10": {
+          "frequency": 0.0,
+          "runs": 10000,
+          "successes": 0,
+          "wilson_95": {
+            "lower": 0.0,
+            "upper": 0.00038399837067659557
+          }
+        },
+        "2": {
+          "frequency": 0.028,
+          "runs": 10000,
+          "successes": 280,
+          "wilson_95": {
+            "lower": 0.02494338524886922,
+            "upper": 0.03141910921304949
+          }
+        },
+        "3": {
+          "frequency": 0.0,
+          "runs": 10000,
+          "successes": 0,
+          "wilson_95": {
+            "lower": 0.0,
+            "upper": 0.00038399837067659557
+          }
+        },
+        "5": {
+          "frequency": 0.0,
+          "runs": 10000,
+          "successes": 0,
+          "wilson_95": {
+            "lower": 0.0,
+            "upper": 0.00038399837067659557
+          }
+        }
+      },
+      "checkpoint": "data/processed/research_final/level3_extension/deep_stress/checkpoints/severe_seed_20260914_10000.json",
+      "invariants": {
+        "all_finite": true,
+        "cap_hits": 0,
+        "later_wave_new_eligibility_all_paths": true,
+        "no_duplicate_borrower_all_paths": true
+      },
+      "label": "Severe",
+      "loss_definition": "modeled uncovered debt + executed liquidated debt; not realized financial loss",
+      "loss_quantiles": {
+        "expected_shortfall_95": 38959.72038374711,
+        "p50": 25393.358948750836,
+        "p95": 36256.10583716855,
+        "p99": 40766.99475628861
+      },
+      "max_observed_cascade_depth": 2,
+      "new_paths_executed_this_stage": 10000,
+      "reused_prefix_paths": 0,
+      "runtime_seconds_this_stage": 0.006320499996945728,
+      "scenario": {
+        "arbitrage_capacity_pct": "25",
+        "arbitrage_delay_steps": 0,
+        "gas_multiplier": "4",
+        "horizon_steps": 120,
+        "liquidation_bonus": "1.05",
+        "liquidation_bonus_override": null,
+        "liquidation_threshold_override": null,
+        "liquidator_capacity_usdc": "2500000",
+        "liquidator_capital_usdc": "10000000",
+        "liquidator_delay_steps": 0,
+        "liquidator_min_profit_usdc": "0",
+        "liquidity_haircut_pct": "60",
+        "ltv_override": null,
+        "max_waves": 100,
+        "monte_carlo_runs": 100,
+        "name": "Severe",
+        "seed": 20260914,
+        "shock_pct": "-30",
+        "timestep_seconds": 60,
+        "usdc_price_usd": "1",
+        "volatility_pct": "2"
+      },
+      "seed": 20260914,
+      "status": "PASS",
+      "target_runs": 10000,
+      "workers": 4
+    },
+    {
+      "actual_runs": 1000,
+      "cascade_depth_quantiles": {
+        "p50": 1.0,
+        "p95": 1.0,
+        "p99": 2.0
+      },
+      "cascade_frequencies": {
+        "10": {
+          "frequency": 0.0,
+          "runs": 1000,
+          "successes": 0,
+          "wilson_95": {
+            "lower": 2.168404344971009e-19,
+            "upper": 0.0038267584855551217
+          }
+        },
+        "2": {
+          "frequency": 0.023,
+          "runs": 1000,
+          "successes": 23,
+          "wilson_95": {
+            "lower": 0.015374276932992922,
+            "upper": 0.03427645066222666
+          }
+        },
+        "3": {
+          "frequency": 0.0,
+          "runs": 1000,
+          "successes": 0,
+          "wilson_95": {
+            "lower": 2.168404344971009e-19,
+            "upper": 0.0038267584855551217
+          }
+        },
+        "5": {
+          "frequency": 0.0,
+          "runs": 1000,
+          "successes": 0,
+          "wilson_95": {
+            "lower": 2.168404344971009e-19,
+            "upper": 0.0038267584855551217
+          }
+        }
+      },
+      "checkpoint": "data/processed/research_final/level3_extension/deep_stress/checkpoints/severe_seed_20261014_1000.json",
+      "invariants": {
+        "all_finite": true,
+        "cap_hits": 0,
+        "later_wave_new_eligibility_all_paths": true,
+        "no_duplicate_borrower_all_paths": true
+      },
+      "label": "Severe seed robustness",
+      "loss_definition": "modeled uncovered debt + executed liquidated debt; not realized financial loss",
+      "loss_quantiles": {
+        "expected_shortfall_95": 38628.287093519524,
+        "p50": 25279.058013506125,
+        "p95": 36004.06345098868,
+        "p99": 39570.12009088394
+      },
+      "max_observed_cascade_depth": 2,
+      "new_paths_executed_this_stage": 1000,
+      "reused_prefix_paths": 0,
+      "runtime_seconds_this_stage": 0.001658799999859184,
+      "scenario": {
+        "arbitrage_capacity_pct": "25",
+        "arbitrage_delay_steps": 0,
+        "gas_multiplier": "4",
+        "horizon_steps": 120,
+        "liquidation_bonus": "1.05",
+        "liquidation_bonus_override": null,
+        "liquidation_threshold_override": null,
+        "liquidator_capacity_usdc": "2500000",
+        "liquidator_capital_usdc": "10000000",
+        "liquidator_delay_steps": 0,
+        "liquidator_min_profit_usdc": "0",
+        "liquidity_haircut_pct": "60",
+        "ltv_override": null,
+        "max_waves": 100,
+        "monte_carlo_runs": 100,
+        "name": "Severe",
+        "seed": 20260914,
+        "shock_pct": "-30",
+        "timestep_seconds": 60,
+        "usdc_price_usd": "1",
+        "volatility_pct": "2"
+      },
+      "seed": 20261014,
+      "status": "PASS",
+      "target_runs": 1000,
+      "workers": 4
+    },
+    {
+      "actual_runs": 1000,
+      "cascade_depth_quantiles": {
+        "p50": 1.0,
+        "p95": 1.0,
+        "p99": 2.0
+      },
+      "cascade_frequencies": {
+        "10": {
+          "frequency": 0.0,
+          "runs": 1000,
+          "successes": 0,
+          "wilson_95": {
+            "lower": 2.168404344971009e-19,
+            "upper": 0.0038267584855551217
+          }
+        },
+        "2": {
+          "frequency": 0.037,
+          "runs": 1000,
+          "successes": 37,
+          "wilson_95": {
+            "lower": 0.026961180875554738,
+            "upper": 0.0505823974820693
+          }
+        },
+        "3": {
+          "frequency": 0.0,
+          "runs": 1000,
+          "successes": 0,
+          "wilson_95": {
+            "lower": 2.168404344971009e-19,
+            "upper": 0.0038267584855551217
+          }
+        },
+        "5": {
+          "frequency": 0.0,
+          "runs": 1000,
+          "successes": 0,
+          "wilson_95": {
+            "lower": 2.168404344971009e-19,
+            "upper": 0.0038267584855551217
+          }
+        }
+      },
+      "checkpoint": "data/processed/research_final/level3_extension/deep_stress/checkpoints/severe_seed_20261114_1000.json",
+      "invariants": {
+        "all_finite": true,
+        "cap_hits": 0,
+        "later_wave_new_eligibility_all_paths": true,
+        "no_duplicate_borrower_all_paths": true
+      },
+      "label": "Severe seed robustness",
+      "loss_definition": "modeled uncovered debt + executed liquidated debt; not realized financial loss",
+      "loss_quantiles": {
+        "expected_shortfall_95": 38801.992841898485,
+        "p50": 25335.932240554335,
+        "p95": 36247.1254095473,
+        "p99": 39953.24287260751
+      },
+      "max_observed_cascade_depth": 2,
+      "new_paths_executed_this_stage": 1000,
+      "reused_prefix_paths": 0,
+      "runtime_seconds_this_stage": 0.0015280000006896444,
+      "scenario": {
+        "arbitrage_capacity_pct": "25",
+        "arbitrage_delay_steps": 0,
+        "gas_multiplier": "4",
+        "horizon_steps": 120,
+        "liquidation_bonus": "1.05",
+        "liquidation_bonus_override": null,
+        "liquidation_threshold_override": null,
+        "liquidator_capacity_usdc": "2500000",
+        "liquidator_capital_usdc": "10000000",
+        "liquidator_delay_steps": 0,
+        "liquidator_min_profit_usdc": "0",
+        "liquidity_haircut_pct": "60",
+        "ltv_override": null,
+        "max_waves": 100,
+        "monte_carlo_runs": 100,
+        "name": "Severe",
+        "seed": 20260914,
+        "shock_pct": "-30",
+        "timestep_seconds": 60,
+        "usdc_price_usd": "1",
+        "volatility_pct": "2"
+      },
+      "seed": 20261114,
+      "status": "PASS",
+      "target_runs": 1000,
+      "workers": 4
+    },
+    {
+      "actual_runs": 1000,
+      "cascade_depth_quantiles": {
+        "p50": 1.0,
+        "p95": 1.0,
+        "p99": 1.0
+      },
+      "cascade_frequencies": {
+        "10": {
+          "frequency": 0.0,
+          "runs": 1000,
+          "successes": 0,
+          "wilson_95": {
+            "lower": 2.168404344971009e-19,
+            "upper": 0.0038267584855551217
+          }
+        },
+        "2": {
+          "frequency": 0.0,
+          "runs": 1000,
+          "successes": 0,
+          "wilson_95": {
+            "lower": 2.168404344971009e-19,
+            "upper": 0.0038267584855551217
+          }
+        },
+        "3": {
+          "frequency": 0.0,
+          "runs": 1000,
+          "successes": 0,
+          "wilson_95": {
+            "lower": 2.168404344971009e-19,
+            "upper": 0.0038267584855551217
+          }
+        },
+        "5": {
+          "frequency": 0.0,
+          "runs": 1000,
+          "successes": 0,
+          "wilson_95": {
+            "lower": 2.168404344971009e-19,
+            "upper": 0.0038267584855551217
+          }
+        }
+      },
+      "checkpoint": "data/processed/research_final/level3_extension/deep_stress/checkpoints/low_liquidity_seed_20260914_1000.json",
+      "invariants": {
+        "all_finite": true,
+        "cap_hits": 0,
+        "later_wave_new_eligibility_all_paths": true,
+        "no_duplicate_borrower_all_paths": true
+      },
+      "label": "Low Liquidity prespecified",
+      "loss_definition": "modeled uncovered debt + executed liquidated debt; not realized financial loss",
+      "loss_quantiles": {
+        "expected_shortfall_95": 21403.742834608172,
+        "p50": 11303.914541730479,
+        "p95": 21197.48974859003,
+        "p99": 21535.068566076316
+      },
+      "max_observed_cascade_depth": 1,
+      "new_paths_executed_this_stage": 1000,
+      "reused_prefix_paths": 0,
+      "runtime_seconds_this_stage": 0.0014374000020325184,
+      "scenario": {
+        "arbitrage_capacity_pct": "50",
+        "arbitrage_delay_steps": 0,
+        "gas_multiplier": "2",
+        "horizon_steps": 120,
+        "liquidation_bonus": "1.05",
+        "liquidation_bonus_override": null,
+        "liquidation_threshold_override": null,
+        "liquidator_capacity_usdc": "2500000",
+        "liquidator_capital_usdc": "10000000",
+        "liquidator_delay_steps": 0,
+        "liquidator_min_profit_usdc": "0",
+        "liquidity_haircut_pct": "75",
+        "ltv_override": null,
+        "max_waves": 100,
+        "monte_carlo_runs": 100,
+        "name": "Low Liquidity",
+        "seed": 20260914,
+        "shock_pct": "-20",
+        "timestep_seconds": 60,
+        "usdc_price_usd": "1",
+        "volatility_pct": "2"
+      },
+      "seed": 20260914,
+      "status": "PASS",
+      "target_runs": 1000,
+      "workers": 4
+    }
+  ],
+  "status": "PASS"
+}

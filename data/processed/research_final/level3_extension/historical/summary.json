@@ -1,0 +1,42 @@
+{
+  "address_book": {
+    "commit": "6463b76862f4e2ea79764a02e0f1971c3fedb7fe",
+    "oracle": "0x54586bE62E3c3580375aE3723C145253060Ca0C2",
+    "pool": "0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2",
+    "source": "https://assets.aave.com/address-book/releases/latest/modules/AaveV3Ethereum.json",
+    "version": "4.73.5"
+  },
+  "artifact_hashes": {
+    "data/processed/research_final/level3_extension/historical/raw_event_index.csv": "192fbc51d05e9ac7b1381ef24ff39b5f360e59616fa193a5f155e171a2771c70",
+    "data/processed/research_final/level3_extension/historical/raw_event_index.json": "835ab477a8f181c131f299f93db407d5a4f102970efe4709eb2b9c232334e8d1"
+  },
+  "attempted": 27,
+  "cache_reuse": {
+    "cached_swap_rows_reused_after_timestamp_filter": 30458,
+    "invalid_epoch_attempt_excluded_from_findings": true,
+    "missing_intervals_queried": 1,
+    "new_swap_rows_collected": 1031
+  },
+  "excluded": 0,
+  "limitations": [
+    "The Graph supplied deterministic discovery; every published liquidation was rechecked by RPC log, receipt and block hash.",
+    "This is one preregistered calendar week and event-level coverage, not a full historical borrower census.",
+    "Receipt-level linkage can establish a same-transaction path but cannot by itself prove market-wide endogenous causality.",
+    "Graph amountUSD/profit fields showed unit inconsistencies and were excluded from episode ranking.",
+    "Aave oracle states were sampled around selected episodes; underlying Chainlink AnswerUpdated logs were not enumerated."
+  ],
+  "oracle_observation_count": 15,
+  "rpc_budget": 25000,
+  "rpc_calls": 424,
+  "runtime_seconds": 54.62185110000428,
+  "selected_episodes": 5,
+  "source_commit": "423bcfd4ebf910ef73b94d9deaf7cf746d8ed71c",
+  "status": "LIMITED",
+  "swap_count": 31489,
+  "tier_counts": {
+    "DIRECT_TRANSACTION_LINK": 3,
+    "SAME_BLOCK_ASSOCIATION": 23,
+    "TIME_WINDOW_ASSOCIATION": 1
+  },
+  "verified": 27
+}

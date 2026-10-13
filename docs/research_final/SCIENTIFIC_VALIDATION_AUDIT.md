@@ -11,6 +11,15 @@ Canonical evidence policy: preserved; corrected results are versioned under
 > các metric chịu ảnh hưởng hiện được thay thế bởi `corrected_run_v2`. Phần cập nhật tiếng Việt bên
 > dưới có quyền ưu tiên nếu khác với diễn giải v1 trước đó.
 
+> **Cập nhật Level-3 ngày 2026-10-14:** extension tại
+> `data/processed/research_final/level3_extension/` giữ nguyên canonical và cả hai corrected runs.
+> Cửa sổ lịch sử 01–07/09/2026 UTC có 27/27 Aave V3 liquidation events được RPC xác minh:
+> 3 direct transaction links, 23 same-block associations và 1 time-window association. Đây là
+> bằng chứng có tier, không phải causal proof. Deep study chạy cap 12/24/48/100 và Severe 10.000
+> paths; maximum observed depth chỉ là 2, với 280/10.000 depth≥2 và 0 depth≥3. Local fork vẫn
+> `UNAVAILABLE` vì thiếu Foundry/Anvil. Xem `LEVEL3_COMMANDER_REVIEW_PACKET.md`; Commander sign-off
+> và scientific lock vẫn PENDING.
+
 ## Cập nhật P0 theo Commander Review
 
 **Kết quả executor: PASS — VERIFIED; còn chờ Commander sign-off độc lập.** Không thay canonical

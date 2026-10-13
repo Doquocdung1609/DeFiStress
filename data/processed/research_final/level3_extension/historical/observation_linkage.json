@@ -1,0 +1,437 @@
+{
+  "rows": [
+    {
+      "causal_claim": false,
+      "episode_id": "cluster-300s-001",
+      "event_id": "event-4f847b7e96655c01041f",
+      "interpretation": "Quan s\u00e1t l\u1ecbch s\u1eed c\u00f3 li\u00ean h\u1ec7 theo th\u1eddi gian, ch\u01b0a ch\u1ee9ng minh v\u00f2ng l\u00e2y lan n\u1ed9i sinh",
+      "matched_swap_ids": [
+        "swap-70b4e2eb1271fcb0569f"
+      ],
+      "nearest_seconds": 12,
+      "tier": "TIME_WINDOW_ASSOCIATION"
+    },
+    {
+      "causal_claim": false,
+      "episode_id": "cluster-300s-002",
+      "event_id": "event-e1b97e382cca9758a8b9",
+      "interpretation": "Quan s\u00e1t l\u1ecbch s\u1eed c\u00f3 li\u00ean h\u1ec7 theo th\u1eddi gian, ch\u01b0a ch\u1ee9ng minh v\u00f2ng l\u00e2y lan n\u1ed9i sinh",
+      "matched_swap_ids": [
+        "swap-68b7220abfbc37284c43",
+        "swap-5132de21aefd9f58f3f9",
+        "swap-fa05a160cb22497d7312",
+        "swap-099bf598f5ce312d80c8",
+        "swap-1a8806d71784a668cec9"
+      ],
+      "tier": "SAME_BLOCK_ASSOCIATION"
+    },
+    {
+      "causal_claim": false,
+      "episode_id": "cluster-300s-003",
+      "event_id": "event-354a52d7f60e59f1d358",
+      "interpretation": "Receipt-level same-transaction path.",
+      "matched_swap_ids": [
+        "swap-af8ef0634314af26cc0e"
+      ],
+      "tier": "DIRECT_TRANSACTION_LINK"
+    },
+    {
+      "causal_claim": false,
+      "episode_id": "cluster-300s-003",
+      "event_id": "event-986a88b46e6bfb565dff",
+      "interpretation": "Receipt-level same-transaction path.",
+      "matched_swap_ids": [
+        "swap-af8ef0634314af26cc0e"
+      ],
+      "tier": "DIRECT_TRANSACTION_LINK"
+    },
+    {
+      "causal_claim": false,
+      "episode_id": "cluster-300s-004",
+      "event_id": "event-73afad4e8e3d8a92d2a7",
+      "interpretation": "Receipt-level same-transaction path.",
+      "matched_swap_ids": [
+        "swap-39c8d94faece45a593d9",
+        "swap-cea1b55d90e4579dd726"
+      ],
+      "tier": "DIRECT_TRANSACTION_LINK"
+    },
+    {
+      "causal_claim": false,
+      "episode_id": "cluster-300s-005",
+      "event_id": "event-6092227a407cb4fdab9d",
+      "interpretation": "Quan s\u00e1t l\u1ecbch s\u1eed c\u00f3 li\u00ean h\u1ec7 theo th\u1eddi gian, ch\u01b0a ch\u1ee9ng minh v\u00f2ng l\u00e2y lan n\u1ed9i sinh",
+      "matched_swap_ids": [
+        "swap-b0f1d34364c452ebe5f0",
+        "swap-38732af5c5ab9f675cf0",
+        "swap-cfe7e3867dd9d714a248",
+        "swap-7a3bb29e98400cf11e37"
+      ],
+      "tier": "SAME_BLOCK_ASSOCIATION"
+    },
+    {
+      "causal_claim": false,
+      "episode_id": null,
+      "event_id": "event-b17a4b625c0204107a89",
+      "interpretation": "Quan s\u00e1t l\u1ecbch s\u1eed c\u00f3 li\u00ean h\u1ec7 theo th\u1eddi gian, ch\u01b0a ch\u1ee9ng minh v\u00f2ng l\u00e2y lan n\u1ed9i sinh",
+      "matched_swap_ids": [
+        "swap-bf0415c8bffe01beb722",
+        "swap-4f7a32f6cdb536c98ca7",
+        "swap-be703c43f6a5719f6d28",
+        "swap-c890aee5de4a5346895d",
+        "swap-215b3556b75001837d77",
+        "swap-8361ba5e22999ea7670c",
+        "swap-188a9eb5e9126ccf1a2c"
+      ],
+      "tier": "SAME_BLOCK_ASSOCIATION"
+    },
+    {
+      "causal_claim": false,
+      "episode_id": null,
+      "event_id": "event-7801216a9546d6a5897a",
+      "interpretation": "Quan s\u00e1t l\u1ecbch s\u1eed c\u00f3 li\u00ean h\u1ec7 theo th\u1eddi gian, ch\u01b0a ch\u1ee9ng minh v\u00f2ng l\u00e2y lan n\u1ed9i sinh",
+      "matched_swap_ids": [
+        "swap-5cebc0be5e2461cf016c",
+        "swap-f46caceb2f1e99a01948"
+      ],
+      "tier": "SAME_BLOCK_ASSOCIATION"
+    },
+    {
+      "causal_claim": false,
+      "episode_id": null,
+      "event_id": "event-44776f9d7b0ebecf58de",
+      "interpretation": "Quan s\u00e1t l\u1ecbch s\u1eed c\u00f3 li\u00ean h\u1ec7 theo th\u1eddi gian, ch\u01b0a ch\u1ee9ng minh v\u00f2ng l\u00e2y lan n\u1ed9i sinh",
+      "matched_swap_ids": [
+        "swap-6fe9d04cbd2a9f8b4e8a",
+        "swap-82bf7ba5cdfc6f1270e4"
+      ],
+      "tier": "SAME_BLOCK_ASSOCIATION"
+    },
+    {
+      "causal_claim": false,
+      "episode_id": null,
+      "event_id": "event-8b86a93e51a21b3c4950",
+      "interpretation": "Quan s\u00e1t l\u1ecbch s\u1eed c\u00f3 li\u00ean h\u1ec7 theo th\u1eddi gian, ch\u01b0a ch\u1ee9ng minh v\u00f2ng l\u00e2y lan n\u1ed9i sinh",
+      "matched_swap_ids": [
+        "swap-f335f51728dab81e9bbb",
+        "swap-6c995f1da9d4856946fb",
+        "swap-2c8008cd33515f18caf3",
+        "swap-9024b576b2cfea2ae8e9",
+        "swap-b3979064dc7819cf4c5a",
+        "swap-b3dc0a895ca86ded5eff",
+        "swap-2be8086dc5e8a4f5ea77",
+        "swap-e73f201dde8d192fbbaa"
+      ],
+      "tier": "SAME_BLOCK_ASSOCIATION"
+    },
+    {
+      "causal_claim": false,
+      "episode_id": null,
+      "event_id": "event-954b874f45c3e5d1fae4",
+      "interpretation": "Quan s\u00e1t l\u1ecbch s\u1eed c\u00f3 li\u00ean h\u1ec7 theo th\u1eddi gian, ch\u01b0a ch\u1ee9ng minh v\u00f2ng l\u00e2y lan n\u1ed9i sinh",
+      "matched_swap_ids": [
+        "swap-accd1589a9e1484bfa43",
+        "swap-420c7967e14e1160f005",
+        "swap-731d33b6175df3ee6444",
+        "swap-04ab9d2930b1185cac1d",
+        "swap-23c2ec9e56e95edd8514",
+        "swap-10c831af11d65ea8f835",
+        "swap-86c82d3ae9d0511cb89c",
+        "swap-72869c58e0f5e3dd9f20",
+        "swap-ae5b9d7177e51c8d6a71",
+        "swap-2cc18794ad4d02d75b95",
+        "swap-20fbaa7e6d39c34a3c9f",
+        "swap-940b8dcfb7537baa24cb",
+        "swap-afca5937d30e5c952e5c"
+      ],
+      "tier": "SAME_BLOCK_ASSOCIATION"
+    },
+    {
+      "causal_claim": false,
+      "episode_id": null,
+      "event_id": "event-c236209103508bb71c0c",
+      "interpretation": "Quan s\u00e1t l\u1ecbch s\u1eed c\u00f3 li\u00ean h\u1ec7 theo th\u1eddi gian, ch\u01b0a ch\u1ee9ng minh v\u00f2ng l\u00e2y lan n\u1ed9i sinh",
+      "matched_swap_ids": [
+        "swap-305a5a7cb33ca4de6e4a",
+        "swap-6d19761891ab8be16dc7"
+      ],
+      "tier": "SAME_BLOCK_ASSOCIATION"
+    },
+    {
+      "causal_claim": false,
+      "episode_id": null,
+      "event_id": "event-e446943fd1d61d9c2455",
+      "interpretation": "Quan s\u00e1t l\u1ecbch s\u1eed c\u00f3 li\u00ean h\u1ec7 theo th\u1eddi gian, ch\u01b0a ch\u1ee9ng minh v\u00f2ng l\u00e2y lan n\u1ed9i sinh",
+      "matched_swap_ids": [
+        "swap-21ee426439bfe57db638",
+        "swap-f9c4a745b9dd3d168724",
+        "swap-5be520f05faabfa87b91",
+        "swap-12c4bf62980aa2ceb2fa",
+        "swap-ff5c4780ffac800985c4",
+        "swap-43b4d2e6ab40029194d8",
+        "swap-c6faaa5671c5791281f4",
+        "swap-0bec9ab1ca4113da1f14"
+      ],
+      "tier": "SAME_BLOCK_ASSOCIATION"
+    },
+    {
+      "causal_claim": false,
+      "episode_id": null,
+      "event_id": "event-b4071ad2141ce082c943",
+      "interpretation": "Quan s\u00e1t l\u1ecbch s\u1eed c\u00f3 li\u00ean h\u1ec7 theo th\u1eddi gian, ch\u01b0a ch\u1ee9ng minh v\u00f2ng l\u00e2y lan n\u1ed9i sinh",
+      "matched_swap_ids": [
+        "swap-0104ffc9bf0ac8096959",
+        "swap-885f8055a95a62b825de",
+        "swap-c00601d3eca0eb7bdd67",
+        "swap-7feae833c2d9332e9fac",
+        "swap-ad9ef84d013446508362"
+      ],
+      "tier": "SAME_BLOCK_ASSOCIATION"
+    },
+    {
+      "causal_claim": false,
+      "episode_id": null,
+      "event_id": "event-e4ce25a18941ae289b19",
+      "interpretation": "Quan s\u00e1t l\u1ecbch s\u1eed c\u00f3 li\u00ean h\u1ec7 theo th\u1eddi gian, ch\u01b0a ch\u1ee9ng minh v\u00f2ng l\u00e2y lan n\u1ed9i sinh",
+      "matched_swap_ids": [
+        "swap-bd7011376f7c986cf4e1",
+        "swap-1607739daf8cc0968cf5",
+        "swap-cce9efcbc8c56de01fde",
+        "swap-f76eec5a72b047df56ed"
+      ],
+      "tier": "SAME_BLOCK_ASSOCIATION"
+    },
+    {
+      "causal_claim": false,
+      "episode_id": null,
+      "event_id": "event-5bcfc17eae100577ec9b",
+      "interpretation": "Quan s\u00e1t l\u1ecbch s\u1eed c\u00f3 li\u00ean h\u1ec7 theo th\u1eddi gian, ch\u01b0a ch\u1ee9ng minh v\u00f2ng l\u00e2y lan n\u1ed9i sinh",
+      "matched_swap_ids": [
+        "swap-7cab2756e86570e2cf4b",
+        "swap-5b62e289e2e97a9bb3a3",
+        "swap-8806f8ed66e430dbfff9",
+        "swap-a06da238143007bc8bbe",
+        "swap-0e63fba684bce9654832",
+        "swap-4317f00254e0eb8cb2d0",
+        "swap-fdb889020de3ce197b6d",
+        "swap-67cf9560d1773881718a",
+        "swap-1ec28698a158882407fc",
+        "swap-4ad3b49eb8058d0ca68a",
+        "swap-ab370c0b6b5427fef82d",
+        "swap-7fd127399d50ef8ea34d",
+        "swap-9b9295f76366b4313a6c",
+        "swap-7c004298268ccaacd190",
+        "swap-1a9c68473023a9e65fae",
+        "swap-039ebaaa89cd4d564b88",
+        "swap-269ac30b6bc9e17f05b8",
+        "swap-c55e159faa9c6f075ebf",
+        "swap-b4d07de50d4107c4e1ce",
+        "swap-a8703c368a90436d10af",
+        "swap-ce37708cd49c33034085"
+      ],
+      "tier": "SAME_BLOCK_ASSOCIATION"
+    },
+    {
+      "causal_claim": false,
+      "episode_id": null,
+      "event_id": "event-381e306b202a62d9385a",
+      "interpretation": "Quan s\u00e1t l\u1ecbch s\u1eed c\u00f3 li\u00ean h\u1ec7 theo th\u1eddi gian, ch\u01b0a ch\u1ee9ng minh v\u00f2ng l\u00e2y lan n\u1ed9i sinh",
+      "matched_swap_ids": [
+        "swap-4612f06c116bd1d98288",
+        "swap-c37bec2359dc787d9fa0",
+        "swap-1e2afa040fcb88b40e50",
+        "swap-ee9133ad0755f8daedc5",
+        "swap-114a672575705e2166aa",
+        "swap-d8df8146839d4fd69551",
+        "swap-3e71bcec726a38c94361",
+        "swap-472500d1efaa8d5a9805",
+        "swap-9f166de95edb13078172",
+        "swap-f98a6208ed83c24f7c06",
+        "swap-043960f3f6a65b303b61",
+        "swap-948649f03864d310723d",
+        "swap-5370b06811683b14b238",
+        "swap-0c2f5a7d50ae5e429502",
+        "swap-6b894268b62ac0527c06",
+        "swap-4690ce652d5ce27ed39a",
+        "swap-9b84f7df1642e2e82ef0",
+        "swap-7afeb6862146e8bbe249",
+        "swap-c4099f16286da834a1be",
+        "swap-9570eec571af0dae85b7",
+        "swap-a005c1382fe8bbd07279"
+      ],
+      "tier": "SAME_BLOCK_ASSOCIATION"
+    },
+    {
+      "causal_claim": false,
+      "episode_id": null,
+      "event_id": "event-477f8574f1986321c742",
+      "interpretation": "Quan s\u00e1t l\u1ecbch s\u1eed c\u00f3 li\u00ean h\u1ec7 theo th\u1eddi gian, ch\u01b0a ch\u1ee9ng minh v\u00f2ng l\u00e2y lan n\u1ed9i sinh",
+      "matched_swap_ids": [
+        "swap-0e0ea12f298d986e2c6a",
+        "swap-8e3d83ccb09e5e304ace",
+        "swap-c583935dbe26d796202b",
+        "swap-ab1a431177449694a21b",
+        "swap-ff9bddad62dd2a4e3674",
+        "swap-47a75dbbb11d194822dd",
+        "swap-7924241f4abe5b0a88d3",
+        "swap-df01b694d5a855258a53",
+        "swap-a1b0ca04105f5cfde4ee",
+        "swap-dc72b331a3a28f39d9cf",
+        "swap-0fb7d7457584cae1c2ac",
+        "swap-7c61c5e4525003ff632b"
+      ],
+      "tier": "SAME_BLOCK_ASSOCIATION"
+    },
+    {
+      "causal_claim": false,
+      "episode_id": null,
+      "event_id": "event-d259882abc84f8e317db",
+      "interpretation": "Quan s\u00e1t l\u1ecbch s\u1eed c\u00f3 li\u00ean h\u1ec7 theo th\u1eddi gian, ch\u01b0a ch\u1ee9ng minh v\u00f2ng l\u00e2y lan n\u1ed9i sinh",
+      "matched_swap_ids": [
+        "swap-5dec327f5fba29b8608c",
+        "swap-2f08511c607fabd4335c",
+        "swap-89d843b8d297fe824e0b",
+        "swap-cecbafd43a0332a7ad22",
+        "swap-6344fb95f755bf46978e",
+        "swap-bebb8fe775fcb66c9bbc",
+        "swap-be2bc4b4c024fe76d954",
+        "swap-9054c4c39344b535aa05",
+        "swap-512618794f4da9c99ee1",
+        "swap-3c3b31818ad8d3d8a57e",
+        "swap-66fa1a8a63cabcc387c6",
+        "swap-8c043125263d010906f0"
+      ],
+      "tier": "SAME_BLOCK_ASSOCIATION"
+    },
+    {
+      "causal_claim": false,
+      "episode_id": null,
+      "event_id": "event-15f3816ea4c5d5dbe092",
+      "interpretation": "Quan s\u00e1t l\u1ecbch s\u1eed c\u00f3 li\u00ean h\u1ec7 theo th\u1eddi gian, ch\u01b0a ch\u1ee9ng minh v\u00f2ng l\u00e2y lan n\u1ed9i sinh",
+      "matched_swap_ids": [
+        "swap-f5c0b0d1e191f4e1852c",
+        "swap-cb970d69cf4be1f138bf",
+        "swap-025f9b4d326896f723ea",
+        "swap-b607205a773f67c2ba27"
+      ],
+      "tier": "SAME_BLOCK_ASSOCIATION"
+    },
+    {
+      "causal_claim": false,
+      "episode_id": null,
+      "event_id": "event-650442088429c90b1e6b",
+      "interpretation": "Quan s\u00e1t l\u1ecbch s\u1eed c\u00f3 li\u00ean h\u1ec7 theo th\u1eddi gian, ch\u01b0a ch\u1ee9ng minh v\u00f2ng l\u00e2y lan n\u1ed9i sinh",
+      "matched_swap_ids": [
+        "swap-4ccd9a5dbd7b3398a0f8",
+        "swap-f2388e7dc5837aad5f9f",
+        "swap-b7d19b74fe99bad6dc8c",
+        "swap-aaa7662dd7fcf833bb24",
+        "swap-ebf558dfdefbfa5e4fcc",
+        "swap-39d6ffb30c020cdf2af3",
+        "swap-1895159faed6aee9f62f",
+        "swap-573ea82a561df492f7c1",
+        "swap-b84ad3857b6577f1ce34"
+      ],
+      "tier": "SAME_BLOCK_ASSOCIATION"
+    },
+    {
+      "causal_claim": false,
+      "episode_id": null,
+      "event_id": "event-e4c1a55c9fb25eb47b65",
+      "interpretation": "Quan s\u00e1t l\u1ecbch s\u1eed c\u00f3 li\u00ean h\u1ec7 theo th\u1eddi gian, ch\u01b0a ch\u1ee9ng minh v\u00f2ng l\u00e2y lan n\u1ed9i sinh",
+      "matched_swap_ids": [
+        "swap-9c5812e3f73eda566901",
+        "swap-2e984160bcf101139608",
+        "swap-9c84650ee164eb3492b8",
+        "swap-40927407986c4aa754bb",
+        "swap-41dfa24edec4c9afaf0f",
+        "swap-466e6d1ac54accfe2d2a",
+        "swap-7d686a86244911c11fba",
+        "swap-ad05f0b03af94e1ada6f",
+        "swap-57dad8d21667524bd456",
+        "swap-513dc3bcc72903bb24a3",
+        "swap-8262d29b6b8ddcd84608"
+      ],
+      "tier": "SAME_BLOCK_ASSOCIATION"
+    },
+    {
+      "causal_claim": false,
+      "episode_id": null,
+      "event_id": "event-3e5a1e90f0c781d14584",
+      "interpretation": "Quan s\u00e1t l\u1ecbch s\u1eed c\u00f3 li\u00ean h\u1ec7 theo th\u1eddi gian, ch\u01b0a ch\u1ee9ng minh v\u00f2ng l\u00e2y lan n\u1ed9i sinh",
+      "matched_swap_ids": [
+        "swap-8dcb36d94cb61ac369c5",
+        "swap-4e5359079b797f7c9cc0",
+        "swap-9c610f2663ef3cc4b122",
+        "swap-178aa1b8356e1a71fe99",
+        "swap-9c8ffeb984382679d902"
+      ],
+      "tier": "SAME_BLOCK_ASSOCIATION"
+    },
+    {
+      "causal_claim": false,
+      "episode_id": null,
+      "event_id": "event-eabaad6c300153bdde37",
+      "interpretation": "Quan s\u00e1t l\u1ecbch s\u1eed c\u00f3 li\u00ean h\u1ec7 theo th\u1eddi gian, ch\u01b0a ch\u1ee9ng minh v\u00f2ng l\u00e2y lan n\u1ed9i sinh",
+      "matched_swap_ids": [
+        "swap-2eccaba065a8edd5c24a"
+      ],
+      "tier": "SAME_BLOCK_ASSOCIATION"
+    },
+    {
+      "causal_claim": false,
+      "episode_id": null,
+      "event_id": "event-4e2cb7d646fcb6a0889a",
+      "interpretation": "Quan s\u00e1t l\u1ecbch s\u1eed c\u00f3 li\u00ean h\u1ec7 theo th\u1eddi gian, ch\u01b0a ch\u1ee9ng minh v\u00f2ng l\u00e2y lan n\u1ed9i sinh",
+      "matched_swap_ids": [
+        "swap-f7ec286ff86637a215d5",
+        "swap-754a6810b71faf12a826",
+        "swap-3b91d18158e7d5514e5b",
+        "swap-b7b0907f5f31d99fe2b7",
+        "swap-5e00fd6530f34856b103",
+        "swap-85f723c976c0aa220384"
+      ],
+      "tier": "SAME_BLOCK_ASSOCIATION"
+    },
+    {
+      "causal_claim": false,
+      "episode_id": null,
+      "event_id": "event-83bad466091d50428d22",
+      "interpretation": "Quan s\u00e1t l\u1ecbch s\u1eed c\u00f3 li\u00ean h\u1ec7 theo th\u1eddi gian, ch\u01b0a ch\u1ee9ng minh v\u00f2ng l\u00e2y lan n\u1ed9i sinh",
+      "matched_swap_ids": [
+        "swap-0911d5477c947714e935",
+        "swap-5357e2e04860bd5596e4",
+        "swap-96258a46a8a69947845f",
+        "swap-2f3a15d5e837d0cdbaaf",
+        "swap-d9befc78240834f91e7f",
+        "swap-3fe61c6839f3ef32b161",
+        "swap-4d797a2241407cdc4d01",
+        "swap-37bd75dd09f15e733068",
+        "swap-fb4b18616cd119797393",
+        "swap-a80a37e7c50405049194"
+      ],
+      "tier": "SAME_BLOCK_ASSOCIATION"
+    },
+    {
+      "causal_claim": false,
+      "episode_id": null,
+      "event_id": "event-bf4a433b5101ed4b3184",
+      "interpretation": "Quan s\u00e1t l\u1ecbch s\u1eed c\u00f3 li\u00ean h\u1ec7 theo th\u1eddi gian, ch\u01b0a ch\u1ee9ng minh v\u00f2ng l\u00e2y lan n\u1ed9i sinh",
+      "matched_swap_ids": [
+        "swap-e431d474097530f17886",
+        "swap-db2bb7485a85cf3bfd7a",
+        "swap-65ba79184d034289128c",
+        "swap-80b07a2b593b1ce448a5",
+        "swap-c4df6c481990a83e2128",
+        "swap-6e30316604b979c32822",
+        "swap-1584d1c7f6d8c52270d3",
+        "swap-8307e225542cf5d871b4",
+        "swap-e5835e3077128b0edc04",
+        "swap-2d9eb1bfde00b6adc0e0",
+        "swap-c18bbfbece973428d4d0"
+      ],
+      "tier": "SAME_BLOCK_ASSOCIATION"
+    }
+  ],
+  "status": "PASS"
+}

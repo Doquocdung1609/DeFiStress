@@ -1,0 +1,24 @@
+{
+  "canonical_block": 26045352,
+  "canonical_block_hash": "4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+  "chain_id": 1,
+  "execution_scope": "LOCAL_EPHEMERAL_MAINNET_FORK_ONLY",
+  "liquidation_call_executed": false,
+  "missing_prerequisites": [
+    "forge",
+    "anvil"
+  ],
+  "prerequisites": {
+    "anvil": null,
+    "cast": null,
+    "eth_archive_rpc_url_configured": true,
+    "forge": null,
+    "harness_sha256": "4f79818ad9fd891abb73e00d3eacafc2784adc49f36e660b4eceacd6e6cc44c4"
+  },
+  "quoter_v2_boundary": "Existing eth_call evidence validates the canonical initial state only; it is not counterfactual post-shock fork execution.",
+  "reason": "Foundry/Anvil executables are absent, so no contract-level fork transaction can be truthfully labeled PASS. Archive RPC remains available for read-only historical evidence.",
+  "source_commit": "423bcfd4ebf910ef73b94d9deaf7cf746d8ed71c",
+  "status": "UNAVAILABLE",
+  "swap_router_execution_executed": false,
+  "transactions_executed": 0
+}

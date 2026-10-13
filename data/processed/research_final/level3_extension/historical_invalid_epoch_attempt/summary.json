@@ -1,0 +1,38 @@
+{
+  "invalid_reason": "Epoch constants were 10800 seconds earlier than the preregistered UTC window; excluded from all findings.",
+  "raw_swap_index_status": "UNAVAILABLE_AFTER_LOCAL_COMPRESSION_FAILURE; noncanonical invalid attempt only; event index and summaries preserved",
+  "address_book": {
+    "commit": "6463b76862f4e2ea79764a02e0f1971c3fedb7fe",
+    "oracle": "0x54586bE62E3c3580375aE3723C145253060Ca0C2",
+    "pool": "0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2",
+    "source": "https://assets.aave.com/address-book/releases/latest/modules/AaveV3Ethereum.json",
+    "version": "4.73.5"
+  },
+  "artifact_hashes": {
+    "data/processed/research_final/level3_extension/historical/raw_event_index.csv": "363cdd1c5988a95d6312d52dd45082f48f557b0e04a9db285e63cf0c5c7a9738",
+    "data/processed/research_final/level3_extension/historical/raw_event_index.json": "091a6a0d1ddc014cbac16aa9e374b68aaf66edb5efe75dc392ade31c057e6d9f"
+  },
+  "attempted": 28,
+  "excluded": 0,
+  "limitations": [
+    "The Graph supplied deterministic discovery; every published liquidation was rechecked by RPC log, receipt and block hash.",
+    "This is one preregistered calendar week and event-level coverage, not a full historical borrower census.",
+    "Receipt-level linkage can establish a same-transaction path but cannot by itself prove market-wide endogenous causality.",
+    "Graph amountUSD/profit fields showed unit inconsistencies and were excluded from episode ranking.",
+    "Aave oracle states were sampled around selected episodes; underlying Chainlink AnswerUpdated logs were not enumerated."
+  ],
+  "oracle_observation_count": 15,
+  "rpc_budget": 25000,
+  "rpc_calls": 9809,
+  "runtime_seconds": 1275.8349533999935,
+  "selected_episodes": 5,
+  "source_commit": "423bcfd4ebf910ef73b94d9deaf7cf746d8ed71c",
+  "status": "FAIL_INVALID_PRE_REGISTRATION_EPOCH",
+  "swap_count": 32929,
+  "tier_counts": {
+    "DIRECT_TRANSACTION_LINK": 3,
+    "SAME_BLOCK_ASSOCIATION": 24,
+    "TIME_WINDOW_ASSOCIATION": 1
+  },
+  "verified": 28
+}

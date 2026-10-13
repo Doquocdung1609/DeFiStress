@@ -1,0 +1,205 @@
+{
+  "artifact_bundle_commit": "PENDING_AFTER_ARTIFACT_COMMIT",
+  "artifact_hashes": {
+    "before_after.json": "275c283a34e09e88e9f229661309a4fab6215473c14c4a2df45245cb607fd5e7",
+    "claim_ledger_extension.json": "66eb6942826a395c07245e8a8c2c1b733ada037188b48bb0058c59098430ba33",
+    "deep_stress/cascade_paths.json": "1600cf21f4469bfbc0b9b7258dc72f4ffe226685f4cbe29e1455e29a7a467fa2",
+    "deep_stress/checkpoints/low_liquidity_seed_20260914_1000.json": "e237f1a08fbef938293f44e98455e39dde613cc2b60f903b02085e5a5548dad8",
+    "deep_stress/checkpoints/severe_seed_20260914_1000.json": "3b34a8dee034a612ae6d1b6a90a7e3122f1366e80ccf5aa8e422e1b9da9cf5ec",
+    "deep_stress/checkpoints/severe_seed_20260914_10000.json": "a3d6b33d7d9c7fafa56c962f64799f586aec5b7746d556fe9fee7ed691125a53",
+    "deep_stress/checkpoints/severe_seed_20260914_200.json": "a46253cabe3c398a4d7aba27ad7740f31a2335611ef05edbf744703bee022db1",
+    "deep_stress/checkpoints/severe_seed_20260914_5000.json": "c4520adb6ca32e72167d53156553dc3b731541ac7973adba29f9f454ce30ee05",
+    "deep_stress/checkpoints/severe_seed_20261014_1000.json": "3dc93be4d512e0d44915740080eb35e4f2d37ef40ff6bf2f6031b437415278d6",
+    "deep_stress/checkpoints/severe_seed_20261114_1000.json": "2299b667ca11e54d3ac7d157f1bff22523c3f313d1f22390e462126db9907919",
+    "deep_stress/deterministic_grid.csv": "fe784f084cdc8b8f2fef25a40d4a6937fb6a907d9054bf4e2c37aed198bac9cc",
+    "deep_stress/monte_carlo_batches.json": "5907dd287efee848c4bb2bedfacea44d9b9a22defd43965d96aa2c4fd8da23bb",
+    "deep_stress/numerical_diagnostics.json": "b15124049c89a2340c10498b5296f01e6e32479c0391e26937ee410757950a27",
+    "deep_stress/wave_cap_comparison.csv": "e22390030358f064ea1b257d587f6c38e41dec545b0227028a4c5f2d0f99b1ee",
+    "figures/cascade_depth_histogram.png": "582995e0c57f936bc8c16e12131166a7aef90116ac4c7e0d7a91fcbf3128e850",
+    "figures/historical_cluster_window_sensitivity.png": "e4bffe41d55595a83500f9d0bacfd1f546a40173b384fd692fb996254aadf83c",
+    "figures/historical_event_control_comparison.png": "374f737a24c416c1d06362be48ab6cc717f6093a10bf3321f4af2d3d4a9a14c1",
+    "figures/shock_haircut_regime_map.png": "bcf7b34f4632d394465568a77159ff4cae41a6df79f096085f8622fbbbebd663",
+    "figures/wave_cap_sensitivity.png": "b0034f88677eb761dfd23e0080395ee098ddd10755039431f0572e99d53744c5",
+    "fork/validation.json": "452d7b00cf803e22421842f144626e7182e092eda8b2d316746ca1ac2a2c5488",
+    "historical/episode_selection.json": "b1ca35a420740c872bbf0408d7bdc344f641d0009fd3d61d26cebab63a37ce67",
+    "historical/historical_event_study.csv": "4128f6919f6eb51be6ca40275bd664f0f9050391f65e66a0639206e137b4ad3a",
+    "historical/observation_linkage.json": "d3e96375859271e986e98716fae2470b80397925eb4b5f2e2fb6e87e1941317a",
+    "historical/oracle_observations.csv": "feb5ea9c124a51a14584a934324a90c12521856a33218c968fa55796ffcb24c6",
+    "historical/raw_event_index.csv": "192fbc51d05e9ac7b1381ef24ff39b5f360e59616fa193a5f155e171a2771c70",
+    "historical/raw_event_index.json": "835ab477a8f181c131f299f93db407d5a4f102970efe4709eb2b9c232334e8d1",
+    "historical/raw_swap_index.json.gz": "8cffbd32e3e3e09f70e3af0684f80149542520baf599e4ffc93ee58f95510757",
+    "historical/summary.json": "43247db715c22ff743b6358b797efbbcf735588b989bdf5881251add894847d2",
+    "historical_invalid_epoch_attempt/episode_selection.json": "ba3dc8c1b9868b30156695e601f8b038f76eacd3d2d994078de857efb1868bd0",
+    "historical_invalid_epoch_attempt/historical_event_study.csv": "b121218d4f14c76a71f0ac4d7c6ea1b5604e4b507dde7786879cb3ad4f60b686",
+    "historical_invalid_epoch_attempt/observation_linkage.json": "1203cbb06ceccc312140a2d894d644e7cac0a6f53188a9bc43dd7d2f7f8733d1",
+    "historical_invalid_epoch_attempt/oracle_observations.csv": "a1ca319521fd001327870bc6f3ffc0df7b4be56eb583b50777b3afaf0d2fc8dd",
+    "historical_invalid_epoch_attempt/raw_event_index.csv": "363cdd1c5988a95d6312d52dd45082f48f557b0e04a9db285e63cf0c5c7a9738",
+    "historical_invalid_epoch_attempt/raw_event_index.json": "091a6a0d1ddc014cbac16aa9e374b68aaf66edb5efe75dc392ade31c057e6d9f",
+    "historical_invalid_epoch_attempt/summary.json": "3e7132f3ce7fd4c6fa4e57d20175f6ed11bee16c89cc7e6c9699401ff880a8bb",
+    "quality_gate.json": "63165d06377517f1ab3cedd51abaed9b7744d11d4ece4845ab6914ed66262c41",
+    "tables/deterministic_grid_depth_counts.csv": "0c2e13d913022ebddd27cbac40d20298c8404f72a77025357ea92a56e22cf8b5",
+    "tables/deterministic_mechanisms.csv": "a508c2a66ff1d053d9ae9e522039e343136d62dd620ff96a7bbc2b6a839dff13",
+    "tables/deterministic_mechanisms_pre_capital_fix.csv": "3e9d3ca8f8fffb2103df965a8958039aa3be2c9d501ab7b9229fe18a8ae4a8f9",
+    "tables/historical_evidence_tiers.csv": "a106ae7fd6d408ff2d49a03c572265f10790ac711288f45d26551ba18d690d7f",
+    "tables/monte_carlo_stage_summary.csv": "9673443ccd5af4153872dcf0e70fa72e6aede1121f701781b2b12cd886792841",
+    "tables/selected_historical_episodes.csv": "19687caac5e378cdead50c6766e7990e059be9c62170720e7f9f85404db02caa"
+  },
+  "canonical_snapshot": {
+    "block_number": 26045352,
+    "path": "data/processed/mainnet/aave_uniswap_snapshot_26045352.json",
+    "sha256": "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99",
+    "verified_borrowers": 454,
+    "weth_usdc_cohort": 109
+  },
+  "chain_id": 1,
+  "deep_stress": {
+    "all_deterministic_no_duplicates": true,
+    "canonical_counts": {
+      "verified_borrowers": 454,
+      "weth_usdc_cohort": 109
+    },
+    "canonical_snapshot_sha256": "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99",
+    "configured_cap_is_not_observed_depth": true,
+    "cpu_count": 8,
+    "largest_configured_wave_cap": 100,
+    "largest_horizon_steps": 120,
+    "max_deterministic_observed_depth": 2,
+    "max_monte_carlo_observed_depth": 2,
+    "model_version": "0.1.0-aave-v3.10-metric-semantics",
+    "monte_carlo_invariants": [
+      {
+        "all_finite": true,
+        "cap_hits": 0,
+        "later_wave_new_eligibility_all_paths": true,
+        "no_duplicate_borrower_all_paths": true
+      },
+      {
+        "all_finite": true,
+        "cap_hits": 0,
+        "later_wave_new_eligibility_all_paths": true,
+        "no_duplicate_borrower_all_paths": true
+      },
+      {
+        "all_finite": true,
+        "cap_hits": 0,
+        "later_wave_new_eligibility_all_paths": true,
+        "no_duplicate_borrower_all_paths": true
+      },
+      {
+        "all_finite": true,
+        "cap_hits": 0,
+        "later_wave_new_eligibility_all_paths": true,
+        "no_duplicate_borrower_all_paths": true
+      },
+      {
+        "all_finite": true,
+        "cap_hits": 0,
+        "later_wave_new_eligibility_all_paths": true,
+        "no_duplicate_borrower_all_paths": true
+      },
+      {
+        "all_finite": true,
+        "cap_hits": 0,
+        "later_wave_new_eligibility_all_paths": true,
+        "no_duplicate_borrower_all_paths": true
+      },
+      {
+        "all_finite": true,
+        "cap_hits": 0,
+        "later_wave_new_eligibility_all_paths": true,
+        "no_duplicate_borrower_all_paths": true
+      }
+    ],
+    "numerical_floor_or_cap_artifacts": 0,
+    "runtime_seconds": 10.294778499999666,
+    "source_commit": "423bcfd4ebf910ef73b94d9deaf7cf746d8ed71c",
+    "status": "PASS",
+    "tail_assumption_warning": "Haircuts 90% and 95% are counterfactual tail assumptions, not observed Mainnet depth.",
+    "workers": 4
+  },
+  "fork": {
+    "canonical_block": 26045352,
+    "canonical_block_hash": "4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+    "chain_id": 1,
+    "execution_scope": "LOCAL_EPHEMERAL_MAINNET_FORK_ONLY",
+    "liquidation_call_executed": false,
+    "missing_prerequisites": [
+      "forge",
+      "anvil"
+    ],
+    "prerequisites": {
+      "anvil": null,
+      "cast": null,
+      "eth_archive_rpc_url_configured": true,
+      "forge": null,
+      "harness_sha256": "4f79818ad9fd891abb73e00d3eacafc2784adc49f36e660b4eceacd6e6cc44c4"
+    },
+    "quoter_v2_boundary": "Existing eth_call evidence validates the canonical initial state only; it is not counterfactual post-shock fork execution.",
+    "reason": "Foundry/Anvil executables are absent, so no contract-level fork transaction can be truthfully labeled PASS. Archive RPC remains available for read-only historical evidence.",
+    "source_commit": "423bcfd4ebf910ef73b94d9deaf7cf746d8ed71c",
+    "status": "UNAVAILABLE",
+    "swap_router_execution_executed": false,
+    "transactions_executed": 0
+  },
+  "gates": {
+    "A_historical_preregistration": "PASS",
+    "B_onchain_episode_verification": "LIMITED",
+    "C_deep_simulation": "PASS",
+    "D_research_integration": "PENDING_TESTS_AND_COMMANDER_REVIEW",
+    "E_commander_signoff": "PENDING"
+  },
+  "historical": {
+    "address_book": {
+      "commit": "6463b76862f4e2ea79764a02e0f1971c3fedb7fe",
+      "oracle": "0x54586bE62E3c3580375aE3723C145253060Ca0C2",
+      "pool": "0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2",
+      "source": "https://assets.aave.com/address-book/releases/latest/modules/AaveV3Ethereum.json",
+      "version": "4.73.5"
+    },
+    "artifact_hashes": {
+      "data/processed/research_final/level3_extension/historical/raw_event_index.csv": "192fbc51d05e9ac7b1381ef24ff39b5f360e59616fa193a5f155e171a2771c70",
+      "data/processed/research_final/level3_extension/historical/raw_event_index.json": "835ab477a8f181c131f299f93db407d5a4f102970efe4709eb2b9c232334e8d1"
+    },
+    "attempted": 27,
+    "cache_reuse": {
+      "cached_swap_rows_reused_after_timestamp_filter": 30458,
+      "invalid_epoch_attempt_excluded_from_findings": true,
+      "missing_intervals_queried": 1,
+      "new_swap_rows_collected": 1031
+    },
+    "excluded": 0,
+    "limitations": [
+      "The Graph supplied deterministic discovery; every published liquidation was rechecked by RPC log, receipt and block hash.",
+      "This is one preregistered calendar week and event-level coverage, not a full historical borrower census.",
+      "Receipt-level linkage can establish a same-transaction path but cannot by itself prove market-wide endogenous causality.",
+      "Graph amountUSD/profit fields showed unit inconsistencies and were excluded from episode ranking.",
+      "Aave oracle states were sampled around selected episodes; underlying Chainlink AnswerUpdated logs were not enumerated."
+    ],
+    "oracle_observation_count": 15,
+    "rpc_budget": 25000,
+    "rpc_calls": 424,
+    "runtime_seconds": 54.62185110000428,
+    "selected_episodes": 5,
+    "source_commit": "423bcfd4ebf910ef73b94d9deaf7cf746d8ed71c",
+    "status": "LIMITED",
+    "swap_count": 31489,
+    "tier_counts": {
+      "DIRECT_TRANSACTION_LINK": 3,
+      "SAME_BLOCK_ASSOCIATION": 23,
+      "TIME_WINDOW_ASSOCIATION": 1
+    },
+    "verified": 27
+  },
+  "implementation_commit": "92ca73c2bdd4cdcdd34c693483d17a4dbef33513",
+  "report_hashes": {
+    "docs/research_final/DEEP_CASCADE_STRESS_STUDY.md": "191f14cf9337b309fc78661dbfcab8f47e0d43e3c504d7b5c09f7b916700492e",
+    "docs/research_final/LEVEL2_FORK_VALIDATION.md": "107f82ad01ffbe805349e3b2a48e2270356a8c943f179e1afd88da0bf9a85f97",
+    "docs/research_final/LEVEL3_COMMANDER_REVIEW_PACKET.md": "00700a2eb4bba5c74c5e128a8229f43c574ee2bb129dc24bbb944391e7329038",
+    "docs/research_final/LEVEL3_HISTORICAL_EVENT_STUDY.md": "2cfc1df7781a53ab4f2773ecef8b8165b444ac214bdda167baaf0926c965238b",
+    "docs/research_final/LEVEL3_VALIDATION_PLAN.md": "a2ea19bbb79aaf9800266100ccd7a1c1e1163e41d2a36aefce71dd5ff0463589"
+  },
+  "scientific_lock_declared": false,
+  "secrets_included": false,
+  "starting_source_commit": "423bcfd4ebf910ef73b94d9deaf7cf746d8ed71c",
+  "status": "LIMITED"
+}
