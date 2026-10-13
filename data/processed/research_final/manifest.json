@@ -24,7 +24,7 @@
     "LITERATURE_GAPS.md": "88c42bb4c516dda8065a5b2f53ebf8505dff2008422f121b31e3119442e3fe12",
     "METHODOLOGY.md": "d18ea83e3ef79e4a24085de9d8d33327e0c3d75228d4d2bc97763f54b2f9ba7f",
     "PRESENTATION_BRIEF.md": "8b57fa09fa2f1e387e7703ca265e137dff2a4b96620d3e975f467da41d5a13a4",
-    "REPRODUCIBILITY.md": "361dbf83e926643c9160f0233049fd810550f12c693d90354b5fb7b4df096e9a",
+    "REPRODUCIBILITY.md": "8f2b322c8352a98f2325cc309d62c96fe63c599cd3c75216ccf211f472fa8213",
     "RESULTS_AND_DISCUSSION.md": "921f70df42171bd4ffb4bd04e14a59738d0ada4044bf13efb3e59a02435b3ede",
     "RQ_ANSWER_MATRIX.md": "d79341aa7f698bf7bf1570e61565c4b99e5842e179bef513cff50f481fb480ab",
     "TABLE_FIGURE_INDEX.md": "4a109c82fbc69e4fa9f82c622059b6b91ef5f21fa8c920ef92a4025f4c934ae5"
@@ -46,7 +46,7 @@
     "One selected Uniswap execution venue and a small modeled topology.",
     "Monte Carlo frequencies and graph scores are model-dependent, not real-world probabilities."
   ],
-  "metadata_finalization_commit": null,
+  "metadata_finalization_commit": "dcaf03e5c04a2bf41e5102442546c90b5a7bbe71",
   "monte_carlo_run_counts": {
     "aave_per_scenario": 200,
     "terra_final": 100
