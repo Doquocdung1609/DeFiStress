@@ -266,7 +266,7 @@ def build_registry(output_dir: Path, terra_quality: dict[str, Any], aave_quality
                     "Âm là cảnh báo xuất hiện sau sự kiện; retrospective không phải kiểm định triển khai thời gian thực.",
                 )
     registry.add(
-        "TERRA_EW_LEAKAGE", "TERRA", "cutoff_safe_future_perturbation", 
+        "TERRA_EW_LEAKAGE", "TERRA", "cutoff_safe_future_perturbation",
         warning["cutoff_safe"]["leakage_audit"]["future_perturbation"]["status"], "status",
         "terra/demo/early_warning_timeline.json", "Kiểm tra bất biến trước cutoff.",
         "PASS chỉ loại trừ dạng rò rỉ được kiểm tra, không chứng minh sức dự báo.",
