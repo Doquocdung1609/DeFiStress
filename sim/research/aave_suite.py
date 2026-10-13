@@ -21,7 +21,7 @@ from sim.presets import scenario_presets
 from sim.research.rq_completion import RQ_COMPLETION_VERSION, run_rq_completion
 from sim.schemas import Scenario, json_safe
 
-AAVE_RESEARCH_VERSION = "aave-mainnet-research-suite-1.1.0"
+AAVE_RESEARCH_VERSION = "aave-mainnet-research-suite-1.2.0-metric-semantics"
 CANONICAL_SNAPSHOT = Path("data/processed/mainnet/aave_uniswap_snapshot_26045352.json")
 DEFAULT_OUTPUT = Path("data/processed/research_final/aave")
 RESEARCH_MC_RUNS = 200
@@ -288,7 +288,13 @@ def run_aave_research_suite(
     }
     sensitivity_rows: list[dict[str, Any]] = []
     sensitivity_correlations: list[dict[str, Any]] = []
-    metric_names = ("total_liquidated_debt", "bad_debt", "max_price_impact", "cascade_depth")
+    metric_names = (
+        "total_liquidated_debt",
+        "bad_debt",
+        "max_intrawave_liquidation_price_impact",
+        "max_post_arbitrage_spread",
+        "cascade_depth",
+    )
     for family, (field, values) in sensitivity_specs.items():
         family_rows: list[dict[str, Any]] = []
         for value in values:

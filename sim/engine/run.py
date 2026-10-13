@@ -11,7 +11,8 @@ from sim.metrics.risk import bad_debt, cascade_amplification, unliquidated_debt
 from sim.schemas import BorrowerPosition, DexState, Scenario, SimulationEvent, SimulationResult, TimePoint
 
 D = Decimal
-MODEL_VERSION = "0.1.0-aave-v3.9-tick-consistent"
+MODEL_VERSION = "0.1.0-aave-v3.10-metric-semantics"
+RECOVERY_TOLERANCE = D("0.005")
 
 
 def run_simulation(
@@ -66,7 +67,10 @@ def run_simulation(
     total_liquidated = D(0)
     direct_liquidated = D(0)
     total_forced_weth = D(0)
-    max_impact = abs(pool.spot_price - reference_price) / reference_price
+    max_intrawave_liquidation_impact = D(0)
+    max_post_arbitrage_spread = abs(pool.spot_price - reference_price) / reference_price
+    recovery_tolerance_exceeded = False
+    recovery_time: int | None = None
     completed_waves = 0
 
     # Delay advances simulated time while retaining Wave 1 as the direct-shock cohort.
@@ -133,6 +137,13 @@ def run_simulation(
 
             attempted.add(position.borrower_hash)
             quote = pool.sell_weth(plan.collateral_to_seize)
+            intrawave_spread = abs(quote.price_after - reference_price) / reference_price
+            single_sale_price_move = abs(quote.price_after - quote.price_before) / quote.price_before
+            max_intrawave_liquidation_impact = max(
+                max_intrawave_liquidation_impact, intrawave_spread
+            )
+            if intrawave_spread > RECOVERY_TOLERANCE:
+                recovery_tolerance_exceeded = True
             position.debt_usdc = max(D(0), position.debt_usdc - plan.debt_to_repay)
             position.collateral_weth = max(D(0), position.collateral_weth - plan.collateral_to_seize)
             if position.debt_value(usdc_price_usd) <= 0:
@@ -171,7 +182,12 @@ def run_simulation(
                     health_factor_before=hf_before,
                     health_factor_after=hf_after,
                     timestamp_sim=step * scenario.timestep_seconds,
-                    payload={"close_factor": float(plan.close_factor), "ticks_crossed": quote.ticks_crossed},
+                    payload={
+                        "close_factor": float(plan.close_factor),
+                        "ticks_crossed": quote.ticks_crossed,
+                        "reference_spread_after_sale": float(intrawave_spread),
+                        "single_sale_price_move": float(single_sale_price_move),
+                    },
                 )
             )
 
@@ -215,14 +231,24 @@ def run_simulation(
         )
         if wave_liquidated > 0:
             completed_waves = wave
-        max_impact = max(max_impact, abs(pool.spot_price - reference_price) / reference_price)
+        post_arbitrage_spread = abs(pool.spot_price - reference_price) / reference_price
+        max_post_arbitrage_spread = max(max_post_arbitrage_spread, post_arbitrage_spread)
+        if (
+            recovery_tolerance_exceeded
+            and recovery_time is None
+            and post_arbitrage_spread <= RECOVERY_TOLERANCE
+        ):
+            recovery_time = step * scenario.timestep_seconds
         if wave_liquidated <= 0:
             break
 
     final_bad_debt = bad_debt(borrowers, valuation_price, usdc_price_usd)
-    spread = abs(pool.spot_price - reference_price) / reference_price
-    elapsed_steps = scenario.liquidator_delay_steps + completed_waves
-    recovery_time = elapsed_steps * scenario.timestep_seconds if spread <= D("0.005") else None
+    if not recovery_tolerance_exceeded:
+        recovery_time = 0
+    scenario_unliquidated_debt = unliquidated_debt(
+        borrowers, valuation_price, usdc_price_usd, lt_override
+    )
+    legacy_unliquidated_debt = unliquidated_debt(borrowers, valuation_price, usdc_price_usd)
     metrics: dict[str, Decimal | int | None] = {
         "liquidation_at_risk": liquidation_at_risk,
         "total_liquidated_debt": total_liquidated,
@@ -232,13 +258,20 @@ def run_simulation(
         "direct_shock_liquidated_debt_usdc": direct_liquidated,
         "direct_shock_liquidated_debt_usd": direct_liquidated * usdc_price_usd,
         "cascade_amplification": cascade_amplification(total_liquidated, direct_liquidated),
-        "max_price_impact": max_impact,
+        # Deprecated compatibility alias. Before v3.10 this was labeled as price
+        # impact even though it sampled only the residual spread after arbitrage.
+        "max_price_impact": max_post_arbitrage_spread,
+        # Maximum |DEX after forced sale - reference| / reference, sampled after
+        # every liquidation sale and before the wave's arbitrage action.
+        "max_intrawave_liquidation_price_impact": max_intrawave_liquidation_impact,
+        # Maximum |DEX after stabilization - reference| / reference at wave end.
+        "max_post_arbitrage_spread": max_post_arbitrage_spread,
         "bad_debt": final_bad_debt,
-        # Preserve the legacy metric definition at USDC=$1: this metric uses each
-        # frozen borrower's recorded threshold even when a scenario overrides WETH LT.
-        "unliquidated_debt": unliquidated_debt(borrowers, valuation_price, usdc_price_usd),
+        "unliquidated_debt": scenario_unliquidated_debt,
+        "unliquidated_debt_legacy_recorded_lt": legacy_unliquidated_debt,
         "cascade_depth": completed_waves,
         "time_to_recovery_seconds": recovery_time,
+        "recovery_tolerance_exceeded": int(recovery_tolerance_exceeded),
         "liquidity_coverage_ratio_model": None
         if total_forced_weth <= 0
         else initial_depth / (total_forced_weth * initial_reference_price),

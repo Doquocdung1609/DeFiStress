@@ -1,0 +1,1456 @@
+{
+  "aggregate_summary": null,
+  "centrality": {
+    "aggregation_policy": "Parallel channels collapse with max normalized strength per directed node pair.",
+    "eigenvector_unavailable_reason": null,
+    "nodes": {
+      "agent:arbitrageur": {
+        "betweenness_centrality": 0.0,
+        "eigenvector_centrality": 7.876455163444983e-13,
+        "in_degree_centrality": 0.0,
+        "out_degree_centrality": 0.14285714285714285,
+        "weighted_influence_strength": 0.0
+      },
+      "agent:borrower-cohort": {
+        "betweenness_centrality": 0.0,
+        "eigenvector_centrality": 7.876455163444983e-13,
+        "in_degree_centrality": 0.0,
+        "out_degree_centrality": 0.14285714285714285,
+        "weighted_influence_strength": 0.12971428571428573
+      },
+      "agent:liquidator": {
+        "betweenness_centrality": 0.0,
+        "eigenvector_centrality": 7.876455163444983e-13,
+        "in_degree_centrality": 0.0,
+        "out_degree_centrality": 0.14285714285714285,
+        "weighted_influence_strength": 0.0
+      },
+      "asset:usdc": {
+        "betweenness_centrality": 0.0,
+        "eigenvector_centrality": 7.876455163444983e-13,
+        "in_degree_centrality": 0.0,
+        "out_degree_centrality": 0.14285714285714285,
+        "weighted_influence_strength": 0.04116535132948699
+      },
+      "asset:weth": {
+        "betweenness_centrality": 0.09523809523809523,
+        "eigenvector_centrality": 0.5773502691880505,
+        "in_degree_centrality": 0.2857142857142857,
+        "out_degree_centrality": 0.14285714285714285,
+        "weighted_influence_strength": 0.04065940375328614
+      },
+      "market:reference": {
+        "betweenness_centrality": 0.0,
+        "eigenvector_centrality": 7.876455163444983e-13,
+        "in_degree_centrality": 0.0,
+        "out_degree_centrality": 0.14285714285714285,
+        "weighted_influence_strength": 0.14285714285714285
+      },
+      "protocol:aave-v3": {
+        "betweenness_centrality": 0.19047619047619047,
+        "eigenvector_centrality": 0.577350269191201,
+        "in_degree_centrality": 0.5714285714285714,
+        "out_degree_centrality": 0.14285714285714285,
+        "weighted_influence_strength": 0.0
+      },
+      "protocol:uniswap-v3": {
+        "betweenness_centrality": 0.14285714285714285,
+        "eigenvector_centrality": 0.5773502691896258,
+        "in_degree_centrality": 0.2857142857142857,
+        "out_degree_centrality": 0.14285714285714285,
+        "weighted_influence_strength": 0.14285714285714285
+      }
+    },
+    "structural_bridge_node": "protocol:aave-v3",
+    "weighted_influence_interpretation": "Exploratory outgoing channel strength inside this modeled network."
+  },
+  "claim_boundaries": [
+    "The evidence-backed core contains Aave V3 and Uniswap V3; it is not a full map of DeFi.",
+    "Normalized strength is a bounded visualization/comparison index, not a probability or correlation.",
+    "Centrality measures position inside this modeled sub-network, not total importance across all DeFi.",
+    "Simulated transmission does not establish observed historical causality.",
+    "Scenario controls are assumptions, not observed market probabilities."
+  ],
+  "contagion_matrix": {
+    "aggregation_policy": "Parallel channels collapse with max normalized strength per directed node pair.",
+    "cells": [
+      [
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "protocol:aave-v3",
+          "target": "protocol:aave-v3"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [
+            {
+              "evidence_status": "DERIVED_METRIC",
+              "formula": "inactive structural route; realized strength is derived from run events",
+              "id": "structural:liquidation-route",
+              "raw_value": {
+                "realized_execution_value_usd": 0.0
+              },
+              "relation_type": "LIQUIDATION_ROUTE",
+              "unit": "USD"
+            }
+          ],
+          "relation_types": [
+            "LIQUIDATION_ROUTE"
+          ],
+          "source": "protocol:aave-v3",
+          "target": "protocol:uniswap-v3"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "protocol:aave-v3",
+          "target": "asset:weth"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "protocol:aave-v3",
+          "target": "asset:usdc"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "protocol:aave-v3",
+          "target": "agent:borrower-cohort"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "protocol:aave-v3",
+          "target": "agent:liquidator"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "protocol:aave-v3",
+          "target": "agent:arbitrageur"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "protocol:aave-v3",
+          "target": "market:reference"
+        }
+      ],
+      [
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "protocol:uniswap-v3",
+          "target": "protocol:aave-v3"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "protocol:uniswap-v3",
+          "target": "protocol:uniswap-v3"
+        },
+        {
+          "max_normalized_strength": 1.0,
+          "raw_edges": [
+            {
+              "evidence_status": "OBSERVED_ONCHAIN",
+              "formula": "1 when positive selected-pool 2%-depth is available; 0 otherwise",
+              "id": "structural:execution-price-channel",
+              "raw_value": {
+                "executable_depth_usdc_2pct": 1667709.859389457,
+                "spot_price_usd": 2694.008050568294
+              },
+              "relation_type": "EXECUTION_PRICE_CHANNEL",
+              "unit": "USD"
+            }
+          ],
+          "relation_types": [
+            "EXECUTION_PRICE_CHANNEL"
+          ],
+          "source": "protocol:uniswap-v3",
+          "target": "asset:weth"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "protocol:uniswap-v3",
+          "target": "asset:usdc"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "protocol:uniswap-v3",
+          "target": "agent:borrower-cohort"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "protocol:uniswap-v3",
+          "target": "agent:liquidator"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "protocol:uniswap-v3",
+          "target": "agent:arbitrageur"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "protocol:uniswap-v3",
+          "target": "market:reference"
+        }
+      ],
+      [
+        {
+          "max_normalized_strength": 0.28461582627300297,
+          "raw_edges": [
+            {
+              "evidence_status": "OBSERVED_ONCHAIN",
+              "formula": "modeled WETH collateral USD / total modeled collateral USD",
+              "id": "structural:collateral-exposure",
+              "raw_value": {
+                "total_modeled_collateral_usd": 144434614.3102532,
+                "weth_collateral_usd": 41108377.09433521
+              },
+              "relation_type": "COLLATERAL_EXPOSURE",
+              "unit": "USD"
+            },
+            {
+              "evidence_status": "DERIVED_METRIC",
+              "formula": "modeled WETH collateral USD / total modeled collateral USD",
+              "id": "structural:revaluation-channel",
+              "raw_value": {
+                "weth_collateral_usd": 41108377.09433521
+              },
+              "relation_type": "REVALUATION_CHANNEL",
+              "unit": "USD"
+            }
+          ],
+          "relation_types": [
+            "COLLATERAL_EXPOSURE",
+            "REVALUATION_CHANNEL"
+          ],
+          "source": "asset:weth",
+          "target": "protocol:aave-v3"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "asset:weth",
+          "target": "protocol:uniswap-v3"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "asset:weth",
+          "target": "asset:weth"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "asset:weth",
+          "target": "asset:usdc"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "asset:weth",
+          "target": "agent:borrower-cohort"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "asset:weth",
+          "target": "agent:liquidator"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "asset:weth",
+          "target": "agent:arbitrageur"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "asset:weth",
+          "target": "market:reference"
+        }
+      ],
+      [
+        {
+          "max_normalized_strength": 0.2881574593064089,
+          "raw_edges": [
+            {
+              "evidence_status": "OBSERVED_ONCHAIN",
+              "formula": "modeled USDC debt USD / total modeled debt USD",
+              "id": "structural:debt-exposure",
+              "raw_value": {
+                "total_modeled_debt_usd": 56848120.67937039,
+                "usdc_debt_usd": 16381210.021311494
+              },
+              "relation_type": "DEBT_EXPOSURE",
+              "unit": "USD"
+            }
+          ],
+          "relation_types": [
+            "DEBT_EXPOSURE"
+          ],
+          "source": "asset:usdc",
+          "target": "protocol:aave-v3"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "asset:usdc",
+          "target": "protocol:uniswap-v3"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "asset:usdc",
+          "target": "asset:weth"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "asset:usdc",
+          "target": "asset:usdc"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "asset:usdc",
+          "target": "agent:borrower-cohort"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "asset:usdc",
+          "target": "agent:liquidator"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "asset:usdc",
+          "target": "agent:arbitrageur"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "asset:usdc",
+          "target": "market:reference"
+        }
+      ],
+      [
+        {
+          "max_normalized_strength": 0.908,
+          "raw_edges": [
+            {
+              "evidence_status": "OBSERVED_ONCHAIN",
+              "formula": "verified active borrowers / discovered candidate borrowers",
+              "id": "structural:borrower-position-exposure",
+              "raw_value": {
+                "active_borrowers": 454,
+                "candidate_borrowers": 500,
+                "sampled_debt_usd": 56848120.67937039
+              },
+              "relation_type": "BORROWER_POSITION_EXPOSURE",
+              "unit": "borrowers_and_USD"
+            }
+          ],
+          "relation_types": [
+            "BORROWER_POSITION_EXPOSURE"
+          ],
+          "source": "agent:borrower-cohort",
+          "target": "protocol:aave-v3"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "agent:borrower-cohort",
+          "target": "protocol:uniswap-v3"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "agent:borrower-cohort",
+          "target": "asset:weth"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "agent:borrower-cohort",
+          "target": "asset:usdc"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "agent:borrower-cohort",
+          "target": "agent:borrower-cohort"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "agent:borrower-cohort",
+          "target": "agent:liquidator"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "agent:borrower-cohort",
+          "target": "agent:arbitrageur"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "agent:borrower-cohort",
+          "target": "market:reference"
+        }
+      ],
+      [
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [
+            {
+              "evidence_status": "SCENARIO_ASSUMPTION",
+              "formula": "inactive before deterministic run events",
+              "id": "structural:liquidator-route",
+              "raw_value": {
+                "realized_debt_repaid_usd": 0.0
+              },
+              "relation_type": "LIQUIDATION_EXECUTION",
+              "unit": "USD"
+            }
+          ],
+          "relation_types": [
+            "LIQUIDATION_EXECUTION"
+          ],
+          "source": "agent:liquidator",
+          "target": "protocol:aave-v3"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "agent:liquidator",
+          "target": "protocol:uniswap-v3"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "agent:liquidator",
+          "target": "asset:weth"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "agent:liquidator",
+          "target": "asset:usdc"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "agent:liquidator",
+          "target": "agent:borrower-cohort"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "agent:liquidator",
+          "target": "agent:liquidator"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "agent:liquidator",
+          "target": "agent:arbitrageur"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "agent:liquidator",
+          "target": "market:reference"
+        }
+      ],
+      [
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "agent:arbitrageur",
+          "target": "protocol:aave-v3"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [
+            {
+              "evidence_status": "SCENARIO_ASSUMPTION",
+              "formula": "inactive before deterministic run events",
+              "id": "structural:arbitrage-route",
+              "raw_value": {
+                "realized_recovery_ratio": 0.0
+              },
+              "relation_type": "ARBITRAGE_STABILIZATION",
+              "unit": "ratio"
+            }
+          ],
+          "relation_types": [
+            "ARBITRAGE_STABILIZATION"
+          ],
+          "source": "agent:arbitrageur",
+          "target": "protocol:uniswap-v3"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "agent:arbitrageur",
+          "target": "asset:weth"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "agent:arbitrageur",
+          "target": "asset:usdc"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "agent:arbitrageur",
+          "target": "agent:borrower-cohort"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "agent:arbitrageur",
+          "target": "agent:liquidator"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "agent:arbitrageur",
+          "target": "agent:arbitrageur"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "agent:arbitrageur",
+          "target": "market:reference"
+        }
+      ],
+      [
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "market:reference",
+          "target": "protocol:aave-v3"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "market:reference",
+          "target": "protocol:uniswap-v3"
+        },
+        {
+          "max_normalized_strength": 1.0,
+          "raw_edges": [
+            {
+              "evidence_status": "SCENARIO_ASSUMPTION",
+              "formula": "1 when a positive reference price is available; 0 otherwise",
+              "id": "structural:reference-price-link",
+              "raw_value": {
+                "snapshot_reference_price_usd": 2698.28680094
+              },
+              "relation_type": "REFERENCE_PRICE_LINK",
+              "unit": "USD"
+            }
+          ],
+          "relation_types": [
+            "REFERENCE_PRICE_LINK"
+          ],
+          "source": "market:reference",
+          "target": "asset:weth"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "market:reference",
+          "target": "asset:usdc"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "market:reference",
+          "target": "agent:borrower-cohort"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "market:reference",
+          "target": "agent:liquidator"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "market:reference",
+          "target": "agent:arbitrageur"
+        },
+        {
+          "max_normalized_strength": 0.0,
+          "raw_edges": [],
+          "relation_types": [],
+          "source": "market:reference",
+          "target": "market:reference"
+        }
+      ]
+    ],
+    "metric": "MAX_ACTIVE_NORMALIZED_TRANSMISSION_STRENGTH",
+    "node_order": [
+      "protocol:aave-v3",
+      "protocol:uniswap-v3",
+      "asset:weth",
+      "asset:usdc",
+      "agent:borrower-cohort",
+      "agent:liquidator",
+      "agent:arbitrageur",
+      "market:reference"
+    ],
+    "values": [
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.28461582627300297,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.2881574593064089,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.908,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "edges": [
+    {
+      "active": true,
+      "description": "Modeled WETH liquidation collateral supplied to Aave V3.",
+      "direction": "DIRECTED",
+      "evidence_status": "OBSERVED_ONCHAIN",
+      "formula": "modeled WETH collateral USD / total modeled collateral USD",
+      "id": "structural:collateral-exposure",
+      "layer": "EXPOSURE",
+      "normalized_strength": 0.28461582627300297,
+      "provenance": {
+        "block_hash": "4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+        "block_number": 26045352,
+        "snapshot_id": "real-18843e5d109b092f268a",
+        "snapshot_mode": "REAL_MAINNET",
+        "source": "immutable selected snapshot"
+      },
+      "raw_value": {
+        "total_modeled_collateral_usd": 144434614.3102532,
+        "weth_collateral_usd": 41108377.09433521
+      },
+      "relation_type": "COLLATERAL_EXPOSURE",
+      "source": "asset:weth",
+      "step": null,
+      "target": "protocol:aave-v3",
+      "unit": "USD",
+      "wave": null
+    },
+    {
+      "active": true,
+      "description": "Structural WETH repricing channel into Aave borrower Health Factors; no realized flow is claimed.",
+      "direction": "DIRECTED",
+      "evidence_status": "DERIVED_METRIC",
+      "formula": "modeled WETH collateral USD / total modeled collateral USD",
+      "id": "structural:revaluation-channel",
+      "layer": "FEEDBACK",
+      "normalized_strength": 0.28461582627300297,
+      "provenance": {
+        "block_hash": "4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+        "block_number": 26045352,
+        "snapshot_id": "real-18843e5d109b092f268a",
+        "snapshot_mode": "REAL_MAINNET",
+        "source": "immutable selected snapshot"
+      },
+      "raw_value": {
+        "weth_collateral_usd": 41108377.09433521
+      },
+      "relation_type": "REVALUATION_CHANNEL",
+      "source": "asset:weth",
+      "step": null,
+      "target": "protocol:aave-v3",
+      "unit": "USD",
+      "wave": null
+    },
+    {
+      "active": true,
+      "description": "Modeled USDC-denominated Aave debt exposure.",
+      "direction": "DIRECTED",
+      "evidence_status": "OBSERVED_ONCHAIN",
+      "formula": "modeled USDC debt USD / total modeled debt USD",
+      "id": "structural:debt-exposure",
+      "layer": "EXPOSURE",
+      "normalized_strength": 0.2881574593064089,
+      "provenance": {
+        "block_hash": "4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+        "block_number": 26045352,
+        "snapshot_id": "real-18843e5d109b092f268a",
+        "snapshot_mode": "REAL_MAINNET",
+        "source": "immutable selected snapshot"
+      },
+      "raw_value": {
+        "total_modeled_debt_usd": 56848120.67937039,
+        "usdc_debt_usd": 16381210.021311494
+      },
+      "relation_type": "DEBT_EXPOSURE",
+      "source": "asset:usdc",
+      "step": null,
+      "target": "protocol:aave-v3",
+      "unit": "USD",
+      "wave": null
+    },
+    {
+      "active": true,
+      "description": "Aggregated borrower cohort verified in the selected snapshot.",
+      "direction": "DIRECTED",
+      "evidence_status": "OBSERVED_ONCHAIN",
+      "formula": "verified active borrowers / discovered candidate borrowers",
+      "id": "structural:borrower-position-exposure",
+      "layer": "EXPOSURE",
+      "normalized_strength": 0.908,
+      "provenance": {
+        "block_hash": "4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+        "block_number": 26045352,
+        "snapshot_id": "real-18843e5d109b092f268a",
+        "snapshot_mode": "REAL_MAINNET",
+        "source": "immutable selected snapshot"
+      },
+      "raw_value": {
+        "active_borrowers": 454,
+        "candidate_borrowers": 500,
+        "sampled_debt_usd": 56848120.67937039
+      },
+      "relation_type": "BORROWER_POSITION_EXPOSURE",
+      "source": "agent:borrower-cohort",
+      "step": null,
+      "target": "protocol:aave-v3",
+      "unit": "borrowers_and_USD",
+      "wave": null
+    },
+    {
+      "active": false,
+      "description": "Potential liquidation execution route; structural only until a deterministic run activates it.",
+      "direction": "DIRECTED",
+      "evidence_status": "DERIVED_METRIC",
+      "formula": "inactive structural route; realized strength is derived from run events",
+      "id": "structural:liquidation-route",
+      "layer": "LIQUIDATION",
+      "normalized_strength": 0.0,
+      "provenance": {
+        "block_hash": "4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+        "block_number": 26045352,
+        "snapshot_id": "real-18843e5d109b092f268a",
+        "snapshot_mode": "REAL_MAINNET",
+        "source": "immutable selected snapshot"
+      },
+      "raw_value": {
+        "realized_execution_value_usd": 0.0
+      },
+      "relation_type": "LIQUIDATION_ROUTE",
+      "source": "protocol:aave-v3",
+      "step": null,
+      "target": "protocol:uniswap-v3",
+      "unit": "USD",
+      "wave": null
+    },
+    {
+      "active": true,
+      "description": "Observed/fixture pool state supporting a WETH execution-price channel.",
+      "direction": "DIRECTED",
+      "evidence_status": "OBSERVED_ONCHAIN",
+      "formula": "1 when positive selected-pool 2%-depth is available; 0 otherwise",
+      "id": "structural:execution-price-channel",
+      "layer": "PRICE_IMPACT",
+      "normalized_strength": 1.0,
+      "provenance": {
+        "block_hash": "4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+        "block_number": 26045352,
+        "snapshot_id": "real-18843e5d109b092f268a",
+        "snapshot_mode": "REAL_MAINNET",
+        "source": "immutable selected snapshot"
+      },
+      "raw_value": {
+        "executable_depth_usdc_2pct": 1667709.859389457,
+        "spot_price_usd": 2694.008050568294
+      },
+      "relation_type": "EXECUTION_PRICE_CHANNEL",
+      "source": "protocol:uniswap-v3",
+      "step": null,
+      "target": "asset:weth",
+      "unit": "USD",
+      "wave": null
+    },
+    {
+      "active": false,
+      "description": "Potential liquidator execution role; no observed actor is claimed.",
+      "direction": "DIRECTED",
+      "evidence_status": "SCENARIO_ASSUMPTION",
+      "formula": "inactive before deterministic run events",
+      "id": "structural:liquidator-route",
+      "layer": "LIQUIDATION",
+      "normalized_strength": 0.0,
+      "provenance": {
+        "source": "scenario controls"
+      },
+      "raw_value": {
+        "realized_debt_repaid_usd": 0.0
+      },
+      "relation_type": "LIQUIDATION_EXECUTION",
+      "source": "agent:liquidator",
+      "step": null,
+      "target": "protocol:aave-v3",
+      "unit": "USD",
+      "wave": null
+    },
+    {
+      "active": false,
+      "description": "Potential simulated arbitrage stabilization route.",
+      "direction": "DIRECTED",
+      "evidence_status": "SCENARIO_ASSUMPTION",
+      "formula": "inactive before deterministic run events",
+      "id": "structural:arbitrage-route",
+      "layer": "STABILIZATION",
+      "normalized_strength": 0.0,
+      "provenance": {
+        "source": "scenario controls"
+      },
+      "raw_value": {
+        "realized_recovery_ratio": 0.0
+      },
+      "relation_type": "ARBITRAGE_STABILIZATION",
+      "source": "agent:arbitrageur",
+      "step": null,
+      "target": "protocol:uniswap-v3",
+      "unit": "ratio",
+      "wave": null
+    },
+    {
+      "active": true,
+      "description": "Reference price used to measure DEX divergence and arbitrage recovery.",
+      "direction": "DIRECTED",
+      "evidence_status": "SCENARIO_ASSUMPTION",
+      "formula": "1 when a positive reference price is available; 0 otherwise",
+      "id": "structural:reference-price-link",
+      "layer": "PRICE_IMPACT",
+      "normalized_strength": 1.0,
+      "provenance": {
+        "source": "scenario reference price"
+      },
+      "raw_value": {
+        "snapshot_reference_price_usd": 2698.28680094
+      },
+      "relation_type": "REFERENCE_PRICE_LINK",
+      "source": "market:reference",
+      "step": null,
+      "target": "asset:weth",
+      "unit": "USD",
+      "wave": null
+    }
+  ],
+  "evidence_mode": "REAL_MAINNET",
+  "frames": [
+    {
+      "active_edge_ids": [
+        "structural:collateral-exposure",
+        "structural:revaluation-channel",
+        "structural:debt-exposure",
+        "structural:borrower-position-exposure",
+        "structural:liquidation-route",
+        "structural:execution-price-channel",
+        "structural:liquidator-route",
+        "structural:arbitrage-route",
+        "structural:reference-price-link"
+      ],
+      "active_edges": [
+        {
+          "active": true,
+          "description": "Modeled WETH liquidation collateral supplied to Aave V3.",
+          "direction": "DIRECTED",
+          "evidence_status": "OBSERVED_ONCHAIN",
+          "formula": "modeled WETH collateral USD / total modeled collateral USD",
+          "id": "structural:collateral-exposure",
+          "layer": "EXPOSURE",
+          "normalized_strength": 0.28461582627300297,
+          "provenance": {
+            "block_hash": "4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+            "block_number": 26045352,
+            "snapshot_id": "real-18843e5d109b092f268a",
+            "snapshot_mode": "REAL_MAINNET",
+            "source": "immutable selected snapshot"
+          },
+          "raw_value": {
+            "total_modeled_collateral_usd": 144434614.3102532,
+            "weth_collateral_usd": 41108377.09433521
+          },
+          "relation_type": "COLLATERAL_EXPOSURE",
+          "source": "asset:weth",
+          "step": null,
+          "target": "protocol:aave-v3",
+          "unit": "USD",
+          "wave": null
+        },
+        {
+          "active": true,
+          "description": "Structural WETH repricing channel into Aave borrower Health Factors; no realized flow is claimed.",
+          "direction": "DIRECTED",
+          "evidence_status": "DERIVED_METRIC",
+          "formula": "modeled WETH collateral USD / total modeled collateral USD",
+          "id": "structural:revaluation-channel",
+          "layer": "FEEDBACK",
+          "normalized_strength": 0.28461582627300297,
+          "provenance": {
+            "block_hash": "4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+            "block_number": 26045352,
+            "snapshot_id": "real-18843e5d109b092f268a",
+            "snapshot_mode": "REAL_MAINNET",
+            "source": "immutable selected snapshot"
+          },
+          "raw_value": {
+            "weth_collateral_usd": 41108377.09433521
+          },
+          "relation_type": "REVALUATION_CHANNEL",
+          "source": "asset:weth",
+          "step": null,
+          "target": "protocol:aave-v3",
+          "unit": "USD",
+          "wave": null
+        },
+        {
+          "active": true,
+          "description": "Modeled USDC-denominated Aave debt exposure.",
+          "direction": "DIRECTED",
+          "evidence_status": "OBSERVED_ONCHAIN",
+          "formula": "modeled USDC debt USD / total modeled debt USD",
+          "id": "structural:debt-exposure",
+          "layer": "EXPOSURE",
+          "normalized_strength": 0.2881574593064089,
+          "provenance": {
+            "block_hash": "4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+            "block_number": 26045352,
+            "snapshot_id": "real-18843e5d109b092f268a",
+            "snapshot_mode": "REAL_MAINNET",
+            "source": "immutable selected snapshot"
+          },
+          "raw_value": {
+            "total_modeled_debt_usd": 56848120.67937039,
+            "usdc_debt_usd": 16381210.021311494
+          },
+          "relation_type": "DEBT_EXPOSURE",
+          "source": "asset:usdc",
+          "step": null,
+          "target": "protocol:aave-v3",
+          "unit": "USD",
+          "wave": null
+        },
+        {
+          "active": true,
+          "description": "Aggregated borrower cohort verified in the selected snapshot.",
+          "direction": "DIRECTED",
+          "evidence_status": "OBSERVED_ONCHAIN",
+          "formula": "verified active borrowers / discovered candidate borrowers",
+          "id": "structural:borrower-position-exposure",
+          "layer": "EXPOSURE",
+          "normalized_strength": 0.908,
+          "provenance": {
+            "block_hash": "4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+            "block_number": 26045352,
+            "snapshot_id": "real-18843e5d109b092f268a",
+            "snapshot_mode": "REAL_MAINNET",
+            "source": "immutable selected snapshot"
+          },
+          "raw_value": {
+            "active_borrowers": 454,
+            "candidate_borrowers": 500,
+            "sampled_debt_usd": 56848120.67937039
+          },
+          "relation_type": "BORROWER_POSITION_EXPOSURE",
+          "source": "agent:borrower-cohort",
+          "step": null,
+          "target": "protocol:aave-v3",
+          "unit": "borrowers_and_USD",
+          "wave": null
+        },
+        {
+          "active": false,
+          "description": "Potential liquidation execution route; structural only until a deterministic run activates it.",
+          "direction": "DIRECTED",
+          "evidence_status": "DERIVED_METRIC",
+          "formula": "inactive structural route; realized strength is derived from run events",
+          "id": "structural:liquidation-route",
+          "layer": "LIQUIDATION",
+          "normalized_strength": 0.0,
+          "provenance": {
+            "block_hash": "4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+            "block_number": 26045352,
+            "snapshot_id": "real-18843e5d109b092f268a",
+            "snapshot_mode": "REAL_MAINNET",
+            "source": "immutable selected snapshot"
+          },
+          "raw_value": {
+            "realized_execution_value_usd": 0.0
+          },
+          "relation_type": "LIQUIDATION_ROUTE",
+          "source": "protocol:aave-v3",
+          "step": null,
+          "target": "protocol:uniswap-v3",
+          "unit": "USD",
+          "wave": null
+        },
+        {
+          "active": true,
+          "description": "Observed/fixture pool state supporting a WETH execution-price channel.",
+          "direction": "DIRECTED",
+          "evidence_status": "OBSERVED_ONCHAIN",
+          "formula": "1 when positive selected-pool 2%-depth is available; 0 otherwise",
+          "id": "structural:execution-price-channel",
+          "layer": "PRICE_IMPACT",
+          "normalized_strength": 1.0,
+          "provenance": {
+            "block_hash": "4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+            "block_number": 26045352,
+            "snapshot_id": "real-18843e5d109b092f268a",
+            "snapshot_mode": "REAL_MAINNET",
+            "source": "immutable selected snapshot"
+          },
+          "raw_value": {
+            "executable_depth_usdc_2pct": 1667709.859389457,
+            "spot_price_usd": 2694.008050568294
+          },
+          "relation_type": "EXECUTION_PRICE_CHANNEL",
+          "source": "protocol:uniswap-v3",
+          "step": null,
+          "target": "asset:weth",
+          "unit": "USD",
+          "wave": null
+        },
+        {
+          "active": false,
+          "description": "Potential liquidator execution role; no observed actor is claimed.",
+          "direction": "DIRECTED",
+          "evidence_status": "SCENARIO_ASSUMPTION",
+          "formula": "inactive before deterministic run events",
+          "id": "structural:liquidator-route",
+          "layer": "LIQUIDATION",
+          "normalized_strength": 0.0,
+          "provenance": {
+            "source": "scenario controls"
+          },
+          "raw_value": {
+            "realized_debt_repaid_usd": 0.0
+          },
+          "relation_type": "LIQUIDATION_EXECUTION",
+          "source": "agent:liquidator",
+          "step": null,
+          "target": "protocol:aave-v3",
+          "unit": "USD",
+          "wave": null
+        },
+        {
+          "active": false,
+          "description": "Potential simulated arbitrage stabilization route.",
+          "direction": "DIRECTED",
+          "evidence_status": "SCENARIO_ASSUMPTION",
+          "formula": "inactive before deterministic run events",
+          "id": "structural:arbitrage-route",
+          "layer": "STABILIZATION",
+          "normalized_strength": 0.0,
+          "provenance": {
+            "source": "scenario controls"
+          },
+          "raw_value": {
+            "realized_recovery_ratio": 0.0
+          },
+          "relation_type": "ARBITRAGE_STABILIZATION",
+          "source": "agent:arbitrageur",
+          "step": null,
+          "target": "protocol:uniswap-v3",
+          "unit": "ratio",
+          "wave": null
+        },
+        {
+          "active": true,
+          "description": "Reference price used to measure DEX divergence and arbitrage recovery.",
+          "direction": "DIRECTED",
+          "evidence_status": "SCENARIO_ASSUMPTION",
+          "formula": "1 when a positive reference price is available; 0 otherwise",
+          "id": "structural:reference-price-link",
+          "layer": "PRICE_IMPACT",
+          "normalized_strength": 1.0,
+          "provenance": {
+            "source": "scenario reference price"
+          },
+          "raw_value": {
+            "snapshot_reference_price_usd": 2698.28680094
+          },
+          "relation_type": "REFERENCE_PRICE_LINK",
+          "source": "market:reference",
+          "step": null,
+          "target": "asset:weth",
+          "unit": "USD",
+          "wave": null
+        }
+      ],
+      "active_nodes": [
+        "protocol:aave-v3",
+        "protocol:uniswap-v3",
+        "asset:weth",
+        "asset:usdc",
+        "agent:borrower-cohort",
+        "agent:liquidator",
+        "agent:arbitrageur",
+        "market:reference"
+      ],
+      "cascade_depth_so_far": 0,
+      "cumulative_liquidated_debt_usd": 0.0,
+      "forced_weth": 0.0,
+      "index": 0,
+      "label": "Initial State",
+      "liquidation_event_count": 0,
+      "liquidation_volume_usd": 0.0,
+      "price_state": {
+        "dex_price_after": 2694.008050568294,
+        "dex_price_before": 2694.008050568294,
+        "reference_price": 2698.28680094
+      },
+      "step": 0,
+      "wave": 0
+    }
+  ],
+  "graph_metadata": {
+    "active_protocol_count": 2,
+    "borrowers_aggregated": true,
+    "cascade_depth": 0,
+    "conceptual_extensions_included": false,
+    "edge_count": 9,
+    "multiedges_preserved": true,
+    "normalization_formulas": {
+      "ARBITRAGE_STABILIZATION": "recovered absolute spread / pre-arbitrage absolute spread",
+      "BORROWER_POSITION_EXPOSURE": "verified active borrowers / discovered candidate borrowers",
+      "COLLATERAL_EXPOSURE": "modeled WETH collateral USD / total modeled collateral USD",
+      "DEBT_EXPOSURE": "modeled USDC debt USD / total modeled debt USD",
+      "EXECUTION_PRICE_IMPACT": "min(1, absolute price impact ratio / 0.02); 2% is a visualization reference",
+      "LIQUIDATION_EXECUTION": "wave debt repaid / sampled total debt",
+      "LIQUIDATION_FLOW": "pressure / (1 + pressure), pressure = execution value USD / selected pool 2%-depth USD",
+      "REVALUATION_FEEDBACK": "model-attributed later-wave liquidated debt / sampled total debt"
+    },
+    "scenario_assumptions": {}
+  },
+  "graph_model_version": "0.1.0-multilayer-contagion",
+  "graph_type": "MULTILAYER_DIRECTED_MULTIGRAPH",
+  "layers": [
+    "PROTOCOL",
+    "ASSET",
+    "AGENT_ROLE",
+    "REFERENCE_MARKET"
+  ],
+  "mode": "STRUCTURAL",
+  "nodes": [
+    {
+      "description": "Verified lending positions and liquidation rules at the selected snapshot.",
+      "evidence_status": "OBSERVED_ONCHAIN",
+      "id": "protocol:aave-v3",
+      "label": "Aave V3",
+      "layer": "PROTOCOL",
+      "node_type": "LENDING_PROTOCOL",
+      "provenance": {
+        "block_hash": "4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+        "block_number": 26045352,
+        "snapshot_id": "real-18843e5d109b092f268a",
+        "snapshot_mode": "REAL_MAINNET",
+        "source": "snapshot borrower positions"
+      },
+      "raw_metrics": {
+        "active_borrowers": 454,
+        "sampled_debt_usd": 56848120.67937039,
+        "weth_usdc_cohort": 109
+      },
+      "snapshot_id": "real-18843e5d109b092f268a"
+    },
+    {
+      "description": "Selected WETH/USDC execution venue and modeled executable depth.",
+      "evidence_status": "OBSERVED_ONCHAIN",
+      "id": "protocol:uniswap-v3",
+      "label": "Uniswap V3",
+      "layer": "PROTOCOL",
+      "node_type": "DEX_PROTOCOL",
+      "provenance": {
+        "block_hash": "4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+        "block_number": 26045352,
+        "snapshot_id": "real-18843e5d109b092f268a",
+        "snapshot_mode": "REAL_MAINNET",
+        "source": "selected Uniswap V3 pool state"
+      },
+      "raw_metrics": {
+        "depth_usdc_2pct": 1667709.859389457,
+        "fee": 3000,
+        "pool_address": "0x8ad599c3A0ff1De082011EFDDc58f1908eb6e6D8"
+      },
+      "snapshot_id": "real-18843e5d109b092f268a"
+    },
+    {
+      "description": "Shared collateral and execution-price risk factor.",
+      "evidence_status": "OBSERVED_ONCHAIN",
+      "id": "asset:weth",
+      "label": "WETH",
+      "layer": "ASSET",
+      "node_type": "COLLATERAL_ASSET",
+      "provenance": {
+        "block_hash": "4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+        "block_number": 26045352,
+        "snapshot_id": "real-18843e5d109b092f268a",
+        "snapshot_mode": "REAL_MAINNET",
+        "source": "Aave oracle and modeled collateral"
+      },
+      "raw_metrics": {
+        "modeled_collateral_weth": 15234.991728831168,
+        "oracle_price_usd": 2698.28680094
+      },
+      "snapshot_id": "real-18843e5d109b092f268a"
+    },
+    {
+      "description": "Modeled debt denomination and Uniswap quote asset.",
+      "evidence_status": "OBSERVED_ONCHAIN",
+      "id": "asset:usdc",
+      "label": "USDC",
+      "layer": "ASSET",
+      "node_type": "DEBT_ASSET",
+      "provenance": {
+        "block_hash": "4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+        "block_number": 26045352,
+        "snapshot_id": "real-18843e5d109b092f268a",
+        "snapshot_mode": "REAL_MAINNET",
+        "source": "Aave oracle and modeled debt"
+      },
+      "raw_metrics": {
+        "modeled_debt_usdc": 16384150.484799,
+        "oracle_price_usd": 0.99982053
+      },
+      "snapshot_id": "real-18843e5d109b092f268a"
+    },
+    {
+      "description": "Aggregated cohort; no raw borrower addresses are exposed.",
+      "evidence_status": "OBSERVED_ONCHAIN",
+      "id": "agent:borrower-cohort",
+      "label": "Borrower Cohort",
+      "layer": "AGENT_ROLE",
+      "node_type": "AGGREGATED_AGENT_ROLE",
+      "provenance": {
+        "aggregation": "all modeled borrowers; identities pseudonymized upstream",
+        "block_hash": "4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+        "block_number": 26045352,
+        "snapshot_id": "real-18843e5d109b092f268a",
+        "snapshot_mode": "REAL_MAINNET"
+      },
+      "raw_metrics": {
+        "active_borrowers": 454,
+        "research_cohort": 109
+      },
+      "snapshot_id": "real-18843e5d109b092f268a"
+    },
+    {
+      "description": "Liquidation execution agent governed by scenario capital, delay and profitability controls.",
+      "evidence_status": "SCENARIO_ASSUMPTION",
+      "id": "agent:liquidator",
+      "label": "Liquidator",
+      "layer": "AGENT_ROLE",
+      "node_type": "SIMULATED_AGENT_ROLE",
+      "provenance": {
+        "source": "scenario configuration"
+      },
+      "raw_metrics": {},
+      "snapshot_id": "real-18843e5d109b092f268a"
+    },
+    {
+      "description": "Simulated stabilizing agent; not an observed historical actor.",
+      "evidence_status": "SCENARIO_ASSUMPTION",
+      "id": "agent:arbitrageur",
+      "label": "Arbitrageur",
+      "layer": "AGENT_ROLE",
+      "node_type": "SIMULATED_AGENT_ROLE",
+      "provenance": {
+        "source": "scenario configuration"
+      },
+      "raw_metrics": {},
+      "snapshot_id": "real-18843e5d109b092f268a"
+    },
+    {
+      "description": "Exogenous reference-price path used by the stress scenario.",
+      "evidence_status": "SCENARIO_ASSUMPTION",
+      "id": "market:reference",
+      "label": "Reference Market",
+      "layer": "REFERENCE_MARKET",
+      "node_type": "REFERENCE_PRICE",
+      "provenance": {
+        "source": "snapshot oracle price plus scenario shock"
+      },
+      "raw_metrics": {
+        "snapshot_weth_price_usd": 2698.28680094
+      },
+      "snapshot_id": "real-18843e5d109b092f268a"
+    }
+  ],
+  "provenance": {
+    "block_hash": "4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+    "block_number": 26045352,
+    "block_timestamp": "2026-09-24T05:50:35+00:00",
+    "chain_id": 1,
+    "graph_model_version": "0.1.0-multilayer-contagion",
+    "run_id": null,
+    "scenario_id": null,
+    "seed": null,
+    "simulation_model_version": "0.1.0-aave-v3.7-approx",
+    "snapshot_id": "real-18843e5d109b092f268a",
+    "snapshot_mode": "REAL_MAINNET"
+  },
+  "relation_types": [
+    "ARBITRAGE_STABILIZATION",
+    "BORROWER_POSITION_EXPOSURE",
+    "COLLATERAL_EXPOSURE",
+    "DEBT_EXPOSURE",
+    "EXECUTION_PRICE_CHANNEL",
+    "LIQUIDATION_EXECUTION",
+    "LIQUIDATION_ROUTE",
+    "REFERENCE_PRICE_LINK",
+    "REVALUATION_CHANNEL"
+  ],
+  "run_id": null,
+  "scenario_id": null,
+  "seed": null,
+  "simulation_model_version": "0.1.0-aave-v3.7-approx",
+  "snapshot_id": "real-18843e5d109b092f268a"
+}

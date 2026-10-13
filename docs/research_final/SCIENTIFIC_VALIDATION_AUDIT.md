@@ -6,12 +6,96 @@ Canonical Mainnet block: `26045352` (`4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189
 Canonical evidence policy: preserved; corrected results are versioned under
 `data/processed/research_final/validation_audit/corrected_run_v1/`.
 
+> **Cập nhật P0 ngày 2026-10-13:** Commander Review trên issue #2 yêu cầu làm rõ semantics
+> của impact, recovery và LT override. `corrected_run_v1` vẫn được giữ nguyên làm bằng chứng trung gian;
+> các metric chịu ảnh hưởng hiện được thay thế bởi `corrected_run_v2`. Phần cập nhật tiếng Việt bên
+> dưới có quyền ưu tiên nếu khác với diễn giải v1 trước đó.
+
+## Cập nhật P0 theo Commander Review
+
+**Kết quả executor: PASS — VERIFIED; còn chờ Commander sign-off độc lập.** Không thay canonical
+snapshot, không thay scenario/seed, không chạy lại Terra và không tạo Word final.
+
+### Tách impact trước và sau arbitrage
+
+- `max_intrawave_liquidation_price_impact` = giá trị lớn nhất của
+  `|DEX_after_sale - reference| / reference`, đo ngay sau từng forced sale và trước arbitrage.
+- `max_post_arbitrage_spread` = giá trị lớn nhất của
+  `|DEX_after_stabilization - reference| / reference`, đo cuối mỗi wave.
+- `max_price_impact` được giữ làm khóa tương thích đã deprecated và bằng
+  `max_post_arbitrage_spread`; do đó series v1 không bị âm thầm đổi nghĩa.
+
+| Scenario | Intrawave impact | Post-arbitrage spread | Diễn giải |
+|---|---:|---:|---|
+| Severe | 0.554393% | 0.415795% | Forced sale vượt ngưỡng recovery 0.5%; arbitrage giảm nhưng không xóa hoàn toàn spread. |
+| Low Liquidity | 0.261598% | 0.130799% | Chưa từng vượt ngưỡng 0.5%. |
+| High Gas / Professor | 0.108794% | 0.054397% | Residual bằng khoảng một nửa intrawave impact. |
+| No Arbitrage | 0.108794% | 0.108794% | Không có stabilization. |
+| Strong Arbitrage | 0.108794% | xấp xỉ 0 | Arbitrage xóa residual spread trong abstraction, không xóa instantaneous forced-sale impact. |
+| Policy Experiment | 0.215877% | 0.107939% | Chưa từng vượt ngưỡng 0.5%. |
+
+RQ4 vì vậy phải được diễn giải lại: arbitrage capacity từ 0% đến 100% không thay đổi intrawave
+impact `0.108794%` trong sweep Professor, vì forced sale xảy ra trước arbitrage. Nó giảm dần residual
+spread từ `0.108794%` xuống xấp xỉ 0. Đây là stabilization sau forced sale, không phải loại bỏ impact
+tức thời.
+
+### Recovery time
+
+`time_to_recovery_seconds` hiện có ba trạng thái rõ ràng:
+
+- `0`: spread chưa từng vượt tolerance 0.5%, nên không có dislocation cần phục hồi;
+- số giây: timestamp mô phỏng đầu tiên sau khi đã vượt tolerance mà spread quay lại `<=0.5%`;
+- `null`: đã vượt tolerance nhưng chưa quay lại trong horizon.
+
+Vì vậy Low Liquidity, High Gas, No Arbitrage, Strong Arbitrage, Policy Experiment và Professor đổi từ
+`60` giây ở v1 thành `0` ở v2. Severe vẫn là `60` giây: intrawave spread `0.554393%` vượt tolerance và
+post-arbitrage spread `0.415795%` quay lại dưới tolerance ở cuối wave 1. Regression fixture có thêm ca
+không arbitrage, vượt tolerance và không hồi phục, cho kết quả `null`.
+
+### Unliquidated debt với LT override
+
+`unliquidated_debt` hiện tính HF cuối bằng `liquidation_threshold_override` khi scenario có override.
+Khóa `unliquidated_debt_legacy_recorded_lt` giữ nguyên cách tính v1 để đối chiếu. Trong RQ6 LT sweep:
+
+| LT | v1 / legacy recorded-LT | v2 scenario-consistent |
+|---:|---:|---:|
+| 0.810 | 221,203.43 | 229,830.81 |
+| 0.820 | 221,203.43 | 229,830.81 |
+| 0.830 | 221,203.43 | 229,830.81 |
+| 0.855 | 230,266.68 | 96,839.39 |
+| 0.880 | 230,266.68 | 88,458.67 |
+
+Các thay đổi không đơn điệu theo một phép so sánh tĩnh vì LT override đồng thời thay eligibility và
+đường liquidation thực thi; v2 chỉ sửa cho metric cuối dùng cùng policy với scenario đã chạy.
+
+### Audit 8 Severe Monte Carlo paths
+
+Tái tạo đúng RNG sequence 200 runs vẫn cho `8/200` path depth 2 (indices zero-based
+`5, 27, 31, 39, 69, 87, 102, 126`). Cả 8 path đều pass:
+
+- không borrower nào bị liquidation lặp lại;
+- borrower wave 2 không thuộc wave 1;
+- borrower wave 2 có HF `>=1` ở direct-shock state và HF `<1` tại valuation state sau wave 1;
+- `health_factor_before` trong event khớp phép tính từ `min(reference, prior-wave DEX price)`.
+
+Trong cả 8 path, borrower mới đủ điều kiện là `borrower-ec4cb7888f79`; artifact lưu full event trace,
+shock, haircut, gas, HF và giá cho từng path. Đây là kiểm tra consistency của engine, không biến tần suất
+`4%` thành xác suất thị trường thực.
+
+### Giới hạn P0 còn lại
+
+- Exogenous shock và arbitrage vẫn là price-teleportation abstractions, không phải swap path có vốn.
+- QuoterV2 chỉ validate canonical initial state; không validate counterfactual repositioned states.
+- Fork liquidation vẫn `UNAVAILABLE` vì chưa thực thi Foundry/Anvil transaction.
+- Temporal panel và Terra out-of-sample forecasting vẫn `LIMITED`.
+- Numeric graph edge fingerprints v1/v2 giống nhau; graph chỉ đổi provenance model version.
+
 ## Executive decision
 
 **Overall: LIMITED — REPORT WITH CAVEAT.**
 
 The project can proceed to final-report writing only if all Uniswap-sensitive Aave results are taken
-from the versioned corrected run and the limitations in this audit are stated. The original Aave
+from the versioned `corrected_run_v2` and the limitations in this audit are stated. The original Aave
 research package is not suitable as the source for price-impact, arbitrage-effect, bad-debt, or Monte
 Carlo cascade-frequency claims because a confirmed Uniswap V3 active-liquidity bug affected those
 outputs. The canonical input snapshot remains valid and unchanged.
@@ -155,13 +239,15 @@ Metric definitions:
   contains an endogenous later wave.
 - `cascade_amplification`: total liquidated debt divided by direct-shock liquidated debt; undefined
   when direct-shock liquidated debt is zero.
-- `time_to_recovery_seconds`: model-clock time until the final DEX/reference spread is within 0.5%,
-  or null if not recovered. It is not an empirical market-time prediction.
+- `time_to_recovery_seconds`: `0` if the 0.5% tolerance was never exceeded; otherwise the first
+  model timestamp returning to tolerance, or null if not recovered. It is not an empirical
+  market-time prediction.
 - RQ5 `debt_usdc` and `total_liquidated_debt_usdc` are token quantities. Their USD equivalent equals
   USDC quantity multiplied by the scenario USDC/USD price; other debt is separately USD-denominated.
 
 Original tables and figures used engine-consistent definitions, but any Uniswap-sensitive number in
-the original package is numerically superseded by `corrected_run_v1`.
+the original package is numerically superseded first by preserved `corrected_run_v1`, then for the
+Commander P0 metrics by `corrected_run_v2`.
 
 ## 5. Temporal robustness feasibility
 
@@ -245,7 +331,7 @@ intervention was introduced.
 
 ## 9. Readiness for final report writing
 
-**LIMITED — REPORT WITH CAVEAT.** Final writing may begin after the author treats the corrected run as
+**LIMITED — REPORT WITH CAVEAT.** Final writing may begin after Commander sign-off and after the author treats `corrected_run_v2` as
 the sole numerical source for Uniswap-sensitive Aave claims and explicitly retains the protocol-fork,
 temporal-panel, and Terra forecasting limitations. The original generated figures/tables are not to be
 silently overwritten; corrected figures and tables should be regenerated into a new versioned report
@@ -263,6 +349,11 @@ robustness, or out-of-sample Terra forecasting.
 - `data/processed/research_final/validation_audit/phase5_terra_early_warning_audit.json`
 - `data/processed/research_final/validation_audit/before_after_corrected_run.json`
 - `data/processed/research_final/validation_audit/verification_results.json`
+- `data/processed/research_final/validation_audit/corrected_run_v2/before_after_v1_v2.json`
+- `data/processed/research_final/validation_audit/corrected_run_v2/severe_mc_depth2_path_audit.json`
+- `data/processed/research_final/validation_audit/corrected_run_v2/manifest.json`
+- `data/processed/research_final/validation_audit/corrected_run_v2/verification_results.json`
+- `docs/research_final/P0_COMMANDER_REVIEW_PACKET.md`
 - `data/processed/research_final/validation_audit/audit_manifest.json`
 
 Reproduce the audit evidence (configured archive RPC and Graph credentials are used without being

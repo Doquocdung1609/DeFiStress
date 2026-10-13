@@ -1,0 +1,47 @@
+{
+  "executed_at_utc": "2026-10-13T12:36:20.1539663Z",
+  "python": {
+    "mypy": {
+      "checked_source_files": 47,
+      "command": ".\\.venv\\Scripts\\python.exe -m mypy sim",
+      "status": "PASS"
+    },
+    "pytest": {
+      "command": ".\\.venv\\Scripts\\python.exe -m pytest",
+      "passed": 138,
+      "status": "PASS",
+      "warnings": 3
+    },
+    "ruff": {
+      "command": ".\\.venv\\Scripts\\python.exe -m ruff check .",
+      "status": "PASS"
+    }
+  },
+  "frontend": {
+    "build": {
+      "command": "pnpm build",
+      "status": "PASS"
+    },
+    "lint": {
+      "command": "pnpm lint",
+      "status": "PASS"
+    },
+    "vitest": {
+      "command": "pnpm test",
+      "passed": 21,
+      "status": "PASS",
+      "test_files": 5
+    }
+  },
+  "research_quality_gate": {
+    "all_passed": true,
+    "checks": 10,
+    "csv_files": 59,
+    "figures": 35,
+    "generated_files_scanned_for_secrets_and_raw_addresses": 245,
+    "indexed_results": 476,
+    "json_files": 108,
+    "status": "PASS",
+    "tables": 22
+  }
+}

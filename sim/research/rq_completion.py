@@ -13,7 +13,7 @@ from sim.schemas import BorrowerPosition, DexState, Scenario, SimulationResult, 
 
 D = Decimal
 ONE = D(1)
-RQ_COMPLETION_VERSION = "aave-rq-completion-1.0.0"
+RQ_COMPLETION_VERSION = "aave-rq-completion-1.1.0-metric-semantics"
 DELAY_STEPS = (0, 1, 2, 4)
 USDC_PRICES = (D("1.10"), D("1.05"), D("1.01"), D("1.00"), D("0.99"), D("0.95"), D("0.90"))
 HF_THRESHOLDS = (D("1.00"), D("1.05"), D("1.10"), D("1.20"))
@@ -137,7 +137,10 @@ def run_reaction_delay_sensitivity(
         "cascade_depth",
         "number_of_waves",
         "max_price_impact",
+        "max_intrawave_liquidation_price_impact",
+        "max_post_arbitrage_spread",
         "time_to_recovery_seconds",
+        "recovery_tolerance_exceeded",
         "forced_weth_volume",
         "final_dex_price",
     )
@@ -464,6 +467,8 @@ def run_liquidation_bonus_sensitivity(
         "liquidator_gas_cost_usdc",
         "bad_debt",
         "max_price_impact",
+        "max_intrawave_liquidation_price_impact",
+        "max_post_arbitrage_spread",
         "cascade_depth",
         "unliquidated_debt",
     )

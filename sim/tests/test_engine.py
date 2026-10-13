@@ -6,6 +6,7 @@ from pathlib import Path
 from sim import Scenario, fixture_snapshot, run_simulation
 from sim.engine.threshold import find_cascade_threshold
 from sim.fixtures import FIXTURE_PRICE, fixture_dex, fixture_positions
+from sim.metrics.risk import unliquidated_debt
 
 
 def test_golden_fixture_produces_endogenous_wave() -> None:
@@ -80,3 +81,92 @@ def test_liquidator_total_capital_is_never_exceeded() -> None:
     scenario = replace(Scenario(), liquidator_capital_usdc=capital)
     result = run_simulation(fixture_positions(), fixture_dex(), FIXTURE_PRICE, scenario)
     assert result.metrics["total_liquidated_debt"] <= capital
+
+
+def test_impact_metrics_separate_forced_sale_from_post_arbitrage_spread() -> None:
+    scenario = replace(Scenario(), arbitrage_capacity_pct=Decimal("100"))
+    result = run_simulation(fixture_positions(), fixture_dex(), FIXTURE_PRICE, scenario)
+    reference_price = FIXTURE_PRICE * (Decimal(1) + scenario.shock_pct / Decimal(100))
+    liquidations = [event for event in result.events if event.event_type == "LIQUIDATION"]
+    expected_intrawave = max(
+        abs(event.dex_price_after - reference_price) / reference_price for event in liquidations
+    )
+    expected_post_arbitrage = max(
+        abs(point.dex_price - reference_price) / reference_price for point in result.timeseries
+    )
+
+    intrawave = result.metrics["max_intrawave_liquidation_price_impact"]
+    post_arbitrage = result.metrics["max_post_arbitrage_spread"]
+    assert intrawave is not None and post_arbitrage is not None
+    assert intrawave == expected_intrawave
+    assert post_arbitrage == expected_post_arbitrage
+    assert intrawave > post_arbitrage
+    assert result.metrics["max_price_impact"] == post_arbitrage
+
+
+def test_recovery_time_is_zero_when_tolerance_was_never_exceeded() -> None:
+    scenario = replace(Scenario(), shock_pct=Decimal("0"))
+    result = run_simulation(fixture_positions(), fixture_dex(), FIXTURE_PRICE, scenario)
+
+    assert result.metrics["recovery_tolerance_exceeded"] == 0
+    assert result.metrics["time_to_recovery_seconds"] == 0
+
+
+def test_recovery_time_is_first_post_dislocation_return_below_tolerance() -> None:
+    scenario = replace(Scenario(), arbitrage_capacity_pct=Decimal("100"))
+    result = run_simulation(fixture_positions(), fixture_dex(), FIXTURE_PRICE, scenario)
+    first_liquidation_step = min(
+        event.step for event in result.events if event.event_type == "LIQUIDATION"
+    )
+
+    assert result.metrics["recovery_tolerance_exceeded"] == 1
+    assert result.metrics["time_to_recovery_seconds"] == first_liquidation_step * scenario.timestep_seconds
+
+
+def test_recovery_time_is_null_when_dislocation_never_recovers() -> None:
+    scenario = replace(Scenario(), arbitrage_capacity_pct=Decimal("0"))
+    result = run_simulation(fixture_positions(), fixture_dex(), FIXTURE_PRICE, scenario)
+
+    assert result.metrics["recovery_tolerance_exceeded"] == 1
+    assert result.metrics["time_to_recovery_seconds"] is None
+
+
+def test_unliquidated_debt_uses_scenario_liquidation_threshold_override() -> None:
+    scenario = replace(Scenario(), liquidation_threshold_override=Decimal("0.70"))
+    result = run_simulation(fixture_positions(), fixture_dex(), FIXTURE_PRICE, scenario)
+    valuation_price = min(
+        Decimal(str(result.metrics["final_dex_price"])),
+        Decimal(str(result.metrics["final_reference_price"])),
+    )
+
+    assert result.metrics["unliquidated_debt"] == unliquidated_debt(
+        result.final_positions,
+        valuation_price,
+        scenario.usdc_price_usd,
+        scenario.liquidation_threshold_override,
+    )
+    assert result.metrics["unliquidated_debt_legacy_recorded_lt"] == unliquidated_debt(
+        result.final_positions,
+        valuation_price,
+        scenario.usdc_price_usd,
+    )
+
+
+def test_endogenous_wave_uses_newly_eligible_borrower_once() -> None:
+    scenario = Scenario()
+    positions = fixture_positions()
+    result = run_simulation(positions, fixture_dex(), FIXTURE_PRICE, scenario)
+    liquidations = [event for event in result.events if event.event_type == "LIQUIDATION"]
+    hashes = [event.borrower_hash for event in liquidations]
+    wave_two = next(event for event in liquidations if event.wave == 2)
+    original = next(position for position in positions if position.borrower_hash == wave_two.borrower_hash)
+    reference_price = FIXTURE_PRICE * (Decimal(1) + scenario.shock_pct / Decimal(100))
+    wave_one_state = next(point for point in result.timeseries if point.wave == 1)
+    wave_two_valuation_price = min(reference_price, wave_one_state.dex_price)
+
+    assert len(hashes) == len(set(hashes))
+    assert original.health_factor(reference_price, scenario.liquidation_threshold_override) >= 1
+    assert original.health_factor(wave_two_valuation_price, scenario.liquidation_threshold_override) < 1
+    assert wave_two.health_factor_before == original.health_factor(
+        wave_two_valuation_price, scenario.liquidation_threshold_override
+    )

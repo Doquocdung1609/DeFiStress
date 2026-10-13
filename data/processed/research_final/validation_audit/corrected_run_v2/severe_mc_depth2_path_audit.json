@@ -1,0 +1,447 @@
+{
+  "all_paths_pass": true,
+  "audit_rules": {
+    "duplicate_rule": "A borrower may execute at most once because attempted hashes are excluded.",
+    "health_factor_consistency": "The event health_factor_before must equal recomputation at the prior-wave valuation price.",
+    "new_eligibility_rule": "Every later-wave borrower must have HF >= 1 at the direct-shock state and HF < 1 at min(reference price, prior wave post-arbitrage DEX price)."
+  },
+  "base_seed": 20260914,
+  "depth_2_paths": 8,
+  "paths": [
+    {
+      "all_invariants_pass": true,
+      "cascade_depth": 2,
+      "event_trace": [
+        {
+          "borrower_hash": "borrower-6e8ec1ba08e9",
+          "debt_repaid_usdc": 18126.510874,
+          "dex_price_after": 1808.4954749588724,
+          "dex_price_before": 1820.7365009709115,
+          "forced_weth": 10.453372252135715,
+          "health_factor_before": 0.82113748806445,
+          "step": 1,
+          "wave": 1
+        },
+        {
+          "borrower_hash": "borrower-ec4cb7888f79",
+          "debt_repaid_usdc": 2476.039956,
+          "dex_price_after": 1809.882609728887,
+          "dex_price_before": 1811.5557314618823,
+          "forced_weth": 1.435143235533797,
+          "health_factor_before": 0.9990974834853862,
+          "step": 2,
+          "wave": 2
+        }
+      ],
+      "gas_multiplier": 3.9362525261982335,
+      "invariants": {
+        "event_hf_matches_prior_wave_state": true,
+        "later_borrowers_initially_not_eligible": true,
+        "later_borrowers_newly_eligible": true,
+        "later_borrowers_not_in_wave_1": true,
+        "no_duplicate_borrower": true
+      },
+      "later_wave_checks": [
+        {
+          "borrower_hash": "borrower-ec4cb7888f79",
+          "eligibility_health_factor": 0.9990974834853862,
+          "event_health_factor_before": 0.9990974834853862,
+          "event_hf_matches_prior_wave_state": true,
+          "initial_health_factor": 1.0041608020207362,
+          "initially_not_eligible": true,
+          "newly_eligible_before_wave": true,
+          "not_in_wave_1": true,
+          "prior_wave_valuation_price": 1811.5557314618823,
+          "wave": 2
+        }
+      ],
+      "liquidation_events": 2,
+      "liquidity_haircut_pct": 60.6353821164878,
+      "mc_index_zero_based": 5,
+      "run_id": "mc-5",
+      "seed": 20260919,
+      "shock_pct": -32.522499078429206
+    },
+    {
+      "all_invariants_pass": true,
+      "cascade_depth": 2,
+      "event_trace": [
+        {
+          "borrower_hash": "borrower-6e8ec1ba08e9",
+          "debt_repaid_usdc": 18126.510874,
+          "dex_price_after": 1807.5823245554502,
+          "dex_price_before": 1820.9683515710565,
+          "forced_weth": 10.452041300596605,
+          "health_factor_before": 0.8212420508165602,
+          "step": 1,
+          "wave": 1
+        },
+        {
+          "borrower_hash": "borrower-ec4cb7888f79",
+          "debt_repaid_usdc": 2476.039956,
+          "dex_price_after": 1809.0987545596784,
+          "dex_price_before": 1810.9288313093518,
+          "forced_weth": 1.4356400477208384,
+          "health_factor_before": 0.9987517395737239,
+          "step": 2,
+          "wave": 2
+        }
+      ],
+      "gas_multiplier": 3.841708113085543,
+      "invariants": {
+        "event_hf_matches_prior_wave_state": true,
+        "later_borrowers_initially_not_eligible": true,
+        "later_borrowers_newly_eligible": true,
+        "later_borrowers_not_in_wave_1": true,
+        "no_duplicate_borrower": true
+      },
+      "later_wave_checks": [
+        {
+          "borrower_hash": "borrower-ec4cb7888f79",
+          "eligibility_health_factor": 0.9987517395737239,
+          "event_health_factor_before": 0.9987517395737239,
+          "event_hf_matches_prior_wave_state": true,
+          "initial_health_factor": 1.004288670762021,
+          "initially_not_eligible": true,
+          "newly_eligible_before_wave": true,
+          "not_in_wave_1": true,
+          "prior_wave_valuation_price": 1810.9288313093518,
+          "wave": 2
+        }
+      ],
+      "liquidation_events": 2,
+      "liquidity_haircut_pct": 64.02003313656745,
+      "mc_index_zero_based": 27,
+      "run_id": "mc-27",
+      "seed": 20260941,
+      "shock_pct": -32.51390656705999
+    },
+    {
+      "all_invariants_pass": true,
+      "cascade_depth": 2,
+      "event_trace": [
+        {
+          "borrower_hash": "borrower-6e8ec1ba08e9",
+          "debt_repaid_usdc": 18126.510874,
+          "dex_price_after": 1809.4468947443652,
+          "dex_price_before": 1820.3814893457595,
+          "forced_weth": 10.45541087354187,
+          "health_factor_before": 0.8209773806826539,
+          "step": 1,
+          "wave": 1
+        },
+        {
+          "borrower_hash": "borrower-ec4cb7888f79",
+          "debt_repaid_usdc": 2476.039956,
+          "dex_price_after": 1810.6856408313422,
+          "dex_price_before": 1812.1805433947138,
+          "forced_weth": 1.434648420256063,
+          "health_factor_before": 0.9994420757156456,
+          "step": 2,
+          "wave": 2
+        }
+      ],
+      "gas_multiplier": 4.4405074498162485,
+      "invariants": {
+        "event_hf_matches_prior_wave_state": true,
+        "later_borrowers_initially_not_eligible": true,
+        "later_borrowers_newly_eligible": true,
+        "later_borrowers_not_in_wave_1": true,
+        "no_duplicate_borrower": true
+      },
+      "later_wave_checks": [
+        {
+          "borrower_hash": "borrower-ec4cb7888f79",
+          "eligibility_health_factor": 0.9994420757156456,
+          "event_health_factor_before": 0.9994420757156456,
+          "event_hf_matches_prior_wave_state": true,
+          "initial_health_factor": 1.003965008308659,
+          "initially_not_eligible": true,
+          "newly_eligible_before_wave": true,
+          "not_in_wave_1": true,
+          "prior_wave_valuation_price": 1812.1805433947138,
+          "wave": 2
+        }
+      ],
+      "liquidation_events": 2,
+      "liquidity_haircut_pct": 55.90859938867554,
+      "mc_index_zero_based": 31,
+      "run_id": "mc-31",
+      "seed": 20260945,
+      "shock_pct": -32.5356560054478
+    },
+    {
+      "all_invariants_pass": true,
+      "cascade_depth": 2,
+      "event_trace": [
+        {
+          "borrower_hash": "borrower-6e8ec1ba08e9",
+          "debt_repaid_usdc": 18126.510874,
+          "dex_price_after": 1802.9842974968155,
+          "dex_price_before": 1815.4287955546606,
+          "forced_weth": 10.483934409493035,
+          "health_factor_before": 0.8187437556981453,
+          "step": 1,
+          "wave": 1
+        },
+        {
+          "borrower_hash": "borrower-ec4cb7888f79",
+          "debt_repaid_usdc": 2476.039956,
+          "dex_price_after": 1804.3931874027155,
+          "dex_price_before": 1806.0954220112767,
+          "forced_weth": 1.4394820573238611,
+          "health_factor_before": 0.9960860489838657,
+          "step": 2,
+          "wave": 2
+        }
+      ],
+      "gas_multiplier": 4.414917359128762,
+      "invariants": {
+        "event_hf_matches_prior_wave_state": true,
+        "later_borrowers_initially_not_eligible": true,
+        "later_borrowers_newly_eligible": true,
+        "later_borrowers_not_in_wave_1": true,
+        "no_duplicate_borrower": true
+      },
+      "later_wave_checks": [
+        {
+          "borrower_hash": "borrower-ec4cb7888f79",
+          "eligibility_health_factor": 0.9960860489838657,
+          "event_health_factor_before": 0.9960860489838657,
+          "event_hf_matches_prior_wave_state": true,
+          "initial_health_factor": 1.0012335307078195,
+          "initially_not_eligible": true,
+          "newly_eligible_before_wave": true,
+          "not_in_wave_1": true,
+          "prior_wave_valuation_price": 1806.0954220112767,
+          "wave": 2
+        }
+      ],
+      "liquidation_events": 2,
+      "liquidity_haircut_pct": 61.36752825690604,
+      "mc_index_zero_based": 39,
+      "run_id": "mc-39",
+      "seed": 20260953,
+      "shock_pct": -32.719205574358476
+    },
+    {
+      "all_invariants_pass": true,
+      "cascade_depth": 2,
+      "event_trace": [
+        {
+          "borrower_hash": "borrower-6e8ec1ba08e9",
+          "debt_repaid_usdc": 18126.510874,
+          "dex_price_after": 1803.878403896451,
+          "dex_price_before": 1816.7755910796725,
+          "forced_weth": 10.476162554776055,
+          "health_factor_before": 0.8193511496256878,
+          "step": 1,
+          "wave": 1
+        },
+        {
+          "borrower_hash": "borrower-ec4cb7888f79",
+          "debt_repaid_usdc": 2476.039956,
+          "dex_price_after": 1805.3387013453018,
+          "dex_price_before": 1807.1027006922561,
+          "forced_weth": 1.4386796903153678,
+          "health_factor_before": 0.9966415767978088,
+          "step": 2,
+          "wave": 2
+        }
+      ],
+      "gas_multiplier": 3.8958294617170437,
+      "invariants": {
+        "event_hf_matches_prior_wave_state": true,
+        "later_borrowers_initially_not_eligible": true,
+        "later_borrowers_newly_eligible": true,
+        "later_borrowers_not_in_wave_1": true,
+        "no_duplicate_borrower": true
+      },
+      "later_wave_checks": [
+        {
+          "borrower_hash": "borrower-ec4cb7888f79",
+          "eligibility_health_factor": 0.9966415767978088,
+          "event_health_factor_before": 0.9966415767978088,
+          "event_hf_matches_prior_wave_state": true,
+          "initial_health_factor": 1.0019763066525171,
+          "initially_not_eligible": true,
+          "newly_eligible_before_wave": true,
+          "not_in_wave_1": true,
+          "prior_wave_valuation_price": 1807.1027006922561,
+          "wave": 2
+        }
+      ],
+      "liquidation_events": 2,
+      "liquidity_haircut_pct": 62.71075485803104,
+      "mc_index_zero_based": 69,
+      "run_id": "mc-69",
+      "seed": 20260983,
+      "shock_pct": -32.66929258792046
+    },
+    {
+      "all_invariants_pass": true,
+      "cascade_depth": 2,
+      "event_trace": [
+        {
+          "borrower_hash": "borrower-6e8ec1ba08e9",
+          "debt_repaid_usdc": 18126.510874,
+          "dex_price_after": 1805.19043155584,
+          "dex_price_before": 1816.8021563397965,
+          "forced_weth": 10.476009372448305,
+          "health_factor_before": 0.8193631303439062,
+          "step": 1,
+          "wave": 1
+        },
+        {
+          "borrower_hash": "borrower-ec4cb7888f79",
+          "debt_repaid_usdc": 2476.039956,
+          "dex_price_after": 1806.5056099078868,
+          "dex_price_before": 1808.093362751829,
+          "forced_weth": 1.4378914315813696,
+          "health_factor_before": 0.9971879403203403,
+          "step": 2,
+          "wave": 2
+        }
+      ],
+      "gas_multiplier": 3.675420219430774,
+      "invariants": {
+        "event_hf_matches_prior_wave_state": true,
+        "later_borrowers_initially_not_eligible": true,
+        "later_borrowers_newly_eligible": true,
+        "later_borrowers_not_in_wave_1": true,
+        "no_duplicate_borrower": true
+      },
+      "later_wave_checks": [
+        {
+          "borrower_hash": "borrower-ec4cb7888f79",
+          "eligibility_health_factor": 0.9971879403203403,
+          "event_health_factor_before": 0.9971879403203403,
+          "event_hf_matches_prior_wave_state": true,
+          "initial_health_factor": 1.0019909577527162,
+          "initially_not_eligible": true,
+          "newly_eligible_before_wave": true,
+          "not_in_wave_1": true,
+          "prior_wave_valuation_price": 1808.093362751829,
+          "wave": 2
+        }
+      ],
+      "liquidation_events": 2,
+      "liquidity_haircut_pct": 58.55710623409858,
+      "mc_index_zero_based": 87,
+      "run_id": "mc-87",
+      "seed": 20261001,
+      "shock_pct": -32.668308064699474
+    },
+    {
+      "all_invariants_pass": true,
+      "cascade_depth": 2,
+      "event_trace": [
+        {
+          "borrower_hash": "borrower-6e8ec1ba08e9",
+          "debt_repaid_usdc": 18126.510874,
+          "dex_price_after": 1804.659714598584,
+          "dex_price_before": 1817.7127631775556,
+          "forced_weth": 10.47076127937209,
+          "health_factor_before": 0.819773806688876,
+          "step": 1,
+          "wave": 1
+        },
+        {
+          "borrower_hash": "borrower-ec4cb7888f79",
+          "debt_repaid_usdc": 2476.039956,
+          "dex_price_after": 1806.1378183574757,
+          "dex_price_before": 1807.9229767433271,
+          "forced_weth": 1.4380269443132934,
+          "health_factor_before": 0.9970939701325293,
+          "step": 2,
+          "wave": 2
+        }
+      ],
+      "gas_multiplier": 4.3487015328140535,
+      "invariants": {
+        "event_hf_matches_prior_wave_state": true,
+        "later_borrowers_initially_not_eligible": true,
+        "later_borrowers_newly_eligible": true,
+        "later_borrowers_not_in_wave_1": true,
+        "no_duplicate_borrower": true
+      },
+      "later_wave_checks": [
+        {
+          "borrower_hash": "borrower-ec4cb7888f79",
+          "eligibility_health_factor": 0.9970939701325293,
+          "event_health_factor_before": 0.9970939701325293,
+          "event_hf_matches_prior_wave_state": true,
+          "initial_health_factor": 1.0024931697378345,
+          "initially_not_eligible": true,
+          "newly_eligible_before_wave": true,
+          "not_in_wave_1": true,
+          "prior_wave_valuation_price": 1807.9229767433271,
+          "wave": 2
+        }
+      ],
+      "liquidation_events": 2,
+      "liquidity_haircut_pct": 63.14468469396771,
+      "mc_index_zero_based": 102,
+      "run_id": "mc-102",
+      "seed": 20261016,
+      "shock_pct": -32.634560472062475
+    },
+    {
+      "all_invariants_pass": true,
+      "cascade_depth": 2,
+      "event_trace": [
+        {
+          "borrower_hash": "borrower-6e8ec1ba08e9",
+          "debt_repaid_usdc": 18126.510874,
+          "dex_price_after": 1802.988217515182,
+          "dex_price_before": 1814.8407130265007,
+          "forced_weth": 10.487331632515607,
+          "health_factor_before": 0.8184785352174825,
+          "step": 1,
+          "wave": 1
+        },
+        {
+          "borrower_hash": "borrower-ec4cb7888f79",
+          "debt_repaid_usdc": 2476.039956,
+          "dex_price_after": 1804.3301352212518,
+          "dex_price_before": 1805.9513413930117,
+          "forced_weth": 1.4395969006532727,
+          "health_factor_before": 0.996006586574497,
+          "step": 2,
+          "wave": 2
+        }
+      ],
+      "gas_multiplier": 4.565449780806301,
+      "invariants": {
+        "event_hf_matches_prior_wave_state": true,
+        "later_borrowers_initially_not_eligible": true,
+        "later_borrowers_newly_eligible": true,
+        "later_borrowers_not_in_wave_1": true,
+        "no_duplicate_borrower": true
+      },
+      "later_wave_checks": [
+        {
+          "borrower_hash": "borrower-ec4cb7888f79",
+          "eligibility_health_factor": 0.996006586574497,
+          "event_health_factor_before": 0.996006586574497,
+          "event_hf_matches_prior_wave_state": true,
+          "initial_health_factor": 1.0009091952409266,
+          "initially_not_eligible": true,
+          "newly_eligible_before_wave": true,
+          "not_in_wave_1": true,
+          "prior_wave_valuation_price": 1805.9513413930117,
+          "wave": 2
+        }
+      ],
+      "liquidation_events": 2,
+      "liquidity_haircut_pct": 59.436918340922546,
+      "mc_index_zero_based": 126,
+      "run_id": "mc-126",
+      "seed": 20261040,
+      "shock_pct": -32.741000237844766
+    }
+  ],
+  "runs": 200,
+  "scenario": "Severe",
+  "status": "PASS \u2014 VERIFIED"
+}

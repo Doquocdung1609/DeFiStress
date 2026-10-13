@@ -1,0 +1,31 @@
+{
+  "claim_boundary": "All results are conditional on the canonical snapshot and tested ranges.",
+  "rq3": {
+    "binding_capital_levels": [
+      0.25,
+      0.5
+    ],
+    "non_binding_capital_levels": [
+      1.0,
+      2.0
+    ],
+    "reaction_delay_status": "REACTION_DELAY_NOT_BINDING_IN_TESTED_RANGE"
+  },
+  "rq5": {
+    "backward_compatibility": {
+      "comparison": "metrics, events, timeseries and final positions",
+      "usdc_price_1_matches_legacy": true
+    },
+    "channel": "USDC_DEBT_VALUATION_ONLY",
+    "directional_checks": {
+      "downward_depeg_does_not_worsen_hf": true,
+      "upward_depeg_does_not_improve_hf": true
+    }
+  },
+  "rq6": {
+    "liquidation_bonus_status": "LIQUIDATION_BONUS_BINDING_IN_TESTED_RANGE",
+    "liquidation_threshold_role": "HEALTH_FACTOR_AND_LIQUIDATION_BOUNDARY",
+    "ltv_role": "EX_ANTE_CAPITAL_EFFICIENCY_NOT_FROZEN_SNAPSHOT_LIQUIDATION_TRIGGER"
+  },
+  "version": "aave-rq-completion-1.1.0-metric-semantics"
+}

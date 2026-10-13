@@ -57,6 +57,8 @@ def run_monte_carlo(
         "total_liquidated_debt": [],
         "cascade_depth": [],
         "max_price_impact": [],
+        "max_intrawave_liquidation_price_impact": [],
+        "max_post_arbitrage_spread": [],
     }
     progress_interval = max(1, count // 20)
     for index in range(count):

@@ -1,0 +1,322 @@
+{
+  "canonical_snapshot_preserved": true,
+  "corrected_run_v1_preserved": true,
+  "deterministic": [
+    {
+      "corrected_run_v1": {
+        "max_intrawave_liquidation_price_impact": null,
+        "max_post_arbitrage_spread": null,
+        "max_price_impact": 4.117839181231714e-28,
+        "recovery_tolerance_exceeded": null,
+        "time_to_recovery_seconds": 0,
+        "unliquidated_debt": 81116.59228547,
+        "unliquidated_debt_legacy_recorded_lt": null
+      },
+      "corrected_run_v2": {
+        "max_intrawave_liquidation_price_impact": 0.0,
+        "max_post_arbitrage_spread": 4.117839181231714e-28,
+        "max_price_impact": 4.117839181231714e-28,
+        "recovery_tolerance_exceeded": 0,
+        "time_to_recovery_seconds": 0,
+        "unliquidated_debt": 81116.59228547,
+        "unliquidated_debt_legacy_recorded_lt": 81116.59228547
+      },
+      "legacy_post_arbitrage_series_preserved": true,
+      "scenario": "Baseline"
+    },
+    {
+      "corrected_run_v1": {
+        "max_intrawave_liquidation_price_impact": null,
+        "max_post_arbitrage_spread": null,
+        "max_price_impact": 4.360065015421815e-28,
+        "recovery_tolerance_exceeded": null,
+        "time_to_recovery_seconds": 0,
+        "unliquidated_debt": 88212.0084099,
+        "unliquidated_debt_legacy_recorded_lt": null
+      },
+      "corrected_run_v2": {
+        "max_intrawave_liquidation_price_impact": 0.0,
+        "max_post_arbitrage_spread": 4.360065015421815e-28,
+        "max_price_impact": 4.360065015421815e-28,
+        "recovery_tolerance_exceeded": 0,
+        "time_to_recovery_seconds": 0,
+        "unliquidated_debt": 88212.0084099,
+        "unliquidated_debt_legacy_recorded_lt": 88212.0084099
+      },
+      "legacy_post_arbitrage_series_preserved": true,
+      "scenario": "Moderate"
+    },
+    {
+      "corrected_run_v1": {
+        "max_intrawave_liquidation_price_impact": null,
+        "max_post_arbitrage_spread": null,
+        "max_price_impact": 0.004157948919872006,
+        "recovery_tolerance_exceeded": null,
+        "time_to_recovery_seconds": 60,
+        "unliquidated_debt": 220767.57271303,
+        "unliquidated_debt_legacy_recorded_lt": null
+      },
+      "corrected_run_v2": {
+        "max_intrawave_liquidation_price_impact": 0.005543931893162673,
+        "max_post_arbitrage_spread": 0.004157948919872006,
+        "max_price_impact": 0.004157948919872006,
+        "recovery_tolerance_exceeded": 1,
+        "time_to_recovery_seconds": 60,
+        "unliquidated_debt": 220767.57271303,
+        "unliquidated_debt_legacy_recorded_lt": 220767.57271303
+      },
+      "legacy_post_arbitrage_series_preserved": true,
+      "scenario": "Severe"
+    },
+    {
+      "corrected_run_v1": {
+        "max_intrawave_liquidation_price_impact": null,
+        "max_post_arbitrage_spread": null,
+        "max_price_impact": 0.0013079901683996408,
+        "recovery_tolerance_exceeded": null,
+        "time_to_recovery_seconds": 60,
+        "unliquidated_debt": 221203.42824361,
+        "unliquidated_debt_legacy_recorded_lt": null
+      },
+      "corrected_run_v2": {
+        "max_intrawave_liquidation_price_impact": 0.0026159803367992816,
+        "max_post_arbitrage_spread": 0.0013079901683996408,
+        "max_price_impact": 0.0013079901683996408,
+        "recovery_tolerance_exceeded": 0,
+        "time_to_recovery_seconds": 0,
+        "unliquidated_debt": 221203.42824361,
+        "unliquidated_debt_legacy_recorded_lt": 221203.42824361
+      },
+      "legacy_post_arbitrage_series_preserved": true,
+      "scenario": "Low Liquidity"
+    },
+    {
+      "corrected_run_v1": {
+        "max_intrawave_liquidation_price_impact": null,
+        "max_post_arbitrage_spread": null,
+        "max_price_impact": 0.0005439714976789092,
+        "recovery_tolerance_exceeded": null,
+        "time_to_recovery_seconds": 60,
+        "unliquidated_debt": 221203.42824361,
+        "unliquidated_debt_legacy_recorded_lt": null
+      },
+      "corrected_run_v2": {
+        "max_intrawave_liquidation_price_impact": 0.0010879429953578185,
+        "max_post_arbitrage_spread": 0.0005439714976789092,
+        "max_price_impact": 0.0005439714976789092,
+        "recovery_tolerance_exceeded": 0,
+        "time_to_recovery_seconds": 0,
+        "unliquidated_debt": 221203.42824361,
+        "unliquidated_debt_legacy_recorded_lt": 221203.42824361
+      },
+      "legacy_post_arbitrage_series_preserved": true,
+      "scenario": "High Gas"
+    },
+    {
+      "corrected_run_v1": {
+        "max_intrawave_liquidation_price_impact": null,
+        "max_post_arbitrage_spread": null,
+        "max_price_impact": 0.0010879429953578185,
+        "recovery_tolerance_exceeded": null,
+        "time_to_recovery_seconds": 60,
+        "unliquidated_debt": 221203.42824361,
+        "unliquidated_debt_legacy_recorded_lt": null
+      },
+      "corrected_run_v2": {
+        "max_intrawave_liquidation_price_impact": 0.0010879429953578185,
+        "max_post_arbitrage_spread": 0.0010879429953578185,
+        "max_price_impact": 0.0010879429953578185,
+        "recovery_tolerance_exceeded": 0,
+        "time_to_recovery_seconds": 0,
+        "unliquidated_debt": 221203.42824361,
+        "unliquidated_debt_legacy_recorded_lt": 221203.42824361
+      },
+      "legacy_post_arbitrage_series_preserved": true,
+      "scenario": "No Arbitrage"
+    },
+    {
+      "corrected_run_v1": {
+        "max_intrawave_liquidation_price_impact": null,
+        "max_post_arbitrage_spread": null,
+        "max_price_impact": 4.632569078885678e-28,
+        "recovery_tolerance_exceeded": null,
+        "time_to_recovery_seconds": 60,
+        "unliquidated_debt": 221203.42824361,
+        "unliquidated_debt_legacy_recorded_lt": null
+      },
+      "corrected_run_v2": {
+        "max_intrawave_liquidation_price_impact": 0.0010879429953578185,
+        "max_post_arbitrage_spread": 4.632569078885678e-28,
+        "max_price_impact": 4.632569078885678e-28,
+        "recovery_tolerance_exceeded": 0,
+        "time_to_recovery_seconds": 0,
+        "unliquidated_debt": 221203.42824361,
+        "unliquidated_debt_legacy_recorded_lt": 221203.42824361
+      },
+      "legacy_post_arbitrage_series_preserved": true,
+      "scenario": "Strong Arbitrage"
+    },
+    {
+      "corrected_run_v1": {
+        "max_intrawave_liquidation_price_impact": null,
+        "max_post_arbitrage_spread": null,
+        "max_price_impact": 0.0010793858420745702,
+        "recovery_tolerance_exceeded": null,
+        "time_to_recovery_seconds": 60,
+        "unliquidated_debt": 212140.17280661,
+        "unliquidated_debt_legacy_recorded_lt": null
+      },
+      "corrected_run_v2": {
+        "max_intrawave_liquidation_price_impact": 0.0021587716841491404,
+        "max_post_arbitrage_spread": 0.0010793858420745702,
+        "max_price_impact": 0.0010793858420745702,
+        "recovery_tolerance_exceeded": 0,
+        "time_to_recovery_seconds": 0,
+        "unliquidated_debt": 220767.55918202,
+        "unliquidated_debt_legacy_recorded_lt": 212140.17280661
+      },
+      "legacy_post_arbitrage_series_preserved": true,
+      "scenario": "Policy Experiment"
+    },
+    {
+      "corrected_run_v1": {
+        "max_intrawave_liquidation_price_impact": null,
+        "max_post_arbitrage_spread": null,
+        "max_price_impact": 0.0005439714976789092,
+        "recovery_tolerance_exceeded": null,
+        "time_to_recovery_seconds": 60,
+        "unliquidated_debt": 221203.42824361,
+        "unliquidated_debt_legacy_recorded_lt": null
+      },
+      "corrected_run_v2": {
+        "max_intrawave_liquidation_price_impact": 0.0010879429953578185,
+        "max_post_arbitrage_spread": 0.0005439714976789092,
+        "max_price_impact": 0.0005439714976789092,
+        "recovery_tolerance_exceeded": 0,
+        "time_to_recovery_seconds": 0,
+        "unliquidated_debt": 221203.42824361,
+        "unliquidated_debt_legacy_recorded_lt": 221203.42824361
+      },
+      "legacy_post_arbitrage_series_preserved": true,
+      "scenario": "PROFESSOR_DEMO"
+    }
+  ],
+  "graph_exports": [
+    {
+      "edge_count_v1": 9,
+      "edge_count_v2": 9,
+      "expected_metadata_change": "simulation_model_version",
+      "graph": "structural",
+      "node_count_v1": 8,
+      "node_count_v2": 8,
+      "numeric_edge_fingerprint_identical": true
+    },
+    {
+      "edge_count_v1": 13,
+      "edge_count_v2": 13,
+      "expected_metadata_change": "simulation_model_version",
+      "graph": "professor_demo",
+      "node_count_v1": 8,
+      "node_count_v2": 8,
+      "numeric_edge_fingerprint_identical": true
+    },
+    {
+      "edge_count_v1": 13,
+      "edge_count_v2": 13,
+      "expected_metadata_change": "simulation_model_version",
+      "graph": "severe",
+      "node_count_v1": 8,
+      "node_count_v2": 8,
+      "numeric_edge_fingerprint_identical": true
+    }
+  ],
+  "metric_definitions": {
+    "max_intrawave_liquidation_price_impact": "max(|DEX after sale - reference| / reference), sampled after each forced sale and before wave arbitrage",
+    "max_post_arbitrage_spread": "max(|DEX after stabilization - reference| / reference), sampled at each wave end",
+    "max_price_impact": "deprecated compatibility alias of max_post_arbitrage_spread",
+    "time_to_recovery_seconds": "0 if tolerance was never exceeded; otherwise first simulated timestamp returning to <=0.5%; null when not recovered",
+    "unliquidated_debt": "final below-HF-1 debt using the scenario LT override when configured",
+    "unliquidated_debt_legacy_recorded_lt": "deprecated comparison using each frozen borrower's recorded LT"
+  },
+  "rq4_arbitrage_capacity": [
+    {
+      "arbitrage_capacity_pct": 0.0,
+      "corrected_run_v1_legacy_max_price_impact": 0.0010879429953578185,
+      "corrected_run_v2_legacy_max_price_impact": 0.0010879429953578185,
+      "corrected_run_v2_max_intrawave_liquidation_price_impact": 0.0010879429953578185,
+      "corrected_run_v2_max_post_arbitrage_spread": 0.0010879429953578185,
+      "corrected_run_v2_recovery_tolerance_exceeded": 0,
+      "corrected_run_v2_time_to_recovery_seconds": 0
+    },
+    {
+      "arbitrage_capacity_pct": 25.0,
+      "corrected_run_v1_legacy_max_price_impact": 0.0008159572465183638,
+      "corrected_run_v2_legacy_max_price_impact": 0.0008159572465183638,
+      "corrected_run_v2_max_intrawave_liquidation_price_impact": 0.0010879429953578185,
+      "corrected_run_v2_max_post_arbitrage_spread": 0.0008159572465183638,
+      "corrected_run_v2_recovery_tolerance_exceeded": 0,
+      "corrected_run_v2_time_to_recovery_seconds": 0
+    },
+    {
+      "arbitrage_capacity_pct": 50.0,
+      "corrected_run_v1_legacy_max_price_impact": 0.0005439714976789092,
+      "corrected_run_v2_legacy_max_price_impact": 0.0005439714976789092,
+      "corrected_run_v2_max_intrawave_liquidation_price_impact": 0.0010879429953578185,
+      "corrected_run_v2_max_post_arbitrage_spread": 0.0005439714976789092,
+      "corrected_run_v2_recovery_tolerance_exceeded": 0,
+      "corrected_run_v2_time_to_recovery_seconds": 0
+    },
+    {
+      "arbitrage_capacity_pct": 75.0,
+      "corrected_run_v1_legacy_max_price_impact": 0.0002719857488394546,
+      "corrected_run_v2_legacy_max_price_impact": 0.0002719857488394546,
+      "corrected_run_v2_max_intrawave_liquidation_price_impact": 0.0010879429953578185,
+      "corrected_run_v2_max_post_arbitrage_spread": 0.0002719857488394546,
+      "corrected_run_v2_recovery_tolerance_exceeded": 0,
+      "corrected_run_v2_time_to_recovery_seconds": 0
+    },
+    {
+      "arbitrage_capacity_pct": 100.0,
+      "corrected_run_v1_legacy_max_price_impact": 4.632569078885678e-28,
+      "corrected_run_v2_legacy_max_price_impact": 4.632569078885678e-28,
+      "corrected_run_v2_max_intrawave_liquidation_price_impact": 0.0010879429953578185,
+      "corrected_run_v2_max_post_arbitrage_spread": 4.632569078885678e-28,
+      "corrected_run_v2_recovery_tolerance_exceeded": 0,
+      "corrected_run_v2_time_to_recovery_seconds": 0
+    }
+  ],
+  "rq6_liquidation_threshold": [
+    {
+      "corrected_run_v1_unliquidated_debt_recorded_lt": 221203.42824361,
+      "corrected_run_v2_legacy_recorded_lt": 221203.42824361,
+      "corrected_run_v2_unliquidated_debt_scenario_lt": 229830.81461902,
+      "liquidation_threshold": 0.81
+    },
+    {
+      "corrected_run_v1_unliquidated_debt_recorded_lt": 221203.42824361,
+      "corrected_run_v2_legacy_recorded_lt": 221203.42824361,
+      "corrected_run_v2_unliquidated_debt_scenario_lt": 229830.81461902,
+      "liquidation_threshold": 0.82
+    },
+    {
+      "corrected_run_v1_unliquidated_debt_recorded_lt": 221203.42824361,
+      "corrected_run_v2_legacy_recorded_lt": 221203.42824361,
+      "corrected_run_v2_unliquidated_debt_scenario_lt": 229830.81461902,
+      "liquidation_threshold": 0.83
+    },
+    {
+      "corrected_run_v1_unliquidated_debt_recorded_lt": 230266.68368061,
+      "corrected_run_v2_legacy_recorded_lt": 230266.68368061,
+      "corrected_run_v2_unliquidated_debt_scenario_lt": 96839.39478531,
+      "liquidation_threshold": 0.855
+    },
+    {
+      "corrected_run_v1_unliquidated_debt_recorded_lt": 230266.68368061,
+      "corrected_run_v2_legacy_recorded_lt": 230266.68368061,
+      "corrected_run_v2_unliquidated_debt_scenario_lt": 88458.67265557,
+      "liquidation_threshold": 0.88
+    }
+  ],
+  "scope": "Only Commander Review P0 metric semantics and dependent exports.",
+  "status": "PASS \u2014 VERIFIED"
+}

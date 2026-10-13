@@ -424,8 +424,11 @@ def build_registry(output_dir: Path, terra_quality: dict[str, Any], aave_quality
         slug = re.sub(r"[^A-Z0-9]+", "_", row["scenario_name"].upper()).strip("_")
         for key in (
             "liquidation_at_risk", "direct_shock_liquidated_debt", "total_liquidated_debt", "cascade_amplification",
-            "max_price_impact", "bad_debt", "cascade_depth", "liquidation_events", "number_of_waves",
+            "max_price_impact", "max_intrawave_liquidation_price_impact", "max_post_arbitrage_spread",
+            "bad_debt", "cascade_depth", "liquidation_events", "number_of_waves",
             "forced_weth_volume", "wave_1_liquidated_debt", "wave_2_plus_liquidated_debt", "later_wave_share",
+            "time_to_recovery_seconds", "recovery_tolerance_exceeded", "unliquidated_debt",
+            "unliquidated_debt_legacy_recorded_lt",
         ):
             if key in row:
                 registry.add(
@@ -453,7 +456,13 @@ def build_registry(output_dir: Path, terra_quality: dict[str, Any], aave_quality
     sensitivity = read_json(output_dir / "aave/sensitivity.json")["rows"]
     for family in ("GAS_MULTIPLIER", "LIQUIDATOR_CAPACITY", "ARBITRAGE_CAPACITY", "LIQUIDITY_HAIRCUT"):
         family_rows = [row for row in sensitivity if row["sensitivity_family"] == family]
-        for metric in ("total_liquidated_debt", "bad_debt", "max_price_impact", "cascade_depth"):
+        for metric in (
+            "total_liquidated_debt", "bad_debt", "max_price_impact",
+            "max_intrawave_liquidation_price_impact",
+            "max_post_arbitrage_spread", "cascade_depth",
+        ):
+            if not all(metric in row for row in family_rows):
+                continue
             values = [row[metric] for row in family_rows]
             registry.add(
                 f"AAVE_SENS_{family}_{metric.upper()}_RANGE", "AAVE", f"{family}_{metric}_range",
@@ -487,7 +496,9 @@ def build_registry(output_dir: Path, terra_quality: dict[str, Any], aave_quality
     rq_specs = (
         ("RQ3_DELAY", "rq3_reaction_delay.json", "delay_steps", (
             "delay_seconds", "total_liquidated_debt", "unliquidated_debt", "bad_debt",
-            "time_to_recovery_seconds", "cascade_depth", "number_of_liquidation_events",
+            "time_to_recovery_seconds", "recovery_tolerance_exceeded", "cascade_depth",
+            "number_of_liquidation_events", "max_intrawave_liquidation_price_impact",
+            "max_post_arbitrage_spread",
         )),
         ("RQ3_CAPITAL", "rq3_capital_constraint.json", "capital_ratio", (
             "capital_usdc", "total_liquidated_debt", "unliquidated_debt", "bad_debt", "cascade_depth",
@@ -496,6 +507,7 @@ def build_registry(output_dir: Path, terra_quality: dict[str, Any], aave_quality
             "borrowers_hf_below_1_00", "borrowers_hf_below_1_05", "borrowers_hf_below_1_10",
             "borrowers_hf_below_1_20", "liquidation_at_risk", "total_liquidated_debt_usdc",
             "total_liquidated_debt_usd", "bad_debt", "cascade_depth", "max_price_impact",
+            "max_intrawave_liquidation_price_impact", "max_post_arbitrage_spread",
         )),
         ("RQ6_LTV", "rq6_ltv_capital_efficiency.json", "ltv_policy", (
             "aggregate_max_borrowing_capacity_usd", "median_borrower_max_borrowing_capacity_usd",
@@ -505,12 +517,16 @@ def build_registry(output_dir: Path, terra_quality: dict[str, Any], aave_quality
         ("RQ6_LT", "rq6_liquidation_threshold.json", "liquidation_threshold", (
             "borrowers_hf_below_1_00", "borrowers_hf_below_1_05", "borrowers_hf_below_1_10",
             "borrowers_hf_below_1_20", "liquidation_at_risk", "total_liquidated_debt", "bad_debt",
-            "cascade_depth", "max_price_impact", "wave_2_plus_liquidated_debt",
+            "cascade_depth", "max_price_impact", "max_intrawave_liquidation_price_impact",
+            "max_post_arbitrage_spread",
+            "wave_2_plus_liquidated_debt", "unliquidated_debt", "unliquidated_debt_legacy_recorded_lt",
         )),
         ("RQ6_BONUS", "rq6_liquidation_bonus.json", "liquidation_bonus", (
             "number_of_liquidation_events", "total_liquidated_debt", "collateral_seized_weth",
             "forced_weth_volume", "liquidator_expected_profit_usdc", "liquidator_gas_cost_usdc",
-            "bad_debt", "max_price_impact", "cascade_depth", "unliquidated_debt",
+            "bad_debt", "max_price_impact", "max_intrawave_liquidation_price_impact",
+            "max_post_arbitrage_spread",
+            "cascade_depth", "unliquidated_debt", "unliquidated_debt_legacy_recorded_lt",
         )),
     )
     for prefix, artifact_name, parameter, metrics in rq_specs:
@@ -595,10 +611,10 @@ def build_rq_answer_matrix(output_dir: Path) -> list[dict[str, Any]]:
             "rq": "RQ2",
             "research_question": "DEX depth/haircut ảnh hưởng price impact, amplification và bad debt thế nào?",
             "analysis_method": "Sweep liquidity haircut và shock × liquidity grid.",
-            "main_result": "Haircut làm tăng price impact/bad debt trong range, nhưng không tạo Wave 2.",
+            "main_result": "Haircut làm tăng intrawave impact/bad debt trong range, nhưng không tạo Wave 2.",
             "answer_status": "SUPPORTED",
             "key_evidence_ids": [
-                "AAVE_SENS_LIQUIDITY_HAIRCUT_MAX_PRICE_IMPACT_RANGE",
+                "AAVE_SENS_LIQUIDITY_HAIRCUT_MAX_INTRAWAVE_LIQUIDATION_PRICE_IMPACT_RANGE",
                 "AAVE_SENS_LIQUIDITY_HAIRCUT_BAD_DEBT_RANGE",
                 "RQ1_GRID_MAX_CASCADE_DEPTH",
             ],
@@ -609,7 +625,7 @@ def build_rq_answer_matrix(output_dir: Path) -> list[dict[str, Any]]:
             "rq": "RQ3",
             "research_question": "Gas, capital/capacity và reaction delay ảnh hưởng xử lý vị thế thế nào?",
             "analysis_method": "One-factor sweeps cộng delay 0/1/2/4 và capital 25/50/100/200% demand.",
-            "main_result": "Capital 25%/50% binding; gas/capacity không binding; delay chỉ dịch thời gian.",
+            "main_result": "Capital 25%/50% binding; gas/capacity không binding; recovery dùng first-return semantics.",
             "answer_status": "PARTIALLY_SUPPORTED",
             "key_evidence_ids": [
                 "RQ3_DELAY_STATUS", "RQ3_REQUIRED_CAPITAL_REFERENCE",
@@ -624,10 +640,14 @@ def build_rq_answer_matrix(output_dir: Path) -> list[dict[str, Any]]:
             "rq": "RQ4",
             "research_question": "Năng lực arbitrage ảnh hưởng deviation, waves và recovery thế nào?",
             "analysis_method": "One-factor arbitrage-capacity sweep 0–100%.",
-            "main_result": "Không có response trong tested range; arbitrage không trở thành binding.",
-            "answer_status": "NEGATIVE_FINDING",
+            "main_result": (
+                "Intrawave forced-sale impact không đổi theo arbitrage capacity; residual post-arbitrage "
+                "spread giảm khi capacity tăng."
+            ),
+            "answer_status": "SUPPORTED_WITH_MODEL_BOUNDARY",
             "key_evidence_ids": [
-                "AAVE_SENS_ARBITRAGE_CAPACITY_MAX_PRICE_IMPACT_RANGE",
+                "AAVE_SENS_ARBITRAGE_CAPACITY_MAX_INTRAWAVE_LIQUIDATION_PRICE_IMPACT_RANGE",
+                "AAVE_SENS_ARBITRAGE_CAPACITY_MAX_POST_ARBITRAGE_SPREAD_RANGE",
                 "AAVE_SENS_ARBITRAGE_CAPACITY_CASCADE_DEPTH_RANGE",
             ],
             "claim_boundary": "Không suy ra arbitrage ngoài đời không quan trọng.",
@@ -1079,7 +1099,7 @@ def generate_figures(output_dir: Path) -> list[dict[str, Any]]:
     add_line(
         "A17", "reaction_delay_sensitivity", "RQ3: reaction delay và recovery time",
         [([row["delay_minutes"] for row in delay_rows], [row["time_to_recovery_seconds"] for row in delay_rows], "recovery seconds")],
-        "seconds", "RQ3", "Delay 0–4 bước dịch thời gian xử lý nhưng không đổi severity trong tested range.",
+        "seconds", "RQ3", "Recovery là first return sau breach; 0 nghĩa tolerance chưa từng bị vượt.",
         "SIMULATED_ON_REAL_MAINNET_STATE", "CORE",
     )
     capital_rows = read_json(rq_dir / "rq3_capital_constraint.json")["rows"]
@@ -1173,7 +1193,12 @@ def build_claims(registry: Registry) -> list[dict[str, Any]]:
           "AAVE_DET_PROFESSOR_DEMO_WAVE_2_PLUS_LIQUIDATED_DEBT"], "MODEL_CONDITIONAL",
          "Không suy rộng thành dự báo Mainnet tương lai."),
         ("C08", "Độ nhạy Aave được đánh giá bằng sweep một yếu tố và bề mặt shock × liquidity.",
-         ["AAVE_DET_PROFESSOR_DEMO_MAX_PRICE_IMPACT", "AAVE_DET_PROFESSOR_DEMO_BAD_DEBT"], "MODEL_CONDITIONAL",
+         [
+             "AAVE_DET_PROFESSOR_DEMO_MAX_INTRAWAVE_LIQUIDATION_PRICE_IMPACT"
+             if "AAVE_DET_PROFESSOR_DEMO_MAX_INTRAWAVE_LIQUIDATION_PRICE_IMPACT" in available
+             else "AAVE_DET_PROFESSOR_DEMO_MAX_PRICE_IMPACT",
+             "AAVE_DET_PROFESSOR_DEMO_BAD_DEBT",
+         ], "MODEL_CONDITIONAL",
          "Association trong mô hình, không phải quan hệ nhân quả."),
         ("C09", "Tần suất cascade Monte Carlo có khoảng Wilson nhưng vẫn là tần suất lấy mẫu trong mô hình.",
          ["AAVE_MC_PROFESSOR_DEMO_CASCADE_FREQUENCY", "AAVE_MC_PROFESSOR_DEMO_CASCADE_WILSON_LOWER",
@@ -1185,7 +1210,7 @@ def build_claims(registry: Registry) -> list[dict[str, Any]]:
          "SUPPORTED_BOUNDARY", "Tổng hợp chéo chỉ ở mức phản hồi phi tuyến và khuếch đại nội sinh."),
         ("C12", "Mô hình dự báo được chính xác vụ sụp đổ Terra.", ["TERRA_TIMING_0_995", "TERRA_EW_CUTOFF_SAFE_UST_BELOW_0_995_HIGH"], "UNSUPPORTED",
          "Strict OOS âm và cảnh báo depeg ban đầu muộn; không được sử dụng claim này."),
-        ("C13", "Reaction delay 0–4 bước chỉ dịch thời gian xử lý, không đổi severity trong tested range.",
+        ("C13", "Recovery time dùng first-return semantics; 0 nghĩa spread chưa từng breach tolerance.",
          ["RQ3_DELAY_STATUS", "RQ3_DELAY_0_TIME_TO_RECOVERY_SECONDS", "RQ3_DELAY_4_TIME_TO_RECOVERY_SECONDS"],
          "MODEL_CONDITIONAL", "Canonical snapshot và Professor Demo; không khái quát ngoài 0–4 bước."),
         ("C14", "Liquidator capital 25% và 50% demand reference là binding; 100% và 200% không binding.",
@@ -1701,8 +1726,8 @@ Terra cung cấp historical mechanism validation, conditional reconstruction, cu
 """
     rq_summary = f"""- **RQ1 — NOT OBSERVED.** Không quan sát được ngưỡng liquidation cascade trong lưới shock −5% đến −40% và haircut 0/25/50/75%; cascade depth lớn nhất là {v('RQ1_GRID_MAX_CASCADE_DEPTH')}. Không được ngoại suy ra ngoài miền đã thử.
 - **RQ2 — SUPPORTED WITH BOUNDARY.** Liquidity haircut làm price impact và bad debt thay đổi, nhưng không tạo wave mới trong lưới; consequence amplification khác cascade creation.
-- **RQ3 — PARTIAL.** Gas và capacity sweep không binding; delay 0/1/2/4 chỉ dịch recovery time; capital 25% và 50% của reference {v('RQ3_REQUIRED_CAPITAL_REFERENCE')} USDC binding, 100% và 200% non-binding.
-- **RQ4 — NEGATIVE FINDING.** Arbitrage capacity không làm đổi tested outcomes; price deviation nhỏ và agent không trở thành binding trong range.
+- **RQ3 — PARTIAL.** Gas và capacity sweep không binding; recovery dùng first-return semantics và không thay processing delay; capital 25% và 50% của reference {v('RQ3_REQUIRED_CAPITAL_REFERENCE')} USDC binding, 100% và 200% non-binding.
+- **RQ4 — SUPPORTED WITH MODEL BOUNDARY.** Arbitrage capacity không đổi intrawave forced-sale impact vì agent chạy sau liquidation, nhưng làm giảm post-arbitrage residual spread trong abstraction.
 - **RQ5 — SUPPORTED FOR ONE CHANNEL.** Tại USDC $1.10 có {v('RQ5_USDC_1_1_BORROWERS_HF_BELOW_1_00')} borrower HF<1, so với {v('RQ5_USDC_1_0_BORROWERS_HF_BELOW_1_00')} ở $1.00. Downward depeg không làm HF xấu hơn trong pure valuation semantics.
 - **RQ6 — SUPPORTED AS THREE DISTINCT MECHANISMS.** LTV tăng ex-ante borrowing capacity; LT dịch HF/liquidation boundary; bonus đổi collateral seized và expected profit. LTV không phải direct frozen-snapshot liquidation trigger.
 """
@@ -1720,7 +1745,7 @@ Terra cung cấp historical mechanism validation, conditional reconstruction, cu
 
 **Question/Method.** Sweep haircut và shock × liquidity grid kiểm tra price impact, bad debt, liquidated debt và depth.
 
-**Evidence/Finding.** Range response của max price impact và bad debt lần lượt được ghi ở `AAVE_SENS_LIQUIDITY_HAIRCUT_MAX_PRICE_IMPACT_RANGE` và `AAVE_SENS_LIQUIDITY_HAIRCUT_BAD_DEBT_RANGE`; depth vẫn dưới 2.
+**Evidence/Finding.** Range response của intrawave forced-sale impact và bad debt lần lượt được ghi ở `AAVE_SENS_LIQUIDITY_HAIRCUT_MAX_INTRAWAVE_LIQUIDATION_PRICE_IMPACT_RANGE` và `AAVE_SENS_LIQUIDITY_HAIRCUT_BAD_DEBT_RANGE`; depth vẫn dưới 2.
 
 **Interpretation/Limitation/Answer.** Liquidity làm khuếch đại hậu quả nhưng chưa tạo liquidation wave mới trong range/snapshot/venue này.
 
@@ -1728,17 +1753,17 @@ Terra cung cấp historical mechanism validation, conditional reconstruction, cu
 
 **Question/Method.** Kết hợp gas/capacity sweep, delay 0/1/2/4 và capital bằng 25/50/100/200% funding reference.
 
-**Evidence/Finding.** Delay status `{v('RQ3_DELAY_STATUS')}`; recovery time tăng từ {v('RQ3_DELAY_0_TIME_TO_RECOVERY_SECONDS')} lên {v('RQ3_DELAY_4_TIME_TO_RECOVERY_SECONDS')} giây trong khi severity không đổi. Required capital reference = {v('RQ3_REQUIRED_CAPITAL_REFERENCE')} USDC. Capital 25/50% làm total liquidated debt bằng {v('RQ3_CAPITAL_0_25_TOTAL_LIQUIDATED_DEBT')}/{v('RQ3_CAPITAL_0_5_TOTAL_LIQUIDATED_DEBT')}; 100% khôi phục {v('RQ3_CAPITAL_1_0_TOTAL_LIQUIDATED_DEBT')}.
+**Evidence/Finding.** Delay status `{v('RQ3_DELAY_STATUS')}`; recovery time dùng first-return semantics và bằng 0 khi tolerance chưa từng bị vượt. Required capital reference = {v('RQ3_REQUIRED_CAPITAL_REFERENCE')} USDC. Capital 25/50% làm total liquidated debt bằng {v('RQ3_CAPITAL_0_25_TOTAL_LIQUIDATED_DEBT')}/{v('RQ3_CAPITAL_0_5_TOTAL_LIQUIDATED_DEBT')}; 100% khôi phục {v('RQ3_CAPITAL_1_0_TOTAL_LIQUIDATED_DEBT')}.
 
-**Interpretation/Limitation/Answer.** Binding: capital 25/50%. Non-binding: gas/capacity ranges cũ; delay không binding cho severity nhưng binding cho simulated processing time. Engine dùng funding cộng dồn, không tái sử dụng.
+**Interpretation/Limitation/Answer.** Binding: capital 25/50%. Non-binding: gas/capacity ranges cũ. Recovery time không được dùng thay cho processing delay khi spread chưa breach tolerance. Engine dùng funding cộng dồn, không tái sử dụng.
 
 ## 5.5 RQ4 — Arbitrage
 
 **Question/Method.** Arbitrage-capacity one-factor sweep.
 
-**Evidence/Finding.** Range response max price impact = {v('AAVE_SENS_ARBITRAGE_CAPACITY_MAX_PRICE_IMPACT_RANGE')}; cascade depth range = {v('AAVE_SENS_ARBITRAGE_CAPACITY_CASCADE_DEPTH_RANGE')}.
+**Evidence/Finding.** Range response intrawave impact = {v('AAVE_SENS_ARBITRAGE_CAPACITY_MAX_INTRAWAVE_LIQUIDATION_PRICE_IMPACT_RANGE')}; range response post-arbitrage spread = {v('AAVE_SENS_ARBITRAGE_CAPACITY_MAX_POST_ARBITRAGE_SPREAD_RANGE')}; cascade depth range = {v('AAVE_SENS_ARBITRAGE_CAPACITY_CASCADE_DEPTH_RANGE')}.
 
-**Interpretation/Limitation/Answer.** Arbitrage capacity không binding trong tested range; không suy ra arbitrage thị trường thực không quan trọng.
+**Interpretation/Limitation/Answer.** Arbitrage capacity không thay instantaneous forced-sale impact vì agent chạy sau liquidation, nhưng làm giảm residual spread trong abstraction. Không suy ra hiệu quả arbitrage thị trường thực.
 
 ## 5.6 RQ5 — Stablecoin debt valuation
 
@@ -1946,8 +1971,8 @@ Không tạo tác giả/năm/DOI. Cần bổ sung nguồn đã kiểm tra cho Aa
 2. Data/provenance — block {v('AAVE_DATA_BLOCK_NUMBER')}, cohort boundary.
 3. RQ1 — không quan sát cascade depth≥2, không ngoại suy.
 4. RQ2 — liquidity khuếch đại consequence, không tạo wave.
-5. RQ3 — A17/A18: delay chỉ dịch time; capital 25/50% binding.
-6. RQ4 — arbitrage negative result.
+5. RQ3 — A17/A18: first-return recovery semantics; capital 25/50% binding.
+6. RQ4 — intrawave impact tách khỏi post-arbitrage stabilization.
 7. RQ5 — A19: upward/downward USDC debt valuation và limitation.
 8. RQ6 — A20–A22: LTV ≠ LT ≠ bonus.
 9. Terra Historical Validation Extension.
@@ -1957,7 +1982,7 @@ Không tạo tác giả/năm/DOI. Cần bổ sung nguồn đã kiểm tra cho Aa
 """
     defense_script = f"""# KỊCH BẢN BẢO VỆ 10 PHÚT
 
-Sáu RQ ban đầu nằm ở trung tâm thiết kế. RQ1 không tìm thấy cascade depth≥2 trong shock −5%…−40% và haircut 0…75%, nên không bịa threshold. RQ2 cho thấy thanh khoản khuếch đại price impact/bad debt nhưng không tạo Wave 2. RQ3 tách gas, capacity, reaction delay và capital: delay 0–4 bước chỉ đổi recovery time; capital 25/50% của reference {v('RQ3_REQUIRED_CAPITAL_REFERENCE')} USDC mới là binding. RQ4 giữ negative result vì arbitrage capacity không đổi output trong range.
+Sáu RQ ban đầu nằm ở trung tâm thiết kế. RQ1 không tìm thấy cascade depth≥2 trong shock −5%…−40% và haircut 0…75%, nên không bịa threshold. RQ2 cho thấy thanh khoản khuếch đại intrawave impact/bad debt nhưng không tạo Wave 2. RQ3 tách gas, capacity, reaction delay và capital; recovery là first return sau khi breach tolerance, còn capital 25/50% của reference {v('RQ3_REQUIRED_CAPITAL_REFERENCE')} USDC mới là binding. RQ4 cho thấy arbitrage capacity không đổi forced-sale impact xảy ra trước agent, nhưng giảm post-arbitrage residual spread trong abstraction.
 
 RQ5 được kiểm tra trực tiếp ở Aave, không dùng Terra trả lời hộ: USDC upward depeg làm debt USD lớn hơn và HF yếu hơn; downward depeg làm ngược lại trong pure valuation channel. Thí nghiệm không mô hình redemption, settlement, market liquidity hay confidence.
 
