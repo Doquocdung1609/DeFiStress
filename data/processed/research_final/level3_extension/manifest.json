@@ -1,5 +1,5 @@
 {
-  "artifact_bundle_commit": "PENDING_AFTER_ARTIFACT_COMMIT",
+  "artifact_bundle_commit": "28cf16c52c219ba2794dde7fdb22c77e147de7a0",
   "artifact_hashes": {
     "before_after.json": "275c283a34e09e88e9f229661309a4fab6215473c14c4a2df45245cb607fd5e7",
     "claim_ledger_extension.json": "66eb6942826a395c07245e8a8c2c1b733ada037188b48bb0058c59098430ba33",
@@ -194,7 +194,7 @@
   "report_hashes": {
     "docs/research_final/DEEP_CASCADE_STRESS_STUDY.md": "191f14cf9337b309fc78661dbfcab8f47e0d43e3c504d7b5c09f7b916700492e",
     "docs/research_final/LEVEL2_FORK_VALIDATION.md": "107f82ad01ffbe805349e3b2a48e2270356a8c943f179e1afd88da0bf9a85f97",
-    "docs/research_final/LEVEL3_COMMANDER_REVIEW_PACKET.md": "00700a2eb4bba5c74c5e128a8229f43c574ee2bb129dc24bbb944391e7329038",
+    "docs/research_final/LEVEL3_COMMANDER_REVIEW_PACKET.md": "b2dc62cc70599a68a69dcc821ca6a66dc5f028f77de7fdadd1f2f41b57d76c7b",
     "docs/research_final/LEVEL3_HISTORICAL_EVENT_STUDY.md": "2cfc1df7781a53ab4f2773ecef8b8165b444ac214bdda167baaf0926c965238b",
     "docs/research_final/LEVEL3_VALIDATION_PLAN.md": "a2ea19bbb79aaf9800266100ccd7a1c1e1163e41d2a36aefce71dd5ff0463589"
   },
