@@ -1,11 +1,11 @@
 {
-  "fixture_version": "golden-v1",
+  "fixture_version": "golden-v2-tick-consistent",
   "scenario_seed": 20260914,
   "cascade_depth": 2,
   "direct_shock_liquidated_debt": 155544.15584415584,
   "total_liquidated_debt": 172944.15584415584,
   "cascade_amplification": 1.1118653407810035,
-  "max_price_impact": 0.01253930003155806,
+  "max_price_impact": 0.011718100326874831,
   "bad_debt": 355.84415584415586
 }
 

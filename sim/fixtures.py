@@ -92,7 +92,7 @@ def fixture_snapshot() -> dict[str, object]:
         "block_timestamp": "2026-09-14T00:00:00Z",
         "retrieved_at": "2026-09-14T00:00:00Z",
         "source_manifest": {
-            "application": {"model_version": "0.1.0", "fixture_version": "golden-v1"},
+            "application": {"model_version": "0.1.0", "fixture_version": "golden-v2-tick-consistent"},
             "aave": {"market": "FIXTURE patterned after Aave V3 Ethereum"},
             "uniswap": {"model": "V3 sqrtPriceX96 and initialized-tick fixture"},
         },

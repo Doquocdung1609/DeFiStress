@@ -1,0 +1,64 @@
+{
+  "canonical_block_unchanged": 26045352,
+  "conclusion": "Only 1/3 predeclared historical blocks passed the borrower-discovery probe. This is insufficient for the requested 3\u20135 verified same-block snapshot panel, so no cross-snapshot stress comparison is claimed.",
+  "graph_discovery_probes": [
+    {
+      "block_number": 25433939,
+      "error": "The Graph GraphQL error:\n[{'message': 'bad indexers: {0x3b9ba748691f135b71582dc3292e5e3ed7e13341: Unavailable(missing block: 25433939, latest: 26182913), 0x8bbe94c2894f76406568dfb44e905dac4b7df699: Unavailable(missing block: 25433939, latest: 26182914), 0xe13840a2e92e0cb17a246609b432d0fa2e418774: Unavailable(missing block: 25433939, latest: 26182913), 0xf92f430dd8567b0d466358c79594ab58d919a6d4: Unavailable(missing block: 25433939, latest: 26182915)}'}]",
+      "status": "UNAVAILABLE"
+    },
+    {
+      "block_number": 25656293,
+      "error": "The Graph GraphQL error:\n[{'message': 'bad indexers: {0x3b9ba748691f135b71582dc3292e5e3ed7e13341: Unavailable(missing block: 25656293, latest: 26182913), 0x8bbe94c2894f76406568dfb44e905dac4b7df699: Unavailable(missing block: 25656293, latest: 26182914), 0xe13840a2e92e0cb17a246609b432d0fa2e418774: Unavailable(missing block: 25656293, latest: 26182913), 0xf92f430dd8567b0d466358c79594ab58d919a6d4: Unavailable(missing block: 25656293, latest: 26182915)}'}]",
+      "status": "UNAVAILABLE"
+    },
+    {
+      "block_number": 25878705,
+      "full_snapshot_executed": false,
+      "probe_candidates": 1,
+      "status": "AVAILABLE_FOR_DISCOVERY_PROBE"
+    }
+  ],
+  "probes": [
+    {
+      "block_hash": "b79717c3d3441bf36bce6ca66696eb93a30929a3e4bd9b564d627f17234f43b3",
+      "block_number": 25433939,
+      "date_utc": "2026-07-01T00:00:00Z"
+    },
+    {
+      "block_hash": "823930d15dc465c4cc992b63b5d375654fefcfadf6d36b74ae311977a08e4752",
+      "block_number": 25656293,
+      "date_utc": "2026-08-01T00:00:00Z"
+    },
+    {
+      "block_hash": "662c360bd4fc0e07275631eab7827ad22cc804c5282fd7190686f8325150bf66",
+      "block_number": 25878705,
+      "date_utc": "2026-09-01T00:00:00Z"
+    }
+  ],
+  "rpc_block_validation": [
+    {
+      "block_hash": "b79717c3d3441bf36bce6ca66696eb93a30929a3e4bd9b564d627f17234f43b3",
+      "block_number": 25433939,
+      "date_utc": "2026-07-01T00:00:00Z",
+      "rpc_hash_matches": true,
+      "rpc_timestamp": "2026-07-01T00:00:11+00:00"
+    },
+    {
+      "block_hash": "823930d15dc465c4cc992b63b5d375654fefcfadf6d36b74ae311977a08e4752",
+      "block_number": 25656293,
+      "date_utc": "2026-08-01T00:00:00Z",
+      "rpc_hash_matches": true,
+      "rpc_timestamp": "2026-08-01T00:00:11+00:00"
+    },
+    {
+      "block_hash": "662c360bd4fc0e07275631eab7827ad22cc804c5282fd7190686f8325150bf66",
+      "block_number": 25878705,
+      "date_utc": "2026-09-01T00:00:00Z",
+      "rpc_hash_matches": true,
+      "rpc_timestamp": "2026-09-01T00:00:11+00:00"
+    }
+  ],
+  "selection_rule": "First Ethereum block at/after 00:00 UTC on the first day of each of the three calendar months immediately preceding the canonical snapshot month; selected before observing outcomes.",
+  "status": "LIMITED \u2014 REPORT WITH CAVEAT"
+}

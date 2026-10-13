@@ -11,7 +11,7 @@ from sim.metrics.risk import bad_debt, cascade_amplification, unliquidated_debt
 from sim.schemas import BorrowerPosition, DexState, Scenario, SimulationEvent, SimulationResult, TimePoint
 
 D = Decimal
-MODEL_VERSION = "0.1.0-aave-v3.8-usdc-valuation"
+MODEL_VERSION = "0.1.0-aave-v3.9-tick-consistent"
 
 
 def run_simulation(

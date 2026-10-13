@@ -1,0 +1,94 @@
+{
+  "aave_get_user_account_data": {
+    "attempted": 454,
+    "block_number": 26045352,
+    "exact_six_field_matches": 454,
+    "mismatches": [],
+    "raw_addresses_emitted": false,
+    "rpc_errors": [],
+    "status": "PASS",
+    "successful_calls": 454
+  },
+  "archive_rpc": {
+    "block_hash": "4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+    "block_number": 26045352,
+    "chain_id": 1,
+    "matches_snapshot_hash": true,
+    "status": "PASS"
+  },
+  "executed_at_utc": "2026-10-13T10:15:32.579581+00:00",
+  "fork_liquidation_execution": {
+    "reason": "Foundry forge/anvil executables are absent; no liquidation transaction was executed.",
+    "status": "UNAVAILABLE"
+  },
+  "prerequisites": {
+    "anvil_available": false,
+    "archive_rpc_configured": true,
+    "forge_available": false,
+    "graph_configured": true
+  },
+  "status": "LIMITED \u2014 REPORT WITH CAVEAT",
+  "uniswap_quoter_v2": {
+    "block_number": 26045352,
+    "pool": "0x8ad599c3A0ff1De082011EFDDc58f1908eb6e6D8",
+    "quotes": [
+      {
+        "absolute_error_usdc": 1.0971471282080713e-07,
+        "model_initialized_ticks_crossed": 0,
+        "model_usdc_out": 268.5921691097147,
+        "quoter_gas_estimate": 90045,
+        "quoter_initialized_ticks_crossed": 1,
+        "quoter_sqrt_price_x96_after": "1526443873400934079985438914539251",
+        "quoter_v2_usdc_out": 268.592169,
+        "relative_error_ratio": 4.0848068366731543e-10,
+        "weth_in": 0.1
+      },
+      {
+        "absolute_error_usdc": 8.519352674935996e-07,
+        "model_initialized_ticks_crossed": 0,
+        "model_usdc_out": 2685.882673851935,
+        "quoter_gas_estimate": 90045,
+        "quoter_initialized_ticks_crossed": 1,
+        "quoter_sqrt_price_x96_after": "1526466047725780970132533160261165",
+        "quoter_v2_usdc_out": 2685.882673,
+        "relative_error_ratio": 3.171900530346061e-10,
+        "weth_in": 1.0
+      },
+      {
+        "absolute_error_usdc": 9.358787048364016e-07,
+        "model_initialized_ticks_crossed": 0,
+        "model_usdc_out": 13428.54638793588,
+        "quoter_gas_estimate": 98740,
+        "quoter_initialized_ticks_crossed": 1,
+        "quoter_sqrt_price_x96_after": "1526564600280656037452952030136340",
+        "quoter_v2_usdc_out": 13428.546387,
+        "relative_error_ratio": 6.969322500478633e-11,
+        "weth_in": 5.0
+      },
+      {
+        "absolute_error_usdc": 3.73281398255499e-07,
+        "model_initialized_ticks_crossed": 0,
+        "model_usdc_out": 26854.925637373282,
+        "quoter_gas_estimate": 97730,
+        "quoter_initialized_ticks_crossed": 1,
+        "quoter_sqrt_price_x96_after": "1526687790974249871603475617480309",
+        "quoter_v2_usdc_out": 26854.925637,
+        "relative_error_ratio": 1.3899922989963596e-11,
+        "weth_in": 10.0
+      },
+      {
+        "absolute_error_usdc": 1.0029681713273774e-06,
+        "model_initialized_ticks_crossed": 1,
+        "model_usdc_out": 134187.93553200297,
+        "quoter_gas_estimate": 129425,
+        "quoter_initialized_ticks_crossed": 2,
+        "quoter_sqrt_price_x96_after": "1527674855729435514508437790735891",
+        "quoter_v2_usdc_out": 134187.935531,
+        "relative_error_ratio": 7.474354287950666e-12,
+        "weth_in": 50.0
+      }
+    ],
+    "status": "PASS_AMOUNT_OUT__LIMITED_TICK_COUNTER",
+    "tick_count_note": "QuoterV2 reports one more initialized tick than the model for these baseline samples. Amount-out agreement remains sub-micro-USDC, but the counter semantic difference was not contract-fork traced and is retained as a limitation rather than declared equivalent."
+  }
+}

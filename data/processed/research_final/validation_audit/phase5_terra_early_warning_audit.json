@@ -1,0 +1,339 @@
+{
+  "dataset": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.parquet",
+  "excluded_unavailable_channels": [
+    "DEX liquidity",
+    "observed LFG peg-defense intervention"
+  ],
+  "feature_availability": {
+    "anchor_deposit_stress": {
+      "available_hours": 1752,
+      "coverage_ratio": 0.9864864864864865,
+      "first_available": "2022-03-02T00:00:00+00:00",
+      "last_available": "2022-05-13T23:00:00+00:00"
+    },
+    "anchor_outflow": {
+      "available_hours": 192,
+      "coverage_ratio": 0.10810810810810811,
+      "first_available": "2022-05-06T00:00:00+00:00",
+      "last_available": "2022-05-13T23:00:00+00:00"
+    },
+    "backing_stress": {
+      "available_hours": 312,
+      "coverage_ratio": 0.17567567567567569,
+      "first_available": "2022-05-01T00:00:00+00:00",
+      "last_available": "2022-05-13T23:00:00+00:00"
+    },
+    "depeg_persistence": {
+      "available_hours": 1776,
+      "coverage_ratio": 1.0,
+      "first_available": "2022-03-01T00:00:00+00:00",
+      "last_available": "2022-05-13T23:00:00+00:00"
+    },
+    "depeg_severity": {
+      "available_hours": 1776,
+      "coverage_ratio": 1.0,
+      "first_available": "2022-03-01T00:00:00+00:00",
+      "last_available": "2022-05-13T23:00:00+00:00"
+    },
+    "holder_concentration": {
+      "available_hours": 1608,
+      "coverage_ratio": 0.9054054054054054,
+      "first_available": "2022-03-01T00:00:00+00:00",
+      "last_available": "2022-05-06T23:00:00+00:00"
+    },
+    "luna_drawdown": {
+      "available_hours": 1776,
+      "coverage_ratio": 1.0,
+      "first_available": "2022-03-01T00:00:00+00:00",
+      "last_available": "2022-05-13T23:00:00+00:00"
+    },
+    "native_redemption": {
+      "available_hours": 168,
+      "coverage_ratio": 0.0945945945945946,
+      "first_available": "2022-05-07T00:00:00+00:00",
+      "last_available": "2022-05-13T23:00:00+00:00"
+    },
+    "supply_growth": {
+      "available_hours": 288,
+      "coverage_ratio": 0.16216216216216217,
+      "first_available": "2022-05-02T00:00:00+00:00",
+      "last_available": "2022-05-13T23:00:00+00:00"
+    }
+  },
+  "forecast_claim": {
+    "reason": "The calculation passes a causal future-perturbation test, but weights, scales, bands and feature set were developed with knowledge of the event and no pre-event training/held-out evaluation protocol exists. The HIGH threshold first triggers after the initial depeg.",
+    "supported": false
+  },
+  "modes": {
+    "CUTOFF_SAFE": {
+      "all_period_risk_bands": {
+        "CRISIS": 67,
+        "HIGH": 34,
+        "NORMAL": 1644,
+        "WATCH": 31
+      },
+      "future_perturbation_audit": {
+        "checks": [
+          {
+            "compared_rows": 337,
+            "cutoff": "2022-03-15T00:00:00Z",
+            "max_prior_score_difference": 0.0,
+            "prior_feature_structure_unchanged": true,
+            "status": "PASS"
+          },
+          {
+            "compared_rows": 1081,
+            "cutoff": "2022-04-15T00:00:00Z",
+            "max_prior_score_difference": 0.0,
+            "prior_feature_structure_unchanged": true,
+            "status": "PASS"
+          },
+          {
+            "compared_rows": 1513,
+            "cutoff": "2022-05-03T00:00:00Z",
+            "max_prior_score_difference": 0.0,
+            "prior_feature_structure_unchanged": true,
+            "status": "PASS"
+          },
+          {
+            "compared_rows": 1597,
+            "cutoff": "2022-05-06T12:00:00Z",
+            "max_prior_score_difference": 0.0,
+            "prior_feature_structure_unchanged": true,
+            "status": "PASS"
+          },
+          {
+            "compared_rows": 1681,
+            "cutoff": "2022-05-10T00:00:00Z",
+            "max_prior_score_difference": 0.0,
+            "prior_feature_structure_unchanged": true,
+            "status": "PASS"
+          }
+        ],
+        "cutoffs_tested": 5,
+        "rule": "Perturbing every observation after a cutoff must not change any score or component at/before it.",
+        "status": "PASS",
+        "violations": 0
+      },
+      "lead_times": {
+        "ust_below_0_9": {
+          "crisis": {
+            "event_time": "2022-05-09T22:00:00Z",
+            "lead_time_hours": -24.0,
+            "warning_threshold": 80.0,
+            "warning_time": "2022-05-10T22:00:00Z",
+            "wording": "Warning came 24.0 hours after the event."
+          },
+          "high": {
+            "event_time": "2022-05-09T22:00:00Z",
+            "lead_time_hours": 3.0,
+            "warning_threshold": 60.0,
+            "warning_time": "2022-05-09T19:00:00Z",
+            "wording": "Warning came 3.0 hours before the event."
+          }
+        },
+        "ust_below_0_95": {
+          "crisis": {
+            "event_time": "2022-05-09T19:00:00Z",
+            "lead_time_hours": -27.0,
+            "warning_threshold": 80.0,
+            "warning_time": "2022-05-10T22:00:00Z",
+            "wording": "Warning came 27.0 hours after the event."
+          },
+          "high": {
+            "event_time": "2022-05-09T19:00:00Z",
+            "lead_time_hours": 0.0,
+            "warning_threshold": 60.0,
+            "warning_time": "2022-05-09T19:00:00Z",
+            "wording": "Warning came 0.0 hours before the event."
+          }
+        },
+        "ust_below_0_99": {
+          "crisis": {
+            "event_time": "2022-05-07T23:00:00Z",
+            "lead_time_hours": -71.0,
+            "warning_threshold": 80.0,
+            "warning_time": "2022-05-10T22:00:00Z",
+            "wording": "Warning came 71.0 hours after the event."
+          },
+          "high": {
+            "event_time": "2022-05-07T23:00:00Z",
+            "lead_time_hours": -44.0,
+            "warning_threshold": 60.0,
+            "warning_time": "2022-05-09T19:00:00Z",
+            "wording": "Warning came 44.0 hours after the event."
+          }
+        },
+        "ust_below_0_995": {
+          "crisis": {
+            "event_time": "2022-05-07T22:00:00Z",
+            "lead_time_hours": -72.0,
+            "warning_threshold": 80.0,
+            "warning_time": "2022-05-10T22:00:00Z",
+            "wording": "Warning came 72.0 hours after the event."
+          },
+          "high": {
+            "event_time": "2022-05-07T22:00:00Z",
+            "lead_time_hours": -45.0,
+            "warning_threshold": 60.0,
+            "warning_time": "2022-05-09T19:00:00Z",
+            "wording": "Warning came 45.0 hours after the event."
+          }
+        }
+      },
+      "maximum_pre_initial_depeg_score": 23.32684701088714,
+      "pre_initial_depeg_crisis_alert_hours": 0,
+      "pre_initial_depeg_high_alert_hours": 0,
+      "pre_initial_depeg_hours": 1630,
+      "pre_initial_depeg_risk_bands": {
+        "NORMAL": 1630
+      }
+    },
+    "RETROSPECTIVE": {
+      "all_period_risk_bands": {
+        "CRISIS": 52,
+        "HIGH": 49,
+        "NORMAL": 1654,
+        "WATCH": 21
+      },
+      "future_perturbation_audit": {
+        "checks": [
+          {
+            "compared_rows": 337,
+            "cutoff": "2022-03-15T00:00:00Z",
+            "max_prior_score_difference": 0.0,
+            "prior_feature_structure_unchanged": true,
+            "status": "PASS"
+          },
+          {
+            "compared_rows": 1081,
+            "cutoff": "2022-04-15T00:00:00Z",
+            "max_prior_score_difference": 0.0,
+            "prior_feature_structure_unchanged": true,
+            "status": "PASS"
+          },
+          {
+            "compared_rows": 1513,
+            "cutoff": "2022-05-03T00:00:00Z",
+            "max_prior_score_difference": 0.0,
+            "prior_feature_structure_unchanged": true,
+            "status": "PASS"
+          },
+          {
+            "compared_rows": 1597,
+            "cutoff": "2022-05-06T12:00:00Z",
+            "max_prior_score_difference": 0.0,
+            "prior_feature_structure_unchanged": true,
+            "status": "PASS"
+          },
+          {
+            "compared_rows": 1681,
+            "cutoff": "2022-05-10T00:00:00Z",
+            "max_prior_score_difference": 0.0,
+            "prior_feature_structure_unchanged": true,
+            "status": "PASS"
+          }
+        ],
+        "cutoffs_tested": 5,
+        "rule": "Perturbing every observation after a cutoff must not change any score or component at/before it.",
+        "status": "PASS",
+        "violations": 0
+      },
+      "lead_times": {
+        "ust_below_0_9": {
+          "crisis": {
+            "event_time": "2022-05-09T22:00:00Z",
+            "lead_time_hours": -24.0,
+            "warning_threshold": 80.0,
+            "warning_time": "2022-05-10T22:00:00Z",
+            "wording": "Warning came 24.0 hours after the event."
+          },
+          "high": {
+            "event_time": "2022-05-09T22:00:00Z",
+            "lead_time_hours": 3.0,
+            "warning_threshold": 60.0,
+            "warning_time": "2022-05-09T19:00:00Z",
+            "wording": "Warning came 3.0 hours before the event."
+          }
+        },
+        "ust_below_0_95": {
+          "crisis": {
+            "event_time": "2022-05-09T19:00:00Z",
+            "lead_time_hours": -27.0,
+            "warning_threshold": 80.0,
+            "warning_time": "2022-05-10T22:00:00Z",
+            "wording": "Warning came 27.0 hours after the event."
+          },
+          "high": {
+            "event_time": "2022-05-09T19:00:00Z",
+            "lead_time_hours": 0.0,
+            "warning_threshold": 60.0,
+            "warning_time": "2022-05-09T19:00:00Z",
+            "wording": "Warning came 0.0 hours before the event."
+          }
+        },
+        "ust_below_0_99": {
+          "crisis": {
+            "event_time": "2022-05-07T23:00:00Z",
+            "lead_time_hours": -71.0,
+            "warning_threshold": 80.0,
+            "warning_time": "2022-05-10T22:00:00Z",
+            "wording": "Warning came 71.0 hours after the event."
+          },
+          "high": {
+            "event_time": "2022-05-07T23:00:00Z",
+            "lead_time_hours": -44.0,
+            "warning_threshold": 60.0,
+            "warning_time": "2022-05-09T19:00:00Z",
+            "wording": "Warning came 44.0 hours after the event."
+          }
+        },
+        "ust_below_0_995": {
+          "crisis": {
+            "event_time": "2022-05-07T22:00:00Z",
+            "lead_time_hours": -72.0,
+            "warning_threshold": 80.0,
+            "warning_time": "2022-05-10T22:00:00Z",
+            "wording": "Warning came 72.0 hours after the event."
+          },
+          "high": {
+            "event_time": "2022-05-07T22:00:00Z",
+            "lead_time_hours": -45.0,
+            "warning_threshold": 60.0,
+            "warning_time": "2022-05-09T19:00:00Z",
+            "wording": "Warning came 45.0 hours after the event."
+          }
+        }
+      },
+      "maximum_pre_initial_depeg_score": 24.783711970650614,
+      "pre_initial_depeg_crisis_alert_hours": 0,
+      "pre_initial_depeg_high_alert_hours": 0,
+      "pre_initial_depeg_hours": 1630,
+      "pre_initial_depeg_risk_bands": {
+        "NORMAL": 1630
+      }
+    }
+  },
+  "price_frequency": {
+    "interpretation": "March-April price-derived components are stepwise and should not be interpreted as independent hourly market observations.",
+    "march_april": {
+      "hours": 1464,
+      "source_frequency": "CoinGecko daily observations carried within day",
+      "unchanged_hour_to_hour_luna_transitions": 1403,
+      "unchanged_hour_to_hour_ust_transitions": 1403,
+      "unique_luna_prices": 61,
+      "unique_ust_prices": 61
+    },
+    "may": {
+      "hours": 312,
+      "source_frequency": "Kaiko minute observations aggregated/as-of to hourly",
+      "unchanged_hour_to_hour_luna_transitions": 0,
+      "unchanged_hour_to_hour_ust_transitions": 0,
+      "unique_luna_prices": 312,
+      "unique_ust_prices": 312
+    }
+  },
+  "rows": 1776,
+  "status": "LIMITED \u2014 REPORT WITH CAVEAT",
+  "synthetic_data_used": false
+}

@@ -1,6 +1,7 @@
 from decimal import Decimal
 
 from sim.dex import V3Pool
+from sim.dex.uniswap_v3 import sqrt_price_x96_from_weth_price, tick_from_sqrt_price_x96
 from sim.fixtures import fixture_dex
 
 D = Decimal
@@ -32,3 +33,33 @@ def test_tick_crossing_updates_liquidity_without_nan() -> None:
     quote = V3Pool(fixture_dex()).sell_weth(D("100"))
     assert quote.price_after.is_finite()
     assert quote.amount_usdc_out.is_finite()
+
+
+def test_arbitrage_reposition_updates_active_liquidity_across_ticks() -> None:
+    pool = V3Pool(fixture_dex())
+    initial_tick = pool.state.tick
+    initial_liquidity = pool.state.liquidity
+    target_price = pool.spot_price * D("0.90")
+    target_tick = tick_from_sqrt_price_x96(sqrt_price_x96_from_weth_price(target_price))
+    expected = initial_liquidity + sum(
+        (tick.liquidity_net for tick in pool.state.ticks if initial_tick < tick.tick <= target_tick),
+        D(0),
+    )
+
+    pool.arbitrage_toward(target_price, D("100"))
+
+    assert pool.state.tick == target_tick
+    assert pool.state.liquidity == expected
+
+
+def test_arbitrage_round_trip_restores_active_liquidity() -> None:
+    pool = V3Pool(fixture_dex())
+    initial_price = pool.spot_price
+    initial_tick = pool.state.tick
+    initial_liquidity = pool.state.liquidity
+
+    pool.arbitrage_toward(initial_price * D("0.80"), D("100"))
+    pool.arbitrage_toward(initial_price, D("100"))
+
+    assert pool.state.tick == initial_tick
+    assert pool.state.liquidity == initial_liquidity

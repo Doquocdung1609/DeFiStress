@@ -131,10 +131,34 @@ class V3Pool:
         before = self.spot_price
         fraction = max(D(0), min(D(1), capacity_pct / D(100)))
         target = before + (reference_price - before) * fraction
-        self.state.sqrt_price_x96 = sqrt_price_x96_from_weth_price(
+        target_sqrt = sqrt_price_x96_from_weth_price(
             target, self.state.token0_decimals, self.state.token1_decimals
         )
-        self.state.tick = tick_from_sqrt_price_x96(self.state.sqrt_price_x96)
+        target_tick = tick_from_sqrt_price_x96(target_sqrt)
+        current_tick = self.state.tick
+        if target_tick > current_tick:
+            crossed = sorted(
+                (tick for tick in self.state.ticks if current_tick < tick.tick <= target_tick),
+                key=lambda tick: tick.tick,
+            )
+            for tick in crossed:
+                self.state.liquidity += tick.liquidity_net
+                if self.state.liquidity <= 0:
+                    raise ValueError("price repositioning exhausted active liquidity")
+        elif target_tick < current_tick:
+            crossed = sorted(
+                (tick for tick in self.state.ticks if target_tick < tick.tick <= current_tick),
+                key=lambda tick: tick.tick,
+                reverse=True,
+            )
+            for tick in crossed:
+                self.state.liquidity -= tick.liquidity_net
+                if self.state.liquidity <= 0:
+                    raise ValueError("price repositioning exhausted active liquidity")
+        if self.state.liquidity <= 0:
+            raise ValueError("price repositioning exhausted active liquidity")
+        self.state.sqrt_price_x96 = target_sqrt
+        self.state.tick = target_tick
         return before, self.spot_price
 
     def depth_to_price_drop_usdc(self, drop_pct: Decimal) -> Decimal:

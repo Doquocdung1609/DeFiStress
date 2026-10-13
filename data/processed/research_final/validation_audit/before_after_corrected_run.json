@@ -1,0 +1,233 @@
+{
+  "deterministic": [
+    {
+      "after": {
+        "bad_debt": 309.5181231939779,
+        "cascade_depth": 0,
+        "max_price_impact": 4.117839181231714e-28,
+        "time_to_recovery_seconds": 0,
+        "total_liquidated_debt": 0.0,
+        "unliquidated_debt": 81116.59228547
+      },
+      "before": {
+        "bad_debt": 309.5181231939779,
+        "cascade_depth": 0,
+        "max_price_impact": 4.117839181231714e-28,
+        "time_to_recovery_seconds": 0,
+        "total_liquidated_debt": 0.0,
+        "unliquidated_debt": 81116.59228547
+      },
+      "scenario": "Baseline"
+    },
+    {
+      "after": {
+        "bad_debt": 1153.8731877626758,
+        "cascade_depth": 0,
+        "max_price_impact": 4.360065015421815e-28,
+        "time_to_recovery_seconds": 0,
+        "total_liquidated_debt": 0.0,
+        "unliquidated_debt": 88212.0084099
+      },
+      "before": {
+        "bad_debt": 1153.8731877626758,
+        "cascade_depth": 0,
+        "max_price_impact": 4.360065015421815e-28,
+        "time_to_recovery_seconds": 0,
+        "total_liquidated_debt": 0.0,
+        "unliquidated_debt": 88212.0084099
+      },
+      "scenario": "Moderate"
+    },
+    {
+      "after": {
+        "bad_debt": 7255.519081587557,
+        "cascade_depth": 1,
+        "max_price_impact": 0.004157948919872006,
+        "time_to_recovery_seconds": 60,
+        "total_liquidated_debt": 18126.510874,
+        "unliquidated_debt": 220767.57271303
+      },
+      "before": {
+        "bad_debt": 6985.441982991458,
+        "cascade_depth": 1,
+        "max_price_impact": 0.0005104441939199234,
+        "time_to_recovery_seconds": 60,
+        "total_liquidated_debt": 18126.510874,
+        "unliquidated_debt": 220767.57271303
+      },
+      "scenario": "Severe"
+    },
+    {
+      "after": {
+        "bad_debt": 2234.902348635569,
+        "cascade_depth": 1,
+        "max_price_impact": 0.0013079901683996408,
+        "time_to_recovery_seconds": 60,
+        "total_liquidated_debt": 9063.255437,
+        "unliquidated_debt": 221203.42824361
+      },
+      "before": {
+        "bad_debt": 2213.4917536432254,
+        "cascade_depth": 1,
+        "max_price_impact": 0.00025468702619960615,
+        "time_to_recovery_seconds": 60,
+        "total_liquidated_debt": 9063.255437,
+        "unliquidated_debt": 221203.42824361
+      },
+      "scenario": "Low Liquidity"
+    },
+    {
+      "after": {
+        "bad_debt": 2219.372067114503,
+        "cascade_depth": 1,
+        "max_price_impact": 0.0005439714976789092,
+        "time_to_recovery_seconds": 60,
+        "total_liquidated_debt": 9063.255437,
+        "unliquidated_debt": 221203.42824361
+      },
+      "before": {
+        "bad_debt": 2212.629874032923,
+        "cascade_depth": 1,
+        "max_price_impact": 0.00021228649963534217,
+        "time_to_recovery_seconds": 60,
+        "total_liquidated_debt": 9063.255437,
+        "unliquidated_debt": 221203.42824361
+      },
+      "scenario": "High Gas"
+    },
+    {
+      "after": {
+        "bad_debt": 2230.429428435817,
+        "cascade_depth": 1,
+        "max_price_impact": 0.0010879429953578185,
+        "time_to_recovery_seconds": 60,
+        "total_liquidated_debt": 9063.255437,
+        "unliquidated_debt": 221203.42824361
+      },
+      "before": {
+        "bad_debt": 2212.629874032923,
+        "cascade_depth": 1,
+        "max_price_impact": 0.00021228649963534217,
+        "time_to_recovery_seconds": 60,
+        "total_liquidated_debt": 9063.255437,
+        "unliquidated_debt": 221203.42824361
+      },
+      "scenario": "No Arbitrage"
+    },
+    {
+      "after": {
+        "bad_debt": 2208.3147057931883,
+        "cascade_depth": 1,
+        "max_price_impact": 4.632569078885678e-28,
+        "time_to_recovery_seconds": 60,
+        "total_liquidated_debt": 9063.255437,
+        "unliquidated_debt": 221203.42824361
+      },
+      "before": {
+        "bad_debt": 2212.629874032923,
+        "cascade_depth": 1,
+        "max_price_impact": 0.00021228649963534217,
+        "time_to_recovery_seconds": 60,
+        "total_liquidated_debt": 9063.255437,
+        "unliquidated_debt": 221203.42824361
+      },
+      "scenario": "Strong Arbitrage"
+    },
+    {
+      "after": {
+        "bad_debt": 2230.2554863522,
+        "cascade_depth": 1,
+        "max_price_impact": 0.0010793858420745702,
+        "time_to_recovery_seconds": 60,
+        "total_liquidated_debt": 18126.510874,
+        "unliquidated_debt": 212140.17280661
+      },
+      "before": {
+        "bad_debt": 2216.86151366216,
+        "cascade_depth": 1,
+        "max_price_impact": 0.0004204637744718122,
+        "time_to_recovery_seconds": 60,
+        "total_liquidated_debt": 18126.510874,
+        "unliquidated_debt": 212140.17280661
+      },
+      "scenario": "Policy Experiment"
+    },
+    {
+      "after": {
+        "bad_debt": 2219.372067114503,
+        "cascade_depth": 1,
+        "max_price_impact": 0.0005439714976789092,
+        "time_to_recovery_seconds": 60,
+        "total_liquidated_debt": 9063.255437,
+        "unliquidated_debt": 221203.42824361
+      },
+      "before": {
+        "bad_debt": 2212.629874032923,
+        "cascade_depth": 1,
+        "max_price_impact": 0.00021228649963534217,
+        "time_to_recovery_seconds": 60,
+        "total_liquidated_debt": 9063.255437,
+        "unliquidated_debt": 221203.42824361
+      },
+      "scenario": "PROFESSOR_DEMO"
+    }
+  ],
+  "monte_carlo": [
+    {
+      "cascade_frequency_after": 0.0,
+      "cascade_frequency_before": 0.0,
+      "median_max_price_impact_after": 0.0013283227767129516,
+      "median_max_price_impact_before": 0.00038621021581585,
+      "median_total_liquidated_debt_after": 9063.255437,
+      "median_total_liquidated_debt_before": 9063.255437,
+      "runs": 200,
+      "scenario": "Low Liquidity"
+    },
+    {
+      "cascade_frequency_after": 0.0,
+      "cascade_frequency_before": 0.0,
+      "median_max_price_impact_after": 4.295988954138947e-28,
+      "median_max_price_impact_before": 4.295988954138947e-28,
+      "median_total_liquidated_debt_after": 0.0,
+      "median_total_liquidated_debt_before": 0.0,
+      "runs": 200,
+      "scenario": "Moderate"
+    },
+    {
+      "cascade_frequency_after": 0.0,
+      "cascade_frequency_before": 0.0,
+      "median_max_price_impact_after": 0.00109127133840232,
+      "median_max_price_impact_before": 0.00021441536743519585,
+      "median_total_liquidated_debt_after": 9063.255437,
+      "median_total_liquidated_debt_before": 9063.255437,
+      "runs": 200,
+      "scenario": "No Arbitrage"
+    },
+    {
+      "cascade_frequency_after": 0.0,
+      "cascade_frequency_before": 0.0,
+      "median_max_price_impact_after": 0.00054563566920116,
+      "median_max_price_impact_before": 0.00021441536743519585,
+      "median_total_liquidated_debt_after": 9063.255437,
+      "median_total_liquidated_debt_before": 9063.255437,
+      "runs": 200,
+      "scenario": "PROFESSOR_DEMO"
+    },
+    {
+      "cascade_frequency_after": 0.04,
+      "cascade_frequency_before": 0.0,
+      "median_max_price_impact_after": 0.004207063365982911,
+      "median_max_price_impact_before": 0.0005161765179609997,
+      "median_total_liquidated_debt_after": 18126.510874,
+      "median_total_liquidated_debt_before": 18126.510874,
+      "runs": 200,
+      "scenario": "Severe"
+    }
+  ],
+  "preservation": {
+    "canonical_outputs_unchanged": true,
+    "corrected_directory": "data/processed/research_final/validation_audit/corrected_run_v1/aave",
+    "corrected_model_version": "0.1.0-aave-v3.9-tick-consistent",
+    "original_directory": "data/processed/research_final/aave"
+  }
+}

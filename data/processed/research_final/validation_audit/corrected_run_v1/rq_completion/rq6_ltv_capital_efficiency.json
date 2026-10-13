@@ -1,0 +1,60 @@
+{
+  "analysis": "RQ6_LTV_EX_ANTE_CAPITAL_EFFICIENCY",
+  "canonical_weth_liquidation_threshold": 0.83,
+  "canonical_weth_ltv": 0.805,
+  "claim_boundary": "Above counterfactual borrowing capacity means an ex-ante origination constraint, not liquidatability.",
+  "cohort_size": 255,
+  "method": "Counterfactual WETH capacity uses the WETH policy LTV; other collateral capacity remains at each borrower's observed weighted LTV proxy. Frozen debt is never mutated.",
+  "rows": [
+    {
+      "aggregate_current_debt_to_capacity": 0.5071751170051094,
+      "aggregate_max_borrowing_capacity_usd": 50797988.977634266,
+      "borrowers_above_counterfactual_borrowing_capacity": 7,
+      "change_from_baseline_percentage_points": -5.0,
+      "liquidatable_interpretation": "NOT_INFERRED_FROM_LTV",
+      "ltv_policy": 0.755,
+      "median_borrower_max_borrowing_capacity_usd": 6025.481615534755,
+      "median_current_debt_to_capacity": 0.44439674111140176
+    },
+    {
+      "aggregate_current_debt_to_capacity": 0.49711777740122043,
+      "aggregate_max_borrowing_capacity_usd": 51825698.40499265,
+      "borrowers_above_counterfactual_borrowing_capacity": 7,
+      "change_from_baseline_percentage_points": -2.5,
+      "liquidatable_interpretation": "NOT_INFERRED_FROM_LTV",
+      "ltv_policy": 0.78,
+      "median_borrower_max_borrowing_capacity_usd": 6155.775768527594,
+      "median_current_debt_to_capacity": 0.4325517041086563
+    },
+    {
+      "aggregate_current_debt_to_capacity": 0.48745155818668634,
+      "aggregate_max_borrowing_capacity_usd": 52853407.83235103,
+      "borrowers_above_counterfactual_borrowing_capacity": 7,
+      "change_from_baseline_percentage_points": 0.0,
+      "liquidatable_interpretation": "NOT_INFERRED_FROM_LTV",
+      "ltv_policy": 0.805,
+      "median_borrower_max_borrowing_capacity_usd": 6286.069921520431,
+      "median_current_debt_to_capacity": 0.4191184213723626
+    },
+    {
+      "aggregate_current_debt_to_capacity": 0.4836895129918496,
+      "aggregate_max_borrowing_capacity_usd": 53264491.60329438,
+      "borrowers_above_counterfactual_borrowing_capacity": 6,
+      "change_from_baseline_percentage_points": 1.0,
+      "liquidatable_interpretation": "NOT_INFERRED_FROM_LTV",
+      "ltv_policy": 0.815,
+      "median_borrower_max_borrowing_capacity_usd": 6338.187582717566,
+      "median_current_debt_to_capacity": 0.4139758640549103
+    },
+    {
+      "aggregate_current_debt_to_capacity": 0.47998509235769504,
+      "aggregate_max_borrowing_capacity_usd": 53675575.37423773,
+      "borrowers_above_counterfactual_borrowing_capacity": 5,
+      "change_from_baseline_percentage_points": 2.0,
+      "liquidatable_interpretation": "NOT_INFERRED_FROM_LTV",
+      "ltv_policy": 0.825,
+      "median_borrower_max_borrowing_capacity_usd": 6390.305243914701,
+      "median_current_debt_to_capacity": 0.40895797479363866
+    }
+  ]
+}

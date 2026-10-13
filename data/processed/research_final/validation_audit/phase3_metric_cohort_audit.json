@@ -1,0 +1,60 @@
+{
+  "canonical_health_factor_comparison": {
+    "all_borrowers": {
+      "count": 454,
+      "max_absolute_error": "0.60307715872539164164",
+      "max_relative_error_pct": "0.5823952066257817193351167114",
+      "max_relative_error_ratio": "0.005823952066257817193351167114"
+    },
+    "borrowers_compared": 454,
+    "protocol_hf_below_1_20": {
+      "count": 38,
+      "max_absolute_error": "0.000343939311233425267302703",
+      "max_relative_error_pct": "0.03007324125143277708200690765",
+      "max_relative_error_ratio": "0.0003007324125143277708200690765"
+    },
+    "threshold_counts": {
+      "1.00": {
+        "model_hf_below": 5,
+        "protocol_hf_below": 5
+      },
+      "1.05": {
+        "model_hf_below": 24,
+        "protocol_hf_below": 24
+      },
+      "1.10": {
+        "model_hf_below": 29,
+        "protocol_hf_below": 29
+      },
+      "1.20": {
+        "model_hf_below": 38,
+        "protocol_hf_below": 38
+      }
+    }
+  },
+  "canonical_population": {
+    "cohort_rule": "collateral_weth > 0 after usageAsCollateralEnabled verification AND debt_usdc > 0",
+    "graph_candidates": 500,
+    "usdc_debt_borrowers": 182,
+    "verified_borrowers": 454,
+    "weth_collateral_borrowers": 255,
+    "weth_usdc_target_cohort": 109
+  },
+  "definitions": {
+    "bad_debt": "Final model-based uncovered-debt estimate: sum(max(0, debt USD - collateral market value)); it is not automatically realized protocol or investor loss.",
+    "cascade_amplification": "total_liquidated_debt / direct_shock_liquidated_debt; undefined when direct debt is zero.",
+    "cascade_depth": "Number of completed waves with positive liquidation volume; depth 1 is direct only, depth >=2 contains an endogenous later wave.",
+    "liquidation_at_risk": "Debt value initially associated with positions below HF 1 immediately after the direct shock.",
+    "rq5_usdc_units": "debt_usdc and total_liquidated_debt_usdc are USDC token quantities; USD-equivalent USDC debt multiplies token quantity by the scenario USDC/USD price.",
+    "time_to_recovery_seconds": "Model-clock time until final DEX/reference spread is within 0.5%, or null if unrecovered; not an empirical wall-clock market forecast.",
+    "unliquidated_debt": "Final debt value of positions whose model HF remains below 1 after the simulated run."
+  },
+  "figure_table_consistency": "The original package used engine-consistent definitions, but Uniswap-sensitive values and conclusions must be sourced from corrected_run_v1 because active liquidity was stale after price repositioning in the original run.",
+  "health_factor_populations": {
+    "price_state_rule": "Snapshot HF uses the canonical oracle state; scenario HF uses the scenario's shocked or evolving WETH and USDC price state.",
+    "rq5_stablecoin_repricing": "109-position WETH-collateral/USDC-debt target cohort",
+    "snapshot_protocol_vs_model": "all 454 RPC-verified borrowers at canonical state",
+    "stress_engine": "all 454 positions are retained; eligibility and debt composition determine which positions can liquidate under each scenario"
+  },
+  "status": "PASS \u2014 VERIFIED"
+}

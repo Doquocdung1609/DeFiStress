@@ -1,0 +1,29 @@
+{
+  "executed_at_utc": "2026-10-13T12:01:42.593840Z",
+  "pytest": {
+    "command": ".\\.venv\\Scripts\\python.exe -m pytest",
+    "status": "PASS",
+    "passed": 132,
+    "warnings": 3
+  },
+  "ruff": {
+    "command": ".\\.venv\\Scripts\\python.exe -m ruff check .",
+    "status": "PASS"
+  },
+  "mypy": {
+    "command": ".\\.venv\\Scripts\\python.exe -m mypy sim",
+    "status": "PASS",
+    "checked_source_files": 47
+  },
+  "research_quality_gate": {
+    "status": "PASS",
+    "all_passed": true,
+    "checks": 10,
+    "json_files": 83,
+    "csv_files": 47,
+    "figures": 35,
+    "tables": 22,
+    "indexed_results": 476,
+    "generated_files_scanned_for_secrets_and_raw_addresses": 207
+  }
+}

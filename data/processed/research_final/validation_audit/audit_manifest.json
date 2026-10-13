@@ -1,0 +1,21 @@
+{
+  "canonical_artifacts_overwritten": false,
+  "canonical_snapshot": {
+    "block_hash": "4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+    "block_number": 26045352,
+    "path": "data/processed/mainnet/aave_uniswap_snapshot_26045352.json",
+    "sha256": "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99"
+  },
+  "corrected_run": "data/processed/research_final/validation_audit/corrected_run_v1",
+  "evidence_sha256": {
+    "data/processed/research_final/validation_audit/before_after_corrected_run.json": "606f39468727181c232a74dc5b402b74f7887f54078146db608bef15165ab882",
+    "data/processed/research_final/validation_audit/phase1_uniswap_numerical_audit.json": "c3ae886fb7f4faae170d7eb1536dc8c73dc122df09e6152bd4a5c14f001b70db",
+    "data/processed/research_final/validation_audit/phase2_protocol_validation.json": "31c41d6b2706334e76ac52fd5bb5900d34d95d065bf86f592226529cdde51f42",
+    "data/processed/research_final/validation_audit/phase3_metric_cohort_audit.json": "a6c52f18ae4850a9342de8991edbbfd4dc7b70cde2dbb5d56c47ea2dce924981",
+    "data/processed/research_final/validation_audit/phase4_temporal_robustness.json": "3c6399db2ef163caacd44f21678844b7437f178cbd66090df7bc9bdb2f08773e",
+    "data/processed/research_final/validation_audit/phase5_terra_early_warning_audit.json": "9c9ac9b63bb9443ad0ab63fd01a1fc6c95fb23d326961a05e131af144fd8a63c",
+    "data/processed/research_final/validation_audit/verification_results.json": "4be152ce840b1cbb3142485901ea1e0ad79246bde52372b6a327b6439f13051b"
+  },
+  "generated_at_utc": "2026-10-13T10:18:11.043286+00:00",
+  "source_commit": "2b9a29f5e8c0c8dd910b7d65428fb1d57646b06b"
+}

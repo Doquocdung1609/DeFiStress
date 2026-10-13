@@ -1,0 +1,64 @@
+{
+  "aggregation_policy": "Parallel channels collapse with max normalized strength per directed node pair.",
+  "eigenvector_unavailable_reason": null,
+  "nodes": {
+    "agent:arbitrageur": {
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 7.876455163444983e-13,
+      "in_degree_centrality": 0.0,
+      "out_degree_centrality": 0.14285714285714285,
+      "weighted_influence_strength": 0.0
+    },
+    "agent:borrower-cohort": {
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 7.876455163444983e-13,
+      "in_degree_centrality": 0.0,
+      "out_degree_centrality": 0.14285714285714285,
+      "weighted_influence_strength": 0.12971428571428573
+    },
+    "agent:liquidator": {
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 7.876455163444983e-13,
+      "in_degree_centrality": 0.0,
+      "out_degree_centrality": 0.14285714285714285,
+      "weighted_influence_strength": 0.0
+    },
+    "asset:usdc": {
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 7.876455163444983e-13,
+      "in_degree_centrality": 0.0,
+      "out_degree_centrality": 0.14285714285714285,
+      "weighted_influence_strength": 0.04116535132948699
+    },
+    "asset:weth": {
+      "betweenness_centrality": 0.09523809523809523,
+      "eigenvector_centrality": 0.5773502691880505,
+      "in_degree_centrality": 0.2857142857142857,
+      "out_degree_centrality": 0.14285714285714285,
+      "weighted_influence_strength": 0.04065940375328614
+    },
+    "market:reference": {
+      "betweenness_centrality": 0.0,
+      "eigenvector_centrality": 7.876455163444983e-13,
+      "in_degree_centrality": 0.0,
+      "out_degree_centrality": 0.14285714285714285,
+      "weighted_influence_strength": 0.14285714285714285
+    },
+    "protocol:aave-v3": {
+      "betweenness_centrality": 0.19047619047619047,
+      "eigenvector_centrality": 0.577350269191201,
+      "in_degree_centrality": 0.5714285714285714,
+      "out_degree_centrality": 0.14285714285714285,
+      "weighted_influence_strength": 0.0
+    },
+    "protocol:uniswap-v3": {
+      "betweenness_centrality": 0.14285714285714285,
+      "eigenvector_centrality": 0.5773502691896258,
+      "in_degree_centrality": 0.2857142857142857,
+      "out_degree_centrality": 0.14285714285714285,
+      "weighted_influence_strength": 0.14285714285714285
+    }
+  },
+  "structural_bridge_node": "protocol:aave-v3",
+  "weighted_influence_interpretation": "Exploratory outgoing channel strength inside this modeled network."
+}
