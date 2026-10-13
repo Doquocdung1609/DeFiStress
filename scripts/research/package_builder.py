@@ -415,7 +415,11 @@ def generate_tables(output_dir: Path, terra_quality: dict[str, Any], aave_qualit
         {"node": node, **values} for node, values in structural["centrality"]["nodes"].items()
     ]))
     tables.append(("Table_09", "network_waves", "Các khung truyền dẫn theo wave", [
-        {"frame": index + 1, "nodes": len(frame.get("nodes", [])), "edges": len(frame.get("edges", []))}
+        {
+            "frame": index + 1,
+            "nodes": len(frame.get("active_nodes", [])),
+            "edges": len(frame.get("active_edge_ids", [])),
+        }
         for index, frame in enumerate(professor.get("frames", []))
     ]))
     tables.append(("Table_10", "terra_fit", "Chỉ số Historical Fit Terra", [
@@ -850,7 +854,7 @@ def generate_documents(
         for key in ("TOTAL_LIQUIDATED_DEBT", "BAD_DEBT", "CASCADE_DEPTH", "WAVE_1_LIQUIDATED_DEBT", "WAVE_2_PLUS_LIQUIDATED_DEBT", "LATER_WAVE_SHARE")
     }
     core_findings = f"""
-1. Historical Fit Terra đạt UST RMSE {v('TERRA_HF_UST_RMSE')} và tương quan {v('TERRA_HF_UST_CORRELATION')}, nhưng thời điểm chạm 0,995 sớm {v('TERRA_TIMING_0_995')} giờ; do đó bằng chứng chỉ hỗ trợ tái dựng có điều kiện, không hỗ trợ claim dự báo chính xác.
+1. Historical Fit Terra đạt UST RMSE {v('TERRA_HF_UST_RMSE')} và tương quan {v('TERRA_HF_UST_CORRELATION')}, nhưng sai số thời điểm tại ngưỡng 0,995 là {v('TERRA_TIMING_0_995')} giờ (dấu âm nghĩa là mô phỏng sớm); do đó bằng chứng chỉ hỗ trợ tái dựng có điều kiện, không hỗ trợ claim dự báo chính xác.
 2. Cảnh báo cutoff-safe High Risk cho ngưỡng 0,995 có lead time {v('TERRA_EW_CUTOFF_SAFE_UST_BELOW_0_995_HIGH')} giờ: cảnh báo xuất hiện sau depeg ban đầu. Với ngưỡng 0,90, lead time là {v('TERRA_EW_CUTOFF_SAFE_UST_BELOW_0_9_HIGH')} giờ.
 3. Kiểm tra {v('TERRA_MECH_EVENT_COUNT')} native swaps hỗ trợ identity `swap_amount + fee_amount`; đây là nhất quán kế toán, không phải bằng chứng nhân quả giá.
 4. Snapshot Aave REAL_MAINNET tại block {v('AAVE_DATA_BLOCK_NUMBER')} xác minh {v('AAVE_DATA_VERIFIED_BORROWERS')} borrower; cohort WETH/USDC là {v('AAVE_DATA_WETH_USDC_COHORT')}. Tỷ lệ xác minh ứng viên không được gọi là độ phủ thị trường.
@@ -972,7 +976,7 @@ Mô hình có thể tái lập stress có điều kiện, kiểm tra consistency
 
 Nghiên cứu xây dựng một quy trình kiểm định sức chịu đựng DeFi có thể tái lập bằng hai ca bổ sung nhưng không đồng nhất: Terra Classic tháng 5/2022 để kiểm tra tái dựng lịch sử, cảnh báo sớm và cơ chế phát hành; Aave V3 × Uniswap V3 để mô phỏng thanh lý dây chuyền trên snapshot Ethereum Mainnet. Dữ liệu Terra gồm {v('TERRA_ROWS')} giờ và {v('TERRA_SWAPS')} native swaps; ca Aave dùng {v('AAVE_DATA_VERIFIED_BORROWERS')} borrower xác minh tại block {v('AAVE_DATA_BLOCK_NUMBER')}.
 
-Historical Fit Terra đạt UST RMSE {v('TERRA_HF_UST_RMSE')}, nhưng chạm ngưỡng 0,995 sớm {v('TERRA_TIMING_0_995')} giờ. Chỉ báo cutoff-safe High Risk xuất hiện {v('TERRA_EW_CUTOFF_SAFE_UST_BELOW_0_995_HIGH')} giờ so với depeg ban đầu, nên không hỗ trợ claim dự báo sớm sự kiện này; ngược lại, nó đi trước severe depeg 0,90 khoảng {v('TERRA_EW_CUTOFF_SAFE_UST_BELOW_0_9_HIGH')} giờ. Bằng chứng transaction hỗ trợ nhất quán kế toán gross issuance nhưng không xác lập nhân quả giá.
+Historical Fit Terra đạt UST RMSE {v('TERRA_HF_UST_RMSE')}, nhưng sai số timing tại ngưỡng 0,995 là {v('TERRA_TIMING_0_995')} giờ (mô phỏng sớm). Chỉ báo cutoff-safe High Risk có lead time {v('TERRA_EW_CUTOFF_SAFE_UST_BELOW_0_995_HIGH')} giờ, tức xuất hiện sau depeg ban đầu, nên không hỗ trợ claim dự báo sớm sự kiện này; ngược lại, nó đi trước severe depeg 0,90 khoảng {v('TERRA_EW_CUTOFF_SAFE_UST_BELOW_0_9_HIGH')} giờ. Bằng chứng transaction hỗ trợ nhất quán kế toán gross issuance nhưng không xác lập nhân quả giá.
 
 Trong ca Aave, Professor Demo tạo nợ thanh lý {_fmt(professor['TOTAL_LIQUIDATED_DEBT'])} và cascade depth {_fmt(professor['CASCADE_DEPTH'])}. Monte Carlo cho tần suất cascade model-implied {v('AAVE_MC_PROFESSOR_DEMO_CASCADE_FREQUENCY')} với khoảng Wilson [{v('AAVE_MC_PROFESSOR_DEMO_CASCADE_WILSON_LOWER')}, {v('AAVE_MC_PROFESSOR_DEMO_CASCADE_WILSON_UPPER')}]. Các kết quả này phụ thuộc snapshot, giả định và engine; chúng không phải xác suất thị trường.
 
@@ -1137,7 +1141,7 @@ Thiết kế có hai ca. Terra tháng 5/2022 là ca lịch sử để kiểm tra
 
 Về dữ liệu, Terra có {v('TERRA_ROWS')} giờ và {v('TERRA_SWAPS')} native swaps. Aave có {v('AAVE_DATA_VERIFIED_BORROWERS')} borrower xác minh và cohort WETH/USDC {v('AAVE_DATA_WETH_USDC_COHORT')}. Tỷ lệ xác minh ứng viên không phải độ phủ toàn thị trường.
 
-Đối với Terra, identity gross issuance được kiểm tra trực tiếp bằng `swap_amount + fee_amount`. Kết quả hỗ trợ nhất quán kế toán, nhưng em không diễn giải thành bằng chứng minting gây sụp giá. Historical Fit đạt UST RMSE {v('TERRA_HF_UST_RMSE')}, song chạm 0,995 sớm {v('TERRA_TIMING_0_995')} giờ.
+Đối với Terra, identity gross issuance được kiểm tra trực tiếp bằng `swap_amount + fee_amount`. Kết quả hỗ trợ nhất quán kế toán, nhưng em không diễn giải thành bằng chứng minting gây sụp giá. Historical Fit đạt UST RMSE {v('TERRA_HF_UST_RMSE')}, song sai số timing tại ngưỡng 0,995 là {v('TERRA_TIMING_0_995')} giờ, nghĩa là mô phỏng chạm ngưỡng sớm.
 
 Kết quả này không cho thấy mô hình dự báo được cú depeg ban đầu. Cảnh báo cutoff-safe High Risk có lead time {v('TERRA_EW_CUTOFF_SAFE_UST_BELOW_0_995_HIGH')} giờ tại ngưỡng 0,995, tức là muộn; ở severe depeg 0,90, lead time là {v('TERRA_EW_CUTOFF_SAFE_UST_BELOW_0_9_HIGH')} giờ. Đây là bằng chứng âm cần giữ lại.
 
