@@ -1,5 +1,5 @@
 {
-  "artifact_bundle_commit": null,
+  "artifact_bundle_commit": "672c840a15addd1c461bf502e432c09473467194",
   "canonical_snapshot": {
     "block_hash": "4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
     "block_number": 26045352,
@@ -54,6 +54,6 @@
   },
   "simulation_model_version": "0.1.0-aave-v3.10-metric-semantics",
   "source_base_commit": "c79e090962741c051f6508d27cbf2b3105a60864",
-  "source_code_commit": null,
+  "source_code_commit": "672c840a15addd1c461bf502e432c09473467194",
   "status": "LIMITED \u2014 REPORT WITH CAVEAT"
 }

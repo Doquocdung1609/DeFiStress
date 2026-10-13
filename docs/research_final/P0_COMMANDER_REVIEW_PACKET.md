@@ -3,7 +3,7 @@
 Ngày thực thi: 2026-10-13  
 Branch: `feat/terra-model-v2`  
 Source base: `c79e090962741c051f6508d27cbf2b3105a60864e`  
-Implementation/artifact commit: `PENDING_AFTER_COMMIT`
+Implementation/artifact commit: `672c840a15addd1c461bf502e432c09473467194`
 
 ## Quyết định đề xuất
 
