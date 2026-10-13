@@ -24,13 +24,13 @@
     "LITERATURE_GAPS.md": "c6acfb1e31a1b4203dc976abb249c13505eea033b60b551b2109589e33a9a954",
     "METHODOLOGY.md": "ea29d6ca7f6e47243f9a9bcb532ae5ceabb948b28ac9d748c68d1a1847b7fa94",
     "PRESENTATION_BRIEF.md": "effa76c9e8e89aacb85e1fb7f2913d7d299905ed03c9030216a3c66c4bf9c266",
-    "REPRODUCIBILITY.md": "dfda6f29f74cec3e3e1201c8409e025842e6a293d0704c17c6245a31ffe6d64a",
+    "REPRODUCIBILITY.md": "7afee614178baee1820f7f3add6edd09f360351eb65d32557f59d7a31e5d8f10",
     "RESULTS_AND_DISCUSSION.md": "a2f43c2dba9c141e67aa9a07662576658a2815046f89fe33892fb96494b7043a",
     "TABLE_FIGURE_INDEX.md": "2e9d7d450021feb023619cdf072be9a565f738df3df290942637cb4e4815fdee"
   },
   "execution_time": "2026-10-13T04:31:01.111865Z",
   "fast_mode": false,
-  "generated_artifact_commit": null,
+  "generated_artifact_commit": "c4c9a363adfc55addd6da1fd1bf5c15f500eff97",
   "input_hashes": {
     "data/processed/mainnet/aave_uniswap_snapshot_26045352.json": "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99",
     "data/processed/model_v2/terra_abm_v2_strict_oos.json": "2aa642b7cad12a7ba4d2c910f3ab788a9d7868d04106ccd4089e1c1a31989fbc",
@@ -165,7 +165,7 @@
     "terra/demo/stress_test.json": "e6d23ba23eff26e72feca4473c83d9fe37d7f6569c085d4731c9d7f9a793de64"
   },
   "pipeline_version": "defistress-final-research-orchestrator-1.0.0",
-  "provenance_note": "Artifact and metadata commit fields are finalized only after the corresponding Git commits; no SHA is fabricated.",
+  "provenance_note": "source_code_commit identifies executable source; generated_artifact_commit identifies the first bundle commit; the metadata finalization commit is the Git commit containing this update and is intentionally not self-recorded.",
   "reproduce_command": ".\\.venv\\Scripts\\python.exe scripts\\run_full_research_pipeline.py --research",
   "scenario_definitions": {
     "Baseline": {
