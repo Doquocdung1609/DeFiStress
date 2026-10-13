@@ -18,9 +18,10 @@ from sim.engine import MODEL_VERSION, run_simulation
 from sim.monte_carlo import run_monte_carlo
 from sim.network import GRAPH_MODEL_VERSION, build_run_contagion_graph, build_snapshot_contagion_graph
 from sim.presets import scenario_presets
+from sim.research.rq_completion import RQ_COMPLETION_VERSION, run_rq_completion
 from sim.schemas import Scenario, json_safe
 
-AAVE_RESEARCH_VERSION = "aave-mainnet-research-suite-1.0.0"
+AAVE_RESEARCH_VERSION = "aave-mainnet-research-suite-1.1.0"
 CANONICAL_SNAPSHOT = Path("data/processed/mainnet/aave_uniswap_snapshot_26045352.json")
 DEFAULT_OUTPUT = Path("data/processed/research_final/aave")
 RESEARCH_MC_RUNS = 200
@@ -430,10 +431,18 @@ def run_aave_research_suite(
         _write_json(network_dir / f"{slug}_graph.json", graph)
         _write_json(network_dir / f"{slug}_centrality.json", graph["centrality"])
         _write_csv(network_dir / f"{slug}_matrix.csv", _matrix_csv(graph["contagion_matrix"]))
+    rq_completion = run_rq_completion(
+        positions=positions,
+        dex=dex,
+        weth_price=price,
+        snapshot=snapshot,
+        output_dir=output_dir.parent / "rq_completion",
+    )
     summary = {
         "suite_version": AAVE_RESEARCH_VERSION,
         "simulation_model_version": MODEL_VERSION,
         "graph_model_version": GRAPH_MODEL_VERSION,
+        "rq_completion_version": RQ_COMPLETION_VERSION,
         "canonical_snapshot": quality,
         "mc_runs_per_scenario": mc_runs,
         "mc_run_count_policy": mc_reason,
@@ -445,6 +454,7 @@ def run_aave_research_suite(
             "deterministic": deterministic_reproducible,
             "monte_carlo": reproducible_mc,
         },
+        "rq_completion": rq_completion,
         "runtime_seconds": time.perf_counter() - started,
     }
     _write_json(output_dir / "research_summary.json", summary)

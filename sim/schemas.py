@@ -5,6 +5,7 @@ from decimal import Decimal
 from typing import Any, cast
 
 D = Decimal
+ONE = D(1)
 
 
 @dataclass(slots=True)
@@ -21,11 +22,17 @@ class BorrowerPosition:
     def collateral_value(self, weth_price: Decimal) -> Decimal:
         return self.collateral_weth * weth_price + self.other_collateral_usd
 
-    def debt_value(self) -> Decimal:
-        return self.debt_usdc + self.other_debt_usd
+    def debt_value(self, usdc_price_usd: Decimal = ONE) -> Decimal:
+        """Return debt value in USD without repricing non-USDC debt."""
+        return self.debt_usdc * usdc_price_usd + self.other_debt_usd
 
-    def health_factor(self, weth_price: Decimal, lt_override: Decimal | None = None) -> Decimal:
-        debt = self.debt_value()
+    def health_factor(
+        self,
+        weth_price: Decimal,
+        lt_override: Decimal | None = None,
+        usdc_price_usd: Decimal = ONE,
+    ) -> Decimal:
+        debt = self.debt_value(usdc_price_usd)
         if debt <= 0:
             return D("Infinity")
         threshold = lt_override if lt_override is not None else self.liquidation_threshold
@@ -33,10 +40,10 @@ class BorrowerPosition:
         adjusted += self.other_collateral_usd * self.liquidation_threshold
         return max(D("0"), adjusted / debt)
 
-    def liquidation_price(self) -> Decimal | None:
+    def liquidation_price(self, usdc_price_usd: Decimal = ONE) -> Decimal | None:
         if self.collateral_weth <= 0:
             return None
-        uncovered = self.debt_value() - self.other_collateral_usd * self.liquidation_threshold
+        uncovered = self.debt_value(usdc_price_usd) - self.other_collateral_usd * self.liquidation_threshold
         if uncovered <= 0:
             return D("0")
         return uncovered / (self.collateral_weth * self.liquidation_threshold)
@@ -83,6 +90,7 @@ class Scenario:
     seed: int = 20260914
     volatility_pct: Decimal = D("2")
     liquidation_bonus: Decimal = D("1.05")
+    usdc_price_usd: Decimal = D("1")
     ltv_override: Decimal | None = None
     liquidation_threshold_override: Decimal | None = None
     liquidation_bonus_override: Decimal | None = None
@@ -97,6 +105,8 @@ class Scenario:
             raise ValueError("arbitrage_capacity_pct must be between 0 and 100")
         if self.gas_multiplier <= 0 or self.liquidator_capital_usdc <= 0 or self.liquidator_capacity_usdc <= 0:
             raise ValueError("gas multiplier and liquidator capital/capacity must be positive")
+        if self.usdc_price_usd <= 0:
+            raise ValueError("usdc_price_usd must be positive")
         if self.liquidator_delay_steps < 0 or self.arbitrage_delay_steps < 0:
             raise ValueError("agent delays cannot be negative")
         if self.horizon_steps < 1 or self.timestep_seconds < 1:

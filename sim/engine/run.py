@@ -11,7 +11,7 @@ from sim.metrics.risk import bad_debt, cascade_amplification, unliquidated_debt
 from sim.schemas import BorrowerPosition, DexState, Scenario, SimulationEvent, SimulationResult, TimePoint
 
 D = Decimal
-MODEL_VERSION = "0.1.0-aave-v3.7-approx"
+MODEL_VERSION = "0.1.0-aave-v3.8-usdc-valuation"
 
 
 def run_simulation(
@@ -33,6 +33,7 @@ def run_simulation(
     valuation_price = reference_price
     bonus = scenario.liquidation_bonus_override or scenario.liquidation_bonus
     lt_override = scenario.liquidation_threshold_override
+    usdc_price_usd = scenario.usdc_price_usd
     liquidator = Liquidator(
         capital_limit=scenario.liquidator_capital_usdc,
         capacity_per_step=scenario.liquidator_capacity_usdc,
@@ -44,8 +45,10 @@ def run_simulation(
     timeseries: list[TimePoint] = []
     attempted: set[str] = set()
 
-    initial_eligible = [p for p in borrowers if p.health_factor(reference_price, lt_override) < 1]
-    liquidation_at_risk = sum((p.debt_value() for p in initial_eligible), D(0))
+    initial_eligible = [
+        p for p in borrowers if p.health_factor(reference_price, lt_override, usdc_price_usd) < 1
+    ]
+    liquidation_at_risk = sum((p.debt_value(usdc_price_usd) for p in initial_eligible), D(0))
     initial_depth = pool.depth_to_price_drop_usdc(D("2"))
     timeseries.append(
         TimePoint(
@@ -56,7 +59,7 @@ def run_simulation(
             len(initial_eligible),
             D(0),
             D(0),
-            bad_debt(borrowers, valuation_price),
+            bad_debt(borrowers, valuation_price, usdc_price_usd),
         )
     )
 
@@ -77,7 +80,7 @@ def run_simulation(
                 len(initial_eligible),
                 D(0),
                 D(0),
-                bad_debt(borrowers, valuation_price),
+                bad_debt(borrowers, valuation_price, usdc_price_usd),
             )
         )
 
@@ -87,18 +90,24 @@ def run_simulation(
         eligible = [
             p
             for p in borrowers
-            if p.borrower_hash not in attempted and p.health_factor(valuation_price, lt_override) < 1
+            if p.borrower_hash not in attempted
+            and p.health_factor(valuation_price, lt_override, usdc_price_usd) < 1
         ]
         if not eligible:
             break
-        eligible.sort(key=lambda p: (p.health_factor(valuation_price, lt_override), -p.debt_value()))
+        eligible.sort(
+            key=lambda p: (
+                p.health_factor(valuation_price, lt_override, usdc_price_usd),
+                -p.debt_value(usdc_price_usd),
+            )
+        )
         wave_liquidated = D(0)
         wave_forced = D(0)
         remaining_capacity = scenario.liquidator_capacity_usdc
 
         for position in eligible:
-            hf_before = position.health_factor(valuation_price, lt_override)
-            plan = plan_liquidation(position, valuation_price, bonus, lt_override)
+            hf_before = position.health_factor(valuation_price, lt_override, usdc_price_usd)
+            plan = plan_liquidation(position, valuation_price, bonus, lt_override, usdc_price_usd)
             liquidator.capacity_per_step = remaining_capacity
             decision = liquidator.evaluate(plan, pool)
             if not decision.execute:
@@ -126,7 +135,7 @@ def run_simulation(
             quote = pool.sell_weth(plan.collateral_to_seize)
             position.debt_usdc = max(D(0), position.debt_usdc - plan.debt_to_repay)
             position.collateral_weth = max(D(0), position.collateral_weth - plan.collateral_to_seize)
-            if position.debt_value() <= 0:
+            if position.debt_value(usdc_price_usd) <= 0:
                 position.status = "CLOSED"
             remaining_capacity -= plan.debt_to_repay
             liquidator.capital_limit = max(D(0), liquidator.capital_limit - plan.debt_to_repay)
@@ -136,7 +145,9 @@ def run_simulation(
             wave_forced += plan.collateral_to_seize
             if wave == 1:
                 direct_liquidated += plan.debt_to_repay
-            hf_after = position.health_factor(min(reference_price, pool.spot_price), lt_override)
+            hf_after = position.health_factor(
+                min(reference_price, pool.spot_price), lt_override, usdc_price_usd
+            )
             events.append(
                 SimulationEvent(
                     run_id=run_id,
@@ -183,11 +194,12 @@ def run_simulation(
             )
 
         valuation_price = min(reference_price, pool.spot_price)
-        current_bad_debt = bad_debt(borrowers, valuation_price)
+        current_bad_debt = bad_debt(borrowers, valuation_price, usdc_price_usd)
         remaining_eligible = sum(
             1
             for p in borrowers
-            if p.borrower_hash not in attempted and p.health_factor(valuation_price, lt_override) < 1
+            if p.borrower_hash not in attempted
+            and p.health_factor(valuation_price, lt_override, usdc_price_usd) < 1
         )
         timeseries.append(
             TimePoint(
@@ -207,18 +219,24 @@ def run_simulation(
         if wave_liquidated <= 0:
             break
 
-    final_bad_debt = bad_debt(borrowers, valuation_price)
+    final_bad_debt = bad_debt(borrowers, valuation_price, usdc_price_usd)
     spread = abs(pool.spot_price - reference_price) / reference_price
     elapsed_steps = scenario.liquidator_delay_steps + completed_waves
     recovery_time = elapsed_steps * scenario.timestep_seconds if spread <= D("0.005") else None
     metrics: dict[str, Decimal | int | None] = {
         "liquidation_at_risk": liquidation_at_risk,
         "total_liquidated_debt": total_liquidated,
+        "total_liquidated_debt_usdc": total_liquidated,
+        "total_liquidated_debt_usd": total_liquidated * usdc_price_usd,
         "direct_shock_liquidated_debt": direct_liquidated,
+        "direct_shock_liquidated_debt_usdc": direct_liquidated,
+        "direct_shock_liquidated_debt_usd": direct_liquidated * usdc_price_usd,
         "cascade_amplification": cascade_amplification(total_liquidated, direct_liquidated),
         "max_price_impact": max_impact,
         "bad_debt": final_bad_debt,
-        "unliquidated_debt": unliquidated_debt(borrowers, valuation_price),
+        # Preserve the legacy metric definition at USDC=$1: this metric uses each
+        # frozen borrower's recorded threshold even when a scenario overrides WETH LT.
+        "unliquidated_debt": unliquidated_debt(borrowers, valuation_price, usdc_price_usd),
         "cascade_depth": completed_waves,
         "time_to_recovery_seconds": recovery_time,
         "liquidity_coverage_ratio_model": None
@@ -227,5 +245,6 @@ def run_simulation(
         "forced_weth_sold": total_forced_weth,
         "final_dex_price": pool.spot_price,
         "final_reference_price": reference_price,
+        "usdc_price_usd": usdc_price_usd,
     }
     return SimulationResult(run_id, MODEL_VERSION, scenario.seed, scenario, metrics, events, timeseries, borrowers)

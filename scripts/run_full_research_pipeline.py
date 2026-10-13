@@ -10,7 +10,11 @@ from scripts.research.package_builder import DEFAULT_OUTPUT, run_full_research_p
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build the complete DeFiStress scientific research package.")
     mode = parser.add_mutually_exclusive_group()
-    mode.add_argument("--research", action="store_true", help="Run the default scientific workload (default).")
+    mode.add_argument(
+        "--research",
+        action="store_true",
+        help="Run the complete RQ1–RQ6 workload plus Terra/network extensions (default).",
+    )
     mode.add_argument("--fast", action="store_true", help="Use reduced candidate/run counts for pipeline validation.")
     parser.add_argument("--fresh-mainnet", action="store_true", help="Attempt an optional live Mainnet appendix.")
     parser.add_argument(

@@ -6,6 +6,7 @@ from decimal import Decimal
 from sim.schemas import BorrowerPosition
 
 D = Decimal
+ONE = D(1)
 DEFAULT_CLOSE_FACTOR = D("0.50")
 MAX_CLOSE_FACTOR = D("1")
 CLOSE_FACTOR_HF_THRESHOLD = D("0.95")
@@ -39,12 +40,13 @@ def plan_liquidation(
     weth_price: Decimal,
     liquidation_bonus: Decimal,
     lt_override: Decimal | None = None,
+    usdc_price_usd: Decimal = ONE,
 ) -> LiquidationPlan:
-    hf = position.health_factor(weth_price, lt_override)
+    hf = position.health_factor(weth_price, lt_override, usdc_price_usd)
     if hf >= 1 or position.debt_usdc <= 0 or position.collateral_weth <= 0:
         return LiquidationPlan(False, D("0"), D("0"), D("0"), "NOT_ELIGIBLE")
 
-    factor = close_factor(hf, position.debt_value(), position.collateral_value(weth_price))
+    factor = close_factor(hf, position.debt_value(usdc_price_usd), position.collateral_value(weth_price))
     repay = position.debt_usdc * factor
     seize = repay * liquidation_bonus / weth_price
 

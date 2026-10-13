@@ -33,6 +33,7 @@ from sim.research.aave_suite import (
     sha256_file,
     snapshot_quality,
 )
+from sim.research.rq_completion import RQ_COMPLETION_VERSION
 from sim.terra.demo_data import EXTENDED_DATASET, NATIVE_SWAPS, dataset_summary, load_extended_frame
 from sim.terra.research_pipeline import (
     DEFAULT_DATASET,
@@ -42,12 +43,21 @@ from sim.terra.research_pipeline import (
     run_final_pipeline,
 )
 
-FINAL_RESEARCH_VERSION = "defistress-final-research-orchestrator-1.0.0"
+FINAL_RESEARCH_VERSION = "defistress-final-research-orchestrator-1.1.0"
 DEFAULT_OUTPUT = Path("data/processed/research_final")
 DEFAULT_DOCS = Path("docs/research_final")
 REPRODUCE_COMMAND = r".\.venv\Scripts\python.exe scripts\run_full_research_pipeline.py --research"
 ADDRESS_RE = re.compile(r"0x[a-fA-F0-9]{40}")
 SECRET_MARKERS = ("GRAPH_API_KEY=", "ETH_RPC_URL=", "Authorization: Bearer", "ALCHEMY_API_KEY=")
+PREVIOUS_RESEARCH_PACKAGE_COMMIT = "df8df8d24eb257262a8514d233bb59677d162380"
+EVIDENCE_REQUIRED_STATUSES = {
+    "SUPPORTED",
+    "PARTIALLY_SUPPORTED",
+    "MODEL_CONDITIONAL",
+    "SUPPORTED_WITH_BOUNDARY",
+    "SUPPORTED_BOUNDARY",
+    "SUPPORTED_NEGATIVE_FINDING",
+}
 
 
 def now_iso() -> str:
@@ -83,6 +93,96 @@ def output_hashes(root: Path, *, exclude: set[str] | None = None) -> dict[str, s
         path.relative_to(root).as_posix(): sha256_file(path)
         for path in sorted(root.rglob("*"))
         if path.is_file() and path.relative_to(root).as_posix() not in skipped
+    }
+
+
+REGRESSION_CORE_FILES = (
+    "terra/demo/early_warning_timeline.json",
+    "terra/demo/historical_fit.json",
+    "terra/demo/mechanism_check.json",
+    "terra/demo/stress_test.json",
+    "terra/audit/final_metrics.json",
+    "terra/audit/monte_carlo.json",
+    "terra/audit/strict_oos_v2.json",
+    "aave/deterministic_scenarios.json",
+    "aave/sensitivity.json",
+    "aave/shock_liquidity_grid.json",
+    "aave/monte_carlo.json",
+    "network/structural_graph.json",
+    "network/professor_demo_graph.json",
+    "network/severe_graph.json",
+)
+
+
+def _numeric_leaves(value: Any, path: str = "") -> dict[str, float | int]:
+    leaves: dict[str, float | int] = {}
+    if isinstance(value, dict):
+        for key, item in value.items():
+            child = f"{path}.{key}" if path else str(key)
+            leaves.update(_numeric_leaves(item, child))
+    elif isinstance(value, list):
+        for index, item in enumerate(value):
+            leaves.update(_numeric_leaves(item, f"{path}[{index}]"))
+    elif isinstance(value, bool):
+        return leaves
+    elif isinstance(value, (int, float)):
+        finite(value)
+        leaves[path] = value
+    return leaves
+
+
+def capture_regression_baseline(output_dir: Path) -> dict[str, dict[str, float | int]]:
+    baseline: dict[str, dict[str, float | int]] = {}
+    if not output_dir.exists():
+        return baseline
+    for relative in REGRESSION_CORE_FILES:
+        path = output_dir / relative
+        if path.exists():
+            baseline[relative] = _numeric_leaves(read_json(path))
+    return baseline
+
+
+def compare_regression_baseline(
+    baseline: dict[str, dict[str, float | int]], output_dir: Path
+) -> dict[str, Any]:
+    if not baseline:
+        return {
+            "previous_research_package_commit": PREVIOUS_RESEARCH_PACKAGE_COMMIT,
+            "comparison_policy": "No previous package was present in this output directory.",
+            "status": "SKIPPED_NO_BASELINE",
+            "all_passed": True,
+            "files": [],
+        }
+    files: list[dict[str, Any]] = []
+    all_passed = bool(baseline)
+    for relative, old_values in baseline.items():
+        path = output_dir / relative
+        new_values = _numeric_leaves(read_json(path)) if path.exists() else {}
+        changed = [
+            key
+            for key, old_value in old_values.items()
+            if key not in new_values or new_values[key] != old_value
+        ]
+        status = "PASS" if not changed else "FAIL"
+        all_passed = all_passed and status == "PASS"
+        files.append(
+            {
+                "artifact": relative,
+                "status": status,
+                "old_numeric_leaves": len(old_values),
+                "compared_numeric_leaves": len(old_values) - len(changed),
+                "changed_paths": changed[:50],
+            }
+        )
+    return {
+        "previous_research_package_commit": PREVIOUS_RESEARCH_PACKAGE_COMMIT,
+        "comparison_policy": (
+            "Every numeric leaf present in the previous core artifact must remain exactly equal; additive fields "
+            "in the new artifacts are permitted."
+        ),
+        "all_passed": all_passed,
+        "status": "PASS" if all_passed else "FAIL",
+        "files": files,
     }
 
 
@@ -350,6 +450,105 @@ def build_registry(output_dir: Path, terra_quality: dict[str, Any], aave_quality
                 "aave/monte_carlo.json", "Phân phối lấy mẫu có điều kiện trên mô hình.",
                 "Không được diễn giải là xác suất thực tế.",
             )
+    sensitivity = read_json(output_dir / "aave/sensitivity.json")["rows"]
+    for family in ("GAS_MULTIPLIER", "LIQUIDATOR_CAPACITY", "ARBITRAGE_CAPACITY", "LIQUIDITY_HAIRCUT"):
+        family_rows = [row for row in sensitivity if row["sensitivity_family"] == family]
+        for metric in ("total_liquidated_debt", "bad_debt", "max_price_impact", "cascade_depth"):
+            values = [row[metric] for row in family_rows]
+            registry.add(
+                f"AAVE_SENS_{family}_{metric.upper()}_RANGE", "AAVE", f"{family}_{metric}_range",
+                max(values) - min(values), "model units", "aave/sensitivity.json",
+                "Observed response range in the one-factor sweep.",
+                "Canonical snapshot and tested parameter values only.",
+            )
+    grid = read_json(output_dir / "aave/shock_liquidity_grid.json")["rows"]
+    registry.add(
+        "RQ1_GRID_MAX_CASCADE_DEPTH", "AAVE", "maximum_cascade_depth_in_tested_grid",
+        max(row["cascade_depth"] for row in grid), "waves", "aave/shock_liquidity_grid.json",
+        "Maximum observed cascade depth across the discrete shock × liquidity grid.",
+        "Shocks −5% to −40% and liquidity haircuts 0%, 25%, 50%, 75%; no extrapolation.",
+    )
+    structural = read_json(output_dir / "network/structural_graph.json")
+    aave_node = structural["centrality"]["nodes"]["protocol:aave-v3"]
+    registry.add(
+        "NETWORK_AAVE_BETWEENNESS", "NETWORK_EXTENSION", "aave_v3_betweenness_centrality",
+        aave_node["betweenness_centrality"], "normalized centrality", "network/structural_graph.json",
+        "Aave V3 là structural bridge theo centrality trong topology đã mô hình hóa.",
+        "Không đại diện total DeFi importance.",
+    )
+    registry.add(
+        "CROSS_CASE_SYNTHESIS_BOUNDARY", "CROSS_CASE", "legitimate_synthesis_boundary",
+        read_json(output_dir / "cross_case/synthesis.json")["legitimate_synthesis"], "statement",
+        "cross_case/synthesis.json", "Hai extension chia sẻ lens phản hồi phi tuyến.",
+        "Không có kiểm định cơ chế chéo định lượng.",
+    )
+
+    rq_dir = output_dir / "rq_completion"
+    rq_specs = (
+        ("RQ3_DELAY", "rq3_reaction_delay.json", "delay_steps", (
+            "delay_seconds", "total_liquidated_debt", "unliquidated_debt", "bad_debt",
+            "time_to_recovery_seconds", "cascade_depth", "number_of_liquidation_events",
+        )),
+        ("RQ3_CAPITAL", "rq3_capital_constraint.json", "capital_ratio", (
+            "capital_usdc", "total_liquidated_debt", "unliquidated_debt", "bad_debt", "cascade_depth",
+        )),
+        ("RQ5_USDC", "rq5_usdc_depeg.json", "usdc_price_usd", (
+            "borrowers_hf_below_1_00", "borrowers_hf_below_1_05", "borrowers_hf_below_1_10",
+            "borrowers_hf_below_1_20", "liquidation_at_risk", "total_liquidated_debt_usdc",
+            "total_liquidated_debt_usd", "bad_debt", "cascade_depth", "max_price_impact",
+        )),
+        ("RQ6_LTV", "rq6_ltv_capital_efficiency.json", "ltv_policy", (
+            "aggregate_max_borrowing_capacity_usd", "median_borrower_max_borrowing_capacity_usd",
+            "aggregate_current_debt_to_capacity", "median_current_debt_to_capacity",
+            "borrowers_above_counterfactual_borrowing_capacity",
+        )),
+        ("RQ6_LT", "rq6_liquidation_threshold.json", "liquidation_threshold", (
+            "borrowers_hf_below_1_00", "borrowers_hf_below_1_05", "borrowers_hf_below_1_10",
+            "borrowers_hf_below_1_20", "liquidation_at_risk", "total_liquidated_debt", "bad_debt",
+            "cascade_depth", "max_price_impact", "wave_2_plus_liquidated_debt",
+        )),
+        ("RQ6_BONUS", "rq6_liquidation_bonus.json", "liquidation_bonus", (
+            "number_of_liquidation_events", "total_liquidated_debt", "collateral_seized_weth",
+            "forced_weth_volume", "liquidator_expected_profit_usdc", "liquidator_gas_cost_usdc",
+            "bad_debt", "max_price_impact", "cascade_depth", "unliquidated_debt",
+        )),
+    )
+    for prefix, artifact_name, parameter, metrics in rq_specs:
+        payload = read_json(rq_dir / artifact_name)
+        for row in payload["rows"]:
+            parameter_slug = str(row[parameter]).replace("-", "NEG_").replace(".", "_")
+            for metric in metrics:
+                if metric not in row:
+                    continue
+                unit = "count" if metric.startswith(("borrowers_", "number_")) or metric == "cascade_depth" else "model units"
+                registry.add(
+                    f"{prefix}_{parameter_slug}_{metric.upper()}", "AAVE", metric, row[metric], unit,
+                    f"rq_completion/{artifact_name}", "Controlled one-factor analysis on the canonical snapshot.",
+                    payload.get("claim_boundary", payload.get("limitation", "Tested range and model only.")),
+                )
+    rq_summary = read_json(rq_dir / "rq_completion_summary.json")
+    registry.add(
+        "RQ3_DELAY_STATUS", "AAVE", "reaction_delay_status", rq_summary["rq3"]["reaction_delay_status"],
+        "status", "rq_completion/rq_completion_summary.json", "Delay result under the tested range.",
+        rq_summary["claim_boundary"],
+    )
+    capital = read_json(rq_dir / "rq3_capital_constraint.json")
+    registry.add(
+        "RQ3_REQUIRED_CAPITAL_REFERENCE", "AAVE", "required_capital_reference_usdc",
+        capital["required_capital_reference_usdc"], "USDC", "rq_completion/rq3_capital_constraint.json",
+        capital["unconstrained_reference"]["definition"], capital["claim_boundary"],
+    )
+    usdc = read_json(rq_dir / "rq5_usdc_depeg.json")
+    registry.add(
+        "RQ5_USDC_BASELINE_COMPATIBLE", "AAVE", "usdc_price_1_matches_legacy",
+        usdc["backward_compatibility"]["usdc_price_1_matches_legacy"], "boolean",
+        "rq_completion/rq5_usdc_depeg.json", "Explicit USDC=$1 preserves legacy output.", usdc["limitation"],
+    )
+    bonus = read_json(rq_dir / "rq6_liquidation_bonus.json")
+    registry.add(
+        "RQ6_BONUS_STATUS", "AAVE", "liquidation_bonus_status", bonus["status"], "status",
+        "rq_completion/rq6_liquidation_bonus.json", bonus["mechanism"], bonus["claim_boundary"],
+    )
     return registry
 
 
@@ -380,6 +579,93 @@ def write_table(base: Path, table_id: str, slug: str, title: str, rows: list[dic
     return {"id": table_id, "title": title, "csv": csv_path.as_posix(), "markdown": md_path.as_posix(), "rows": len(rows)}
 
 
+def build_rq_answer_matrix(output_dir: Path) -> list[dict[str, Any]]:
+    rows = [
+        {
+            "rq": "RQ1",
+            "research_question": "Cú sốc ETH tối thiểu nào bắt đầu cascade depth ≥ 2?",
+            "analysis_method": "Lưới rời rạc shock −5% đến −40% × liquidity haircut 0/25/50/75%.",
+            "main_result": "Không quan sát được ngưỡng liquidation cascade trong miền stress đã thử.",
+            "answer_status": "NOT_OBSERVED_IN_TEST_RANGE",
+            "key_evidence_ids": ["RQ1_GRID_MAX_CASCADE_DEPTH"],
+            "claim_boundary": "Không nội suy threshold ra ngoài miền hoặc giữa các cell.",
+            "limitation": "Một snapshot, một venue thực thi và lưới hữu hạn.",
+        },
+        {
+            "rq": "RQ2",
+            "research_question": "DEX depth/haircut ảnh hưởng price impact, amplification và bad debt thế nào?",
+            "analysis_method": "Sweep liquidity haircut và shock × liquidity grid.",
+            "main_result": "Haircut làm tăng price impact/bad debt trong range, nhưng không tạo Wave 2.",
+            "answer_status": "SUPPORTED",
+            "key_evidence_ids": [
+                "AAVE_SENS_LIQUIDITY_HAIRCUT_MAX_PRICE_IMPACT_RANGE",
+                "AAVE_SENS_LIQUIDITY_HAIRCUT_BAD_DEBT_RANGE",
+                "RQ1_GRID_MAX_CASCADE_DEPTH",
+            ],
+            "claim_boundary": "Khuếch đại hậu quả khác với tạo wave liquidation mới.",
+            "limitation": "Thanh khoản tĩnh, một Uniswap V3 pool.",
+        },
+        {
+            "rq": "RQ3",
+            "research_question": "Gas, capital/capacity và reaction delay ảnh hưởng xử lý vị thế thế nào?",
+            "analysis_method": "One-factor sweeps cộng delay 0/1/2/4 và capital 25/50/100/200% demand.",
+            "main_result": "Capital 25%/50% binding; gas/capacity không binding; delay chỉ dịch thời gian.",
+            "answer_status": "PARTIALLY_SUPPORTED",
+            "key_evidence_ids": [
+                "RQ3_DELAY_STATUS", "RQ3_REQUIRED_CAPITAL_REFERENCE",
+                "RQ3_CAPITAL_0_25_TOTAL_LIQUIDATED_DEBT", "RQ3_CAPITAL_1_0_TOTAL_LIQUIDATED_DEBT",
+                "AAVE_SENS_GAS_MULTIPLIER_TOTAL_LIQUIDATED_DEBT_RANGE",
+                "AAVE_SENS_LIQUIDATOR_CAPACITY_TOTAL_LIQUIDATED_DEBT_RANGE",
+            ],
+            "claim_boundary": "Professor Demo, canonical snapshot và tested ranges.",
+            "limitation": "Engine dùng capital cộng dồn, không tái sử dụng.",
+        },
+        {
+            "rq": "RQ4",
+            "research_question": "Năng lực arbitrage ảnh hưởng deviation, waves và recovery thế nào?",
+            "analysis_method": "One-factor arbitrage-capacity sweep 0–100%.",
+            "main_result": "Không có response trong tested range; arbitrage không trở thành binding.",
+            "answer_status": "NEGATIVE_FINDING",
+            "key_evidence_ids": [
+                "AAVE_SENS_ARBITRAGE_CAPACITY_MAX_PRICE_IMPACT_RANGE",
+                "AAVE_SENS_ARBITRAGE_CAPACITY_CASCADE_DEPTH_RANGE",
+            ],
+            "claim_boundary": "Không suy ra arbitrage ngoài đời không quan trọng.",
+            "limitation": "Price deviation nhỏ và agent/routing đơn giản.",
+        },
+        {
+            "rq": "RQ5",
+            "research_question": "USDC depeg thay đổi stress khi USDC là debt asset thế nào?",
+            "analysis_method": "Pure USDC debt-valuation sensitivity, $0.90–$1.10.",
+            "main_result": "Upward depeg làm HF yếu hơn; downward depeg làm HF mạnh hơn hoặc không xấu đi.",
+            "answer_status": "SUPPORTED",
+            "key_evidence_ids": [
+                "RQ5_USDC_BASELINE_COMPATIBLE", "RQ5_USDC_1_1_BORROWERS_HF_BELOW_1_00",
+                "RQ5_USDC_1_0_BORROWERS_HF_BELOW_1_00", "RQ5_USDC_0_9_BORROWERS_HF_BELOW_1_20",
+            ],
+            "claim_boundary": "This experiment isolates the USDC debt-valuation channel.",
+            "limitation": "Không mô hình market liquidity, redemption, settlement hay confidence.",
+        },
+        {
+            "rq": "RQ6",
+            "research_question": "LTV, LT và bonus tạo trade-off capital efficiency/tail risk nào?",
+            "analysis_method": "LTV ex-ante capacity; LT HF boundary; bonus execution economics.",
+            "main_result": "LTV tăng capacity nhưng giảm origination buffer; LT dịch boundary; bonus đổi seizure/profit.",
+            "answer_status": "SUPPORTED",
+            "key_evidence_ids": [
+                "RQ6_LTV_0_755_AGGREGATE_MAX_BORROWING_CAPACITY_USD",
+                "RQ6_LTV_0_825_AGGREGATE_MAX_BORROWING_CAPACITY_USD",
+                "RQ6_LT_0_83_TOTAL_LIQUIDATED_DEBT", "RQ6_LT_0_855_TOTAL_LIQUIDATED_DEBT",
+                "RQ6_BONUS_STATUS",
+            ],
+            "claim_boundary": "LTV không phải direct frozen-snapshot liquidation trigger.",
+            "limitation": "Policy counterfactual trên frozen cohort, không dự báo hành vi tái underwrite.",
+        },
+    ]
+    write_json(output_dir / "rq_answer_matrix.json", {"research_questions": rows})
+    return rows
+
+
 def generate_tables(output_dir: Path, terra_quality: dict[str, Any], aave_quality: dict[str, Any]) -> list[dict[str, Any]]:
     hist = read_json(output_dir / "terra/demo/historical_fit.json")
     warning = read_json(output_dir / "terra/demo/early_warning_timeline.json")
@@ -392,6 +678,8 @@ def generate_tables(output_dir: Path, terra_quality: dict[str, Any], aave_qualit
     structural = read_json(output_dir / "network/structural_graph.json")
     professor = read_json(output_dir / "network/professor_demo_graph.json")
     audit = read_json(output_dir / "terra/audit/final_metrics.json")
+    rq_dir = output_dir / "rq_completion"
+    rq_matrix = read_json(output_dir / "rq_answer_matrix.json")["research_questions"]
     tables: list[tuple[str, str, str, list[dict[str, Any]]]] = []
     tables.append(("Table_01", "data_sources", "Nguồn dữ liệu và độ phủ", [
         {"case": "Terra", "source": EXTENDED_DATASET.as_posix(), "rows": terra_quality["row_count"], "status": terra_quality["status"]},
@@ -453,7 +741,41 @@ def generate_tables(output_dir: Path, terra_quality: dict[str, Any], aave_qualit
         {"dimension": "feedback", "Terra": "peg-redemption-issuance-confidence", "Aave_Uniswap": "price-HF-liquidation-DEX-price"},
         {"dimension": "boundary", "Terra": "does not validate Aave mechanics", "Aave_Uniswap": "does not prove Terra causality"},
     ]))
+    for table_id, slug, title in (
+        ("Table_16", "rq3_reaction_delay", "RQ3 — Liquidator reaction-delay sensitivity"),
+        ("Table_17", "rq3_capital_constraint", "RQ3 — Binding liquidator-capital sensitivity"),
+        ("Table_18", "rq5_usdc_depeg", "RQ5 — USDC debt-valuation sensitivity"),
+        ("Table_19", "rq6_ltv_capital_efficiency", "RQ6 — LTV capital-efficiency counterfactual"),
+        ("Table_20", "rq6_liquidation_threshold", "RQ6 — Liquidation Threshold sensitivity"),
+        ("Table_21", "rq6_liquidation_bonus", "RQ6 — Liquidation Bonus sensitivity"),
+    ):
+        tables.append((table_id, slug, title, read_json(rq_dir / f"{slug}.json")["rows"]))
+    tables.append((
+        "Table_22", "rq_answer_matrix", "Final RQ1–RQ6 answer matrix",
+        [{**row, "key_evidence_ids": ";".join(row["key_evidence_ids"])} for row in rq_matrix],
+    ))
     registry = [write_table(output_dir / "tables", *spec) for spec in tables]
+    rq_map = {
+        "Table_01": "RQ1–RQ6 / Extensions", "Table_02": "RQ1–RQ6", "Table_03": "RQ1/RQ5/RQ6",
+        "Table_04": "RQ1–RQ4", "Table_05": "RQ1–RQ4", "Table_06": "RQ1–RQ4",
+        "Table_07": "RQ1/RQ2", "Table_08": "Network Analysis Extension",
+        "Table_09": "Network Analysis Extension", "Table_10": "Historical Validation Extension",
+        "Table_11": "Historical Validation Extension", "Table_12": "Historical Validation Extension",
+        "Table_13": "Historical Validation Extension", "Table_14": "Historical Validation Extension",
+        "Table_15": "Cross-case extension", "Table_16": "RQ3", "Table_17": "RQ3",
+        "Table_18": "RQ5", "Table_19": "RQ6", "Table_20": "RQ6", "Table_21": "RQ6",
+        "Table_22": "RQ1–RQ6",
+    }
+    for row in registry:
+        row.update(
+            {
+                "research_question": rq_map[row["id"]],
+                "main_takeaway": "Numerical evidence; interpretation and boundary are in the RQ matrix/report.",
+                "data_status": "GENERATED_FROM_FROZEN_EVIDENCE",
+                "claim_boundary": "Canonical inputs and tested ranges only.",
+                "presentation_priority": "CORE" if row["id"] in {f"Table_{index:02d}" for index in range(16, 23)} else "APPENDIX",
+            }
+        )
     write_json(output_dir / "table_registry.json", registry)
     return registry
 
@@ -475,6 +797,7 @@ def _figure_meta(
     takeaway: str,
     status: str,
     priority: str,
+    claim_boundary: str = "Canonical inputs, modeled mechanisms and tested ranges only.",
 ) -> dict[str, Any]:
     return {
         "id": figure_id,
@@ -484,6 +807,7 @@ def _figure_meta(
         "main_takeaway": takeaway,
         "data_status": status,
         "caption": f"{title}. {takeaway}",
+        "claim_boundary": claim_boundary,
         "presentation_priority": priority,
     }
 
@@ -501,6 +825,7 @@ def generate_figures(output_dir: Path) -> list[dict[str, Any]]:
     mc = read_json(output_dir / "aave/monte_carlo.json")
     structural = read_json(output_dir / "network/structural_graph.json")
     professor = read_json(output_dir / "network/professor_demo_graph.json")
+    rq_dir = output_dir / "rq_completion"
     figures: list[dict[str, Any]] = []
 
     actual = pd.DataFrame(hist["actual_timeseries"])
@@ -749,6 +1074,52 @@ def generate_figures(output_dir: Path) -> list[dict[str, Any]]:
     path = figure_dir / "A16_centrality.png"
     _save_figure(fig, path)
     figures.append(_figure_meta("A16", "Centrality mạng", path, "RQ5", "Aave là cầu nối cấu trúc trong topology nhỏ; không suy rộng toàn DeFi.", "MODELED_SUBNETWORK", "CORE"))
+
+    delay_rows = read_json(rq_dir / "rq3_reaction_delay.json")["rows"]
+    add_line(
+        "A17", "reaction_delay_sensitivity", "RQ3: reaction delay và recovery time",
+        [([row["delay_minutes"] for row in delay_rows], [row["time_to_recovery_seconds"] for row in delay_rows], "recovery seconds")],
+        "seconds", "RQ3", "Delay 0–4 bước dịch thời gian xử lý nhưng không đổi severity trong tested range.",
+        "SIMULATED_ON_REAL_MAINNET_STATE", "CORE",
+    )
+    capital_rows = read_json(rq_dir / "rq3_capital_constraint.json")["rows"]
+    add_line(
+        "A18", "binding_capital_sensitivity", "RQ3: liquidator capital constraint",
+        [([row["capital_ratio"] for row in capital_rows], [row["total_liquidated_debt"] for row in capital_rows], "liquidated debt")],
+        "USDC", "RQ3", "25% và 50% demand reference là binding; 100% và 200% không binding.",
+        "SIMULATED_ON_REAL_MAINNET_STATE", "CORE",
+    )
+    usdc_rows = read_json(rq_dir / "rq5_usdc_depeg.json")["rows"]
+    add_line(
+        "A19", "usdc_depeg_hf", "RQ5: USDC price và số borrower dưới HF threshold",
+        [
+            ([row["usdc_price_usd"] for row in usdc_rows], [row["borrowers_hf_below_1_00"] for row in usdc_rows], "HF<1.00"),
+            ([row["usdc_price_usd"] for row in usdc_rows], [row["borrowers_hf_below_1_20"] for row in usdc_rows], "HF<1.20"),
+        ],
+        "borrowers", "RQ5", "Upward USDC depeg weakens HF through debt valuation; downward depeg does the reverse.",
+        "SIMULATED_DEBT_VALUATION_ONLY", "CORE",
+    )
+    lt_rows = read_json(rq_dir / "rq6_liquidation_threshold.json")["rows"]
+    add_line(
+        "A20", "lt_policy_sensitivity", "RQ6: liquidation-threshold sensitivity",
+        [([row["liquidation_threshold"] for row in lt_rows], [row["total_liquidated_debt"] for row in lt_rows], "liquidated debt")],
+        "USDC", "RQ6", "LT trực tiếp dịch Health Factor/liquidation boundary trong policy counterfactual.",
+        "SIMULATED_POLICY_COUNTERFACTUAL", "CORE",
+    )
+    bonus_rows = read_json(rq_dir / "rq6_liquidation_bonus.json")["rows"]
+    add_line(
+        "A21", "liquidation_bonus_sensitivity", "RQ6: liquidation bonus và expected profit",
+        [([row["liquidation_bonus"] for row in bonus_rows], [row["liquidator_expected_profit_usdc"] for row in bonus_rows], "expected profit")],
+        "USDC", "RQ6", "Bonus đổi collateral seized và profitability path; không tạo thêm event trong range này.",
+        "SIMULATED_POLICY_COUNTERFACTUAL", "CORE",
+    )
+    ltv_rows = read_json(rq_dir / "rq6_ltv_capital_efficiency.json")["rows"]
+    add_line(
+        "A22", "ltv_capital_efficiency", "RQ6: LTV và aggregate borrowing capacity",
+        [([row["ltv_policy"] for row in ltv_rows], [row["aggregate_max_borrowing_capacity_usd"] for row in ltv_rows], "max capacity")],
+        "USD", "RQ6", "LTV cao tăng ex-ante capacity; không được diễn giải là direct liquidation trigger.",
+        "ANALYTICAL_POLICY_COUNTERFACTUAL", "CORE",
+    )
     fig, axis = plt.subplots(figsize=(10, 5))
     axis.axis("off")
     axis.text(0.22, 0.65, "Terra 2022\npeg → redemption → issuance\n→ confidence", ha="center", va="center", bbox={"boxstyle": "round", "facecolor": "#f6d7c3"})
@@ -759,6 +1130,19 @@ def generate_figures(output_dir: Path) -> list[dict[str, Any]]:
     path = figure_dir / "C01_cross_case_feedback.png"
     _save_figure(fig, path)
     figures.append(_figure_meta("C01", "Tổng hợp vòng phản hồi hai ca", path, "RQ1–RQ5", "Hai ca minh họa nguyên lý chung nhưng dùng dữ liệu và cơ chế riêng biệt.", "SYNTHESIS", "CORE"))
+    for row in figures:
+        if row["id"].startswith("T"):
+            row["research_question"] = "Historical Validation Extension"
+        elif row["id"] in {"A12", "A13", "A14", "A15", "A16"}:
+            row["research_question"] = "Multilayer Network Analysis Extension"
+        elif row["id"] == "C01":
+            row["research_question"] = "Cross-case extension"
+        elif row["id"] == "A03":
+            row["research_question"] = "RQ2"
+        elif row["id"] == "A11":
+            row["research_question"] = "RQ2–RQ4"
+        elif row["id"] == "A01":
+            row["research_question"] = "RQ1/RQ5/RQ6"
     write_json(output_dir / "figure_registry.json", figures)
     return figures
 
@@ -795,12 +1179,35 @@ def build_claims(registry: Registry) -> list[dict[str, Any]]:
          ["AAVE_MC_PROFESSOR_DEMO_CASCADE_FREQUENCY", "AAVE_MC_PROFESSOR_DEMO_CASCADE_WILSON_LOWER",
           "AAVE_MC_PROFESSOR_DEMO_CASCADE_WILSON_UPPER"], "MODEL_CONDITIONAL",
          "Không gọi là xác suất thực tế."),
-        ("C10", "Centrality chỉ mô tả vai trò cầu nối trong sub-network Aave–Uniswap nhỏ.", [], "SUPPORTED_WITH_BOUNDARY",
+        ("C10", "Centrality chỉ mô tả vai trò cầu nối trong sub-network Aave–Uniswap nhỏ.", ["NETWORK_AAVE_BETWEENNESS"], "SUPPORTED_WITH_BOUNDARY",
          "Không đại diện tầm quan trọng hệ thống trên toàn DeFi."),
-        ("C11", "Terra không định lượng kiểm chứng cơ chế Aave và Aave không chứng minh cơ chế Terra.", [],
+        ("C11", "Terra không định lượng kiểm chứng cơ chế Aave và Aave không chứng minh cơ chế Terra.", ["CROSS_CASE_SYNTHESIS_BOUNDARY"],
          "SUPPORTED_BOUNDARY", "Tổng hợp chéo chỉ ở mức phản hồi phi tuyến và khuếch đại nội sinh."),
-        ("C12", "Mô hình dự báo được chính xác vụ sụp đổ Terra.", [], "UNSUPPORTED",
+        ("C12", "Mô hình dự báo được chính xác vụ sụp đổ Terra.", ["TERRA_TIMING_0_995", "TERRA_EW_CUTOFF_SAFE_UST_BELOW_0_995_HIGH"], "UNSUPPORTED",
          "Strict OOS âm và cảnh báo depeg ban đầu muộn; không được sử dụng claim này."),
+        ("C13", "Reaction delay 0–4 bước chỉ dịch thời gian xử lý, không đổi severity trong tested range.",
+         ["RQ3_DELAY_STATUS", "RQ3_DELAY_0_TIME_TO_RECOVERY_SECONDS", "RQ3_DELAY_4_TIME_TO_RECOVERY_SECONDS"],
+         "MODEL_CONDITIONAL", "Canonical snapshot và Professor Demo; không khái quát ngoài 0–4 bước."),
+        ("C14", "Liquidator capital 25% và 50% demand reference là binding; 100% và 200% không binding.",
+         ["RQ3_REQUIRED_CAPITAL_REFERENCE", "RQ3_CAPITAL_0_25_TOTAL_LIQUIDATED_DEBT",
+          "RQ3_CAPITAL_0_5_TOTAL_LIQUIDATED_DEBT", "RQ3_CAPITAL_1_0_TOTAL_LIQUIDATED_DEBT",
+          "RQ3_CAPITAL_2_0_TOTAL_LIQUIDATED_DEBT"], "MODEL_CONDITIONAL",
+         "Capital là funding cộng dồn không tái sử dụng theo engine hiện tại."),
+        ("C15", "USDC upward depeg làm HF yếu hơn còn downward depeg làm HF mạnh hơn qua debt valuation.",
+         ["RQ5_USDC_BASELINE_COMPATIBLE", "RQ5_USDC_1_1_BORROWERS_HF_BELOW_1_00",
+          "RQ5_USDC_1_0_BORROWERS_HF_BELOW_1_00", "RQ5_USDC_0_9_BORROWERS_HF_BELOW_1_20"],
+         "MODEL_CONDITIONAL", "This experiment isolates the USDC debt-valuation channel."),
+        ("C16", "LTV cao hơn tăng ex-ante borrowing capacity nhưng giảm origination safety buffer.",
+         ["RQ6_LTV_0_755_AGGREGATE_MAX_BORROWING_CAPACITY_USD",
+          "RQ6_LTV_0_825_AGGREGATE_MAX_BORROWING_CAPACITY_USD"], "MODEL_CONDITIONAL",
+         "Above counterfactual capacity không đồng nghĩa liquidatable; frozen debt không đổi."),
+        ("C17", "Liquidation Threshold trực tiếp dịch Health Factor và liquidation boundary.",
+         ["RQ6_LT_0_83_TOTAL_LIQUIDATED_DEBT", "RQ6_LT_0_855_TOTAL_LIQUIDATED_DEBT"],
+         "MODEL_CONDITIONAL", "WETH override không gán lại threshold của other collateral."),
+        ("C18", "Liquidation bonus thay đổi collateral seized và liquidator expected profit trong tested range.",
+         ["RQ6_BONUS_STATUS", "RQ6_BONUS_1_03_COLLATERAL_SEIZED_WETH",
+          "RQ6_BONUS_1_07_COLLATERAL_SEIZED_WETH"], "MODEL_CONDITIONAL",
+         "Kết quả policy counterfactual; không suy ra execution behavior ngoài mô hình."),
     ]
     rows = []
     for claim_id, statement, result_ids, status, boundary in claims:
@@ -814,8 +1221,19 @@ def build_claims(registry: Registry) -> list[dict[str, Any]]:
                 "result_ids": result_ids,
                 "status": status,
                 "claim_boundary": boundary,
+                "allowed_wording": statement,
+                "prohibited_wording": (
+                    "Không được bỏ claim boundary, nâng model-implied thành observed fact, hoặc khái quát ngoài "
+                    "snapshot/range đã thử."
+                ),
                 "evidence_type": "OBSERVED" if claim_id in {"C02", "C04", "C06"} else "DERIVED_OR_SIMULATED",
             }
+        )
+    unsupported_evidence = [row for row in rows if row["status"] in EVIDENCE_REQUIRED_STATUSES and not row["result_ids"]]
+    if unsupported_evidence:
+        raise ValueError(
+            "supported claims require result IDs: "
+            + ", ".join(row["claim_id"] for row in unsupported_evidence)
         )
     return rows
 
@@ -832,7 +1250,7 @@ def _fmt(value: Any, digits: int = 4) -> str:
     return str(value)
 
 
-def generate_documents(
+def generate_documents_legacy(
     output_dir: Path,
     docs_dir: Path,
     registry: Registry,
@@ -1229,6 +1647,406 @@ Kết luận, nghiên cứu cho thấy cách phân tích phản hồi phi tuyế
     return index
 
 
+def generate_documents(
+    output_dir: Path,
+    docs_dir: Path,
+    registry: Registry,
+    claims: list[dict[str, Any]],
+    tables: list[dict[str, Any]],
+    figures: list[dict[str, Any]],
+    terra_quality: dict[str, Any],
+    aave_quality: dict[str, Any],
+    preflight: dict[str, Any],
+) -> dict[str, list[str]]:
+    docs_dir.mkdir(parents=True, exist_ok=True)
+    values = registry.values()
+
+    def v(result_id: str) -> str:
+        return _fmt(values[result_id])
+
+    matrix = read_json(output_dir / "rq_answer_matrix.json")["research_questions"]
+    matrix_markdown = _md_table(
+        [
+            {
+                "RQ": row["rq"],
+                "Question": row["research_question"],
+                "Method": row["analysis_method"],
+                "Result": row["main_result"],
+                "Status": row["answer_status"],
+                "Evidence": ", ".join(row["key_evidence_ids"]),
+                "Boundary": row["claim_boundary"],
+                "Limitation": row["limitation"],
+            }
+            for row in matrix
+        ]
+    )
+    rq_text = """## 1.4 Sáu câu hỏi nghiên cứu chính
+
+- **RQ1.** Với một snapshot borrower và liquidity thực, cú sốc giá ETH tối thiểu ở mức nào bắt đầu tạo liquidation cascade (cascade depth ≥ 2)?
+- **RQ2.** Độ sâu thanh khoản DEX và liquidity haircut ảnh hưởng như thế nào đến price impact, cascade amplification và bad debt?
+- **RQ3.** Gas cost, capital/capacity và reaction delay của liquidator ảnh hưởng như thế nào đến tốc độ xử lý vị thế mất an toàn và phần debt chưa được thanh lý?
+- **RQ4.** Năng lực arbitrage ảnh hưởng như thế nào đến mức lệch giá, số wave liquidation và thời gian phục hồi?
+- **RQ5.** Stablecoin depeg làm thay đổi kết quả stress test như thế nào khi stablecoin đóng vai trò debt/settlement asset?
+- **RQ6.** Các counterfactual của LTV, liquidation threshold và liquidation bonus có tạo ra trade-off nào giữa capital efficiency và tail risk?
+"""
+    extension_text = """## 1.6 Kiểm chứng và mở rộng nghiên cứu
+
+### A. Historical Validation Extension — Terra 2022
+
+Terra cung cấp historical mechanism validation, conditional reconstruction, cutoff-safe early warning và historical stress evidence. Extension này không thay thế hoặc trả lời hộ sáu RQ Aave.
+
+### B. Multilayer Network Analysis Extension — Aave × Uniswap
+
+Đồ thị biểu diễn transmission channel, contagion topology, centrality, structural bridge và wave visualization. Centrality chỉ có nghĩa trong sub-network đã mô hình hóa, không phải total DeFi importance.
+"""
+    rq_summary = f"""- **RQ1 — NOT OBSERVED.** Không quan sát được ngưỡng liquidation cascade trong lưới shock −5% đến −40% và haircut 0/25/50/75%; cascade depth lớn nhất là {v('RQ1_GRID_MAX_CASCADE_DEPTH')}. Không được ngoại suy ra ngoài miền đã thử.
+- **RQ2 — SUPPORTED WITH BOUNDARY.** Liquidity haircut làm price impact và bad debt thay đổi, nhưng không tạo wave mới trong lưới; consequence amplification khác cascade creation.
+- **RQ3 — PARTIAL.** Gas và capacity sweep không binding; delay 0/1/2/4 chỉ dịch recovery time; capital 25% và 50% của reference {v('RQ3_REQUIRED_CAPITAL_REFERENCE')} USDC binding, 100% và 200% non-binding.
+- **RQ4 — NEGATIVE FINDING.** Arbitrage capacity không làm đổi tested outcomes; price deviation nhỏ và agent không trở thành binding trong range.
+- **RQ5 — SUPPORTED FOR ONE CHANNEL.** Tại USDC $1.10 có {v('RQ5_USDC_1_1_BORROWERS_HF_BELOW_1_00')} borrower HF<1, so với {v('RQ5_USDC_1_0_BORROWERS_HF_BELOW_1_00')} ở $1.00. Downward depeg không làm HF xấu hơn trong pure valuation semantics.
+- **RQ6 — SUPPORTED AS THREE DISTINCT MECHANISMS.** LTV tăng ex-ante borrowing capacity; LT dịch HF/liquidation boundary; bonus đổi collateral seized và expected profit. LTV không phải direct frozen-snapshot liquidation trigger.
+"""
+    rq_results = f"""## 5.2 RQ1 — Shock threshold / cascade
+
+**Question.** Shock tối thiểu nào tạo cascade depth ≥2?
+
+**Method.** Lưới shock −5%…−40% × haircut 0/25/50/75%.
+
+**Evidence/Finding.** `RQ1_GRID_MAX_CASCADE_DEPTH` = {v('RQ1_GRID_MAX_CASCADE_DEPTH')}. Không quan sát được ngưỡng liquidation cascade trong miền stress đã thử.
+
+**Interpretation/Limitation/Answer.** Đây là negative finding trên lưới rời rạc, không phải bằng chứng threshold nằm ngoài −40%.
+
+## 5.3 RQ2 — Liquidity
+
+**Question/Method.** Sweep haircut và shock × liquidity grid kiểm tra price impact, bad debt, liquidated debt và depth.
+
+**Evidence/Finding.** Range response của max price impact và bad debt lần lượt được ghi ở `AAVE_SENS_LIQUIDITY_HAIRCUT_MAX_PRICE_IMPACT_RANGE` và `AAVE_SENS_LIQUIDITY_HAIRCUT_BAD_DEBT_RANGE`; depth vẫn dưới 2.
+
+**Interpretation/Limitation/Answer.** Liquidity làm khuếch đại hậu quả nhưng chưa tạo liquidation wave mới trong range/snapshot/venue này.
+
+## 5.4 RQ3 — Liquidator frictions
+
+**Question/Method.** Kết hợp gas/capacity sweep, delay 0/1/2/4 và capital bằng 25/50/100/200% funding reference.
+
+**Evidence/Finding.** Delay status `{v('RQ3_DELAY_STATUS')}`; recovery time tăng từ {v('RQ3_DELAY_0_TIME_TO_RECOVERY_SECONDS')} lên {v('RQ3_DELAY_4_TIME_TO_RECOVERY_SECONDS')} giây trong khi severity không đổi. Required capital reference = {v('RQ3_REQUIRED_CAPITAL_REFERENCE')} USDC. Capital 25/50% làm total liquidated debt bằng {v('RQ3_CAPITAL_0_25_TOTAL_LIQUIDATED_DEBT')}/{v('RQ3_CAPITAL_0_5_TOTAL_LIQUIDATED_DEBT')}; 100% khôi phục {v('RQ3_CAPITAL_1_0_TOTAL_LIQUIDATED_DEBT')}.
+
+**Interpretation/Limitation/Answer.** Binding: capital 25/50%. Non-binding: gas/capacity ranges cũ; delay không binding cho severity nhưng binding cho simulated processing time. Engine dùng funding cộng dồn, không tái sử dụng.
+
+## 5.5 RQ4 — Arbitrage
+
+**Question/Method.** Arbitrage-capacity one-factor sweep.
+
+**Evidence/Finding.** Range response max price impact = {v('AAVE_SENS_ARBITRAGE_CAPACITY_MAX_PRICE_IMPACT_RANGE')}; cascade depth range = {v('AAVE_SENS_ARBITRAGE_CAPACITY_CASCADE_DEPTH_RANGE')}.
+
+**Interpretation/Limitation/Answer.** Arbitrage capacity không binding trong tested range; không suy ra arbitrage thị trường thực không quan trọng.
+
+## 5.6 RQ5 — Stablecoin debt valuation
+
+**Question/Method.** USDC/USD $0.90, $0.95, $0.99, $1.00, $1.01, $1.05, $1.10; chỉ revalue USDC debt tokens, không reprice `other_debt_usd`.
+
+**Evidence/Finding.** Explicit $1 baseline tương thích legacy = {v('RQ5_USDC_BASELINE_COMPATIBLE')}. HF<1 là {v('RQ5_USDC_1_1_BORROWERS_HF_BELOW_1_00')} tại $1.10 và {v('RQ5_USDC_1_0_BORROWERS_HF_BELOW_1_00')} tại $1.00; HF<1.20 tại $0.90 là {v('RQ5_USDC_0_9_BORROWERS_HF_BELOW_1_20')}.
+
+**Interpretation/Limitation/Answer.** Upward depeg làm USDC debt đắt hơn theo USD và làm HF yếu đi; downward depeg làm debt value giảm và HF mạnh lên hoặc không xấu đi. **This experiment isolates the USDC debt-valuation channel.** It does not represent the full market-liquidity, redemption, settlement or confidence consequences of a real stablecoin depeg.
+
+## 5.7 RQ6 — Policy parameters
+
+### LTV — ex-ante capital efficiency
+
+Capacity aggregate tăng từ {v('RQ6_LTV_0_755_AGGREGATE_MAX_BORROWING_CAPACITY_USD')} USD ở LTV 0.755 lên {v('RQ6_LTV_0_825_AGGREGATE_MAX_BORROWING_CAPACITY_USD')} USD ở 0.825. Higher LTV tăng capacity nhưng giảm origination buffer. Borrower above counterfactual capacity không được gọi là liquidatable.
+
+### Liquidation Threshold — Health Factor boundary
+
+Total liquidated debt là {v('RQ6_LT_0_83_TOTAL_LIQUIDATED_DEBT')} tại LT 0.83 và {v('RQ6_LT_0_855_TOTAL_LIQUIDATED_DEBT')} tại LT 0.855. LT trực tiếp thay đổi WETH collateral term trong HF; other collateral giữ threshold quan sát.
+
+### Liquidation Bonus — execution economics
+
+Status `{v('RQ6_BONUS_STATUS')}`. Collateral seized tăng từ {v('RQ6_BONUS_1_03_COLLATERAL_SEIZED_WETH')} WETH tại 1.03 lên {v('RQ6_BONUS_1_07_COLLATERAL_SEIZED_WETH')} WETH tại 1.07; bonus đi qua quote/profitability path.
+
+**Answer.** Ba parameter không thể gộp: LTV điều khiển ex-ante capital efficiency; LT điều khiển liquidation boundary; bonus điều khiển execution incentive/collateral economics.
+"""
+    methodology = f"""# PHƯƠNG PHÁP NGHIÊN CỨU
+
+{rq_text}
+
+## Thiết kế evidence-first
+
+Canonical Aave REAL_MAINNET tại block {aave_quality['block_number']} được dùng cho RQ1–RQ6. Mọi counterfactual giữ snapshot và các trường ngoài one-factor cố định. Terra và multilayer network được tách thành extension.
+
+## RQ3
+
+Reaction delay được suy ra theo `timestep_seconds`, không hard-code đơn vị thời gian. Capital reference là tổng USDC funding được engine tiêu thụ trong finite unconstrained run; capital bị trừ và không recycle, còn per-step capacity reset mỗi wave.
+
+## RQ5
+
+`usdc_price_usd` mặc định 1.0. Debt value = USDC token quantity × USDC/USD + other debt đã được ghi bằng USD. Higher/lower price chỉ kiểm tra debt-valuation channel; settlement, liquidity, redemption và confidence nằm ngoài mô hình.
+
+## RQ6 và lý do tách LTV khỏi LT
+
+LTV là constraint phát sinh khoản vay, nên frozen debt không được viết lại. Phân tích LTV tính ex-ante max capacity/utilization. LT đi trực tiếp vào tử số Health Factor và eligibility. Bonus đi vào collateral seize, DEX quote và liquidator profitability. Các mức policy xuất phát từ WETH reserve canonical (LTV 0.805, LT 0.83, bonus 1.05) và chỉ dùng mức protocol-valid.
+
+## Robustness và tái lập
+
+USDC=$1 phải khớp legacy; delay không mutate input; capital không overspend; LT override không reweight other collateral; LTV không mutate debt. Lệnh chuẩn: `{REPRODUCE_COMMAND}`.
+"""
+    results = f"""# KẾT QUẢ VÀ THẢO LUẬN
+
+## 5.1 Data validation
+
+Snapshot Aave block {v('AAVE_DATA_BLOCK_NUMBER')} có {v('AAVE_DATA_VERIFIED_BORROWERS')} borrower xác minh và cohort WETH/USDC {v('AAVE_DATA_WETH_USDC_COHORT')}; đây không phải market coverage.
+
+{rq_results}
+
+## 5.8 Terra Historical Validation Extension
+
+Terra giữ vai trò historical mechanism validation, reconstruction, cutoff-safe warning và counterfactual stress. Initial-depeg warning muộn và timing fit chưa hoàn hảo được giữ như negative evidence; Terra không trả lời thay RQ5 Aave.
+
+## 5.9 Multilayer Network Analysis Extension
+
+`NETWORK_AAVE_BETWEENNESS` = {v('NETWORK_AAVE_BETWEENNESS')}; kết luận chỉ là structural bridge trong modeled sub-network.
+
+## 5.10 Robustness / Monte Carlo
+
+Fixed-seed Monte Carlo là model-implied sampling, không phải real-world probability.
+
+## 5.11 Cross-case discussion
+
+Điểm chung hợp lệ là phản hồi phi tuyến. `CROSS_CASE_SYNTHESIS_BOUNDARY` ngăn suy luận Terra kiểm chứng Aave hoặc ngược lại.
+"""
+    executive = f"""# TÓM TẮT ĐIỀU HÀNH
+
+## Trả lời RQ1–RQ6
+
+{rq_summary}
+
+## Historical Validation Extension — Terra 2022
+
+Historical Fit hỗ trợ reconstruction có điều kiện nhưng timing chưa hoàn hảo; cutoff-safe warning muộn cho depeg ban đầu; mechanism accounting được hỗ trợ mà không nâng thành price causality.
+
+## Multilayer Network Analysis Extension
+
+Aave là bridge trong topology nhỏ đã mô hình hóa. Kết quả không đại diện total DeFi importance.
+
+Mọi con số ánh xạ đến `results_registry.json`; claim và boundary nằm trong `claim_ledger.json`.
+"""
+    abstract = f"""# DỰ THẢO TÓM TẮT
+
+Nghiên cứu trả lời sáu câu hỏi về cascade threshold, liquidity, liquidator frictions, arbitrage, USDC debt valuation và policy parameters trên snapshot Aave V3 × Uniswap V3 REAL_MAINNET block {v('AAVE_DATA_BLOCK_NUMBER')}. Không quan sát cascade depth ≥2 trong lưới đã thử; liquidity khuếch đại hậu quả nhưng chưa tạo wave mới; capital thấp là friction binding; USDC depeg có hướng phụ thuộc vai trò debt; LTV, LT và bonus có cơ chế khác nhau. Terra 2022 được giữ như Historical Validation Extension và graph như Multilayer Network Analysis Extension. Kết quả có provenance, claim boundary và regression comparison; không phải forecast hay xác suất thị trường. [CẦN BỔ SUNG NGUỒN HỌC THUẬT]
+"""
+    final_report = f"""# NỀN TẢNG BÁO CÁO NGHIÊN CỨU CUỐI CÙNG
+
+## TÓM TẮT
+
+{abstract.splitlines()[2]}
+
+# 1. GIỚI THIỆU
+
+## 1.1 Bối cảnh
+
+DeFi nối tín dụng, thanh khoản và định giá, tạo khả năng phản hồi nội sinh. [CẦN BỔ SUNG NGUỒN HỌC THUẬT]
+
+## 1.2 Vấn đề nghiên cứu
+
+Vấn đề là xác định channel nào tạo hoặc khuếch đại stress mà không biến output mô hình thành observed fact.
+
+## 1.3 Mục tiêu nghiên cứu
+
+Đo threshold, liquidity, frictions, arbitrage, stablecoin valuation và policy trade-offs trên evidence frozen.
+
+{rq_text}
+
+## 1.5 Đóng góp
+
+Pipeline nối input hash → simulation → registry → claim → table/figure/document, giữ cả negative findings.
+
+{extension_text}
+
+# 2. CƠ SỞ LÝ THUYẾT
+
+Khung gồm lending risk, HF, liquidation, AMM liquidity, stablecoin balance-sheet role và contagion. [CẦN BỔ SUNG NGUỒN HỌC THUẬT]
+
+# 3. DỮ LIỆU VÀ PHƯƠNG PHÁP
+
+Xem `METHODOLOGY.md`; dữ liệu observed, derived và simulated được phân lớp, với snapshot/hash/seed cố định.
+
+# 4. MÔ HÌNH
+
+Engine mô phỏng shock → HF → liquidation → forced WETH sale → DEX impact → revaluation; parameter semantics được kiểm thử từ implementation thực tế.
+
+# 5. KẾT QUẢ
+
+{results.split('# KẾT QUẢ VÀ THẢO LUẬN', 1)[1].strip()}
+
+# 6. THẢO LUẬN
+
+Negative result không phải lỗi mô hình: nó xác định những mechanism không binding trong snapshot/range, còn capital và một số policy channels có response rõ.
+
+# 7. HẠN CHẾ
+
+Một snapshot, cohort không phải toàn market, một execution venue, capital không recycle, stablecoin chỉ có valuation channel, topology nhỏ và model dependence.
+
+# 8. HƯỚNG NGHIÊN CỨU
+
+Mở rộng multi-collateral/debt, multi-venue, time-varying liquidity, capital recycling, stablecoin settlement/liquidity và out-of-sample validation.
+
+# 9. KẾT LUẬN
+
+Sáu RQ gốc đã có evidence và boundary. Terra/network là extension, không thay thế RQ chính.
+"""
+    data_quality = f"""# CHẤT LƯỢNG DỮ LIỆU
+
+- Aave: REAL_MAINNET block {aave_quality['block_number']}, {aave_quality['verified_borrowers']} verified borrowers; cohort không phải market coverage.
+- Terra: {terra_quality['row_count']} hourly rows và {terra_quality['native_swaps']['rows']} native swaps; unavailable vẫn là unavailable.
+- Canonical input hashes được giữ trong manifest; regression comparison yêu cầu mọi numeric leaf cũ bất biến.
+"""
+    limitations = """# HẠN CHẾ
+
+- Aave dùng một frozen snapshot, sample candidate và một Uniswap V3 venue.
+- Reaction delay không mô hình price path phát sinh trong thời gian chờ; capital không recycle.
+- USDC experiment chỉ revalue debt, không mô hình redemption/settlement/liquidity/confidence.
+- LTV là ex-ante analytical counterfactual; không re-underwrite frozen debt.
+- LT/bonus là policy counterfactual, không forecast governance.
+- Terra data availability, timing fit và cutoff-safe warning limitations vẫn nguyên.
+- Network centrality chỉ thuộc modeled sub-network.
+"""
+    reproducibility = f"""# TÁI LẬP
+
+## Lệnh chuẩn
+
+```powershell
+{REPRODUCE_COMMAND}
+```
+
+## Provenance
+
+- Previous research package commit: `{PREVIOUS_RESEARCH_PACKAGE_COMMIT}`
+- Source code commit: `{git('rev-parse', 'HEAD')}`
+- Artifact bundle commit: được finalization sau artifact commit, không tự tham chiếu giả.
+- Metadata finalization commit: được ghi sau bước finalization.
+- Orchestrator: `{FINAL_RESEARCH_VERSION}`; RQ completion: `{RQ_COMPLETION_VERSION}`.
+- Python: `{preflight['python'].splitlines()[0]}`; Node: `{preflight['node']}`.
+
+`manifest.json` giữ input/output/document hashes, seeds, scenario definitions và ba commit role riêng biệt.
+"""
+    literature = """# KHOẢNG TRỐNG TÀI LIỆU CẦN BỔ SUNG
+
+Không tạo tác giả/năm/DOI. Cần bổ sung nguồn đã kiểm tra cho Aave V3/HF/liquidation, Uniswap V3 liquidity, stablecoin balance-sheet role, liquidator capital, ABM, Terra 2022, early-warning, Monte Carlo và multilayer networks.
+"""
+    future = """# HƯỚNG NGHIÊN CỨU TIẾP THEO
+
+1. Multi-collateral/debt và toàn bộ reserve Aave.
+2. Multi-venue routing và time-varying liquidity.
+3. Capital recycling, competition và delay-dependent price paths.
+4. USDC liquidity/redemption/settlement channels riêng.
+5. Re-underwriting dynamics cho LTV và governance transition cho LT/bonus.
+6. Multi-protocol evidence-backed network và out-of-sample validation.
+"""
+    presentation = f"""# BRIEF THUYẾT TRÌNH 10–12 PHÚT
+
+1. Sáu RQ gốc — hiển thị Table_22.
+2. Data/provenance — block {v('AAVE_DATA_BLOCK_NUMBER')}, cohort boundary.
+3. RQ1 — không quan sát cascade depth≥2, không ngoại suy.
+4. RQ2 — liquidity khuếch đại consequence, không tạo wave.
+5. RQ3 — A17/A18: delay chỉ dịch time; capital 25/50% binding.
+6. RQ4 — arbitrage negative result.
+7. RQ5 — A19: upward/downward USDC debt valuation và limitation.
+8. RQ6 — A20–A22: LTV ≠ LT ≠ bonus.
+9. Terra Historical Validation Extension.
+10. Multilayer Network Analysis Extension.
+11. Regression/quality gate.
+12. Limitations và conclusion.
+"""
+    defense_script = f"""# KỊCH BẢN BẢO VỆ 10 PHÚT
+
+Sáu RQ ban đầu nằm ở trung tâm thiết kế. RQ1 không tìm thấy cascade depth≥2 trong shock −5%…−40% và haircut 0…75%, nên không bịa threshold. RQ2 cho thấy thanh khoản khuếch đại price impact/bad debt nhưng không tạo Wave 2. RQ3 tách gas, capacity, reaction delay và capital: delay 0–4 bước chỉ đổi recovery time; capital 25/50% của reference {v('RQ3_REQUIRED_CAPITAL_REFERENCE')} USDC mới là binding. RQ4 giữ negative result vì arbitrage capacity không đổi output trong range.
+
+RQ5 được kiểm tra trực tiếp ở Aave, không dùng Terra trả lời hộ: USDC upward depeg làm debt USD lớn hơn và HF yếu hơn; downward depeg làm ngược lại trong pure valuation channel. Thí nghiệm không mô hình redemption, settlement, market liquidity hay confidence.
+
+RQ6 phân biệt LTV, LT và bonus. LTV là ex-ante capacity nên không sửa frozen debt/HF. LT trực tiếp đổi liquidation boundary. Bonus đổi collateral seized và profitability. Terra là Historical Validation Extension; graph là Network Analysis Extension. Negative findings là kết quả phòng thủ được, không phải mô hình thất bại.
+"""
+    qa_pairs = [
+        ("6 RQ ban đầu của nhóm đâu?", "Nằm ở mục 1.4 và Table_22; Terra/network đã chuyển thành extension."),
+        ("RQ3 đã kiểm tra delay/capital chưa?", "Có: delay 0/1/2/4 và capital 25/50/100/200% engine-derived demand reference."),
+        ("Stablecoin depeg được test ở Aave hay chỉ nói Terra?", "Aave USDC được test trực tiếp từ $0.90 đến $1.10 qua debt-valuation channel."),
+        ("LTV và liquidation threshold khác nhau thế nào?", "LTV giới hạn origination capacity; LT vào Health Factor và liquidation eligibility."),
+        ("Tại sao LTV không trực tiếp làm HF đổi?", "Frozen snapshot giữ debt; nếu không re-underwrite, LTV mới chỉ là ex-ante capacity rule."),
+        ("Tại sao không tìm thấy cascade?", "Forced sale/price impact chưa đẩy thêm borrower qua HF<1 trong lưới và venue đã thử."),
+        ("Negative findings có phải mô hình thất bại không?", "Không; chúng xác định parameter nào không binding trong scope, miễn boundary được công bố."),
+        ("Capital reference là gì?", "Cumulative USDC funding consumed vì engine trừ capital và không recycle."),
+        ("USDC downward depeg luôn tốt?", "Không; chỉ pure debt-valuation channel cho debt-holder cohort này, không phải full depeg."),
+        ("Centrality có phải total DeFi importance?", "Không; chỉ vị trí trong evidence-backed modeled sub-network."),
+    ]
+    defense_qa = "# HỎI–ĐÁP HỘI ĐỒNG\n\n" + "\n\n".join(
+        f"## {index}. {question}\n\n{answer}" for index, (question, answer) in enumerate(qa_pairs, 1)
+    )
+    evidence_matrix = "# MA TRẬN BẰNG CHỨNG–CLAIM\n\n" + _md_table(
+        [
+            {
+                "claim_id": row["claim_id"],
+                "statement": row["statement_vi"],
+                "status": row["status"],
+                "result_ids": ", ".join(row["result_ids"]),
+                "boundary": row["claim_boundary"],
+                "allowed": row["allowed_wording"],
+                "prohibited": row["prohibited_wording"],
+            }
+            for row in claims
+        ]
+    )
+    tf_index = "# CHỈ MỤC BẢNG VÀ HÌNH\n\n" + _md_table(
+        [
+            {
+                "ID": row["id"],
+                "title": row["title"],
+                "path": row.get("path", row.get("csv")),
+                "RQ": row["research_question"],
+                "takeaway": row["main_takeaway"],
+                "status": row["data_status"],
+                "boundary": row["claim_boundary"],
+                "priority": row["presentation_priority"],
+            }
+            for row in [*tables, *figures]
+        ]
+    )
+    rq_matrix_doc = "# RQ1–RQ6 ANSWER MATRIX\n\n" + matrix_markdown
+    files = {
+        "ABSTRACT_DRAFT.md": abstract,
+        "EXECUTIVE_SUMMARY.md": executive,
+        "METHODOLOGY.md": methodology,
+        "RESULTS_AND_DISCUSSION.md": results,
+        "FINAL_RESEARCH_REPORT.md": final_report,
+        "DATA_QUALITY.md": data_quality,
+        "LIMITATIONS.md": limitations,
+        "REPRODUCIBILITY.md": reproducibility,
+        "LITERATURE_GAPS.md": literature,
+        "FUTURE_RESEARCH.md": future,
+        "PRESENTATION_BRIEF.md": presentation,
+        "DEFENSE_SCRIPT_10_MIN.md": defense_script,
+        "DEFENSE_QA.md": defense_qa,
+        "EVIDENCE_CLAIM_MATRIX.md": evidence_matrix,
+        "TABLE_FIGURE_INDEX.md": tf_index,
+        "RQ_ANSWER_MATRIX.md": rq_matrix_doc,
+    }
+    for name, content in files.items():
+        (docs_dir / name).write_text(content.strip() + "\n", encoding="utf-8")
+
+    matrix_ids = sorted({result_id for row in matrix for result_id in row["key_evidence_ids"]})
+    extension_ids = [
+        "TERRA_HF_UST_RMSE", "TERRA_TIMING_0_995", "TERRA_EW_CUTOFF_SAFE_UST_BELOW_0_995_HIGH",
+        "TERRA_MECH_EVENT_COUNT", "NETWORK_AAVE_BETWEENNESS", "CROSS_CASE_SYNTHESIS_BOUNDARY",
+    ]
+    major_ids = sorted(set(matrix_ids + extension_ids + ["AAVE_DATA_BLOCK_NUMBER", "AAVE_DATA_VERIFIED_BORROWERS"]))
+    index = {
+        "FINAL_RESEARCH_REPORT.md": [row["result_id"] for row in registry.rows],
+        "RESULTS_AND_DISCUSSION.md": major_ids,
+        "EXECUTIVE_SUMMARY.md": major_ids,
+        "PRESENTATION_BRIEF.md": major_ids,
+        "DEFENSE_SCRIPT_10_MIN.md": major_ids,
+        "RQ_ANSWER_MATRIX.md": matrix_ids,
+    }
+    write_json(output_dir / "document_claim_index.json", index)
+    return index
+
+
 def write_cross_case(output_dir: Path) -> None:
     write_json(
         output_dir / "cross_case/synthesis.json",
@@ -1295,12 +2113,12 @@ def quality_gate(
         csv_count += 1
     checks.append({"check": "csv_parse", "status": "PASS", "files": csv_count})
     figure_paths = list((output_dir / "figures").glob("*.png"))
-    if len(figure_paths) != 29 or any(path.stat().st_size < 1000 for path in figure_paths):
-        raise ValueError(f"expected 29 non-empty figures, found {len(figure_paths)}")
+    if len(figure_paths) != 35 or any(path.stat().st_size < 1000 for path in figure_paths):
+        raise ValueError(f"expected 35 non-empty figures, found {len(figure_paths)}")
     checks.append({"check": "required_figures", "status": "PASS", "files": len(figure_paths)})
     table_csv = list((output_dir / "tables").glob("*.csv"))
-    if len(table_csv) != 15:
-        raise ValueError(f"expected 15 tables, found {len(table_csv)}")
+    if len(table_csv) != 22:
+        raise ValueError(f"expected 22 tables, found {len(table_csv)}")
     checks.append({"check": "required_tables", "status": "PASS", "files": len(table_csv)})
     valid_result_ids = set(registry.values())
     index = read_json(output_dir / "document_claim_index.json")
@@ -1313,7 +2131,30 @@ def quality_gate(
     )
     if claim_missing:
         raise ValueError(f"claim ledger contains unknown result IDs: {claim_missing}")
+    missing_supported_evidence = [
+        row["claim_id"]
+        for row in claims
+        if row["status"] in EVIDENCE_REQUIRED_STATUSES and not row["result_ids"]
+    ]
+    if missing_supported_evidence:
+        raise ValueError(f"supported claims lack result IDs: {missing_supported_evidence}")
     checks.append({"check": "claim_traceability", "status": "PASS", "indexed_results": len(indexed)})
+    rq5 = read_json(output_dir / "rq_completion/rq5_usdc_depeg.json")
+    if not rq5["backward_compatibility"]["usdc_price_1_matches_legacy"]:
+        raise ValueError("USDC=$1 backward compatibility failed")
+    if not all(rq5["directional_checks"].values()):
+        raise ValueError("USDC directional sanity check failed")
+    checks.append({"check": "usdc_baseline_and_direction", "status": "PASS"})
+    regression = read_json(output_dir / "regression_comparison.json")
+    if not regression["all_passed"]:
+        raise ValueError("old-vs-new core numerical regression comparison failed")
+    checks.append(
+        {
+            "check": "legacy_core_numerical_regression",
+            "status": regression.get("status", "PASS"),
+            "files": len(regression["files"]),
+        }
+    )
     generated_files = [path for root in (output_dir, docs_dir) for path in root.rglob("*") if path.is_file()]
     for path in generated_files:
         if path.suffix.lower() in {".png", ".parquet"}:
@@ -1326,11 +2167,26 @@ def quality_gate(
         if leaked:
             raise ValueError(f"raw borrower address leaked in generated artifact: {path}")
     checks.append({"check": "secret_and_borrower_address_scan", "status": "PASS", "files": len(generated_files)})
+    prose = "\n".join(
+        path.read_text(encoding="utf-8", errors="ignore")
+        for path in docs_dir.rglob("*.md")
+    ).lower()
+    prohibited_patterns = {
+        "ltv_direct_trigger": r"ltv\s+(directly|trực tiếp)\s+(causes?|gây|làm).*liquidat",
+        "terra_answers_aave_rq5": r"terra.*(direct answer|trả lời trực tiếp).*rq5",
+        "cascade_threshold_extrapolation": r"threshold\s*>\s*40%|ngưỡng\s*>\s*40%",
+        "network_total_defi_importance": r"centrality\s+(đại diện|represents)\s+(cho\s+)?(total|toàn bộ)",
+    }
+    violations = [name for name, pattern in prohibited_patterns.items() if re.search(pattern, prose)]
+    if violations:
+        raise ValueError(f"prohibited research wording detected: {violations}")
+    checks.append({"check": "scientific_claim_boundaries", "status": "PASS"})
     required_docs = {
         "FINAL_RESEARCH_REPORT.md", "ABSTRACT_DRAFT.md", "EXECUTIVE_SUMMARY.md", "METHODOLOGY.md",
         "RESULTS_AND_DISCUSSION.md", "REPRODUCIBILITY.md", "LIMITATIONS.md", "EVIDENCE_CLAIM_MATRIX.md",
         "TABLE_FIGURE_INDEX.md", "PRESENTATION_BRIEF.md", "DEFENSE_SCRIPT_10_MIN.md", "DEFENSE_QA.md",
         "FUTURE_RESEARCH.md", "LITERATURE_GAPS.md", "DATA_QUALITY.md",
+        "RQ_ANSWER_MATRIX.md",
     }
     missing_docs = sorted(name for name in required_docs if not (docs_dir / name).exists())
     if missing_docs:
@@ -1348,6 +2204,7 @@ def run_full_research_pipeline(
 ) -> dict[str, Any]:
     total_started = time.perf_counter()
     docs_dir = DEFAULT_DOCS if output_dir.resolve() == DEFAULT_OUTPUT.resolve() else output_dir.parent / f"{output_dir.name}_docs"
+    regression_baseline = capture_regression_baseline(output_dir)
     _clean_output(output_dir, docs_dir)
     source_commit = git("rev-parse", "HEAD")
     execution: list[dict[str, Any]] = []
@@ -1384,6 +2241,10 @@ def run_full_research_pipeline(
     execution.append({"stage": "aave_deterministic_sensitivity_monte_carlo_network", "runtime_seconds": time.perf_counter() - stage_started, "status": "PASS"})
     run_fresh_appendix(fresh_mainnet, output_dir)
     write_cross_case(output_dir)
+    regression_comparison = compare_regression_baseline(regression_baseline, output_dir)
+    write_json(output_dir / "regression_comparison.json", regression_comparison)
+    if not regression_comparison["all_passed"]:
+        raise RuntimeError("existing core numerical results changed; see regression_comparison.json")
 
     stage_started = time.perf_counter()
     registry = build_registry(output_dir, terra_quality, aave_quality)
@@ -1392,6 +2253,7 @@ def run_full_research_pipeline(
     write_json(output_dir / "claim_ledger.json", {"claims": claims})
     claim_csv_rows = [{**row, "result_ids": ";".join(row["result_ids"])} for row in claims]
     _csv(output_dir / "claim_ledger.csv", claim_csv_rows)
+    build_rq_answer_matrix(output_dir)
     execution.append({"stage": "results_and_claim_registries", "runtime_seconds": time.perf_counter() - stage_started, "status": "PASS"})
 
     stage_started = time.perf_counter()
@@ -1416,6 +2278,7 @@ def run_full_research_pipeline(
     scenario_definitions = {row["scenario_name"]: row["scenario"] for row in aave_summary["deterministic_scenarios"]}
     manifest = {
         "pipeline_version": FINAL_RESEARCH_VERSION,
+        "previous_research_package_commit": PREVIOUS_RESEARCH_PACKAGE_COMMIT,
         "execution_time": now_iso(),
         "source_code_commit": source_commit,
         "generated_artifact_commit": None,
@@ -1436,7 +2299,14 @@ def run_full_research_pipeline(
         "scenario_definitions": scenario_definitions,
         "seeds": {"aave": [20260914, 20260915, 20260916], "terra": "recorded in child manifests"},
         "monte_carlo_run_counts": {"aave_per_scenario": aave_summary["mc_runs_per_scenario"], "terra_final": terra_mc_runs},
-        "versions": {"orchestrator": FINAL_RESEARCH_VERSION, "aave_suite": AAVE_RESEARCH_VERSION, "terra_final": FINAL_PIPELINE_VERSION, "graph": GRAPH_MODEL_VERSION},
+        "versions": {
+            "orchestrator": FINAL_RESEARCH_VERSION,
+            "aave_suite": AAVE_RESEARCH_VERSION,
+            "rq_completion": RQ_COMPLETION_VERSION,
+            "terra_final": FINAL_PIPELINE_VERSION,
+            "graph": GRAPH_MODEL_VERSION,
+        },
+        "regression_comparison": regression_comparison,
         "tests": preflight,
         "limitations": [
             "Terra historical DEX depth and observed LFG defense unavailable.",
@@ -1459,6 +2329,7 @@ def run_full_research_pipeline(
         "documents": len(list(docs_dir.glob("*.md"))),
         "claims": len(claims),
         "quality_gate": gate["all_passed"],
+        "rq_completion_version": RQ_COMPLETION_VERSION,
     }
 
 
