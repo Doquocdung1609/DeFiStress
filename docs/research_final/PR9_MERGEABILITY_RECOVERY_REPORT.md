@@ -1,8 +1,10 @@
 # PR #9 Mergeability Recovery Report
 
-**Date:** 2026-10-14 (Asia/Bangkok)  
-**Scope:** Git integration and scientific-provenance verification only  
-**Decision recommendation:** `PR9_READY_FOR_CONTROLLED_MERGE`  
+**Date:** 2026-10-14 (Asia/Bangkok)
+
+**Scope:** Git integration and scientific-provenance verification only
+
+**Decision recommendation:** `PR9_READY_FOR_CONTROLLED_MERGE`
 **Scientific Content Lock:** not granted by this report
 
 ## 1. Verified GitHub state
@@ -47,7 +49,8 @@ Recovery was performed in a separate temporary worktree. The integration branch 
 git merge --no-ff origin/feat/terra-model-v2 -m "Merge feat/terra-model-v2 into P2 literature branch"
 ```
 
-Merge commit: `7f8d77fc40c3c400f4f64a3146844360c252a044`  
+Merge commit: `7f8d77fc40c3c400f4f64a3146844360c252a044`
+
 Parents: `1e25b713d0ecb83e56a9160691d2320f633c95a7`, `df63fee50e39afd545294039b80a79d39379e394`
 
 The remote P2 head was fetched and compared immediately before push. It still equaled the expected original head, so the merge commit was pushed by ordinary fast-forward update. No rebase, force push, reset, PR merge, draft-state change, or branch-protection bypass was performed.
