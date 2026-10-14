@@ -8,8 +8,9 @@ Nguồn được kiểm duyệt: `26cd58489d726a6c98678c725650020edcc1a3f4`
 
 Implementation commit: `2dbc7d559b7fcc1890aec9c00d8d0476c93928a9`
 
-Artifact bundle commit: cập nhật sau commit artifact; finalization SHA được báo cáo ngoài bundle
-để tránh manifest tự tham chiếu.
+Artifact bundle commit: `6fcda4694d2bee3d646af7c3027caac16e9910e4`
+
+Finalization SHA được báo cáo ngoài bundle để tránh manifest tự tham chiếu.
 
 Word final: **không tạo**.
 

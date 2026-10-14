@@ -1,5 +1,5 @@
 {
-  "artifact_bundle_commit": "PENDING_AFTER_ARTIFACT_COMMIT",
+  "artifact_bundle_commit": "6fcda4694d2bee3d646af7c3027caac16e9910e4",
   "artifact_hashes": {
     "claim_ledger_repair.json": "6e8e70e60b0ea36cdc603b43e0deafc0fa10322f505b30fa6954eb98474c5776",
     "evidence_matrix.json": "fb110d6109680372e7c7247f2b454b8e3accc70d4b455adea689f2fbc7e7fb53",
@@ -44,7 +44,7 @@
     "wave2_eligibility_passed": true
   },
   "report_hashes": {
-    "docs/research_final/LEVEL3_P1_TARGETED_REPAIR_REPORT.md": "dff721d49323c69284be76c58ba08a95bbf035f39d4ed5449c2c5d6605c42a10",
+    "docs/research_final/LEVEL3_P1_TARGETED_REPAIR_REPORT.md": "3ecd64ed4c1187b13acef5c266718e22ee5ce9d676b6238990b8e645637fa5ef",
     "docs/research_final/SCIENTIFIC_VALIDATION_AUDIT.md": "9333cf834e4ab6e315d3a8a685e599d0101523066af0348024b8c2234eec62c6"
   },
   "review_state": "READY_FOR_COMMANDER_RE_REVIEW_NOT_SCIENTIFIC_LOCK",
