@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import json
 import math
 import os
@@ -193,6 +194,93 @@ def _scenario_payload(scenario: Scenario) -> dict[str, Any]:
     }
 
 
+def _stable_sha256(value: Any) -> str:
+    encoded = json.dumps(
+        value, sort_keys=True, separators=(",", ":"), allow_nan=False
+    ).encode()
+    return hashlib.sha256(encoded).hexdigest()
+
+
+def validate_checkpoint_payload(
+    payload: dict[str, Any],
+    *,
+    label: str,
+    seed: int,
+    checkpoint_target: int,
+    scenario: Scenario,
+) -> dict[str, Any]:
+    rows = payload.get("rows")
+    paths = payload.get("cascade_paths")
+    if not isinstance(rows, list) or not isinstance(paths, list):
+        raise ValueError("checkpoint rows/cascade_paths must be lists")
+    expected_scenario = _scenario_payload(scenario)
+    expected_snapshot_hash = sha256_file(CANONICAL_SNAPSHOT)
+    expected = {
+        "label": label,
+        "seed": seed,
+        "target": checkpoint_target,
+        "completed": len(rows),
+        "scenario": expected_scenario,
+        "canonical_snapshot_sha256": expected_snapshot_hash,
+        "model_version": MODEL_VERSION,
+        "scenario_sha256": _stable_sha256(expected_scenario),
+        "rows_sha256": _stable_sha256(rows),
+        "cascade_paths_sha256": _stable_sha256(paths),
+    }
+    for key, value in expected.items():
+        if payload.get(key) != value:
+            raise ValueError(f"checkpoint {key} does not match the requested run")
+    if payload.get("status") != "PASS" or len(rows) != checkpoint_target:
+        raise ValueError("checkpoint is not a completed PASS stage")
+    indices = [int(row["path_index"]) for row in rows]
+    if indices != list(range(checkpoint_target)):
+        raise ValueError("checkpoint path indices are not unique, ordered, and complete")
+    if any(int(row["path_seed"]) != seed + index for index, row in enumerate(rows)):
+        raise ValueError("checkpoint path seeds do not match seed + path_index")
+    return {
+        "validated_path_count": len(rows),
+        "rows_sha256": expected["rows_sha256"],
+        "cascade_paths_sha256": expected["cascade_paths_sha256"],
+        "checkpoint_payload_sha256": _stable_sha256(payload),
+    }
+
+
+def _checkpoint_payload(
+    *,
+    status: str,
+    label: str,
+    seed: int,
+    target: int,
+    scenario: Scenario,
+    rows: list[dict[str, Any]],
+    paths: list[dict[str, Any]],
+    reused_checkpoint_count: int,
+    executed_this_invocation: int,
+    invocation_runtime_seconds: float,
+    historical_execution_duration_seconds: float | None,
+) -> dict[str, Any]:
+    scenario_payload = _scenario_payload(scenario)
+    return {
+        "status": status,
+        "label": label,
+        "seed": seed,
+        "target": target,
+        "completed": len(rows),
+        "scenario": scenario_payload,
+        "canonical_snapshot_sha256": sha256_file(CANONICAL_SNAPSHOT),
+        "model_version": MODEL_VERSION,
+        "scenario_sha256": _stable_sha256(scenario_payload),
+        "rows_sha256": _stable_sha256(rows),
+        "cascade_paths_sha256": _stable_sha256(paths),
+        "reused_checkpoint_count": reused_checkpoint_count,
+        "executed_in_current_invocation": executed_this_invocation,
+        "invocation_runtime_seconds": invocation_runtime_seconds,
+        "historical_execution_duration_seconds": historical_execution_duration_seconds,
+        "rows": rows,
+        "cascade_paths": paths,
+    }
+
+
 def _deterministic_summary(
     name: str,
     scenario: Scenario,
@@ -302,12 +390,15 @@ def summarize_paths(rows: list[dict[str, Any]]) -> dict[str, Any]:
             "p95": float(np.quantile(depths, 0.95)),
             "p99": float(np.quantile(depths, 0.99)),
         },
-        "loss_definition": "modeled uncovered debt + executed liquidated debt; not realized financial loss",
+        "loss_definition": (
+            "modeled uncovered debt + executed liquidated repayment; neither realized "
+            "financial loss nor market Expected Shortfall"
+        ),
         "loss_quantiles": {
             "p50": float(np.quantile(losses, 0.50)),
             "p95": cutoff,
             "p99": float(np.quantile(losses, 0.99)),
-            "expected_shortfall_95": float(np.mean(tail)),
+            "composite_tail_mean_95": float(np.mean(tail)),
         },
         "invariants": {
             "all_finite": all(row["finite_metrics"] for row in rows),
@@ -333,44 +424,91 @@ def _run_mc_stage(
     rows: list[dict[str, Any]] = []
     paths: list[dict[str, Any]] = []
     reused = 0
+    prior_historical_duration: float | None = None
     if checkpoint.exists():
         payload = json.loads(checkpoint.read_text(encoding="utf-8"))
-        rows = payload["rows"]
-        paths = payload["cascade_paths"]
+        validation = validate_checkpoint_payload(
+            payload,
+            label=label,
+            seed=seed,
+            checkpoint_target=target,
+            scenario=base,
+        )
+        rows = list(payload["rows"])
+        paths = list(payload["cascade_paths"])
+        reused = validation["validated_path_count"]
+        prior_historical_duration = payload.get("historical_execution_duration_seconds")
     elif prefix_checkpoint and prefix_checkpoint.exists():
         payload = json.loads(prefix_checkpoint.read_text(encoding="utf-8"))
-        rows = payload["rows"]
-        paths = payload["cascade_paths"]
-        reused = len(rows)
+        prefix_target = int(payload.get("target", -1))
+        validation = validate_checkpoint_payload(
+            payload,
+            label=label,
+            seed=seed,
+            checkpoint_target=prefix_target,
+            scenario=base,
+        )
+        rows = list(payload["rows"])
+        paths = list(payload["cascade_paths"])
+        reused = validation["validated_path_count"]
+        prior_historical_duration = payload.get("historical_execution_duration_seconds")
     if len(rows) > target:
         raise ValueError("checkpoint contains more paths than the target stage")
     draws = monte_carlo_draws(base, seed, target)
     started = time.perf_counter()
-    with ProcessPoolExecutor(
-        max_workers=workers, initializer=_worker_init, initargs=(str(CANONICAL_SNAPSHOT),)
-    ) as executor:
-        for chunk_start in range(len(rows), target, 200):
-            chunk_end = min(target, chunk_start + 200)
-            tasks = [(index, draws[index]) for index in range(chunk_start, chunk_end)]
-            for row, path in executor.map(_worker_run, tasks, chunksize=5):
-                rows.append(row)
-                if path is not None:
-                    paths.append(path)
-            _json(
-                checkpoint,
-                {
-                    "status": "IN_PROGRESS" if len(rows) < target else "PASS",
-                    "label": label,
-                    "seed": seed,
-                    "target": target,
-                    "completed": len(rows),
-                    "reused_prefix_paths": reused,
-                    "scenario": _scenario_payload(base),
-                    "rows": rows,
-                    "cascade_paths": paths,
-                },
+    if len(rows) < target:
+        with ProcessPoolExecutor(
+            max_workers=workers, initializer=_worker_init, initargs=(str(CANONICAL_SNAPSHOT),)
+        ) as executor:
+            for chunk_start in range(len(rows), target, 200):
+                chunk_end = min(target, chunk_start + 200)
+                tasks = [(index, draws[index]) for index in range(chunk_start, chunk_end)]
+                for row, path in executor.map(_worker_run, tasks, chunksize=5):
+                    rows.append(row)
+                    if path is not None:
+                        paths.append(path)
+                invocation_runtime = time.perf_counter() - started
+                historical_duration = (
+                    invocation_runtime
+                    if reused == 0
+                    else (
+                        None
+                        if prior_historical_duration is None
+                        else prior_historical_duration + invocation_runtime
+                    )
+                )
+                _json(
+                    checkpoint,
+                    _checkpoint_payload(
+                        status="IN_PROGRESS" if len(rows) < target else "PASS",
+                        label=label,
+                        seed=seed,
+                        target=target,
+                        scenario=base,
+                        rows=rows,
+                        paths=paths,
+                        reused_checkpoint_count=reused,
+                        executed_this_invocation=len(rows) - reused,
+                        invocation_runtime_seconds=invocation_runtime,
+                        historical_execution_duration_seconds=historical_duration,
+                    ),
+                )
+                print(f"[MC] {label} seed={seed} completed={len(rows)}/{target}", flush=True)
+    invocation_runtime = time.perf_counter() - started
+    executed_this_invocation = len(rows) - reused
+    historical_duration = (
+        prior_historical_duration
+        if executed_this_invocation == 0
+        else (
+            invocation_runtime
+            if reused == 0
+            else (
+                None
+                if prior_historical_duration is None
+                else prior_historical_duration + invocation_runtime
             )
-            print(f"[MC] {label} seed={seed} completed={len(rows)}/{target}", flush=True)
+        )
+    )
     summary = summarize_paths(rows)
     summary.update(
         {
@@ -379,9 +517,11 @@ def _run_mc_stage(
             "seed": seed,
             "target_runs": target,
             "actual_runs": len(rows),
-            "reused_prefix_paths": reused,
-            "new_paths_executed_this_stage": target - reused,
-            "runtime_seconds_this_stage": time.perf_counter() - started,
+            "total_validated_path_count": len(rows),
+            "reused_checkpoint_count": reused,
+            "executed_in_current_invocation": executed_this_invocation,
+            "invocation_runtime_seconds": invocation_runtime,
+            "historical_execution_duration_seconds": historical_duration,
             "checkpoint": checkpoint.as_posix(),
             "workers": workers,
             "scenario": _scenario_payload(base),

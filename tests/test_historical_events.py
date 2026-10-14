@@ -9,8 +9,11 @@ from sim.research.historical_events import (
     classify_linkage,
     cluster_events,
     decode_liquidation_log,
+    decode_transfer_log,
     decode_uniswap_swap,
+    interval_is_covered,
     normalize_amount,
+    reconcile_event_keys,
     select_episodes,
 )
 
@@ -90,10 +93,49 @@ def test_linkage_tiers_are_exact_and_not_causal_by_proximity() -> None:
     direct = {"swap_id": "direct", "tx_hash": "0x01", "block_number": 100, "timestamp": 1_000}
     same_block = {"swap_id": "block", "tx_hash": "0x02", "block_number": 100, "timestamp": 1_001}
     nearby = {"swap_id": "near", "tx_hash": "0x03", "block_number": 101, "timestamp": 1_100}
-    assert classify_linkage(liquidation, [direct, same_block, nearby])["tier"] == "DIRECT_TRANSACTION_LINK"
+    assert (
+        classify_linkage(liquidation, [direct, same_block, nearby])["tier"]
+        == "SAME_TRANSACTION_CO_OCCURRENCE"
+    )
+    assert (
+        classify_linkage(
+            liquidation,
+            [direct, same_block, nearby],
+            verified_transfer_swap_ids=["direct"],
+        )["tier"]
+        == "DIRECT_TRANSFER_PATH_VERIFIED"
+    )
     assert classify_linkage(liquidation, [same_block, nearby])["tier"] == "SAME_BLOCK_ASSOCIATION"
     assert classify_linkage(liquidation, [nearby])["tier"] == "TIME_WINDOW_ASSOCIATION"
     assert classify_linkage(liquidation, [dict(nearby, timestamp=3_000)])["tier"] == "UNLINKED/UNOBSERVABLE"
+
+
+def test_transfer_decode_reconciliation_and_interval_coverage() -> None:
+    transfer = decode_transfer_log(
+        {
+            "address": "0x0000000000000000000000000000000000000011",
+            "topics": [
+                "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+                _topic("0x0000000000000000000000000000000000000022"),
+                _topic("0x0000000000000000000000000000000000000033"),
+            ],
+            "data": hex(123),
+            "logIndex": hex(7),
+        }
+    )
+    assert transfer["amount_raw"] == 123
+    assert transfer["log_index"] == 7
+    discovered = [{"block_number": 10, "tx_hash": "0x01", "log_index": 2}]
+    enumerated = [
+        {"block_number": 10, "tx_hash": "0x01", "log_index": 2},
+        {"block_number": 11, "tx_hash": "0x02", "log_index": 3},
+    ]
+    reconciled = reconcile_event_keys(discovered, enumerated)
+    assert reconciled["matched"] == [(10, "0x01", 2)]
+    assert reconciled["rpc_only"] == [(11, "0x02", 3)]
+    assert reconciled["graph_only"] == []
+    assert interval_is_covered(10, 29, [(20, 29), (10, 19)]) is True
+    assert interval_is_covered(10, 29, [(10, 18), (20, 29)]) is False
 
 
 def test_chain_mixing_and_duplicate_tx_log_are_rejected() -> None:

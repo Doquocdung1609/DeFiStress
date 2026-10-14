@@ -11,8 +11,10 @@ from eth_utils.crypto import keccak
 
 LIQUIDATION_SIGNATURE = "LiquidationCall(address,address,address,uint256,uint256,address,bool)"
 SWAP_SIGNATURE = "Swap(address,address,int256,int256,uint160,uint128,int24)"
+TRANSFER_SIGNATURE = "Transfer(address,address,uint256)"
 LIQUIDATION_TOPIC = "0x" + keccak(text=LIQUIDATION_SIGNATURE).hex()
 SWAP_TOPIC = "0x" + keccak(text=SWAP_SIGNATURE).hex()
+TRANSFER_TOPIC = "0x" + keccak(text=TRANSFER_SIGNATURE).hex()
 
 
 @dataclass(frozen=True, slots=True)
@@ -75,6 +77,20 @@ def decode_uniswap_swap(log: Mapping[str, Any]) -> dict[str, Any]:
     }
 
 
+def decode_transfer_log(log: Mapping[str, Any]) -> dict[str, Any]:
+    topics = list(log.get("topics", []))
+    if len(topics) != 3 or str(topics[0]).lower() != TRANSFER_TOPIC.lower():
+        raise ValueError("log is not an ERC20 Transfer")
+    data = str(log.get("data", "0x0"))
+    return {
+        "token": str(log["address"]).lower(),
+        "from": topic_address(str(topics[1])),
+        "to": topic_address(str(topics[2])),
+        "amount_raw": int(data, 16),
+        "log_index": int(str(log["logIndex"]), 16),
+    }
+
+
 def normalize_amount(raw_amount: int, decimals: int) -> Decimal:
     if decimals < 0 or decimals > 255:
         raise ValueError("token decimals are outside the uint8 domain")
@@ -127,12 +143,25 @@ def select_episodes(
 
 
 def classify_linkage(
-    liquidation: Mapping[str, Any], swaps: Iterable[Mapping[str, Any]]
+    liquidation: Mapping[str, Any],
+    swaps: Iterable[Mapping[str, Any]],
+    *,
+    verified_transfer_swap_ids: Iterable[str] = (),
 ) -> dict[str, Any]:
     swap_rows = list(swaps)
     same_tx = [row for row in swap_rows if row["tx_hash"] == liquidation["tx_hash"]]
     if same_tx:
-        return {"tier": "DIRECT_TRANSACTION_LINK", "matched_swap_ids": [r["swap_id"] for r in same_tx]}
+        verified = set(verified_transfer_swap_ids)
+        direct = [row for row in same_tx if str(row["swap_id"]) in verified]
+        if direct:
+            return {
+                "tier": "DIRECT_TRANSFER_PATH_VERIFIED",
+                "matched_swap_ids": [str(row["swap_id"]) for row in direct],
+            }
+        return {
+            "tier": "SAME_TRANSACTION_CO_OCCURRENCE",
+            "matched_swap_ids": [str(row["swap_id"]) for row in same_tx],
+        }
     same_block = [
         row for row in swap_rows if int(row["block_number"]) == int(liquidation["block_number"])
     ]
@@ -148,6 +177,43 @@ def classify_linkage(
             "nearest_seconds": abs(int(nearest["timestamp"]) - timestamp),
         }
     return {"tier": "UNLINKED/UNOBSERVABLE", "matched_swap_ids": []}
+
+
+def event_key(event: Mapping[str, Any]) -> tuple[int, str, int]:
+    return (
+        int(event["block_number"]),
+        str(event["tx_hash"]).lower(),
+        int(event["log_index"]),
+    )
+
+
+def reconcile_event_keys(
+    discovered: Iterable[Mapping[str, Any]], enumerated: Iterable[Mapping[str, Any]]
+) -> dict[str, list[tuple[int, str, int]]]:
+    discovered_keys = {event_key(event) for event in discovered}
+    enumerated_keys = {event_key(event) for event in enumerated}
+    return {
+        "matched": sorted(discovered_keys & enumerated_keys),
+        "graph_only": sorted(discovered_keys - enumerated_keys),
+        "rpc_only": sorted(enumerated_keys - discovered_keys),
+    }
+
+
+def interval_is_covered(
+    start_block: int, end_block: int, scanned_intervals: Iterable[tuple[int, int]]
+) -> bool:
+    if start_block > end_block:
+        raise ValueError("interval start exceeds end")
+    cursor = start_block
+    for start, end in sorted(scanned_intervals):
+        if end < cursor:
+            continue
+        if start > cursor:
+            return False
+        cursor = max(cursor, end + 1)
+        if cursor > end_block:
+            return True
+    return False
 
 
 def assert_unique_chain_order(events: Iterable[Mapping[str, Any]], chain_id: int = 1) -> None:
@@ -180,14 +246,19 @@ def assert_unique_chain_order(events: Iterable[Mapping[str, Any]], chain_id: int
 __all__ = [
     "LIQUIDATION_TOPIC",
     "SWAP_TOPIC",
+    "TRANSFER_TOPIC",
     "EventCluster",
     "assert_unique_chain_order",
     "classify_linkage",
     "cluster_events",
     "decode_liquidation_log",
+    "decode_transfer_log",
     "decode_uniswap_swap",
+    "event_key",
+    "interval_is_covered",
     "normalize_amount",
     "pseudonymize_address",
     "public_event_id",
+    "reconcile_event_keys",
     "select_episodes",
 ]

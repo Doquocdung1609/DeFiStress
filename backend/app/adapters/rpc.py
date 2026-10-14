@@ -8,6 +8,7 @@ from typing import Any
 import httpx
 
 READ_ONLY_METHODS = {
+    "debug_traceTransaction",
     "eth_blockNumber",
     "eth_call",
     "eth_chainId",
