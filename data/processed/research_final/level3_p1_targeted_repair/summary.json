@@ -1,0 +1,22 @@
+{
+  "canonical_snapshot_sha256": "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99",
+  "census_status": "PASS_WITH_DISCLOSED_DISCREPANCY",
+  "checkpoint_status": "PASS",
+  "commander_review_comment": "issuecomment-6152110805",
+  "control_window_status": "PASS",
+  "fork_status": "UNAVAILABLE_UNCHANGED",
+  "large_research_rerun": false,
+  "linkage_tier_counts": {
+    "DIRECT_TRANSFER_PATH_VERIFIED": 1,
+    "SAME_BLOCK_ASSOCIATION": 23,
+    "SAME_TRANSACTION_CO_OCCURRENCE": 2,
+    "TIME_WINDOW_ASSOCIATION": 1
+  },
+  "locked_level3_bundle_sha256": "8156499175e498e1d80903ff66f07f174b16df7d79a021c922567f35bd436770",
+  "rpc_budget": 18000,
+  "rpc_calls": 8127,
+  "runtime_seconds": 1391.976954400001,
+  "source_head": "26cd58489d726a6c98678c725650020edcc1a3f4",
+  "status": "LIMITED",
+  "wave2_eligibility_status": "PASS"
+}

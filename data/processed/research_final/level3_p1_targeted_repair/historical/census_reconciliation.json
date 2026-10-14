@@ -1,0 +1,49 @@
+{
+  "cache_path": "data/processed/research_final/level3_p1_targeted_repair/historical/census_cache.json.gz",
+  "cache_sha256": "83afa879c7791903c1b7afa4d49a45ae749adf8fc86d0e995435a1c2bc12ebab",
+  "census_execution_status": "PASS",
+  "chunk_size_blocks": 10,
+  "chunks_scanned": 5022,
+  "end_block": 25928919,
+  "end_block_hash": "0xffea1eeb857655999f2906d97141717d005deffe4f938bc2264dba8ed1a0608d",
+  "graph_candidate_count": 27,
+  "graph_only": [],
+  "graph_recall_against_rpc_census": 0.9642857142857143,
+  "interpretation": "The independent Pool log census completed for the full window. Any Graph/RPC discrepancy is retained explicitly; this is not a borrower-state census.",
+  "matched_count": 27,
+  "rpc_census_count": 28,
+  "rpc_only": [
+    [
+      25888740,
+      "0x8f0ab391fcf8c1454f9665460a5d675a0821b4a53e01301c17bc239ac2fcad65",
+      91
+    ]
+  ],
+  "rpc_only_details": [
+    {
+      "block_hash": "0x48cbf8469c771438deb205e4cb7b4e4b529b037a995f3be8254b9d162202bff4",
+      "block_number": 25888740,
+      "borrower_hash": "address-8ec58b106c38d19d",
+      "collateral_asset": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "debt_asset": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "debt_to_cover_raw": 429098605,
+      "liquidated_collateral_raw": 189137810037696670,
+      "liquidator_hash": "address-9b328b0c3cf0ca6c",
+      "log_index": 91,
+      "receipt_status": 1,
+      "receive_a_token": false,
+      "timestamp": 1788341627,
+      "transaction_index": 3,
+      "tx_hash": "0x8f0ab391fcf8c1454f9665460a5d675a0821b4a53e01301c17bc239ac2fcad65"
+    }
+  ],
+  "reconciliation_status": "DISCREPANCY",
+  "scope": "independent full-window Aave V3 Pool LiquidationCall log census",
+  "start_block": 25878705,
+  "start_block_hash": "0x662c360bd4fc0e07275631eab7827ad22cc804c5282fd7190686f8325150bf66",
+  "status": "PASS_WITH_DISCLOSED_DISCREPANCY",
+  "window": {
+    "end_timestamp_exclusive": 1788825600,
+    "start_timestamp": 1788220800
+  }
+}

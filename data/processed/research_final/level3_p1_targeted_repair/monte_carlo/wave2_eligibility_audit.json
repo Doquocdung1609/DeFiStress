@@ -1,0 +1,204 @@
+{
+  "definition": "A wave-2 borrower must have HF >= 1 at the direct-shock reference price and HF < 1 at the post-wave-1/post-arbitrage valuation price used to start wave 2.",
+  "deterministic_case": {
+    "liquidity_haircut_pct": 90,
+    "observed_depth": 2,
+    "shock_pct": -40,
+    "wave2_borrowers": [
+      {
+        "borrower_hash": "borrower-b5c90f007b82",
+        "direct_shock_hf": "1.021171587393778724608068943",
+        "direct_shock_not_eligible": true,
+        "direct_shock_reference_price": "1618.972080564",
+        "event_health_factor_before": "0.9980425716830383710433793144",
+        "event_hf_no_greater_than_wave_start_hf": true,
+        "hf_at_prior_wave_price": "0.9980425716830383710433793144",
+        "newly_eligible_after_prior_wave": true,
+        "prior_wave_post_arbitrage_valuation_price": "1582.303188529721999790257020"
+      }
+    ]
+  },
+  "status": "PASS",
+  "stratified_monte_carlo_cases": [
+    {
+      "all_genuinely_newly_eligible": true,
+      "decile_start": 0,
+      "path_index": 5,
+      "wave2_borrowers": [
+        {
+          "borrower_hash": "borrower-ec4cb7888f79",
+          "direct_shock_hf": "1.004160802020736234993001632",
+          "direct_shock_not_eligible": true,
+          "direct_shock_reference_price": "1820.736500970911595819957464",
+          "event_health_factor_before": "0.9990974834853861473245033068",
+          "event_hf_no_greater_than_wave_start_hf": true,
+          "hf_at_prior_wave_price": "0.9990974834853861473245033068",
+          "newly_eligible_after_prior_wave": true,
+          "prior_wave_post_arbitrage_valuation_price": "1811.555731461882199369188112"
+        }
+      ]
+    },
+    {
+      "all_genuinely_newly_eligible": true,
+      "decile_start": 1000,
+      "path_index": 1060,
+      "wave2_borrowers": [
+        {
+          "borrower_hash": "borrower-ec4cb7888f79",
+          "direct_shock_hf": "1.000875183735337699522357892",
+          "direct_shock_not_eligible": true,
+          "direct_shock_reference_price": "1814.779043630967509618397690",
+          "event_health_factor_before": "0.9958145668754845957095100066",
+          "event_hf_no_greater_than_wave_start_hf": true,
+          "hf_at_prior_wave_price": "0.9958145668754845957095100066",
+          "newly_eligible_after_prior_wave": true,
+          "prior_wave_post_arbitrage_valuation_price": "1805.603172778787930787039917"
+        }
+      ]
+    },
+    {
+      "all_genuinely_newly_eligible": true,
+      "decile_start": 2000,
+      "path_index": 2004,
+      "wave2_borrowers": [
+        {
+          "borrower_hash": "borrower-ec4cb7888f79",
+          "direct_shock_hf": "1.002271638555175856158135808",
+          "direct_shock_not_eligible": true,
+          "direct_shock_reference_price": "1817.311084572338157803811952",
+          "event_health_factor_before": "0.9974345257334695856524150933",
+          "event_hf_no_greater_than_wave_start_hf": true,
+          "hf_at_prior_wave_price": "0.9974345257334695856524150933",
+          "newly_eligible_after_prior_wave": true,
+          "prior_wave_post_arbitrage_valuation_price": "1808.540469491494623361433229"
+        }
+      ]
+    },
+    {
+      "all_genuinely_newly_eligible": true,
+      "decile_start": 3000,
+      "path_index": 3043,
+      "wave2_borrowers": [
+        {
+          "borrower_hash": "borrower-ec4cb7888f79",
+          "direct_shock_hf": "1.002788655263622398662965707",
+          "direct_shock_not_eligible": true,
+          "direct_shock_reference_price": "1818.248535218475823470148114",
+          "event_health_factor_before": "0.9972195675239079348797059097",
+          "event_hf_no_greater_than_wave_start_hf": true,
+          "hf_at_prior_wave_price": "0.9972195675239079348797059097",
+          "newly_eligible_after_prior_wave": true,
+          "prior_wave_post_arbitrage_valuation_price": "1808.150708949612637199004382"
+        }
+      ]
+    },
+    {
+      "all_genuinely_newly_eligible": true,
+      "decile_start": 4000,
+      "path_index": 4078,
+      "wave2_borrowers": [
+        {
+          "borrower_hash": "borrower-ec4cb7888f79",
+          "direct_shock_hf": "1.003567635985587572053235005",
+          "direct_shock_not_eligible": true,
+          "direct_shock_reference_price": "1819.660976962049653603043078",
+          "event_health_factor_before": "0.9988136280798984235763773684",
+          "event_hf_no_greater_than_wave_start_hf": true,
+          "hf_at_prior_wave_price": "0.9988136280798984235763773684",
+          "newly_eligible_after_prior_wave": true,
+          "prior_wave_post_arbitrage_valuation_price": "1811.041047063995570034066842"
+        }
+      ]
+    },
+    {
+      "all_genuinely_newly_eligible": true,
+      "decile_start": 5000,
+      "path_index": 5044,
+      "wave2_borrowers": [
+        {
+          "borrower_hash": "borrower-ec4cb7888f79",
+          "direct_shock_hf": "1.003060260256100444782842223",
+          "direct_shock_not_eligible": true,
+          "direct_shock_reference_price": "1818.741007263446661158522726",
+          "event_health_factor_before": "0.9969833054662237997516095310",
+          "event_hf_no_greater_than_wave_start_hf": true,
+          "hf_at_prior_wave_price": "0.9969833054662237997516095310",
+          "newly_eligible_after_prior_wave": true,
+          "prior_wave_post_arbitrage_valuation_price": "1807.722320437180823807773269"
+        }
+      ]
+    },
+    {
+      "all_genuinely_newly_eligible": true,
+      "decile_start": 6000,
+      "path_index": 6016,
+      "wave2_borrowers": [
+        {
+          "borrower_hash": "borrower-ec4cb7888f79",
+          "direct_shock_hf": "1.004427383377149135058903559",
+          "direct_shock_not_eligible": true,
+          "direct_shock_reference_price": "1821.219864198317558652532038",
+          "event_health_factor_before": "0.9994009556307164056871131584",
+          "event_hf_no_greater_than_wave_start_hf": true,
+          "hf_at_prior_wave_price": "0.9994009556307164056871131584",
+          "newly_eligible_after_prior_wave": true,
+          "prior_wave_post_arbitrage_valuation_price": "1812.105984778800001542129546"
+        }
+      ]
+    },
+    {
+      "all_genuinely_newly_eligible": true,
+      "decile_start": 7000,
+      "path_index": 7044,
+      "wave2_borrowers": [
+        {
+          "borrower_hash": "borrower-ec4cb7888f79",
+          "direct_shock_hf": "1.002105650451577103919510985",
+          "direct_shock_not_eligible": true,
+          "direct_shock_reference_price": "1817.010116243021765726728104",
+          "event_health_factor_before": "0.9978501016936316751739623502",
+          "event_hf_no_greater_than_wave_start_hf": true,
+          "hf_at_prior_wave_price": "0.9978501016936316751739623502",
+          "newly_eligible_after_prior_wave": true,
+          "prior_wave_post_arbitrage_valuation_price": "1809.293988567394107314984775"
+        }
+      ]
+    },
+    {
+      "all_genuinely_newly_eligible": true,
+      "decile_start": 8000,
+      "path_index": 8005,
+      "wave2_borrowers": [
+        {
+          "borrower_hash": "borrower-ec4cb7888f79",
+          "direct_shock_hf": "1.001015707324178068320986895",
+          "direct_shock_not_eligible": true,
+          "direct_shock_reference_price": "1815.033839901578961559611370",
+          "event_health_factor_before": "0.9966201401867794976465485014",
+          "event_hf_no_greater_than_wave_start_hf": true,
+          "hf_at_prior_wave_price": "0.9966201401867794976465485014",
+          "newly_eligible_after_prior_wave": true,
+          "prior_wave_post_arbitrage_valuation_price": "1807.063831997043636128853833"
+        }
+      ]
+    },
+    {
+      "all_genuinely_newly_eligible": true,
+      "decile_start": 9000,
+      "path_index": 9069,
+      "wave2_borrowers": [
+        {
+          "borrower_hash": "borrower-ec4cb7888f79",
+          "direct_shock_hf": "1.003526985493579974419008446",
+          "direct_shock_not_eligible": true,
+          "direct_shock_reference_price": "1819.587269808343079309620316",
+          "event_health_factor_before": "0.9988880916186466133820406428",
+          "event_hf_no_greater_than_wave_start_hf": true,
+          "hf_at_prior_wave_price": "0.9988880916186466133820406428",
+          "newly_eligible_after_prior_wave": true,
+          "prior_wave_post_arbitrage_valuation_price": "1811.176063769205988378207916"
+        }
+      ]
+    }
+  ]
+}

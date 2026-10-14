@@ -1,0 +1,33 @@
+{
+  "causal_boundary": "Receipt routes and temporal associations do not prove endogenous historical contagion.",
+  "gates": [
+    {
+      "gate": "full-window Pool log census",
+      "status": "PASS_WITH_DISCLOSED_DISCREPANCY"
+    },
+    {
+      "gate": "receipt transfer-route semantics",
+      "status": "PASS"
+    },
+    {
+      "gate": "exact control-window completeness",
+      "status": "PASS"
+    },
+    {
+      "gate": "checkpoint provenance",
+      "status": "PASS"
+    },
+    {
+      "gate": "wave-2 newly eligible semantics",
+      "status": "PASS"
+    },
+    {
+      "gate": "local Mainnet fork transactions",
+      "status": "UNAVAILABLE"
+    }
+  ],
+  "historical_claim_boundary": "Historical clusters are timestamp groupings and are not modeled newly-eligible waves.",
+  "loss_boundary": "Uncovered debt + liquidated repayment is a composite model output, not realized economic loss and not market Expected Shortfall.",
+  "status": "LIMITED",
+  "tail_boundary": "90%/95% liquidity haircuts are unobserved counterfactual tails."
+}

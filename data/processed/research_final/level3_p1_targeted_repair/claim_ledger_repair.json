@@ -1,0 +1,21 @@
+{
+  "corrections": [
+    {
+      "new": "Only an exact ordered collateral Transfer path is direct; otherwise SAME_TRANSACTION_CO_OCCURRENCE.",
+      "old": "Any same-transaction Uniswap swap was DIRECT_TRANSACTION_LINK."
+    },
+    {
+      "new": "Graph candidates are reported separately from an independent Pool log census.",
+      "old": "27/27 candidate verification implied full-week completeness."
+    },
+    {
+      "new": "Validated/reused/executed-now counts are separate; legacy historical duration is unavailable.",
+      "old": "10k restored checkpoint runtime could be read as execution duration."
+    },
+    {
+      "new": "It is a composite modeled tail mean, not realized loss or market ES.",
+      "old": "Composite tail mean was labeled Expected Shortfall."
+    }
+  ],
+  "status": "PASS"
+}
