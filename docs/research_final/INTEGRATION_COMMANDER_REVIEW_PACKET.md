@@ -5,8 +5,8 @@
 ## Provenance
 
 - Starting HEAD: `3011ba5e8cd23ee697c36d0aec6d047d8d58f653`.
-- Source/artifact commit: `c113fc190ed9eb1c9244bbf8e84e68176738ea95`.
-- Artifact bundle commit: `c113fc190ed9eb1c9244bbf8e84e68176738ea95`.
+- Source/artifact commit: `c113fc1ec6dd98ffcc31241c1dbd1a93b20aa193`.
+- Artifact bundle commit: `c113fc1ec6dd98ffcc31241c1dbd1a93b20aa193`.
 - Dependency PR #11: DRAFT/OPEN, accepted `SCIENTIFIC_PASS_WITH_LIMITATIONS` for targeted diagnostic.
 - P2 PR #9: DRAFT/OPEN @ `8f5b635a316d72546b8a0eb0c2e8a66503b5d44f`; oracle reconciliation delta do Work quản lý còn mở.
 
