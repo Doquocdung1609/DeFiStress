@@ -1,0 +1,153 @@
+{
+  "sample_rows": [
+    {
+      "exact_match": true,
+      "path_index": 0,
+      "reproduced_row_sha256": "c35062ad3dc3035e149e1e6945aaed16affba2537723eb47d9e5eb6f870b358a",
+      "selection": "fixed_decile_boundary",
+      "stored_row_sha256": "c35062ad3dc3035e149e1e6945aaed16affba2537723eb47d9e5eb6f870b358a"
+    },
+    {
+      "exact_match": true,
+      "path_index": 5,
+      "reproduced_row_sha256": "cea83acbc9540761959d943b6282a354dbde278a9f3a33adffacafb7e3a75822",
+      "selection": "first_depth2_in_decile",
+      "stored_row_sha256": "cea83acbc9540761959d943b6282a354dbde278a9f3a33adffacafb7e3a75822"
+    },
+    {
+      "exact_match": true,
+      "path_index": 1000,
+      "reproduced_row_sha256": "7f7298f415fc5eec168c532de539d14e49cf13254e5b5a43a7bf8482b5b47407",
+      "selection": "fixed_decile_boundary",
+      "stored_row_sha256": "7f7298f415fc5eec168c532de539d14e49cf13254e5b5a43a7bf8482b5b47407"
+    },
+    {
+      "exact_match": true,
+      "path_index": 1060,
+      "reproduced_row_sha256": "ea6ddd53f1c0b213ccce2fefe481547aacd2e76cda9d3da1788d5502e91acbd1",
+      "selection": "first_depth2_in_decile",
+      "stored_row_sha256": "ea6ddd53f1c0b213ccce2fefe481547aacd2e76cda9d3da1788d5502e91acbd1"
+    },
+    {
+      "exact_match": true,
+      "path_index": 2000,
+      "reproduced_row_sha256": "a1572dae63d15cee6c21424955c82711a9e2d6299ec45ab93aef7893d7e43567",
+      "selection": "fixed_decile_boundary",
+      "stored_row_sha256": "a1572dae63d15cee6c21424955c82711a9e2d6299ec45ab93aef7893d7e43567"
+    },
+    {
+      "exact_match": true,
+      "path_index": 2004,
+      "reproduced_row_sha256": "3635547a5965c2cd3ff7f5ee8514c76ceac412ac44cfe8e5f9d8ac06bf2ee5d0",
+      "selection": "first_depth2_in_decile",
+      "stored_row_sha256": "3635547a5965c2cd3ff7f5ee8514c76ceac412ac44cfe8e5f9d8ac06bf2ee5d0"
+    },
+    {
+      "exact_match": true,
+      "path_index": 3000,
+      "reproduced_row_sha256": "c94a9d076777ac8f39710e0c4119feeb7be8cad5dba6151e4f1e5871828b77dd",
+      "selection": "fixed_decile_boundary",
+      "stored_row_sha256": "c94a9d076777ac8f39710e0c4119feeb7be8cad5dba6151e4f1e5871828b77dd"
+    },
+    {
+      "exact_match": true,
+      "path_index": 3043,
+      "reproduced_row_sha256": "f07b3c149c619cb08f20907aa8e4038f710d1ce8c158e8b98332be35127be159",
+      "selection": "first_depth2_in_decile",
+      "stored_row_sha256": "f07b3c149c619cb08f20907aa8e4038f710d1ce8c158e8b98332be35127be159"
+    },
+    {
+      "exact_match": true,
+      "path_index": 4000,
+      "reproduced_row_sha256": "bf17464e3b904cd6f7ca6c48f7f12cff41e9071b2d6efe55b55cc77f522b3292",
+      "selection": "fixed_decile_boundary",
+      "stored_row_sha256": "bf17464e3b904cd6f7ca6c48f7f12cff41e9071b2d6efe55b55cc77f522b3292"
+    },
+    {
+      "exact_match": true,
+      "path_index": 4078,
+      "reproduced_row_sha256": "4a688dbe40775e4f45bc8e4a526bf54d43125da45ceda91b345e62cb12535a92",
+      "selection": "first_depth2_in_decile",
+      "stored_row_sha256": "4a688dbe40775e4f45bc8e4a526bf54d43125da45ceda91b345e62cb12535a92"
+    },
+    {
+      "exact_match": true,
+      "path_index": 5000,
+      "reproduced_row_sha256": "c35705c0b57e40f55b338029f2782dca28e2d7c2686b071616679650f03531ad",
+      "selection": "fixed_decile_boundary",
+      "stored_row_sha256": "c35705c0b57e40f55b338029f2782dca28e2d7c2686b071616679650f03531ad"
+    },
+    {
+      "exact_match": true,
+      "path_index": 5044,
+      "reproduced_row_sha256": "7ae5cd3ab4dd1b886644f6e255b7f23be933605a8aa1b2c91058e6d0ba89ede1",
+      "selection": "first_depth2_in_decile",
+      "stored_row_sha256": "7ae5cd3ab4dd1b886644f6e255b7f23be933605a8aa1b2c91058e6d0ba89ede1"
+    },
+    {
+      "exact_match": true,
+      "path_index": 6000,
+      "reproduced_row_sha256": "c871534705d17b41c97e27763c80ba889948fc6274733c66d11b28af36cbb922",
+      "selection": "fixed_decile_boundary",
+      "stored_row_sha256": "c871534705d17b41c97e27763c80ba889948fc6274733c66d11b28af36cbb922"
+    },
+    {
+      "exact_match": true,
+      "path_index": 6016,
+      "reproduced_row_sha256": "f118a6c43776d1baaf08b09f1d837716afb36a8be4dcf793e565f8650be1c3b3",
+      "selection": "first_depth2_in_decile",
+      "stored_row_sha256": "f118a6c43776d1baaf08b09f1d837716afb36a8be4dcf793e565f8650be1c3b3"
+    },
+    {
+      "exact_match": true,
+      "path_index": 7000,
+      "reproduced_row_sha256": "9872c0beeba6b89b0cebf1e83e1735417fa82b172901da4993b1dd9cc8b8d9ea",
+      "selection": "fixed_decile_boundary",
+      "stored_row_sha256": "9872c0beeba6b89b0cebf1e83e1735417fa82b172901da4993b1dd9cc8b8d9ea"
+    },
+    {
+      "exact_match": true,
+      "path_index": 7044,
+      "reproduced_row_sha256": "32b5960318611b6f2c2eaf1c03edc4bc446fc57c76d34dbcd93e11ccd080fbdd",
+      "selection": "first_depth2_in_decile",
+      "stored_row_sha256": "32b5960318611b6f2c2eaf1c03edc4bc446fc57c76d34dbcd93e11ccd080fbdd"
+    },
+    {
+      "exact_match": true,
+      "path_index": 8000,
+      "reproduced_row_sha256": "e0c39c5d31ca93a46efdda62f9b7927482dcb7c5443402836d1ca02e58f0b08d",
+      "selection": "fixed_decile_boundary",
+      "stored_row_sha256": "e0c39c5d31ca93a46efdda62f9b7927482dcb7c5443402836d1ca02e58f0b08d"
+    },
+    {
+      "exact_match": true,
+      "path_index": 8005,
+      "reproduced_row_sha256": "f7cc9bfbb8941de784cd9c80b8ea06bfc1213abe1e05e52f66d45d8c51e3f4ba",
+      "selection": "first_depth2_in_decile",
+      "stored_row_sha256": "f7cc9bfbb8941de784cd9c80b8ea06bfc1213abe1e05e52f66d45d8c51e3f4ba"
+    },
+    {
+      "exact_match": true,
+      "path_index": 9000,
+      "reproduced_row_sha256": "0909433d302045e00d98a77be364c39407834f572a5a1d1171a7198669d1b1ec",
+      "selection": "fixed_decile_boundary",
+      "stored_row_sha256": "0909433d302045e00d98a77be364c39407834f572a5a1d1171a7198669d1b1ec"
+    },
+    {
+      "exact_match": true,
+      "path_index": 9069,
+      "reproduced_row_sha256": "f0ccd486f62e7de1dd6a19f2b800424b703c5696f96e35739578cf245e86b795",
+      "selection": "first_depth2_in_decile",
+      "stored_row_sha256": "f0ccd486f62e7de1dd6a19f2b800424b703c5696f96e35739578cf245e86b795"
+    },
+    {
+      "exact_match": true,
+      "path_index": 9999,
+      "reproduced_row_sha256": "fb17268a57953d699d28d7416b220a4eaa9eb12de81eb998808d3ad6381ae627",
+      "selection": "fixed_decile_boundary",
+      "stored_row_sha256": "fb17268a57953d699d28d7416b220a4eaa9eb12de81eb998808d3ad6381ae627"
+    }
+  ],
+  "sampling_rule": "Fixed 1,000-index boundaries plus the first depth>=2 path in each 1,000-index stratum; selected without optimizing any metric.",
+  "status": "PASS"
+}

@@ -1,0 +1,145 @@
+{
+  "artifact_bundle_commit": "4778146ba28a789de52dff624b6fd3cc29f45a8a",
+  "artifact_hashes": {
+    "baseline_reproduction.json": "b1f525d288e56ea21280efc8103d8f523b5fb9390aa12e4521a5f61f801a46bc",
+    "borrower_level_evidence.csv": "e7513d4adc760915c2a87cad44bba98b5294f91aa2d874c6d34e21a175c6e86b",
+    "comparison_matrix.csv": "dd134d792c3b9c8a155a752d6849c17a31c19b65716c4021c2532db426138156",
+    "comparison_matrix.json": "62579be5a304eece1ffc6f785dae99309d96654d798317cf8ecefcf23d960f08",
+    "deterministic_depth2_comparison.csv": "11daafd2dbdcfeddacff73e0e5f854bfc7e291d7c678087afa2ceed6db4478ed",
+    "monte_carlo_path_comparison.csv": "01b8d9ed80e28fd5c61221f837c14be871e061f3fd7e00a55909025a340c64b4",
+    "policy_summary.csv": "e0787d689b9fcc4bd1ce937c0b71226424201d831ea593b5a70d7efb98842424",
+    "regression_report.json": "1c194835d828e0744fe3bbd6ea6831ffd1fe516126b1ac9cb5f0b7777a8a4ef7",
+    "result_summary.json": "b9e4050be92a6063db6b50eb840fbfe09ecaf4a9105adec2f4f1b7fc558b4500",
+    "scientific_interpretation.json": "ee5ca1a27638f3900f1651b37033e852bb57d6e41b4f580633a318e1d472fc66",
+    "selection_manifest.json": "3eb4bd1c2404abfb1a4a2cd402d06d70a971e781b279c599be66438c5e5d253d",
+    "test_evidence.json": "40ae661a3edc1d3e967382353688138443d982be92d06a7cd129960a61c67cd7"
+  },
+  "counts": {
+    "audited_monte_carlo_paths": 10,
+    "borrower_policy_case_rows": 32688,
+    "deterministic_controls": 4,
+    "deterministic_depth2": 4,
+    "policies": 4,
+    "policy_case_results": 72,
+    "snapshot_weth_usdc_target_cohort": 109,
+    "verified_borrowers_per_case_policy": 454
+  },
+  "external_empirical_oracle_inference": "NOT_ESTABLISHED",
+  "findings": {
+    "A_ADVERSE_PASS_THROUGH": {
+      "audited_mc_paths_retaining_depth2": 10,
+      "deterministic_depth2_cases_retaining_depth2": 4,
+      "newly_eligible_borrower_case_instances": 35
+    },
+    "B_REFERENCE_ONLY": {
+      "audited_mc_paths_retaining_depth2": 0,
+      "deterministic_depth2_cases_retaining_depth2": 0,
+      "newly_eligible_borrower_case_instances": 0
+    },
+    "C_MODERATE_LAGGED_SMOOTHED_PROXY": {
+      "audited_mc_paths_retaining_depth2": 2,
+      "deterministic_depth2_cases_retaining_depth2": 0,
+      "newly_eligible_borrower_case_instances": 11
+    },
+    "C_WEAK_LAGGED_SMOOTHED_PROXY": {
+      "audited_mc_paths_retaining_depth2": 0,
+      "deterministic_depth2_cases_retaining_depth2": 0,
+      "newly_eligible_borrower_case_instances": 6
+    }
+  },
+  "generated_on": "2026-10-14",
+  "input_hashes": {
+    "canonical_snapshot": "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99",
+    "frozen_v3_manifest": "0ee158ad67cd16a009a6d064960619fd03ab93657d12fa25f4b860e351157613",
+    "level3_deterministic_grid": "fe784f084cdc8b8f2fef25a40d4a6937fb6a907d9054bf4e2c37aed198bac9cc",
+    "level3_severe_10000_checkpoint": "a3d6b33d7d9c7fafa56c962f64799f586aec5b7746d556fe9fee7ed691125a53",
+    "targeted_repair_checkpoint_validation": "b3eb68e74ef96c3f76fa56654b72274428741d88f4815710b77abc11f1d6cb5a",
+    "targeted_repair_wave2_audit": "cbc434554f05da6dafa9df17fad4680923d5db8e8e94cea24fd7fbd97d7582a1"
+  },
+  "large_monte_carlo_rerun": false,
+  "mainnet_transactions": false,
+  "policy_a_gate": {
+    "deterministic_rows": 8,
+    "monte_carlo_rows": 10,
+    "status": "PASS",
+    "tolerances": {
+      "deterministic_absolute": "1E-9",
+      "deterministic_relative": "1E-12",
+      "monte_carlo": "exact serialized row equality"
+    }
+  },
+  "quality_gate": {
+    "all_numeric_finite": true,
+    "canonical_snapshot_hash_unchanged": true,
+    "common_post_wave1_dex_state_across_policies": true,
+    "deterministic_repeat_match": true,
+    "frozen_v3_hash_unchanged": true,
+    "later_wave_not_directly_eligible": true,
+    "no_duplicate_liquidated_borrower": true,
+    "no_large_monte_carlo_rerun": true,
+    "no_nonfinite_artifact_values": true,
+    "no_raw_wallet_addresses": true,
+    "policy_a_reproduced": true,
+    "selection_locked_before_b_c": true
+  },
+  "report_hashes": {
+    "docs/research_final/ORACLE_TRANSMISSION_DIAGNOSTIC_v1.md": "320bfe4e899bac15a6996eaadb64b1ee92c0c2f44735562a1d2953dd6b72a32d"
+  },
+  "reproduction_commands": [
+    ".\\.venv\\Scripts\\python.exe .\\scripts\\research\\run_oracle_transmission_diagnostic.py --phase a",
+    ".\\.venv\\Scripts\\python.exe .\\scripts\\research\\run_oracle_transmission_diagnostic.py --phase bc",
+    ".\\.venv\\Scripts\\python.exe .\\scripts\\research\\build_oracle_diagnostic_bundle.py"
+  ],
+  "schema_version": "oracle-transmission-diagnostic-v1.0",
+  "scientific_content_lock_declared": false,
+  "scientific_pass_declared": false,
+  "selection_lock_commit": "a2c37e3d513054131083b791a05f8b50047925fd",
+  "source_code_commit": "4778146ba28a789de52dff624b6fd3cc29f45a8a",
+  "starting_head": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+  "status": "LIMITED_TARGETED_MODEL_DIAGNOSTIC — AWAITING_COMMANDER_REVIEW",
+  "target_integration_branch": "feat/terra-model-v2",
+  "test_evidence": {
+    "commands": [
+      {
+        "command": ".\\.venv\\Scripts\\python.exe scripts/research/run_oracle_transmission_diagnostic.py --phase a",
+        "result": "8/8 deterministic and 10/10 audited Monte Carlo rows reproduced",
+        "status": "PASS"
+      },
+      {
+        "command": ".\\.venv\\Scripts\\python.exe scripts/research/run_oracle_transmission_diagnostic.py --phase bc",
+        "result": "72 policy-case results; 144 identical primary/repeat simulation executions",
+        "status": "PASS"
+      },
+      {
+        "command": ".\\.venv\\Scripts\\python.exe -m pytest sim/tests/test_oracle_policy.py tests/test_oracle_diagnostic_artifacts.py -q",
+        "result": "9 passed",
+        "status": "PASS"
+      },
+      {
+        "command": ".\\.venv\\Scripts\\python.exe -m pytest",
+        "result": "175 passed, 3 dependency deprecation warnings",
+        "status": "PASS"
+      },
+      {
+        "command": ".\\.venv\\Scripts\\python.exe -m ruff check .",
+        "result": "all checks passed",
+        "status": "PASS"
+      },
+      {
+        "command": ".\\.venv\\Scripts\\python.exe -m mypy sim",
+        "result": "no issues in 49 source files",
+        "status": "PASS"
+      }
+    ],
+    "frontend": {
+      "reason": "No frontend files or interfaces changed.",
+      "status": "NOT_RUN_NOT_AFFECTED"
+    },
+    "status": "PASS",
+    "warnings": [
+      "websockets.legacy deprecation warning from installed dependency",
+      "Starlette/httpx TestClient deprecation warning from installed dependency",
+      "anyio BlockingPortal alias deprecation warning from installed dependency"
+    ]
+  }
+}

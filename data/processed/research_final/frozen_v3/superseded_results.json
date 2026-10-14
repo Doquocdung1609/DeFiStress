@@ -1,0 +1,39 @@
+{
+  "items": [
+    {
+      "old": "27 events as complete weekly set",
+      "reason": "independent Pool census found one Graph omission",
+      "replacement": "28 RPC-census events; 27 Graph-matched"
+    },
+    {
+      "old": "3 DIRECT_TRANSACTION_LINK",
+      "reason": "ordered exact-amount transfer audit",
+      "replacement": "1 direct transfer path + 2 same-transaction co-occurrences"
+    },
+    {
+      "old": "no Wave 2 in all experiments",
+      "reason": "extended prespecified tail grid",
+      "replacement": "no Wave 2 in 32-cell P0 grid; four depth-2 cells in 60-cell grid"
+    },
+    {
+      "old": "max_price_impact as a single ambiguous metric",
+      "reason": "P0 metric-semantics correction",
+      "replacement": "max_intrawave_liquidation_price_impact and max_post_arbitrage_spread"
+    },
+    {
+      "old": "reaction delay reported as recovery",
+      "reason": "P0 timing-semantics correction",
+      "replacement": "position-processing delay separated from threshold-based recovery"
+    },
+    {
+      "old": "unliquidated debt under recorded LT during LT override",
+      "reason": "P0 LT override correction",
+      "replacement": "scenario-LT unliquidated debt"
+    }
+  ],
+  "preserved_versioned_reports": [
+    "docs/research_final/LEVEL3_HISTORICAL_EVENT_STUDY.md",
+    "docs/research_final/LEVEL3_COMMANDER_REVIEW_PACKET.md"
+  ],
+  "rule": "Superseded means excluded from current synthesis, not deleted."
+}

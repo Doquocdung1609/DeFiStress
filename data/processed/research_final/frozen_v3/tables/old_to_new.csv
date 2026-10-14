@@ -1,0 +1,7 @@
+old,replacement,reason
+27 events as complete weekly set,28 RPC-census events; 27 Graph-matched,independent Pool census found one Graph omission
+3 DIRECT_TRANSACTION_LINK,1 direct transfer path + 2 same-transaction co-occurrences,ordered exact-amount transfer audit
+no Wave 2 in all experiments,no Wave 2 in 32-cell P0 grid; four depth-2 cells in 60-cell grid,extended prespecified tail grid
+max_price_impact as a single ambiguous metric,max_intrawave_liquidation_price_impact and max_post_arbitrage_spread,P0 metric-semantics correction
+reaction delay reported as recovery,position-processing delay separated from threshold-based recovery,P0 timing-semantics correction
+unliquidated debt under recorded LT during LT override,scenario-LT unliquidated debt,P0 LT override correction

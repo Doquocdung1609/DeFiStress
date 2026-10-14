@@ -1,0 +1,30 @@
+{
+  "rule": "For a duplicated metric, use the highest applicable rank; preserved lower versions remain audit evidence.",
+  "versions": [
+    {
+      "rank": 1,
+      "role": "locked raw/canonical evidence",
+      "version": "Original"
+    },
+    {
+      "rank": 2,
+      "role": "corrected numerical semantics and RQ sweeps",
+      "version": "P0 corrected v2"
+    },
+    {
+      "rank": 3,
+      "role": "extended 60-cell/13k-path/historical evidence",
+      "version": "Level-3"
+    },
+    {
+      "rank": 4,
+      "role": "28-event census, tier repair, checkpoint audit",
+      "version": "Level-3 targeted repair"
+    },
+    {
+      "rank": 5,
+      "role": "registry and synthesis only; no model retuning",
+      "version": "Frozen v3"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "checks": {
+    "all_claim_evidence_ids_resolve": true,
+    "all_claim_figure_ids_resolve": true,
+    "all_claim_result_ids_resolve": true,
+    "all_claim_table_ids_resolve": true,
+    "all_values_finite": true,
+    "canonical_snapshot_hash_locked": true,
+    "extended_60_cell_grid_verified": true,
+    "historical_28_vs_27_reconciled": true,
+    "historical_tiers_repaired": true,
+    "literature_files_reserved_for_p2": true,
+    "no_large_research_rerun": true,
+    "original_32_cell_grid_preserved": true,
+    "severe_10k_checkpoint_verified_without_rerun": true,
+    "terra_negative_findings_retained": true,
+    "unique_result_ids": true
+  },
+  "counts": {
+    "claims": 9,
+    "figures": 4,
+    "research_questions": 6,
+    "results": 41,
+    "tables": 12
+  },
+  "large_research_rerun": false,
+  "p2_citation_reconciliation": "PENDING_COMMANDER_APPROVAL_AND_MERGE_OF_PR_9_MINIMAL_DELTA",
+  "scientific_content_lock_declared": false,
+  "status": "P1_NUMERICAL_READY — AWAITING_P2_CITATION_RECONCILIATION"
+}

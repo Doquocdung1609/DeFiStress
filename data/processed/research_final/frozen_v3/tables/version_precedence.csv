@@ -1,0 +1,6 @@
+rank,version,role
+1,Original,locked raw/canonical evidence
+2,P0 corrected v2,corrected numerical semantics and RQ sweeps
+3,Level-3,extended 60-cell/13k-path/historical evidence
+4,Level-3 targeted repair,"28-event census, tier repair, checkpoint audit"
+5,Frozen v3,registry and synthesis only; no model retuning

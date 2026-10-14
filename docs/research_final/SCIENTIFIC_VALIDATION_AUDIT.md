@@ -11,6 +11,15 @@ Canonical evidence policy: preserved; corrected results are versioned under
 > các metric chịu ảnh hưởng hiện được thay thế bởi `corrected_run_v2`. Phần cập nhật tiếng Việt bên
 > dưới có quyền ưu tiên nếu khác với diễn giải v1 trước đó.
 
+> **Cập nhật Level-3 ngày 2026-10-14:** extension tại
+> `data/processed/research_final/level3_extension/` giữ nguyên canonical và cả hai corrected runs.
+> Cửa sổ lịch sử 01–07/09/2026 UTC có 27/27 Aave V3 liquidation events được RPC xác minh:
+> 3 direct transaction links, 23 same-block associations và 1 time-window association. Đây là
+> bằng chứng có tier, không phải causal proof. Deep study chạy cap 12/24/48/100 và Severe 10.000
+> paths; maximum observed depth chỉ là 2, với 280/10.000 depth≥2 và 0 depth≥3. Local fork vẫn
+> `UNAVAILABLE` vì thiếu Foundry/Anvil. Xem `LEVEL3_COMMANDER_REVIEW_PACKET.md`; Commander sign-off
+> và scientific lock vẫn PENDING.
+
 ## Cập nhật P0 theo Commander Review
 
 **Kết quả executor: PASS — VERIFIED; còn chờ Commander sign-off độc lập.** Không thay canonical
@@ -368,3 +377,28 @@ unavailable prerequisites. API keys and raw borrower addresses are excluded.
 
 Final verification: 132 pytest tests passed (three dependency deprecation warnings), Ruff passed,
 mypy strict validation of the `sim` package passed, and all ten research quality-gate checks passed.
+
+## 11. Level-3 P1 Commander repair addendum
+
+The Commander review in Issue #10 required a more conservative historical-linkage definition and
+independent validation of the Monte Carlo checkpoints. The versioned repair evidence is documented
+in `docs/research_final/LEVEL3_P1_TARGETED_REPAIR_REPORT.md` and
+`data/processed/research_final/level3_p1_targeted_repair/`.
+
+This addendum supersedes two Level-3 presentation claims without altering the locked artifacts:
+
+- `27/27` means 27 Graph candidates matched RPC. An independent full-window Aave Pool log census
+  found 28 events, including one Graph omission; it is therefore not valid to call the Graph result a
+  complete weekly census.
+- Only one of the three previous same-transaction cases has an exact ordered WETH Transfer path into
+  the matched Uniswap pool. The other two are `SAME_TRANSACTION_CO_OCCURRENCE`, not direct paths.
+
+Checkpoint validation confirms 13,000 independent batch identities, exact reproduction of 21 sampled
+rows, and genuine wave-2 newly eligible HF transitions in one deterministic depth-2 path and ten
+stratified Monte Carlo paths. The legacy 10,000-path execution duration was not embedded and remains
+unavailable; checkpoint restore time must not be reported as simulation execution time.
+
+Status remains **LIMITED — REPORT WITH CAVEAT** pending Commander re-review. Mainnet fork execution
+remains unavailable, 90%/95% liquidity haircuts remain unobserved counterfactual tails, and the
+composite uncovered-debt-plus-repayment quantity is neither realized loss nor market Expected
+Shortfall.

@@ -1,0 +1,4 @@
+causal_claim_permitted,event_count,evidence_tier
+True,3,DIRECT_TRANSACTION_LINK
+False,23,SAME_BLOCK_ASSOCIATION
+False,1,TIME_WINDOW_ASSOCIATION

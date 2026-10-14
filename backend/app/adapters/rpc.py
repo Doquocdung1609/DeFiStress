@@ -2,16 +2,20 @@ from __future__ import annotations
 
 import time
 from dataclasses import dataclass
+from threading import Lock
 from typing import Any
 
 import httpx
 
 READ_ONLY_METHODS = {
+    "debug_traceTransaction",
     "eth_blockNumber",
     "eth_call",
     "eth_chainId",
     "eth_getBlockByNumber",
     "eth_getLogs",
+    "eth_getTransactionByHash",
+    "eth_getTransactionReceipt",
     "net_version",
 }
 
@@ -38,16 +42,19 @@ class ReadOnlyRpcClient:
         self.url = url
         self.timeout = timeout
         self._id = 0
+        self._id_lock = Lock()
 
     def call(self, method: str, params: list[Any] | None = None) -> Any:
         if method not in READ_ONLY_METHODS:
             raise ValueError(f"RPC method is not permitted by read-only policy: {method}")
         if not self.url:
             raise RpcError("ETH_RPC_URL is not configured")
-        self._id += 1
+        with self._id_lock:
+            self._id += 1
+            request_id = self._id
         response = httpx.post(
             self.url,
-            json={"jsonrpc": "2.0", "id": self._id, "method": method, "params": params or []},
+            json={"jsonrpc": "2.0", "id": request_id, "method": method, "params": params or []},
             timeout=self.timeout,
         )
         if response.status_code >= 400:

@@ -1,0 +1,6 @@
+collateral_assets,control_swaps_within_15m,control_swaps_within_1m,control_swaps_within_30m,control_swaps_within_5m,debt_assets,direct_transaction_links,end_timestamp_utc,episode_id,liquidation_count,same_block_associations,selected_for_deep_review,start_timestamp_utc,time_window_associations,uniswap_swaps_within_15m,uniswap_swaps_within_1m,uniswap_swaps_within_30m,uniswap_swaps_within_5m,unlinked_or_unobservable
+USDC,597,40,1034,200,UNI,0,2026-09-01T01:13:47Z,cluster-300s-001,1,0,True,2026-09-01T01:13:47Z,1,532,37,1063,154,0
+WETH,621,32,1182,196,WETH,0,2026-09-01T16:59:23Z,cluster-300s-002,1,1,True,2026-09-01T16:59:23Z,0,545,46,1254,183,0
+WETH,654,40,1420,191,DAI;USDT,2,2026-09-01T18:38:59Z,cluster-300s-003,2,0,True,2026-09-01T18:38:59Z,0,951,105,1708,355,0
+WETH,688,52,1504,213,USDC,1,2026-09-01T18:46:23Z,cluster-300s-004,1,0,True,2026-09-01T18:46:23Z,0,946,88,1679,337,0
+WETH,599,43,1244,203,GHO,0,2026-09-01T20:42:59Z,cluster-300s-005,1,1,True,2026-09-01T20:42:59Z,0,626,38,1254,256,0

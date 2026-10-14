@@ -1,0 +1,50 @@
+{
+  "all_passed": true,
+  "checks": [
+    {
+      "check": "historical_rpc_verification",
+      "events": 27,
+      "status": "PASS"
+    },
+    {
+      "check": "linkage_tier_accounting",
+      "events": 27,
+      "status": "PASS"
+    },
+    {
+      "check": "invalid_epoch_attempt_excluded",
+      "status": "PASS"
+    },
+    {
+      "check": "fork_status_truthful",
+      "fork_status": "UNAVAILABLE",
+      "status": "PASS"
+    },
+    {
+      "check": "wave_cap_semantics",
+      "configured_cap": 100,
+      "observed_depth": 2,
+      "status": "PASS"
+    },
+    {
+      "actual_runs": 10000,
+      "check": "monte_carlo_10000_complete",
+      "status": "PASS"
+    },
+    {
+      "check": "path_invariants",
+      "status": "PASS"
+    },
+    {
+      "check": "canonical_hash_fixed",
+      "sha256": "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99",
+      "status": "PASS"
+    },
+    {
+      "check": "existing_research_quality_gate",
+      "core_checks": 10,
+      "status": "PASS"
+    }
+  ],
+  "status": "PASS"
+}

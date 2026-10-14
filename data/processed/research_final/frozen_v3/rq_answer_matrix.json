@@ -1,0 +1,94 @@
+{
+  "research_questions": [
+    {
+      "claim_ids": [
+        "CL_RQ1"
+      ],
+      "conclusion_vi": "Có bằng chứng model-conditional cho depth 2, chưa có bằng chứng cho depth ≥3 hoặc ngưỡng phổ quát.",
+      "data_vi": "Snapshot block 26.045.352; 454 borrower xác minh; cohort 109; state Aave/Uniswap cùng block.",
+      "experiment_vi": "Shock −5%…−50%, haircut tới 95%, cap tới 100 wave và horizon tới 120 step; không ép Wave 2.",
+      "interpretation_vi": "Wave 2 chỉ xuất hiện trong tail liquidity assumptions; kiểm toán trực tiếp xác nhận borrower Wave 2 mới đủ điều kiện sau wave trước.",
+      "limitation_vi": "Haircut 90/95% chưa có độ sâu Mainnet lịch sử; frequency mô hình không phải xác suất thực.",
+      "method_vi": "Đối chiếu lưới P0 32 ô với lưới mở rộng 60 ô và checkpoint Severe 10.000 đường.",
+      "question_vi": "Ngưỡng và điều kiện xuất hiện thanh lý dây chuyền là gì?",
+      "result_vi": "Lưới 32 ô: 12 depth 0, 20 depth 1, không depth 2. Lưới 60 ô: 18/38/4 ở depth 0/1/2. Severe: 280/10.000 depth ≥2; 0 depth ≥3.",
+      "rq": "RQ1",
+      "status": "LIMITED — REPORT WITH CAVEAT"
+    },
+    {
+      "claim_ids": [
+        "CL_RQ2"
+      ],
+      "conclusion_vi": "Thanh khoản quyết định mức khuếch đại trong mô hình nhưng tail thresholds chưa được xác nhận lịch sử.",
+      "data_vi": "Uniswap V3 WETH/USDC 0,3% tại cùng snapshot block; depth 2% khoảng 1,668 triệu USDC.",
+      "experiment_vi": "Haircut 0–95%; shock −5%…−50%; các cell khác giữ theo grid đã khai báo.",
+      "interpretation_vi": "Thanh khoản là bộ đệm hấp thụ forced sale; suy giảm depth có thể tạo eligibility mới ở wave sau.",
+      "limitation_vi": "Một pool, liquidity tĩnh/counterfactual; không có routing đa venue.",
+      "method_vi": "So sánh executable depth và shock×haircut, đọc lượng WETH bán, price impact, residual spread và wave depth.",
+      "question_vi": "Thanh khoản thị trường ảnh hưởng cascade như thế nào?",
+      "result_vi": "Bốn cell depth 2 đều ở haircut 90/95%; haircut làm giảm sức hấp thụ giao dịch và tăng biến dạng giá trong tail.",
+      "rq": "RQ2",
+      "status": "LIMITED — REPORT WITH CAVEAT"
+    },
+    {
+      "claim_ids": [
+        "CL_RQ3"
+      ],
+      "conclusion_vi": "Vốn binding trong miền thấp; bằng chứng cho delay/gas/capacity còn âm hoặc không binding trong miền thử.",
+      "data_vi": "Cohort 109 vị thế trên snapshot cố định; nhu cầu vốn tham chiếu 9.063,255437 USDC.",
+      "experiment_vi": "Vốn 25/50/100/200%; delay 0/1/2/4 step; các sweep capacity/gas hiện có.",
+      "interpretation_vi": "Funding stock, throughput và latency là ba ràng buộc khác nhau; time-to-position-processing không phải time-to-recovery.",
+      "limitation_vi": "Capital cộng dồn không tái sử dụng; execution agent đơn giản.",
+      "method_vi": "Tách sweeps vốn, capacity/gas và reaction delay.",
+      "question_vi": "Chi phí và giới hạn năng lực người thanh lý đóng vai trò gì?",
+      "result_vi": "25/50% vốn chặn execution; 100/200% cho cùng 9.063,255437 USDC thanh lý. Delay không đổi severity trong range.",
+      "rq": "RQ3",
+      "status": "LIMITED — REPORT WITH CAVEAT"
+    },
+    {
+      "claim_ids": [
+        "CL_RQ4"
+      ],
+      "conclusion_vi": "Ổn định hậu arbitrage được hỗ trợ trong mô hình; không phải bằng chứng hiệu quả arbitrage ngoài đời.",
+      "data_vi": "Kịch bản −20%, haircut 40%, cùng lượng forced sale 4,408546 WETH.",
+      "experiment_vi": "Thay đổi duy nhất năng lực arbitrage.",
+      "interpretation_vi": "Agent arbitrage tái neo giá sau bán, không xóa impact phát sinh tại thời điểm execution.",
+      "limitation_vi": "Không có competition, latency thực, gas strategy hoặc fork SwapRouter execution.",
+      "method_vi": "So sánh immediate liquidation price impact với post-arbitrage residual spread ở capacity 0/50/100%.",
+      "question_vi": "Arbitrage có ổn định giá sau forced sale không?",
+      "result_vi": "Immediate impact giữ ở 0,108794%; residual spread giảm từ 0,108794% (0%) xuống 0,054397% (50%) và xấp xỉ 0 (100%).",
+      "rq": "RQ4",
+      "status": "LIMITED — REPORT WITH CAVEAT"
+    },
+    {
+      "claim_ids": [
+        "CL_RQ5"
+      ],
+      "conclusion_vi": "Chỉ kết luận về kênh định giá nợ, không về toàn bộ cơ chế depeg.",
+      "data_vi": "109 vị thế WETH collateral + USDC debt.",
+      "experiment_vi": "Debt-valuation channel only; không thêm liquidity/redemption/settlement.",
+      "interpretation_vi": "USDC tăng giá làm nghĩa vụ nợ USD lớn hơn; giảm giá làm nghĩa vụ USD nhỏ hơn trong kênh cô lập này.",
+      "limitation_vi": "Không mô hình hóa khả năng thanh toán, thanh khoản hay confidence của stablecoin.",
+      "method_vi": "Giữ token debt quantity, định giá USDC từ 0,90 đến 1,10 USD và tính lại HF/liquidation metrics.",
+      "question_vi": "Mất neo USDC tác động thế nào khi USDC là debt asset?",
+      "result_vi": "Số HF<1 là 1/1/3 tại USDC 0,90/1,00/1,10. 9.063,255437 USDC token tương đương 9.969,580981 USD tại giá 1,10.",
+      "rq": "RQ5",
+      "status": "LIMITED — REPORT WITH CAVEAT"
+    },
+    {
+      "claim_ids": [
+        "CL_RQ6"
+      ],
+      "conclusion_vi": "Ba tham số không thể dùng thay thế nhau; mỗi tham số tạo một trade-off khác.",
+      "data_vi": "Frozen cohort 109 vị thế; other-collateral parameters được giữ riêng.",
+      "experiment_vi": "LTV 75,5–82,5%; LT 81–88%; bonus 3–7%.",
+      "interpretation_vi": "LTV là ràng buộc cấp tín dụng ex ante; LT là trigger solvency; bonus là incentive/transfer khi execution.",
+      "limitation_vi": "Không có phản ứng tái underwrite hay hành vi borrower sau policy change.",
+      "method_vi": "Ba counterfactual tách biệt: LTV capacity, LT HF boundary, bonus execution economics.",
+      "question_vi": "Đánh đổi giữa LTV, liquidation threshold và liquidation bonus là gì?",
+      "result_vi": "Tăng LTV làm capacity tổng tăng 50,798 lên 53,676 triệu USD; LT đổi eligibility/unliquidated debt theo scenario; bonus 3→7% làm WETH seized tăng 4,324574→4,492519.",
+      "rq": "RQ6",
+      "status": "LIMITED — REPORT WITH CAVEAT"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+metric,count,interpretation
+RPC census,28,complete checked Pool-log set for preregistered week
+Graph matched,27,candidate-discovery recall within checked week
+DIRECT_TRANSFER_PATH_VERIFIED,1,association tier; not causal proof
+SAME_BLOCK_ASSOCIATION,23,association tier; not causal proof
+SAME_TRANSACTION_CO_OCCURRENCE,2,association tier; not causal proof
+TIME_WINDOW_ASSOCIATION,1,association tier; not causal proof
