@@ -1,0 +1,113 @@
+{
+  "checks": {
+    "all_claim_result_ids_resolve": true,
+    "all_claim_table_figure_ids_resolve": true,
+    "all_event_locators_resolve": true,
+    "all_values_finite": true,
+    "borrower_rows_match_18x4x454": true,
+    "canonical_snapshot_hash_unchanged": true,
+    "frozen_bundle_hashes_unchanged": true,
+    "hf_traces_match_source_rows": true,
+    "literature_files_not_modified": true,
+    "newly_eligible_counts_match_72_of_72": true,
+    "no_api_keys_or_rpc_urls": true,
+    "no_large_monte_carlo_rerun": true,
+    "no_misleading_probability_or_wave_claim": true,
+    "no_raw_wallet_addresses": true,
+    "no_unexplained_not_eligible_skip": true,
+    "oracle_bundle_hashes_unchanged": true,
+    "six_rq_order_and_identity_preserved": true,
+    "targeted_replay_hashes_match_72_of_72": true,
+    "unique_claim_ids": true,
+    "unique_event_ids": true,
+    "unsupported_empirical_claims_are_not_promoted": true
+  },
+  "decision": "READY_FOR_COMMANDER_REVIEW",
+  "failed_checks": [],
+  "policy_reconciliation": {
+    "A_ADVERSE_PASS_THROUGH": {
+      "case_count": 18,
+      "deterministic_depth2_retained_count_of_4": 4,
+      "direct_shock_eligible_borrower_case_instances": 507,
+      "newly_eligible_attempted_later_instances": 35,
+      "newly_eligible_borrower_case_instances": 35,
+      "newly_eligible_executed_wave2_instances": 14,
+      "newly_eligible_not_attempted_instances": 0,
+      "newly_eligible_skipped_instances": 21,
+      "positive_debt_repaid_wave2_usdc": "58574.91415500",
+      "selected_mc_depth2_retained_count_of_10": 10,
+      "skip_reason_counts": {
+        "NO_MODELLED_USDC_DEBT": 21
+      }
+    },
+    "B_REFERENCE_ONLY": {
+      "case_count": 18,
+      "deterministic_depth2_retained_count_of_4": 0,
+      "direct_shock_eligible_borrower_case_instances": 507,
+      "newly_eligible_attempted_later_instances": 0,
+      "newly_eligible_borrower_case_instances": 0,
+      "newly_eligible_executed_wave2_instances": 0,
+      "newly_eligible_not_attempted_instances": 0,
+      "newly_eligible_skipped_instances": 0,
+      "positive_debt_repaid_wave2_usdc": "0",
+      "selected_mc_depth2_retained_count_of_10": 0,
+      "skip_reason_counts": {}
+    },
+    "C_MODERATE_LAGGED_SMOOTHED_PROXY": {
+      "case_count": 18,
+      "deterministic_depth2_retained_count_of_4": 0,
+      "direct_shock_eligible_borrower_case_instances": 507,
+      "newly_eligible_attempted_later_instances": 11,
+      "newly_eligible_borrower_case_instances": 11,
+      "newly_eligible_executed_wave2_instances": 2,
+      "newly_eligible_not_attempted_instances": 0,
+      "newly_eligible_skipped_instances": 9,
+      "positive_debt_repaid_wave2_usdc": "4952.07991200",
+      "selected_mc_depth2_retained_count_of_10": 2,
+      "skip_reason_counts": {
+        "NO_MODELLED_USDC_DEBT": 9
+      }
+    },
+    "C_WEAK_LAGGED_SMOOTHED_PROXY": {
+      "case_count": 18,
+      "deterministic_depth2_retained_count_of_4": 0,
+      "direct_shock_eligible_borrower_case_instances": 507,
+      "newly_eligible_attempted_later_instances": 6,
+      "newly_eligible_borrower_case_instances": 6,
+      "newly_eligible_executed_wave2_instances": 0,
+      "newly_eligible_not_attempted_instances": 0,
+      "newly_eligible_skipped_instances": 6,
+      "positive_debt_repaid_wave2_usdc": "0",
+      "selected_mc_depth2_retained_count_of_10": 0,
+      "skip_reason_counts": {
+        "NO_MODELLED_USDC_DEBT": 6
+      }
+    }
+  },
+  "replay_validation": {
+    "borrower_rows": 32688,
+    "event_rows": 2186,
+    "hf_trace_matches": 32688,
+    "new_eligibility_count_matches": 72,
+    "replay_hash_matches": 72,
+    "targeted_runs": 72
+  },
+  "schema_version": "scientific-integration-v1.0",
+  "self_review": {
+    "claim_missing_evidence": [],
+    "denominator_errors": [],
+    "eligibility_execution_conflation": [],
+    "genuine_numerical_inconsistencies": [],
+    "open_dependency": "P2 PR #9 oracle reconciliation requested at comment 6166173420; current pinned locator HEAD remains 8f5b635.",
+    "policy_attribution_errors": [],
+    "required_downstream_wording_corrections": [
+      "Frozen CL_RQ1 downstream wording must state Policy A conditionality.",
+      "Frozen CL_RQ2 downstream wording must separate DEX absorption from oracle-mediated HF feedback."
+    ],
+    "superseded_source_errors": [],
+    "unit_errors": []
+  },
+  "status": "PASS",
+  "unresolved_result_ids": [],
+  "unresolved_table_figure_ids": []
+}

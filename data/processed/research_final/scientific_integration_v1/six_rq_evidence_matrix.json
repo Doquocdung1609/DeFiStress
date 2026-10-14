@@ -1,0 +1,105 @@
+{
+  "research_questions": [
+    {
+      "accepted_claim": "Trong môi trường frozen và Policy A adverse pass-through, tail stress có thể tạo Wave 2; sự xuất hiện Wave 2 nhạy với policy truyền giá.",
+      "evidence": [
+        "RQ1_GRID32_MAX_DEPTH",
+        "RQ1_GRID60_DEPTH2",
+        "RQ1_MC_SEVERE_DEPTH2_COUNT",
+        "INT_A_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
+        "INT_B_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
+        "INT_C_WEAK_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
+        "INT_C_MODERATE_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4"
+      ],
+      "interpretation": "Wave 2 là simulated endogenous feedback dưới policy định giá cụ thể; không có ngưỡng cascade độc lập oracle được xác lập.",
+      "limitation": "280/10.000 chỉ thuộc locked Severe Policy A; 10 paths là sample có chủ đích; không phải xác suất Ethereum hay Aave oracle thực tế.",
+      "method": "Đối chiếu Frozen grid/checkpoint Policy A với A/B/C targeted diagnostic và event-level eligibility/execution audit.",
+      "question": "Điều kiện và ngưỡng xuất hiện thanh lý dây chuyền.",
+      "result": "Policy A: grid 60 có 4 depth-2 cells và Severe 280/10.000 depth≥2; trong bốn selected deterministic cases A/B/Cweak/Cmoderate = 4/0/0/0. Trong mười targeted A-depth2 MC paths = 10/0/0/2.",
+      "rq": "RQ1",
+      "status": "ACCEPTED_WITH_LIMITATIONS"
+    },
+    {
+      "accepted_claim": "Thanh khoản thấp có thể khuếch đại price impact trong mô hình, nhưng không tự nó bảo đảm có borrower mới đủ điều kiện thanh lý.",
+      "evidence": [
+        "RQ2_CANONICAL_DEPTH_2PCT",
+        "RQ2_DEPTH2_HAIRCUT90_COUNT",
+        "RQ2_DEPTH2_HAIRCUT95_COUNT",
+        "RQ4_IMMEDIATE_PRICE_IMPACT",
+        "RQ4_SPREAD_ARB100"
+      ],
+      "interpretation": "DEX liquidity là kênh hấp thụ giao dịch; oracle policy là kênh truyền DEX state sang HF. Hai kênh không được nhập làm một.",
+      "limitation": "Một pool/snapshot; haircut 90/95% chưa quan sát; không routing đa venue; không xác minh Aave dùng Uniswap spot.",
+      "method": "Tách executable depth/haircut, immediate DEX impact, post-arbitrage spread và HF feedback qua policy.",
+      "question": "Vai trò thanh khoản DEX.",
+      "result": "Haircut làm giảm sức hấp thụ forced selling và tăng biến dạng DEX; nhưng eligibility mới và depth phụ thuộc valuation policy A/B/C.",
+      "rq": "RQ2",
+      "status": "ACCEPTED_WITH_LIMITATIONS"
+    },
+    {
+      "accepted_claim": "Kết luận Frozen v3 về vốn/delay giữ nguyên; addendum bổ sung rằng eligibility phải được đối chiếu quyết định execution.",
+      "evidence": [
+        "RQ3_CAPITAL_25_LIQUIDATED",
+        "RQ3_CAPITAL_100_LIQUIDATED",
+        "RQ3_DELAY_SEVERITY_CHANGE"
+      ],
+      "interpretation": "Funding stock, throughput, gas/profitability và latency là các gate execution khác nhau.",
+      "limitation": "Một liquidator đại diện, vốn không tái sử dụng; không fork execution.",
+      "method": "Giữ Frozen v3 sweeps vốn/capacity/gas/delay; dùng event audit để tách eligible, evaluated, skipped và executed.",
+      "question": "Gas, vốn, công suất và độ trễ thanh lý.",
+      "result": "Vốn 25/50% binding; 100/200% không binding trong miền thử. Trong targeted audit, newly eligible không đồng nghĩa executed: các skip sau Wave 1 được truy về gate tài sản của route WETH-collateral/USDC-debt, không phải profitability.",
+      "rq": "RQ3",
+      "status": "ACCEPTED_WITH_LIMITATIONS"
+    },
+    {
+      "accepted_claim": "Kết luận Frozen v3 giữ nguyên; chỉ downstream liquidation trades có thể khác khi oracle policy làm eligibility khác.",
+      "evidence": [
+        "RQ4_IMMEDIATE_PRICE_IMPACT",
+        "RQ4_SPREAD_ARB0",
+        "RQ4_SPREAD_ARB100"
+      ],
+      "interpretation": "Arbitrage tái neo sau giao dịch trong mô hình; không xóa impact tại execution và không xác minh hiệu quả ngoài đời.",
+      "limitation": "Price repositioning/teleportation, một arbitrageur, không funded fork swap.",
+      "method": "Giữ Frozen v3 comparison immediate impact và residual spread; kiểm tra policy chỉ ảnh hưởng trades sau khi eligibility phân kỳ.",
+      "question": "Arbitrage và phục hồi giá.",
+      "result": "Immediate impact 0,108794% trong sweep gốc; residual spread giảm theo arbitrage capacity. Oracle diagnostic không thay đổi Uniswap math.",
+      "rq": "RQ4",
+      "status": "ACCEPTED_WITH_LIMITATIONS"
+    },
+    {
+      "accepted_claim": "Kết luận RQ5 Frozen v3 giữ nguyên với đơn vị USDC token và USD-equivalent tách biệt.",
+      "evidence": [
+        "RQ5_HF_LT1_USDC_090",
+        "RQ5_HF_LT1_USDC_100",
+        "RQ5_HF_LT1_USDC_110",
+        "RQ5_LIQUIDATED_DEBT_TOKEN_QTY",
+        "RQ5_LIQUIDATED_DEBT_USD"
+      ],
+      "interpretation": "Đây là kênh định giá nợ USDC, không phải full stablecoin-depeg market model.",
+      "limitation": "Không liquidity/redemption/settlement/confidence channel; oracle diagnostic WETH không mở rộng kết luận này.",
+      "method": "Giữ token debt quantity và thay USDC/USD valuation 0,90–1,10 như Frozen v3.",
+      "question": "Mất neo stablecoin và định giá nợ USDC.",
+      "result": "HF<1 là 1/1/3; 9.063,255437 USDC = 9.969,580981 USD tại 1,10 USD/USDC.",
+      "rq": "RQ5",
+      "status": "ACCEPTED_WITH_LIMITATIONS"
+    },
+    {
+      "accepted_claim": "Kết luận RQ6 Frozen v3 giữ nguyên.",
+      "evidence": [
+        "RQ6_LTV0755_CAPACITY",
+        "RQ6_LTV0825_CAPACITY",
+        "RQ6_LT083_UNLIQUIDATED",
+        "RQ6_BONUS103_SEIZED",
+        "RQ6_BONUS107_SEIZED"
+      ],
+      "interpretation": "Ba tham số không thay thế nhau.",
+      "limitation": "Frozen cohort, không borrower re-underwriting/behavior response; oracle addendum không retune policy sweep.",
+      "method": "Giữ ba counterfactual tách biệt LTV, LT và bonus của Frozen v3.",
+      "question": "Đánh đổi LTV, liquidation threshold, liquidation bonus.",
+      "result": "LTV đổi capacity ex ante; LT đổi HF/eligibility và scenario-LT unliquidated debt; bonus đổi collateral seized/incentive.",
+      "rq": "RQ6",
+      "status": "ACCEPTED_WITH_LIMITATIONS"
+    }
+  ],
+  "schema_version": "scientific-integration-v1.0"
+}
