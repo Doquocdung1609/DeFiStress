@@ -1,0 +1,117 @@
+{
+  "manifest_version": "oracle-transmission-diagnostic-v1-selection-locked",
+  "status": "PRE_REGISTERED_BEFORE_POLICY_B_C_EXECUTION",
+  "commander_issue_comments": [
+    "issuecomment-6163120732",
+    "issuecomment-6163464103"
+  ],
+  "starting_head": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+  "model_version": "0.1.0-aave-v3.10-metric-semantics",
+  "input_hashes": {
+    "canonical_snapshot": {
+      "path": "data/processed/mainnet/aave_uniswap_snapshot_26045352.json",
+      "sha256": "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99"
+    },
+    "frozen_v3_manifest": {
+      "path": "data/processed/research_final/frozen_v3/manifest.json",
+      "sha256": "0ee158ad67cd16a009a6d064960619fd03ab93657d12fa25f4b860e351157613"
+    },
+    "level3_deterministic_grid": {
+      "path": "data/processed/research_final/level3_extension/deep_stress/deterministic_grid.csv",
+      "sha256": "fe784f084cdc8b8f2fef25a40d4a6937fb6a907d9054bf4e2c37aed198bac9cc"
+    },
+    "level3_severe_10000_checkpoint": {
+      "path": "data/processed/research_final/level3_extension/deep_stress/checkpoints/severe_seed_20260914_10000.json",
+      "sha256": "a3d6b33d7d9c7fafa56c962f64799f586aec5b7746d556fe9fee7ed691125a53"
+    },
+    "targeted_repair_wave2_audit": {
+      "path": "data/processed/research_final/level3_p1_targeted_repair/monte_carlo/wave2_eligibility_audit.json",
+      "sha256": "cbc434554f05da6dafa9df17fad4680923d5db8e8e94cea24fd7fbd97d7582a1"
+    },
+    "targeted_repair_checkpoint_validation": {
+      "path": "data/processed/research_final/level3_p1_targeted_repair/monte_carlo/checkpoint_validation.json",
+      "sha256": "b3eb68e74ef96c3f76fa56654b72274428741d88f4815710b77abc11f1d6cb5a"
+    }
+  },
+  "common_scenario_parameters": {
+    "arbitrage_capacity_pct": "50",
+    "arbitrage_delay_steps": 0,
+    "gas_multiplier": "2",
+    "horizon_steps": 120,
+    "liquidation_bonus": "1.05",
+    "liquidator_capacity_usdc": "2500000",
+    "liquidator_capital_usdc": "10000000",
+    "liquidator_delay_steps": 0,
+    "liquidator_min_profit_usdc": "0",
+    "max_waves": 100,
+    "timestep_seconds": 60,
+    "usdc_price_usd": "1"
+  },
+  "deterministic_depth2_cases": [
+    {"case_id": "DET_D2_M40_H90", "shock_pct": "-40", "liquidity_haircut_pct": "90", "locked_policy_a_depth": 2},
+    {"case_id": "DET_D2_M40_H95", "shock_pct": "-40", "liquidity_haircut_pct": "95", "locked_policy_a_depth": 2},
+    {"case_id": "DET_D2_M50_H90", "shock_pct": "-50", "liquidity_haircut_pct": "90", "locked_policy_a_depth": 2},
+    {"case_id": "DET_D2_M50_H95", "shock_pct": "-50", "liquidity_haircut_pct": "95", "locked_policy_a_depth": 2}
+  ],
+  "deterministic_controls": [
+    {"case_id": "CTRL_M35_H90", "shock_pct": "-35", "liquidity_haircut_pct": "90", "locked_policy_a_depth": 1, "selection_reason": "lower-shock neighbor of M40/H90"},
+    {"case_id": "CTRL_M35_H95", "shock_pct": "-35", "liquidity_haircut_pct": "95", "locked_policy_a_depth": 1, "selection_reason": "lower-shock neighbor of M40/H95"},
+    {"case_id": "CTRL_M40_H75", "shock_pct": "-40", "liquidity_haircut_pct": "75", "locked_policy_a_depth": 1, "selection_reason": "higher-liquidity neighbor of M40/H90"},
+    {"case_id": "CTRL_M50_H75", "shock_pct": "-50", "liquidity_haircut_pct": "75", "locked_policy_a_depth": 1, "selection_reason": "higher-liquidity neighbor of M50/H90"}
+  ],
+  "audited_monte_carlo_paths": {
+    "base_scenario": "Severe",
+    "primary_seed": 20260914,
+    "sampling_rule": "First locked depth>=2 path in each non-overlapping 1,000-index stratum; inherited without reselection from targeted repair.",
+    "path_indices": [5, 1060, 2004, 3043, 4078, 5044, 6016, 7044, 8005, 9069]
+  },
+  "oracle_policies": [
+    {
+      "policy_id": "A_ADVERSE_PASS_THROUGH",
+      "definition": "initial valuation=reference; after each completed wave valuation=min(reference_price,current_dex_spot)",
+      "purpose": "unchanged baseline reproduction"
+    },
+    {
+      "policy_id": "B_REFERENCE_ONLY",
+      "definition": "valuation=reference_price at every eligibility and accounting point",
+      "purpose": "remove direct DEX-spot-to-borrower-HF pass-through"
+    },
+    {
+      "policy_id": "C_WEAK_LAGGED_SMOOTHED_PROXY",
+      "definition": "min(reference, reference + 0.25*(causal_mean_lag1_window3_dex-reference))",
+      "transmission_coefficient": "0.25",
+      "lag_steps": 1,
+      "smoothing_window": 3,
+      "min_periods": 1,
+      "purpose": "hypothetical weak transmission sensitivity; not an Aave or Chainlink oracle"
+    },
+    {
+      "policy_id": "C_MODERATE_LAGGED_SMOOTHED_PROXY",
+      "definition": "min(reference, reference + 0.50*(causal_mean_lag1_window2_dex-reference))",
+      "transmission_coefficient": "0.50",
+      "lag_steps": 1,
+      "smoothing_window": 2,
+      "min_periods": 1,
+      "purpose": "hypothetical moderate transmission sensitivity; not an Aave or Chainlink oracle"
+    }
+  ],
+  "causality_rule": "At the start of wave t, policy C may use only DEX observations recorded at or before the end of wave t-1. It never reads a future wave price.",
+  "comparison_rules": {
+    "policy_a_gate": "Policy A must reproduce every selected locked row before B/C execution.",
+    "deterministic_numeric_absolute_tolerance": "1e-9",
+    "deterministic_numeric_relative_tolerance": "1e-12",
+    "monte_carlo_policy_a_rule": "Reproduced selected checkpoint row must match the locked row exactly after the existing row serializer.",
+    "newly_eligible_definition": "HF at direct-shock valuation >=1 and HF at post-Wave-1 policy valuation <1; borrower was not attempted in Wave 1.",
+    "direct_effect": "HF/eligibility difference evaluated on the common post-Wave-1 DEX state before policy-dependent Wave 2 trades.",
+    "mediated_effect": "Later DEX-state and aggregate-outcome difference created after policy-dependent liquidation trades diverge.",
+    "borrower_identifier": "existing redacted borrower_hash only; no raw address"
+  },
+  "prohibitions": [
+    "No 10,000-path rerun",
+    "No parameter retuning after viewing B/C",
+    "No Uniswap swap-math changes",
+    "No Aave liquidation-semantics changes",
+    "No Mainnet transaction",
+    "No claim that policy C is the actual Aave or Chainlink oracle"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "status": "PASS",
+  "commands": [
+    {
+      "command": ".\\.venv\\Scripts\\python.exe scripts/research/run_oracle_transmission_diagnostic.py --phase a",
+      "status": "PASS",
+      "result": "8/8 deterministic and 10/10 audited Monte Carlo rows reproduced"
+    },
+    {
+      "command": ".\\.venv\\Scripts\\python.exe scripts/research/run_oracle_transmission_diagnostic.py --phase bc",
+      "status": "PASS",
+      "result": "72 policy-case results; 144 identical primary/repeat simulation executions"
+    },
+    {
+      "command": ".\\.venv\\Scripts\\python.exe -m pytest sim/tests/test_oracle_policy.py tests/test_oracle_diagnostic_artifacts.py -q",
+      "status": "PASS",
+      "result": "9 passed"
+    },
+    {
+      "command": ".\\.venv\\Scripts\\python.exe -m pytest",
+      "status": "PASS",
+      "result": "175 passed, 3 dependency deprecation warnings"
+    },
+    {
+      "command": ".\\.venv\\Scripts\\python.exe -m ruff check .",
+      "status": "PASS",
+      "result": "all checks passed"
+    },
+    {
+      "command": ".\\.venv\\Scripts\\python.exe -m mypy sim",
+      "status": "PASS",
+      "result": "no issues in 49 source files"
+    }
+  ],
+  "frontend": {
+    "status": "NOT_RUN_NOT_AFFECTED",
+    "reason": "No frontend files or interfaces changed."
+  },
+  "warnings": [
+    "websockets.legacy deprecation warning from installed dependency",
+    "Starlette/httpx TestClient deprecation warning from installed dependency",
+    "anyio BlockingPortal alias deprecation warning from installed dependency"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "code_observation": "The baseline engine feeds min(reference_price, DEX spot) into next-wave borrower HF. That is an adverse counterfactual pass-through, not evidence about Aave's actual oracle.",
+  "computed_model_finding": {
+    "depth2_cases_by_policy": {
+      "A_ADVERSE_PASS_THROUGH": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "B_REFERENCE_ONLY": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "C_MODERATE_LAGGED_SMOOTHED_PROXY": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "C_WEAK_LAGGED_SMOOTHED_PROXY": [
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "policy_a_depth2_count": 4,
+    "policy_b_depth2_count": 0,
+    "policy_c_moderate_depth2_count": 0,
+    "policy_c_weak_depth2_count": 0
+  },
+  "external_empirical_inference": "NOT_ESTABLISHED",
+  "policy_c_boundary": "Hypothetical causal sensitivity proxy; not Aave or Chainlink.",
+  "reference_only_boundary": "No Wave 2 under B follows structurally from fixed reference valuation plus the engine's one-attempt eligibility ordering; it is not external empirical proof.",
+  "rq1_impact": "Observed depth-2 results are oracle-policy-dependent model findings and cannot be reported as an oracle-agnostic cascade threshold.",
+  "rq2_impact": "Liquidity remains the DEX absorption mechanism, but transmission from DEX state to borrower eligibility depends on the valuation policy.",
+  "status": "LIMITED_TARGETED_MODEL_DIAGNOSTIC"
+}

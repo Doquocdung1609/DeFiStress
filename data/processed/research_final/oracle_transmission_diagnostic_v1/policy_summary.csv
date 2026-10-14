@@ -1,0 +1,5 @@
+policy_id,case_count,deterministic_depth2_count_of_4,control_depth2_count_of_4,selected_mc_depth2_count_of_10,selected_case_mean_liquidated_debt_usdc,selected_case_mean_modeled_bad_debt_usd,max_immediate_dex_price_impact_ratio,max_post_arbitrage_residual_spread_ratio
+A_ADVERSE_PASS_THROUGH,18,4,0,10,21890.676883,30997.488314,0.106824825687,0.053412412844
+B_REFERENCE_ONLY,18,0,0,0,18636.514986,28722.852843,0.073057018545,0.036528509272
+C_WEAK_LAGGED_SMOOTHED_PROXY,18,0,0,0,18636.514986,29148.937657,0.073057018545,0.036528509272
+C_MODERATE_LAGGED_SMOOTHED_PROXY,18,0,0,2,18911.630536,29692.772493,0.073057018545,0.036528509272

@@ -1,0 +1,25 @@
+{
+  "baseline_reproduction_sha256": "b1f525d288e56ea21280efc8103d8f523b5fb9390aa12e4521a5f61f801a46bc",
+  "case_count": 18,
+  "invariants": {
+    "all_numeric_finite": true,
+    "common_post_wave1_dex_state_across_policies": true,
+    "deterministic_repeat_match": true,
+    "later_wave_not_directly_eligible": true,
+    "no_duplicate_liquidated_borrower": true
+  },
+  "large_monte_carlo_rerun": false,
+  "policy_count": 4,
+  "run_count": 72,
+  "selected_monte_carlo_paths_executed": 40,
+  "selection_manifest_sha256": "3eb4bd1c2404abfb1a4a2cd402d06d70a971e781b279c599be66438c5e5d253d",
+  "status": "PASS",
+  "verified_input_hashes": {
+    "canonical_snapshot": "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99",
+    "frozen_v3_manifest": "0ee158ad67cd16a009a6d064960619fd03ab93657d12fa25f4b860e351157613",
+    "level3_deterministic_grid": "fe784f084cdc8b8f2fef25a40d4a6937fb6a907d9054bf4e2c37aed198bac9cc",
+    "level3_severe_10000_checkpoint": "a3d6b33d7d9c7fafa56c962f64799f586aec5b7746d556fe9fee7ed691125a53",
+    "targeted_repair_checkpoint_validation": "b3eb68e74ef96c3f76fa56654b72274428741d88f4815710b77abc11f1d6cb5a",
+    "targeted_repair_wave2_audit": "cbc434554f05da6dafa9df17fad4680923d5db8e8e94cea24fd7fbd97d7582a1"
+  }
+}

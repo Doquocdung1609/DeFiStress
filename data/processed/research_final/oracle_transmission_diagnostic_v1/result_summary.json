@@ -1,0 +1,84 @@
+{
+  "case_population": {
+    "audited_monte_carlo_paths": 10,
+    "borrower_policy_case_rows": 32688,
+    "deterministic_controls": 4,
+    "deterministic_depth2": 4,
+    "policies": 4,
+    "policy_case_results": 72,
+    "snapshot_weth_usdc_target_cohort": 109,
+    "verified_borrowers_per_case_policy": 454
+  },
+  "computed_finding": {
+    "depth2_cases_by_policy": {
+      "A_ADVERSE_PASS_THROUGH": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "B_REFERENCE_ONLY": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "C_MODERATE_LAGGED_SMOOTHED_PROXY": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "C_WEAK_LAGGED_SMOOTHED_PROXY": [
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "policy_a_depth2_count": 4,
+    "policy_b_depth2_count": 0,
+    "policy_c_moderate_depth2_count": 0,
+    "policy_c_weak_depth2_count": 0
+  },
+  "depth_counts": {
+    "A_ADVERSE_PASS_THROUGH::AUDITED_MONTE_CARLO::2": 10,
+    "A_ADVERSE_PASS_THROUGH::DETERMINISTIC_CONTROL::1": 4,
+    "A_ADVERSE_PASS_THROUGH::DETERMINISTIC_DEPTH2::2": 4,
+    "B_REFERENCE_ONLY::AUDITED_MONTE_CARLO::1": 10,
+    "B_REFERENCE_ONLY::DETERMINISTIC_CONTROL::1": 4,
+    "B_REFERENCE_ONLY::DETERMINISTIC_DEPTH2::1": 4,
+    "C_MODERATE_LAGGED_SMOOTHED_PROXY::AUDITED_MONTE_CARLO::1": 8,
+    "C_MODERATE_LAGGED_SMOOTHED_PROXY::AUDITED_MONTE_CARLO::2": 2,
+    "C_MODERATE_LAGGED_SMOOTHED_PROXY::DETERMINISTIC_CONTROL::1": 4,
+    "C_MODERATE_LAGGED_SMOOTHED_PROXY::DETERMINISTIC_DEPTH2::1": 4,
+    "C_WEAK_LAGGED_SMOOTHED_PROXY::AUDITED_MONTE_CARLO::1": 10,
+    "C_WEAK_LAGGED_SMOOTHED_PROXY::DETERMINISTIC_CONTROL::1": 4,
+    "C_WEAK_LAGGED_SMOOTHED_PROXY::DETERMINISTIC_DEPTH2::1": 4
+  },
+  "direct_effect_summary": {
+    "A_ADVERSE_PASS_THROUGH": {
+      "audited_mc_paths_retaining_depth2": 10,
+      "deterministic_depth2_cases_retaining_depth2": 4,
+      "newly_eligible_borrower_case_instances": 35
+    },
+    "B_REFERENCE_ONLY": {
+      "audited_mc_paths_retaining_depth2": 0,
+      "deterministic_depth2_cases_retaining_depth2": 0,
+      "newly_eligible_borrower_case_instances": 0
+    },
+    "C_MODERATE_LAGGED_SMOOTHED_PROXY": {
+      "audited_mc_paths_retaining_depth2": 2,
+      "deterministic_depth2_cases_retaining_depth2": 0,
+      "newly_eligible_borrower_case_instances": 11
+    },
+    "C_WEAK_LAGGED_SMOOTHED_PROXY": {
+      "audited_mc_paths_retaining_depth2": 0,
+      "deterministic_depth2_cases_retaining_depth2": 0,
+      "newly_eligible_borrower_case_instances": 6
+    }
+  },
+  "external_empirical_inference": "NOT_ESTABLISHED",
+  "selection_warning": "The ten Monte Carlo paths were deliberately inherited depth>=2 audit paths; their counts are not an estimated crisis probability.",
+  "status": "LIMITED_TARGETED_MODEL_DIAGNOSTIC — AWAITING_COMMANDER_REVIEW"
+}
