@@ -28,7 +28,7 @@ Quy ước biên tập P2 ngày 13/10/2026, đối chiếu mã/ngữ nghĩa tạ
 | Total liquidated debt | Tổng nợ đã được thanh lý | Giá trị nợ hoàn trả, không phải tổng tổn thất | S13; mã |
 | Oracle price | Giá oracle dùng trong giao thức | Nguồn định giá account; khác DEX spot | S05 |
 | Reference price | Giá tham chiếu | Mốc so sánh engine, không tự gọi là oracle mainnet | mã/P2 |
-| Valuation price | Giá dùng để đánh giá lại vị thế | Trong engine hiện là min(reference,DEX) sau vòng | mã/P2 |
+| Valuation price | Giá dùng để đánh giá lại vị thế | Baseline Policy A dùng min(reference,DEX); PR #11 còn B reference-only và C proxy giả định, chưa actual oracle | mã/P2 |
 | Spot price | Giá giao ngay tức thời | Giá pool tại trạng thái đang xét | S08; mã |
 | Execution price | Giá thực thi bình quân | Lượng tài sản nhận/lượng đem bán | mã/P2 |
 | Price impact | Tác động giá do giao dịch | Tách intrawave trước arbitrage với residual sau arbitrage; không dùng alias làm cùng nghĩa | S07/S10 |
@@ -62,8 +62,8 @@ Quy ước biên tập P2 ngày 13/10/2026, đối chiếu mã/ngữ nghĩa tạ
 | Run | Hiện tượng rút vốn dồn dập | Có thể do nhiều cơ chế tương tác; không nhất thiết bank run truyền thống | S17 |
 | Contagion | Lây lan rủi ro | Phản hồi nội sinh khác cùng chịu shock chung | S10/S11; P2 |
 | Liquidation wave | Đợt xử lý thanh lý | Phân biệt batch theo capacity với wave có HF trace mới mất an toàn | mã/P2 |
-| Liquidation cascade | Chuỗi thanh lý do phản hồi nội sinh | P0 có path HF trace mới mất an toàn do feedback; lịch sử co-occurrence chưa là cascade | mã/P2 |
-| Cascade depth | Độ sâu chuỗi hoặc chỉ số vòng xử lý | Index engine cần kiểm eligibility; bundle đã ghi depth 2, cap 100 không là 100 wave | mã/P2 |
+| Liquidation cascade | Chuỗi thanh lý do phản hồi nội sinh | P0 có HF trace mới mất an toàn dưới Policy A; eligibility khác execution; lịch sử co-occurrence chưa là cascade | mã/P2 |
+| Cascade depth | Độ sâu chuỗi hoặc chỉ số vòng xử lý | Index cần HF và event positive debt; depth 2 dưới A không là ngưỡng độc lập oracle; cap 100 không là 100 wave | mã/P2 |
 | Cascade amplification | Hệ số khuếch đại nợ thanh lý | Tỷ số có mẫu số rõ; chỉ định nghĩa khi mẫu số dương | mã/P2 |
 | Fire sale | Bán tháo tài sản dưới áp lực | Cơ chế tác động giá, chưa phải mọi lần thanh lý | S10/S12 |
 | Agent-based model — ABM | Mô hình dựa trên tác tử | “Tác nhân” dùng cho vai trò kinh tế, “tác tử” dùng khi nói phương pháp | S19/S20 |
@@ -123,3 +123,14 @@ Các cụm cần tránh trong bản final: “xác suất khủng hoảng Aave 1
 - Tổng hàng đã kiểm, checkpoint tái sử dụng và path chạy trong invocation là ba đại lượng khác nhau. Gói sửa xác nhận 13.000 định danh batch độc lập, 0 trùng; 10.000 hàng tái sử dụng và 0 large path chạy lại trong invocation; duration lịch sử không có trong checkpoint legacy.
 
 Đây là chú giải các trường/tier, không thêm nguồn học thuật hay đổi tập 92 mục. Mọi nhận định mã hiện hành trong file này được gắn HEAD `ba62c749`; phiên bản tương lai cần đối chiếu lại.
+
+## Chú giải bổ sung oracle và execution (giữ 92 mục)
+
+- Newly eligible: direct-shock HF≥1, post-Wave-1 HF<1, chưa được xét trong Wave1. Khác vị thế có HF<1 từ shock đầu.
+- Attempted/evaluated trong addendum: engine có LIQUIDATION hoặc LIQUIDATION_SKIPPED ở wave sau; không tự coi là giao dịch Mainnet đã gửi.
+- Executed: event LIQUIDATION với debt_repaid_usdc>0; skipped giữ cả raw reason và state-resolved reason. Raw NOT_ELIGIBLE khác resolved NO_MODELLED_USDC_DEBT.
+- Borrower-case-policy instance: một borrower trong một case và policy. Không cộng qua cases thành số ví/người duy nhất. Denominator diagnostic là 454, không phải cohort109.
+- Policy A/B/C: giả định định giá phản thực. C weak α0,25/lag1/window3, C moderate α0,50/lag1/window2; chưa phải Aave/Chainlink oracle được kiểm chứng.
+- Tần suất Severe 280/10000 và Wilson chỉ thuộc baseline Policy A; targeted10 paths được chọn theo A depth≥2.
+
+Nguồn phiên bản: PR #11 `3011ba5e8cd23ee697c36d0aec6d047d8d58f653`; PR #12 `b1786c0215444ae616b7b2a97a0aa31d5fdfe18b`, đều chưa merge. Nội dung raw HF/state CSV chưa đọc đủ trong phiên được ghi rõ tại biên bản; không đổi nhãn học thuật vì giới hạn connector.

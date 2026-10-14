@@ -156,3 +156,7 @@ Không có DOI trên trang phát hành không phải dấu hiệu nguồn kém: 
 Giữ nguyên 30 mục S, thứ tự tác giả, DOI/URL, ngày truy cập nguồn 13/10 và hàng chờ U01–U08. Lần đối chiếu cuối pin mã/bằng chứng dự án tại HEAD `ba62c749`, không bổ sung nghiên cứu học thuật hoặc nâng mức truy cập abstract/preview thành toàn văn. Artifact P0/Level-3 và gói sửa có mục tiêu có provenance trong ma trận; chúng không phải bài báo có phản biện.
 
 **S24:** tiêu đề trang *Agresti Coull confidence limits* là tên lịch sử của tài liệu Dataplot. Phần Note đã đọc phân biệt Wilson score và adjusted Wald/Agresti–Coull; default là Wilson. Giữ tên toán học **Wilson** cho các khoảng 8/200, 280/10.000 và 0/1.000. Không thay S24 hoặc thêm nguồn để che thay đổi method. **S17/S18:** tiếp tục tính là một công trình, JFE 2026 và tiền nhiệm NBER 2023. `SOURCE_NOT_VERIFIED` và giới hạn toàn văn của các mục khác giữ nguyên.
+
+## Ghi chú tiếp quản oracle
+
+Lần hòa giải này bảo toàn nguyên văn các mục APA S01–S30 và U01–U08, DOI/URL/tác giả/năm và nhãn truy cập ở checkpoint `8f5b635a316d72546b8a0eb0c2e8a66503b5d44f`. Không tìm literature mới, không xác minh lại resolver hoặc nâng abstract/preview thành fulltext. Các artifact dự án Frozen/Oracle/Integration được pin riêng trong P2_ORACLE_RECONCILIATION.md; không thêm chúng thành nguồn scholarly thứ 31.

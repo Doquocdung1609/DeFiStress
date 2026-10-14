@@ -49,17 +49,17 @@ Các nguồn U01–U08 trong file APA là hàng chờ, không tính vào tập 3
 |---|---|---|---|---|---|
 | C01 | P01; VIII §1.1, §2.1 | DeFi có các kênh kết hợp dịch vụ và phơi nhiễm | S01 abstract/composability; S29 tóm tắt phát hành | RQ1–6 | Tính liên thông chưa chứng minh cascade xảy ra |
 | C02 | P02/P19; VIII §2.2, §4.1 | HF so sánh thế chấp điều chỉnh với giá trị nợ | S02 Borrow; S03 Health Factor; S05 oracle | RQ1/5/6 | Portfolio approximation cần đối chiếu Aave |
-| C03 | P02; VIII §4.2 | HF<1 là đủ điều kiện, execution còn điều kiện | S03 Liquidation Process; S09 abstract | RQ1/3 | Không gọi mọi eligible là đã thanh lý |
+| C03 | P02; VIII §4.2 | HF<1 khác planner evaluation và positive-debt execution; A newly/executed=35/14 instances | S03 Liquidation Process; S09 abstract | RQ1/3 | Không gọi mọi eligible là đã thanh lý |
 | C04 | P02/P07; VIII §7.2 | LTV khác LT và liquidation bonus | S04 Key Reserve Parameters; S06 logic | RQ6 | LTV không viết lại frozen debt |
 | C05 | P02/P19; VIII §4.2 | Close factor và dust phụ thuộc phiên bản/vị thế | S06 executeLiquidationCall và các hằng | RQ3/6 | Pin implementation/bytecode tại block; không dùng 50% phổ quát |
 | C06 | P03; VIII §2.2, §4.2 | Incentive thiết kế có thể chuyển chi phí sang borrower | S09 abstract bản tác giả | RQ3/6 | Không đưa tỷ lệ/cỡ mẫu chưa đọc |
-| C07 | P04/P19/P21; VIII §2.3; II Chương 4 | Độ sâu V3 theo tick, liquidity stress dùng corrected artifact | S07 §2/§6.2–6.3; S08; E01/E02 | RQ2 | TVL khác depth; 90/95% haircut là giả định tail |
+| C07 | P04/P19/P21; VIII §2.3; II Chương 4 | Độ sâu V3 theo tick; absorption/impact khác oracle-mediated eligibility | S07 §2/§6.2–6.3; S08; E01/E02 | RQ2 | TVL khác depth; 90/95% haircut là giả định tail |
 | C08 | P04/P19; II Chương 4 | Giá/L cần đúng token order/decimal/hướng tick | S08; uniswap_v3.py tại ba62c749 | RQ2/5 | Lỗi reposition giữ L cũ đã sửa; USD/USDC/funded-swap caveat giữ |
 | C09 | P05/P21; VIII §2.2–2.3 | Literature hỗ trợ bán thế chấp; lịch sử ghi receipt route và association | S10 Findings/Abstract; E09/E11 | RQ1/2/4 | Một WETH route được kiểm receipt; không chứng minh price causality/cascade |
 | C10 | P05/P21; VIII §2.3 | Liquidation/volatility relation khác xác nhận nhân quả | S11 abstract/equation (2); E09/E10 | RQ1/2 | Cùng shock/market movement không là simulated endogenous wave |
-| C11 | P06/P21; VIII §7.1 | S13 không thấy impact kéo dài significant; model riêng có wave 2 | S13 PDF §5.5; E03/E04/E08 | RQ1/4 | Khác tần suất/đối chứng; không dùng model wave 2 bác empirical null |
+| C11 | P06/P21; VIII §7.1 | S13 không thấy impact kéo dài significant; project Wave 2 phụ thuộc policy A trong miền thử | S13 PDF §5.5; E03/E04/E08 | RQ1/4 | Khác tần suất/đối chứng; không dùng model wave 2 bác empirical null |
 | C12 | P07; VIII §7.2 | Fixed spread/auction có đánh đổi theo participation cost | S12 abstract | RQ3/6 | Không nói đấu giá luôn tốt hoặc Aave dùng đấu giá |
-| C13 | P08/P19/P20; III §5.5 | Arbitrage có điều kiện; v2 tách intrawave và residual | S14 abstract; E01/E07; mã ba62c749 | RQ4/5 | Sweep intrawave giữ nguyên, residual giảm; price teleportation |
+| C13 | P08/P19/P20; III §5.5 | Arbitrage có điều kiện; cùng forced sale tách intrawave/residual; downstream trades có thể khác theo policy | S14 abstract; E01/E07; mã ba62c749 | RQ4/5 | Sweep intrawave giữ nguyên, residual giảm; price teleportation |
 | C14 | P09; III §5.6 | Stablecoin có rủi ro giá và quy đổi khác nhau | S15 abstract; S16 thông cáo | RQ5 | Circle là issuer account, không nghiên cứu độc lập |
 | C15 | P09/P19; III §5.6 | USDC debt price tăng làm HF giảm ceteris paribus | S02/S03 cho HF; đại số và `schemas.debt_value` | RQ5 | Là dấu kênh valuation; chưa đầy đủ stress stablecoin |
 | C16 | P10; IV §6.1, §6.3 | Terra run liên quan khuyến khích/quan sát/tập trung | S17 abstract JFE | Terra | Không gán chỉ một thủ phạm hoặc thêm tỷ lệ không kiểm |
@@ -68,8 +68,8 @@ Các nguồn U01–U08 trong file APA là hàng chờ, không tính vào tập 3
 | C19 | P11/P19; VIII §2.4 | Aave ba62c749 có một liquidator/arbitrageur đại diện | engine/run.py; agents/* | RQ3/4 | Không gọi nhiều bot cạnh tranh được ước lượng hành vi |
 | C20 | P12; VIII §4.5 | ODD nên mô tả scheduling/model con và liên kết code | S21 §§1.6–1.7 và phần code linkage | RQ1–6 / Terra | ODD không tự cấp chứng nhận mô hình đúng |
 | C21 | P12; VIII §2.4 | Ngành dùng ABM/MC cho stress tham số DeFi | S22 Agent-Based Simulation/Network Congestion | RQ2/3/6 | Forum không peer reviewed, không claim tái tạo Gauntlet |
-| C22 | P13/P19/P21; III §5.8 | MC lấy mẫu tham số; checkpoint stages có prefix lồng và accounting tách biệt | runner.py; targeted repair E04/E12 | RQ1–6 | 13k batch identities, 0 duplicates, 21/21 reproduce; legacy duration unavailable |
-| C23 | P14/P21; III §5.8 | Wilson Severe 8/200,280/10k; Low Liquidity 0/1k | S24 Note/formula; E03/E04/E05 | RQ1 | Tên lịch sử NIST không đổi tên Wilson; không forecast |
+| C22 | P13/P19/P21; III §5.8 | MC lấy mẫu tham số; checkpoint A có prefix lồng; mười targeted paths không là estimator mới | runner.py; targeted repair E04/E12 | RQ1–6 | 13k batch identities, 0 duplicates, 21/21 reproduce; legacy duration unavailable |
+| C23 | P14/P21; III §5.8 | Wilson baseline Policy A: Severe 8/200,280/10k; Low Liquidity 0/1k | S24 Note/formula; E03/E04/E05 | RQ1 | Tên lịch sử NIST không đổi tên Wilson; không forecast |
 | C24 | P19/P21; III §5.8 | Chỉ tiêu đuôi là composite exposure, không realized loss | S13 §5.4; runner.py; E04 loss_definition | RQ2/3/5/6 | Repayment không phải loss; giữ units/ties/provenance |
 | C25 | P15; VIII §2.5; III §5.9 | Multilayer cần nêu node–layer và kiểu coupling | S25 §2 bản tác giả | Network extension | Nhãn lớp/nhiều cạnh chưa đủ chứng minh supra adjacency |
 | C26 | P15/P19; III §5.9 | Centrality hiện tính trên graph gộp typed network | `sim/network/metrics.py`; S25/S26 nền phương pháp | Network extension | Gộp max; structural metric chưa risk-weighted |
@@ -78,14 +78,14 @@ Các nguồn U01–U08 trong file APA là hàng chờ, không tính vào tập 3
 | C29 | P17; IV §6.5–6.6; VIII §4.5 | Bergmeir nêu CV autoregression với điều kiện cụ thể | S30 abstract kho tác giả | Terra validation | Không dẫn như lệnh cấm K-fold chung hoặc bằng chứng no-leakage |
 | C30 | P17/P20; IV §6.5–6.6 | Crisis reconstruction khác cutoff-safe warning | V2 và `FINAL_RESEARCH_REPORT.md`/claim matrix; P2 yêu cầu thiết kế | Terra validation | Source paper không chứng nhận retrospective forecast |
 | C31 | P18; VIII §2.6, §7.3 | Novelty đề xuất là tích hợp truy vết và giới hạn rõ | Đối chiếu S09–13/S19–22; evidence pipeline dự án | RQ1–6 | Không first ever; contribution còn phải audit thực hiện |
-| C32 | P19/P21; VIII §4.1 | Valuation=min(reference,DEX); history oracle là chứng cứ khác | engine/run.py tại ba62c749; E09/E11 | RQ1/2/4 | Synthetic feedback không là Aave oracle thật |
-| C33 | P19/P20/P21; VIII §4.3 | HF audit xác nhận borrower mới HF≥1→HF<1 trước vòng 2 | E03/E08; 8 path P0, ca tất định và 10 mẫu phân tầng MC | RQ1/3 | Chỉ simulated endogenous eligibility; không phải cascade lịch sử |
+| C32 | P19/P21; VIII §4.1 | Policy A=min(reference,DEX); B reference-only; C lagged/smoothed hypothetical; actual oracle chưa xác minh | engine/run.py tại ba62c749; E09/E11 | RQ1/2/4 | Synthetic feedback không là Aave oracle thật |
+| C33 | P19/P20/P21; VIII §4.3 | HF audit A xác nhận newly eligible; Addendum A/B/C tách evaluation, execution và skipped route | E03/E08; 8 path P0, ca tất định và 10 mẫu phân tầng MC | RQ1/3 | Chỉ simulated endogenous eligibility; không phải cascade lịch sử |
 | C34 | P19; II Chương 4; III §5.5 | Reposition cập nhật ±liquidityNet qua tick | Mã ba62c749; tick/round-trip tests; E01 | RQ2/4 | Không giữ lỗi L cũ; funded swap/fork chưa xác nhận |
 | C35 | P19/P20; III §5.6 | USDC seize/dust/quote chưa repricing toàn diện tại ba62c749 | liquidation.py; schemas.py; uniswap_v3.py | RQ5 | Đã kiểm version; valuation sensitivity không full-depeg validation |
 
 ## 3. Giữ nguyên sáu câu hỏi nghiên cứu
 
-RQ đối chiếu nguyên văn giữa V2, bản 2b9a29f5 và METHODOLOGY.md tại ba62c749, không thêm RQ Terra/network. Narrative RQ hiện tại chưa là numerical freeze; ưu tiên artifact v2/Level-3 theo locator E. Dưới đây giữ nguyên nghĩa và nội dung gốc của RQ; glossary cung cấp tên tiếng Việt khi biên tập.
+RQ đối chiếu nguyên văn giữa V2, bản 2b9a29f5 và METHODOLOGY.md tại ba62c749, không thêm RQ Terra/network. Frozen v3 là nguồn số học hiện hành; Oracle Diagnostic/Addendum bổ sung diễn giải có điều kiện tại commit riêng, chưa merge. Sáu câu hỏi dưới đây giữ nguyên văn; chỉ sửa câu trả lời/giới hạn, không đổi RQ. Dưới đây giữ nguyên nghĩa và nội dung gốc của RQ; glossary cung cấp tên tiếng Việt khi biên tập.
 
 1. **RQ1.** Với một snapshot borrower và liquidity thực, cú sốc giá ETH tối thiểu ở mức nào bắt đầu tạo liquidation cascade (cascade depth ≥ 2)?
 2. **RQ2.** Độ sâu thanh khoản DEX và liquidity haircut ảnh hưởng như thế nào đến price impact, cascade amplification và bad debt?
@@ -96,8 +96,8 @@ RQ đối chiếu nguyên văn giữa V2, bản 2b9a29f5 và METHODOLOGY.md tạ
 
 | RQ | Nguồn lõi | Biến và phép kiểm đề nghị | Mã/bằng chứng dự án cần đọc | Quy tắc diễn giải |
 |---|---|---|---|---|
-| RQ1 | S03/S05/S06/S09/S10/S11/S13/S24 | Grid cơ sở; 4/60 tail cells depth2; Severe 8/200 và 280/10k; HF paths | E02/E03/E04/E08; direct-shock cohort/prior-wave valuation | Khác miền/phân phối; Severe 10k không depth≥3; model-conditioned |
-| RQ2 | S07/S08/S10/S11 | Tick depth/haircut; intrawave riêng post-arbitrage | E01/E02/E07; code/Quoter initial-state | Haircut là giả định, đặc biệt 90/95%; không observed LP withdrawal |
+| RQ1 | S03/S05/S06/S09/S10/S11/S13/S24 | Grid cơ sở; 4/60 tail cells depth2; Severe 8/200 và 280/10k; HF paths | E02/E03/E04/E08; direct-shock cohort/prior-wave valuation | Policy A-conditional; A/B/C deterministic 4/0/0/0 và targeted MC 10/0/0/2; Severe 10k không depth≥3; không probability ngoài mẫu |
+| RQ2 | S07/S08/S10/S11 | Tick depth/haircut; intrawave riêng post-arbitrage | E01/E02/E07; code/Quoter initial-state | DEX absorption khác HF feedback qua oracle policy; haircut 90/95% phản thực, không observed LP withdrawal |
 | RQ3 | S06/S09/S10/S12/S13/S22 | Vốn/capacity/gas; first liquidation timestamp khác recovery | E01/E07; P0 v2 rq3_reaction_delay.* và rq3_capital_constraint.* | Recovery 0 không delay 0; no recycle; delayed batch cần HF audit |
 | RQ4 | S07/S10/S14 | Capacity 0–100%; intrawave ~0,108794%, residual giảm về ~0 | E01/E07; arbitrage_toward cập nhật L | Impact tức thời không bị xóa; price teleportation, chưa funded swap |
 | RQ5 | S02/S03/S05/S14/S15/S16 | q_USDC/USD, debt/HF; USD/USDC riêng | P0 v2 rq5_usdc_depeg.*; code ba62c749 | Valuation riêng; conversion/redemption/liquidity/confidence chưa đầy đủ |
@@ -146,3 +146,13 @@ Nguồn thực nghiệm hỗ trợ tính khả dĩ của cơ chế; official doc
 Gói sửa có mục tiêu đã hoàn thành audit dòng WETH theo receipt, census/control và checkpoint accounting. Xác nhận 13.000 định danh batch độc lập, 0 trùng; 200/1.000/5.000 là prefix lồng trong primary 10.000 nên không cộng thành 16.200 execution. Trong invocation sửa, 10.000 hàng được tái sử dụng và 0 large path chạy lại; 21/21 mẫu độc lập tái hiện. Vẫn giữ external attestation của checkpoint legacy, `UNAVAILABLE` cho fork và `UNAVAILABLE_NOT_EMBEDDED_IN_LEGACY_CHECKPOINT` cho duration. Commander scientific sign-off còn pending; invalid epoch attempt đứng ngoài kết luận.
 
 Reviewer cần kiểm: 35 claim IDs và nguồn; sáu RQ nguyên văn; nguồn/giới hạn không đổi; không còn lỗi L/recovery/LT cũ trong mô tả hiện hành; giữ simulated endogenous wave 2 với HF audit; history chỉ receipt route/association, không causal cascade; tail statistic không economic loss. Review lần cập nhật nằm trong P2_VERSION_RECONCILIATION.md; không thay Commander/P0/P1 sign-off.
+
+## 7. Crosswalk oracle hiện hành
+
+Các locator E01–E12 ở §5 giữ vai trò lịch sử tại `ba62c749`; không ngầm trỏ tới file chưa merge. Mapping bổ sung, result IDs, selectors, commits, status và giới hạn nằm đầy đủ trong [P2_ORACLE_RECONCILIATION.md](P2_ORACLE_RECONCILIATION.md) và [P2_CLAIM_EVIDENCE_CROSSWALK.json](P2_CLAIM_EVIDENCE_CROSSWALK.json). Frozen v3 giữ nguyên số học; qualifier PR #11/#12 được ưu tiên cho diễn giải RQ1/RQ2.
+
+**RQ1:** Kết quả thanh lý vòng hai được xác nhận trong các kịch bản stress phản thực với chính sách truyền giá bất lợi. Sự xuất hiện và mức độ thanh lý phụ thuộc vào chính sách định giá vị thế, giới hạn mẫu borrower và cấu hình thanh khoản.
+
+**RQ2:** Thanh khoản DEX ảnh hưởng đến hấp thụ forced sale và biến động giá; tuy nhiên tác động này chỉ chuyển thành eligibility mới qua cơ chế định giá được mô hình hóa, không phải một mối liên hệ nhân quả Mainnet đã được chứng minh.
+
+35 claims đã được đối chiếu theo phạm vi nguồn được duyệt; 12 aliases có mapping. Không coi mọi claim khái niệm là có numerical model result; trường NOT_APPLICABLE được ghi rõ. Hai raw borrower CSV giữ SOURCE_NOT_VERIFIED_IN_THIS_SESSION cho nội dung chưa đọc; summary/event/schema đã đọc không thay kiểm HF toàn hàng. U01–U08 và toàn văn chưa truy cập vẫn chưa được phê duyệt.

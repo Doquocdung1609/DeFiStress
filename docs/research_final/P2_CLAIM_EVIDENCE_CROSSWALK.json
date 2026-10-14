@@ -1,0 +1,2669 @@
+{
+  "schema_version": "p2-claim-evidence-crosswalk-v1",
+  "status": "READY_FOR_COMMANDER_REVIEW_WITH_READ_LIMITATIONS",
+  "starting_head": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+  "source_versions": {
+    "historical_p2_evidence": "ba62c74950a72751e0030527836082da0c7622ef",
+    "frozen_v3": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+    "oracle_diagnostic_v1": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+    "integration_addendum_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+    "integration_artifact_source": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+  },
+  "versions_unmerged": {
+    "pr11": true,
+    "pr12": true
+  },
+  "historical_precedence": [
+    "Original",
+    "P0 corrected v2",
+    "Level-3",
+    "targeted repair",
+    "Frozen v3",
+    "Oracle Diagnostic v1",
+    "Scientific Integration Addendum v1"
+  ],
+  "precedence_rule": "Frozen numerical results retained; latest versioned diagnostic/addendum governs allowed interpretation. Sources must be read from pinned commits, not assumed merged.",
+  "counts": {
+    "scholarly_source_records": 30,
+    "claims": 35,
+    "evidence_aliases": 12,
+    "terms": 92,
+    "research_questions": 6,
+    "source_queue": 8
+  },
+  "source_records": [
+    {
+      "source_id": "S01",
+      "preserved_verification": "VERIFIED_CONTENT: trang tác giả/nhà xuất bản đọc được",
+      "preserved_evidence_position": "Abstract; phần về composability và các lớp hạ tầng",
+      "preserved_doi": "10.20955/r.103.153-74",
+      "preserved_url": "[Nguồn gốc](https://www.stlouisfed.org/publications/review/2021/02/05/decentralized-finance-on-blockchain-and-smart-contract-based-financial-markets)",
+      "source_record_commit": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f"
+    },
+    {
+      "source_id": "S02",
+      "preserved_verification": "VERIFIED_CONTENT: nội dung hiện hành; không xác nhận cấu hình lịch sử",
+      "preserved_evidence_position": "Borrow; Liquidations",
+      "preserved_doi": "—",
+      "preserved_url": "[Nguồn gốc](https://www.aave.com/docs/aave-v3/overview)",
+      "source_record_commit": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f"
+    },
+    {
+      "source_id": "S03",
+      "preserved_verification": "VERIFIED_CONTENT: HF và nhánh close factor trên trang trợ giúp",
+      "preserved_evidence_position": "Health Factor; Liquidation Process",
+      "preserved_doi": "—",
+      "preserved_url": "[Nguồn gốc](https://aave.dev/help/borrowing/liquidations)",
+      "source_record_commit": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f"
+    },
+    {
+      "source_id": "S04",
+      "preserved_verification": "VERIFIED_CONTENT: định nghĩa LTV/LT; tham số thay đổi theo thị trường/thời điểm",
+      "preserved_evidence_position": "Key Reserve Parameters; Dynamic Parameters and Governance",
+      "preserved_doi": "—",
+      "preserved_url": "[Nguồn gốc](https://www.aave.com/docs/aave-v3/concepts/reserve)",
+      "source_record_commit": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f"
+    },
+    {
+      "source_id": "S05",
+      "preserved_verification": "VERIFIED_CONTENT: API nguồn giá, không xác nhận feed tại block nghiên cứu",
+      "preserved_evidence_position": "AaveOracle; getAssetPrice; getSourceOfAsset",
+      "preserved_doi": "—",
+      "preserved_url": "[Nguồn gốc](https://aave.com/docs/aave-v3/smart-contracts/oracles)",
+      "source_record_commit": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f"
+    },
+    {
+      "source_id": "S06",
+      "preserved_verification": "VERIFIED_CODE: commit đọc được; không phải xác minh bytecode triển khai tại block",
+      "preserved_evidence_position": "Các hằng close factor; executeLiquidationCall; tính debt/collateral theo base currency",
+      "preserved_doi": "—",
+      "preserved_url": "[Nguồn gốc](https://github.com/aave-dao/aave-v3-origin/blob/8305565ae342f1773c42cd2e4593f175fe5968a0/src/contracts/protocol/libraries/logic/LiquidationLogic.sol)",
+      "source_record_commit": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f"
+    },
+    {
+      "source_id": "S07",
+      "preserved_verification": "VERIFIED_CONTENT: PDF gốc; không phân loại peer reviewed",
+      "preserved_evidence_position": "§2; §6.2.3–6.3.1; phương trình 6.14–6.16",
+      "preserved_doi": "—",
+      "preserved_url": "[Nguồn gốc](https://blog.uniswap.org/whitepaper-v3.pdf)",
+      "source_record_commit": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f"
+    },
+    {
+      "source_id": "S08",
+      "preserved_verification": "VERIFIED_CODE: mã chuẩn; bổ trợ https://developers.uniswap.org/docs/protocols/v3/concepts/architecture",
+      "preserved_evidence_position": "getAmount0Delta; getAmount1Delta; quy tắc làm tròn",
+      "preserved_doi": "—",
+      "preserved_url": "[Nguồn gốc](https://github.com/Uniswap/v3-core/blob/d0831dc6b8a318df3872b6d68f6de135c9f3ec29/contracts/libraries/SqrtPriceMath.sol)",
+      "source_record_commit": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f"
+    },
+    {
+      "source_id": "S09",
+      "preserved_verification": "VERIFIED_ABSTRACT: bản tác giả arXiv đọc được; DOI/venue khớp UCL; DOI trực tiếp 403",
+      "preserved_evidence_position": "Abstract; phân loại cơ chế và rủi ro thanh lý",
+      "preserved_doi": "10.1145/3487552.3487811",
+      "preserved_url": "[Nguồn gốc](https://arxiv.org/abs/2106.06389)",
+      "source_record_commit": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f"
+    },
+    {
+      "source_id": "S10",
+      "preserved_verification": "VERIFIED_ABSTRACT: trang BIS đọc được; chưa kiểm từng bảng/ước lượng; không gán DOI",
+      "preserved_evidence_position": "Focus; Contribution; Findings; Abstract",
+      "preserved_doi": "—",
+      "preserved_url": "[Nguồn gốc](https://www.bis.org/publications/working-paper-1062-systemic-fragility-decentralised-markets)",
+      "source_record_commit": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f"
+    },
+    {
+      "source_id": "S11",
+      "preserved_verification": "VERIFIED_CONTENT: PDF và trang OECD; DOI khớp nhà xuất bản; resolver trực tiếp không truy cập được",
+      "preserved_evidence_position": "Abstract; PDF §2, phương trình (2)",
+      "preserved_doi": "10.1787/0524faaf-en",
+      "preserved_url": "[Nguồn gốc](https://www.oecd.org/en/publications/defi-liquidations_0524faaf-en.html)",
+      "source_record_commit": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f"
+    },
+    {
+      "source_id": "S12",
+      "preserved_verification": "VERIFIED_ABSTRACT: nguồn phát hành; không suy diễn Aave dùng đấu giá",
+      "preserved_evidence_position": "Abstract; đối chiếu bản ghi Publications Canada 9.951207",
+      "preserved_doi": "10.34989/swp-2025-12",
+      "preserved_url": "[Nguồn gốc](https://www.bankofcanada.ca/2025/03/staff-working-paper-2025-12/)",
+      "source_record_commit": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f"
+    },
+    {
+      "source_id": "S13",
+      "preserved_verification": "VERIFIED_CONTENT: PDF gốc và DOI nhà phát hành; resolver trực tiếp không truy cập được",
+      "preserved_evidence_position": "PDF §5.4–5.5, trang in 24–27; Abstract",
+      "preserved_doi": "10.34989/sap-2026-13",
+      "preserved_url": "[Nguồn gốc](https://www.bankofcanada.ca/2026/04/staff-analytical-paper-2026-13/)",
+      "source_record_commit": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f"
+    },
+    {
+      "source_id": "S14",
+      "preserved_verification": "VERIFIED_ABSTRACT: bản công bố và kho tác giả khớp; không suy rộng hệ số Tether sang USDC",
+      "preserved_evidence_position": "Abstract; Highlights; bản tác giả tại https://wrap.warwick.ac.uk/id/eprint/173269/",
+      "preserved_doi": "10.1016/j.jimonfin.2022.102777",
+      "preserved_url": "[Nguồn gốc](https://www.sciencedirect.com/science/article/pii/S0261560622001802)",
+      "source_record_commit": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f"
+    },
+    {
+      "source_id": "S15",
+      "preserved_verification": "VERIFIED_ABSTRACT/METADATA: tác giả cá nhân, không phải CPMI là tác giả; không gán DOI",
+      "preserved_evidence_position": "Danh sách Authors; phần tóm tắt",
+      "preserved_doi": "—",
+      "preserved_url": "[Nguồn gốc](https://www.bis.org/publications/paper-141-will-real-stablecoin-please-stand-up)",
+      "source_record_commit": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f"
+    },
+    {
+      "source_id": "S16",
+      "preserved_verification": "VERIFIED_CONTENT: lời công bố của Circle, không phải kiểm toán độc lập",
+      "preserved_evidence_position": "Ngày hiển thị trang 13/3; dateline trong nội dung 12/3/2023",
+      "preserved_doi": "—",
+      "preserved_url": "[Nguồn gốc](https://www.circle.com/pressroom/3-3-billion-of-usdc-reserve-risk-removed-dollar-de-peg-closes)",
+      "source_record_commit": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f"
+    },
+    {
+      "source_id": "S17",
+      "preserved_verification": "VERIFIED_ABSTRACT: bản ghi nhà xuất bản truy hồi được khi tìm kiếm; lần mở trực tiếp thất bại; không tuyên bố đọc toàn văn JFE",
+      "preserved_evidence_position": "Metadata; Abstract bản JFE; NBER Published Versions",
+      "preserved_doi": "10.1016/j.jfineco.2026.104359",
+      "preserved_url": "[Nguồn gốc](https://www.sciencedirect.com/science/article/pii/S0304405X26001303)",
+      "source_record_commit": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f"
+    },
+    {
+      "source_id": "S18",
+      "preserved_verification": "VERIFIED_ABSTRACT_INDEXED: bản ghi NBER; cùng nghiên cứu S17, không phải chứng cứ độc lập thứ hai",
+      "preserved_evidence_position": "Abstract; Issue Date; Published Versions",
+      "preserved_doi": "10.3386/w31160",
+      "preserved_url": "[Nguồn gốc](https://www.nber.org/papers/w31160)",
+      "source_record_commit": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f"
+    },
+    {
+      "source_id": "S19",
+      "preserved_verification": "VERIFIED_ABSTRACT: trang nhà xuất bản; chưa đọc phần paywall",
+      "preserved_evidence_position": "Abstract; article metadata",
+      "preserved_doi": "10.1146/annurev-financial-110716-032556",
+      "preserved_url": "[Nguồn gốc](https://www.annualreviews.org/content/journals/10.1146/annurev-financial-110716-032556)",
+      "source_record_commit": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f"
+    },
+    {
+      "source_id": "S20",
+      "preserved_verification": "VERIFIED_ABSTRACT: AEA và kho tác giả Oxford; không xác nhận engine DeFiStress",
+      "preserved_evidence_position": "Abstract; Citation; Additional Materials (corrigendum 24/3/2025)",
+      "preserved_doi": "10.1257/jel.20221319",
+      "preserved_url": "[Nguồn gốc](https://swlb1.aeaweb.org/articles?id=10.1257%2Fjel.20221319)",
+      "source_record_commit": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f"
+    },
+    {
+      "source_id": "S21",
+      "preserved_verification": "VERIFIED_CONTENT: toàn văn mở; DOI chuyển đúng tới bài",
+      "preserved_evidence_position": "Abstract; §§1.6–1.7; Issues and Challenges; liên kết ODD với code",
+      "preserved_doi": "10.18564/jasss.4259",
+      "preserved_url": "[Nguồn gốc](https://jasss.soc.surrey.ac.uk/23/2/7.html)",
+      "source_record_commit": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f"
+    },
+    {
+      "source_id": "S22",
+      "preserved_verification": "VERIFIED_CONTENT: bài wfu đăng thay mặt Gauntlet; không phải peer review hoặc đặc tả tái lập đầy đủ",
+      "preserved_evidence_position": "Background; Agent-Based Simulation; Network Congestion",
+      "preserved_doi": "—",
+      "preserved_url": "[Nguồn gốc](https://governance.aave.com/t/gauntlet-market-risk-primer/2097)",
+      "source_record_commit": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f"
+    },
+    {
+      "source_id": "S23",
+      "preserved_verification": "VERIFIED_PREVIEW/METADATA: chọn edition 1 hardcover 7/8/2003 theo publisher; chưa đọc các chương paywall",
+      "preserved_evidence_position": "About this book; Bibliographic information; Table of contents",
+      "preserved_doi": "10.1007/978-0-387-21617-1",
+      "preserved_url": "[Nguồn gốc](https://link.springer.com/book/10.1007/978-0-387-21617-1)",
+      "source_record_commit": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f"
+    },
+    {
+      "source_id": "S24",
+      "preserved_verification": "VERIFIED_CONTENT: công thức Wilson được đọc và tính lại; tên trang lịch sử khác tên phương pháp",
+      "preserved_evidence_position": "Description; công thức score interval; Note phân biệt Wilson và adjusted Wald",
+      "preserved_doi": "—",
+      "preserved_url": "[Nguồn gốc](https://www.itl.nist.gov/div898/software/dataplot/refman2/auxillar/agcoulci.htm)",
+      "source_record_commit": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f"
+    },
+    {
+      "source_id": "S25",
+      "preserved_verification": "VERIFIED_CONTENT: PDF tác giả đọc được; DOI journal khớp; OUP resolver lỗi",
+      "preserved_evidence_position": "Bản tác giả v4, §§2 và 4; journal reference; DOI liên quan",
+      "preserved_doi": "10.1093/comnet/cnu016",
+      "preserved_url": "[Nguồn gốc](https://arxiv.org/abs/1309.7233)",
+      "source_record_commit": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f"
+    },
+    {
+      "source_id": "S26",
+      "preserved_verification": "VERIFIED_ABSTRACT_INDEXED: search đọc được abstract gốc; mở URL thất bại; không tuyên bố đọc toàn văn",
+      "preserved_evidence_position": "Abstract và metadata nhà xuất bản",
+      "preserved_doi": "10.1016/j.jfs.2018.03.010",
+      "preserved_url": "[Nguồn gốc](https://www.sciencedirect.com/science/article/pii/S157230891830192X)",
+      "source_record_commit": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f"
+    },
+    {
+      "source_id": "S27",
+      "preserved_verification": "VERIFIED_CONTENT: trang bài gốc; không khẳng định DeFiStress triển khai DebtRank",
+      "preserved_evidence_position": "Abstract; Introduction; chỉ số truyền distress",
+      "preserved_doi": "10.1038/srep00541",
+      "preserved_url": "[Nguồn gốc](https://www.nature.com/articles/srep00541)",
+      "source_record_commit": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f"
+    },
+    {
+      "source_id": "S28",
+      "preserved_verification": "VERIFIED_CONTENT/METADATA: đọc abstract paper gốc qua bản sao https://ucilnica.fri.uni-lj.si/pluginfile.php/1147/course/section/1510/Freeman%20-%20A%20set%20of%20measures%20of%20centrality%20based%20on%20betweenness%2C%201977.pdf; không gán directed variant cho bài gốc",
+      "preserved_evidence_position": "JSTOR mục lục xác nhận DOI; bản paper trong tài liệu giảng dạy University of Ljubljana",
+      "preserved_doi": "10.2307/3033543",
+      "preserved_url": "[Nguồn gốc](https://www.jstor.org/stable/i352126)",
+      "source_record_commit": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f"
+    },
+    {
+      "source_id": "S29",
+      "preserved_verification": "VERIFIED_CONTENT: trang phát hành; không gán toàn bộ hệ thống DeFi cho mạng hai giao thức",
+      "preserved_evidence_position": "Tóm tắt về liên thông DeFi, CeFi, stablecoin",
+      "preserved_doi": "—",
+      "preserved_url": "[Nguồn gốc](https://www.fsb.org/2023/02/the-financial-stability-risks-of-decentralised-finance/)",
+      "source_record_commit": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f"
+    },
+    {
+      "source_id": "S30",
+      "preserved_verification": "VERIFIED_ABSTRACT: kho tác giả; chỉ dùng để giới hạn viện dẫn CV, không chứng minh cutoff Terra",
+      "preserved_evidence_position": "Abstract tác giả: pure autoregression và uncorrelated errors",
+      "preserved_doi": "10.1016/j.csda.2017.11.003",
+      "preserved_url": "[Nguồn gốc](https://research.monash.edu/en/publications/a-note-on-the-validity-of-cross-validation-for-evaluating-autoreg/)",
+      "source_record_commit": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "C01",
+      "scholarly_sources": [
+        "S01",
+        "S29"
+      ],
+      "scholarly_source_role": "scoped conceptual/protocol/method support; project outputs require separate artifacts",
+      "source_verification": {
+        "S01": "VERIFIED_CONTENT: trang tác giả/nhà xuất bản đọc được",
+        "S29": "VERIFIED_CONTENT: trang phát hành; không gán toàn bộ hệ thống DeFi cho mạng hai giao thức"
+      },
+      "original_source_locator": "S01 abstract/composability; S29 tóm tắt phát hành",
+      "evidence_aliases": [],
+      "rq": "RQ1–6",
+      "model_result_ids": [],
+      "model_result": "NOT_APPLICABLE: conceptual/protocol/design claim; no numerical project evidence required",
+      "oracle_policy": "NOT_APPLICABLE",
+      "artifact_locators": [],
+      "source_versions": {
+        "p2_start": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+        "frozen": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+        "oracle": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+        "integration_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+        "integration_artifact": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+      },
+      "allowed_interpretation": "Conceptual linkage only; no measured cascade or full-market coverage.",
+      "status": "PASS_UNCHANGED",
+      "original_statement": "DeFi có các kênh kết hợp dịch vụ và phơi nhiễm",
+      "original_limit": "Tính liên thông chưa chứng minh cascade xảy ra",
+      "integration_claim_ids": [],
+      "raw_hf_state_review": "NOT_APPLICABLE"
+    },
+    {
+      "claim_id": "C02",
+      "scholarly_sources": [
+        "S02",
+        "S03",
+        "S05"
+      ],
+      "scholarly_source_role": "scoped conceptual/protocol/method support; project outputs require separate artifacts",
+      "source_verification": {
+        "S02": "VERIFIED_CONTENT: nội dung hiện hành; không xác nhận cấu hình lịch sử",
+        "S03": "VERIFIED_CONTENT: HF và nhánh close factor trên trang trợ giúp",
+        "S05": "VERIFIED_CONTENT: API nguồn giá, không xác nhận feed tại block nghiên cứu"
+      },
+      "original_source_locator": "S02 Borrow; S03 Health Factor; S05 oracle",
+      "evidence_aliases": [],
+      "rq": "RQ1/5/6",
+      "model_result_ids": [],
+      "model_result": "NOT_APPLICABLE: conceptual/protocol/design claim; no numerical project evidence required",
+      "oracle_policy": "NOT_APPLICABLE",
+      "artifact_locators": [
+        {
+          "path": "sim/schemas.py",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "BorrowerPosition.health_factor",
+          "evidence_role": "implementation observation; not empirical validation",
+          "content_sha256": "6869ec619a5c91916d608b9a1297899664a8c0a1eca89c8718e42c0223b53689",
+          "read_status": "READ_CONTENT"
+        }
+      ],
+      "source_versions": {
+        "p2_start": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+        "frozen": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+        "oracle": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+        "integration_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+        "integration_artifact": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+      },
+      "allowed_interpretation": "HF algebra; portfolio aggregation and actual feed at block remain limitations.",
+      "status": "PASS_WITH_QUALIFIER",
+      "original_statement": "HF so sánh thế chấp điều chỉnh với giá trị nợ",
+      "original_limit": "Portfolio approximation cần đối chiếu Aave",
+      "integration_claim_ids": [
+        "CL_UNSUPPORTED_AAVE_USES_UNISWAP_SPOT"
+      ],
+      "raw_hf_state_review": "SOURCE_NOT_VERIFIED_IN_THIS_SESSION: oversized borrower CSVs; no independent recomputation of all 32688 HF/state rows"
+    },
+    {
+      "claim_id": "C03",
+      "scholarly_sources": [
+        "S03",
+        "S09"
+      ],
+      "scholarly_source_role": "scoped conceptual/protocol/method support; project outputs require separate artifacts",
+      "source_verification": {
+        "S03": "VERIFIED_CONTENT: HF và nhánh close factor trên trang trợ giúp",
+        "S09": "VERIFIED_ABSTRACT: bản tác giả arXiv đọc được; DOI/venue khớp UCL; DOI trực tiếp 403"
+      },
+      "original_source_locator": "S03 Liquidation Process; S09 abstract",
+      "evidence_aliases": [
+        "E08",
+        "E12"
+      ],
+      "rq": "RQ1/3",
+      "model_result_ids": [
+        "INT_A_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_A_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES"
+      ],
+      "model_result": "registry/selected-case results only; preserve units and denominators",
+      "oracle_policy": "A/B/C",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
+          "read_commit": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+          "selector": "all cases: newly_eligible_after_wave1_count versus newly_eligible_executed_wave2_count",
+          "evidence_role": "support",
+          "content_sha256": "53dc862ad37d447777ec2ee421d00696d7c52555a931af084d834c88f06df283",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/mainnet/aave_uniswap_snapshot_26045352.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "borrowers[454]; health_factor formula applied at direct/post-Wave1 policy prices; state updated using existing Wave1 LIQUIDATION events",
+          "evidence_role": "independent static reconstruction input; no simulation rerun",
+          "content_sha256": "76dae833c5b1a6e620cf116e332f1f47c53454a1f3530a02fefacd800cb3b329",
+          "read_status": "READ_CONTENT",
+          "hash_scope": "Git LF bytes; accepted manifest input SHA256 uses CRLF serialization"
+        }
+      ],
+      "source_versions": {
+        "p2_start": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+        "frozen": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+        "oracle": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+        "integration_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+        "integration_artifact": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+      },
+      "allowed_interpretation": "HF<1, modeled planner evaluation and execution with positive debt are distinct. A 35/14; B 0/0; C weak 6/0; C moderate 11/2 borrower-case instances.",
+      "status": "CORRECTED",
+      "original_statement": "HF<1 là đủ điều kiện, execution còn điều kiện",
+      "original_limit": "Không gọi mọi eligible là đã thanh lý",
+      "integration_claim_ids": [
+        "CL_INT_RQ1_POLICY_CONDITIONAL",
+        "CL_INT_ELIGIBLE_NOT_EXECUTED",
+        "CL_INT_RQ3_PRESERVED"
+      ],
+      "raw_hf_state_review": "Independent static reconstruction of 32688 direct/post HF pairs matched all 72 summary counts and 52 available Wave2 event HF values; all 36 raw NOT_ELIGIBLE skips resolved to NO_MODELLED_USDC_DEBT. Oversized raw CSV cells remain unread, so no exact cell-by-cell source-file comparison claimed."
+    },
+    {
+      "claim_id": "C04",
+      "scholarly_sources": [
+        "S04",
+        "S06"
+      ],
+      "scholarly_source_role": "scoped conceptual/protocol/method support; project outputs require separate artifacts",
+      "source_verification": {
+        "S04": "VERIFIED_CONTENT: định nghĩa LTV/LT; tham số thay đổi theo thị trường/thời điểm",
+        "S06": "VERIFIED_CODE: commit đọc được; không phải xác minh bytecode triển khai tại block"
+      },
+      "original_source_locator": "S04 Key Reserve Parameters; S06 logic",
+      "evidence_aliases": [
+        "E07"
+      ],
+      "rq": "RQ6",
+      "model_result_ids": [
+        "RQ6_LTV0755_CAPACITY",
+        "RQ6_LTV0825_CAPACITY",
+        "RQ6_LT083_UNLIQUIDATED",
+        "RQ6_BONUS103_SEIZED",
+        "RQ6_BONUS107_SEIZED"
+      ],
+      "model_result": "registry/selected-case results only; preserve units and denominators",
+      "oracle_policy": "Frozen Policy A",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/results_registry.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "results[result_id in RQ6_LTV0755_CAPACITY,RQ6_LTV0825_CAPACITY,RQ6_LT083_UNLIQUIDATED,RQ6_BONUS103_SEIZED,RQ6_BONUS107_SEIZED]",
+          "evidence_role": "support",
+          "content_sha256": "6e31fb66964a66e1e05ce5a39414ebcd399b736c49042328246c6c3986d0e1b8",
+          "read_status": "READ_CONTENT"
+        }
+      ],
+      "source_versions": {
+        "p2_start": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+        "frozen": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+        "oracle": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+        "integration_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+        "integration_artifact": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+      },
+      "allowed_interpretation": "LTV, LT and bonus are separate counterfactuals on frozen debt.",
+      "status": "PASS_UNCHANGED",
+      "original_statement": "LTV khác LT và liquidation bonus",
+      "original_limit": "LTV không viết lại frozen debt",
+      "integration_claim_ids": [
+        "CL_INT_RQ6_PRESERVED"
+      ],
+      "raw_hf_state_review": "NOT_APPLICABLE"
+    },
+    {
+      "claim_id": "C05",
+      "scholarly_sources": [
+        "S06"
+      ],
+      "scholarly_source_role": "scoped conceptual/protocol/method support; project outputs require separate artifacts",
+      "source_verification": {
+        "S06": "VERIFIED_CODE: commit đọc được; không phải xác minh bytecode triển khai tại block"
+      },
+      "original_source_locator": "S06 executeLiquidationCall và các hằng",
+      "evidence_aliases": [
+        "E07",
+        "E08"
+      ],
+      "rq": "RQ3/6",
+      "model_result_ids": [],
+      "model_result": "NOT_APPLICABLE: conceptual/protocol/design claim; no numerical project evidence required",
+      "oracle_policy": "Frozen A / diagnostic A/B/C",
+      "artifact_locators": [
+        {
+          "path": "sim/lending/liquidation.py",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "plan_liquidation; asset/HF gate and close-factor branch",
+          "evidence_role": "implementation observation; not empirical validation",
+          "content_sha256": "fd3f4e5cd2f4a9564ca7b23625d693e0661a8162182699a0eb2940603158e96b",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
+          "read_commit": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+          "selector": "all 72 rows; skip_reason_counts",
+          "evidence_role": "support",
+          "content_sha256": "53dc862ad37d447777ec2ee421d00696d7c52555a931af084d834c88f06df283",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/mainnet/aave_uniswap_snapshot_26045352.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "borrowers[454]; health_factor formula applied at direct/post-Wave1 policy prices; state updated using existing Wave1 LIQUIDATION events",
+          "evidence_role": "independent static reconstruction input; no simulation rerun",
+          "content_sha256": "76dae833c5b1a6e620cf116e332f1f47c53454a1f3530a02fefacd800cb3b329",
+          "read_status": "READ_CONTENT",
+          "hash_scope": "Git LF bytes; accepted manifest input SHA256 uses CRLF serialization"
+        }
+      ],
+      "source_versions": {
+        "p2_start": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+        "frozen": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+        "oracle": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+        "integration_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+        "integration_artifact": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+      },
+      "allowed_interpretation": "Protocol version/bytecode not validated by documentation; modeled NOT_ELIGIBLE may reflect route asset scope, not an actual protocol failure.",
+      "status": "PASS_WITH_QUALIFIER",
+      "original_statement": "Close factor và dust phụ thuộc phiên bản/vị thế",
+      "original_limit": "Pin implementation/bytecode tại block; không dùng 50% phổ quát",
+      "integration_claim_ids": [
+        "CL_INT_ELIGIBLE_NOT_EXECUTED",
+        "CL_INT_RQ3_PRESERVED",
+        "CL_INT_RQ6_PRESERVED"
+      ],
+      "raw_hf_state_review": "Independent static reconstruction of 32688 direct/post HF pairs matched all 72 summary counts and 52 available Wave2 event HF values; all 36 raw NOT_ELIGIBLE skips resolved to NO_MODELLED_USDC_DEBT. Oversized raw CSV cells remain unread, so no exact cell-by-cell source-file comparison claimed."
+    },
+    {
+      "claim_id": "C06",
+      "scholarly_sources": [
+        "S09"
+      ],
+      "scholarly_source_role": "scoped conceptual/protocol/method support; project outputs require separate artifacts",
+      "source_verification": {
+        "S09": "VERIFIED_ABSTRACT: bản tác giả arXiv đọc được; DOI/venue khớp UCL; DOI trực tiếp 403"
+      },
+      "original_source_locator": "S09 abstract bản tác giả",
+      "evidence_aliases": [],
+      "rq": "RQ3/6",
+      "model_result_ids": [],
+      "model_result": "NOT_APPLICABLE: conceptual/protocol/design claim; no numerical project evidence required",
+      "oracle_policy": "NOT_APPLICABLE",
+      "artifact_locators": [],
+      "source_versions": {
+        "p2_start": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+        "frozen": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+        "oracle": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+        "integration_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+        "integration_artifact": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+      },
+      "allowed_interpretation": "Only the preserved abstract claim; no new quantitative incentive estimate.",
+      "status": "PASS_UNCHANGED",
+      "original_statement": "Incentive thiết kế có thể chuyển chi phí sang borrower",
+      "original_limit": "Không đưa tỷ lệ/cỡ mẫu chưa đọc",
+      "integration_claim_ids": [],
+      "raw_hf_state_review": "NOT_APPLICABLE"
+    },
+    {
+      "claim_id": "C07",
+      "scholarly_sources": [
+        "S07",
+        "S08"
+      ],
+      "scholarly_source_role": "scoped conceptual/protocol/method support; project outputs require separate artifacts",
+      "source_verification": {
+        "S07": "VERIFIED_CONTENT: PDF gốc; không phân loại peer reviewed",
+        "S08": "VERIFIED_CODE: mã chuẩn; bổ trợ https://developers.uniswap.org/docs/protocols/v3/concepts/architecture"
+      },
+      "original_source_locator": "S07 §2/§6.2–6.3; S08; E01/E02",
+      "evidence_aliases": [
+        "E01",
+        "E02"
+      ],
+      "rq": "RQ2",
+      "model_result_ids": [
+        "RQ2_CANONICAL_DEPTH_2PCT",
+        "RQ2_DEPTH2_HAIRCUT90_COUNT",
+        "RQ2_DEPTH2_HAIRCUT95_COUNT"
+      ],
+      "model_result": "registry/selected-case results only; preserve units and denominators",
+      "oracle_policy": "Frozen A / diagnostic A/B/C",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/results_registry.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "results[result_id in RQ2_CANONICAL_DEPTH_2PCT,RQ2_DEPTH2_HAIRCUT90_COUNT,RQ2_DEPTH2_HAIRCUT95_COUNT]",
+          "evidence_role": "support",
+          "content_sha256": "6e31fb66964a66e1e05ce5a39414ebcd399b736c49042328246c6c3986d0e1b8",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/oracle_transmission_diagnostic_v1/comparison_matrix.csv",
+          "read_commit": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+          "selector": "DETERMINISTIC_DEPTH2; price-impact ratios and policy-specific depth",
+          "evidence_role": "support",
+          "content_sha256": "09c2d6dea5868817c57a67329f4d64469d1d7c1340fddc5e980c6b3741bea078",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/mainnet/aave_uniswap_snapshot_26045352.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "borrowers[454]; health_factor formula applied at direct/post-Wave1 policy prices; state updated using existing Wave1 LIQUIDATION events",
+          "evidence_role": "independent static reconstruction input; no simulation rerun",
+          "content_sha256": "76dae833c5b1a6e620cf116e332f1f47c53454a1f3530a02fefacd800cb3b329",
+          "read_status": "READ_CONTENT",
+          "hash_scope": "Git LF bytes; accepted manifest input SHA256 uses CRLF serialization"
+        }
+      ],
+      "source_versions": {
+        "p2_start": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+        "frozen": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+        "oracle": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+        "integration_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+        "integration_artifact": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+      },
+      "allowed_interpretation": "DEX depth affects absorption/impact; new eligibility requires modeled valuation transmission. Extreme 90/95% haircuts are unobserved counterfactuals.",
+      "status": "CORRECTED",
+      "original_statement": "Độ sâu V3 theo tick, liquidity stress dùng corrected artifact",
+      "original_limit": "TVL khác depth; 90/95% haircut là giả định tail",
+      "integration_claim_ids": [
+        "CL_INT_RQ2_TWO_CHANNELS",
+        "CL_FROZEN_RQ2_DIRECT_ELIGIBILITY_WORDING"
+      ],
+      "raw_hf_state_review": "Independent static reconstruction of 32688 direct/post HF pairs matched all 72 summary counts and 52 available Wave2 event HF values; all 36 raw NOT_ELIGIBLE skips resolved to NO_MODELLED_USDC_DEBT. Oversized raw CSV cells remain unread, so no exact cell-by-cell source-file comparison claimed."
+    },
+    {
+      "claim_id": "C08",
+      "scholarly_sources": [
+        "S08"
+      ],
+      "scholarly_source_role": "scoped conceptual/protocol/method support; project outputs require separate artifacts",
+      "source_verification": {
+        "S08": "VERIFIED_CODE: mã chuẩn; bổ trợ https://developers.uniswap.org/docs/protocols/v3/concepts/architecture"
+      },
+      "original_source_locator": "S08; uniswap_v3.py tại ba62c749",
+      "evidence_aliases": [
+        "E01",
+        "E07"
+      ],
+      "rq": "RQ2/5",
+      "model_result_ids": [],
+      "model_result": "NOT_APPLICABLE: conceptual/protocol/design claim; no numerical project evidence required",
+      "oracle_policy": "NOT_APPLICABLE for swap math",
+      "artifact_locators": [
+        {
+          "path": "sim/dex/uniswap_v3.py",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "spot_price; swap; arbitrage_toward",
+          "evidence_role": "implementation observation; not empirical validation",
+          "content_sha256": "3fa671f616caee587735eef41073bc8db4a097e91711ef8c9d3511f4f7a0580a",
+          "read_status": "READ_CONTENT"
+        }
+      ],
+      "source_versions": {
+        "p2_start": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+        "frozen": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+        "oracle": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+        "integration_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+        "integration_artifact": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+      },
+      "allowed_interpretation": "Token order, decimals and tick direction; corrected tick liquidity does not validate funded swaps or depeg unit conversion.",
+      "status": "PASS_WITH_QUALIFIER",
+      "original_statement": "Giá/L cần đúng token order/decimal/hướng tick",
+      "original_limit": "Lỗi reposition giữ L cũ đã sửa; USD/USDC/funded-swap caveat giữ",
+      "integration_claim_ids": [
+        "CL_INT_RQ2_TWO_CHANNELS"
+      ],
+      "raw_hf_state_review": "NOT_APPLICABLE"
+    },
+    {
+      "claim_id": "C09",
+      "scholarly_sources": [
+        "S10"
+      ],
+      "scholarly_source_role": "scoped conceptual/protocol/method support; project outputs require separate artifacts",
+      "source_verification": {
+        "S10": "VERIFIED_ABSTRACT: trang BIS đọc được; chưa kiểm từng bảng/ước lượng; không gán DOI"
+      },
+      "original_source_locator": "S10 Findings/Abstract; E09/E11",
+      "evidence_aliases": [
+        "E09",
+        "E11"
+      ],
+      "rq": "RQ1/2/4",
+      "model_result_ids": [
+        "HIST_DIRECT_TRANSFER_PATHS",
+        "HIST_SAME_TX_COOCCURRENCE",
+        "HIST_SAME_BLOCK_ASSOCIATION",
+        "HIST_TIME_WINDOW_ASSOCIATION"
+      ],
+      "model_result": "registry/selected-case results only; preserve units and denominators",
+      "oracle_policy": "NOT_APPLICABLE",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/results_registry.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "results[result_id in HIST_DIRECT_TRANSFER_PATHS,HIST_SAME_TX_COOCCURRENCE,HIST_SAME_BLOCK_ASSOCIATION,HIST_TIME_WINDOW_ASSOCIATION]",
+          "evidence_role": "support",
+          "content_sha256": "6e31fb66964a66e1e05ce5a39414ebcd399b736c49042328246c6c3986d0e1b8",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/level3_p1_targeted_repair/historical/linkage_route_audit.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "event-tier counts; receipt route",
+          "evidence_role": "support",
+          "content_sha256": "bbc11050f342cbd7f1189fd5cee9035e02f86c6633980cc8e1cbfa9f0f0e03d4",
+          "read_status": "READ_CONTENT"
+        }
+      ],
+      "source_versions": {
+        "p2_start": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+        "frozen": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+        "oracle": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+        "integration_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+        "integration_artifact": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+      },
+      "allowed_interpretation": "One ordered WETH receipt route; remaining associations and route alone do not identify price causality or historical contagion.",
+      "status": "PASS_WITH_QUALIFIER",
+      "original_statement": "Literature hỗ trợ bán thế chấp; lịch sử ghi receipt route và association",
+      "original_limit": "Một WETH route được kiểm receipt; không chứng minh price causality/cascade",
+      "integration_claim_ids": [
+        "CL_INT_HISTORICAL_TIERS_PRESERVED",
+        "CL_UNSUPPORTED_HISTORICAL_CAUSAL_CONTAGION"
+      ],
+      "raw_hf_state_review": "NOT_APPLICABLE"
+    },
+    {
+      "claim_id": "C10",
+      "scholarly_sources": [
+        "S11"
+      ],
+      "scholarly_source_role": "scoped conceptual/protocol/method support; project outputs require separate artifacts",
+      "source_verification": {
+        "S11": "VERIFIED_CONTENT: PDF và trang OECD; DOI khớp nhà xuất bản; resolver trực tiếp không truy cập được"
+      },
+      "original_source_locator": "S11 abstract/equation (2); E09/E10",
+      "evidence_aliases": [
+        "E09",
+        "E10"
+      ],
+      "rq": "RQ1/2",
+      "model_result_ids": [
+        "HIST_RPC_CENSUS_EVENTS",
+        "HIST_GRAPH_MATCHED_EVENTS"
+      ],
+      "model_result": "registry/selected-case results only; preserve units and denominators",
+      "oracle_policy": "NOT_APPLICABLE",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/results_registry.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "results[result_id in HIST_RPC_CENSUS_EVENTS,HIST_GRAPH_MATCHED_EVENTS]",
+          "evidence_role": "support",
+          "content_sha256": "6e31fb66964a66e1e05ce5a39414ebcd399b736c49042328246c6c3986d0e1b8",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/level3_p1_targeted_repair/historical/control_window_audit.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "40 selected windows; five control windows",
+          "evidence_role": "support",
+          "content_sha256": "890de64ea400d1598cf634f0eefbac0d0140f64e9a05e0e58b4c6b68016bcd33",
+          "read_status": "READ_CONTENT"
+        }
+      ],
+      "source_versions": {
+        "p2_start": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+        "frozen": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+        "oracle": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+        "integration_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+        "integration_artifact": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+      },
+      "allowed_interpretation": "External association and shared shock are different from model feedback; no historical causal chain.",
+      "status": "PASS_WITH_QUALIFIER",
+      "original_statement": "Liquidation/volatility relation khác xác nhận nhân quả",
+      "original_limit": "Cùng shock/market movement không là simulated endogenous wave",
+      "integration_claim_ids": [
+        "CL_INT_HISTORICAL_TIERS_PRESERVED",
+        "CL_UNSUPPORTED_HISTORICAL_CAUSAL_CONTAGION"
+      ],
+      "raw_hf_state_review": "NOT_APPLICABLE"
+    },
+    {
+      "claim_id": "C11",
+      "scholarly_sources": [
+        "S13"
+      ],
+      "scholarly_source_role": "scoped conceptual/protocol/method support; project outputs require separate artifacts",
+      "source_verification": {
+        "S13": "VERIFIED_CONTENT: PDF gốc và DOI nhà phát hành; resolver trực tiếp không truy cập được"
+      },
+      "original_source_locator": "S13 PDF §5.5; E03/E04/E08",
+      "evidence_aliases": [
+        "E03",
+        "E04",
+        "E08"
+      ],
+      "rq": "RQ1/4",
+      "model_result_ids": [
+        "RQ1_MC_SEVERE_DEPTH2_COUNT"
+      ],
+      "model_result": "registry/selected-case results only; preserve units and denominators",
+      "oracle_policy": "Policy A for Frozen; A/B/C targeted contrast",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/results_registry.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "results[result_id in RQ1_MC_SEVERE_DEPTH2_COUNT]",
+          "evidence_role": "support",
+          "content_sha256": "6e31fb66964a66e1e05ce5a39414ebcd399b736c49042328246c6c3986d0e1b8",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/oracle_transmission_diagnostic_v1/comparison_matrix.csv",
+          "read_commit": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+          "selector": "all selected paths; cascade_depth by policy",
+          "evidence_role": "support",
+          "content_sha256": "09c2d6dea5868817c57a67329f4d64469d1d7c1340fddc5e980c6b3741bea078",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/mainnet/aave_uniswap_snapshot_26045352.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "borrowers[454]; health_factor formula applied at direct/post-Wave1 policy prices; state updated using existing Wave1 LIQUIDATION events",
+          "evidence_role": "independent static reconstruction input; no simulation rerun",
+          "content_sha256": "76dae833c5b1a6e620cf116e332f1f47c53454a1f3530a02fefacd800cb3b329",
+          "read_status": "READ_CONTENT",
+          "hash_scope": "Git LF bytes; accepted manifest input SHA256 uses CRLF serialization"
+        }
+      ],
+      "source_versions": {
+        "p2_start": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+        "frozen": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+        "oracle": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+        "integration_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+        "integration_artifact": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+      },
+      "allowed_interpretation": "The project has conditional modeled Wave 2 under A; this does not refute the external empirical null at another frequency/benchmark.",
+      "status": "CORRECTED",
+      "original_statement": "S13 không thấy impact kéo dài significant; model riêng có wave 2",
+      "original_limit": "Khác tần suất/đối chứng; không dùng model wave 2 bác empirical null",
+      "integration_claim_ids": [
+        "CL_INT_HISTORICAL_TIERS_PRESERVED",
+        "CL_UNSUPPORTED_HISTORICAL_CAUSAL_CONTAGION"
+      ],
+      "raw_hf_state_review": "Independent static reconstruction of 32688 direct/post HF pairs matched all 72 summary counts and 52 available Wave2 event HF values; all 36 raw NOT_ELIGIBLE skips resolved to NO_MODELLED_USDC_DEBT. Oversized raw CSV cells remain unread, so no exact cell-by-cell source-file comparison claimed."
+    },
+    {
+      "claim_id": "C12",
+      "scholarly_sources": [
+        "S12"
+      ],
+      "scholarly_source_role": "scoped conceptual/protocol/method support; project outputs require separate artifacts",
+      "source_verification": {
+        "S12": "VERIFIED_ABSTRACT: nguồn phát hành; không suy diễn Aave dùng đấu giá"
+      },
+      "original_source_locator": "S12 abstract",
+      "evidence_aliases": [
+        "E07"
+      ],
+      "rq": "RQ3/6",
+      "model_result_ids": [
+        "RQ6_BONUS103_SEIZED",
+        "RQ6_BONUS107_SEIZED"
+      ],
+      "model_result": "registry/selected-case results only; preserve units and denominators",
+      "oracle_policy": "Frozen Policy A",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/results_registry.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "results[result_id in RQ6_BONUS103_SEIZED,RQ6_BONUS107_SEIZED]",
+          "evidence_role": "support",
+          "content_sha256": "6e31fb66964a66e1e05ce5a39414ebcd399b736c49042328246c6c3986d0e1b8",
+          "read_status": "READ_CONTENT"
+        }
+      ],
+      "source_versions": {
+        "p2_start": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+        "frozen": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+        "oracle": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+        "integration_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+        "integration_artifact": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+      },
+      "allowed_interpretation": "Abstract-level fixed-spread/auction trade-off; no universal optimality or claim Aave implements auctions.",
+      "status": "PASS_WITH_QUALIFIER",
+      "original_statement": "Fixed spread/auction có đánh đổi theo participation cost",
+      "original_limit": "Không nói đấu giá luôn tốt hoặc Aave dùng đấu giá",
+      "integration_claim_ids": [
+        "CL_INT_RQ6_PRESERVED"
+      ],
+      "raw_hf_state_review": "NOT_APPLICABLE"
+    },
+    {
+      "claim_id": "C13",
+      "scholarly_sources": [
+        "S14"
+      ],
+      "scholarly_source_role": "scoped conceptual/protocol/method support; project outputs require separate artifacts",
+      "source_verification": {
+        "S14": "VERIFIED_ABSTRACT: bản công bố và kho tác giả khớp; không suy rộng hệ số Tether sang USDC"
+      },
+      "original_source_locator": "S14 abstract; E01/E07; mã ba62c749",
+      "evidence_aliases": [
+        "E01",
+        "E07"
+      ],
+      "rq": "RQ4/5",
+      "model_result_ids": [
+        "RQ4_IMMEDIATE_PRICE_IMPACT",
+        "RQ4_SPREAD_ARB0",
+        "RQ4_SPREAD_ARB100"
+      ],
+      "model_result": "registry/selected-case results only; preserve units and denominators",
+      "oracle_policy": "Frozen A; A/B/C contrast only downstream",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/results_registry.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "results[result_id in RQ4_IMMEDIATE_PRICE_IMPACT,RQ4_SPREAD_ARB0,RQ4_SPREAD_ARB100]",
+          "evidence_role": "support",
+          "content_sha256": "6e31fb66964a66e1e05ce5a39414ebcd399b736c49042328246c6c3986d0e1b8",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/oracle_transmission_diagnostic_v1/comparison_matrix.csv",
+          "read_commit": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+          "selector": "post_wave1_dex_state_matches_a; later final_dex_price",
+          "evidence_role": "support",
+          "content_sha256": "09c2d6dea5868817c57a67329f4d64469d1d7c1340fddc5e980c6b3741bea078",
+          "read_status": "READ_CONTENT"
+        }
+      ],
+      "source_versions": {
+        "p2_start": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+        "frozen": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+        "oracle": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+        "integration_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+        "integration_artifact": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+      },
+      "allowed_interpretation": "The same-sale sweep separates immediate impact from residual spread; policy-divergent later trades may change maxima. Arbitrage is price repositioning.",
+      "status": "CORRECTED",
+      "original_statement": "Arbitrage có điều kiện; v2 tách intrawave và residual",
+      "original_limit": "Sweep intrawave giữ nguyên, residual giảm; price teleportation",
+      "integration_claim_ids": [
+        "CL_INT_RQ4_PRESERVED"
+      ],
+      "raw_hf_state_review": "NOT_APPLICABLE"
+    },
+    {
+      "claim_id": "C14",
+      "scholarly_sources": [
+        "S15",
+        "S16"
+      ],
+      "scholarly_source_role": "scoped conceptual/protocol/method support; project outputs require separate artifacts",
+      "source_verification": {
+        "S15": "VERIFIED_ABSTRACT/METADATA: tác giả cá nhân, không phải CPMI là tác giả; không gán DOI",
+        "S16": "VERIFIED_CONTENT: lời công bố của Circle, không phải kiểm toán độc lập"
+      },
+      "original_source_locator": "S15 abstract; S16 thông cáo",
+      "evidence_aliases": [],
+      "rq": "RQ5",
+      "model_result_ids": [],
+      "model_result": "NOT_APPLICABLE: conceptual/protocol/design claim; no numerical project evidence required",
+      "oracle_policy": "NOT_APPLICABLE",
+      "artifact_locators": [],
+      "source_versions": {
+        "p2_start": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+        "frozen": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+        "oracle": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+        "integration_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+        "integration_artifact": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+      },
+      "allowed_interpretation": "Price, redemption and issuer statements remain distinct; no new stablecoin empirical estimate.",
+      "status": "PASS_WITH_QUALIFIER",
+      "original_statement": "Stablecoin có rủi ro giá và quy đổi khác nhau",
+      "original_limit": "Circle là issuer account, không nghiên cứu độc lập",
+      "integration_claim_ids": [
+        "CL_INT_RQ5_PRESERVED"
+      ],
+      "raw_hf_state_review": "NOT_APPLICABLE"
+    },
+    {
+      "claim_id": "C15",
+      "scholarly_sources": [
+        "S02",
+        "S03"
+      ],
+      "scholarly_source_role": "scoped conceptual/protocol/method support; project outputs require separate artifacts",
+      "source_verification": {
+        "S02": "VERIFIED_CONTENT: nội dung hiện hành; không xác nhận cấu hình lịch sử",
+        "S03": "VERIFIED_CONTENT: HF và nhánh close factor trên trang trợ giúp"
+      },
+      "original_source_locator": "S02/S03 cho HF; đại số và `schemas.debt_value`",
+      "evidence_aliases": [
+        "E07"
+      ],
+      "rq": "RQ5",
+      "model_result_ids": [
+        "RQ5_HF_LT1_USDC_090",
+        "RQ5_HF_LT1_USDC_100",
+        "RQ5_HF_LT1_USDC_110"
+      ],
+      "model_result": "registry/selected-case results only; preserve units and denominators",
+      "oracle_policy": "Frozen Policy A",
+      "artifact_locators": [
+        {
+          "path": "sim/schemas.py",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "debt_value; health_factor",
+          "evidence_role": "implementation observation; not empirical validation",
+          "content_sha256": "6869ec619a5c91916d608b9a1297899664a8c0a1eca89c8718e42c0223b53689",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/frozen_v3/results_registry.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "results[result_id in RQ5_HF_LT1_USDC_090,RQ5_HF_LT1_USDC_100,RQ5_HF_LT1_USDC_110]",
+          "evidence_role": "support",
+          "content_sha256": "6e31fb66964a66e1e05ce5a39414ebcd399b736c49042328246c6c3986d0e1b8",
+          "read_status": "READ_CONTENT"
+        }
+      ],
+      "source_versions": {
+        "p2_start": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+        "frozen": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+        "oracle": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+        "integration_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+        "integration_artifact": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+      },
+      "allowed_interpretation": "Ceteris paribus HF algebra for USDC debt; not full depeg/settlement validation.",
+      "status": "PASS_WITH_QUALIFIER",
+      "original_statement": "USDC debt price tăng làm HF giảm ceteris paribus",
+      "original_limit": "Là dấu kênh valuation; chưa đầy đủ stress stablecoin",
+      "integration_claim_ids": [
+        "CL_INT_RQ5_PRESERVED"
+      ],
+      "raw_hf_state_review": "NOT_APPLICABLE"
+    },
+    {
+      "claim_id": "C16",
+      "scholarly_sources": [
+        "S17",
+        "S18"
+      ],
+      "scholarly_source_role": "scoped conceptual/protocol/method support; project outputs require separate artifacts",
+      "source_verification": {
+        "S17": "VERIFIED_ABSTRACT: bản ghi nhà xuất bản truy hồi được khi tìm kiếm; lần mở trực tiếp thất bại; không tuyên bố đọc toàn văn JFE",
+        "S18": "VERIFIED_ABSTRACT_INDEXED: bản ghi NBER; cùng nghiên cứu S17, không phải chứng cứ độc lập thứ hai"
+      },
+      "original_source_locator": "S17 abstract JFE",
+      "evidence_aliases": [],
+      "rq": "Terra",
+      "model_result_ids": [],
+      "model_result": "NOT_APPLICABLE: conceptual/protocol/design claim; no numerical project evidence required",
+      "oracle_policy": "NOT_APPLICABLE",
+      "artifact_locators": [],
+      "source_versions": {
+        "p2_start": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+        "frozen": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+        "oracle": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+        "integration_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+        "integration_artifact": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+      },
+      "allowed_interpretation": "Preserved JFE abstract and NBER predecessor are one study; no new Terra quantitative claim.",
+      "status": "PASS_WITH_QUALIFIER",
+      "original_statement": "Terra run liên quan khuyến khích/quan sát/tập trung",
+      "original_limit": "Không gán chỉ một thủ phạm hoặc thêm tỷ lệ không kiểm",
+      "integration_claim_ids": [
+        "CL_INT_TERRA_NEGATIVE_PRESERVED"
+      ],
+      "raw_hf_state_review": "NOT_APPLICABLE"
+    },
+    {
+      "claim_id": "C17",
+      "scholarly_sources": [
+        "S17",
+        "S02",
+        "S06"
+      ],
+      "scholarly_source_role": "scoped conceptual/protocol/method support; project outputs require separate artifacts",
+      "source_verification": {
+        "S17": "VERIFIED_ABSTRACT: bản ghi nhà xuất bản truy hồi được khi tìm kiếm; lần mở trực tiếp thất bại; không tuyên bố đọc toàn văn JFE",
+        "S02": "VERIFIED_CONTENT: nội dung hiện hành; không xác nhận cấu hình lịch sử",
+        "S06": "VERIFIED_CODE: commit đọc được; không phải xác minh bytecode triển khai tại block"
+      },
+      "original_source_locator": "Cơ chế S17 khác S02/S06; thiết kế hai ca của dự án",
+      "evidence_aliases": [],
+      "rq": "Terra / RQ1–6",
+      "model_result_ids": [],
+      "model_result": "NOT_APPLICABLE: conceptual/protocol/design claim; no numerical project evidence required",
+      "oracle_policy": "NOT_APPLICABLE",
+      "artifact_locators": [],
+      "source_versions": {
+        "p2_start": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+        "frozen": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+        "oracle": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+        "integration_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+        "integration_artifact": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+      },
+      "allowed_interpretation": "Design boundary between Terra and Aave; not a numerical result attributed to JFE.",
+      "status": "PASS_WITH_QUALIFIER",
+      "original_statement": "Terra không xác nhận trực tiếp tham số Aave",
+      "original_limit": "Kết luận giới hạn của nghiên cứu, không trích như phát hiện định lượng JFE",
+      "integration_claim_ids": [
+        "CL_INT_TERRA_NEGATIVE_PRESERVED"
+      ],
+      "raw_hf_state_review": "NOT_APPLICABLE"
+    },
+    {
+      "claim_id": "C18",
+      "scholarly_sources": [
+        "S19",
+        "S20"
+      ],
+      "scholarly_source_role": "scoped conceptual/protocol/method support; project outputs require separate artifacts",
+      "source_verification": {
+        "S19": "VERIFIED_ABSTRACT: trang nhà xuất bản; chưa đọc phần paywall",
+        "S20": "VERIFIED_ABSTRACT: AEA và kho tác giả Oxford; không xác nhận engine DeFiStress"
+      },
+      "original_source_locator": "S19/S20 abstracts",
+      "evidence_aliases": [],
+      "rq": "RQ1–6",
+      "model_result_ids": [],
+      "model_result": "NOT_APPLICABLE: conceptual/protocol/design claim; no numerical project evidence required",
+      "oracle_policy": "NOT_APPLICABLE",
+      "artifact_locators": [],
+      "source_versions": {
+        "p2_start": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+        "frozen": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+        "oracle": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+        "integration_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+        "integration_artifact": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+      },
+      "allowed_interpretation": "ABM suitability is methodological support, not calibration or evidence of multiple modeled bots.",
+      "status": "PASS_WITH_QUALIFIER",
+      "original_statement": "ABM cho phép tương tác và khác biệt tác nhân",
+      "original_limit": "Không chứng minh tham số hay nhiều bot trong implementation",
+      "integration_claim_ids": [],
+      "raw_hf_state_review": "NOT_APPLICABLE"
+    },
+    {
+      "claim_id": "C19",
+      "scholarly_sources": [],
+      "scholarly_source_role": "NOT_APPLICABLE: project code/result or design boundary, not a scholarly empirical claim",
+      "source_verification": {},
+      "original_source_locator": "engine/run.py; agents/*",
+      "evidence_aliases": [
+        "E01",
+        "E07"
+      ],
+      "rq": "RQ3/4",
+      "model_result_ids": [],
+      "model_result": "NOT_APPLICABLE: conceptual/protocol/design claim; no numerical project evidence required",
+      "oracle_policy": "Frozen A / diagnostic unchanged agent scope",
+      "artifact_locators": [
+        {
+          "path": "sim/engine/run.py",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "representative liquidator/arbitrageur initialization",
+          "evidence_role": "implementation observation; not empirical validation",
+          "content_sha256": "5e2c7fa23e0e382201eec15b09b673cac210cb662e474fd5cd8b6d9a8c1a7870",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "sim/agents/liquidator.py",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "capital remaining; plan size gate",
+          "evidence_role": "implementation observation; not empirical validation",
+          "content_sha256": "8f12dc659647ba3d49feb20b3505c7163aabb8b3c4ca0066fd88ca732126c684",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "sim/agents/arbitrageur.py",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "stabilize",
+          "evidence_role": "implementation observation; not empirical validation",
+          "content_sha256": "c015d68447e172c3c1721f71a32d7fc29c46afa29b45558f192fe456aeec96f2",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/mainnet/aave_uniswap_snapshot_26045352.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "borrowers[454]; health_factor formula applied at direct/post-Wave1 policy prices; state updated using existing Wave1 LIQUIDATION events",
+          "evidence_role": "independent static reconstruction input; no simulation rerun",
+          "content_sha256": "76dae833c5b1a6e620cf116e332f1f47c53454a1f3530a02fefacd800cb3b329",
+          "read_status": "READ_CONTENT",
+          "hash_scope": "Git LF bytes; accepted manifest input SHA256 uses CRLF serialization"
+        }
+      ],
+      "source_versions": {
+        "p2_start": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+        "frozen": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+        "oracle": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+        "integration_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+        "integration_artifact": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+      },
+      "allowed_interpretation": "One representative liquidator/arbitrageur, no capital recycling, no automatic plan splitting; no estimated competitive bot market.",
+      "status": "PASS_WITH_QUALIFIER",
+      "original_statement": "Aave ba62c749 có một liquidator/arbitrageur đại diện",
+      "original_limit": "Không gọi nhiều bot cạnh tranh được ước lượng hành vi",
+      "integration_claim_ids": [
+        "CL_INT_ELIGIBLE_NOT_EXECUTED",
+        "CL_INT_RQ3_PRESERVED",
+        "CL_INT_RQ4_PRESERVED"
+      ],
+      "raw_hf_state_review": "Independent static reconstruction of 32688 direct/post HF pairs matched all 72 summary counts and 52 available Wave2 event HF values; all 36 raw NOT_ELIGIBLE skips resolved to NO_MODELLED_USDC_DEBT. Oversized raw CSV cells remain unread, so no exact cell-by-cell source-file comparison claimed."
+    },
+    {
+      "claim_id": "C20",
+      "scholarly_sources": [
+        "S21"
+      ],
+      "scholarly_source_role": "scoped conceptual/protocol/method support; project outputs require separate artifacts",
+      "source_verification": {
+        "S21": "VERIFIED_CONTENT: toàn văn mở; DOI chuyển đúng tới bài"
+      },
+      "original_source_locator": "S21 §§1.6–1.7 và phần code linkage",
+      "evidence_aliases": [
+        "E12"
+      ],
+      "rq": "RQ1–6 / Terra",
+      "model_result_ids": [],
+      "model_result": "NOT_APPLICABLE: conceptual/protocol/design claim; no numerical project evidence required",
+      "oracle_policy": "NOT_APPLICABLE",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/manifest.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "source_code_commit; input_hashes; artifact_hashes",
+          "evidence_role": "support",
+          "content_sha256": "d31660ba134656c2882d95cc26545bd6aba9bf79ad59bd7d88e9d7a8ae0d1168",
+          "read_status": "READ_CONTENT"
+        }
+      ],
+      "source_versions": {
+        "p2_start": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+        "frozen": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+        "oracle": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+        "integration_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+        "integration_artifact": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+      },
+      "allowed_interpretation": "ODD/code linkage is reporting guidance; provenance is not automatic validity certification.",
+      "status": "PASS_WITH_QUALIFIER",
+      "original_statement": "ODD nên mô tả scheduling/model con và liên kết code",
+      "original_limit": "ODD không tự cấp chứng nhận mô hình đúng",
+      "integration_claim_ids": [],
+      "raw_hf_state_review": "NOT_APPLICABLE"
+    },
+    {
+      "claim_id": "C21",
+      "scholarly_sources": [
+        "S22"
+      ],
+      "scholarly_source_role": "scoped conceptual/protocol/method support; project outputs require separate artifacts",
+      "source_verification": {
+        "S22": "VERIFIED_CONTENT: bài wfu đăng thay mặt Gauntlet; không phải peer review hoặc đặc tả tái lập đầy đủ"
+      },
+      "original_source_locator": "S22 Agent-Based Simulation/Network Congestion",
+      "evidence_aliases": [],
+      "rq": "RQ2/3/6",
+      "model_result_ids": [],
+      "model_result": "NOT_APPLICABLE: conceptual/protocol/design claim; no numerical project evidence required",
+      "oracle_policy": "NOT_APPLICABLE",
+      "artifact_locators": [],
+      "source_versions": {
+        "p2_start": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+        "frozen": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+        "oracle": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+        "integration_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+        "integration_artifact": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+      },
+      "allowed_interpretation": "Industry forum content is not peer-reviewed reproducible calibration.",
+      "status": "PASS_WITH_QUALIFIER",
+      "original_statement": "Ngành dùng ABM/MC cho stress tham số DeFi",
+      "original_limit": "Forum không peer reviewed, không claim tái tạo Gauntlet",
+      "integration_claim_ids": [],
+      "raw_hf_state_review": "NOT_APPLICABLE"
+    },
+    {
+      "claim_id": "C22",
+      "scholarly_sources": [
+        "S23"
+      ],
+      "scholarly_source_role": "scoped conceptual/protocol/method support; project outputs require separate artifacts",
+      "source_verification": {
+        "S23": "VERIFIED_PREVIEW/METADATA: chọn edition 1 hardcover 7/8/2003 theo publisher; chưa đọc các chương paywall"
+      },
+      "original_source_locator": "runner.py; targeted repair E04/E12",
+      "evidence_aliases": [
+        "E04",
+        "E08",
+        "E12"
+      ],
+      "rq": "RQ1–6",
+      "model_result_ids": [
+        "MC_INDEPENDENT_PATHS_VALIDATED"
+      ],
+      "model_result": "registry/selected-case results only; preserve units and denominators",
+      "oracle_policy": "Policy A checkpoint; selected A-depth2 diagnostic paths",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/results_registry.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "results[result_id in MC_INDEPENDENT_PATHS_VALIDATED]",
+          "evidence_role": "support",
+          "content_sha256": "6e31fb66964a66e1e05ce5a39414ebcd399b736c49042328246c6c3986d0e1b8",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/level3_p1_targeted_repair/monte_carlo/checkpoint_validation.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "independent_batches; prefix nesting; invocation accounting",
+          "evidence_role": "support",
+          "content_sha256": "3c299fa8b35d2d54c452a7abf14f40004c6d6a656f2a0bc282c9e978283bac5a",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/oracle_transmission_diagnostic_v1/selection_manifest.json",
+          "read_commit": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+          "selector": "audited_monte_carlo_paths",
+          "evidence_role": "support",
+          "content_sha256": "3eb4bd1c2404abfb1a4a2cd402d06d70a971e781b279c599be66438c5e5d253d",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/mainnet/aave_uniswap_snapshot_26045352.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "borrowers[454]; health_factor formula applied at direct/post-Wave1 policy prices; state updated using existing Wave1 LIQUIDATION events",
+          "evidence_role": "independent static reconstruction input; no simulation rerun",
+          "content_sha256": "76dae833c5b1a6e620cf116e332f1f47c53454a1f3530a02fefacd800cb3b329",
+          "read_status": "READ_CONTENT",
+          "hash_scope": "Git LF bytes; accepted manifest input SHA256 uses CRLF serialization"
+        }
+      ],
+      "source_versions": {
+        "p2_start": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+        "frozen": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+        "oracle": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+        "integration_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+        "integration_artifact": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+      },
+      "allowed_interpretation": "13k independent batch identities; nested prefixes not summed; no rerun in repair. Ten paths intentionally selected under A, not a fresh probability sample.",
+      "status": "CORRECTED",
+      "original_statement": "MC lấy mẫu tham số; checkpoint stages có prefix lồng và accounting tách biệt",
+      "original_limit": "13k batch identities, 0 duplicates, 21/21 reproduce; legacy duration unavailable",
+      "integration_claim_ids": [],
+      "raw_hf_state_review": "Independent static reconstruction of 32688 direct/post HF pairs matched all 72 summary counts and 52 available Wave2 event HF values; all 36 raw NOT_ELIGIBLE skips resolved to NO_MODELLED_USDC_DEBT. Oversized raw CSV cells remain unread, so no exact cell-by-cell source-file comparison claimed."
+    },
+    {
+      "claim_id": "C23",
+      "scholarly_sources": [
+        "S24"
+      ],
+      "scholarly_source_role": "scoped conceptual/protocol/method support; project outputs require separate artifacts",
+      "source_verification": {
+        "S24": "VERIFIED_CONTENT: công thức Wilson được đọc và tính lại; tên trang lịch sử khác tên phương pháp"
+      },
+      "original_source_locator": "S24 Note/formula; E03/E04/E05",
+      "evidence_aliases": [
+        "E03",
+        "E04",
+        "E05"
+      ],
+      "rq": "RQ1",
+      "model_result_ids": [
+        "RQ1_MC_SEVERE_DEPTH2_COUNT",
+        "RQ1_MC_SEVERE_DEPTH2_FREQUENCY"
+      ],
+      "model_result": "registry/selected-case results only; preserve units and denominators",
+      "oracle_policy": "Policy A only",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/results_registry.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "results[result_id in RQ1_MC_SEVERE_DEPTH2_COUNT,RQ1_MC_SEVERE_DEPTH2_FREQUENCY]",
+          "evidence_role": "support",
+          "content_sha256": "6e31fb66964a66e1e05ce5a39414ebcd399b736c49042328246c6c3986d0e1b8",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/level3_extension/deep_stress/monte_carlo_batches.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "Severe 10000 and Low Liquidity 1000; Wilson",
+          "evidence_role": "support",
+          "content_sha256": "507bf53ddc6ff8492b18cf6c9ec56bbf4aace09f049f69d083188476da9481d8",
+          "read_status": "READ_CONTENT"
+        }
+      ],
+      "source_versions": {
+        "p2_start": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+        "frozen": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+        "oracle": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+        "integration_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+        "integration_artifact": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+      },
+      "allowed_interpretation": "Wilson score interval differs from adjusted Wald; 280/10000 is conditional Severe A frequency, never actual Ethereum crisis probability.",
+      "status": "CORRECTED",
+      "original_statement": "Wilson Severe 8/200,280/10k; Low Liquidity 0/1k",
+      "original_limit": "Tên lịch sử NIST không đổi tên Wilson; không forecast",
+      "integration_claim_ids": [
+        "CL_FROZEN_RQ1_UNQUALIFIED_WORDING"
+      ],
+      "raw_hf_state_review": "NOT_APPLICABLE"
+    },
+    {
+      "claim_id": "C24",
+      "scholarly_sources": [
+        "S13"
+      ],
+      "scholarly_source_role": "scoped conceptual/protocol/method support; project outputs require separate artifacts",
+      "source_verification": {
+        "S13": "VERIFIED_CONTENT: PDF gốc và DOI nhà phát hành; resolver trực tiếp không truy cập được"
+      },
+      "original_source_locator": "S13 §5.4; runner.py; E04 loss_definition",
+      "evidence_aliases": [
+        "E04"
+      ],
+      "rq": "RQ2/3/5/6",
+      "model_result_ids": [],
+      "model_result": "NOT_APPLICABLE: conceptual/protocol/design claim; no numerical project evidence required",
+      "oracle_policy": "Frozen Policy A",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/level3_extension/deep_stress/monte_carlo_batches.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "loss_definition; tail metrics",
+          "evidence_role": "support",
+          "content_sha256": "507bf53ddc6ff8492b18cf6c9ec56bbf4aace09f049f69d083188476da9481d8",
+          "read_status": "READ_CONTENT"
+        }
+      ],
+      "source_versions": {
+        "p2_start": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+        "frozen": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+        "oracle": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+        "integration_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+        "integration_artifact": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+      },
+      "allowed_interpretation": "Composite exposure tail includes repayment; not realized loss/market ES. Units and quantile ties retained.",
+      "status": "PASS_WITH_QUALIFIER",
+      "original_statement": "Chỉ tiêu đuôi là composite exposure, không realized loss",
+      "original_limit": "Repayment không phải loss; giữ units/ties/provenance",
+      "integration_claim_ids": [],
+      "raw_hf_state_review": "NOT_APPLICABLE"
+    },
+    {
+      "claim_id": "C25",
+      "scholarly_sources": [
+        "S25"
+      ],
+      "scholarly_source_role": "scoped conceptual/protocol/method support; project outputs require separate artifacts",
+      "source_verification": {
+        "S25": "VERIFIED_CONTENT: PDF tác giả đọc được; DOI journal khớp; OUP resolver lỗi"
+      },
+      "original_source_locator": "S25 §2 bản tác giả",
+      "evidence_aliases": [],
+      "rq": "Network extension",
+      "model_result_ids": [],
+      "model_result": "NOT_APPLICABLE: conceptual/protocol/design claim; no numerical project evidence required",
+      "oracle_policy": "NOT_APPLICABLE",
+      "artifact_locators": [],
+      "source_versions": {
+        "p2_start": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+        "frozen": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+        "oracle": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+        "integration_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+        "integration_artifact": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+      },
+      "allowed_interpretation": "Formal multilayer background; no project supra-adjacency or full multilayer contagion validation.",
+      "status": "PASS_UNCHANGED",
+      "original_statement": "Multilayer cần nêu node–layer và kiểu coupling",
+      "original_limit": "Nhãn lớp/nhiều cạnh chưa đủ chứng minh supra adjacency",
+      "integration_claim_ids": [],
+      "raw_hf_state_review": "NOT_APPLICABLE"
+    },
+    {
+      "claim_id": "C26",
+      "scholarly_sources": [
+        "S25",
+        "S26"
+      ],
+      "scholarly_source_role": "scoped conceptual/protocol/method support; project outputs require separate artifacts",
+      "source_verification": {
+        "S25": "VERIFIED_CONTENT: PDF tác giả đọc được; DOI journal khớp; OUP resolver lỗi",
+        "S26": "VERIFIED_ABSTRACT_INDEXED: search đọc được abstract gốc; mở URL thất bại; không tuyên bố đọc toàn văn"
+      },
+      "original_source_locator": "`sim/network/metrics.py`; S25/S26 nền phương pháp",
+      "evidence_aliases": [],
+      "rq": "Network extension",
+      "model_result_ids": [],
+      "model_result": "NOT_APPLICABLE: conceptual/protocol/design claim; no numerical project evidence required",
+      "oracle_policy": "NOT_APPLICABLE",
+      "artifact_locators": [
+        {
+          "path": "sim/network/metrics.py",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "aggregate graph; betweenness/eigenvector weighting",
+          "evidence_role": "implementation observation; not empirical validation",
+          "content_sha256": "a1c154205fe060814b6830bba26c3120f03a02ecfa2b5153d9e1c07e502f6830",
+          "read_status": "READ_CONTENT"
+        }
+      ],
+      "source_versions": {
+        "p2_start": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+        "frozen": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+        "oracle": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+        "integration_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+        "integration_artifact": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+      },
+      "allowed_interpretation": "Typed aggregate structural metrics; no risk-weighted multilayer empirical inference.",
+      "status": "PASS_WITH_QUALIFIER",
+      "original_statement": "Centrality hiện tính trên graph gộp typed network",
+      "original_limit": "Gộp max; structural metric chưa risk-weighted",
+      "integration_claim_ids": [],
+      "raw_hf_state_review": "NOT_APPLICABLE"
+    },
+    {
+      "claim_id": "C27",
+      "scholarly_sources": [
+        "S28"
+      ],
+      "scholarly_source_role": "scoped conceptual/protocol/method support; project outputs require separate artifacts",
+      "source_verification": {
+        "S28": "VERIFIED_CONTENT/METADATA: đọc abstract paper gốc qua bản sao https://ucilnica.fri.uni-lj.si/pluginfile.php/1147/course/section/1510/Freeman%20-%20A%20set%20of%20measures%20of%20centrality%20based%20on%20betweenness%2C%201977.pdf; không gán directed variant cho bài gốc"
+      },
+      "original_source_locator": "S28 paper abstract; implementation NetworkX trong dự án",
+      "evidence_aliases": [],
+      "rq": "Network extension",
+      "model_result_ids": [],
+      "model_result": "NOT_APPLICABLE: conceptual/protocol/design claim; no numerical project evidence required",
+      "oracle_policy": "NOT_APPLICABLE",
+      "artifact_locators": [
+        {
+          "path": "sim/network/metrics.py",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "betweenness_centrality",
+          "evidence_role": "implementation observation; not empirical validation",
+          "content_sha256": "a1c154205fe060814b6830bba26c3120f03a02ecfa2b5153d9e1c07e502f6830",
+          "read_status": "READ_CONTENT"
+        }
+      ],
+      "source_versions": {
+        "p2_start": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+        "frozen": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+        "oracle": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+        "integration_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+        "integration_artifact": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+      },
+      "allowed_interpretation": "Shortest-path bridge interpretation only; directed/unweighted implementation not universal risk importance.",
+      "status": "PASS_WITH_QUALIFIER",
+      "original_statement": "Betweenness biểu thị vị trí trên shortest paths",
+      "original_limit": "Directed/unweighted variant phải công bố; không universal importance",
+      "integration_claim_ids": [],
+      "raw_hf_state_review": "NOT_APPLICABLE"
+    },
+    {
+      "claim_id": "C28",
+      "scholarly_sources": [
+        "S27"
+      ],
+      "scholarly_source_role": "scoped conceptual/protocol/method support; project outputs require separate artifacts",
+      "source_verification": {
+        "S27": "VERIFIED_CONTENT: trang bài gốc; không khẳng định DeFiStress triển khai DebtRank"
+      },
+      "original_source_locator": "S27 Introduction/abstract",
+      "evidence_aliases": [],
+      "rq": "Network extension",
+      "model_result_ids": [],
+      "model_result": "NOT_APPLICABLE: conceptual/protocol/design claim; no numerical project evidence required",
+      "oracle_policy": "NOT_APPLICABLE",
+      "artifact_locators": [
+        {
+          "path": "sim/network/metrics.py",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "implemented metrics; no DebtRank implementation",
+          "evidence_role": "implementation observation; not empirical validation",
+          "content_sha256": "a1c154205fe060814b6830bba26c3120f03a02ecfa2b5153d9e1c07e502f6830",
+          "read_status": "READ_CONTENT"
+        }
+      ],
+      "source_versions": {
+        "p2_start": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+        "frozen": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+        "oracle": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+        "integration_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+        "integration_artifact": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+      },
+      "allowed_interpretation": "DebtRank literature is distinct from normalized structural centrality.",
+      "status": "PASS_WITH_QUALIFIER",
+      "original_statement": "DebtRank là chỉ số distress khác centrality cấu trúc",
+      "original_limit": "Dự án chưa implement DebtRank; không đổi tên điểm normalized",
+      "integration_claim_ids": [],
+      "raw_hf_state_review": "NOT_APPLICABLE"
+    },
+    {
+      "claim_id": "C29",
+      "scholarly_sources": [
+        "S30"
+      ],
+      "scholarly_source_role": "scoped conceptual/protocol/method support; project outputs require separate artifacts",
+      "source_verification": {
+        "S30": "VERIFIED_ABSTRACT: kho tác giả; chỉ dùng để giới hạn viện dẫn CV, không chứng minh cutoff Terra"
+      },
+      "original_source_locator": "S30 abstract kho tác giả",
+      "evidence_aliases": [],
+      "rq": "Terra validation",
+      "model_result_ids": [],
+      "model_result": "NOT_APPLICABLE: conceptual/protocol/design claim; no numerical project evidence required",
+      "oracle_policy": "NOT_APPLICABLE",
+      "artifact_locators": [],
+      "source_versions": {
+        "p2_start": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+        "frozen": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+        "oracle": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+        "integration_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+        "integration_artifact": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+      },
+      "allowed_interpretation": "Restricted autoregression/uncorrelated-error CV claim; no universal ban on K-fold and no proof of no leakage.",
+      "status": "PASS_WITH_QUALIFIER",
+      "original_statement": "Bergmeir nêu CV autoregression với điều kiện cụ thể",
+      "original_limit": "Không dẫn như lệnh cấm K-fold chung hoặc bằng chứng no-leakage",
+      "integration_claim_ids": [
+        "CL_INT_TERRA_NEGATIVE_PRESERVED"
+      ],
+      "raw_hf_state_review": "NOT_APPLICABLE"
+    },
+    {
+      "claim_id": "C30",
+      "scholarly_sources": [],
+      "scholarly_source_role": "NOT_APPLICABLE: project code/result or design boundary, not a scholarly empirical claim",
+      "source_verification": {},
+      "original_source_locator": "V2 và `FINAL_RESEARCH_REPORT.md`/claim matrix; P2 yêu cầu thiết kế",
+      "evidence_aliases": [],
+      "rq": "Terra validation",
+      "model_result_ids": [
+        "TERRA_PRE_DEPEG_HIGH_ALERT_HOURS",
+        "TERRA_INITIAL_DEPEG_HIGH_LEAD"
+      ],
+      "model_result": "registry/selected-case results only; preserve units and denominators",
+      "oracle_policy": "NOT_APPLICABLE: cutoff-safe Terra audit",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/results_registry.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "results[result_id in TERRA_PRE_DEPEG_HIGH_ALERT_HOURS,TERRA_INITIAL_DEPEG_HIGH_LEAD]",
+          "evidence_role": "support",
+          "content_sha256": "6e31fb66964a66e1e05ce5a39414ebcd399b736c49042328246c6c3986d0e1b8",
+          "read_status": "READ_CONTENT"
+        }
+      ],
+      "source_versions": {
+        "p2_start": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+        "frozen": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+        "oracle": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+        "integration_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+        "integration_artifact": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+      },
+      "allowed_interpretation": "Zero HIGH hours before initial depeg and negative lead; reconstruction/backtest is not successful out-of-sample forecasting.",
+      "status": "PASS_WITH_QUALIFIER",
+      "original_statement": "Crisis reconstruction khác cutoff-safe warning",
+      "original_limit": "Source paper không chứng nhận retrospective forecast",
+      "integration_claim_ids": [
+        "CL_INT_TERRA_NEGATIVE_PRESERVED"
+      ],
+      "raw_hf_state_review": "NOT_APPLICABLE"
+    },
+    {
+      "claim_id": "C31",
+      "scholarly_sources": [
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S19",
+        "S20",
+        "S21",
+        "S22"
+      ],
+      "scholarly_source_role": "scoped conceptual/protocol/method support; project outputs require separate artifacts",
+      "source_verification": {
+        "S09": "VERIFIED_ABSTRACT: bản tác giả arXiv đọc được; DOI/venue khớp UCL; DOI trực tiếp 403",
+        "S10": "VERIFIED_ABSTRACT: trang BIS đọc được; chưa kiểm từng bảng/ước lượng; không gán DOI",
+        "S11": "VERIFIED_CONTENT: PDF và trang OECD; DOI khớp nhà xuất bản; resolver trực tiếp không truy cập được",
+        "S12": "VERIFIED_ABSTRACT: nguồn phát hành; không suy diễn Aave dùng đấu giá",
+        "S13": "VERIFIED_CONTENT: PDF gốc và DOI nhà phát hành; resolver trực tiếp không truy cập được",
+        "S19": "VERIFIED_ABSTRACT: trang nhà xuất bản; chưa đọc phần paywall",
+        "S20": "VERIFIED_ABSTRACT: AEA và kho tác giả Oxford; không xác nhận engine DeFiStress",
+        "S21": "VERIFIED_CONTENT: toàn văn mở; DOI chuyển đúng tới bài",
+        "S22": "VERIFIED_CONTENT: bài wfu đăng thay mặt Gauntlet; không phải peer review hoặc đặc tả tái lập đầy đủ"
+      },
+      "original_source_locator": "Đối chiếu S09–13/S19–22; evidence pipeline dự án",
+      "evidence_aliases": [
+        "E12"
+      ],
+      "rq": "RQ1–6",
+      "model_result_ids": [],
+      "model_result": "NOT_APPLICABLE: conceptual/protocol/design claim; no numerical project evidence required",
+      "oracle_policy": "NOT_APPLICABLE",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/manifest.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "provenance and scope",
+          "evidence_role": "support",
+          "content_sha256": "d31660ba134656c2882d95cc26545bd6aba9bf79ad59bd7d88e9d7a8ae0d1168",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/scientific_integration_v1/claim_to_result_registry.json",
+          "read_commit": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+          "selector": "claim/evidence separation",
+          "evidence_role": "support",
+          "content_sha256": "73a3f51cfb6324e51026b5060facbdb591b54840e9db467f2200baadf9a59a5b",
+          "read_status": "READ_CONTENT"
+        }
+      ],
+      "source_versions": {
+        "p2_start": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+        "frozen": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+        "oracle": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+        "integration_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+        "integration_artifact": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+      },
+      "allowed_interpretation": "Proposed traceable integration contribution; no evidence for first-ever novelty or superiority. Not a quantitative model result.",
+      "status": "PASS_WITH_QUALIFIER",
+      "original_statement": "Novelty đề xuất là tích hợp truy vết và giới hạn rõ",
+      "original_limit": "Không first ever; contribution còn phải audit thực hiện",
+      "integration_claim_ids": [],
+      "raw_hf_state_review": "NOT_APPLICABLE"
+    },
+    {
+      "claim_id": "C32",
+      "scholarly_sources": [
+        "S05"
+      ],
+      "scholarly_source_role": "scoped conceptual/protocol/method support; project outputs require separate artifacts",
+      "source_verification": {
+        "S05": "VERIFIED_CONTENT: API nguồn giá, không xác nhận feed tại block nghiên cứu"
+      },
+      "original_source_locator": "engine/run.py tại ba62c749; E09/E11",
+      "evidence_aliases": [
+        "E02",
+        "E04",
+        "E08",
+        "E12"
+      ],
+      "rq": "RQ1/2/4",
+      "model_result_ids": [],
+      "model_result": "NOT_APPLICABLE: conceptual/protocol/design claim; no numerical project evidence required",
+      "oracle_policy": "A adverse min(reference,DEX); B reference-only; C weak .25/lag1/window3; C moderate .50/lag1/window2",
+      "artifact_locators": [
+        {
+          "path": "sim/oracle.py",
+          "read_commit": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+          "selector": "OraclePolicy.next_valuation_price; C configurations",
+          "evidence_role": "support",
+          "content_sha256": "826bdab7242624352b5a87edbed4e801d28f6dc807e570c84f0a95c10b50cd42",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/oracle_transmission_diagnostic_v1/selection_manifest.json",
+          "read_commit": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+          "selector": "oracle_policies; causality_rule",
+          "evidence_role": "support",
+          "content_sha256": "3eb4bd1c2404abfb1a4a2cd402d06d70a971e781b279c599be66438c5e5d253d",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/oracle_transmission_diagnostic_v1/comparison_matrix.csv",
+          "read_commit": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+          "selector": "all selected case-policy rows",
+          "evidence_role": "support",
+          "content_sha256": "09c2d6dea5868817c57a67329f4d64469d1d7c1340fddc5e980c6b3741bea078",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/mainnet/aave_uniswap_snapshot_26045352.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "borrowers[454]; health_factor formula applied at direct/post-Wave1 policy prices; state updated using existing Wave1 LIQUIDATION events",
+          "evidence_role": "independent static reconstruction input; no simulation rerun",
+          "content_sha256": "76dae833c5b1a6e620cf116e332f1f47c53454a1f3530a02fefacd800cb3b329",
+          "read_status": "READ_CONTENT",
+          "hash_scope": "Git LF bytes; accepted manifest input SHA256 uses CRLF serialization"
+        }
+      ],
+      "source_versions": {
+        "p2_start": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+        "frozen": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+        "oracle": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+        "integration_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+        "integration_artifact": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+      },
+      "allowed_interpretation": "A/B/C are counterfactual policies; A is not actual Aave spot feed, B does not prove real feed invariance, C is hypothetical and uncalibrated.",
+      "status": "CORRECTED",
+      "original_statement": "Valuation=min(reference,DEX); history oracle là chứng cứ khác",
+      "original_limit": "Synthetic feedback không là Aave oracle thật",
+      "integration_claim_ids": [
+        "CL_INT_RQ1_POLICY_CONDITIONAL",
+        "CL_FROZEN_RQ1_UNQUALIFIED_WORDING",
+        "CL_INT_RQ2_TWO_CHANNELS",
+        "CL_FROZEN_RQ2_DIRECT_ELIGIBILITY_WORDING",
+        "CL_UNSUPPORTED_AAVE_USES_UNISWAP_SPOT"
+      ],
+      "raw_hf_state_review": "Independent static reconstruction of 32688 direct/post HF pairs matched all 72 summary counts and 52 available Wave2 event HF values; all 36 raw NOT_ELIGIBLE skips resolved to NO_MODELLED_USDC_DEBT. Oversized raw CSV cells remain unread, so no exact cell-by-cell source-file comparison claimed."
+    },
+    {
+      "claim_id": "C33",
+      "scholarly_sources": [
+        "S03",
+        "S05"
+      ],
+      "scholarly_source_role": "scoped conceptual/protocol/method support; project outputs require separate artifacts",
+      "source_verification": {
+        "S03": "VERIFIED_CONTENT: HF và nhánh close factor trên trang trợ giúp",
+        "S05": "VERIFIED_CONTENT: API nguồn giá, không xác nhận feed tại block nghiên cứu"
+      },
+      "original_source_locator": "E03/E08; 8 path P0, ca tất định và 10 mẫu phân tầng MC",
+      "evidence_aliases": [
+        "E03",
+        "E08"
+      ],
+      "rq": "RQ1/3",
+      "model_result_ids": [
+        "INT_A_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_A_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES"
+      ],
+      "model_result": "registry/selected-case results only; preserve units and denominators",
+      "oracle_policy": "A/B/C; prior HF audit under A",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/level3_p1_targeted_repair/monte_carlo/wave2_eligibility_audit.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "deterministic HF 1.0211716→0.9980426; ten stratified samples",
+          "evidence_role": "support",
+          "content_sha256": "f01c278278abd2b5153bf451bf8fddb706c3c524a761aad347c4eb6820b4070a",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
+          "read_commit": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+          "selector": "all 72 rows: eligibility/evaluation/execution/skip",
+          "evidence_role": "support",
+          "content_sha256": "53dc862ad37d447777ec2ee421d00696d7c52555a931af084d834c88f06df283",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/scientific_integration_v1/targeted_event_trace.jsonl",
+          "read_commit": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+          "selector": "wave=2; event_type; debt_repaid_usdc; reason",
+          "evidence_role": "support",
+          "content_sha256": "3216731257761b67e1b44e0d4774e88530c4dcb88d4961fc42bacc41a39759ec",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/mainnet/aave_uniswap_snapshot_26045352.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "borrowers[454]; health_factor formula applied at direct/post-Wave1 policy prices; state updated using existing Wave1 LIQUIDATION events",
+          "evidence_role": "independent static reconstruction input; no simulation rerun",
+          "content_sha256": "76dae833c5b1a6e620cf116e332f1f47c53454a1f3530a02fefacd800cb3b329",
+          "read_status": "READ_CONTENT",
+          "hash_scope": "Git LF bytes; accepted manifest input SHA256 uses CRLF serialization"
+        }
+      ],
+      "source_versions": {
+        "p2_start": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+        "frozen": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+        "oracle": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+        "integration_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+        "integration_artifact": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+      },
+      "allowed_interpretation": "HF transition establishes modeled eligibility under a policy, not execution. All 36 non-executed instances have raw NOT_ELIGIBLE; Work independently resolves NO_MODELLED_USDC_DEBT using snapshot plus recorded Wave1 events; source raw CSV cells remain unread.",
+      "status": "CORRECTED",
+      "original_statement": "HF audit xác nhận borrower mới HF≥1→HF<1 trước vòng 2",
+      "original_limit": "Chỉ simulated endogenous eligibility; không phải cascade lịch sử",
+      "integration_claim_ids": [
+        "CL_INT_RQ1_POLICY_CONDITIONAL",
+        "CL_FROZEN_RQ1_UNQUALIFIED_WORDING",
+        "CL_INT_ELIGIBLE_NOT_EXECUTED"
+      ],
+      "raw_hf_state_review": "Independent static reconstruction of 32688 direct/post HF pairs matched all 72 summary counts and 52 available Wave2 event HF values; all 36 raw NOT_ELIGIBLE skips resolved to NO_MODELLED_USDC_DEBT. Oversized raw CSV cells remain unread, so no exact cell-by-cell source-file comparison claimed."
+    },
+    {
+      "claim_id": "C34",
+      "scholarly_sources": [
+        "S08"
+      ],
+      "scholarly_source_role": "scoped conceptual/protocol/method support; project outputs require separate artifacts",
+      "source_verification": {
+        "S08": "VERIFIED_CODE: mã chuẩn; bổ trợ https://developers.uniswap.org/docs/protocols/v3/concepts/architecture"
+      },
+      "original_source_locator": "Mã ba62c749; tick/round-trip tests; E01",
+      "evidence_aliases": [
+        "E01"
+      ],
+      "rq": "RQ2/4",
+      "model_result_ids": [],
+      "model_result": "NOT_APPLICABLE: conceptual/protocol/design claim; no numerical project evidence required",
+      "oracle_policy": "NOT_APPLICABLE for tick update",
+      "artifact_locators": [
+        {
+          "path": "sim/dex/uniswap_v3.py",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "arbitrage_toward; ±liquidityNet",
+          "evidence_role": "implementation observation; not empirical validation",
+          "content_sha256": "3fa671f616caee587735eef41073bc8db4a097e91711ef8c9d3511f4f7a0580a",
+          "read_status": "READ_CONTENT"
+        }
+      ],
+      "source_versions": {
+        "p2_start": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+        "frozen": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+        "oracle": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+        "integration_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+        "integration_artifact": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+      },
+      "allowed_interpretation": "Tick traversal updates active liquidity; price repositioning remains without funded executable swap/fork.",
+      "status": "PASS_WITH_QUALIFIER",
+      "original_statement": "Reposition cập nhật ±liquidityNet qua tick",
+      "original_limit": "Không giữ lỗi L cũ; funded swap/fork chưa xác nhận",
+      "integration_claim_ids": [
+        "CL_INT_RQ2_TWO_CHANNELS",
+        "CL_INT_RQ4_PRESERVED"
+      ],
+      "raw_hf_state_review": "NOT_APPLICABLE"
+    },
+    {
+      "claim_id": "C35",
+      "scholarly_sources": [],
+      "scholarly_source_role": "NOT_APPLICABLE: project code/result or design boundary, not a scholarly empirical claim",
+      "source_verification": {},
+      "original_source_locator": "liquidation.py; schemas.py; uniswap_v3.py",
+      "evidence_aliases": [
+        "E07"
+      ],
+      "rq": "RQ5",
+      "model_result_ids": [
+        "RQ5_LIQUIDATED_DEBT_TOKEN_QTY",
+        "RQ5_LIQUIDATED_DEBT_USD"
+      ],
+      "model_result": "registry/selected-case results only; preserve units and denominators",
+      "oracle_policy": "Frozen Policy A; oracle addendum does not broaden RQ5",
+      "artifact_locators": [
+        {
+          "path": "sim/lending/liquidation.py",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "collateral seizure formula; nominal USDC debt",
+          "evidence_role": "implementation observation; not empirical validation",
+          "content_sha256": "fd3f4e5cd2f4a9564ca7b23625d693e0661a8162182699a0eb2940603158e96b",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "sim/schemas.py",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "USDC debt valuation",
+          "evidence_role": "implementation observation; not empirical validation",
+          "content_sha256": "6869ec619a5c91916d608b9a1297899664a8c0a1eca89c8718e42c0223b53689",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/frozen_v3/results_registry.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "results[result_id in RQ5_LIQUIDATED_DEBT_TOKEN_QTY,RQ5_LIQUIDATED_DEBT_USD]",
+          "evidence_role": "support",
+          "content_sha256": "6e31fb66964a66e1e05ce5a39414ebcd399b736c49042328246c6c3986d0e1b8",
+          "read_status": "READ_CONTENT"
+        }
+      ],
+      "source_versions": {
+        "p2_start": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+        "frozen": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+        "oracle": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+        "integration_read": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+        "integration_artifact": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+      },
+      "allowed_interpretation": "USDC/USD units and limited valuation scope preserved; no full depeg repricing claim.",
+      "status": "PASS_WITH_QUALIFIER",
+      "original_statement": "USDC seize/dust/quote chưa repricing toàn diện tại ba62c749",
+      "original_limit": "Đã kiểm version; valuation sensitivity không full-depeg validation",
+      "integration_claim_ids": [
+        "CL_INT_RQ5_PRESERVED"
+      ],
+      "raw_hf_state_review": "NOT_APPLICABLE"
+    }
+  ],
+  "evidence_aliases": [
+    {
+      "alias": "E01",
+      "existing_locator": "`sim/dex/uniswap_v3.py::arbitrage_toward`; `sim/tests/test_uniswap_v3.py` tick/round-trip tests; P0 `manifest.json`",
+      "existing_source_commit": "ba62c74950a72751e0030527836082da0c7622ef",
+      "existing_interpretation": "Reposition cập nhật L qua tick; model `0.1.0-aave-v3.10-metric-semantics`",
+      "existing_limit": "Lỗi L cũ đã sửa; còn price teleportation/fork boundary",
+      "new_corresponding_locators": [
+        {
+          "path": "sim/dex/uniswap_v3.py",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "arbitrage_toward",
+          "evidence_role": "implementation observation; not empirical validation",
+          "content_sha256": "3fa671f616caee587735eef41073bc8db4a097e91711ef8c9d3511f4f7a0580a",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/validation_audit/corrected_run_v2/manifest.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "model_version",
+          "evidence_role": "support",
+          "content_sha256": "475bcaffb75c714af2102d6f3632587b23f0148ea7454951a96b9d4a836f0038",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/frozen_v3/results_registry.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "results[result_id in RQ4_IMMEDIATE_PRICE_IMPACT,RQ4_SPREAD_ARB100]",
+          "evidence_role": "support",
+          "content_sha256": "6e31fb66964a66e1e05ce5a39414ebcd399b736c49042328246c6c3986d0e1b8",
+          "read_status": "READ_CONTENT"
+        }
+      ],
+      "result_ids": [
+        "RQ4_IMMEDIATE_PRICE_IMPACT",
+        "RQ4_SPREAD_ARB100"
+      ],
+      "evidence_tier": "CODE_OBSERVATION + MODEL_COMPUTED_COUNTERFACTUAL",
+      "rq": "RQ2/RQ4",
+      "correct_interpretation": "Tick update fixed; funded swap/fork unverified.",
+      "status": "PASS_UNCHANGED",
+      "superseded_status": "Original locator retained for its historical/code/number scope; Oracle/Addendum supplement interpretation only, never replace locked numbers.",
+      "denominator": "Code fact; three tested arbitrage capacities for frozen same-sale sweep. Ratio metrics ×100 for displayed percent."
+    },
+    {
+      "alias": "E02",
+      "existing_locator": "L3 `deep_stress/deterministic_grid.csv`; `tables/deterministic_grid_depth_counts.csv`",
+      "existing_source_commit": "ba62c74950a72751e0030527836082da0c7622ef",
+      "existing_interpretation": "60 cells: depth 0/1/2 = 18/38/4; bốn cell shock −40/−50 × haircut 90/95; depth≥3 = 0",
+      "existing_limit": "P2 đếm lại CSV; 4/60 là tỷ lệ ô được chọn, không xác suất",
+      "new_corresponding_locators": [
+        {
+          "path": "data/processed/research_final/level3_extension/deep_stress/deterministic_grid.csv",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "60 rows; cascade_depth; shock_pct; liquidity_haircut_pct",
+          "evidence_role": "support",
+          "content_sha256": "a2b605466703ab4c26f46df7c76455a09c278e39f497643b7af29c31da07a947",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/frozen_v3/results_registry.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "results[result_id in RQ1_GRID60_DEPTH0,RQ1_GRID60_DEPTH1,RQ1_GRID60_DEPTH2]",
+          "evidence_role": "support",
+          "content_sha256": "6e31fb66964a66e1e05ce5a39414ebcd399b736c49042328246c6c3986d0e1b8",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/oracle_transmission_diagnostic_v1/comparison_matrix.csv",
+          "read_commit": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+          "selector": "case_type=DETERMINISTIC_DEPTH2",
+          "evidence_role": "support",
+          "content_sha256": "09c2d6dea5868817c57a67329f4d64469d1d7c1340fddc5e980c6b3741bea078",
+          "read_status": "READ_CONTENT"
+        }
+      ],
+      "result_ids": [
+        "RQ1_GRID60_DEPTH0",
+        "RQ1_GRID60_DEPTH1",
+        "RQ1_GRID60_DEPTH2"
+      ],
+      "evidence_tier": "MODEL_COMPUTED_COUNTERFACTUAL",
+      "rq": "RQ1/RQ2",
+      "correct_interpretation": "Original 18/38/4 preserved under A; selected four-case contrast 4/0/0/0. Cells are not probabilities.",
+      "status": "PASS_WITH_QUALIFIER",
+      "superseded_status": "Original locator retained for its historical/code/number scope; Oracle/Addendum supplement interpretation only, never replace locked numbers.",
+      "denominator": "Original grid60 cells, depth0/1/2=18/38/4 under A; four selected depth2 cases ×four policies; four control cases separately. Cells are not probability sample."
+    },
+    {
+      "alias": "E03",
+      "existing_locator": "P0 `severe_mc_depth2_path_audit.json`: all_paths_pass, audit_rules, later_wave_checks",
+      "existing_source_commit": "ba62c74950a72751e0030527836082da0c7622ef",
+      "existing_interpretation": "Severe 8/200; Wilson 2,0406%–7,6932%; HF direct shock≥1 rồi prior-wave<1",
+      "existing_limit": "Wave 2 nội sinh trong các path đã kiểm; không historical causation",
+      "new_corresponding_locators": [
+        {
+          "path": "data/processed/research_final/validation_audit/corrected_run_v2/severe_mc_depth2_path_audit.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "all_paths_pass; later_wave_checks",
+          "evidence_role": "support",
+          "content_sha256": "f1d50adbad7f67e79990427fe667454194e8f9eee45eaf8bdd13dea275f4354a",
+          "read_status": "READ_CONTENT"
+        }
+      ],
+      "result_ids": [],
+      "evidence_tier": "MODEL_COMPUTED_COUNTERFACTUAL",
+      "rq": "RQ1/RQ3",
+      "correct_interpretation": "Eight of 200 P0 paths and eligibility trace under A; not eight guaranteed external executions.",
+      "status": "PASS_WITH_QUALIFIER",
+      "superseded_status": "Original locator retained for its historical/code/number scope; Oracle/Addendum supplement interpretation only, never replace locked numbers.",
+      "denominator": "P0 Severe200 paths, eight depth2 audit paths; units HF/price/debt as in original path artifact; Policy A only."
+    },
+    {
+      "alias": "E04",
+      "existing_locator": "L3 `deep_stress/monte_carlo_batches.json`; FIX `monte_carlo/checkpoint_validation.json`",
+      "existing_source_commit": "ba62c74950a72751e0030527836082da0c7622ef",
+      "existing_interpretation": "280/10.000 depth≥2; Wilson 2,4943%–3,1419%; depth≥3=0; 13k batch identities, 0 duplicate",
+      "existing_limit": "Prefix lồng không cộng; 10k reused trong repair, 0 large path chạy lại; legacy duration unavailable",
+      "new_corresponding_locators": [
+        {
+          "path": "data/processed/research_final/level3_extension/deep_stress/monte_carlo_batches.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "Severe 10000; path counts; loss_definition",
+          "evidence_role": "support",
+          "content_sha256": "507bf53ddc6ff8492b18cf6c9ec56bbf4aace09f049f69d083188476da9481d8",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/level3_p1_targeted_repair/monte_carlo/checkpoint_validation.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "batch identities; prefixes; reused rows",
+          "evidence_role": "support",
+          "content_sha256": "3c299fa8b35d2d54c452a7abf14f40004c6d6a656f2a0bc282c9e978283bac5a",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/frozen_v3/results_registry.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "results[result_id in RQ1_MC_SEVERE_DEPTH2_COUNT,RQ1_MC_SEVERE_DEPTH2_FREQUENCY,RQ1_MC_SEVERE_DEPTH3_COUNT,MC_INDEPENDENT_PATHS_VALIDATED]",
+          "evidence_role": "support",
+          "content_sha256": "6e31fb66964a66e1e05ce5a39414ebcd399b736c49042328246c6c3986d0e1b8",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/oracle_transmission_diagnostic_v1/selection_manifest.json",
+          "read_commit": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+          "selector": "ten path indices conditional on A depth≥2",
+          "evidence_role": "support",
+          "content_sha256": "3eb4bd1c2404abfb1a4a2cd402d06d70a971e781b279c599be66438c5e5d253d",
+          "read_status": "READ_CONTENT"
+        }
+      ],
+      "result_ids": [
+        "RQ1_MC_SEVERE_DEPTH2_COUNT",
+        "RQ1_MC_SEVERE_DEPTH2_FREQUENCY",
+        "RQ1_MC_SEVERE_DEPTH3_COUNT",
+        "MC_INDEPENDENT_PATHS_VALIDATED"
+      ],
+      "evidence_tier": "MODEL_COMPUTED_COUNTERFACTUAL + CHECKPOINT_AUDIT",
+      "rq": "RQ1–6",
+      "correct_interpretation": "280/10000 is Severe Policy A only; selected diagnostic 10 paths are not estimator. Legacy duration unavailable.",
+      "status": "PASS_WITH_QUALIFIER",
+      "superseded_status": "Original locator retained for its historical/code/number scope; Oracle/Addendum supplement interpretation only, never replace locked numbers.",
+      "denominator": "Severe10000 paths,280 depth≥2,0 depth≥3 under A; independent batch identities13000; nested prefixes excluded from new execution count. Diagnostic10 deliberately selected A-depth2 paths."
+    },
+    {
+      "alias": "E05",
+      "existing_locator": "L3 `deep_stress/monte_carlo_batches.json`: Low Liquidity prespecified, actual_runs 1000",
+      "existing_source_commit": "ba62c74950a72751e0030527836082da0c7622ef",
+      "existing_interpretation": "0/1.000 depth≥2; Wilson upper 0,3827%",
+      "existing_limit": "Không rủi ro zero; khác population/scenario Severe",
+      "new_corresponding_locators": [
+        {
+          "path": "data/processed/research_final/level3_extension/deep_stress/monte_carlo_batches.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "Low Liquidity; actual_runs=1000; depth≥2=0",
+          "evidence_role": "support",
+          "content_sha256": "507bf53ddc6ff8492b18cf6c9ec56bbf4aace09f049f69d083188476da9481d8",
+          "read_status": "READ_CONTENT"
+        }
+      ],
+      "result_ids": [],
+      "evidence_tier": "MODEL_COMPUTED_COUNTERFACTUAL",
+      "rq": "RQ1",
+      "correct_interpretation": "0/1000 and Wilson upper 0.3827% under baseline A; not zero real risk or a B/C probability.",
+      "status": "PASS_WITH_QUALIFIER",
+      "superseded_status": "Original locator retained for its historical/code/number scope; Oracle/Addendum supplement interpretation only, never replace locked numbers.",
+      "denominator": "Low Liquidity1000 baseline-A paths,0 depth≥2; Wilson upper0.3827% is conditional, not zero real risk."
+    },
+    {
+      "alias": "E06",
+      "existing_locator": "L3 `deep_stress/numerical_diagnostics.json`; `deep_stress/wave_cap_comparison.csv`",
+      "existing_source_commit": "ba62c74950a72751e0030527836082da0c7622ef",
+      "existing_interpretation": "cap 100/horizon 120; max attained 2; cap hits 0; Severe baseline cap sweeps depth 1",
+      "existing_limit": "Configured ceiling khác observed depth; không 100 historical rounds",
+      "new_corresponding_locators": [
+        {
+          "path": "data/processed/research_final/level3_extension/deep_stress/numerical_diagnostics.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "observed depth and cap hits",
+          "evidence_role": "support",
+          "content_sha256": "4c069351ccbbb42a5e865801fb250e906f8635943b38e56dde8c57e9b6cbc115",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/level3_extension/deep_stress/wave_cap_comparison.csv",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "cap/horizon sweeps",
+          "evidence_role": "support",
+          "content_sha256": "03aa6379e2bbfc1c93423aced9839d101da2e6e9b29d6ab823e111236a738a1b",
+          "read_status": "READ_CONTENT"
+        }
+      ],
+      "result_ids": [],
+      "evidence_tier": "CODE_CONFIGURATION + MODEL_COMPUTED_COUNTERFACTUAL",
+      "rq": "RQ1",
+      "correct_interpretation": "Cap100/horizon120 differ from observed max2; no extension to depth≥3.",
+      "status": "PASS_UNCHANGED",
+      "superseded_status": "Original locator retained for its historical/code/number scope; Oracle/Addendum supplement interpretation only, never replace locked numbers.",
+      "denominator": "Declared max_waves100/horizon120 versus observed depth; cap sweep rows distinct from historical rounds."
+    },
+    {
+      "alias": "E07",
+      "existing_locator": "`docs/research_final/P0_COMMANDER_REVIEW_PACKET.md`; P0 `before_after_v1_v2.json`; `rq_completion/rq3_reaction_delay.csv`, `rq6_liquidation_threshold.csv`",
+      "existing_source_commit": "ba62c74950a72751e0030527836082da0c7622ef",
+      "existing_interpretation": "Intrawave vs residual; recovery 0/seconds/null; scenario-LT unliquidated debt",
+      "existing_limit": "`max_price_impact` alias của post spread; không dùng narrative RQ4 cũ",
+      "new_corresponding_locators": [
+        {
+          "path": "data/processed/research_final/validation_audit/corrected_run_v2/before_after_v1_v2.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "metric semantics",
+          "evidence_role": "support",
+          "content_sha256": "3badcf6935ab2262483e8d49c67e56a9512da08823ac7c6fb1a3bb005b34d834",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/validation_audit/corrected_run_v2/rq_completion/rq3_reaction_delay.csv",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "first liquidation versus recovery",
+          "evidence_role": "support",
+          "content_sha256": "56d8d5f672fe4cb1812d97e69f3f045f717ad6e54889fcba3d64fb98d87e9586",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/validation_audit/corrected_run_v2/rq_completion/rq6_liquidation_threshold.csv",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "scenario-LT debt",
+          "evidence_role": "support",
+          "content_sha256": "9243481aa843802c0bd3de6c4814f026b0526f3b55882009629fe421601294e6",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
+          "read_commit": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+          "selector": "eligible/evaluated/executed/skip columns",
+          "evidence_role": "support",
+          "content_sha256": "53dc862ad37d447777ec2ee421d00696d7c52555a931af084d834c88f06df283",
+          "read_status": "READ_CONTENT"
+        }
+      ],
+      "result_ids": [
+        "RQ3_CAPITAL_25_LIQUIDATED",
+        "RQ3_CAPITAL_100_LIQUIDATED",
+        "RQ3_DELAY_SEVERITY_CHANGE",
+        "RQ4_IMMEDIATE_PRICE_IMPACT",
+        "RQ4_SPREAD_ARB0",
+        "RQ4_SPREAD_ARB100",
+        "RQ6_LT083_UNLIQUIDATED"
+      ],
+      "evidence_tier": "MODEL_COMPUTED_COUNTERFACTUAL + CODE_OBSERVATION",
+      "rq": "RQ3/RQ4/RQ5/RQ6",
+      "correct_interpretation": "Retain original sweep semantics; add route-aware evaluation audit, without attributing these targeted skips to capital/gas.",
+      "status": "PASS_WITH_QUALIFIER",
+      "superseded_status": "Original locator retained for its historical/code/number scope; Oracle/Addendum supplement interpretation only, never replace locked numbers.",
+      "denominator": "Frozen RQ sweeps use109 target positions; amounts nominal USDC, prices USD/WETH, recovery seconds/null. Diagnostic event audit uses454 borrowers per case-policy, not109."
+    },
+    {
+      "alias": "E08",
+      "existing_locator": "E03; FIX `monte_carlo/wave2_eligibility_audit.json`, `sample_reproduction.json`",
+      "existing_source_commit": "ba62c74950a72751e0030527836082da0c7622ef",
+      "existing_interpretation": "P0 path 5: 1,0041608→0,9990975; deterministic: 1,0211716→0,9980426; 10/10 strata newly eligible; 21/21 rows reproduce",
+      "existing_limit": "Bằng chứng simulated eligibility; không historical causation",
+      "new_corresponding_locators": [
+        {
+          "path": "data/processed/research_final/level3_p1_targeted_repair/monte_carlo/wave2_eligibility_audit.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "deterministic and ten stratified HF traces",
+          "evidence_role": "support",
+          "content_sha256": "f01c278278abd2b5153bf451bf8fddb706c3c524a761aad347c4eb6820b4070a",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/level3_p1_targeted_repair/monte_carlo/sample_reproduction.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "21 sample reproductions",
+          "evidence_role": "support",
+          "content_sha256": "18cae6017aec7ba88d8e5d207651def4e3da5f4b19e40768b0c0ea36b4ee1ec0",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
+          "read_commit": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+          "selector": "all case-policy rows",
+          "evidence_role": "support",
+          "content_sha256": "53dc862ad37d447777ec2ee421d00696d7c52555a931af084d834c88f06df283",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/scientific_integration_v1/targeted_event_trace.jsonl",
+          "read_commit": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+          "selector": "event_id; wave=2; debt_repaid_usdc; reason",
+          "evidence_role": "support",
+          "content_sha256": "3216731257761b67e1b44e0d4774e88530c4dcb88d4961fc42bacc41a39759ec",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/oracle_transmission_diagnostic_v1/borrower_level_evidence.csv",
+          "read_commit": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+          "selector": "case_id,policy_id,borrower_hash; direct_shock_hf,post_wave1_hf,newly_eligible_after_wave1",
+          "evidence_role": "locator only: oversized source not read",
+          "content_sha256": null,
+          "read_status": "SOURCE_NOT_VERIFIED"
+        },
+        {
+          "path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_audit.csv",
+          "read_commit": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+          "selector": "audit_row_id=ELIG_EXEC::{case_id}::{policy_id}::{borrower_hash}; resolved_skip_reasons_after_wave1; post_wave1_usdc_debt",
+          "evidence_role": "schema from builder; row content not read",
+          "content_sha256": null,
+          "read_status": "SOURCE_NOT_VERIFIED"
+        },
+        {
+          "path": "data/processed/mainnet/aave_uniswap_snapshot_26045352.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "borrowers[454]; health_factor formula applied at direct/post-Wave1 policy prices; state updated using existing Wave1 LIQUIDATION events",
+          "evidence_role": "independent static reconstruction input; no simulation rerun",
+          "content_sha256": "76dae833c5b1a6e620cf116e332f1f47c53454a1f3530a02fefacd800cb3b329",
+          "read_status": "READ_CONTENT",
+          "hash_scope": "Git LF bytes; accepted manifest input SHA256 uses CRLF serialization"
+        }
+      ],
+      "result_ids": [
+        "INT_A_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_A_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES"
+      ],
+      "evidence_tier": "MODEL_COMPUTED_COUNTERFACTUAL",
+      "rq": "RQ1/RQ3",
+      "correct_interpretation": "A 35/14; B0/0; Cweak6/0; Cmoderate11/2 newly/executed instances across 18 cases. Raw NOT_ELIGIBLE read; resolved NO_MODELLED_USDC_DEBT is independently confirmed by static state reconstruction; no cell-by-cell comparison to inaccessible raw CSVs.",
+      "status": "PASS_WITH_QUALIFIER",
+      "superseded_status": "Original locator retained for its historical/code/number scope; Oracle/Addendum supplement interpretation only, never replace locked numbers.",
+      "denominator": "18 cases ×four policies ×454 borrowers=32688 instances;52 later borrower events=16 positive-debt executions+36 skips; not52 unique borrowers. A/B/C per-policy instance sums cross cases."
+    },
+    {
+      "alias": "E09",
+      "existing_locator": "L3 history; FIX `historical/census_reconciliation.json`",
+      "existing_source_commit": "ba62c74950a72751e0030527836082da0c7622ef",
+      "existing_interpretation": "Tuần định nghĩa Sept 1–7 UTC: census 28; 27 Graph candidates đều RPC-match; 1 Graph omission ở block 25888740",
+      "existing_limit": "Recall quan sát 27/28 trong census Pool; không census borrower",
+      "new_corresponding_locators": [
+        {
+          "path": "data/processed/research_final/level3_p1_targeted_repair/historical/census_reconciliation.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "28 Pool events; 27 Graph; omission block25888740",
+          "evidence_role": "support",
+          "content_sha256": "c28454d7c56e9998a0ea12c18d2a6fa65623db093e9fc88d5fb04fecd155ba33",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/frozen_v3/results_registry.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "results[result_id in HIST_RPC_CENSUS_EVENTS,HIST_GRAPH_MATCHED_EVENTS]",
+          "evidence_role": "support",
+          "content_sha256": "6e31fb66964a66e1e05ce5a39414ebcd399b736c49042328246c6c3986d0e1b8",
+          "read_status": "READ_CONTENT"
+        }
+      ],
+      "result_ids": [
+        "HIST_RPC_CENSUS_EVENTS",
+        "HIST_GRAPH_MATCHED_EVENTS"
+      ],
+      "evidence_tier": "ONCHAIN_HISTORICAL_OBSERVATION",
+      "rq": "RQ1/RQ2 historical comparison",
+      "correct_interpretation": "Defined Sept1–7 UTC Pool census; observed recall27/28, not borrower coverage.",
+      "status": "PASS_UNCHANGED",
+      "superseded_status": "Original locator retained for its historical/code/number scope; Oracle/Addendum supplement interpretation only, never replace locked numbers.",
+      "denominator": "Defined Pool/topic UTC week28 events;27 Graph-discovered/RPC-matched events; observed recall27/28; no borrower or market completeness denominator."
+    },
+    {
+      "alias": "E10",
+      "existing_locator": "L3 episode selection; FIX `historical/control_window_audit.json`",
+      "existing_source_commit": "ba62c74950a72751e0030527836082da0c7622ef",
+      "existing_interpretation": "Cụm 5 phút=22; 1/15/30 phút=24/20/19; 4 pool, 5 episode, 40 tổ hợp, 928 chunks; 5/5 control ±30 phút không liquidation",
+      "existing_limit": "Cụm thời gian khác simulated wave; cửa sổ không loại mọi confounder",
+      "new_corresponding_locators": [
+        {
+          "path": "data/processed/research_final/level3_p1_targeted_repair/historical/control_window_audit.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "40 combinations; 928 chunks; five ±30m controls",
+          "evidence_role": "support",
+          "content_sha256": "890de64ea400d1598cf634f0eefbac0d0140f64e9a05e0e58b4c6b68016bcd33",
+          "read_status": "READ_CONTENT"
+        }
+      ],
+      "result_ids": [],
+      "evidence_tier": "ONCHAIN_HISTORICAL_OBSERVATION",
+      "rq": "RQ1/RQ2 historical comparison",
+      "correct_interpretation": "Four pools/five episodes; time clusters do not equal model waves or remove all confounding.",
+      "status": "PASS_UNCHANGED",
+      "superseded_status": "Original locator retained for its historical/code/number scope; Oracle/Addendum supplement interpretation only, never replace locked numbers.",
+      "denominator": "Four pools,five episodes,40 event/control half-width combinations,928 chunks;five control±30min windows. Cluster count depends on window."
+    },
+    {
+      "alias": "E11",
+      "existing_locator": "`sim/research/historical_events.py::classify_linkage`; FIX `historical/linkage_route_audit.json`",
+      "existing_source_commit": "ba62c74950a72751e0030527836082da0c7622ef",
+      "existing_interpretation": "1 direct WETH route; 2 same-transaction co-occurrence; 23 same-block; 1 time-window; 31.489 swaps trong selected windows",
+      "existing_limit": "Trace unavailable; direct receipt route không tự chứng minh price causality",
+      "new_corresponding_locators": [
+        {
+          "path": "data/processed/research_final/level3_p1_targeted_repair/historical/linkage_route_audit.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "receipt route; tier1/2/23/1",
+          "evidence_role": "support",
+          "content_sha256": "bbc11050f342cbd7f1189fd5cee9035e02f86c6633980cc8e1cbfa9f0f0e03d4",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/frozen_v3/results_registry.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "results[result_id in HIST_DIRECT_TRANSFER_PATHS,HIST_SAME_TX_COOCCURRENCE,HIST_SAME_BLOCK_ASSOCIATION,HIST_TIME_WINDOW_ASSOCIATION]",
+          "evidence_role": "support",
+          "content_sha256": "6e31fb66964a66e1e05ce5a39414ebcd399b736c49042328246c6c3986d0e1b8",
+          "read_status": "READ_CONTENT"
+        }
+      ],
+      "result_ids": [
+        "HIST_DIRECT_TRANSFER_PATHS",
+        "HIST_SAME_TX_COOCCURRENCE",
+        "HIST_SAME_BLOCK_ASSOCIATION",
+        "HIST_TIME_WINDOW_ASSOCIATION"
+      ],
+      "evidence_tier": "ONCHAIN_HISTORICAL_OBSERVATION",
+      "rq": "RQ1/RQ2/RQ4 historical comparison",
+      "correct_interpretation": "One verified WETH receipt route; trace unavailable; selected-window31489 swaps not weekly count; no price causality.",
+      "status": "PASS_UNCHANGED",
+      "superseded_status": "Original locator retained for its historical/code/number scope; Oracle/Addendum supplement interpretation only, never replace locked numbers.",
+      "denominator": "27 Graph-matched events:1 receipt route+2 same-tx+23 same-block+1 time-window;31489 swaps in selected-window union only."
+    },
+    {
+      "alias": "E12",
+      "existing_locator": "L3 fork; FIX `manifest.json`, `evidence_matrix.json`, `claim_ledger_repair.json`",
+      "existing_source_commit": "ba62c74950a72751e0030527836082da0c7622ef",
+      "existing_interpretation": "0 fork transaction, UNAVAILABLE; artifact bundle 6fcda469; gate audit PASS/LIMITED",
+      "existing_limit": "External attestation checkpoint; review state chờ Commander, không scientific lock",
+      "new_corresponding_locators": [
+        {
+          "path": "data/processed/research_final/level3_extension/fork/validation.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "UNAVAILABLE; zero execution",
+          "evidence_role": "support",
+          "content_sha256": "81bea0ef6a17e08de0d05aa6f85ee67065cba13b47095973bbddf3f80aae1a2b",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/level3_p1_targeted_repair/manifest.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "source/artifact provenance",
+          "evidence_role": "support",
+          "content_sha256": "6a9ed472474390147f2bdc2bf49a745884458c3b2105c5622f81e8916702b636",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/level3_p1_targeted_repair/evidence_matrix.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "audit tier/status",
+          "evidence_role": "support",
+          "content_sha256": "361fdcf1c88ac4017af9d75267067c259a205b7ca4467a4f8c5174406379b69b",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/level3_p1_targeted_repair/claim_ledger_repair.json",
+          "read_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+          "selector": "repaired claims",
+          "evidence_role": "support",
+          "content_sha256": "f98edfe4aaa0085726c358ca39a6c8452195de7e0195361d7f6631b97b6c4273",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/oracle_transmission_diagnostic_v1/manifest.json",
+          "read_commit": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+          "selector": "hashes and targeted diagnostic scope",
+          "evidence_role": "support",
+          "content_sha256": "213a58b5856a52b7d200b1a537475bb3f5ba10d6b4a28c9b7235738950e334c9",
+          "read_status": "READ_CONTENT"
+        },
+        {
+          "path": "data/processed/research_final/scientific_integration_v1/manifest.json",
+          "read_commit": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+          "selector": "hashes; proposed review decision",
+          "evidence_role": "support",
+          "content_sha256": "5f25e23c6c2282f93b50980c3b04f60b8f1ac6ae1dd938903e3a70e33e407dd3",
+          "read_status": "READ_CONTENT"
+        }
+      ],
+      "result_ids": [],
+      "evidence_tier": "PROVENANCE_AUDIT; not new empirical validation",
+      "rq": "RQ1–6",
+      "correct_interpretation": "Read commits distinguish unmerged #11/#12 from integration branch. Numerical evidence unchanged; no global lock.",
+      "status": "PASS_WITH_QUALIFIER",
+      "superseded_status": "Original locator retained for its historical/code/number scope; Oracle/Addendum supplement interpretation only, never replace locked numbers.",
+      "denominator": "Provenance/fork gate;0 validated fork transactions. Independent static review32688 HF pairs and72 summary rows; raw oversized source files unread."
+    }
+  ],
+  "claim_corrections": [
+    {
+      "claim_id": "C03",
+      "old": "HF<1 là đủ điều kiện, execution còn điều kiện",
+      "new": "HF<1, modeled planner evaluation and execution with positive debt are distinct. A 35/14; B 0/0; C weak 6/0; C moderate 11/2 borrower-case instances.",
+      "reason": "Policy attribution / eligibility-execution separation / sample selection qualification",
+      "status": "CORRECTED"
+    },
+    {
+      "claim_id": "C07",
+      "old": "Độ sâu V3 theo tick, liquidity stress dùng corrected artifact",
+      "new": "DEX depth affects absorption/impact; new eligibility requires modeled valuation transmission. Extreme 90/95% haircuts are unobserved counterfactuals.",
+      "reason": "Policy attribution / eligibility-execution separation / sample selection qualification",
+      "status": "CORRECTED"
+    },
+    {
+      "claim_id": "C11",
+      "old": "S13 không thấy impact kéo dài significant; model riêng có wave 2",
+      "new": "The project has conditional modeled Wave 2 under A; this does not refute the external empirical null at another frequency/benchmark.",
+      "reason": "Policy attribution / eligibility-execution separation / sample selection qualification",
+      "status": "CORRECTED"
+    },
+    {
+      "claim_id": "C13",
+      "old": "Arbitrage có điều kiện; v2 tách intrawave và residual",
+      "new": "The same-sale sweep separates immediate impact from residual spread; policy-divergent later trades may change maxima. Arbitrage is price repositioning.",
+      "reason": "Policy attribution / eligibility-execution separation / sample selection qualification",
+      "status": "CORRECTED"
+    },
+    {
+      "claim_id": "C22",
+      "old": "MC lấy mẫu tham số; checkpoint stages có prefix lồng và accounting tách biệt",
+      "new": "13k independent batch identities; nested prefixes not summed; no rerun in repair. Ten paths intentionally selected under A, not a fresh probability sample.",
+      "reason": "Policy attribution / eligibility-execution separation / sample selection qualification",
+      "status": "CORRECTED"
+    },
+    {
+      "claim_id": "C23",
+      "old": "Wilson Severe 8/200,280/10k; Low Liquidity 0/1k",
+      "new": "Wilson score interval differs from adjusted Wald; 280/10000 is conditional Severe A frequency, never actual Ethereum crisis probability.",
+      "reason": "Policy attribution / eligibility-execution separation / sample selection qualification",
+      "status": "CORRECTED"
+    },
+    {
+      "claim_id": "C32",
+      "old": "Valuation=min(reference,DEX); history oracle là chứng cứ khác",
+      "new": "A/B/C are counterfactual policies; A is not actual Aave spot feed, B does not prove real feed invariance, C is hypothetical and uncalibrated.",
+      "reason": "Policy attribution / eligibility-execution separation / sample selection qualification",
+      "status": "CORRECTED"
+    },
+    {
+      "claim_id": "C33",
+      "old": "HF audit xác nhận borrower mới HF≥1→HF<1 trước vòng 2",
+      "new": "HF transition establishes modeled eligibility under a policy, not execution. All 36 non-executed instances have raw NOT_ELIGIBLE; Work independently resolves NO_MODELLED_USDC_DEBT using snapshot plus recorded Wave1 events; source raw CSV cells remain unread.",
+      "reason": "Policy attribution / eligibility-execution separation / sample selection qualification",
+      "status": "CORRECTED"
+    }
+  ],
+  "rq1_allowed_interpretation": "Kết quả thanh lý vòng hai được xác nhận trong các kịch bản stress phản thực với chính sách truyền giá bất lợi. Sự xuất hiện và mức độ thanh lý phụ thuộc vào chính sách định giá vị thế, giới hạn mẫu borrower và cấu hình thanh khoản.",
+  "rq2_allowed_interpretation": "Thanh khoản DEX ảnh hưởng đến hấp thụ forced sale và biến động giá; tuy nhiên tác động này chỉ chuyển thành eligibility mới qua cơ chế định giá được mô hình hóa, không phải một mối liên hệ nhân quả Mainnet đã được chứng minh.",
+  "unresolved_source_limits": [
+    {
+      "path": "data/processed/research_final/oracle_transmission_diagnostic_v1/borrower_level_evidence.csv",
+      "read_commit": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+      "blob_sha": "d30b8de374f37d2e81435e85ae4ba90516ea7d84",
+      "size_bytes": 8775089,
+      "status": "SOURCE_NOT_VERIFIED_IN_THIS_SESSION",
+      "reason": "contents API returned empty; raw fetch rejected oversized contents; blob API transport closed"
+    },
+    {
+      "path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_audit.csv",
+      "read_commit": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+      "blob_sha": "e441a0fc77cb084609e439bc3ff8ebf189e71ccd",
+      "size_bytes": 18489195,
+      "status": "SOURCE_NOT_VERIFIED_IN_THIS_SESSION",
+      "reason": "contents/ranged API returned empty; raw fetch rejected oversized contents; blob API transport closed"
+    }
+  ],
+  "unsupported_external_claims": [
+    "Aave actually uses Uniswap spot as Policy A",
+    "Oracle-independent universal cascade threshold",
+    "2.8% actual Ethereum crisis probability",
+    "Historical causal contagion established by same-block association",
+    "Terra successful OOS warning"
+  ],
+  "blocking_conflicts": [],
+  "review_scope": "Three separate sequential self-review passes plus executable locator/arithmetic/invariant gates. No newly independent human/subagent review claimed; prior independent reviews remain historical.",
+  "executor_attestation_only": [
+    "72 engine simulation replay executions/hash reproduction by Codex; Work compares stored hash pairs only",
+    "32688 HF source-CSV-cell comparisons by Codex; Work independently recomputes static HF/counts but cannot compare every inaccessible raw CSV cell",
+    "180pytest passed by Codex; not rerun by Work"
+  ],
+  "scientific_content_lock_declared": false,
+  "independent_static_evidence_review": {
+    "borrower_case_policy_HF_pairs": 32688,
+    "direct_and_post_HF_values": 65376,
+    "event_HF_checks": 52,
+    "route_skip_reasons": {
+      "NO_MODELLED_USDC_DEBT": 36
+    },
+    "summary_rows_matched": 72,
+    "raw_borrower_CSVs_read": false,
+    "comparison_scope": "All static counts versus 72 summary rows; event HF where available. Not a cell-by-cell comparison to inaccessible borrower CSVs; no simulation executed."
+  },
+  "canonical_hash_serialization_scope": {
+    "repository_LF_sha256": "76dae833c5b1a6e620cf116e332f1f47c53454a1f3530a02fefacd800cb3b329",
+    "accepted_CRLF_sha256": "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99",
+    "status": "PASS_WITH_SERIALIZATION_QUALIFIER; hashes refer to different line-ending byte serializations of the same parsed snapshot"
+  },
+  "review_results": {
+    "academic": {
+      "command": "python verify_p2_reconciliation.py --pass academic",
+      "status": "PASS",
+      "check_count": 9
+    },
+    "scientific": {
+      "command": "python verify_p2_reconciliation.py --pass scientific",
+      "status": "PASS",
+      "check_count": 18
+    },
+    "evidence": {
+      "command": "python verify_p2_reconciliation.py --pass evidence",
+      "status": "PASS",
+      "check_count": 699
+    },
+    "final": {
+      "command": "python verify_p2_reconciliation.py --pass final",
+      "status": "PASS",
+      "check_count": 4
+    }
+  },
+  "hash_verified_read_artifacts": {
+    "frozen": {
+      "claim_ledger.json": "b6020c14cdeefdfccecfdbbb8e8fc455a19636e054e441e01c3b1ad137411d4b",
+      "evidence_source_matrix.json": "5412a1ce992516c21340fb86a1c724e32903c99c73ed2eb0da6bce3b67d636c3",
+      "results_registry.json": "8c0a2455209505341c1f4c89f01b0db8677446e58bdcf4903604b123c6abedad",
+      "rq_answer_matrix.json": "6c9efc55e46a10e08e04e2484f8af681f43aadaa22395cf858547b2e29ed4324",
+      "tables/core_facts.csv": "6e231896ca96b440b194b2ed762aad7d493a77f9c51507ac7cb0621093583eab",
+      "tables/historical_evidence.csv": "e88f644ac8afd0e8cf148fbaea5f1da2e513e1b239e27482ac457ede9556fba8",
+      "tables/old_to_new.csv": "c638a826addc2719491bbe846e93ef7ce2db9d21252bb3d0520e7504b79bea3d",
+      "tables/rq1_deterministic_depth.csv": "38efaceabebbf62d51475dadbd1324b865b3176089aed3222cbef76ef0f3086e",
+      "tables/rq1_monte_carlo.csv": "ff580f837293d82ea0e96252bd02cdf0a2a9092003988c730bdf09c7a1f6b431",
+      "tables/rq2_liquidity.csv": "f5fb435ac14a4c41ca700ce4676d459148c01045cbc4b902c55866c4fe506b27",
+      "tables/rq3_constraints.csv": "9d21949b1503747de542faf81e5ea437a257f907c053b7a4b4333b9458f93b91",
+      "tables/rq4_arbitrage.csv": "5830f51151c8bd5800420c8d890fba156aa3ca6530d35af24a7f7e0fb0358419",
+      "tables/rq5_usdc_valuation.csv": "5b17304a3a4948093e35207ea3c494e13d4f762c1f982b4d606a3662cb01722e",
+      "tables/rq6_policy.csv": "3c566f35b2ba8bed7e00bdf478eb560cdc529fd912404c64329705d271fb17d6",
+      "tables/terra_limitations.csv": "645113a69223ea6da4967bc50d8df450700f3303826a84ac18e0aaaa3e214488",
+      "tables/version_precedence.csv": "bac58e5c48c875982e9c5380187c152660194e49f9ddedfcb723c14ca534dd7c"
+    },
+    "oracle": {
+      "comparison_matrix.csv": "dd134d792c3b9c8a155a752d6849c17a31c19b65716c4021c2532db426138156",
+      "selection_manifest.json": "3eb4bd1c2404abfb1a4a2cd402d06d70a971e781b279c599be66438c5e5d253d"
+    },
+    "integration": {
+      "accepted_claims_proposed.json": "5334728fee10b198261ce2f209524f3ff84f50ca0ba7dc2f4c0f22908ba1c65f",
+      "claim_to_result_registry.json": "42e7f37a4da0df570cdc86d33cf8a9f4c338fbe9a623c3b84dc36c6edf52f793",
+      "eligible_vs_executed_summary.csv": "f9fe744dbc3a28e071bdc944adfad469a65dc2f47d29e3beab5d5e446de955a4",
+      "integration_result_registry.json": "4bd16f042898c4b0a640a64c64801856fd3b6c6faf3c0c2cd39405f54cfd2133",
+      "integration_validation_report.json": "21d34748aabad1ca93d69dee17b53420a45daceb7eb57e8a56cf1159ceebbbcb",
+      "six_rq_evidence_matrix.json": "f13e2da60e453ba2a953ea16dc04f1c793083afb96e310b99639188a7c89d303",
+      "targeted_event_trace.jsonl": "3216731257761b67e1b44e0d4774e88530c4dcb88d4961fc42bacc41a39759ec",
+      "test_evidence.json": "23c6a2cbea0540701b70dae7b1dc7ad91f4819f7880462e491986a48a87c2b8b",
+      "version_precedence.json": "d2fa82c4f0483e69e01b25a7206ee55edd461d58214c9be78385e99e2e2eacd0"
+    }
+  }
+}

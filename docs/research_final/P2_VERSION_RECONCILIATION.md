@@ -62,3 +62,19 @@ Chỉ sửa năm tài liệu P2. Không sửa mã, dữ liệu, kịch bản, re
 ## 6. Bàn giao
 
 Bộ P2 đã hoàn tất phản biện độc lập và sẵn sàng cho Commander re-review ở trạng thái draft. Issue #4 giữ open; không merge, không tuyên bố scientific lock và không tạo Word final.
+
+## 7. Tiếp quản Scientific Claim & Evidence Reconciliation
+
+Starting P2 HEAD `8f5b635a316d72546b8a0eb0c2e8a66503b5d44f`; không có commit oracle reconciliation mới khi preflight. Integration branch được truy hồi trực tiếp tại `9842c4f2c35adb8b4ec906e1bc76afa825d197c7`. PR #11 `3011ba5e8cd23ee697c36d0aec6d047d8d58f653` và #12 `b1786c0215444ae616b7b2a97a0aa31d5fdfe18b` vẫn Draft/Open chưa merge. Không làm lại tổng quan hoặc sửa bundle của Codex.
+
+Kết quả thanh lý vòng hai được xác nhận trong các kịch bản stress phản thực với chính sách truyền giá bất lợi. Sự xuất hiện và mức độ thanh lý phụ thuộc vào chính sách định giá vị thế, giới hạn mẫu borrower và cấu hình thanh khoản.
+
+Thanh khoản DEX ảnh hưởng đến hấp thụ forced sale và biến động giá; tuy nhiên tác động này chỉ chuyển thành eligibility mới qua cơ chế định giá được mô hình hóa, không phải một mối liên hệ nhân quả Mainnet đã được chứng minh.
+
+Các claim sửa: C03, C07, C11, C13, C22, C23, C32, C33. 35/35 claim IDs và 12/12 aliases có đối chiếu; source/APA/RQ/term invariants được giữ. Delta cũ trong §2 và PASS reviewer §5 chỉ là lịch sử; review phiên này là ba lượt tự rà soát riêng và gates bằng công cụ, không reviewer độc lập mới.
+
+Biên bản [P2_ORACLE_RECONCILIATION.md](P2_ORACLE_RECONCILIATION.md) và JSON crosswalk ghi source commits, result selectors, superseded interpretation, nguồn chưa xác minh và kiểm tra thực tế. Hai raw CSV chưa đọc đủ, nên không tuyên bố full 32688-HF independent review. 72 summaries và 2186 event rows có thể kiểm trực tiếp; state-resolved skip reason nay được Work kiểm độc lập bằng snapshot+event state; raw CSV cell comparisons vẫn chưa thực hiện.
+
+Đề nghị Commander nghiệm thu P2 với giới hạn đọc đã công bố; Issue #4 giữ open, PR #9 Draft; không merge và không tự cấp Scientific Content Lock.
+
+**Tool verification bổ sung:** Work tính tĩnh32.688 cặp HF (65.376 giá trị) từ canonical snapshot+Wave1 events, khớp72/72 summary rows và52/52 event HF, xác nhận36/36 route skips NO_MODELLED_USDC_DEBT; không chạy lại mô phỏng. Hai raw CSV vẫn chưa đọc đủ/cell-by-cell compare. Snapshot hash Git LF76dae833… khác accepted CRLF553e93a3… do serialization; biên bản và JSON ghi cả hai phạm vi, không sửa nguồn.
