@@ -8,7 +8,8 @@ Thí nghiệm cô lập giả định truyền giá dùng để đánh giá Heal
 
 - Starting HEAD: `9842c4f2c35adb8b4ec906e1bc76afa825d197c7`.
 - Selection-lock commit: `a2c37e3d513054131083b791a05f8b50047925fd`.
-- Source-code commit của adapter/runner: `619faed07583de36fc29e8b9c3c30788c1819644`.
+- Source-code commit của adapter/runner: `4778146ba28a789de52dff624b6fd3cc29f45a8a`.
+- Artifact bundle commit: `4778146ba28a789de52dff624b6fd3cc29f45a8a`.
 - Canonical snapshot: block `26045352`, SHA-256 `553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99`.
 - Frozen v3 manifest SHA-256 trước/sau: `0ee158ad67cd16a009a6d064960619fd03ab93657d12fa25f4b860e351157613`; không thay đổi.
 

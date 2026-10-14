@@ -1,5 +1,5 @@
 {
-  "artifact_bundle_commit": null,
+  "artifact_bundle_commit": "4778146ba28a789de52dff624b6fd3cc29f45a8a",
   "artifact_hashes": {
     "baseline_reproduction.json": "b1f525d288e56ea21280efc8103d8f523b5fb9390aa12e4521a5f61f801a46bc",
     "borrower_level_evidence.csv": "e7513d4adc760915c2a87cad44bba98b5294f91aa2d874c6d34e21a175c6e86b",
@@ -83,7 +83,7 @@
     "selection_locked_before_b_c": true
   },
   "report_hashes": {
-    "docs/research_final/ORACLE_TRANSMISSION_DIAGNOSTIC_v1.md": "cb470894e11706caf17dd647eb80c5b3ff1bf9db4abda9cc97112ddeab56df82"
+    "docs/research_final/ORACLE_TRANSMISSION_DIAGNOSTIC_v1.md": "320bfe4e899bac15a6996eaadb64b1ee92c0c2f44735562a1d2953dd6b72a32d"
   },
   "reproduction_commands": [
     ".\\.venv\\Scripts\\python.exe .\\scripts\\research\\run_oracle_transmission_diagnostic.py --phase a",
@@ -94,7 +94,7 @@
   "scientific_content_lock_declared": false,
   "scientific_pass_declared": false,
   "selection_lock_commit": "a2c37e3d513054131083b791a05f8b50047925fd",
-  "source_code_commit": "619faed07583de36fc29e8b9c3c30788c1819644",
+  "source_code_commit": "4778146ba28a789de52dff624b6fd3cc29f45a8a",
   "starting_head": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
   "status": "LIMITED_TARGETED_MODEL_DIAGNOSTIC — AWAITING_COMMANDER_REVIEW",
   "target_integration_branch": "feat/terra-model-v2",

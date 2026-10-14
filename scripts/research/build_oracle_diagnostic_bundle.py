@@ -11,7 +11,8 @@ from typing import Any
 
 ROOT = Path("data/processed/research_final/oracle_transmission_diagnostic_v1")
 REPORT = Path("docs/research_final/ORACLE_TRANSMISSION_DIAGNOSTIC_v1.md")
-SOURCE_CODE_COMMIT = "619faed07583de36fc29e8b9c3c30788c1819644"
+SOURCE_CODE_COMMIT = "4778146ba28a789de52dff624b6fd3cc29f45a8a"
+ARTIFACT_BUNDLE_COMMIT = "4778146ba28a789de52dff624b6fd3cc29f45a8a"
 SELECTION_COMMIT = "a2c37e3d513054131083b791a05f8b50047925fd"
 STARTING_HEAD = "9842c4f2c35adb8b4ec906e1bc76afa825d197c7"
 POLICY_ORDER = (
@@ -238,6 +239,7 @@ Thí nghiệm cô lập giả định truyền giá dùng để đánh giá Heal
 - Starting HEAD: `{STARTING_HEAD}`.
 - Selection-lock commit: `{SELECTION_COMMIT}`.
 - Source-code commit của adapter/runner: `{SOURCE_CODE_COMMIT}`.
+- Artifact bundle commit: `{ARTIFACT_BUNDLE_COMMIT}`.
 - Canonical snapshot: block `26045352`, SHA-256 `{selection['input_hashes']['canonical_snapshot']['sha256']}`.
 - Frozen v3 manifest SHA-256 trước/sau: `{selection['input_hashes']['frozen_v3_manifest']['sha256']}`; không thay đổi.
 
@@ -325,7 +327,7 @@ Artifacts chuẩn nằm tại `data/processed/research_final/oracle_transmission
         "starting_head": STARTING_HEAD,
         "selection_lock_commit": SELECTION_COMMIT,
         "source_code_commit": SOURCE_CODE_COMMIT,
-        "artifact_bundle_commit": None,
+        "artifact_bundle_commit": ARTIFACT_BUNDLE_COMMIT,
         "target_integration_branch": "feat/terra-model-v2",
         "generated_on": "2026-10-14",
         "policy_a_gate": {
