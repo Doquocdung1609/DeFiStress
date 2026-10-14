@@ -80,6 +80,7 @@
       "severity": "MEDIUM_DISCLOSURE"
     }
   ],
+  "generator_source_commit": "1428c07551ba70e07a9212618c4454b37238fead",
   "hash_integrity": {
     "interpretation": "Declared legacy hashes identify Windows checkout bytes; Git blobs use LF. Both are independently recorded. Content is equal after CRLF-to-LF normalization.",
     "repository_git_blob_sha256_lf": {
