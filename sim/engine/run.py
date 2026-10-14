@@ -8,6 +8,7 @@ from sim.agents import Arbitrageur, Liquidator
 from sim.dex import V3Pool
 from sim.lending import plan_liquidation
 from sim.metrics.risk import bad_debt, cascade_amplification, unliquidated_debt
+from sim.oracle import ADVERSE_PASS_THROUGH, OraclePolicy
 from sim.schemas import BorrowerPosition, DexState, Scenario, SimulationEvent, SimulationResult, TimePoint
 
 D = Decimal
@@ -21,6 +22,7 @@ def run_simulation(
     initial_reference_price: Decimal,
     scenario: Scenario,
     run_id: str | None = None,
+    oracle_policy: OraclePolicy = ADVERSE_PASS_THROUGH,
 ) -> SimulationResult:
     scenario.validate()
     run_id = run_id or str(uuid4())
@@ -31,7 +33,8 @@ def run_simulation(
     # The exogenous market shock establishes the new pre-liquidation DEX/reference level.
     # Subsequent divergence is therefore endogenous forced-selling impact, not the shock itself.
     pool.arbitrage_toward(reference_price, D(100))
-    valuation_price = reference_price
+    valuation_price = oracle_policy.initial_valuation_price(reference_price)
+    completed_wave_dex_prices = [pool.spot_price]
     bonus = scenario.liquidation_bonus_override or scenario.liquidation_bonus
     lt_override = scenario.liquidation_threshold_override
     usdc_price_usd = scenario.usdc_price_usd
@@ -156,8 +159,13 @@ def run_simulation(
             wave_forced += plan.collateral_to_seize
             if wave == 1:
                 direct_liquidated += plan.debt_to_repay
+            hf_after_valuation_price = oracle_policy.intrawave_reporting_price(
+                reference_price,
+                pool.spot_price,
+                valuation_price,
+            )
             hf_after = position.health_factor(
-                min(reference_price, pool.spot_price), lt_override, usdc_price_usd
+                hf_after_valuation_price, lt_override, usdc_price_usd
             )
             events.append(
                 SimulationEvent(
@@ -187,6 +195,8 @@ def run_simulation(
                         "ticks_crossed": quote.ticks_crossed,
                         "reference_spread_after_sale": float(intrawave_spread),
                         "single_sale_price_move": float(single_sale_price_move),
+                        "borrower_valuation_price_after": float(hf_after_valuation_price),
+                        "oracle_policy_id": oracle_policy.policy_id,
                     },
                 )
             )
@@ -209,7 +219,11 @@ def run_simulation(
                 )
             )
 
-        valuation_price = min(reference_price, pool.spot_price)
+        completed_wave_dex_prices.append(pool.spot_price)
+        valuation_price = oracle_policy.next_valuation_price(
+            reference_price,
+            completed_wave_dex_prices,
+        )
         current_bad_debt = bad_debt(borrowers, valuation_price, usdc_price_usd)
         remaining_eligible = sum(
             1
