@@ -1,0 +1,46 @@
+{
+  "literature_sidecar": {
+    "commit": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+    "role": "P2 scholarly locators only; not numerical precedence",
+    "status": "DRAFT_OPEN_AND_ORACLE_RECONCILIATION_PENDING"
+  },
+  "rule": "Use highest applicable numerical or interpretive layer; Oracle Diagnostic supersedes only RQ1/RQ2 interpretation, not locked numerical facts.",
+  "schema_version": "scientific-integration-v1.0",
+  "versions": [
+    {
+      "rank": 1,
+      "role": "locked raw/canonical evidence",
+      "version": "Original"
+    },
+    {
+      "rank": 2,
+      "role": "corrected numerical semantics and RQ sweeps",
+      "version": "P0 corrected v2"
+    },
+    {
+      "rank": 3,
+      "role": "extended grid/checkpoint/historical evidence",
+      "version": "Level-3"
+    },
+    {
+      "rank": 4,
+      "role": "census/tier/checkpoint audit",
+      "version": "Level-3 targeted repair"
+    },
+    {
+      "rank": 5,
+      "role": "locked numerical registry and synthesis",
+      "version": "Frozen v3"
+    },
+    {
+      "rank": 6,
+      "role": "targeted RQ1/RQ2 valuation-policy sensitivity and HF traces",
+      "version": "Oracle Transmission Diagnostic v1"
+    },
+    {
+      "rank": 7,
+      "role": "claim wording, eligible-vs-executed reconciliation and traceability; no model retuning",
+      "version": "Scientific Integration Addendum v1"
+    }
+  ]
+}

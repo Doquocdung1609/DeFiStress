@@ -1,0 +1,386 @@
+{
+  "claims": [
+    {
+      "allowed_inference": "Wave 2 exists in selected tail cases under Policy A and is sensitive to valuation policy.",
+      "artifact_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_audit.csv",
+      "artifact_sha256": "802d84e2774f3840dd50d504eab40cb3681b3e468e5581a988e86f5a2c16dc6c",
+      "borrower_evidence": "eligible_vs_executed_audit.csv; redacted borrower_hash",
+      "claim_id": "CL_INT_RQ1_POLICY_CONDITIONAL",
+      "evidence_tier": "MODEL_COMPUTED_COUNTERFACTUAL",
+      "limitation": "No oracle-independent threshold, actual Aave probability or historical causal cascade.",
+      "literature_claim_ids": [
+        "C03",
+        "C32",
+        "C33"
+      ],
+      "policy": "A/B/C as specified",
+      "result_ids": [
+        "RQ1_GRID60_DEPTH2",
+        "RQ1_MC_SEVERE_DEPTH2_COUNT",
+        "INT_A_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
+        "INT_B_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
+        "INT_C_WEAK_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
+        "INT_C_MODERATE_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4"
+      ],
+      "rq": "RQ1",
+      "scenario": "4 locked deterministic depth-2 cases + 4 controls + 10 preselected MC paths",
+      "seed": "20260914 base; path seeds in eligible_vs_executed_audit.csv",
+      "source_commit": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+      "status": "ACCEPTED_WITH_LIMITATIONS",
+      "table_figure": [
+        "INT_T01_ELIGIBLE_VS_EXECUTED",
+        "F01",
+        "F02"
+      ]
+    },
+    {
+      "allowed_inference": "Frozen numerical counts remain valid under Policy A.",
+      "artifact_path": "data/processed/research_final/frozen_v3/results_registry.json",
+      "artifact_sha256": "8c0a2455209505341c1f4c89f01b0db8677446e58bdcf4903604b123c6abedad",
+      "borrower_evidence": "Oracle audit supplies missing policy contrast",
+      "claim_id": "CL_FROZEN_RQ1_UNQUALIFIED_WORDING",
+      "evidence_tier": "MODEL_COMPUTED_COUNTERFACTUAL",
+      "limitation": "Downstream wording must add Policy A qualification.",
+      "literature_claim_ids": [
+        "C23",
+        "C32",
+        "C33"
+      ],
+      "policy": "Implicit Policy A",
+      "result_ids": [
+        "RQ1_GRID60_DEPTH2",
+        "RQ1_MC_SEVERE_DEPTH2_COUNT"
+      ],
+      "rq": "RQ1",
+      "scenario": "Frozen v3 grid/checkpoint",
+      "seed": "20260914 for Severe",
+      "source_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+      "status": "REQUIRES_CORRECTION",
+      "table_figure": [
+        "F01",
+        "F02"
+      ]
+    },
+    {
+      "allowed_inference": "Liquidity changes DEX absorption; valuation policy controls whether resulting DEX state changes borrower HF.",
+      "artifact_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_audit.csv",
+      "artifact_sha256": "802d84e2774f3840dd50d504eab40cb3681b3e468e5581a988e86f5a2c16dc6c",
+      "borrower_evidence": "eligible_vs_executed_audit.csv; redacted borrower_hash",
+      "claim_id": "CL_INT_RQ2_TWO_CHANNELS",
+      "evidence_tier": "MODEL_COMPUTED_COUNTERFACTUAL",
+      "limitation": "Liquidity weakness alone does not guarantee new eligibility or execution.",
+      "literature_claim_ids": [
+        "C07",
+        "C08",
+        "C32",
+        "C34"
+      ],
+      "policy": "A/B/C as specified",
+      "result_ids": [
+        "RQ2_CANONICAL_DEPTH_2PCT",
+        "RQ2_DEPTH2_HAIRCUT90_COUNT",
+        "RQ2_DEPTH2_HAIRCUT95_COUNT"
+      ],
+      "rq": "RQ2",
+      "scenario": "4 locked deterministic depth-2 cases + 4 controls + 10 preselected MC paths",
+      "seed": "20260914 base; path seeds in eligible_vs_executed_audit.csv",
+      "source_commit": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+      "status": "ACCEPTED_WITH_LIMITATIONS",
+      "table_figure": [
+        "INT_T01_ELIGIBLE_VS_EXECUTED",
+        "F01",
+        "F02"
+      ]
+    },
+    {
+      "allowed_inference": "Tail haircuts reduce absorption and increase modeled DEX distortion.",
+      "artifact_path": "data/processed/research_final/frozen_v3/rq_answer_matrix.json",
+      "artifact_sha256": "6c9efc55e46a10e08e04e2484f8af681f43aadaa22395cf858547b2e29ed4324",
+      "borrower_evidence": "Oracle audit supplies A/B/C contrast",
+      "claim_id": "CL_FROZEN_RQ2_DIRECT_ELIGIBILITY_WORDING",
+      "evidence_tier": "MODEL_COMPUTED_COUNTERFACTUAL",
+      "limitation": "Wording that liquidity itself creates eligibility requires an oracle-policy qualifier.",
+      "literature_claim_ids": [
+        "C07",
+        "C32"
+      ],
+      "policy": "Implicit Policy A",
+      "result_ids": [
+        "RQ2_DEPTH2_HAIRCUT90_COUNT",
+        "RQ2_DEPTH2_HAIRCUT95_COUNT"
+      ],
+      "rq": "RQ2",
+      "scenario": "60-cell tail grid",
+      "seed": "deterministic",
+      "source_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+      "status": "REQUIRES_CORRECTION",
+      "table_figure": [
+        "F01",
+        "T05"
+      ]
+    },
+    {
+      "allowed_inference": "HF eligibility, engine evaluation and positive-debt execution are distinct gates; skips carry explicit reason codes.",
+      "artifact_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
+      "artifact_sha256": "f9fe744dbc3a28e071bdc944adfad469a65dc2f47d29e3beab5d5e446de955a4",
+      "borrower_evidence": "eligible_vs_executed_audit.csv; redacted borrower_hash",
+      "claim_id": "CL_INT_ELIGIBLE_NOT_EXECUTED",
+      "evidence_tier": "MODEL_COMPUTED_COUNTERFACTUAL",
+      "limitation": "Execution is modeled by one representative liquidator and does not establish external contagion.",
+      "literature_claim_ids": [
+        "C03",
+        "C05",
+        "C19",
+        "C33"
+      ],
+      "policy": "A/B/C as specified",
+      "result_ids": [
+        "INT_A_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_A_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
+        "INT_A_NEWLY_ELIGIBLE_SKIPPED_INSTANCES"
+      ],
+      "rq": "RQ3",
+      "scenario": "4 locked deterministic depth-2 cases + 4 controls + 10 preselected MC paths",
+      "seed": "20260914 base; path seeds in eligible_vs_executed_audit.csv",
+      "source_commit": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+      "status": "ACCEPTED_WITH_LIMITATIONS",
+      "table_figure": [
+        "INT_T01_ELIGIBLE_VS_EXECUTED"
+      ]
+    },
+    {
+      "allowed_inference": "Capital binds at low tested levels; delay does not change severity in tested range.",
+      "artifact_path": "data/processed/research_final/frozen_v3/results_registry.json",
+      "artifact_sha256": "8c0a2455209505341c1f4c89f01b0db8677446e58bdcf4903604b123c6abedad",
+      "borrower_evidence": "Frozen cohort 109 for RQ3 sweeps",
+      "claim_id": "CL_INT_RQ3_PRESERVED",
+      "evidence_tier": "MODEL_COMPUTED_COUNTERFACTUAL",
+      "limitation": "Representative agent, no capital recycling, no fork.",
+      "literature_claim_ids": [
+        "C03",
+        "C05",
+        "C19"
+      ],
+      "policy": "Frozen v3 sweeps",
+      "result_ids": [
+        "RQ3_CAPITAL_25_LIQUIDATED",
+        "RQ3_CAPITAL_100_LIQUIDATED",
+        "RQ3_DELAY_SEVERITY_CHANGE"
+      ],
+      "rq": "RQ3",
+      "scenario": "capital/capacity/gas/delay sweeps",
+      "seed": "deterministic",
+      "source_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+      "status": "ACCEPTED_WITH_LIMITATIONS",
+      "table_figure": [
+        "F03",
+        "T06"
+      ]
+    },
+    {
+      "allowed_inference": "Arbitrage reduces residual spread but not the same sale's immediate impact.",
+      "artifact_path": "data/processed/research_final/frozen_v3/results_registry.json",
+      "artifact_sha256": "8c0a2455209505341c1f4c89f01b0db8677446e58bdcf4903604b123c6abedad",
+      "borrower_evidence": "Frozen scenario result",
+      "claim_id": "CL_INT_RQ4_PRESERVED",
+      "evidence_tier": "MODEL_COMPUTED_COUNTERFACTUAL",
+      "limitation": "Price teleportation; not funded Mainnet execution.",
+      "literature_claim_ids": [
+        "C13",
+        "C19",
+        "C34"
+      ],
+      "policy": "Frozen v3 arbitrage sweep",
+      "result_ids": [
+        "RQ4_IMMEDIATE_PRICE_IMPACT",
+        "RQ4_SPREAD_ARB0",
+        "RQ4_SPREAD_ARB100"
+      ],
+      "rq": "RQ4",
+      "scenario": "shock -20%, haircut 40%",
+      "seed": "deterministic",
+      "source_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+      "status": "ACCEPTED_WITH_LIMITATIONS",
+      "table_figure": [
+        "F04",
+        "T07"
+      ]
+    },
+    {
+      "allowed_inference": "USDC debt valuation changes HF ceteris paribus; token and USD units remain separate.",
+      "artifact_path": "data/processed/research_final/frozen_v3/results_registry.json",
+      "artifact_sha256": "8c0a2455209505341c1f4c89f01b0db8677446e58bdcf4903604b123c6abedad",
+      "borrower_evidence": "109-position WETH/USDC cohort",
+      "claim_id": "CL_INT_RQ5_PRESERVED",
+      "evidence_tier": "MODEL_COMPUTED_COUNTERFACTUAL",
+      "limitation": "No liquidity/redemption/settlement channel.",
+      "literature_claim_ids": [
+        "C14",
+        "C15",
+        "C35"
+      ],
+      "policy": "Frozen v3 USDC debt valuation",
+      "result_ids": [
+        "RQ5_HF_LT1_USDC_090",
+        "RQ5_HF_LT1_USDC_100",
+        "RQ5_HF_LT1_USDC_110",
+        "RQ5_LIQUIDATED_DEBT_TOKEN_QTY",
+        "RQ5_LIQUIDATED_DEBT_USD"
+      ],
+      "rq": "RQ5",
+      "scenario": "USDC 0.90/1.00/1.10 USD",
+      "seed": "deterministic",
+      "source_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+      "status": "ACCEPTED_WITH_LIMITATIONS",
+      "table_figure": [
+        "T08"
+      ]
+    },
+    {
+      "allowed_inference": "LTV, LT and bonus govern distinct mechanisms and are not interchangeable.",
+      "artifact_path": "data/processed/research_final/frozen_v3/results_registry.json",
+      "artifact_sha256": "8c0a2455209505341c1f4c89f01b0db8677446e58bdcf4903604b123c6abedad",
+      "borrower_evidence": "109-position frozen cohort",
+      "claim_id": "CL_INT_RQ6_PRESERVED",
+      "evidence_tier": "MODEL_COMPUTED_COUNTERFACTUAL",
+      "limitation": "No borrower behavior/re-underwriting response.",
+      "literature_claim_ids": [
+        "C04",
+        "C05",
+        "C12"
+      ],
+      "policy": "Frozen v3 separated policy sweeps",
+      "result_ids": [
+        "RQ6_LTV0755_CAPACITY",
+        "RQ6_LTV0825_CAPACITY",
+        "RQ6_LT083_UNLIQUIDATED",
+        "RQ6_BONUS103_SEIZED",
+        "RQ6_BONUS107_SEIZED"
+      ],
+      "rq": "RQ6",
+      "scenario": "LTV/LT/bonus counterfactuals",
+      "seed": "deterministic",
+      "source_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+      "status": "ACCEPTED_WITH_LIMITATIONS",
+      "table_figure": [
+        "T09"
+      ]
+    },
+    {
+      "allowed_inference": "28 Pool events; 27 Graph-matched; association tiers 1/2/23/1.",
+      "artifact_path": "data/processed/research_final/frozen_v3/results_registry.json",
+      "artifact_sha256": "8c0a2455209505341c1f4c89f01b0db8677446e58bdcf4903604b123c6abedad",
+      "borrower_evidence": "onchain redacted/aggregated historical evidence",
+      "claim_id": "CL_INT_HISTORICAL_TIERS_PRESERVED",
+      "evidence_tier": "ONCHAIN_HISTORICAL_OBSERVATION",
+      "limitation": "Co-occurrence/receipt route does not prove price causality or endogenous cascade.",
+      "literature_claim_ids": [
+        "C09",
+        "C10",
+        "C11"
+      ],
+      "policy": "not applicable",
+      "result_ids": [
+        "HIST_RPC_CENSUS_EVENTS",
+        "HIST_GRAPH_MATCHED_EVENTS",
+        "HIST_DIRECT_TRANSFER_PATHS",
+        "HIST_SAME_TX_COOCCURRENCE",
+        "HIST_SAME_BLOCK_ASSOCIATION",
+        "HIST_TIME_WINDOW_ASSOCIATION"
+      ],
+      "rq": "EXT_HISTORICAL",
+      "scenario": "defined week 2026-09-01..07 UTC",
+      "seed": "not applicable",
+      "source_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+      "status": "ACCEPTED_WITH_LIMITATIONS",
+      "table_figure": [
+        "T10"
+      ]
+    },
+    {
+      "allowed_inference": "Negative cutoff-safe early-warning finding remains preserved.",
+      "artifact_path": "data/processed/research_final/frozen_v3/results_registry.json",
+      "artifact_sha256": "8c0a2455209505341c1f4c89f01b0db8677446e58bdcf4903604b123c6abedad",
+      "borrower_evidence": "not applicable",
+      "claim_id": "CL_INT_TERRA_NEGATIVE_PRESERVED",
+      "evidence_tier": "ONCHAIN_HISTORICAL_OBSERVATION",
+      "limitation": "No successful out-of-sample forecasting claim.",
+      "literature_claim_ids": [
+        "C16",
+        "C17",
+        "C29",
+        "C30"
+      ],
+      "policy": "cutoff-safe historical audit",
+      "result_ids": [
+        "TERRA_PRE_DEPEG_HIGH_ALERT_HOURS",
+        "TERRA_INITIAL_DEPEG_HIGH_LEAD"
+      ],
+      "rq": "EXT_TERRA",
+      "scenario": "Terra 2022 historical extension",
+      "seed": "not applicable",
+      "source_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+      "status": "ACCEPTED_WITH_LIMITATIONS",
+      "table_figure": [
+        "T11"
+      ]
+    },
+    {
+      "allowed_inference": "No affirmative inference allowed.",
+      "artifact_path": "docs/research_final/REFERENCE_EVIDENCE_MATRIX.md",
+      "artifact_sha256": "4f1b2a70b8a082b6eb1a3e99b53ba3fb7b836a0deac4641268f88b45219c9cfa",
+      "borrower_evidence": "none",
+      "claim_id": "CL_UNSUPPORTED_AAVE_USES_UNISWAP_SPOT",
+      "evidence_tier": "EXTERNAL_EMPIRICAL_INFERENCE",
+      "limitation": "A/B/C are counterfactual valuation policies; actual Aave/Chainlink feed behavior is not validated.",
+      "literature_claim_ids": [
+        "C02",
+        "C32"
+      ],
+      "policy": "none verified",
+      "result_ids": [],
+      "rq": "RQ1/RQ2",
+      "scenario": "external empirical claim",
+      "seed": "not applicable",
+      "source_commit": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+      "status": "UNSUPPORTED",
+      "table_figure": []
+    },
+    {
+      "allowed_inference": "Temporal/transaction association only.",
+      "artifact_path": "data/processed/research_final/frozen_v3/results_registry.json",
+      "artifact_sha256": "8c0a2455209505341c1f4c89f01b0db8677446e58bdcf4903604b123c6abedad",
+      "borrower_evidence": "historical event locators in Frozen source",
+      "claim_id": "CL_UNSUPPORTED_HISTORICAL_CAUSAL_CONTAGION",
+      "evidence_tier": "EXTERNAL_EMPIRICAL_INFERENCE",
+      "limitation": "No identified historical endogenous liquidation-price-liquidation causal chain.",
+      "literature_claim_ids": [
+        "C09",
+        "C10",
+        "C11"
+      ],
+      "policy": "not applicable",
+      "result_ids": [
+        "HIST_DIRECT_TRANSFER_PATHS",
+        "HIST_SAME_TX_COOCCURRENCE",
+        "HIST_SAME_BLOCK_ASSOCIATION",
+        "HIST_TIME_WINDOW_ASSOCIATION"
+      ],
+      "rq": "RQ1/RQ2",
+      "scenario": "historical event study",
+      "seed": "not applicable",
+      "source_commit": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+      "status": "UNSUPPORTED",
+      "table_figure": [
+        "T10"
+      ]
+    }
+  ],
+  "p2_locator_commit": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+  "p2_locator_hashes": {
+    "docs/research_final/P2_VERSION_RECONCILIATION.md": "6dbe7af837a4980ade5065317c6784223168a417e22fe57d2113c4749eee3a4a",
+    "docs/research_final/REFERENCE_EVIDENCE_MATRIX.md": "4f1b2a70b8a082b6eb1a3e99b53ba3fb7b836a0deac4641268f88b45219c9cfa"
+  },
+  "p2_oracle_reconciliation_status": "OPEN_ON_PR_9_PER_COMMANDER_COMMENT_6166173420",
+  "schema_version": "scientific-integration-v1.0"
+}

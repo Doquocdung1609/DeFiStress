@@ -1,0 +1,40 @@
+{
+  "schema_version": "scientific-integration-v1.0",
+  "status": "PASS",
+  "commands": [
+    {
+      "command": ".\\.venv\\Scripts\\python.exe scripts/research/build_scientific_integration_v1.py",
+      "status": "PASS",
+      "result": "72/72 targeted replay hashes; 32,688/32,688 independently recomputed HF traces; 2,186 event rows; all integration gates passed"
+    },
+    {
+      "command": ".\\.venv\\Scripts\\python.exe -m pytest tests/test_scientific_integration_v1.py tests/test_oracle_diagnostic_artifacts.py tests/test_frozen_v3.py -q",
+      "status": "PASS",
+      "result": "15 tests passed"
+    },
+    {
+      "command": ".\\.venv\\Scripts\\python.exe -m pytest -q",
+      "status": "PASS",
+      "result": "180 tests passed; 3 dependency deprecation warnings"
+    },
+    {
+      "command": ".\\.venv\\Scripts\\python.exe -m ruff check .",
+      "status": "PASS",
+      "result": "All checks passed"
+    },
+    {
+      "command": ".\\.venv\\Scripts\\python.exe -m mypy sim",
+      "status": "PASS",
+      "result": "Success: no issues found in 49 source files; matches pyproject and CI scope"
+    },
+    {
+      "command": ".\\.venv\\Scripts\\python.exe -m mypy .",
+      "status": "OUT_OF_SCOPE_CONFIGURATION_FAILURE",
+      "result": "Duplicate legacy Terra pack module names outside configured mypy package scope; no integration source error evaluated by this invocation"
+    }
+  ],
+  "warnings": [
+    "pytest reported three dependency deprecation warnings from websockets, FastAPI/Starlette and AnyIO.",
+    "Repository-wide mypy-dot is not the configured gate: pyproject.toml declares packages=[sim] and CI runs mypy sim."
+  ]
+}

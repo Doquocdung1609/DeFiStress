@@ -1,0 +1,131 @@
+{
+  "artifact_bundle_commit": "PENDING_ARTIFACT_COMMIT",
+  "artifact_hashes": {
+    "accepted_claims_proposed.json": "5334728fee10b198261ce2f209524f3ff84f50ca0ba7dc2f4c0f22908ba1c65f",
+    "claim_to_result_registry.json": "42e7f37a4da0df570cdc86d33cf8a9f4c338fbe9a623c3b84dc36c6edf52f793",
+    "eligible_vs_executed_audit.csv": "802d84e2774f3840dd50d504eab40cb3681b3e468e5581a988e86f5a2c16dc6c",
+    "eligible_vs_executed_summary.csv": "f9fe744dbc3a28e071bdc944adfad469a65dc2f47d29e3beab5d5e446de955a4",
+    "integration_result_registry.json": "f052d9059351656c39dd90db36915338bf0e2d0de46b62c154684fd472074930",
+    "integration_validation_report.json": "21d34748aabad1ca93d69dee17b53420a45daceb7eb57e8a56cf1159ceebbbcb",
+    "six_rq_evidence_matrix.json": "f13e2da60e453ba2a953ea16dc04f1c793083afb96e310b99639188a7c89d303",
+    "targeted_event_trace.jsonl": "3216731257761b67e1b44e0d4774e88530c4dcb88d4961fc42bacc41a39759ec",
+    "test_evidence.json": "23c6a2cbea0540701b70dae7b1dc7ad91f4819f7880462e491986a48a87c2b8b",
+    "version_precedence.json": "d2fa82c4f0483e69e01b25a7206ee55edd461d58214c9be78385e99e2e2eacd0"
+  },
+  "code_hashes": {
+    "sim/agents/liquidator.py": "8f12dc659647ba3d49feb20b3505c7163aabb8b3c4ca0066fd88ca732126c684",
+    "sim/engine/run.py": "93d18336d0b39f221d98765152f4a4716870b5c9b433f724b5a69e666c1ecb8c",
+    "sim/lending/health_factor.py": "c8ed78fc4a4dc8e213b5cd145278211218514465d5e73aa998ec4977ca066670",
+    "sim/lending/liquidation.py": "fd3f4e5cd2f4a9564ca7b23625d693e0661a8162182699a0eb2940603158e96b",
+    "sim/oracle.py": "826bdab7242624352b5a87edbed4e801d28f6dc807e570c84f0a95c10b50cd42"
+  },
+  "counts": {
+    "accepted_claims_proposed": 9,
+    "borrower_audit_rows": 32688,
+    "claims": 13,
+    "event_trace_rows": 2186,
+    "research_questions": 6,
+    "targeted_runs": 72
+  },
+  "decision_is_proposed_not_commander_granted": true,
+  "dependencies": {
+    "frozen_v3": {
+      "head": "9842c4f2c35adb8b4ec906e1bc76afa825d197c7",
+      "manifest_sha256": "0ee158ad67cd16a009a6d064960619fd03ab93657d12fa25f4b860e351157613"
+    },
+    "oracle_pr_11": {
+      "commander_gate": "SCIENTIFIC_PASS_WITH_LIMITATIONS",
+      "head": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+      "state": "DRAFT_OPEN"
+    },
+    "p2_pr_9": {
+      "head": "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f",
+      "state": "DRAFT_OPEN_ORACLE_RECONCILIATION_PENDING"
+    }
+  },
+  "frozen_v3_overwritten": false,
+  "input_hashes": {
+    "canonical_snapshot": "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99",
+    "frozen_v3_manifest": "0ee158ad67cd16a009a6d064960619fd03ab93657d12fa25f4b860e351157613",
+    "oracle_manifest": "fb391166fe61805b0690f393f63da844c8449a969a53e692d04b9adae36fc8e6",
+    "oracle_selection_manifest": "3eb4bd1c2404abfb1a4a2cd402d06d70a971e781b279c599be66438c5e5d253d",
+    "p2::docs/research_final/P2_VERSION_RECONCILIATION.md": "6dbe7af837a4980ade5065317c6784223168a417e22fe57d2113c4749eee3a4a",
+    "p2::docs/research_final/REFERENCE_EVIDENCE_MATRIX.md": "4f1b2a70b8a082b6eb1a3e99b53ba3fb7b836a0deac4641268f88b45219c9cfa"
+  },
+  "large_monte_carlo_rerun": false,
+  "literature_files_modified": false,
+  "model_retuned": false,
+  "oracle_diagnostic_overwritten": false,
+  "quality_gate": {
+    "all_claim_result_ids_resolve": true,
+    "all_event_locators_resolve": true,
+    "all_values_finite": true,
+    "borrower_rows_match_18x4x454": true,
+    "canonical_snapshot_hash_unchanged": true,
+    "frozen_bundle_hashes_unchanged": true,
+    "hf_traces_match_source_rows": true,
+    "literature_files_not_modified": true,
+    "newly_eligible_counts_match_72_of_72": true,
+    "no_api_keys_or_rpc_urls": true,
+    "no_large_monte_carlo_rerun": true,
+    "no_misleading_probability_or_wave_claim": true,
+    "no_raw_wallet_addresses": true,
+    "no_unexplained_not_eligible_skip": true,
+    "oracle_bundle_hashes_unchanged": true,
+    "six_rq_order_and_identity_preserved": true,
+    "targeted_replay_hashes_match_72_of_72": true,
+    "unique_claim_ids": true,
+    "unique_event_ids": true,
+    "unsupported_empirical_claims_are_not_promoted": true
+  },
+  "report_hashes": {
+    "docs/research_final/INTEGRATION_COMMANDER_REVIEW_PACKET.md": "e3c648b04a13ac740e6d2f036f7a773325fafbe1eca25452f0c300ec8fd8890c",
+    "docs/research_final/SCIENTIFIC_INTEGRATION_ADDENDUM_v1.md": "70662f32fb0cefc7d7f59634a2a06452457fe35193b1cc38f6a15b1420764084"
+  },
+  "reproduction_command": ".\\.venv\\Scripts\\python.exe .\\scripts\\research\\build_scientific_integration_v1.py",
+  "schema_version": "scientific-integration-v1.0",
+  "scientific_content_lock_declared": false,
+  "source_code_commit": "PENDING_ARTIFACT_COMMIT",
+  "starting_head": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
+  "status": "READY_FOR_COMMANDER_REVIEW",
+  "test_evidence": {
+    "commands": [
+      {
+        "command": ".\\.venv\\Scripts\\python.exe scripts/research/build_scientific_integration_v1.py",
+        "result": "72/72 targeted replay hashes; 32,688/32,688 independently recomputed HF traces; 2,186 event rows; all integration gates passed",
+        "status": "PASS"
+      },
+      {
+        "command": ".\\.venv\\Scripts\\python.exe -m pytest tests/test_scientific_integration_v1.py tests/test_oracle_diagnostic_artifacts.py tests/test_frozen_v3.py -q",
+        "result": "15 tests passed",
+        "status": "PASS"
+      },
+      {
+        "command": ".\\.venv\\Scripts\\python.exe -m pytest -q",
+        "result": "180 tests passed; 3 dependency deprecation warnings",
+        "status": "PASS"
+      },
+      {
+        "command": ".\\.venv\\Scripts\\python.exe -m ruff check .",
+        "result": "All checks passed",
+        "status": "PASS"
+      },
+      {
+        "command": ".\\.venv\\Scripts\\python.exe -m mypy sim",
+        "result": "Success: no issues found in 49 source files; matches pyproject and CI scope",
+        "status": "PASS"
+      },
+      {
+        "command": ".\\.venv\\Scripts\\python.exe -m mypy .",
+        "result": "Duplicate legacy Terra pack module names outside configured mypy package scope; no integration source error evaluated by this invocation",
+        "status": "OUT_OF_SCOPE_CONFIGURATION_FAILURE"
+      }
+    ],
+    "schema_version": "scientific-integration-v1.0",
+    "status": "PASS",
+    "warnings": [
+      "pytest reported three dependency deprecation warnings from websockets, FastAPI/Starlette and AnyIO.",
+      "Repository-wide mypy-dot is not the configured gate: pyproject.toml declares packages=[sim] and CI runs mypy sim."
+    ]
+  }
+}
