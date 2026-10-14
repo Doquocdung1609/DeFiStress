@@ -57,6 +57,18 @@ def _stable_hash(value: Any) -> str:
     return hashlib.sha256(payload.encode()).hexdigest()
 
 
+def _finite_or_none(value: Decimal) -> Decimal | None:
+    """Serialize mathematically undefined debt-free HF without non-finite values."""
+
+    return value if value.is_finite() else None
+
+
+def _finite_delta(left: Decimal | None, right: Decimal | None) -> Decimal | None:
+    if left is None or right is None:
+        return None
+    return left - right
+
+
 def _write_json(path: Path, value: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(
@@ -325,8 +337,14 @@ def _run_case(
                 "path_index": "" if path_index is None else path_index,
                 "policy_id": policy.policy_id,
                 "borrower_hash": initial.borrower_hash,
-                "direct_shock_hf": direct_hf,
-                "post_wave1_hf": post_hf,
+                "direct_shock_hf": _finite_or_none(direct_hf),
+                "direct_shock_hf_status": (
+                    "FINITE" if direct_hf.is_finite() else "DEBT_FREE_UNDEFINED"
+                ),
+                "post_wave1_hf": _finite_or_none(post_hf),
+                "post_wave1_hf_status": (
+                    "FINITE" if post_hf.is_finite() else "DEBT_FREE_UNDEFINED"
+                ),
                 "attempted_in_wave1": initial.borrower_hash in attempted_wave1,
                 "newly_eligible_after_wave1": newly,
                 "direct_shock_valuation_price_usd_per_weth": reference,
@@ -339,13 +357,14 @@ def _run_case(
     summary = _summary(result)
     liquidations = [event for event in result.events if event.event_type == "LIQUIDATION"]
     borrower_ids = [str(event.borrower_hash) for event in liquidations]
+    initial_by_id = {position.borrower_hash: position for position in positions}
     later_wave_valid = all(
         event.wave == 1
         or (
-            next(
-                row["direct_shock_hf"]
-                for row in borrower_rows
-                if row["borrower_hash"] == event.borrower_hash
+            initial_by_id[str(event.borrower_hash)].health_factor(
+                reference,
+                scenario.liquidation_threshold_override,
+                scenario.usdc_price_usd,
             )
             >= 1
             and event.health_factor_before < 1
@@ -436,9 +455,9 @@ def run_comparison(output: Path) -> dict[str, Any]:
                 D("1e-18"),
             )
         for row in case_borrowers:
-            row["post_wave1_hf_delta_vs_policy_a"] = (
-                row["post_wave1_hf"]
-                - policy_a_borrowers[row["borrower_hash"]]["post_wave1_hf"]
+            row["post_wave1_hf_delta_vs_policy_a"] = _finite_delta(
+                row["post_wave1_hf"],
+                policy_a_borrowers[row["borrower_hash"]]["post_wave1_hf"],
             )
         aggregates.extend(case_aggregates)
         borrower_rows.extend(case_borrowers)

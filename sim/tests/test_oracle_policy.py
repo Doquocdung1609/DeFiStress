@@ -3,6 +3,7 @@ from __future__ import annotations
 from decimal import Decimal
 
 from backend.app.services.snapshots import simulation_inputs
+from scripts.research.run_oracle_transmission_diagnostic import _finite_delta, _finite_or_none
 from sim.engine.run import run_simulation
 from sim.oracle import ADVERSE_PASS_THROUGH, REFERENCE_ONLY, lagged_smoothed_proxy
 from sim.research.aave_suite import load_canonical_snapshot
@@ -82,3 +83,9 @@ def test_lagged_proxy_rejects_invalid_parameters() -> None:
         assert "transmission_coefficient" in str(exc)
     else:
         raise AssertionError("invalid transmission coefficient was accepted")
+
+
+def test_debt_free_health_factor_is_serialized_without_non_finite_values() -> None:
+    assert _finite_or_none(D("Infinity")) is None
+    assert _finite_delta(None, None) is None
+    assert _finite_delta(D("1.25"), D("1.00")) == D("0.25")
