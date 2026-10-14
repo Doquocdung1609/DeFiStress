@@ -1,5 +1,5 @@
 {
-  "artifact_bundle_commit": "PENDING",
+  "artifact_bundle_commit": "76af8387b01099ea96d227d461dc69a62de7ed01",
   "artifact_hashes": {
     "claim_ledger.json": "b6020c14cdeefdfccecfdbbb8e8fc455a19636e054e441e01c3b1ad137411d4b",
     "evidence_source_matrix.json": "5412a1ce992516c21340fb86a1c724e32903c99c73ed2eb0da6bce3b67d636c3",
