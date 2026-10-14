@@ -1,0 +1,4 @@
+finding,value,unit,interpretation
+pre_initial_depeg_high_alert_hours,0,hours,negative early-warning finding
+initial_depeg_high_lead,-45,hours,warning after initial depeg
+out_of_sample_forecast_supported,False,boolean,event-informed design; no held-out training protocol

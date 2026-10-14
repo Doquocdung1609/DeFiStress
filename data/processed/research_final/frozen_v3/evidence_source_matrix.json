@@ -1,0 +1,165 @@
+{
+  "figure_registry": [
+    {
+      "caption_vi": {
+        "co_the_ket_luan": "Bốn tổ hợp đạt depth 2 trong miền stress đã khai báo.",
+        "khong_the_ket_luan": "Không suy ra xác suất khủng hoảng hay độ sâu tối đa ngoài lưới.",
+        "loai_du_lieu": "Mô phỏng, không phải giao dịch lịch sử.",
+        "mau_so_don_vi": "60 tổ hợp; trục tung là số tổ hợp.",
+        "noi_dung_do": "Phân bố độ sâu cascade trong lưới tất định mở rộng."
+      },
+      "figure_id": "F01",
+      "path": "data/processed/research_final/frozen_v3/figures/F01_deterministic_depth_distribution.png",
+      "result_ids": [
+        "RQ1_GRID60_DEPTH0",
+        "RQ1_GRID60_DEPTH1",
+        "RQ1_GRID60_DEPTH2"
+      ]
+    },
+    {
+      "caption_vi": {
+        "co_the_ket_luan": "Checkpoint 10.000 có 280 đường depth ≥ 2 (2,8%).",
+        "khong_the_ket_luan": "Tần suất trong mô hình không phải xác suất khủng hoảng thực tế.",
+        "loai_du_lieu": "Mô phỏng Monte Carlo đã khóa checkpoint.",
+        "mau_so_don_vi": "200, 1.000, 5.000 và 10.000 đường; đơn vị phần trăm.",
+        "noi_dung_do": "Tần suất lấy mẫu depth ≥ 2 theo các checkpoint prefix Severe."
+      },
+      "figure_id": "F02",
+      "path": "data/processed/research_final/frozen_v3/figures/F02_severe_mc_prefix_convergence.png",
+      "result_ids": [
+        "RQ1_MC_SEVERE_DEPTH2_COUNT",
+        "RQ1_MC_SEVERE_DEPTH2_FREQUENCY"
+      ]
+    },
+    {
+      "caption_vi": {
+        "co_the_ket_luan": "Mức 25% và 50% bị ràng buộc; 100% và 200% không bị ràng buộc trong thử nghiệm.",
+        "khong_the_ket_luan": "Không đại diện cơ chế tái sử dụng vốn hay thị trường liquidator ngoài mô hình.",
+        "loai_du_lieu": "Mô phỏng counterfactual trên snapshot cố định.",
+        "mau_so_don_vi": "Bốn mức vốn; nợ tính bằng USDC token quantity.",
+        "noi_dung_do": "Nợ được thực thi thanh lý khi thay đổi vốn người thanh lý."
+      },
+      "figure_id": "F03",
+      "path": "data/processed/research_final/frozen_v3/figures/F03_liquidator_capital_constraint.png",
+      "result_ids": [
+        "RQ3_CAPITAL_25_LIQUIDATED",
+        "RQ3_CAPITAL_100_LIQUIDATED"
+      ]
+    },
+    {
+      "caption_vi": {
+        "co_the_ket_luan": "Arbitrage làm giảm spread sau bán trong thiết kế này nhưng không đổi tác động tức thời.",
+        "khong_the_ket_luan": "Không chứng minh tốc độ hoặc năng lực arbitrage thực tế trên Mainnet.",
+        "loai_du_lieu": "Mô phỏng một kịch bản −20%, haircut 40%.",
+        "mau_so_don_vi": "Ba mức năng lực arbitrage; đơn vị phần trăm giá tham chiếu.",
+        "noi_dung_do": "So sánh tác động giá ngay sau bán với spread còn lại sau arbitrage."
+      },
+      "figure_id": "F04",
+      "path": "data/processed/research_final/frozen_v3/figures/F04_arbitrage_impact_and_residual_spread.png",
+      "result_ids": [
+        "RQ4_IMMEDIATE_PRICE_IMPACT",
+        "RQ4_SPREAD_ARB0",
+        "RQ4_SPREAD_ARB100"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "evidence_id": "EV_CANONICAL_SNAPSHOT",
+      "path": "data/processed/mainnet/aave_uniswap_snapshot_26045352.json",
+      "scope": "Aave/Uniswap same-block state",
+      "sha256": "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99",
+      "type": "OBSERVED"
+    },
+    {
+      "evidence_id": "EV_CORRECTED_V2",
+      "path": "data/processed/research_final/validation_audit/corrected_run_v2/manifest.json",
+      "scope": "P0 numerical semantics and RQ sweeps",
+      "sha256": "e8a55abb0b6398beea5ff7dd4fc79bd042a55bfd43f21c3646fdf889826a77d8",
+      "type": "SIMULATED"
+    },
+    {
+      "evidence_id": "EV_LEVEL3",
+      "path": "data/processed/research_final/level3_extension/manifest.json",
+      "scope": "60-cell grid, checkpoints, historical study",
+      "sha256": "8156499175e498e1d80903ff66f07f174b16df7d79a021c922567f35bd436770",
+      "type": "SIMULATED_AND_OBSERVED"
+    },
+    {
+      "evidence_id": "EV_TARGETED_REPAIR",
+      "path": "data/processed/research_final/level3_p1_targeted_repair/manifest.json",
+      "scope": "28-event census, evidence tiers, checkpoint audit",
+      "sha256": "769c49d10c0539ed8d3b07306a4f0078062730d81abd4911762503a1b2cbdb34",
+      "type": "OBSERVED_AND_AUDITED"
+    },
+    {
+      "evidence_id": "EV_TERRA_LOCKED",
+      "path": "data/processed/research_final/terra/audit/reproducibility_manifest.json",
+      "scope": "Terra historical extension",
+      "sha256": "e5ff826470e7121f6d899e111669549c2db5590efa01ca407e125320a178e064",
+      "type": "OBSERVED_AND_DERIVED"
+    }
+  ],
+  "table_registry": [
+    {
+      "path": "tables/version_precedence.csv",
+      "purpose": "Data version precedence",
+      "table_id": "T01"
+    },
+    {
+      "path": "tables/core_facts.csv",
+      "purpose": "Canonical scope and validation",
+      "table_id": "T02"
+    },
+    {
+      "path": "tables/rq1_deterministic_depth.csv",
+      "purpose": "32 vs 60 grid",
+      "table_id": "T03"
+    },
+    {
+      "path": "tables/rq1_monte_carlo.csv",
+      "purpose": "Severe checkpoints",
+      "table_id": "T04"
+    },
+    {
+      "path": "tables/rq2_liquidity.csv",
+      "purpose": "Liquidity absorption and depth",
+      "table_id": "T05"
+    },
+    {
+      "path": "tables/rq3_constraints.csv",
+      "purpose": "Capital and delay",
+      "table_id": "T06"
+    },
+    {
+      "path": "tables/rq4_arbitrage.csv",
+      "purpose": "Immediate impact vs residual spread",
+      "table_id": "T07"
+    },
+    {
+      "path": "tables/rq5_usdc_valuation.csv",
+      "purpose": "USDC token and USD units",
+      "table_id": "T08"
+    },
+    {
+      "path": "tables/rq6_policy.csv",
+      "purpose": "LTV/LT/bonus separation",
+      "table_id": "T09"
+    },
+    {
+      "path": "tables/historical_evidence.csv",
+      "purpose": "Historical census and evidence tiers",
+      "table_id": "T10"
+    },
+    {
+      "path": "tables/terra_limitations.csv",
+      "purpose": "Terra negative findings",
+      "table_id": "T11"
+    },
+    {
+      "path": "tables/old_to_new.csv",
+      "purpose": "Superseded result mapping",
+      "table_id": "T12"
+    }
+  ]
+}

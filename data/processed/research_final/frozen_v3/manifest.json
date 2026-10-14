@@ -1,0 +1,84 @@
+{
+  "artifact_bundle_commit": "PENDING",
+  "artifact_hashes": {
+    "claim_ledger.json": "b6020c14cdeefdfccecfdbbb8e8fc455a19636e054e441e01c3b1ad137411d4b",
+    "evidence_source_matrix.json": "5412a1ce992516c21340fb86a1c724e32903c99c73ed2eb0da6bce3b67d636c3",
+    "figures/F01_deterministic_depth_distribution.png": "0f13cf951217b5b8a3e4bbd6aed32f341e41cc1065563322c159d9cbe894de89",
+    "figures/F02_severe_mc_prefix_convergence.png": "be1177ad7b805b6d210214d3292ee4031c3d7cbd296deb5c66202b1201be0b9f",
+    "figures/F03_liquidator_capital_constraint.png": "5127e6f8f69337fa1bbe6273f4937d7a87dac889f179d19ba9d5a86b448e95e0",
+    "figures/F04_arbitrage_impact_and_residual_spread.png": "d8da62e558b3b854bafbe0461fc822e98eaed9912588228c2e45929eaec20710",
+    "figures/figure_registry.json": "778d2b4c51a40e03b98e557ee07b0505d2a05d8548564af15fe4f09c3e30c25a",
+    "results_registry.json": "8c0a2455209505341c1f4c89f01b0db8677446e58bdcf4903604b123c6abedad",
+    "rq_answer_matrix.json": "6c9efc55e46a10e08e04e2484f8af681f43aadaa22395cf858547b2e29ed4324",
+    "superseded_results.json": "6143861715a4d46221a5b3ef35a12fc51ccb0be1b859356fc64c3947e56d91b4",
+    "tables/core_facts.csv": "6e231896ca96b440b194b2ed762aad7d493a77f9c51507ac7cb0621093583eab",
+    "tables/historical_evidence.csv": "e88f644ac8afd0e8cf148fbaea5f1da2e513e1b239e27482ac457ede9556fba8",
+    "tables/old_to_new.csv": "c638a826addc2719491bbe846e93ef7ce2db9d21252bb3d0520e7504b79bea3d",
+    "tables/rq1_deterministic_depth.csv": "38efaceabebbf62d51475dadbd1324b865b3176089aed3222cbef76ef0f3086e",
+    "tables/rq1_monte_carlo.csv": "ff580f837293d82ea0e96252bd02cdf0a2a9092003988c730bdf09c7a1f6b431",
+    "tables/rq2_liquidity.csv": "f5fb435ac14a4c41ca700ce4676d459148c01045cbc4b902c55866c4fe506b27",
+    "tables/rq3_constraints.csv": "9d21949b1503747de542faf81e5ea437a257f907c053b7a4b4333b9458f93b91",
+    "tables/rq4_arbitrage.csv": "5830f51151c8bd5800420c8d890fba156aa3ca6530d35af24a7f7e0fb0358419",
+    "tables/rq5_usdc_valuation.csv": "5b17304a3a4948093e35207ea3c494e13d4f762c1f982b4d606a3662cb01722e",
+    "tables/rq6_policy.csv": "3c566f35b2ba8bed7e00bdf478eb560cdc529fd912404c64329705d271fb17d6",
+    "tables/terra_limitations.csv": "645113a69223ea6da4967bc50d8df450700f3303826a84ac18e0aaaa3e214488",
+    "tables/version_precedence.csv": "bac58e5c48c875982e9c5380187c152660194e49f9ddedfcb723c14ca534dd7c",
+    "validation_summary.json": "bb94eb83ff4ed8e880233254d1515996baa64b9dfc94c91eafab498cf3979b0e",
+    "version_precedence.json": "c0e7a32432ebb9dfe7fc5219e2b04a74dd93a76ba8baa04ede81758285587f98"
+  },
+  "canonical_snapshot": {
+    "block_number": 26045352,
+    "sha256": "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99",
+    "verified_borrowers": 454,
+    "weth_usdc_cohort": 109
+  },
+  "counts": {
+    "claims": 9,
+    "figures": 4,
+    "research_questions": 6,
+    "results": 41,
+    "tables": 12
+  },
+  "input_hashes": {
+    "EV_CANONICAL_SNAPSHOT": "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99",
+    "EV_CORRECTED_V2": "e8a55abb0b6398beea5ff7dd4fc79bd042a55bfd43f21c3646fdf889826a77d8",
+    "EV_LEVEL3": "8156499175e498e1d80903ff66f07f174b16df7d79a021c922567f35bd436770",
+    "EV_TARGETED_REPAIR": "769c49d10c0539ed8d3b07306a4f0078062730d81abd4911762503a1b2cbdb34",
+    "EV_TERRA_LOCKED": "e5ff826470e7121f6d899e111669549c2db5590efa01ca407e125320a178e064"
+  },
+  "large_research_rerun": false,
+  "quality_gate": {
+    "all_claim_evidence_ids_resolve": true,
+    "all_claim_figure_ids_resolve": true,
+    "all_claim_result_ids_resolve": true,
+    "all_claim_table_ids_resolve": true,
+    "all_values_finite": true,
+    "canonical_snapshot_hash_locked": true,
+    "extended_60_cell_grid_verified": true,
+    "historical_28_vs_27_reconciled": true,
+    "historical_tiers_repaired": true,
+    "literature_files_reserved_for_p2": true,
+    "no_large_research_rerun": true,
+    "original_32_cell_grid_preserved": true,
+    "severe_10k_checkpoint_verified_without_rerun": true,
+    "terra_negative_findings_retained": true,
+    "unique_result_ids": true
+  },
+  "report_hashes": {
+    "docs/research_final/EVIDENCE_FREEZE_REPORT.md": "1751135d070d0620beead742cf33047e4469bf4091f3d81fb4448f8542a207fb",
+    "docs/research_final/P1_COMMANDER_REVIEW_PACKET.md": "9b1b9e3a61e154f56fbda182d72374e11a7c7f713e1da2e84c75a88166d7b9a4",
+    "docs/research_final/RQ_ANSWER_MATRIX.md": "eaa8a1b32c9da9675531c41cb40b3c6f3ca1507416dd40d8ffb2b0d6f875f347"
+  },
+  "reserved_p2_files_untouched": [
+    "docs/research_final/APA_REFERENCES_VERIFIED.md",
+    "docs/research_final/LITERATURE_VERIFIED.md",
+    "docs/research_final/P2_VERSION_RECONCILIATION.md",
+    "docs/research_final/REFERENCE_EVIDENCE_MATRIX.md",
+    "docs/research_final/TERMINOLOGY_VI.md"
+  ],
+  "schema_version": "frozen-v3.0",
+  "scientific_content_lock_declared": false,
+  "source_code_commit": "54e6779c1f1fd8974c059ab6750bad0be0d88940",
+  "starting_head": "ba62c74950a72751e0030527836082da0c7622ef",
+  "status": "P1_NUMERICAL_READY — AWAITING_P2_CITATION_RECONCILIATION"
+}

@@ -1,0 +1,183 @@
+{
+  "claims": [
+    {
+      "boundary_vi": "Không suy rộng cohort ứng viên thành độ phủ toàn thị trường.",
+      "claim_id": "CL_AAVE_SCOPE",
+      "evidence_ids": [
+        "EV_CANONICAL_SNAPSHOT"
+      ],
+      "figure_ids": [],
+      "result_ids": [
+        "AAVE_VERIFIED_BORROWERS",
+        "AAVE_WETH_USDC_COHORT"
+      ],
+      "statement_vi": "Snapshot chính có 454 borrower RPC-verified và cohort WETH/USDC 109.",
+      "status": "PASS — VERIFIED",
+      "table_ids": [
+        "T02"
+      ]
+    },
+    {
+      "boundary_vi": "Không gọi tần suất mô hình là xác suất thực tế; cap 100 không phải depth đạt được.",
+      "claim_id": "CL_RQ1",
+      "evidence_ids": [
+        "EV_LEVEL3",
+        "EV_TARGETED_REPAIR"
+      ],
+      "figure_ids": [
+        "F01",
+        "F02"
+      ],
+      "result_ids": [
+        "RQ1_GRID60_DEPTH2",
+        "RQ1_MC_SEVERE_DEPTH2_COUNT",
+        "RQ1_MC_SEVERE_DEPTH3_COUNT"
+      ],
+      "statement_vi": "Lưới 60 ô có bốn cell depth 2; Severe có 280/10.000 đường depth ≥2 và không có depth ≥3.",
+      "status": "LIMITED — REPORT WITH CAVEAT",
+      "table_ids": [
+        "T03",
+        "T04"
+      ]
+    },
+    {
+      "boundary_vi": "Tail haircuts là counterfactual, một pool, một snapshot.",
+      "claim_id": "CL_RQ2",
+      "evidence_ids": [
+        "EV_CORRECTED_V2",
+        "EV_LEVEL3"
+      ],
+      "figure_ids": [
+        "F01"
+      ],
+      "result_ids": [
+        "RQ2_CANONICAL_DEPTH_2PCT",
+        "RQ2_DEPTH2_HAIRCUT90_COUNT",
+        "RQ2_DEPTH2_HAIRCUT95_COUNT"
+      ],
+      "statement_vi": "Thanh khoản thấp làm giảm sức hấp thụ và trong tail haircuts 90/95% xuất hiện depth 2.",
+      "status": "LIMITED — REPORT WITH CAVEAT",
+      "table_ids": [
+        "T05"
+      ]
+    },
+    {
+      "boundary_vi": "Phân biệt vốn, công suất, reaction delay và recovery.",
+      "claim_id": "CL_RQ3",
+      "evidence_ids": [
+        "EV_CORRECTED_V2"
+      ],
+      "figure_ids": [
+        "F03"
+      ],
+      "result_ids": [
+        "RQ3_CAPITAL_25_LIQUIDATED",
+        "RQ3_CAPITAL_100_LIQUIDATED",
+        "RQ3_DELAY_SEVERITY_CHANGE"
+      ],
+      "statement_vi": "Vốn 25/50% bị ràng buộc; 100/200% không bị ràng buộc; delay 0–4 chỉ đổi thời điểm trong miền thử.",
+      "status": "LIMITED — REPORT WITH CAVEAT",
+      "table_ids": [
+        "T06"
+      ]
+    },
+    {
+      "boundary_vi": "Agent đơn giản; không phải fork execution hay historical causal estimate.",
+      "claim_id": "CL_RQ4",
+      "evidence_ids": [
+        "EV_CORRECTED_V2"
+      ],
+      "figure_ids": [
+        "F04"
+      ],
+      "result_ids": [
+        "RQ4_IMMEDIATE_PRICE_IMPACT",
+        "RQ4_SPREAD_ARB0",
+        "RQ4_SPREAD_ARB100"
+      ],
+      "statement_vi": "Arbitrage giảm spread còn lại nhưng không thay đổi tác động giá tức thời của cùng lượng bán.",
+      "status": "LIMITED — REPORT WITH CAVEAT",
+      "table_ids": [
+        "T07"
+      ]
+    },
+    {
+      "boundary_vi": "Chưa mô hình hóa liquidity, settlement hoặc redemption của USDC.",
+      "claim_id": "CL_RQ5",
+      "evidence_ids": [
+        "EV_CORRECTED_V2"
+      ],
+      "figure_ids": [],
+      "result_ids": [
+        "RQ5_HF_LT1_USDC_090",
+        "RQ5_HF_LT1_USDC_100",
+        "RQ5_HF_LT1_USDC_110",
+        "RQ5_LIQUIDATED_DEBT_TOKEN_QTY",
+        "RQ5_LIQUIDATED_DEBT_USD"
+      ],
+      "statement_vi": "Trong kênh định giá nợ đơn thuần, USDC tăng giá làm HF yếu hơn; token quantity khác USD-equivalent.",
+      "status": "LIMITED — REPORT WITH CAVEAT",
+      "table_ids": [
+        "T08"
+      ]
+    },
+    {
+      "boundary_vi": "Policy counterfactual trên frozen cohort; không dự báo tái underwrite.",
+      "claim_id": "CL_RQ6",
+      "evidence_ids": [
+        "EV_CORRECTED_V2"
+      ],
+      "figure_ids": [],
+      "result_ids": [
+        "RQ6_LTV0755_CAPACITY",
+        "RQ6_LTV0825_CAPACITY",
+        "RQ6_LT083_UNLIQUIDATED",
+        "RQ6_BONUS103_SEIZED",
+        "RQ6_BONUS107_SEIZED"
+      ],
+      "statement_vi": "LTV chi phối năng lực vay ex ante; LT chi phối HF/liquidation boundary; bonus chi phối collateral seized và lợi nhuận mô hình.",
+      "status": "LIMITED — REPORT WITH CAVEAT",
+      "table_ids": [
+        "T09"
+      ]
+    },
+    {
+      "boundary_vi": "Không tuyên bố chuỗi nhân quả lịch sử.",
+      "claim_id": "CL_HISTORICAL",
+      "evidence_ids": [
+        "EV_TARGETED_REPAIR"
+      ],
+      "figure_ids": [],
+      "result_ids": [
+        "HIST_RPC_CENSUS_EVENTS",
+        "HIST_GRAPH_MATCHED_EVENTS",
+        "HIST_DIRECT_TRANSFER_PATHS",
+        "HIST_SAME_TX_COOCCURRENCE",
+        "HIST_SAME_BLOCK_ASSOCIATION",
+        "HIST_TIME_WINDOW_ASSOCIATION"
+      ],
+      "statement_vi": "RPC census có 28 event; Graph khớp 27; các tier là 1 direct path, 2 same-tx, 23 same-block, 1 time-window.",
+      "status": "LIMITED — REPORT WITH CAVEAT",
+      "table_ids": [
+        "T10"
+      ]
+    },
+    {
+      "boundary_vi": "Giữ nguyên kết quả âm và giới hạn tần suất quan sát.",
+      "claim_id": "CL_TERRA_NEGATIVE",
+      "evidence_ids": [
+        "EV_TERRA_LOCKED"
+      ],
+      "figure_ids": [],
+      "result_ids": [
+        "TERRA_PRE_DEPEG_HIGH_ALERT_HOURS",
+        "TERRA_INITIAL_DEPEG_HIGH_LEAD"
+      ],
+      "statement_vi": "Terra cutoff-safe không có HIGH alert trước initial depeg và không hỗ trợ claim forecast out-of-sample.",
+      "status": "LIMITED — REPORT WITH CAVEAT",
+      "table_ids": [
+        "T11"
+      ]
+    }
+  ]
+}

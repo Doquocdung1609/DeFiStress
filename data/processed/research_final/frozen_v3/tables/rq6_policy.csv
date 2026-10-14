@@ -1,0 +1,16 @@
+parameter,value,outcome,outcome_unit
+LTV,0.755,50797988.977634266,USD max borrowing capacity
+LTV,0.78,51825698.40499265,USD max borrowing capacity
+LTV,0.805,52853407.83235103,USD max borrowing capacity
+LTV,0.815,53264491.60329438,USD max borrowing capacity
+LTV,0.825,53675575.37423773,USD max borrowing capacity
+LT,0.81,229830.81461902,"USDC token quantity, scenario-LT"
+LT,0.82,229830.81461902,"USDC token quantity, scenario-LT"
+LT,0.83,229830.81461902,"USDC token quantity, scenario-LT"
+LT,0.855,96839.39478531,"USDC token quantity, scenario-LT"
+LT,0.88,88458.67265557,"USDC token quantity, scenario-LT"
+bonus,0.030000000000000027,4.324574159823337,WETH seized
+bonus,0.040000000000000036,4.366560316714826,WETH seized
+bonus,0.050000000000000044,4.4085464736063145,WETH seized
+bonus,0.06000000000000005,4.450532630497803,WETH seized
+bonus,0.07000000000000006,4.492518787389292,WETH seized
