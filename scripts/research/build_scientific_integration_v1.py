@@ -1094,6 +1094,25 @@ def main() -> None:
     _write_json(ROOT / "six_rq_evidence_matrix.json", rq_matrix)
     version_precedence = _version_precedence()
     _write_json(ROOT / "version_precedence.json", version_precedence)
+    table_figure_registry = {
+        "schema_version": "scientific-integration-v1.0",
+        "tables": [
+            {
+                "table_id": "INT_T01_ELIGIBLE_VS_EXECUTED",
+                "path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
+                "detail_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_audit.csv",
+                "population": "18 predeclared selected cases × 4 policies × 454 verified borrowers",
+                "denominator": "borrower-case-policy instances; not unique borrowers or population probability",
+                "units": ["instances", "USDC token quantity"],
+                "evidence_tier": "MODEL_COMPUTED_COUNTERFACTUAL",
+                "source_commit": SOURCE_CODE_COMMIT,
+                "limitation": "Selected deterministic/control/MC cases; not an empirical Aave or Ethereum event rate.",
+            }
+        ],
+        "figures": [],
+        "external_registry": "data/processed/research_final/frozen_v3/evidence_source_matrix.json",
+    }
+    _write_json(ROOT / "table_figure_registry.json", table_figure_registry)
 
     claims = _claim_registry(
         frozen_manifest,
@@ -1140,6 +1159,24 @@ def main() -> None:
             if result_id not in all_result_ids
         }
     )
+    frozen_sources = _load(FROZEN_ROOT / "evidence_source_matrix.json")
+    table_figure_ids = {
+        row["table_id"] for row in frozen_sources["table_registry"]
+    } | {
+        row["figure_id"] for row in frozen_sources["figure_registry"]
+    } | {
+        row["table_id"] for row in table_figure_registry["tables"]
+    } | {
+        row["figure_id"] for row in table_figure_registry["figures"]
+    }
+    unresolved_table_figures = sorted(
+        {
+            locator
+            for claim in claims["claims"]
+            for locator in claim["table_figure"]
+            if locator not in table_figure_ids
+        }
+    )
     expected_rqs = [rq for rq, _ in RQ_LABELS]
     actual_rqs = [row["rq"] for row in rq_matrix["research_questions"]]
     serialized_for_scan = json.dumps(_safe([audit_rows, event_rows, rq_matrix, claims]), ensure_ascii=False)
@@ -1172,6 +1209,7 @@ def main() -> None:
         "unique_event_ids": len(event_ids) == len(event_rows),
         "unique_claim_ids": len(claim_ids) == len(set(claim_ids)),
         "all_claim_result_ids_resolve": not unresolved_results,
+        "all_claim_table_figure_ids_resolve": not unresolved_table_figures,
         "six_rq_order_and_identity_preserved": actual_rqs == expected_rqs,
         "all_values_finite": _all_finite([audit_rows, event_rows, rq_matrix, claims]),
         "no_raw_wallet_addresses": no_raw_address,
@@ -1193,6 +1231,7 @@ def main() -> None:
         "failed_checks": failed,
         "replay_validation": replay_validation,
         "unresolved_result_ids": unresolved_results,
+        "unresolved_table_figure_ids": unresolved_table_figures,
         "policy_reconciliation": policy_summary,
         "self_review": {
             "claim_missing_evidence": [],
@@ -1234,6 +1273,7 @@ def main() -> None:
         "integration_validation_report.json",
         "six_rq_evidence_matrix.json",
         "targeted_event_trace.jsonl",
+        "table_figure_registry.json",
         "version_precedence.json",
     ]
     if test_evidence_path.exists():

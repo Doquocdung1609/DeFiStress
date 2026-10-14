@@ -132,6 +132,18 @@ def test_claim_graph_and_six_rq_identity_are_resolved() -> None:
     claims = _load(ROOT / "claim_to_result_registry.json")["claims"]
     assert len({claim["claim_id"] for claim in claims}) == len(claims)
     assert all(set(claim["result_ids"]) <= frozen_ids | integration_ids for claim in claims)
+    frozen_sources = _load(FROZEN / "evidence_source_matrix.json")
+    integration_sources = _load(ROOT / "table_figure_registry.json")
+    table_figure_ids = {
+        row["table_id"] for row in frozen_sources["table_registry"]
+    } | {
+        row["figure_id"] for row in frozen_sources["figure_registry"]
+    } | {
+        row["table_id"] for row in integration_sources["tables"]
+    } | {
+        row["figure_id"] for row in integration_sources["figures"]
+    }
+    assert all(set(claim["table_figure"]) <= table_figure_ids for claim in claims)
     status = {claim["claim_id"]: claim["status"] for claim in claims}
     assert status["CL_UNSUPPORTED_AAVE_USES_UNISWAP_SPOT"] == "UNSUPPORTED"
     assert status["CL_UNSUPPORTED_HISTORICAL_CAUSAL_CONTAGION"] == "UNSUPPORTED"

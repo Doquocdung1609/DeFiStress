@@ -1,6 +1,7 @@
 {
   "checks": {
     "all_claim_result_ids_resolve": true,
+    "all_claim_table_figure_ids_resolve": true,
     "all_event_locators_resolve": true,
     "all_values_finite": true,
     "borrower_rows_match_18x4x454": true,
@@ -107,5 +108,6 @@
     "unit_errors": []
   },
   "status": "PASS",
-  "unresolved_result_ids": []
+  "unresolved_result_ids": [],
+  "unresolved_table_figure_ids": []
 }
