@@ -1,6 +1,6 @@
 # Thuật ngữ tiếng Việt cho DeFiStress
 
-Quy ước biên tập P2 ngày 13/10/2026, đối chiếu mã/ngữ nghĩa tại `26cd5848` ngày 14/10/2026; giữ nguyên 92 mục thuật ngữ. Lần đầu ghi tiếng Việt kèm thuật ngữ/viết tắt quốc tế; các lần sau dùng thống nhất tiếng Việt hoặc mã đo lường. Tên hợp đồng, hàm, token và trường dữ liệu giữ nguyên. Nguồn S được giải nghĩa trong danh mục APA; “mã/P2” là định nghĩa riêng của dự án, không gán cho literature. Đây là thuật ngữ học thuật và quy ước biên tập, không phải tiêu chuẩn pháp lý.
+Quy ước biên tập P2 ngày 13/10/2026, đối chiếu mã/ngữ nghĩa tại `ba62c749` ngày 14/10/2026; giữ nguyên 92 mục thuật ngữ. Lần đầu ghi tiếng Việt kèm thuật ngữ/viết tắt quốc tế; các lần sau dùng thống nhất tiếng Việt hoặc mã đo lường. Tên hợp đồng, hàm, token và trường dữ liệu giữ nguyên. Nguồn S được giải nghĩa trong danh mục APA; “mã/P2” là định nghĩa riêng của dự án, không gán cho literature. Đây là thuật ngữ học thuật và quy ước biên tập, không phải tiêu chuẩn pháp lý.
 
 ## 1. Giao thức giá và thanh lý
 
@@ -111,15 +111,15 @@ Quy ước biên tập P2 ngày 13/10/2026, đối chiếu mã/ngữ nghĩa tạ
 
 Các cụm cần tránh trong bản final: “xác suất khủng hoảng Aave 1,8845%”, “thanh lý là tổng tổn thất”, “mọi vòng 2 đều là contagion”, “giá DEX chính là oracle Aave”, “nhiều cạnh chứng minh mạng nhiều lớp hoàn chỉnh”, “Terra xác nhận mô hình Aave”, “stablecoin giảm giá luôn có lợi”. Dùng giới hạn cụ thể trong file literature và ma trận thay cho những phát biểu này.
 
-## Chú giải đo lường và evidence tier tại phiên bản 26cd5848
+## Chú giải đo lường và evidence tier tại phiên bản ba62c749
 
 - `max_intrawave_liquidation_price_impact`: mức lệch giá tối đa ngay sau forced sale, trước arbitrage.
 - `max_post_arbitrage_spread`: mức lệch giá tối đa sau stabilization mỗi wave. `max_price_impact` là deprecated compatibility alias của chỉ tiêu này, không phải intrawave.
 - `time_to_recovery_seconds`: 0 khi chưa từng vượt tolerance 0,5%; giá trị giây là first return sau khi vượt; null nếu chưa trở lại trong horizon. Báo riêng first liquidation timestamp khi xét reaction delay.
 - `unliquidated_debt`: dùng LT override của scenario; `unliquidated_debt_legacy_recorded_lt` là đối chiếu cách tính cũ.
-- `DIRECT_TRANSACTION_LINK` ở artifact lịch sử 26cd5848: nhãn code đang dùng cho same-tx match. P2 diễn giải **đồng xuất hiện cùng transaction, chờ xác minh dòng token**; chưa gọi direct collateral flow.
+- `DIRECT_TRANSFER_PATH_VERIFIED`: receipt cho thấy tuyến WETH đúng lượng và đúng thứ tự từ liquidator qua trung gian vào pool trước `Swap`. `SAME_TRANSACTION_CO_OCCURRENCE` dùng cho hai ca cùng giao dịch không đạt tuyến trực tiếp; trace vẫn `UNAVAILABLE`.
 - `SAME_BLOCK_ASSOCIATION` / `TIME_WINDOW_ASSOCIATION`: liên hệ cùng khối / cửa sổ thời gian; không là causal contagion hoặc simulated wave.
 - Composite exposure tail statistic: trung bình đuôi của chỉ tiêu thiếu hụt nợ cộng nợ hoàn trả theo mô hình; field `expected_shortfall_95` không đổi thành realized loss hoặc market ES.
-- Tổng rows trong checkpoint, path mới chạy trong invocation và prefix tái sử dụng là ba đại lượng khác nhau; sửa accounting Level-3 đang pending #10.
+- Tổng hàng đã kiểm, checkpoint tái sử dụng và path chạy trong invocation là ba đại lượng khác nhau. Gói sửa xác nhận 13.000 định danh batch độc lập, 0 trùng; 10.000 hàng tái sử dụng và 0 large path chạy lại trong invocation; duration lịch sử không có trong checkpoint legacy.
 
-Đây là chú giải các trường/tier, không thêm nguồn học thuật hay đổi tập 92 mục. Mọi nhận định mã hiện hành trong file này được gắn commit 26cd5848; phiên bản tương lai cần đối chiếu lại.
+Đây là chú giải các trường/tier, không thêm nguồn học thuật hay đổi tập 92 mục. Mọi nhận định mã hiện hành trong file này được gắn HEAD `ba62c749`; phiên bản tương lai cần đối chiếu lại.

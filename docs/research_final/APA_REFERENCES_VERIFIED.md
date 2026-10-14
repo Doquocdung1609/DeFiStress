@@ -153,6 +153,6 @@ Không có DOI trên trang phát hành không phải dấu hiệu nguồn kém: 
 
 ## Ghi chú đối chiếu phiên bản ngày 14/10/2026
 
-Giữ nguyên 30 mục S, thứ tự tác giả, DOI/URL, ngày truy cập nguồn 13/10 và hàng chờ U01–U08. Lần này đối chiếu mã/bằng chứng dự án tại `26cd5848`, không bổ sung nghiên cứu học thuật hoặc nâng mức truy cập abstract/preview thành toàn văn. Artifact P0/Level-3 có provenance trong ma trận, không được đặt tên như bài báo có phản biện.
+Giữ nguyên 30 mục S, thứ tự tác giả, DOI/URL, ngày truy cập nguồn 13/10 và hàng chờ U01–U08. Lần đối chiếu cuối pin mã/bằng chứng dự án tại HEAD `ba62c749`, không bổ sung nghiên cứu học thuật hoặc nâng mức truy cập abstract/preview thành toàn văn. Artifact P0/Level-3 và gói sửa có mục tiêu có provenance trong ma trận; chúng không phải bài báo có phản biện.
 
 **S24:** tiêu đề trang *Agresti Coull confidence limits* là tên lịch sử của tài liệu Dataplot. Phần Note đã đọc phân biệt Wilson score và adjusted Wald/Agresti–Coull; default là Wilson. Giữ tên toán học **Wilson** cho các khoảng 8/200, 280/10.000 và 0/1.000. Không thay S24 hoặc thêm nguồn để che thay đổi method. **S17/S18:** tiếp tục tính là một công trình, JFE 2026 và tiền nhiệm NBER 2023. `SOURCE_NOT_VERIFIED` và giới hạn toàn văn của các mục khác giữ nguyên.
