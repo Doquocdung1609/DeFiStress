@@ -22,6 +22,7 @@ OUTPUT = Path("data/processed/research_final/scientific_premerge_audit_v1/audit_
 FROZEN_HEAD = "9842c4f2c35adb8b4ec906e1bc76afa825d197c7"
 ORACLE_HEAD = "3011ba5e8cd23ee697c36d0aec6d047d8d58f653"
 P2_HEAD = "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f"
+INTEGRATION_AUDIT_HEAD = "a39337780f0e8d3807138a6048aaa1e1d7d9c8c8"
 CANONICAL_DECLARED_SHA = "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99"
 POLICIES = (
     "A_ADVERSE_PASS_THROUGH",
@@ -161,7 +162,7 @@ def select_samples(rows: list[dict[str, str]]) -> dict[str, dict[str, str]]:
 
 
 def main() -> None:
-    head = subprocess.run(
+    generator_commit = subprocess.run(
         ["git", "rev-parse", "HEAD"], check=True, capture_output=True, text=True
     ).stdout.strip()
     frozen_manifest = load_json(FROZEN / "manifest.json")
@@ -426,7 +427,9 @@ def main() -> None:
         "canonical_snapshot_at_frozen_head": sha_bytes(git_blob(FROZEN_HEAD, CANONICAL)),
         "frozen_manifest_at_frozen_head": sha_bytes(git_blob(FROZEN_HEAD, FROZEN / "manifest.json")),
         "oracle_manifest_at_oracle_head": sha_bytes(git_blob(ORACLE_HEAD, ORACLE / "manifest.json")),
-        "integration_manifest_at_audit_source_head": sha_bytes(git_blob(head, INTEGRATION / "manifest.json")),
+        "integration_manifest_at_audit_source_head": sha_bytes(
+            git_blob(INTEGRATION_AUDIT_HEAD, INTEGRATION / "manifest.json")
+        ),
     }
     normalized_eol_equivalence = {
         "canonical_snapshot": sha_bytes(CANONICAL.read_bytes().replace(b"\r\n", b"\n"))
@@ -508,7 +511,8 @@ def main() -> None:
             "Independent parser/recalculation; does not import or invoke the Addendum "
             "builder or simulation runner."
         ),
-        "audit_source_head": head,
+        "audit_source_head": INTEGRATION_AUDIT_HEAD,
+        "generator_source_commit": generator_commit,
         "status": "PASS_WITH_DISCLOSED_EOL_HASH_SEMANTICS" if not failed else "FAIL",
         "checks": checks,
         "failed_checks": failed,
