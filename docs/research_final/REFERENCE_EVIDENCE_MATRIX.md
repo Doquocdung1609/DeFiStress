@@ -1,6 +1,6 @@
 # Ma trận luận điểm nguồn và sáu câu hỏi nghiên cứu
 
-Bản P2 ngày 13/10/2026. Tài liệu mục tiêu là bản V2 432 dòng được đọc ngày này và báo cáo/mã tại commit `2b9a29f5e8c0c8dd910b7d65428fb1d57646b06b`. Pxx là đoạn trong `LITERATURE_VERIFIED.md`; Sxx là nguồn trong `APA_REFERENCES_VERIFIED.md`. Địa chỉ đoạn dùng phần–chương–tiêu đề vì bản V2 có cả đề cương và bản mở rộng.
+Bản nguồn ngày 13/10/2026; đối chiếu phiên bản ngày 14/10/2026. V2 và mã 2b9a29f5 là mục tiêu lịch sử; dùng corrected_run_v2 và Level-3 tại commit **26cd58489d726a6c98678c725650020edcc1a3f4** cho implementation/kết quả Aave. Giữ 35 claim IDs và sáu RQ; S01–S30, giới hạn truy cập và U01–U08 không đổi. P1 numerical freeze cuối còn pending targeted repair #10. Pxx là đoạn trong `LITERATURE_VERIFIED.md`; Sxx là nguồn trong `APA_REFERENCES_VERIFIED.md`. Địa chỉ đoạn dùng phần–chương–tiêu đề vì bản V2 có cả đề cương và bản mở rộng.
 
 ## 1. Sổ nguồn và phạm vi xác minh
 
@@ -53,24 +53,24 @@ Các nguồn U01–U08 trong file APA là hàng chờ, không tính vào tập 3
 | C04 | P02/P07; VIII §7.2 | LTV khác LT và liquidation bonus | S04 Key Reserve Parameters; S06 logic | RQ6 | LTV không viết lại frozen debt |
 | C05 | P02/P19; VIII §4.2 | Close factor và dust phụ thuộc phiên bản/vị thế | S06 executeLiquidationCall và các hằng | RQ3/6 | Pin implementation/bytecode tại block; không dùng 50% phổ quát |
 | C06 | P03; VIII §2.2, §4.2 | Incentive thiết kế có thể chuyển chi phí sang borrower | S09 abstract bản tác giả | RQ3/6 | Không đưa tỷ lệ/cỡ mẫu chưa đọc |
-| C07 | P04; VIII §2.3; II Chương 4 | Độ sâu V3 thay đổi theo khoảng giá/tick | S07 §2/§6.2–6.3; S08 amount delta | RQ2 | TVL không tương đương executable depth |
-| C08 | P04/P19; II Chương 4 | Đổi Q64.96, token order và decimals trước định giá | S08 mã; `sim/dex/uniswap_v3.py` | RQ2/5 | Giá USDC/WETH chưa phải USD/WETH nếu q khác 1 |
-| C09 | P05; VIII §2.2–2.3 | Bán collateral có thể tạo price impact | S10 Findings/Abstract | RQ1/2/4 | Không gán critical shock từ bài cho snapshot |
-| C10 | P05; VIII §2.3 | Thanh lý và post-volatility có quan hệ thống kê | S11 abstract; PDF equation (2) | RQ1/2 | Không suy ra nhân quả từ OLS/cùng shock |
-| C11 | P06; VIII §7.1 | Một thiết kế Aave V3 không thấy tác động kéo dài significant | S13 PDF §5.5, trang in 25–27 | RQ1/4 | Không phủ định tác động DEX tức thời |
+| C07 | P04/P19/P21; VIII §2.3; II Chương 4 | Độ sâu V3 theo tick, liquidity stress dùng corrected artifact | S07 §2/§6.2–6.3; S08; E01/E02 | RQ2 | TVL khác depth; 90/95% haircut là giả định tail |
+| C08 | P04/P19; II Chương 4 | Giá/L cần đúng token order/decimal/hướng tick | S08; uniswap_v3.py tại 26cd5848 | RQ2/5 | Lỗi reposition giữ L cũ đã sửa; USD/USDC/funded-swap caveat giữ |
+| C09 | P05/P21; VIII §2.2–2.3 | Literature hỗ trợ collateral sale; Level-3 ghi event association | S10 Findings/Abstract; E09/E11 | RQ1/2/4 | Ba same-tx match chưa chứng minh collateral flow/causal cascade |
+| C10 | P05/P21; VIII §2.3 | Liquidation/volatility relation khác xác nhận nhân quả | S11 abstract/equation (2); E09/E10 | RQ1/2 | Cùng shock/market movement không là simulated endogenous wave |
+| C11 | P06/P21; VIII §7.1 | S13 không thấy impact kéo dài significant; model riêng có wave 2 | S13 PDF §5.5; E03/E04/E08 | RQ1/4 | Khác tần suất/đối chứng; không dùng model wave 2 bác empirical null |
 | C12 | P07; VIII §7.2 | Fixed spread/auction có đánh đổi theo participation cost | S12 abstract | RQ3/6 | Không nói đấu giá luôn tốt hoặc Aave dùng đấu giá |
-| C13 | P08; VIII §2.3; III §5.5 | Arbitrage phụ thuộc thiết kế và khả năng thực thi | S14 abstract/Highlights | RQ4/5 | Không dùng hệ số Tether hiệu chỉnh WETH agent |
+| C13 | P08/P19/P20; III §5.5 | Arbitrage có điều kiện; v2 tách intrawave và residual | S14 abstract; E01/E07; mã 26cd5848 | RQ4/5 | Sweep intrawave giữ nguyên, residual giảm; price teleportation |
 | C14 | P09; III §5.6 | Stablecoin có rủi ro giá và quy đổi khác nhau | S15 abstract; S16 thông cáo | RQ5 | Circle là issuer account, không nghiên cứu độc lập |
 | C15 | P09/P19; III §5.6 | USDC debt price tăng làm HF giảm ceteris paribus | S02/S03 cho HF; đại số và `schemas.debt_value` | RQ5 | Là dấu kênh valuation; chưa đầy đủ stress stablecoin |
 | C16 | P10; IV §6.1, §6.3 | Terra run liên quan khuyến khích/quan sát/tập trung | S17 abstract JFE | Terra | Không gán chỉ một thủ phạm hoặc thêm tỷ lệ không kiểm |
 | C17 | P10; IV §6.8 | Terra không xác nhận trực tiếp tham số Aave | Cơ chế S17 khác S02/S06; thiết kế hai ca của dự án | Terra / RQ1–6 | Kết luận giới hạn của nghiên cứu, không trích như phát hiện định lượng JFE |
 | C18 | P11; VIII §2.4 | ABM cho phép tương tác và khác biệt tác nhân | S19/S20 abstracts | RQ1–6 | Không chứng minh tham số hay nhiều bot trong implementation |
-| C19 | P11/P19; VIII §2.4 | Aave code đọc có một liquidator/arbitrageur đại diện | `sim/engine/run.py`; `sim/agents/*` | RQ3/4 | Sửa mô tả nhiều bot có hành vi dị thể |
+| C19 | P11/P19; VIII §2.4 | Aave 26cd5848 có một liquidator/arbitrageur đại diện | engine/run.py; agents/* | RQ3/4 | Không gọi nhiều bot cạnh tranh được ước lượng hành vi |
 | C20 | P12; VIII §4.5 | ODD nên mô tả scheduling/model con và liên kết code | S21 §§1.6–1.7 và phần code linkage | RQ1–6 / Terra | ODD không tự cấp chứng nhận mô hình đúng |
 | C21 | P12; VIII §2.4 | Ngành dùng ABM/MC cho stress tham số DeFi | S22 Agent-Based Simulation/Network Congestion | RQ2/3/6 | Forum không peer reviewed, không claim tái tạo Gauntlet |
-| C22 | P13; III §5.8 | MC engine lấy mẫu shock/haircut/gas, không path giá đầy đủ | `sim/monte_carlo/runner.py`; S23 preview cho nền MC | RQ1–6 | Độc lập/clipping là giả định; chưa hiệu chỉnh joint distribution |
-| C23 | P14; III §5.8 | 0/200 có Wilson upper hai phía ≈1,8845% | S24 Description/formula; phép tính P2 | RQ1 | Có điều kiện; không crisis probability ngoài đời |
-| C24 | P19/P20; III §5.8 | Tổng repayment cộng shortfall không phải economic loss | S13 §5.4; `runner.py` loss/tail | RQ2/3/5/6 | USD+USDC khi q≠1; ties làm tail khác fixed 5% |
+| C22 | P13/P19/P21; III §5.8 | MC lấy mẫu tham số; checkpoint stages không toàn path mới độc lập | runner.py; run_deep_cascade_study.py; E04–E06 | RQ1–6 | Clipping/model conditional; execution/reuse accounting còn repair #10 |
+| C23 | P14/P21; III §5.8 | Wilson Severe 8/200,280/10k; Low Liquidity 0/1k | S24 Note/formula; E03/E04/E05 | RQ1 | Tên lịch sử NIST không đổi tên Wilson; không forecast |
+| C24 | P19/P21; III §5.8 | Chỉ tiêu đuôi là composite exposure, không realized loss | S13 §5.4; runner.py; E04 loss_definition | RQ2/3/5/6 | Repayment không phải loss; giữ units/ties/provenance |
 | C25 | P15; VIII §2.5; III §5.9 | Multilayer cần nêu node–layer và kiểu coupling | S25 §2 bản tác giả | Network extension | Nhãn lớp/nhiều cạnh chưa đủ chứng minh supra adjacency |
 | C26 | P15/P19; III §5.9 | Centrality hiện tính trên graph gộp typed network | `sim/network/metrics.py`; S25/S26 nền phương pháp | Network extension | Gộp max; structural metric chưa risk-weighted |
 | C27 | P16; VIII §2.5 | Betweenness biểu thị vị trí trên shortest paths | S28 paper abstract; implementation NetworkX trong dự án | Network extension | Directed/unweighted variant phải công bố; không universal importance |
@@ -78,14 +78,14 @@ Các nguồn U01–U08 trong file APA là hàng chờ, không tính vào tập 3
 | C29 | P17; IV §6.5–6.6; VIII §4.5 | Bergmeir nêu CV autoregression với điều kiện cụ thể | S30 abstract kho tác giả | Terra validation | Không dẫn như lệnh cấm K-fold chung hoặc bằng chứng no-leakage |
 | C30 | P17/P20; IV §6.5–6.6 | Crisis reconstruction khác cutoff-safe warning | V2 và `FINAL_RESEARCH_REPORT.md`/claim matrix; P2 yêu cầu thiết kế | Terra validation | Source paper không chứng nhận retrospective forecast |
 | C31 | P18; VIII §2.6, §7.3 | Novelty đề xuất là tích hợp truy vết và giới hạn rõ | Đối chiếu S09–13/S19–22; evidence pipeline dự án | RQ1–6 | Không first ever; contribution còn phải audit thực hiện |
-| C32 | P19; VIII §4.1 | Liên kết giá đánh giá lại là min(reference,DEX) | `sim/engine/run.py` | RQ1/2/4 | Không Aave oracle đã quan sát; không đồng nhất DEX với feed |
-| C33 | P19/P20; VIII §4.3 | Vòng xử lý thứ hai có thể chỉ vì capacity | `run.py` eligible/attempted/completed_waves | RQ1/3 | Tag newly eligible do feedback trước dùng causal cascade |
-| C34 | P19; II Chương 4; III §5.5 | Arbitrage đặt lại sqrt price chưa cập nhật L qua tick | `V3Pool.arbitrage_toward` so với S07/S08 | RQ2/4 | Không gọi exact V3 state path; P2 chỉ disclosure |
-| C35 | P19/P20; III §5.6 | Seize/dust/quote chưa repricing toàn diện theo USDC/USD | `liquidation.py`, `schemas.py`, `uniswap_v3.py` | RQ5 | Counterfactual valuation limited; P0/P1 cần audit units trước final |
+| C32 | P19/P21; VIII §4.1 | Valuation=min(reference,DEX); history oracle là chứng cứ khác | engine/run.py 26cd5848; E09/E11 | RQ1/2/4 | Synthetic feedback không là Aave oracle thật |
+| C33 | P19/P20/P21; VIII §4.3 | P0 audit xác nhận borrower mới HF≥1→HF<1 trước wave 2 | E03/E08; full 8 paths/P0 index 5; Level-3 invariants | RQ1/3 | Giữ simulated endogenous wave 2; index/cluster đơn lẻ chưa causal inference |
+| C34 | P19; II Chương 4; III §5.5 | Reposition cập nhật ±liquidityNet qua tick | Mã 26cd5848; tick/round-trip tests; E01 | RQ2/4 | Không giữ lỗi L cũ; funded swap/fork chưa xác nhận |
+| C35 | P19/P20; III §5.6 | USDC seize/dust/quote chưa repricing toàn diện tại 26cd5848 | liquidation.py; schemas.py; uniswap_v3.py | RQ5 | Đã kiểm version; valuation sensitivity không full-depeg validation |
 
 ## 3. Giữ nguyên sáu câu hỏi nghiên cứu
 
-Bản gốc đối chiếu từ V2 và `METHODOLOGY.md`/`FINAL_RESEARCH_REPORT.md` tại 2b9a29f5, không thêm RQ Terra/network. Dưới đây giữ nguyên nghĩa và nội dung gốc của RQ; glossary cung cấp tên tiếng Việt khi biên tập.
+RQ đối chiếu nguyên văn giữa V2, bản 2b9a29f5 và METHODOLOGY.md tại 26cd5848, không thêm RQ Terra/network. Narrative RQ hiện tại chưa là numerical freeze; ưu tiên artifact v2/Level-3 theo locator E. Dưới đây giữ nguyên nghĩa và nội dung gốc của RQ; glossary cung cấp tên tiếng Việt khi biên tập.
 
 1. **RQ1.** Với một snapshot borrower và liquidity thực, cú sốc giá ETH tối thiểu ở mức nào bắt đầu tạo liquidation cascade (cascade depth ≥ 2)?
 2. **RQ2.** Độ sâu thanh khoản DEX và liquidity haircut ảnh hưởng như thế nào đến price impact, cascade amplification và bad debt?
@@ -96,12 +96,12 @@ Bản gốc đối chiếu từ V2 và `METHODOLOGY.md`/`FINAL_RESEARCH_REPORT.m
 
 | RQ | Nguồn lõi | Biến và phép kiểm đề nghị | Mã/bằng chứng dự án cần đọc | Quy tắc diễn giải |
 |---|---|---|---|---|
-| RQ1 | S03/S05/S06/S09/S10/S11/S13/S24 | Shock grid; newly eligible after feedback; cùng cohort | `run.py`, `threshold.py`, direct-shock eligibility và borrower event log | Không suy ngưỡng liên tục/ngoài miền; depth index chưa đủ causal cascade |
-| RQ2 | S07/S08/S10/S11 | Tick depth, haircut; price impact trước/sau; liquidation vs shortfall | `uniswap_v3.py`, tick provenance, quote/fork | Kết luận trên venue/mẫu hữu hạn; haircut là stress giả định, chưa observed LP withdrawal |
-| RQ3 | S06/S09/S10/S12/S13/S22 | Vốn tổng, capacity/bước, gas, delay; isolate channel | `liquidator.py`, `run.py`; funding reference và rejection reasons | Không recycle/flash loan đầy đủ; delayed batches không tự là contagion |
-| RQ4 | S07/S10/S14 | OFF/on/capacity/delay; so sánh spread và newly eligible | `arbitrageur.py`, `arbitrage_toward` | Năng lực tỷ lệ hồi spread là giả định; reset price khác executable swap |
-| RQ5 | S02/S03/S05/S14/S15/S16 | q_USDC/USD, debt quantity, HF; USD và USDC tách riêng | `schemas.py`, `liquidation.py`, DEX quote unit | Ceteris paribus valuation; không gán full depeg/crisis effect |
-| RQ6 | S04/S06/S09/S12/S22 | LTV capacity ex ante, LT eligibility, bonus seizure/profit | Chính sách frozen cohort; kiểm semantic invariants | Chính sách phản thực không forecast governance hoặc borrower re-underwriting |
+| RQ1 | S03/S05/S06/S09/S10/S11/S13/S24 | Grid cơ sở; 4/60 tail cells depth2; Severe 8/200 và 280/10k; HF paths | E02/E03/E04/E08; direct-shock cohort/prior-wave valuation | Khác miền/phân phối; Severe 10k không depth≥3; model-conditioned |
+| RQ2 | S07/S08/S10/S11 | Tick depth/haircut; intrawave riêng post-arbitrage | E01/E02/E07; code/Quoter initial-state | Haircut là giả định, đặc biệt 90/95%; không observed LP withdrawal |
+| RQ3 | S06/S09/S10/S12/S13/S22 | Vốn/capacity/gas; first liquidation timestamp khác recovery | E01/E07; P0 v2 rq3_reaction_delay.* và rq3_capital_constraint.* | Recovery 0 không delay 0; no recycle; delayed batch cần HF audit |
+| RQ4 | S07/S10/S14 | Capacity 0–100%; intrawave ~0,108794%, residual giảm về ~0 | E01/E07; arbitrage_toward cập nhật L | Impact tức thời không bị xóa; price teleportation, chưa funded swap |
+| RQ5 | S02/S03/S05/S14/S15/S16 | q_USDC/USD, debt/HF; USD/USDC riêng | P0 v2 rq5_usdc_depeg.*; code 26cd5848 | Valuation riêng; conversion/redemption/liquidity/confidence chưa đầy đủ |
+| RQ6 | S04/S06/S09/S12/S22 | LTV ex ante; LT; bonus; unliquidated theo scenario LT | E01/E07; P0 v2 rq6_*; legacy chỉ comparison | Không forecast governance/re-underwrite; dùng metric v2 |
 
 Terra: S17/S18/S19/S21/S30. Network: S25–S28. Hai extension hỗ trợ đối chiếu cơ chế/phương pháp, không trả lời thay sáu RQ.
 
@@ -110,14 +110,39 @@ Terra: S17/S18/S19/S21/S30. Network: S25–S28. Hai extension hỗ trợ đối 
 | Loại phát biểu trong V2/Word | Nguồn thích hợp | Việc P2 đã làm | Điều chưa xác nhận |
 |---|---|---|---|
 | 500 ứng viên/454 xác minh/109 cohort | Snapshot manifest, account reads, data quality tại commit | Đọc báo cáo; phân biệt tỷ lệ xác minh với market coverage | Không truy RPC lại, không chứng nhận completeness |
-| Lưới shock chưa thấy depth≥2 | Grid output và event log | Đọc RQ answer matrix, giữ negative finding | Chưa chứng nhận cascade classifier phân biệt batching |
+| Grid cơ sở chưa depth≥2; tail grid/MC có depth2 | P0 v2, Level-3 và HF/path audit | Phân biệt grid32/cell60/path200/path10000 | Không giữ old zero-cascade blanket; chưa xác nhận thị trường |
 | 1.776 giờ/277.342 Terra swaps | Versioned dataset/provenance và parser audit | Đọc báo cáo và giới hạn V2 | Không gán cỡ mẫu này cho Liu et al. hoặc tự xác minh raw chain |
 | Khớp giá/lệch timing/cảnh báo ban đầu muộn | Historical validation/early-warning outputs | Giữ tách reconstruction và prediction | Không học thuật source nào cấp validation thay pipeline |
 | Điểm centrality/độ trung gian | Graph schema/build, aggregation policy, metric output | Đọc schema/metrics, ghi scope typed aggregated graph | Không chứng nhận topology đầy đủ toàn DeFi |
-| ES hoặc tỷ lệ cascade | Metric definition, units, stochastic generator, seeds | Đọc công thức/code; tính Wilson có điều kiện | Không xác nhận economic loss distribution hay real crisis probability |
+| Composite exposure tail / tần suất cascade | Metric units, generator, seed/checkpoint | Đọc code/artifact; tính Wilson 8/200,280/10k,0/1k | Không realized loss/real probability; execution accounting pending |
 
-## 5. Kiểm soát suy luận và bàn giao reviewer
+## 5. Bằng chứng dự án có phiên bản và đối chiếu lý thuyết
+
+E01–E12 là **alias tra cứu do P2 đặt**, không phải bài học thuật mới hoặc result ID thay registry P1. Tất cả đường dẫn dưới đây thuộc [commit 26cd58489d726a6c98678c725650020edcc1a3f4](https://github.com/Doquocdung1609/DeFiStress/tree/26cd58489d726a6c98678c725650020edcc1a3f4).
+
+Tiền tố P0 = `data/processed/research_final/validation_audit/corrected_run_v2/`; L3 = `data/processed/research_final/level3_extension/`. Đây là đường dẫn trong repository, không trỏ tới artifact cùng tên ở nhánh cũ. Phân biệt nguồn giao thức S, facts code, quan sát chuỗi executor đã khớp RPC và output mô phỏng. P2 đọc artifact, đối chiếu số học/logic; không tái thực thi chain, fork hoặc Monte Carlo. Manifest/hash định danh bundle, chưa tự giải quyết completeness/provenance cần sửa #10.
+
+| Alias | Loại chứng cứ | Đường dẫn và trường/vị trí tại commit trên | Đối chiếu/kết quả được phép dùng | Trạng thái và giới hạn |
+|---|---|---|---|---|
+| E01 | Mã/kiểm tra P0 | `sim/dex/uniswap_v3.py::arbitrage_toward`; `sim/tests/test_uniswap_v3.py` tick/round-trip tests; P0 `manifest.json` | Reposition cập nhật L qua tick; model `0.1.0-aave-v3.10-metric-semantics` | Lỗi L cũ đã sửa; còn price teleportation/fork boundary |
+| E02 | Mô phỏng deterministic | L3 `deep_stress/deterministic_grid.csv`; `tables/deterministic_grid_depth_counts.csv` | 60 cells: depth 0/1/2 = 18/38/4; bốn cell shock −40/−50 × haircut 90/95; depth≥3 = 0 | P2 đếm lại CSV; 4/60 là tỷ lệ ô được chọn, không xác suất |
+| E03 | Mô phỏng/audit P0 | P0 `severe_mc_depth2_path_audit.json`: all_paths_pass, audit_rules, later_wave_checks | Severe 8/200; Wilson 2,0406%–7,6932%; HF direct shock≥1 rồi prior-wave<1 | Wave 2 nội sinh trong các path đã kiểm; không historical causation |
+| E04 | Mô phỏng Level-3 trong bundle | L3 `deep_stress/monte_carlo_batches.json`: Severe, seed 20260914, actual_runs 10000, cascade_frequencies | 280/10.000 depth≥2; Wilson 2,4943%–3,1419%; depth≥3 = 0; max depth 2 | P2 tính lại Wilson; checkpoint accounting/reuse/unique counts còn pending #10, chưa final execution census |
+| E05 | Negative finding mô phỏng | L3 `deep_stress/monte_carlo_batches.json`: Low Liquidity prespecified, actual_runs 1000 | 0/1.000 depth≥2; Wilson upper 0,3827% | Không rủi ro zero; khác population/scenario Severe |
+| E06 | Diagnostics/cap | L3 `deep_stress/numerical_diagnostics.json`; `deep_stress/wave_cap_comparison.csv` | cap 100/horizon 120; max attained 2; cap hits 0; Severe baseline cap sweeps depth 1 | Configured ceiling khác observed depth; không 100 historical rounds |
+| E07 | Semantics/outputs P0 | `docs/research_final/P0_COMMANDER_REVIEW_PACKET.md`; P0 `before_after_v1_v2.json`; `rq_completion/rq3_reaction_delay.csv`, `rq6_liquidation_threshold.csv` | Intrawave vs residual; recovery 0/seconds/null; scenario-LT unliquidated debt | `max_price_impact` alias của post spread; không dùng narrative RQ4 cũ |
+| E08 | Trace mô phỏng | L3 `deep_stress/cascade_paths.json` prefix path_index 5; E03 index 5 | Borrower mới HF 1,0041608020→0,9990974835; prior-wave valuation 1.811,555731; không thuộc wave 1 | P0 full eight-path audit + P2 đọc sample prefix; stratified deterministic/MC audit bổ sung còn pending #10 |
+| E09 | Quan sát chuỗi executor khớp RPC | L3 `historical/summary.json`; `historical/episode_selection.json`; `historical/raw_event_index.*` | Tuần Sept 1–7 UTC: 27 Graph candidates, 27 RPC matched, 0 excluded | Candidate verification; census eth_getLogs toàn tuần chưa độc lập chứng minh |
+| E10 | Clustering theo định nghĩa | `docs/research_final/LEVEL3_HISTORICAL_EVENT_STUDY.md`; L3 `historical/episode_selection.json` | Primary 5-minute 22 clusters; 1/15/30-minute 24/20/19; first-five fallback | Cụm thời gian khác simulated wave; control/completeness còn review |
+| E11 | Association/code tier | `sim/research/historical_events.py::classify_linkage`; E09 tier_counts | 3 raw DIRECT labels = same-tx; 23 same-block; 1 nearby; 31.489 indexed swaps/15 oracle observations | P2 gọi 3 ca same-transaction co-occurrence pending flow proof; không full-week swap census |
+| E12 | Fork/provenance gate | L3 `fork/validation.json`; L3 `manifest.json` | 0 fork transaction, UNAVAILABLE; source/implementation/artifact commit riêng | Initial Quoter không post-shock execution; scientific_lock_declared=false |
+
+**Liên hệ literature.** E01/E02 kiểm tính nhất quán cơ chế thanh khoản S07/S08 trong mã; E03/E04/E08 minh họa phản hồi khả dĩ S10/S11 trong mô hình với oracle abstraction. E09–E11 cải thiện chứng cứ event association nhưng chưa xác lập collateral flow/contagion nhân quả. S13 hỗ trợ giữ đối chứng cú sốc giá chung; S21 hỗ trợ scheduling/provenance rõ ràng, không cấp validity tự động. P1 crosswalk cuối phải nhận đúng evidence tiers và corrected metric semantics, không dùng tên raw tier DIRECT để phát biểu mạnh hơn chứng cứ.
+
+## 6. Kiểm soát suy luận và trạng thái P1
 
 Nguồn thực nghiệm hỗ trợ tính khả dĩ của cơ chế; official docs/code hỗ trợ semantics; mã dự án mô tả implementation; kết quả dự án cần artifacts. Không hoán đổi bốn cấp chứng cứ này. Với phản thực, thay biến và giữ các biến còn lại chỉ định quan hệ **trong mô hình**; empirical causal identification cần thiết kế đối chứng, giả định và dữ liệu riêng.
 
-Reviewer cần kiểm: (a) mọi claim C có nguồn/vị trí hoặc mã dự án cụ thể; (b) bản JFE/NBER không đếm đôi; (c) nguồn không truy cập được có nhãn; (d) 6 RQ giữ nguyên; (e) các caveat oracle/cascade/unit/arbitrage/ES/graph chưa bị loại khi biên tập. P2 không triển khai bản vá hoặc đẩy trạng thái PASS của P0/P1.
+P1 numerical freeze chưa PASS theo roadmap Commander: targeted #10 cần xác minh dòng token hoặc hạ tier, census/control và checkpoint accounting trước khóa số liệu. Số 13.000 unique paths trong báo cáo Level-3 là accounting được báo cáo, không được P2 xác nhận chỉ từ các summary stages; 200/1.000/5.000/10.000 có prefix nên không cộng thành 16.200 execution độc lập. Giữ invalid epoch attempt ngoài kết luận.
+
+Reviewer cần kiểm: 35 claim IDs và nguồn; sáu RQ nguyên văn; nguồn/giới hạn không đổi; không còn lỗi L/recovery/LT cũ trong mô tả hiện hành; giữ simulated endogenous wave 2 với HF audit; history chỉ co-occurrence; tail statistic không economic loss. Review lần cập nhật nằm trong P2_VERSION_RECONCILIATION.md; không thay Commander/P0/P1 sign-off.

@@ -1,6 +1,6 @@
 # Danh mục tài liệu tham khảo APA đã đối chiếu
 
-Bản P2 ngày 13/10/2026 cho issue #4. Danh mục dưới đây xác minh danh tính xuất bản và phạm vi nội dung được truy hồi, không đồng nghĩa mọi toàn văn đã được đọc. Xem trạng thái từng S trong `REFERENCE_EVIDENCE_MATRIX.md`. Chỉ những luận điểm nằm trong nội dung đã truy hồi được phép sử dụng. Không đặt tỷ lệ thực nghiệm vào báo cáo nếu chưa kiểm bảng và mẫu số.
+Bản nguồn được xác minh ngày 13/10/2026; đối chiếu phiên bản nghiên cứu cập nhật ngày 14/10/2026 cho issue #4. Danh mục dưới đây xác minh danh tính xuất bản và phạm vi nội dung được truy hồi, không đồng nghĩa mọi toàn văn đã được đọc. Xem trạng thái từng S trong `REFERENCE_EVIDENCE_MATRIX.md`. Chỉ những luận điểm nằm trong nội dung đã truy hồi được phép sử dụng. Không đặt tỷ lệ thực nghiệm vào báo cáo nếu chưa kiểm bảng và mẫu số.
 
 Các mục được sắp theo tác giả. Mã S dùng để truy vết, không phải số thứ tự trích dẫn APA. Các trang Aave không có ngày xuất bản dùng n.d.; a–d theo thứ tự tiêu đề. Ngày truy cập 13/10/2026 nằm trong sổ xác minh cho mọi URL; APA chỉ ghi retrieval date cho tài liệu động. DOI được đối chiếu với nhà xuất bản hoặc kho tác giả, không suy từ tên bài. Lỗi resolver không làm DOI trở thành giả, nhưng cũng không được ghi rằng resolver đã thành công.
 
@@ -150,3 +150,9 @@ Các mục sau là hàng chờ, **không thuộc tập chứng cứ được ph�
 | U08 | Page et al., *The PageRank citation ranking: Bringing order to the Web*, Stanford technical report | `SOURCE_NOT_VERIFIED`: năm/ấn bản 1998 và 1999 khác nhau, endpoint gốc chưa kiểm. Không đưa vào APA chính; code được đọc không dùng PageRank. |
 
 Không có DOI trên trang phát hành không phải dấu hiệu nguồn kém: S06/S07/S08/S10/S15/S22/S24/S29 có URL chuẩn được kiểm. Không tự tạo DOI cho white paper hoặc mã nguồn.
+
+## Ghi chú đối chiếu phiên bản ngày 14/10/2026
+
+Giữ nguyên 30 mục S, thứ tự tác giả, DOI/URL, ngày truy cập nguồn 13/10 và hàng chờ U01–U08. Lần này đối chiếu mã/bằng chứng dự án tại `26cd5848`, không bổ sung nghiên cứu học thuật hoặc nâng mức truy cập abstract/preview thành toàn văn. Artifact P0/Level-3 có provenance trong ma trận, không được đặt tên như bài báo có phản biện.
+
+**S24:** tiêu đề trang *Agresti Coull confidence limits* là tên lịch sử của tài liệu Dataplot. Phần Note đã đọc phân biệt Wilson score và adjusted Wald/Agresti–Coull; default là Wilson. Giữ tên toán học **Wilson** cho các khoảng 8/200, 280/10.000 và 0/1.000. Không thay S24 hoặc thêm nguồn để che thay đổi method. **S17/S18:** tiếp tục tính là một công trình, JFE 2026 và tiền nhiệm NBER 2023. `SOURCE_NOT_VERIFIED` và giới hạn toàn văn của các mục khác giữ nguyên.

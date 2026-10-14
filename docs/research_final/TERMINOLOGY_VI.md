@@ -1,6 +1,6 @@
 # Thuật ngữ tiếng Việt cho DeFiStress
 
-Quy ước biên tập P2 ngày 13/10/2026. Lần đầu ghi tiếng Việt kèm thuật ngữ/viết tắt quốc tế; các lần sau dùng thống nhất tiếng Việt hoặc mã đo lường. Tên hợp đồng, hàm, token và trường dữ liệu giữ nguyên. Nguồn S được giải nghĩa trong danh mục APA; “mã/P2” là định nghĩa riêng của dự án, không gán cho literature. Đây là thuật ngữ học thuật và quy ước biên tập, không phải tiêu chuẩn pháp lý.
+Quy ước biên tập P2 ngày 13/10/2026, đối chiếu mã/ngữ nghĩa tại `26cd5848` ngày 14/10/2026; giữ nguyên 92 mục thuật ngữ. Lần đầu ghi tiếng Việt kèm thuật ngữ/viết tắt quốc tế; các lần sau dùng thống nhất tiếng Việt hoặc mã đo lường. Tên hợp đồng, hàm, token và trường dữ liệu giữ nguyên. Nguồn S được giải nghĩa trong danh mục APA; “mã/P2” là định nghĩa riêng của dự án, không gán cho literature. Đây là thuật ngữ học thuật và quy ước biên tập, không phải tiêu chuẩn pháp lý.
 
 ## 1. Giao thức giá và thanh lý
 
@@ -31,7 +31,7 @@ Quy ước biên tập P2 ngày 13/10/2026. Lần đầu ghi tiếng Việt kèm
 | Valuation price | Giá dùng để đánh giá lại vị thế | Trong engine hiện là min(reference,DEX) sau vòng | mã/P2 |
 | Spot price | Giá giao ngay tức thời | Giá pool tại trạng thái đang xét | S08; mã |
 | Execution price | Giá thực thi bình quân | Lượng tài sản nhận/lượng đem bán | mã/P2 |
-| Price impact | Tác động giá do giao dịch | Biến đổi giá pool phát sinh từ lượng giao dịch | S07/S10 |
+| Price impact | Tác động giá do giao dịch | Tách intrawave trước arbitrage với residual sau arbitrage; không dùng alias làm cùng nghĩa | S07/S10 |
 | Slippage | Độ trượt giá | Chênh giá kỳ vọng với thực thi; code có thể tính kèm phí | mã/P2 |
 | Automated market maker — AMM | Cơ chế tạo lập thị trường tự động | Không mặc nhiên là một bot độc lập trong ABM | S07 |
 | Concentrated liquidity | Thanh khoản tập trung theo khoảng giá | Không lấy tổng TVL làm độ sâu quanh giá | S07 |
@@ -44,7 +44,7 @@ Quy ước biên tập P2 ngày 13/10/2026. Lần đầu ghi tiếng Việt kèm
 | Liquidity haircut | Tỷ lệ suy giảm thanh khoản giả định | Biến stress; không gọi rút LP đã quan sát | mã/P2 |
 | Gas cost | Phí gas hoặc phí thực thi giao dịch | Ghi đơn vị ETH, USDC hay USD rõ; tránh dùng “khí phí” | S22; mã |
 | Flash loan | Khoản vay chớp nhoáng | Nguồn vốn trả trong giao dịch; không bằng vốn riêng liquidator | S10 |
-| Arbitrageur | Tác nhân kinh doanh chênh lệch giá | Nhánh Aave dùng tác nhân đại diện hồi giá đơn giản | S14; mã |
+| Arbitrageur | Tác nhân kinh doanh chênh lệch giá | Nhánh Aave cập nhật L qua tick khi hồi giá, vẫn là price teleportation, không funded swap | S14; mã |
 | Liquidator capacity | Năng lực thanh lý mỗi bước | Khác vốn tổng bị tiêu thụ cộng dồn | mã/P2 |
 | Reaction delay | Độ trễ phản ứng | Số bước × thời gian bước; không tự có đường giá trong lúc chờ | mã/P2 |
 
@@ -61,9 +61,9 @@ Quy ước biên tập P2 ngày 13/10/2026. Lần đầu ghi tiếng Việt kèm
 | Mint / burn | Phát hành / hủy token | Khi quy đổi phải chỉ rõ token tăng/giảm nguồn cung | S17; dữ liệu dự án |
 | Run | Hiện tượng rút vốn dồn dập | Có thể do nhiều cơ chế tương tác; không nhất thiết bank run truyền thống | S17 |
 | Contagion | Lây lan rủi ro | Phản hồi nội sinh khác cùng chịu shock chung | S10/S11; P2 |
-| Liquidation wave | Đợt xử lý thanh lý | Vòng xử lý sau chưa tự là nhóm mới mất an toàn | mã/P2 |
-| Liquidation cascade | Chuỗi thanh lý do phản hồi nội sinh | Cần chứng cứ newly eligible do giá từ vòng trước | mã/P2 |
-| Cascade depth | Độ sâu chuỗi hoặc chỉ số vòng xử lý | Ghi rõ code hiện đo cái nào; không tráo định nghĩa | mã/P2 |
+| Liquidation wave | Đợt xử lý thanh lý | Phân biệt batch theo capacity với wave có HF trace mới mất an toàn | mã/P2 |
+| Liquidation cascade | Chuỗi thanh lý do phản hồi nội sinh | P0 có path HF trace mới mất an toàn do feedback; lịch sử co-occurrence chưa là cascade | mã/P2 |
+| Cascade depth | Độ sâu chuỗi hoặc chỉ số vòng xử lý | Index engine cần kiểm eligibility; bundle đã ghi depth 2, cap 100 không là 100 wave | mã/P2 |
 | Cascade amplification | Hệ số khuếch đại nợ thanh lý | Tỷ số có mẫu số rõ; chỉ định nghĩa khi mẫu số dương | mã/P2 |
 | Fire sale | Bán tháo tài sản dưới áp lực | Cơ chế tác động giá, chưa phải mọi lần thanh lý | S10/S12 |
 | Agent-based model — ABM | Mô hình dựa trên tác tử | “Tác nhân” dùng cho vai trò kinh tế, “tác tử” dùng khi nói phương pháp | S19/S20 |
@@ -110,3 +110,16 @@ Quy ước biên tập P2 ngày 13/10/2026. Lần đầu ghi tiếng Việt kèm
 | Transmission channel | Kênh truyền dẫn | Cạnh tiềm năng khác dòng rủi ro đã hoạt động | mã/P2 |
 
 Các cụm cần tránh trong bản final: “xác suất khủng hoảng Aave 1,8845%”, “thanh lý là tổng tổn thất”, “mọi vòng 2 đều là contagion”, “giá DEX chính là oracle Aave”, “nhiều cạnh chứng minh mạng nhiều lớp hoàn chỉnh”, “Terra xác nhận mô hình Aave”, “stablecoin giảm giá luôn có lợi”. Dùng giới hạn cụ thể trong file literature và ma trận thay cho những phát biểu này.
+
+## Chú giải đo lường và evidence tier tại phiên bản 26cd5848
+
+- `max_intrawave_liquidation_price_impact`: mức lệch giá tối đa ngay sau forced sale, trước arbitrage.
+- `max_post_arbitrage_spread`: mức lệch giá tối đa sau stabilization mỗi wave. `max_price_impact` là deprecated compatibility alias của chỉ tiêu này, không phải intrawave.
+- `time_to_recovery_seconds`: 0 khi chưa từng vượt tolerance 0,5%; giá trị giây là first return sau khi vượt; null nếu chưa trở lại trong horizon. Báo riêng first liquidation timestamp khi xét reaction delay.
+- `unliquidated_debt`: dùng LT override của scenario; `unliquidated_debt_legacy_recorded_lt` là đối chiếu cách tính cũ.
+- `DIRECT_TRANSACTION_LINK` ở artifact lịch sử 26cd5848: nhãn code đang dùng cho same-tx match. P2 diễn giải **đồng xuất hiện cùng transaction, chờ xác minh dòng token**; chưa gọi direct collateral flow.
+- `SAME_BLOCK_ASSOCIATION` / `TIME_WINDOW_ASSOCIATION`: liên hệ cùng khối / cửa sổ thời gian; không là causal contagion hoặc simulated wave.
+- Composite exposure tail statistic: trung bình đuôi của chỉ tiêu thiếu hụt nợ cộng nợ hoàn trả theo mô hình; field `expected_shortfall_95` không đổi thành realized loss hoặc market ES.
+- Tổng rows trong checkpoint, path mới chạy trong invocation và prefix tái sử dụng là ba đại lượng khác nhau; sửa accounting Level-3 đang pending #10.
+
+Đây là chú giải các trường/tier, không thêm nguồn học thuật hay đổi tập 92 mục. Mọi nhận định mã hiện hành trong file này được gắn commit 26cd5848; phiên bản tương lai cần đối chiếu lại.
