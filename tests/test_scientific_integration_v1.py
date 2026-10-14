@@ -47,8 +47,12 @@ def test_integration_manifest_resolves_and_preserves_locked_inputs() -> None:
     assert manifest["input_hashes"]["oracle_manifest"] == _sha(ORACLE / "manifest.json")
     for relative, expected in manifest["artifact_hashes"].items():
         assert _sha(ROOT / relative) == expected
+        catalog_path = f"{ROOT.as_posix()}/{relative}"
+        assert manifest["artifact_catalog"][catalog_path]["artifact_sha256"] == expected
+        assert manifest["artifact_catalog"][catalog_path]["exact_input_hashes"] == manifest["input_hashes"]
     for relative, expected in manifest["report_hashes"].items():
         assert _sha(Path(relative)) == expected
+        assert manifest["artifact_catalog"][relative]["artifact_sha256"] == expected
 
 
 def test_targeted_replay_and_policy_reconciliation_are_exact() -> None:
@@ -150,4 +154,3 @@ def test_integration_artifacts_expose_no_raw_addresses_or_secrets() -> None:
     text = "\n".join(path.read_text(encoding="utf-8") for path in paths)
     assert re.search(r"0x[a-fA-F0-9]{40}\b", text) is None
     assert re.search(r"(?i)(api[_-]?key|authorization)\s*[:=]\s*['\"]?[A-Za-z0-9_-]{12,}", text) is None
-

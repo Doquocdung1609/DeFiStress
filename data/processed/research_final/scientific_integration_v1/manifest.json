@@ -1,11 +1,217 @@
 {
-  "artifact_bundle_commit": "PENDING_ARTIFACT_COMMIT",
+  "artifact_bundle_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95",
+  "artifact_catalog": {
+    "data/processed/research_final/scientific_integration_v1/accepted_claims_proposed.json": {
+      "artifact_sha256": "5334728fee10b198261ce2f209524f3ff84f50ca0ba7dc2f4c0f22908ba1c65f",
+      "data_provenance": "Frozen v3, Oracle Diagnostic v1 targeted replays, canonical snapshot and pinned P2 locators.",
+      "exact_input_hashes": {
+        "canonical_snapshot": "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99",
+        "frozen_v3_manifest": "0ee158ad67cd16a009a6d064960619fd03ab93657d12fa25f4b860e351157613",
+        "oracle_manifest": "fb391166fe61805b0690f393f63da844c8449a969a53e692d04b9adae36fc8e6",
+        "oracle_selection_manifest": "3eb4bd1c2404abfb1a4a2cd402d06d70a971e781b279c599be66438c5e5d253d",
+        "p2::docs/research_final/P2_VERSION_RECONCILIATION.md": "6dbe7af837a4980ade5065317c6784223168a417e22fe57d2113c4749eee3a4a",
+        "p2::docs/research_final/REFERENCE_EVIDENCE_MATRIX.md": "4f1b2a70b8a082b6eb1a3e99b53ba3fb7b836a0deac4641268f88b45219c9cfa"
+      },
+      "generation_command": ".\\.venv\\Scripts\\python.exe .\\scripts\\research\\build_scientific_integration_v1.py",
+      "limitations": "Counterfactual model evidence unless explicitly tiered otherwise; P2 oracle reconciliation remains open.",
+      "model_policy_version": "0.1.0-aave-v3.10-metric-semantics; Oracle Diagnostic policies A/B/C locked by selection manifest",
+      "scope": "Targeted Frozen v3 + Oracle Diagnostic v1 evidence integration; no model retuning or 10,000-path rerun.",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+    },
+    "data/processed/research_final/scientific_integration_v1/claim_to_result_registry.json": {
+      "artifact_sha256": "42e7f37a4da0df570cdc86d33cf8a9f4c338fbe9a623c3b84dc36c6edf52f793",
+      "data_provenance": "Frozen v3, Oracle Diagnostic v1 targeted replays, canonical snapshot and pinned P2 locators.",
+      "exact_input_hashes": {
+        "canonical_snapshot": "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99",
+        "frozen_v3_manifest": "0ee158ad67cd16a009a6d064960619fd03ab93657d12fa25f4b860e351157613",
+        "oracle_manifest": "fb391166fe61805b0690f393f63da844c8449a969a53e692d04b9adae36fc8e6",
+        "oracle_selection_manifest": "3eb4bd1c2404abfb1a4a2cd402d06d70a971e781b279c599be66438c5e5d253d",
+        "p2::docs/research_final/P2_VERSION_RECONCILIATION.md": "6dbe7af837a4980ade5065317c6784223168a417e22fe57d2113c4749eee3a4a",
+        "p2::docs/research_final/REFERENCE_EVIDENCE_MATRIX.md": "4f1b2a70b8a082b6eb1a3e99b53ba3fb7b836a0deac4641268f88b45219c9cfa"
+      },
+      "generation_command": ".\\.venv\\Scripts\\python.exe .\\scripts\\research\\build_scientific_integration_v1.py",
+      "limitations": "Counterfactual model evidence unless explicitly tiered otherwise; P2 oracle reconciliation remains open.",
+      "model_policy_version": "0.1.0-aave-v3.10-metric-semantics; Oracle Diagnostic policies A/B/C locked by selection manifest",
+      "scope": "Targeted Frozen v3 + Oracle Diagnostic v1 evidence integration; no model retuning or 10,000-path rerun.",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+    },
+    "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_audit.csv": {
+      "artifact_sha256": "802d84e2774f3840dd50d504eab40cb3681b3e468e5581a988e86f5a2c16dc6c",
+      "data_provenance": "Frozen v3, Oracle Diagnostic v1 targeted replays, canonical snapshot and pinned P2 locators.",
+      "exact_input_hashes": {
+        "canonical_snapshot": "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99",
+        "frozen_v3_manifest": "0ee158ad67cd16a009a6d064960619fd03ab93657d12fa25f4b860e351157613",
+        "oracle_manifest": "fb391166fe61805b0690f393f63da844c8449a969a53e692d04b9adae36fc8e6",
+        "oracle_selection_manifest": "3eb4bd1c2404abfb1a4a2cd402d06d70a971e781b279c599be66438c5e5d253d",
+        "p2::docs/research_final/P2_VERSION_RECONCILIATION.md": "6dbe7af837a4980ade5065317c6784223168a417e22fe57d2113c4749eee3a4a",
+        "p2::docs/research_final/REFERENCE_EVIDENCE_MATRIX.md": "4f1b2a70b8a082b6eb1a3e99b53ba3fb7b836a0deac4641268f88b45219c9cfa"
+      },
+      "generation_command": ".\\.venv\\Scripts\\python.exe .\\scripts\\research\\build_scientific_integration_v1.py",
+      "limitations": "Counterfactual model evidence unless explicitly tiered otherwise; P2 oracle reconciliation remains open.",
+      "model_policy_version": "0.1.0-aave-v3.10-metric-semantics; Oracle Diagnostic policies A/B/C locked by selection manifest",
+      "scope": "Targeted Frozen v3 + Oracle Diagnostic v1 evidence integration; no model retuning or 10,000-path rerun.",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+    },
+    "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv": {
+      "artifact_sha256": "f9fe744dbc3a28e071bdc944adfad469a65dc2f47d29e3beab5d5e446de955a4",
+      "data_provenance": "Frozen v3, Oracle Diagnostic v1 targeted replays, canonical snapshot and pinned P2 locators.",
+      "exact_input_hashes": {
+        "canonical_snapshot": "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99",
+        "frozen_v3_manifest": "0ee158ad67cd16a009a6d064960619fd03ab93657d12fa25f4b860e351157613",
+        "oracle_manifest": "fb391166fe61805b0690f393f63da844c8449a969a53e692d04b9adae36fc8e6",
+        "oracle_selection_manifest": "3eb4bd1c2404abfb1a4a2cd402d06d70a971e781b279c599be66438c5e5d253d",
+        "p2::docs/research_final/P2_VERSION_RECONCILIATION.md": "6dbe7af837a4980ade5065317c6784223168a417e22fe57d2113c4749eee3a4a",
+        "p2::docs/research_final/REFERENCE_EVIDENCE_MATRIX.md": "4f1b2a70b8a082b6eb1a3e99b53ba3fb7b836a0deac4641268f88b45219c9cfa"
+      },
+      "generation_command": ".\\.venv\\Scripts\\python.exe .\\scripts\\research\\build_scientific_integration_v1.py",
+      "limitations": "Counterfactual model evidence unless explicitly tiered otherwise; P2 oracle reconciliation remains open.",
+      "model_policy_version": "0.1.0-aave-v3.10-metric-semantics; Oracle Diagnostic policies A/B/C locked by selection manifest",
+      "scope": "Targeted Frozen v3 + Oracle Diagnostic v1 evidence integration; no model retuning or 10,000-path rerun.",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+    },
+    "data/processed/research_final/scientific_integration_v1/integration_result_registry.json": {
+      "artifact_sha256": "4bd16f042898c4b0a640a64c64801856fd3b6c6faf3c0c2cd39405f54cfd2133",
+      "data_provenance": "Frozen v3, Oracle Diagnostic v1 targeted replays, canonical snapshot and pinned P2 locators.",
+      "exact_input_hashes": {
+        "canonical_snapshot": "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99",
+        "frozen_v3_manifest": "0ee158ad67cd16a009a6d064960619fd03ab93657d12fa25f4b860e351157613",
+        "oracle_manifest": "fb391166fe61805b0690f393f63da844c8449a969a53e692d04b9adae36fc8e6",
+        "oracle_selection_manifest": "3eb4bd1c2404abfb1a4a2cd402d06d70a971e781b279c599be66438c5e5d253d",
+        "p2::docs/research_final/P2_VERSION_RECONCILIATION.md": "6dbe7af837a4980ade5065317c6784223168a417e22fe57d2113c4749eee3a4a",
+        "p2::docs/research_final/REFERENCE_EVIDENCE_MATRIX.md": "4f1b2a70b8a082b6eb1a3e99b53ba3fb7b836a0deac4641268f88b45219c9cfa"
+      },
+      "generation_command": ".\\.venv\\Scripts\\python.exe .\\scripts\\research\\build_scientific_integration_v1.py",
+      "limitations": "Counterfactual model evidence unless explicitly tiered otherwise; P2 oracle reconciliation remains open.",
+      "model_policy_version": "0.1.0-aave-v3.10-metric-semantics; Oracle Diagnostic policies A/B/C locked by selection manifest",
+      "scope": "Targeted Frozen v3 + Oracle Diagnostic v1 evidence integration; no model retuning or 10,000-path rerun.",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+    },
+    "data/processed/research_final/scientific_integration_v1/integration_validation_report.json": {
+      "artifact_sha256": "21d34748aabad1ca93d69dee17b53420a45daceb7eb57e8a56cf1159ceebbbcb",
+      "data_provenance": "Frozen v3, Oracle Diagnostic v1 targeted replays, canonical snapshot and pinned P2 locators.",
+      "exact_input_hashes": {
+        "canonical_snapshot": "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99",
+        "frozen_v3_manifest": "0ee158ad67cd16a009a6d064960619fd03ab93657d12fa25f4b860e351157613",
+        "oracle_manifest": "fb391166fe61805b0690f393f63da844c8449a969a53e692d04b9adae36fc8e6",
+        "oracle_selection_manifest": "3eb4bd1c2404abfb1a4a2cd402d06d70a971e781b279c599be66438c5e5d253d",
+        "p2::docs/research_final/P2_VERSION_RECONCILIATION.md": "6dbe7af837a4980ade5065317c6784223168a417e22fe57d2113c4749eee3a4a",
+        "p2::docs/research_final/REFERENCE_EVIDENCE_MATRIX.md": "4f1b2a70b8a082b6eb1a3e99b53ba3fb7b836a0deac4641268f88b45219c9cfa"
+      },
+      "generation_command": ".\\.venv\\Scripts\\python.exe .\\scripts\\research\\build_scientific_integration_v1.py",
+      "limitations": "Counterfactual model evidence unless explicitly tiered otherwise; P2 oracle reconciliation remains open.",
+      "model_policy_version": "0.1.0-aave-v3.10-metric-semantics; Oracle Diagnostic policies A/B/C locked by selection manifest",
+      "scope": "Targeted Frozen v3 + Oracle Diagnostic v1 evidence integration; no model retuning or 10,000-path rerun.",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+    },
+    "data/processed/research_final/scientific_integration_v1/six_rq_evidence_matrix.json": {
+      "artifact_sha256": "f13e2da60e453ba2a953ea16dc04f1c793083afb96e310b99639188a7c89d303",
+      "data_provenance": "Frozen v3, Oracle Diagnostic v1 targeted replays, canonical snapshot and pinned P2 locators.",
+      "exact_input_hashes": {
+        "canonical_snapshot": "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99",
+        "frozen_v3_manifest": "0ee158ad67cd16a009a6d064960619fd03ab93657d12fa25f4b860e351157613",
+        "oracle_manifest": "fb391166fe61805b0690f393f63da844c8449a969a53e692d04b9adae36fc8e6",
+        "oracle_selection_manifest": "3eb4bd1c2404abfb1a4a2cd402d06d70a971e781b279c599be66438c5e5d253d",
+        "p2::docs/research_final/P2_VERSION_RECONCILIATION.md": "6dbe7af837a4980ade5065317c6784223168a417e22fe57d2113c4749eee3a4a",
+        "p2::docs/research_final/REFERENCE_EVIDENCE_MATRIX.md": "4f1b2a70b8a082b6eb1a3e99b53ba3fb7b836a0deac4641268f88b45219c9cfa"
+      },
+      "generation_command": ".\\.venv\\Scripts\\python.exe .\\scripts\\research\\build_scientific_integration_v1.py",
+      "limitations": "Counterfactual model evidence unless explicitly tiered otherwise; P2 oracle reconciliation remains open.",
+      "model_policy_version": "0.1.0-aave-v3.10-metric-semantics; Oracle Diagnostic policies A/B/C locked by selection manifest",
+      "scope": "Targeted Frozen v3 + Oracle Diagnostic v1 evidence integration; no model retuning or 10,000-path rerun.",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+    },
+    "data/processed/research_final/scientific_integration_v1/targeted_event_trace.jsonl": {
+      "artifact_sha256": "3216731257761b67e1b44e0d4774e88530c4dcb88d4961fc42bacc41a39759ec",
+      "data_provenance": "Frozen v3, Oracle Diagnostic v1 targeted replays, canonical snapshot and pinned P2 locators.",
+      "exact_input_hashes": {
+        "canonical_snapshot": "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99",
+        "frozen_v3_manifest": "0ee158ad67cd16a009a6d064960619fd03ab93657d12fa25f4b860e351157613",
+        "oracle_manifest": "fb391166fe61805b0690f393f63da844c8449a969a53e692d04b9adae36fc8e6",
+        "oracle_selection_manifest": "3eb4bd1c2404abfb1a4a2cd402d06d70a971e781b279c599be66438c5e5d253d",
+        "p2::docs/research_final/P2_VERSION_RECONCILIATION.md": "6dbe7af837a4980ade5065317c6784223168a417e22fe57d2113c4749eee3a4a",
+        "p2::docs/research_final/REFERENCE_EVIDENCE_MATRIX.md": "4f1b2a70b8a082b6eb1a3e99b53ba3fb7b836a0deac4641268f88b45219c9cfa"
+      },
+      "generation_command": ".\\.venv\\Scripts\\python.exe .\\scripts\\research\\build_scientific_integration_v1.py",
+      "limitations": "Counterfactual model evidence unless explicitly tiered otherwise; P2 oracle reconciliation remains open.",
+      "model_policy_version": "0.1.0-aave-v3.10-metric-semantics; Oracle Diagnostic policies A/B/C locked by selection manifest",
+      "scope": "Targeted Frozen v3 + Oracle Diagnostic v1 evidence integration; no model retuning or 10,000-path rerun.",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+    },
+    "data/processed/research_final/scientific_integration_v1/test_evidence.json": {
+      "artifact_sha256": "23c6a2cbea0540701b70dae7b1dc7ad91f4819f7880462e491986a48a87c2b8b",
+      "data_provenance": "Frozen v3, Oracle Diagnostic v1 targeted replays, canonical snapshot and pinned P2 locators.",
+      "exact_input_hashes": {
+        "canonical_snapshot": "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99",
+        "frozen_v3_manifest": "0ee158ad67cd16a009a6d064960619fd03ab93657d12fa25f4b860e351157613",
+        "oracle_manifest": "fb391166fe61805b0690f393f63da844c8449a969a53e692d04b9adae36fc8e6",
+        "oracle_selection_manifest": "3eb4bd1c2404abfb1a4a2cd402d06d70a971e781b279c599be66438c5e5d253d",
+        "p2::docs/research_final/P2_VERSION_RECONCILIATION.md": "6dbe7af837a4980ade5065317c6784223168a417e22fe57d2113c4749eee3a4a",
+        "p2::docs/research_final/REFERENCE_EVIDENCE_MATRIX.md": "4f1b2a70b8a082b6eb1a3e99b53ba3fb7b836a0deac4641268f88b45219c9cfa"
+      },
+      "generation_command": ".\\.venv\\Scripts\\python.exe .\\scripts\\research\\build_scientific_integration_v1.py",
+      "limitations": "Counterfactual model evidence unless explicitly tiered otherwise; P2 oracle reconciliation remains open.",
+      "model_policy_version": "0.1.0-aave-v3.10-metric-semantics; Oracle Diagnostic policies A/B/C locked by selection manifest",
+      "scope": "Targeted Frozen v3 + Oracle Diagnostic v1 evidence integration; no model retuning or 10,000-path rerun.",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+    },
+    "data/processed/research_final/scientific_integration_v1/version_precedence.json": {
+      "artifact_sha256": "d2fa82c4f0483e69e01b25a7206ee55edd461d58214c9be78385e99e2e2eacd0",
+      "data_provenance": "Frozen v3, Oracle Diagnostic v1 targeted replays, canonical snapshot and pinned P2 locators.",
+      "exact_input_hashes": {
+        "canonical_snapshot": "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99",
+        "frozen_v3_manifest": "0ee158ad67cd16a009a6d064960619fd03ab93657d12fa25f4b860e351157613",
+        "oracle_manifest": "fb391166fe61805b0690f393f63da844c8449a969a53e692d04b9adae36fc8e6",
+        "oracle_selection_manifest": "3eb4bd1c2404abfb1a4a2cd402d06d70a971e781b279c599be66438c5e5d253d",
+        "p2::docs/research_final/P2_VERSION_RECONCILIATION.md": "6dbe7af837a4980ade5065317c6784223168a417e22fe57d2113c4749eee3a4a",
+        "p2::docs/research_final/REFERENCE_EVIDENCE_MATRIX.md": "4f1b2a70b8a082b6eb1a3e99b53ba3fb7b836a0deac4641268f88b45219c9cfa"
+      },
+      "generation_command": ".\\.venv\\Scripts\\python.exe .\\scripts\\research\\build_scientific_integration_v1.py",
+      "limitations": "Counterfactual model evidence unless explicitly tiered otherwise; P2 oracle reconciliation remains open.",
+      "model_policy_version": "0.1.0-aave-v3.10-metric-semantics; Oracle Diagnostic policies A/B/C locked by selection manifest",
+      "scope": "Targeted Frozen v3 + Oracle Diagnostic v1 evidence integration; no model retuning or 10,000-path rerun.",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+    },
+    "docs/research_final/INTEGRATION_COMMANDER_REVIEW_PACKET.md": {
+      "artifact_sha256": "0ab75f215bc4eff119d029c6d623ed3f79147d61b4b70cea24faf9e477590e36",
+      "data_provenance": "Frozen v3, Oracle Diagnostic v1 targeted replays, canonical snapshot and pinned P2 locators.",
+      "exact_input_hashes": {
+        "canonical_snapshot": "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99",
+        "frozen_v3_manifest": "0ee158ad67cd16a009a6d064960619fd03ab93657d12fa25f4b860e351157613",
+        "oracle_manifest": "fb391166fe61805b0690f393f63da844c8449a969a53e692d04b9adae36fc8e6",
+        "oracle_selection_manifest": "3eb4bd1c2404abfb1a4a2cd402d06d70a971e781b279c599be66438c5e5d253d",
+        "p2::docs/research_final/P2_VERSION_RECONCILIATION.md": "6dbe7af837a4980ade5065317c6784223168a417e22fe57d2113c4749eee3a4a",
+        "p2::docs/research_final/REFERENCE_EVIDENCE_MATRIX.md": "4f1b2a70b8a082b6eb1a3e99b53ba3fb7b836a0deac4641268f88b45219c9cfa"
+      },
+      "generation_command": ".\\.venv\\Scripts\\python.exe .\\scripts\\research\\build_scientific_integration_v1.py",
+      "limitations": "Counterfactual model evidence unless explicitly tiered otherwise; P2 oracle reconciliation remains open.",
+      "model_policy_version": "0.1.0-aave-v3.10-metric-semantics; Oracle Diagnostic policies A/B/C locked by selection manifest",
+      "scope": "Targeted Frozen v3 + Oracle Diagnostic v1 evidence integration; no model retuning or 10,000-path rerun.",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+    },
+    "docs/research_final/SCIENTIFIC_INTEGRATION_ADDENDUM_v1.md": {
+      "artifact_sha256": "70662f32fb0cefc7d7f59634a2a06452457fe35193b1cc38f6a15b1420764084",
+      "data_provenance": "Frozen v3, Oracle Diagnostic v1 targeted replays, canonical snapshot and pinned P2 locators.",
+      "exact_input_hashes": {
+        "canonical_snapshot": "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99",
+        "frozen_v3_manifest": "0ee158ad67cd16a009a6d064960619fd03ab93657d12fa25f4b860e351157613",
+        "oracle_manifest": "fb391166fe61805b0690f393f63da844c8449a969a53e692d04b9adae36fc8e6",
+        "oracle_selection_manifest": "3eb4bd1c2404abfb1a4a2cd402d06d70a971e781b279c599be66438c5e5d253d",
+        "p2::docs/research_final/P2_VERSION_RECONCILIATION.md": "6dbe7af837a4980ade5065317c6784223168a417e22fe57d2113c4749eee3a4a",
+        "p2::docs/research_final/REFERENCE_EVIDENCE_MATRIX.md": "4f1b2a70b8a082b6eb1a3e99b53ba3fb7b836a0deac4641268f88b45219c9cfa"
+      },
+      "generation_command": ".\\.venv\\Scripts\\python.exe .\\scripts\\research\\build_scientific_integration_v1.py",
+      "limitations": "Counterfactual model evidence unless explicitly tiered otherwise; P2 oracle reconciliation remains open.",
+      "model_policy_version": "0.1.0-aave-v3.10-metric-semantics; Oracle Diagnostic policies A/B/C locked by selection manifest",
+      "scope": "Targeted Frozen v3 + Oracle Diagnostic v1 evidence integration; no model retuning or 10,000-path rerun.",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+    }
+  },
   "artifact_hashes": {
     "accepted_claims_proposed.json": "5334728fee10b198261ce2f209524f3ff84f50ca0ba7dc2f4c0f22908ba1c65f",
     "claim_to_result_registry.json": "42e7f37a4da0df570cdc86d33cf8a9f4c338fbe9a623c3b84dc36c6edf52f793",
     "eligible_vs_executed_audit.csv": "802d84e2774f3840dd50d504eab40cb3681b3e468e5581a988e86f5a2c16dc6c",
     "eligible_vs_executed_summary.csv": "f9fe744dbc3a28e071bdc944adfad469a65dc2f47d29e3beab5d5e446de955a4",
-    "integration_result_registry.json": "f052d9059351656c39dd90db36915338bf0e2d0de46b62c154684fd472074930",
+    "integration_result_registry.json": "4bd16f042898c4b0a640a64c64801856fd3b6c6faf3c0c2cd39405f54cfd2133",
     "integration_validation_report.json": "21d34748aabad1ca93d69dee17b53420a45daceb7eb57e8a56cf1159ceebbbcb",
     "six_rq_evidence_matrix.json": "f13e2da60e453ba2a953ea16dc04f1c793083afb96e310b99639188a7c89d303",
     "targeted_event_trace.jsonl": "3216731257761b67e1b44e0d4774e88530c4dcb88d4961fc42bacc41a39759ec",
@@ -44,6 +250,10 @@
     }
   },
   "frozen_v3_overwritten": false,
+  "implementation_hashes": {
+    "scripts/research/build_scientific_integration_v1.py": "4b4758141b18aa12ca41b24d039013e257f7c0ae81dd2e3323e832e055ee7ecf",
+    "tests/test_scientific_integration_v1.py": "81e520030598739e48830cf666fa26638181ff14a305bffbdfdb8950468ebd14"
+  },
   "input_hashes": {
     "canonical_snapshot": "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99",
     "frozen_v3_manifest": "0ee158ad67cd16a009a6d064960619fd03ab93657d12fa25f4b860e351157613",
@@ -79,13 +289,13 @@
     "unsupported_empirical_claims_are_not_promoted": true
   },
   "report_hashes": {
-    "docs/research_final/INTEGRATION_COMMANDER_REVIEW_PACKET.md": "e3c648b04a13ac740e6d2f036f7a773325fafbe1eca25452f0c300ec8fd8890c",
+    "docs/research_final/INTEGRATION_COMMANDER_REVIEW_PACKET.md": "0ab75f215bc4eff119d029c6d623ed3f79147d61b4b70cea24faf9e477590e36",
     "docs/research_final/SCIENTIFIC_INTEGRATION_ADDENDUM_v1.md": "70662f32fb0cefc7d7f59634a2a06452457fe35193b1cc38f6a15b1420764084"
   },
   "reproduction_command": ".\\.venv\\Scripts\\python.exe .\\scripts\\research\\build_scientific_integration_v1.py",
   "schema_version": "scientific-integration-v1.0",
   "scientific_content_lock_declared": false,
-  "source_code_commit": "PENDING_ARTIFACT_COMMIT",
+  "source_code_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95",
   "starting_head": "3011ba5e8cd23ee697c36d0aec6d047d8d58f653",
   "status": "READY_FOR_COMMANDER_REVIEW",
   "test_evidence": {

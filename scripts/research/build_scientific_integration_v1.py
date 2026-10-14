@@ -34,8 +34,8 @@ STARTING_HEAD = "3011ba5e8cd23ee697c36d0aec6d047d8d58f653"
 FROZEN_HEAD = "9842c4f2c35adb8b4ec906e1bc76afa825d197c7"
 P2_HEAD = "8f5b635a316d72546b8a0eb0c2e8a66503b5d44f"
 SELECTION_LOCK_COMMIT = "a2c37e3d513054131083b791a05f8b50047925fd"
-SOURCE_CODE_COMMIT = "PENDING_ARTIFACT_COMMIT"
-ARTIFACT_BUNDLE_COMMIT = "PENDING_ARTIFACT_COMMIT"
+SOURCE_CODE_COMMIT = "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
+ARTIFACT_BUNDLE_COMMIT = "c113fc190ed9eb1c9244bbf8e84e68176738ea95"
 
 RQ_LABELS = [
     ("RQ1", "Điều kiện và ngưỡng xuất hiện thanh lý dây chuyền."),
@@ -1046,8 +1046,10 @@ RQ3–RQ6 giữ nguyên kết luận Frozen v3 có giới hạn. RQ1–RQ2 phả
 
 ## Tiêu chí Commander
 
-**PASS/ready:** chấp nhận wording policy-conditional, eligible-vs-executed reconciliation, evidence tiers và provenance.  
-**REWORK:** locator thiếu, policy attribution sai, nhầm 454/109, USDC/USD, newly/executed, hoặc claim dùng artifact superseded.  
+**PASS/ready:** chấp nhận wording policy-conditional, eligible-vs-executed reconciliation, evidence tiers và provenance.
+
+**REWORK:** locator thiếu, policy attribution sai, nhầm 454/109, USDC/USD, newly/executed, hoặc claim dùng artifact superseded.
+
 **BLOCK:** hash input thay đổi, event trace không tái lập, hoặc P2 delta tạo xung đột claim chưa hòa giải.
 
 ## Blocker và caveat
@@ -1236,6 +1238,33 @@ def main() -> None:
     ]
     if test_evidence_path.exists():
         artifact_names.append("test_evidence.json")
+    artifact_hashes = {name: _sha(ROOT / name) for name in artifact_names}
+    report_hashes = {
+        ADDENDUM.as_posix(): _sha(ADDENDUM),
+        REVIEW_PACKET.as_posix(): _sha(REVIEW_PACKET),
+    }
+    shared_catalog_metadata = {
+        "source_commit": SOURCE_CODE_COMMIT,
+        "exact_input_hashes": input_hashes,
+        "model_policy_version": f"{MODEL_VERSION}; Oracle Diagnostic policies A/B/C locked by selection manifest",
+        "scope": "Targeted Frozen v3 + Oracle Diagnostic v1 evidence integration; no model retuning or 10,000-path rerun.",
+        "data_provenance": "Frozen v3, Oracle Diagnostic v1 targeted replays, canonical snapshot and pinned P2 locators.",
+        "limitations": "Counterfactual model evidence unless explicitly tiered otherwise; P2 oracle reconciliation remains open.",
+        "generation_command": ".\\.venv\\Scripts\\python.exe .\\scripts\\research\\build_scientific_integration_v1.py",
+    }
+    artifact_catalog = {
+        f"data/processed/research_final/scientific_integration_v1/{name}": {
+            **shared_catalog_metadata,
+            "artifact_sha256": artifact_hashes[name],
+        }
+        for name in artifact_names
+    }
+    artifact_catalog.update(
+        {
+            path: {**shared_catalog_metadata, "artifact_sha256": digest}
+            for path, digest in report_hashes.items()
+        }
+    )
     manifest = {
         "schema_version": "scientific-integration-v1.0",
         "status": "READY_FOR_COMMANDER_REVIEW",
@@ -1259,10 +1288,16 @@ def main() -> None:
                 "sim/lending/health_factor.py",
             ]
         },
-        "artifact_hashes": {name: _sha(ROOT / name) for name in artifact_names},
-        "report_hashes": {
-            ADDENDUM.as_posix(): _sha(ADDENDUM),
-            REVIEW_PACKET.as_posix(): _sha(REVIEW_PACKET),
+        "artifact_hashes": artifact_hashes,
+        "report_hashes": report_hashes,
+        "artifact_catalog": artifact_catalog,
+        "implementation_hashes": {
+            "scripts/research/build_scientific_integration_v1.py": _sha(
+                Path("scripts/research/build_scientific_integration_v1.py")
+            ),
+            "tests/test_scientific_integration_v1.py": _sha(
+                Path("tests/test_scientific_integration_v1.py")
+            ),
         },
         "counts": {
             "research_questions": 6,

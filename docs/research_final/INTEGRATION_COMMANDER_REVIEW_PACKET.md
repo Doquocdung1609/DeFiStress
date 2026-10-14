@@ -5,8 +5,8 @@
 ## Provenance
 
 - Starting HEAD: `3011ba5e8cd23ee697c36d0aec6d047d8d58f653`.
-- Source/artifact commit: `PENDING_ARTIFACT_COMMIT`.
-- Artifact bundle commit: `PENDING_ARTIFACT_COMMIT`.
+- Source/artifact commit: `c113fc190ed9eb1c9244bbf8e84e68176738ea95`.
+- Artifact bundle commit: `c113fc190ed9eb1c9244bbf8e84e68176738ea95`.
 - Dependency PR #11: DRAFT/OPEN, accepted `SCIENTIFIC_PASS_WITH_LIMITATIONS` for targeted diagnostic.
 - P2 PR #9: DRAFT/OPEN @ `8f5b635a316d72546b8a0eb0c2e8a66503b5d44f`; oracle reconciliation delta do Work quản lý còn mở.
 
@@ -27,8 +27,10 @@
 
 ## Tiêu chí Commander
 
-**PASS/ready:** chấp nhận wording policy-conditional, eligible-vs-executed reconciliation, evidence tiers và provenance.  
-**REWORK:** locator thiếu, policy attribution sai, nhầm 454/109, USDC/USD, newly/executed, hoặc claim dùng artifact superseded.  
+**PASS/ready:** chấp nhận wording policy-conditional, eligible-vs-executed reconciliation, evidence tiers và provenance.
+
+**REWORK:** locator thiếu, policy attribution sai, nhầm 454/109, USDC/USD, newly/executed, hoặc claim dùng artifact superseded.
+
 **BLOCK:** hash input thay đổi, event trace không tái lập, hoặc P2 delta tạo xung đột claim chưa hòa giải.
 
 ## Blocker và caveat

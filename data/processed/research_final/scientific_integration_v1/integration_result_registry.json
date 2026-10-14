@@ -7,7 +7,7 @@
       "population": "selected deterministic cases",
       "result_id": "INT_A_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
       "rq": "RQ1",
-      "source_commit": "PENDING_ARTIFACT_COMMIT",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95",
       "source_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
       "unit": "cases",
       "value": 4
@@ -19,7 +19,7 @@
       "population": "targeted audited MC paths",
       "result_id": "INT_A_SELECTED_MC_DEPTH2_RETAINED_COUNT_OF_10",
       "rq": "RQ1",
-      "source_commit": "PENDING_ARTIFACT_COMMIT",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95",
       "source_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
       "unit": "paths",
       "value": 10
@@ -31,7 +31,7 @@
       "population": "18 selected cases × borrowers",
       "result_id": "INT_A_DIRECT_SHOCK_ELIGIBLE_BORROWER_CASE_INSTANCES",
       "rq": "RQ1",
-      "source_commit": "PENDING_ARTIFACT_COMMIT",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95",
       "source_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
       "unit": "borrower-case instances",
       "value": 507
@@ -43,7 +43,7 @@
       "population": "18 selected cases × borrowers",
       "result_id": "INT_A_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
       "rq": "RQ1",
-      "source_commit": "PENDING_ARTIFACT_COMMIT",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95",
       "source_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
       "unit": "borrower-case instances",
       "value": 35
@@ -55,7 +55,7 @@
       "population": "newly eligible borrower-case instances",
       "result_id": "INT_A_NEWLY_ELIGIBLE_ATTEMPTED_LATER_INSTANCES",
       "rq": "RQ1",
-      "source_commit": "PENDING_ARTIFACT_COMMIT",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95",
       "source_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
       "unit": "borrower-case instances",
       "value": 35
@@ -67,7 +67,7 @@
       "population": "newly eligible borrower-case instances",
       "result_id": "INT_A_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
       "rq": "RQ1",
-      "source_commit": "PENDING_ARTIFACT_COMMIT",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95",
       "source_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
       "unit": "borrower-case instances",
       "value": 14
@@ -79,7 +79,7 @@
       "population": "newly eligible borrower-case instances",
       "result_id": "INT_A_NEWLY_ELIGIBLE_SKIPPED_INSTANCES",
       "rq": "RQ1",
-      "source_commit": "PENDING_ARTIFACT_COMMIT",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95",
       "source_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
       "unit": "borrower-case instances",
       "value": 21
@@ -91,7 +91,7 @@
       "population": "executed Wave-2 liquidations",
       "result_id": "INT_A_POSITIVE_DEBT_REPAID_WAVE2_USDC",
       "rq": null,
-      "source_commit": "PENDING_ARTIFACT_COMMIT",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95",
       "source_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
       "unit": "USDC token quantity",
       "value": "58574.91415500"
@@ -103,7 +103,7 @@
       "population": "selected deterministic cases",
       "result_id": "INT_B_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
       "rq": "RQ1",
-      "source_commit": "PENDING_ARTIFACT_COMMIT",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95",
       "source_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
       "unit": "cases",
       "value": 0
@@ -115,7 +115,7 @@
       "population": "targeted audited MC paths",
       "result_id": "INT_B_SELECTED_MC_DEPTH2_RETAINED_COUNT_OF_10",
       "rq": "RQ1",
-      "source_commit": "PENDING_ARTIFACT_COMMIT",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95",
       "source_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
       "unit": "paths",
       "value": 0
@@ -127,7 +127,7 @@
       "population": "18 selected cases × borrowers",
       "result_id": "INT_B_DIRECT_SHOCK_ELIGIBLE_BORROWER_CASE_INSTANCES",
       "rq": "RQ1",
-      "source_commit": "PENDING_ARTIFACT_COMMIT",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95",
       "source_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
       "unit": "borrower-case instances",
       "value": 507
@@ -139,7 +139,7 @@
       "population": "18 selected cases × borrowers",
       "result_id": "INT_B_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
       "rq": "RQ1",
-      "source_commit": "PENDING_ARTIFACT_COMMIT",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95",
       "source_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
       "unit": "borrower-case instances",
       "value": 0
@@ -151,7 +151,7 @@
       "population": "newly eligible borrower-case instances",
       "result_id": "INT_B_NEWLY_ELIGIBLE_ATTEMPTED_LATER_INSTANCES",
       "rq": "RQ1",
-      "source_commit": "PENDING_ARTIFACT_COMMIT",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95",
       "source_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
       "unit": "borrower-case instances",
       "value": 0
@@ -163,7 +163,7 @@
       "population": "newly eligible borrower-case instances",
       "result_id": "INT_B_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
       "rq": "RQ1",
-      "source_commit": "PENDING_ARTIFACT_COMMIT",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95",
       "source_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
       "unit": "borrower-case instances",
       "value": 0
@@ -175,7 +175,7 @@
       "population": "newly eligible borrower-case instances",
       "result_id": "INT_B_NEWLY_ELIGIBLE_SKIPPED_INSTANCES",
       "rq": "RQ1",
-      "source_commit": "PENDING_ARTIFACT_COMMIT",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95",
       "source_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
       "unit": "borrower-case instances",
       "value": 0
@@ -187,7 +187,7 @@
       "population": "executed Wave-2 liquidations",
       "result_id": "INT_B_POSITIVE_DEBT_REPAID_WAVE2_USDC",
       "rq": null,
-      "source_commit": "PENDING_ARTIFACT_COMMIT",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95",
       "source_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
       "unit": "USDC token quantity",
       "value": "0"
@@ -199,7 +199,7 @@
       "population": "selected deterministic cases",
       "result_id": "INT_C_WEAK_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
       "rq": "RQ1",
-      "source_commit": "PENDING_ARTIFACT_COMMIT",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95",
       "source_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
       "unit": "cases",
       "value": 0
@@ -211,7 +211,7 @@
       "population": "targeted audited MC paths",
       "result_id": "INT_C_WEAK_SELECTED_MC_DEPTH2_RETAINED_COUNT_OF_10",
       "rq": "RQ1",
-      "source_commit": "PENDING_ARTIFACT_COMMIT",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95",
       "source_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
       "unit": "paths",
       "value": 0
@@ -223,7 +223,7 @@
       "population": "18 selected cases × borrowers",
       "result_id": "INT_C_WEAK_DIRECT_SHOCK_ELIGIBLE_BORROWER_CASE_INSTANCES",
       "rq": "RQ1",
-      "source_commit": "PENDING_ARTIFACT_COMMIT",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95",
       "source_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
       "unit": "borrower-case instances",
       "value": 507
@@ -235,7 +235,7 @@
       "population": "18 selected cases × borrowers",
       "result_id": "INT_C_WEAK_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
       "rq": "RQ1",
-      "source_commit": "PENDING_ARTIFACT_COMMIT",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95",
       "source_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
       "unit": "borrower-case instances",
       "value": 6
@@ -247,7 +247,7 @@
       "population": "newly eligible borrower-case instances",
       "result_id": "INT_C_WEAK_NEWLY_ELIGIBLE_ATTEMPTED_LATER_INSTANCES",
       "rq": "RQ1",
-      "source_commit": "PENDING_ARTIFACT_COMMIT",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95",
       "source_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
       "unit": "borrower-case instances",
       "value": 6
@@ -259,7 +259,7 @@
       "population": "newly eligible borrower-case instances",
       "result_id": "INT_C_WEAK_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
       "rq": "RQ1",
-      "source_commit": "PENDING_ARTIFACT_COMMIT",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95",
       "source_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
       "unit": "borrower-case instances",
       "value": 0
@@ -271,7 +271,7 @@
       "population": "newly eligible borrower-case instances",
       "result_id": "INT_C_WEAK_NEWLY_ELIGIBLE_SKIPPED_INSTANCES",
       "rq": "RQ1",
-      "source_commit": "PENDING_ARTIFACT_COMMIT",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95",
       "source_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
       "unit": "borrower-case instances",
       "value": 6
@@ -283,7 +283,7 @@
       "population": "executed Wave-2 liquidations",
       "result_id": "INT_C_WEAK_POSITIVE_DEBT_REPAID_WAVE2_USDC",
       "rq": null,
-      "source_commit": "PENDING_ARTIFACT_COMMIT",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95",
       "source_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
       "unit": "USDC token quantity",
       "value": "0"
@@ -295,7 +295,7 @@
       "population": "selected deterministic cases",
       "result_id": "INT_C_MODERATE_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
       "rq": "RQ1",
-      "source_commit": "PENDING_ARTIFACT_COMMIT",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95",
       "source_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
       "unit": "cases",
       "value": 0
@@ -307,7 +307,7 @@
       "population": "targeted audited MC paths",
       "result_id": "INT_C_MODERATE_SELECTED_MC_DEPTH2_RETAINED_COUNT_OF_10",
       "rq": "RQ1",
-      "source_commit": "PENDING_ARTIFACT_COMMIT",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95",
       "source_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
       "unit": "paths",
       "value": 2
@@ -319,7 +319,7 @@
       "population": "18 selected cases × borrowers",
       "result_id": "INT_C_MODERATE_DIRECT_SHOCK_ELIGIBLE_BORROWER_CASE_INSTANCES",
       "rq": "RQ1",
-      "source_commit": "PENDING_ARTIFACT_COMMIT",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95",
       "source_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
       "unit": "borrower-case instances",
       "value": 507
@@ -331,7 +331,7 @@
       "population": "18 selected cases × borrowers",
       "result_id": "INT_C_MODERATE_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
       "rq": "RQ1",
-      "source_commit": "PENDING_ARTIFACT_COMMIT",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95",
       "source_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
       "unit": "borrower-case instances",
       "value": 11
@@ -343,7 +343,7 @@
       "population": "newly eligible borrower-case instances",
       "result_id": "INT_C_MODERATE_NEWLY_ELIGIBLE_ATTEMPTED_LATER_INSTANCES",
       "rq": "RQ1",
-      "source_commit": "PENDING_ARTIFACT_COMMIT",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95",
       "source_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
       "unit": "borrower-case instances",
       "value": 11
@@ -355,7 +355,7 @@
       "population": "newly eligible borrower-case instances",
       "result_id": "INT_C_MODERATE_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
       "rq": "RQ1",
-      "source_commit": "PENDING_ARTIFACT_COMMIT",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95",
       "source_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
       "unit": "borrower-case instances",
       "value": 2
@@ -367,7 +367,7 @@
       "population": "newly eligible borrower-case instances",
       "result_id": "INT_C_MODERATE_NEWLY_ELIGIBLE_SKIPPED_INSTANCES",
       "rq": "RQ1",
-      "source_commit": "PENDING_ARTIFACT_COMMIT",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95",
       "source_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
       "unit": "borrower-case instances",
       "value": 9
@@ -379,7 +379,7 @@
       "population": "executed Wave-2 liquidations",
       "result_id": "INT_C_MODERATE_POSITIVE_DEBT_REPAID_WAVE2_USDC",
       "rq": null,
-      "source_commit": "PENDING_ARTIFACT_COMMIT",
+      "source_commit": "c113fc190ed9eb1c9244bbf8e84e68176738ea95",
       "source_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
       "unit": "USDC token quantity",
       "value": "4952.07991200"
