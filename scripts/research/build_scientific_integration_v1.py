@@ -9,7 +9,7 @@ import subprocess
 from collections import Counter, defaultdict
 from decimal import Decimal
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 from backend.app.services.snapshots import simulation_inputs
 from scripts.research.run_oracle_transmission_diagnostic import (
@@ -58,7 +58,7 @@ P2_LOCATOR_PATHS = [
 
 
 def _load(path: Path) -> dict[str, Any]:
-    return json.loads(path.read_text(encoding="utf-8"))
+    return cast(dict[str, Any], json.loads(path.read_text(encoding="utf-8")))
 
 
 def _sha(path: Path) -> str:
@@ -1094,7 +1094,7 @@ def main() -> None:
     _write_json(ROOT / "six_rq_evidence_matrix.json", rq_matrix)
     version_precedence = _version_precedence()
     _write_json(ROOT / "version_precedence.json", version_precedence)
-    table_figure_registry = {
+    table_figure_registry: dict[str, Any] = {
         "schema_version": "scientific-integration-v1.0",
         "tables": [
             {

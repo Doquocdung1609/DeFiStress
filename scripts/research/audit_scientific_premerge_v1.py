@@ -7,9 +7,10 @@ import math
 import re
 import subprocess
 from collections import Counter, defaultdict
+from collections.abc import Callable
 from decimal import Decimal
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 D = Decimal
 CANONICAL = Path("data/processed/mainnet/aave_uniswap_snapshot_26045352.json")
@@ -31,7 +32,7 @@ POLICIES = (
 
 
 def load_json(path: Path) -> dict[str, Any]:
-    return json.loads(path.read_text(encoding="utf-8"))
+    return cast(dict[str, Any], json.loads(path.read_text(encoding="utf-8")))
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:
@@ -134,7 +135,7 @@ def row_key(row: dict[str, str]) -> tuple[str, str, str]:
 
 
 def select_samples(rows: list[dict[str, str]]) -> dict[str, dict[str, str]]:
-    rules = {
+    rules: dict[str, Callable[[dict[str, str]], bool]] = {
         "newly_eligible_executed": lambda row: row["newly_eligible_after_wave1"] == "True"
         and row["executed_positive_debt_wave2"] == "True",
         "newly_eligible_skipped": lambda row: row["newly_eligible_after_wave1"] == "True"
@@ -403,6 +404,17 @@ def main() -> None:
             if claim_id not in p2_claim_ids
         }
     )
+    serialized_evidence = json.dumps(
+        [audit_rows, summary_rows, list(events.values()), claims],
+        ensure_ascii=False,
+    )
+    no_raw_wallet_addresses = re.search(
+        r"(?i)0x[a-f0-9]{40}", serialized_evidence
+    ) is None
+    no_api_secret_tokens = re.search(
+        r"(?i)\b(?:sk-[a-z0-9_-]{16,}|bearer\s+[a-z0-9._-]{16,})\b",
+        serialized_evidence,
+    ) is None
 
     current_hashes = {
         "canonical_snapshot": sha(CANONICAL),
@@ -486,6 +498,8 @@ def main() -> None:
         "no_nonfinite_serialized_values": finite(
             [audit_rows, summary_rows, list(events.values()), claims]
         ),
+        "no_raw_wallet_addresses": no_raw_wallet_addresses,
+        "no_api_secret_tokens": no_api_secret_tokens,
     }
     failed = [name for name, passed in checks.items() if not passed]
     result = {

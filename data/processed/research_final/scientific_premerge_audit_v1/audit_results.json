@@ -1,0 +1,413 @@
+{
+  "audit_method": "Independent parser/recalculation; does not import or invoke the Addendum builder or simulation runner.",
+  "audit_source_head": "a39337780f0e8d3807138a6048aaa1e1d7d9c8c8",
+  "checks": {
+    "all_16_control_policy_rows_have_no_wave2_execution": true,
+    "all_32688_hf_rows_recomputed_exactly": true,
+    "all_claim_result_ids_resolve": true,
+    "all_claim_table_figure_ids_resolve": true,
+    "all_p2_literature_claim_ids_resolve_at_pinned_commit": true,
+    "all_skip_explanations_reconstructed": true,
+    "audit_counts_match_summary": true,
+    "canonical_worktree_hash_matches_declared": true,
+    "event_execution_and_borrower_locators_match": true,
+    "frozen_manifest_artifacts_match_worktree_bytes": true,
+    "integration_input_hashes_match_worktree_bytes": true,
+    "integration_manifest_artifacts_match_worktree_bytes": true,
+    "no_api_secret_tokens": true,
+    "no_nonfinite_serialized_values": true,
+    "no_raw_wallet_addresses": true,
+    "oracle_comparison_depth_matches_all_72_summaries": true,
+    "oracle_manifest_artifacts_match_worktree_bytes": true,
+    "source_and_dependency_commits_exist": true
+  },
+  "eligible_attempted_executed": {
+    "A_ADVERSE_PASS_THROUGH": {
+      "attempted_later": 35,
+      "executed_wave2": 14,
+      "newly_eligible": 35,
+      "newly_route_eligible": 14,
+      "newly_route_ineligible": 21,
+      "positive_debt_repaid_wave2_usdc": "58574.91415500",
+      "skipped": 21
+    },
+    "B_REFERENCE_ONLY": {
+      "attempted_later": 0,
+      "executed_wave2": 0,
+      "newly_eligible": 0,
+      "newly_route_eligible": 0,
+      "newly_route_ineligible": 0,
+      "positive_debt_repaid_wave2_usdc": "0",
+      "skipped": 0
+    },
+    "C_MODERATE_LAGGED_SMOOTHED_PROXY": {
+      "attempted_later": 11,
+      "executed_wave2": 2,
+      "newly_eligible": 11,
+      "newly_route_eligible": 2,
+      "newly_route_ineligible": 9,
+      "positive_debt_repaid_wave2_usdc": "4952.07991200",
+      "skipped": 9
+    },
+    "C_WEAK_LAGGED_SMOOTHED_PROXY": {
+      "attempted_later": 6,
+      "executed_wave2": 0,
+      "newly_eligible": 6,
+      "newly_route_eligible": 0,
+      "newly_route_ineligible": 6,
+      "positive_debt_repaid_wave2_usdc": "0",
+      "skipped": 6
+    }
+  },
+  "failed_checks": [],
+  "findings": [
+    {
+      "affected_rq": "ALL_PROVENANCE",
+      "finding": "Invalid expanded artifact commit SHA was repaired to the existing commit object c113fc1ec6dd98ffcc31241c1dbd1a93b20aa193.",
+      "finding_id": "PM-001",
+      "severity": "LOW_REPAIRED"
+    },
+    {
+      "affected_rq": "RQ1/RQ2/RQ3",
+      "finding": "INT_T01_ELIGIBLE_VS_EXECUTED now resolves through table_figure_registry.json.",
+      "finding_id": "PM-002",
+      "severity": "LOW_REPAIRED"
+    },
+    {
+      "affected_rq": "ALL_REPRODUCIBILITY",
+      "finding": "Legacy declared SHA-256 values identify Windows CRLF checkout bytes, while repository blobs use LF. The audit records both hashes and verifies normalized content equality; locked bundles were not rewritten.",
+      "finding_id": "PM-003",
+      "severity": "MEDIUM_DISCLOSURE"
+    }
+  ],
+  "hash_integrity": {
+    "interpretation": "Declared legacy hashes identify Windows checkout bytes; Git blobs use LF. Both are independently recorded. Content is equal after CRLF-to-LF normalization.",
+    "repository_git_blob_sha256_lf": {
+      "canonical_snapshot_at_frozen_head": "76dae833c5b1a6e620cf116e332f1f47c53454a1f3530a02fefacd800cb3b329",
+      "frozen_manifest_at_frozen_head": "d31660ba134656c2882d95cc26545bd6aba9bf79ad59bd7d88e9d7a8ae0d1168",
+      "integration_manifest_at_audit_source_head": "a36f761a1bd4135a50ab95de2f1fba2f7c2a867b3378bb878ea15aef289f2f60",
+      "oracle_manifest_at_oracle_head": "213a58b5856a52b7d200b1a537475bb3f5ba10d6b4a28c9b7235738950e334c9"
+    },
+    "worktree_byte_sha256": {
+      "canonical_snapshot": "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99",
+      "frozen_manifest": "0ee158ad67cd16a009a6d064960619fd03ab93657d12fa25f4b860e351157613",
+      "integration_manifest": "71f75f5556cac8563c222b57fb8e55211404886936bb52f28b179d19b9974485",
+      "oracle_manifest": "fb391166fe61805b0690f393f63da844c8449a969a53e692d04b9adae36fc8e6"
+    },
+    "worktree_equals_git_blob_after_crlf_to_lf_normalization": {
+      "canonical_snapshot": true,
+      "frozen_manifest": true,
+      "integration_manifest": true,
+      "oracle_manifest": true
+    }
+  },
+  "manifest_verification": {
+    "frozen_v3": {
+      "checked": 27,
+      "matched": 27,
+      "mismatches": []
+    },
+    "oracle_diagnostic_v1": {
+      "checked": 13,
+      "matched": 13,
+      "mismatches": []
+    },
+    "scientific_integration_v1": {
+      "checked": 13,
+      "matched": 13,
+      "mismatches": []
+    }
+  },
+  "row_counts": {
+    "borrower_case_policy_rows": 32688,
+    "claims": 13,
+    "controls_case_policy_rows": 16,
+    "event_rows": 2186,
+    "summary_rows": 72
+  },
+  "schema_version": "scientific-premerge-audit-v1.0",
+  "specific_samples": {
+    "c_moderate_executed_wave2": {
+      "attempted_after_wave1": true,
+      "borrower_hash": "borrower-ec4cb7888f79",
+      "case_id": "MC_PATH_1060",
+      "direct_shock_hf": "1.000875183735337699522357892",
+      "event_locators": [
+        "ORACLE_EVT::MC_PATH_1060::C_MODERATE_LAGGED_SMOOTHED_PROXY::024"
+      ],
+      "events": [
+        {
+          "borrower_hash": "borrower-ec4cb7888f79",
+          "case_id": "MC_PATH_1060",
+          "case_type": "AUDITED_MONTE_CARLO",
+          "collateral_seized_weth": "1.434407371593570244775587569",
+          "debt_repaid_usdc": "2476.03995600",
+          "decision": "EXECUTE",
+          "dex_price_after_usd_per_weth": "1803.935932726463384996755674",
+          "dex_price_before_usd_per_weth": "1805.603172778787930787039917",
+          "event_id": "ORACLE_EVT::MC_PATH_1060::C_MODERATE_LAGGED_SMOOTHED_PROXY::024",
+          "event_type": "LIQUIDATION",
+          "expected_profit_usdc": "74.330447434348495746552006",
+          "gas_cost_usdc": "28.1617075249960112",
+          "health_factor_after": "1.127720059040748847138291842",
+          "health_factor_before": "0.9996100295203744235691459211",
+          "path_index": 1060,
+          "payload": {
+            "borrower_valuation_price_after": 1812.4850759179226,
+            "close_factor": 0.5,
+            "oracle_policy_id": "C_MODERATE_LAGGED_SMOOTHED_PROXY",
+            "reference_spread_after_sale": 0.005974893165401272,
+            "single_sale_price_move": 0.0009233701388321644,
+            "ticks_crossed": 0
+          },
+          "policy_id": "C_MODERATE_LAGGED_SMOOTHED_PROXY",
+          "reason": "EXECUTE",
+          "reference_price_usd_per_weth": "1814.779043630967509618397690",
+          "result_id": "ORACLE_DIAG::MC_PATH_1060::C_MODERATE_LAGGED_SMOOTHED_PROXY",
+          "scenario_seed": 20261974,
+          "sequence": 24,
+          "step": 2,
+          "timestamp_sim_seconds": 120,
+          "wave": 2
+        }
+      ],
+      "executed_wave2": true,
+      "other_collateral_usd": "0.0",
+      "other_debt_usd": "0.0",
+      "policy_id": "C_MODERATE_LAGGED_SMOOTHED_PROXY",
+      "portfolio_newly_eligible": true,
+      "positive_debt_repaid_wave2_usdc": "2476.03995600",
+      "post_wave1_hf": "0.9996100295203744235691459211",
+      "raw_skip_reason": "",
+      "resolved_skip_reason": "",
+      "route_eligible": true,
+      "selection_rule": "lexicographically smallest (case_id, policy_id, borrower_hash) satisfying group predicate",
+      "usdc_debt": "4952.079912",
+      "weth_collateral": "3.290528961704857"
+    },
+    "c_weak_newly_eligible_skipped": {
+      "attempted_after_wave1": true,
+      "borrower_hash": "borrower-a86415e4a003",
+      "case_id": "CTRL_M35_H90",
+      "direct_shock_hf": "1.001534078578837785558035333",
+      "event_locators": [
+        "ORACLE_EVT::CTRL_M35_H90::C_WEAK_LAGGED_SMOOTHED_PROXY::025"
+      ],
+      "events": [
+        {
+          "borrower_hash": "borrower-a86415e4a003",
+          "case_id": "CTRL_M35_H90",
+          "case_type": "DETERMINISTIC_CONTROL",
+          "collateral_seized_weth": "0",
+          "debt_repaid_usdc": "0",
+          "decision": "SKIP",
+          "dex_price_after_usd_per_weth": "0",
+          "dex_price_before_usd_per_weth": "0",
+          "event_id": "ORACLE_EVT::CTRL_M35_H90::C_WEAK_LAGGED_SMOOTHED_PROXY::025",
+          "event_type": "LIQUIDATION_SKIPPED",
+          "expected_profit_usdc": "-16.0000",
+          "gas_cost_usdc": "0",
+          "health_factor_after": "0.9994634029328123365374488747",
+          "health_factor_before": "0.9994634029328123365374488747",
+          "path_index": null,
+          "payload": {
+            "reason": "NOT_ELIGIBLE"
+          },
+          "policy_id": "C_WEAK_LAGGED_SMOOTHED_PROXY",
+          "reason": "NOT_ELIGIBLE",
+          "reference_price_usd_per_weth": "1753.8864206110",
+          "result_id": "ORACLE_DIAG::CTRL_M35_H90::C_WEAK_LAGGED_SMOOTHED_PROXY",
+          "scenario_seed": 20260914,
+          "sequence": 25,
+          "step": 2,
+          "timestamp_sim_seconds": 120,
+          "wave": 2
+        }
+      ],
+      "executed_wave2": false,
+      "other_collateral_usd": "0.0",
+      "other_debt_usd": "0.000015",
+      "policy_id": "C_WEAK_LAGGED_SMOOTHED_PROXY",
+      "portfolio_newly_eligible": true,
+      "positive_debt_repaid_wave2_usdc": "0",
+      "post_wave1_hf": "0.9994634029328123365374488747",
+      "raw_skip_reason": "NOT_ELIGIBLE",
+      "resolved_skip_reason": "NO_MODELLED_USDC_DEBT",
+      "route_eligible": false,
+      "selection_rule": "lexicographically smallest (case_id, policy_id, borrower_hash) satisfying group predicate",
+      "usdc_debt": "0.0",
+      "weth_collateral": "1.0319946181E-8"
+    },
+    "control_without_wave2_execution": {
+      "attempted_after_wave1": false,
+      "borrower_hash": "borrower-0046342ae725",
+      "case_id": "CTRL_M35_H90",
+      "direct_shock_hf": "1.723502308046049359818035211",
+      "event_locators": [],
+      "events": [],
+      "executed_wave2": false,
+      "other_collateral_usd": "38009.36751039",
+      "other_debt_usd": "6384.07930855",
+      "policy_id": "A_ADVERSE_PASS_THROUGH",
+      "portfolio_newly_eligible": false,
+      "positive_debt_repaid_wave2_usdc": "0",
+      "post_wave1_hf": "1.723502308046049359818035211",
+      "raw_skip_reason": "",
+      "resolved_skip_reason": "",
+      "route_eligible": false,
+      "selection_rule": "lexicographically smallest (case_id, policy_id, borrower_hash) satisfying group predicate",
+      "usdc_debt": "11353.601776",
+      "weth_collateral": "0.0"
+    },
+    "newly_eligible_executed": {
+      "attempted_after_wave1": true,
+      "borrower_hash": "borrower-b5c90f007b82",
+      "case_id": "DET_D2_M40_H90",
+      "direct_shock_hf": "1.021171587393778724608068943",
+      "event_locators": [
+        "ORACLE_EVT::DET_D2_M40_H90::A_ADVERSE_PASS_THROUGH::033"
+      ],
+      "events": [
+        {
+          "borrower_hash": "borrower-b5c90f007b82",
+          "case_id": "DET_D2_M40_H90",
+          "case_type": "DETERMINISTIC_DEPTH2",
+          "collateral_seized_weth": "10.19020371118472707762826532",
+          "debt_repaid_usdc": "15356.18268950",
+          "decision": "EXECUTE",
+          "dex_price_after_usd_per_weth": "1531.562834567061850611979571",
+          "dex_price_before_usd_per_weth": "1582.303188529721999790257020",
+          "event_id": "ORACLE_EVT::DET_D2_M40_H90::A_ADVERSE_PASS_THROUGH::033",
+          "event_type": "LIQUIDATION",
+          "expected_profit_usdc": "430.31726981840561585756594",
+          "gas_cost_usdc": "16",
+          "health_factor_after": "1.062512248804835388620236976",
+          "health_factor_before": "0.9980425716830383710433793144",
+          "path_index": null,
+          "payload": {
+            "borrower_valuation_price_after": 1531.5628345670618,
+            "close_factor": 0.5,
+            "oracle_policy_id": "A_ADVERSE_PASS_THROUGH",
+            "reference_spread_after_sale": 0.05399058269521699,
+            "single_sale_price_move": 0.03206740296706862,
+            "ticks_crossed": 5
+          },
+          "policy_id": "A_ADVERSE_PASS_THROUGH",
+          "reason": "EXECUTE",
+          "reference_price_usd_per_weth": "1618.972080564",
+          "result_id": "ORACLE_DIAG::DET_D2_M40_H90::A_ADVERSE_PASS_THROUGH",
+          "scenario_seed": 20260914,
+          "sequence": 33,
+          "step": 2,
+          "timestamp_sim_seconds": 120,
+          "wave": 2
+        }
+      ],
+      "executed_wave2": true,
+      "other_collateral_usd": "0.0",
+      "other_debt_usd": "4140.16939352",
+      "policy_id": "A_ADVERSE_PASS_THROUGH",
+      "portfolio_newly_eligible": true,
+      "positive_debt_repaid_wave2_usdc": "15356.18268950",
+      "post_wave1_hf": "0.9980425716830383710433793144",
+      "raw_skip_reason": "",
+      "resolved_skip_reason": "",
+      "route_eligible": true,
+      "selection_rule": "lexicographically smallest (case_id, policy_id, borrower_hash) satisfying group predicate",
+      "usdc_debt": "30712.365379",
+      "weth_collateral": "26.485955201324607"
+    },
+    "newly_eligible_skipped": {
+      "attempted_after_wave1": true,
+      "borrower_hash": "borrower-a86415e4a003",
+      "case_id": "CTRL_M35_H90",
+      "direct_shock_hf": "1.001534078578837785558035333",
+      "event_locators": [
+        "ORACLE_EVT::CTRL_M35_H90::A_ADVERSE_PASS_THROUGH::025"
+      ],
+      "events": [
+        {
+          "borrower_hash": "borrower-a86415e4a003",
+          "case_id": "CTRL_M35_H90",
+          "case_type": "DETERMINISTIC_CONTROL",
+          "collateral_seized_weth": "0",
+          "debt_repaid_usdc": "0",
+          "decision": "SKIP",
+          "dex_price_after_usd_per_weth": "0",
+          "dex_price_before_usd_per_weth": "0",
+          "event_id": "ORACLE_EVT::CTRL_M35_H90::A_ADVERSE_PASS_THROUGH::025",
+          "event_type": "LIQUIDATION_SKIPPED",
+          "expected_profit_usdc": "-16.0000",
+          "gas_cost_usdc": "0",
+          "health_factor_after": "0.9849686734106341933933436633",
+          "health_factor_before": "0.9849686734106341933933436633",
+          "path_index": null,
+          "payload": {
+            "reason": "NOT_ELIGIBLE"
+          },
+          "policy_id": "A_ADVERSE_PASS_THROUGH",
+          "reason": "NOT_ELIGIBLE",
+          "reference_price_usd_per_weth": "1753.8864206110",
+          "result_id": "ORACLE_DIAG::CTRL_M35_H90::A_ADVERSE_PASS_THROUGH",
+          "scenario_seed": 20260914,
+          "sequence": 25,
+          "step": 2,
+          "timestamp_sim_seconds": 120,
+          "wave": 2
+        }
+      ],
+      "executed_wave2": false,
+      "other_collateral_usd": "0.0",
+      "other_debt_usd": "0.000015",
+      "policy_id": "A_ADVERSE_PASS_THROUGH",
+      "portfolio_newly_eligible": true,
+      "positive_debt_repaid_wave2_usdc": "0",
+      "post_wave1_hf": "0.9849686734106341933933436633",
+      "raw_skip_reason": "NOT_ELIGIBLE",
+      "resolved_skip_reason": "NO_MODELLED_USDC_DEBT",
+      "route_eligible": false,
+      "selection_rule": "lexicographically smallest (case_id, policy_id, borrower_hash) satisfying group predicate",
+      "usdc_debt": "0.0",
+      "weth_collateral": "1.0319946181E-8"
+    }
+  },
+  "status": "PASS_WITH_DISCLOSED_EOL_HASH_SEMANTICS",
+  "summary_reconstructed": {
+    "A_ADVERSE_PASS_THROUGH": {
+      "attempted_later": 35,
+      "executed_wave2": 14,
+      "newly_eligible": 35,
+      "positive_debt_repaid_wave2_usdc": "58574.91415500",
+      "skipped": 21
+    },
+    "B_REFERENCE_ONLY": {
+      "attempted_later": 0,
+      "executed_wave2": 0,
+      "newly_eligible": 0,
+      "positive_debt_repaid_wave2_usdc": "0",
+      "skipped": 0
+    },
+    "C_MODERATE_LAGGED_SMOOTHED_PROXY": {
+      "attempted_later": 11,
+      "executed_wave2": 2,
+      "newly_eligible": 11,
+      "positive_debt_repaid_wave2_usdc": "4952.07991200",
+      "skipped": 9
+    },
+    "C_WEAK_LAGGED_SMOOTHED_PROXY": {
+      "attempted_later": 6,
+      "executed_wave2": 0,
+      "newly_eligible": 6,
+      "positive_debt_repaid_wave2_usdc": "0",
+      "skipped": 6
+    }
+  },
+  "unresolved": {
+    "event_rows": [],
+    "hf_rows": [],
+    "p2_literature_claim_ids": [],
+    "result_ids": [],
+    "skip_explanations": [],
+    "table_figure_ids": []
+  }
+}
