@@ -170,7 +170,7 @@ Reviewer độc lập `p2_independent_review` đã cho `PASS_P2_FINAL_VERSION_DE
 
 ## 9. P22 Hòa giải oracle và thực thi ngày 14/10/2026
 
-Nguồn được đọc riêng tại Frozen v3 `9842c4f2c35adb8b4ec906e1bc76afa825d197c7`, Oracle Diagnostic PR #11 `3011ba5e8cd23ee697c36d0aec6d047d8d58f653` và Scientific Addendum PR #12 `b1786c0215444ae616b7b2a97a0aa31d5fdfe18b` (source/artifact `c113fc190ed9eb1c9244bbf8e84e68176738ea95`). Hai PR thí nghiệm vẫn Draft/Open, chưa merge. Phần §1 và các review cũ là hồ sơ lịch sử; lần tiếp quản không tuyên bố đã đọc lại tài liệu đính kèm hoặc toàn văn học thuật. Bộ S01–S30, mức truy cập và U01–U08 giữ nguyên. Crosswalk đầy đủ: [35 claims/12 aliases](P2_CLAIM_EVIDENCE_CROSSWALK.json); [biên bản kiểm chứng](P2_ORACLE_RECONCILIATION.md).
+Nguồn được đọc riêng tại Frozen v3 `9842c4f2c35adb8b4ec906e1bc76afa825d197c7`, Oracle Diagnostic PR #11 `3011ba5e8cd23ee697c36d0aec6d047d8d58f653` và Scientific Addendum PR #12 `a5d3d73dc037ec4c3a90449b3ccce37331b10597` (source/artifact `c113fc1ec6dd98ffcc31241c1dbd1a93b20aa193`). Hai PR thí nghiệm vẫn Draft/Open, chưa merge. Phần §1 và các review cũ là hồ sơ lịch sử; lần tiếp quản không tuyên bố đã đọc lại tài liệu đính kèm hoặc toàn văn học thuật. Bộ S01–S30, mức truy cập và U01–U08 giữ nguyên. Crosswalk đầy đủ: [35 claims/12 aliases](P2_CLAIM_EVIDENCE_CROSSWALK.json); [biên bản kiểm chứng](P2_ORACLE_RECONCILIATION.md).
 
 **RQ1:** Kết quả thanh lý vòng hai được xác nhận trong các kịch bản stress phản thực với chính sách truyền giá bất lợi. Sự xuất hiện và mức độ thanh lý phụ thuộc vào chính sách định giá vị thế, giới hạn mẫu borrower và cấu hình thanh khoản.
 

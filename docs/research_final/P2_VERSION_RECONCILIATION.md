@@ -65,7 +65,7 @@ Bộ P2 đã hoàn tất phản biện độc lập và sẵn sàng cho Commande
 
 ## 7. Tiếp quản Scientific Claim & Evidence Reconciliation
 
-Starting P2 HEAD `8f5b635a316d72546b8a0eb0c2e8a66503b5d44f`; không có commit oracle reconciliation mới khi preflight. Integration branch được truy hồi trực tiếp tại `9842c4f2c35adb8b4ec906e1bc76afa825d197c7`. PR #11 `3011ba5e8cd23ee697c36d0aec6d047d8d58f653` và #12 `b1786c0215444ae616b7b2a97a0aa31d5fdfe18b` vẫn Draft/Open chưa merge. Không làm lại tổng quan hoặc sửa bundle của Codex.
+Starting P2 HEAD `8f5b635a316d72546b8a0eb0c2e8a66503b5d44f`; không có commit oracle reconciliation mới khi preflight. Integration branch được truy hồi trực tiếp tại `9842c4f2c35adb8b4ec906e1bc76afa825d197c7`. PR #11 `3011ba5e8cd23ee697c36d0aec6d047d8d58f653` và #12 `a5d3d73dc037ec4c3a90449b3ccce37331b10597` vẫn Draft/Open chưa merge. Không làm lại tổng quan hoặc sửa bundle của Codex.
 
 Kết quả thanh lý vòng hai được xác nhận trong các kịch bản stress phản thực với chính sách truyền giá bất lợi. Sự xuất hiện và mức độ thanh lý phụ thuộc vào chính sách định giá vị thế, giới hạn mẫu borrower và cấu hình thanh khoản.
 
@@ -78,3 +78,19 @@ Biên bản [P2_ORACLE_RECONCILIATION.md](P2_ORACLE_RECONCILIATION.md) và JSON 
 Đề nghị Commander nghiệm thu P2 với giới hạn đọc đã công bố; Issue #4 giữ open, PR #9 Draft; không merge và không tự cấp Scientific Content Lock.
 
 **Tool verification bổ sung:** Work tính tĩnh32.688 cặp HF (65.376 giá trị) từ canonical snapshot+Wave1 events, khớp72/72 summary rows và52/52 event HF, xác nhận36/36 route skips NO_MODELLED_USDC_DEBT; không chạy lại mô phỏng. Hai raw CSV vẫn chưa đọc đủ/cell-by-cell compare. Snapshot hash Git LF76dae833… khác accepted CRLF553e93a3… do serialization; biên bản và JSON ghi cả hai phạm vi, không sửa nguồn.
+
+## Final Cross-PR Reconciliation — 14/10/2026
+
+P2 starting commit `f523f7369011b5ed5b8bd881785bc44f40d1c9bd`; **P2 final commit được ghi đúng SHA trong GitHub handoff PR #9/Issue #4 sau push**, tránh self-reference trong chính commit. PR #11 `3011ba5e8cd23ee697c36d0aec6d047d8d58f653`; PR #12 current `a5d3d73dc037ec4c3a90449b3ccce37331b10597`, cả hai Draft/Open chưa merge. Valid integration source/artifact object: `c113fc1ec6dd98ffcc31241c1dbd1a93b20aa193` — đã kiểm trực tiếp Git object; pointer c113fc190ed9… trước đây không tồn tại và đã loại khỏi active locators.
+
+**35/35 claim và12/12 alias đã đối chiếu phiên bản mới**, đặc biệt C03/C07/C11/C13/C22/C23/C32/C33. [INT_T01_ELIGIBLE_VS_EXECUTED registry](https://github.com/Doquocdung1609/DeFiStress/blob/a5d3d73dc037ec4c3a90449b3ccce37331b10597/data/processed/research_final/scientific_integration_v1/table_figure_registry.json) trỏ đúng summary CSV và detail CSV, với18 selected cases ×4 policies ×454 verified borrowers;109 là cohort WETH/USDC riêng. Units là instances vàUSDC token quantity; portfolio-HF eligibility khác route eligibility/execution. Các số35/14,6/0,11/2 và36 skipped giữ nguyên, route-ineligible là không có modeled USDC debt.
+
+Superseded: nonexistent expanded source pointer c113fc190ed9…→`c113fc1ec6dd98ffcc31241c1dbd1a93b20aa193`; PR12 read HEAD b1786c0…→`a5d3d73dc037ec4c3a90449b3ccce37331b10597`; missing INT_T01 registration→registry mới; integration manifest/result/validation hash metadata cũ→digest tạiHEAD mới. Frozen/Oracle/numerical outcomes không thay.
+
+**Actual verification scope:** `WORK_INDEPENDENT_STATIC_RECONSTRUCTION` là phép tính tĩnh của Work ởP2 `f523f7369011b5ed5b8bd881785bc44f40d1c9bd` (32688 cặpHF,72 summary rows,52 available eventHF,36 route skips); lần sửa này giữ kết quả đó và kiểm immutable blob/summary consistency, không chạy lạiengine. `CODEX_REPLAY_VERIFICATION` là72 replay/hash và32688 HF comparison do Codex báo cáo. `CODEX_PREMERGE_AUDIT` là [báo cáo parser độc lập của Codex](https://github.com/Doquocdung1609/DeFiStress/blob/a5d3d73dc037ec4c3a90449b3ccce37331b10597/docs/research_final/SCIENTIFIC_PREMERGE_AUDIT_v1.md) ởaudit source a393377… (report đọc tạiPR12 currentHEAD), không phải Work đã đọc lạifull rawCSV. Codex19pytest/Ruff/mypy là kết quả Codex báo cáo, không phải test Work.
+
+**Hash provenance:** Windows CRLF checkout hashes và Git LF blob hashes định danh hai file-byte representations khác nhau; normalization chỉ chứng minh nội dung tương ứng, không biến hai digest khác nhau thành cùng mộtSHA. Canonical GitLF76dae833… khác WindowsCRLF553e93a3…; premerge audit ghi cảFrozen/Oracle/Integration domains và exact sourceHEAD.
+
+Remaining limitations: hai largeCSV vẫn `SOURCE_NOT_VERIFIED_IN_THIS_SESSION`, chưa cell-by-cell read/comparison bởi Work; actual oracle/fork/representative agents/extreme haircut/debt valuation/network/Terra negative limits giữ nguyên. Không numerical/scientific conflict mới được phát hiện trong phạm vi đọc. Không sửa mã/bundleCodex, không merge/Word final/Scientific Content Lock. Proposed **P2_FINAL_RECONCILED_READY_FOR_COMMANDER_REVIEW** với các read limitations được giữ.
+
+**Targeted command/result:** `python verify_p2_crosspr.py` → PASS_WITH_PRESERVED_READ_LIMITATIONS, 21 grouped checks; 35 claim/12 alias coverage, 96 locator instances (94 read-content/current-blob matches, 2 preserved unread largeCSV locators). Không cộng vào hoặc chạy lại730 checks của phiên trước; Codex19pytest là reported premerge result.

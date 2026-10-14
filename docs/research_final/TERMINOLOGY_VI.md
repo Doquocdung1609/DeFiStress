@@ -133,4 +133,4 @@ Các cụm cần tránh trong bản final: “xác suất khủng hoảng Aave 1
 - Policy A/B/C: giả định định giá phản thực. C weak α0,25/lag1/window3, C moderate α0,50/lag1/window2; chưa phải Aave/Chainlink oracle được kiểm chứng.
 - Tần suất Severe 280/10000 và Wilson chỉ thuộc baseline Policy A; targeted10 paths được chọn theo A depth≥2.
 
-Nguồn phiên bản: PR #11 `3011ba5e8cd23ee697c36d0aec6d047d8d58f653`; PR #12 `b1786c0215444ae616b7b2a97a0aa31d5fdfe18b`, đều chưa merge. Nội dung raw HF/state CSV chưa đọc đủ trong phiên được ghi rõ tại biên bản; không đổi nhãn học thuật vì giới hạn connector.
+Nguồn phiên bản: PR #11 `3011ba5e8cd23ee697c36d0aec6d047d8d58f653`; PR #12 `a5d3d73dc037ec4c3a90449b3ccce37331b10597`, đều chưa merge. Nội dung raw HF/state CSV chưa đọc đủ trong phiên được ghi rõ tại biên bản; không đổi nhãn học thuật vì giới hạn connector.
