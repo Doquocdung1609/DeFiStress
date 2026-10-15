@@ -1,0 +1,1389 @@
+{
+  "rows": [
+    {
+      "accepted_inference": "Conceptual linkage only; no measured cascade or full-market coverage.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "evidence_alias_ids": [],
+      "evidence_tier": "SCHOLARLY_SOURCE",
+      "final_gate_status": "ACCEPTED",
+      "namespace": "SCHOLARLY_P2",
+      "original_claim_id": "C01",
+      "registry_id": "P2:C01",
+      "required_limitations": [
+        "Tính liên thông chưa chứng minh cascade xảy ra"
+      ],
+      "rq_mapping": [
+        "RQ1",
+        "RQ2",
+        "RQ3",
+        "RQ4",
+        "RQ5",
+        "RQ6"
+      ],
+      "scholarly_source_ids": [
+        "S01",
+        "S29"
+      ],
+      "scientific_result_ids": [],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "HF algebra; portfolio aggregation and actual feed at block remain limitations.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "evidence_alias_ids": [],
+      "evidence_tier": "SCHOLARLY_SOURCE",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "SCHOLARLY_P2",
+      "original_claim_id": "C02",
+      "registry_id": "P2:C02",
+      "required_limitations": [
+        "Portfolio approximation cần đối chiếu Aave",
+        "SOURCE_NOT_VERIFIED_IN_THIS_SESSION: oversized borrower CSVs; no independent recomputation of all 32688 HF/state rows"
+      ],
+      "rq_mapping": [
+        "RQ1"
+      ],
+      "scholarly_source_ids": [
+        "S02",
+        "S03",
+        "S05"
+      ],
+      "scientific_result_ids": [],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "HF<1, modeled planner evaluation and execution with positive debt are distinct. A 35/14; B 0/0; C weak 6/0; C moderate 11/2 borrower-case instances.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "evidence_alias_ids": [
+        "E08",
+        "E12"
+      ],
+      "evidence_tier": "SCHOLARLY_SOURCE_WITH_SCOPED_MODEL_CROSSWALK",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "SCHOLARLY_P2",
+      "original_claim_id": "C03",
+      "registry_id": "P2:C03",
+      "required_limitations": [
+        "Không gọi mọi eligible là đã thanh lý",
+        "Independent static reconstruction of 32688 direct/post HF pairs matched all 72 summary counts and 52 available Wave2 event HF values; all 36 raw NOT_ELIGIBLE skips resolved to NO_MODELLED_USDC_DEBT. Oversized raw CSV cells remain unread, so no exact cell-by-cell source-file comparison claimed."
+      ],
+      "rq_mapping": [
+        "RQ1"
+      ],
+      "scholarly_source_ids": [
+        "S03",
+        "S09"
+      ],
+      "scientific_result_ids": [
+        "INT_A_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_A_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES"
+      ],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "LTV, LT and bonus are separate counterfactuals on frozen debt.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "evidence_alias_ids": [
+        "E07"
+      ],
+      "evidence_tier": "SCHOLARLY_SOURCE_WITH_SCOPED_MODEL_CROSSWALK",
+      "final_gate_status": "ACCEPTED",
+      "namespace": "SCHOLARLY_P2",
+      "original_claim_id": "C04",
+      "registry_id": "P2:C04",
+      "required_limitations": [
+        "LTV không viết lại frozen debt"
+      ],
+      "rq_mapping": [
+        "RQ6"
+      ],
+      "scholarly_source_ids": [
+        "S04",
+        "S06"
+      ],
+      "scientific_result_ids": [
+        "RQ6_LTV0755_CAPACITY",
+        "RQ6_LTV0825_CAPACITY",
+        "RQ6_LT083_UNLIQUIDATED",
+        "RQ6_BONUS103_SEIZED",
+        "RQ6_BONUS107_SEIZED"
+      ],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "Protocol version/bytecode not validated by documentation; modeled NOT_ELIGIBLE may reflect route asset scope, not an actual protocol failure.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "evidence_alias_ids": [
+        "E07",
+        "E08"
+      ],
+      "evidence_tier": "SCHOLARLY_SOURCE",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "SCHOLARLY_P2",
+      "original_claim_id": "C05",
+      "registry_id": "P2:C05",
+      "required_limitations": [
+        "Pin implementation/bytecode tại block; không dùng 50% phổ quát",
+        "Independent static reconstruction of 32688 direct/post HF pairs matched all 72 summary counts and 52 available Wave2 event HF values; all 36 raw NOT_ELIGIBLE skips resolved to NO_MODELLED_USDC_DEBT. Oversized raw CSV cells remain unread, so no exact cell-by-cell source-file comparison claimed."
+      ],
+      "rq_mapping": [
+        "RQ3"
+      ],
+      "scholarly_source_ids": [
+        "S06"
+      ],
+      "scientific_result_ids": [],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "Only the preserved abstract claim; no new quantitative incentive estimate.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "evidence_alias_ids": [],
+      "evidence_tier": "SCHOLARLY_SOURCE",
+      "final_gate_status": "ACCEPTED",
+      "namespace": "SCHOLARLY_P2",
+      "original_claim_id": "C06",
+      "registry_id": "P2:C06",
+      "required_limitations": [
+        "Không đưa tỷ lệ/cỡ mẫu chưa đọc"
+      ],
+      "rq_mapping": [
+        "RQ3"
+      ],
+      "scholarly_source_ids": [
+        "S09"
+      ],
+      "scientific_result_ids": [],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "DEX depth affects absorption/impact; new eligibility requires modeled valuation transmission. Extreme 90/95% haircuts are unobserved counterfactuals.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "evidence_alias_ids": [
+        "E01",
+        "E02"
+      ],
+      "evidence_tier": "SCHOLARLY_SOURCE_WITH_SCOPED_MODEL_CROSSWALK",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "SCHOLARLY_P2",
+      "original_claim_id": "C07",
+      "registry_id": "P2:C07",
+      "required_limitations": [
+        "TVL khác depth; 90/95% haircut là giả định tail",
+        "Independent static reconstruction of 32688 direct/post HF pairs matched all 72 summary counts and 52 available Wave2 event HF values; all 36 raw NOT_ELIGIBLE skips resolved to NO_MODELLED_USDC_DEBT. Oversized raw CSV cells remain unread, so no exact cell-by-cell source-file comparison claimed."
+      ],
+      "rq_mapping": [
+        "RQ2"
+      ],
+      "scholarly_source_ids": [
+        "S07",
+        "S08"
+      ],
+      "scientific_result_ids": [
+        "RQ2_CANONICAL_DEPTH_2PCT",
+        "RQ2_DEPTH2_HAIRCUT90_COUNT",
+        "RQ2_DEPTH2_HAIRCUT95_COUNT"
+      ],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "Token order, decimals and tick direction; corrected tick liquidity does not validate funded swaps or depeg unit conversion.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "evidence_alias_ids": [
+        "E01",
+        "E07"
+      ],
+      "evidence_tier": "SCHOLARLY_SOURCE",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "SCHOLARLY_P2",
+      "original_claim_id": "C08",
+      "registry_id": "P2:C08",
+      "required_limitations": [
+        "Lỗi reposition giữ L cũ đã sửa; USD/USDC/funded-swap caveat giữ"
+      ],
+      "rq_mapping": [
+        "RQ2"
+      ],
+      "scholarly_source_ids": [
+        "S08"
+      ],
+      "scientific_result_ids": [],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "One ordered WETH receipt route; remaining associations and route alone do not identify price causality or historical contagion.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "evidence_alias_ids": [
+        "E09",
+        "E11"
+      ],
+      "evidence_tier": "SCHOLARLY_SOURCE_WITH_SCOPED_MODEL_CROSSWALK",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "SCHOLARLY_P2",
+      "original_claim_id": "C09",
+      "registry_id": "P2:C09",
+      "required_limitations": [
+        "Một WETH route được kiểm receipt; không chứng minh price causality/cascade"
+      ],
+      "rq_mapping": [
+        "RQ1"
+      ],
+      "scholarly_source_ids": [
+        "S10"
+      ],
+      "scientific_result_ids": [
+        "HIST_DIRECT_TRANSFER_PATHS",
+        "HIST_SAME_TX_COOCCURRENCE",
+        "HIST_SAME_BLOCK_ASSOCIATION",
+        "HIST_TIME_WINDOW_ASSOCIATION"
+      ],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "External association and shared shock are different from model feedback; no historical causal chain.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "evidence_alias_ids": [
+        "E09",
+        "E10"
+      ],
+      "evidence_tier": "SCHOLARLY_SOURCE_WITH_SCOPED_MODEL_CROSSWALK",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "SCHOLARLY_P2",
+      "original_claim_id": "C10",
+      "registry_id": "P2:C10",
+      "required_limitations": [
+        "Cùng shock/market movement không là simulated endogenous wave"
+      ],
+      "rq_mapping": [
+        "RQ1"
+      ],
+      "scholarly_source_ids": [
+        "S11"
+      ],
+      "scientific_result_ids": [
+        "HIST_RPC_CENSUS_EVENTS",
+        "HIST_GRAPH_MATCHED_EVENTS"
+      ],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "The project has conditional modeled Wave 2 under A; this does not refute the external empirical null at another frequency/benchmark.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "evidence_alias_ids": [
+        "E03",
+        "E04",
+        "E08"
+      ],
+      "evidence_tier": "SCHOLARLY_SOURCE_WITH_SCOPED_MODEL_CROSSWALK",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "SCHOLARLY_P2",
+      "original_claim_id": "C11",
+      "registry_id": "P2:C11",
+      "required_limitations": [
+        "Khác tần suất/đối chứng; không dùng model wave 2 bác empirical null",
+        "Independent static reconstruction of 32688 direct/post HF pairs matched all 72 summary counts and 52 available Wave2 event HF values; all 36 raw NOT_ELIGIBLE skips resolved to NO_MODELLED_USDC_DEBT. Oversized raw CSV cells remain unread, so no exact cell-by-cell source-file comparison claimed."
+      ],
+      "rq_mapping": [
+        "RQ1"
+      ],
+      "scholarly_source_ids": [
+        "S13"
+      ],
+      "scientific_result_ids": [
+        "RQ1_MC_SEVERE_DEPTH2_COUNT"
+      ],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "Abstract-level fixed-spread/auction trade-off; no universal optimality or claim Aave implements auctions.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "evidence_alias_ids": [
+        "E07"
+      ],
+      "evidence_tier": "SCHOLARLY_SOURCE_WITH_SCOPED_MODEL_CROSSWALK",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "SCHOLARLY_P2",
+      "original_claim_id": "C12",
+      "registry_id": "P2:C12",
+      "required_limitations": [
+        "Không nói đấu giá luôn tốt hoặc Aave dùng đấu giá"
+      ],
+      "rq_mapping": [
+        "RQ3"
+      ],
+      "scholarly_source_ids": [
+        "S12"
+      ],
+      "scientific_result_ids": [
+        "RQ6_BONUS103_SEIZED",
+        "RQ6_BONUS107_SEIZED"
+      ],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "The same-sale sweep separates immediate impact from residual spread; policy-divergent later trades may change maxima. Arbitrage is price repositioning.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "evidence_alias_ids": [
+        "E01",
+        "E07"
+      ],
+      "evidence_tier": "SCHOLARLY_SOURCE_WITH_SCOPED_MODEL_CROSSWALK",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "SCHOLARLY_P2",
+      "original_claim_id": "C13",
+      "registry_id": "P2:C13",
+      "required_limitations": [
+        "Sweep intrawave giữ nguyên, residual giảm; price teleportation"
+      ],
+      "rq_mapping": [
+        "RQ4"
+      ],
+      "scholarly_source_ids": [
+        "S14"
+      ],
+      "scientific_result_ids": [
+        "RQ4_IMMEDIATE_PRICE_IMPACT",
+        "RQ4_SPREAD_ARB0",
+        "RQ4_SPREAD_ARB100"
+      ],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "Price, redemption and issuer statements remain distinct; no new stablecoin empirical estimate.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "evidence_alias_ids": [],
+      "evidence_tier": "SCHOLARLY_SOURCE",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "SCHOLARLY_P2",
+      "original_claim_id": "C14",
+      "registry_id": "P2:C14",
+      "required_limitations": [
+        "Circle là issuer account, không nghiên cứu độc lập"
+      ],
+      "rq_mapping": [
+        "RQ5"
+      ],
+      "scholarly_source_ids": [
+        "S15",
+        "S16"
+      ],
+      "scientific_result_ids": [],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "Ceteris paribus HF algebra for USDC debt; not full depeg/settlement validation.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "evidence_alias_ids": [
+        "E07"
+      ],
+      "evidence_tier": "SCHOLARLY_SOURCE_WITH_SCOPED_MODEL_CROSSWALK",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "SCHOLARLY_P2",
+      "original_claim_id": "C15",
+      "registry_id": "P2:C15",
+      "required_limitations": [
+        "Là dấu kênh valuation; chưa đầy đủ stress stablecoin"
+      ],
+      "rq_mapping": [
+        "RQ5"
+      ],
+      "scholarly_source_ids": [
+        "S02",
+        "S03"
+      ],
+      "scientific_result_ids": [
+        "RQ5_HF_LT1_USDC_090",
+        "RQ5_HF_LT1_USDC_100",
+        "RQ5_HF_LT1_USDC_110"
+      ],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "Preserved JFE abstract and NBER predecessor are one study; no new Terra quantitative claim.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "evidence_alias_ids": [],
+      "evidence_tier": "SCHOLARLY_SOURCE",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "SCHOLARLY_P2",
+      "original_claim_id": "C16",
+      "registry_id": "P2:C16",
+      "required_limitations": [
+        "Không gán chỉ một thủ phạm hoặc thêm tỷ lệ không kiểm"
+      ],
+      "rq_mapping": [],
+      "scholarly_source_ids": [
+        "S17",
+        "S18"
+      ],
+      "scientific_result_ids": [],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "Design boundary between Terra and Aave; not a numerical result attributed to JFE.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "evidence_alias_ids": [],
+      "evidence_tier": "SCHOLARLY_SOURCE",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "SCHOLARLY_P2",
+      "original_claim_id": "C17",
+      "registry_id": "P2:C17",
+      "required_limitations": [
+        "Kết luận giới hạn của nghiên cứu, không trích như phát hiện định lượng JFE"
+      ],
+      "rq_mapping": [
+        "RQ1",
+        "RQ2",
+        "RQ3",
+        "RQ4",
+        "RQ5",
+        "RQ6"
+      ],
+      "scholarly_source_ids": [
+        "S17",
+        "S02",
+        "S06"
+      ],
+      "scientific_result_ids": [],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "ABM suitability is methodological support, not calibration or evidence of multiple modeled bots.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "evidence_alias_ids": [],
+      "evidence_tier": "SCHOLARLY_SOURCE",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "SCHOLARLY_P2",
+      "original_claim_id": "C18",
+      "registry_id": "P2:C18",
+      "required_limitations": [
+        "Không chứng minh tham số hay nhiều bot trong implementation"
+      ],
+      "rq_mapping": [
+        "RQ1",
+        "RQ2",
+        "RQ3",
+        "RQ4",
+        "RQ5",
+        "RQ6"
+      ],
+      "scholarly_source_ids": [
+        "S19",
+        "S20"
+      ],
+      "scientific_result_ids": [],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "One representative liquidator/arbitrageur, no capital recycling, no automatic plan splitting; no estimated competitive bot market.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "evidence_alias_ids": [
+        "E01",
+        "E07"
+      ],
+      "evidence_tier": "SCHOLARLY_SOURCE",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "SCHOLARLY_P2",
+      "original_claim_id": "C19",
+      "registry_id": "P2:C19",
+      "required_limitations": [
+        "Không gọi nhiều bot cạnh tranh được ước lượng hành vi",
+        "Independent static reconstruction of 32688 direct/post HF pairs matched all 72 summary counts and 52 available Wave2 event HF values; all 36 raw NOT_ELIGIBLE skips resolved to NO_MODELLED_USDC_DEBT. Oversized raw CSV cells remain unread, so no exact cell-by-cell source-file comparison claimed."
+      ],
+      "rq_mapping": [
+        "RQ3"
+      ],
+      "scholarly_source_ids": [],
+      "scientific_result_ids": [],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "ODD/code linkage is reporting guidance; provenance is not automatic validity certification.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "evidence_alias_ids": [
+        "E12"
+      ],
+      "evidence_tier": "SCHOLARLY_SOURCE",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "SCHOLARLY_P2",
+      "original_claim_id": "C20",
+      "registry_id": "P2:C20",
+      "required_limitations": [
+        "ODD không tự cấp chứng nhận mô hình đúng"
+      ],
+      "rq_mapping": [
+        "RQ1",
+        "RQ2",
+        "RQ3",
+        "RQ4",
+        "RQ5",
+        "RQ6"
+      ],
+      "scholarly_source_ids": [
+        "S21"
+      ],
+      "scientific_result_ids": [],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "Industry forum content is not peer-reviewed reproducible calibration.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "evidence_alias_ids": [],
+      "evidence_tier": "SCHOLARLY_SOURCE",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "SCHOLARLY_P2",
+      "original_claim_id": "C21",
+      "registry_id": "P2:C21",
+      "required_limitations": [
+        "Forum không peer reviewed, không claim tái tạo Gauntlet"
+      ],
+      "rq_mapping": [
+        "RQ2"
+      ],
+      "scholarly_source_ids": [
+        "S22"
+      ],
+      "scientific_result_ids": [],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "13k independent batch identities; nested prefixes not summed; no rerun in repair. Ten paths intentionally selected under A, not a fresh probability sample.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "evidence_alias_ids": [
+        "E04",
+        "E08",
+        "E12"
+      ],
+      "evidence_tier": "SCHOLARLY_SOURCE_WITH_SCOPED_MODEL_CROSSWALK",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "SCHOLARLY_P2",
+      "original_claim_id": "C22",
+      "registry_id": "P2:C22",
+      "required_limitations": [
+        "13k batch identities, 0 duplicates, 21/21 reproduce; legacy duration unavailable",
+        "Independent static reconstruction of 32688 direct/post HF pairs matched all 72 summary counts and 52 available Wave2 event HF values; all 36 raw NOT_ELIGIBLE skips resolved to NO_MODELLED_USDC_DEBT. Oversized raw CSV cells remain unread, so no exact cell-by-cell source-file comparison claimed."
+      ],
+      "rq_mapping": [
+        "RQ1",
+        "RQ2",
+        "RQ3",
+        "RQ4",
+        "RQ5",
+        "RQ6"
+      ],
+      "scholarly_source_ids": [
+        "S23"
+      ],
+      "scientific_result_ids": [
+        "MC_INDEPENDENT_PATHS_VALIDATED"
+      ],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "Wilson score interval differs from adjusted Wald; 280/10000 is conditional Severe A frequency, never actual Ethereum crisis probability.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "evidence_alias_ids": [
+        "E03",
+        "E04",
+        "E05"
+      ],
+      "evidence_tier": "SCHOLARLY_SOURCE_WITH_SCOPED_MODEL_CROSSWALK",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "SCHOLARLY_P2",
+      "original_claim_id": "C23",
+      "registry_id": "P2:C23",
+      "required_limitations": [
+        "Tên lịch sử NIST không đổi tên Wilson; không forecast"
+      ],
+      "rq_mapping": [
+        "RQ1"
+      ],
+      "scholarly_source_ids": [
+        "S24"
+      ],
+      "scientific_result_ids": [
+        "RQ1_MC_SEVERE_DEPTH2_COUNT",
+        "RQ1_MC_SEVERE_DEPTH2_FREQUENCY"
+      ],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "Composite exposure tail includes repayment; not realized loss/market ES. Units and quantile ties retained.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "evidence_alias_ids": [
+        "E04"
+      ],
+      "evidence_tier": "SCHOLARLY_SOURCE",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "SCHOLARLY_P2",
+      "original_claim_id": "C24",
+      "registry_id": "P2:C24",
+      "required_limitations": [
+        "Repayment không phải loss; giữ units/ties/provenance"
+      ],
+      "rq_mapping": [
+        "RQ2"
+      ],
+      "scholarly_source_ids": [
+        "S13"
+      ],
+      "scientific_result_ids": [],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "Formal multilayer background; no project supra-adjacency or full multilayer contagion validation.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "evidence_alias_ids": [],
+      "evidence_tier": "SCHOLARLY_SOURCE",
+      "final_gate_status": "ACCEPTED",
+      "namespace": "SCHOLARLY_P2",
+      "original_claim_id": "C25",
+      "registry_id": "P2:C25",
+      "required_limitations": [
+        "Nhãn lớp/nhiều cạnh chưa đủ chứng minh supra adjacency"
+      ],
+      "rq_mapping": [],
+      "scholarly_source_ids": [
+        "S25"
+      ],
+      "scientific_result_ids": [],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "Typed aggregate structural metrics; no risk-weighted multilayer empirical inference.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "evidence_alias_ids": [],
+      "evidence_tier": "SCHOLARLY_SOURCE",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "SCHOLARLY_P2",
+      "original_claim_id": "C26",
+      "registry_id": "P2:C26",
+      "required_limitations": [
+        "Gộp max; structural metric chưa risk-weighted"
+      ],
+      "rq_mapping": [],
+      "scholarly_source_ids": [
+        "S25",
+        "S26"
+      ],
+      "scientific_result_ids": [],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "Shortest-path bridge interpretation only; directed/unweighted implementation not universal risk importance.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "evidence_alias_ids": [],
+      "evidence_tier": "SCHOLARLY_SOURCE",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "SCHOLARLY_P2",
+      "original_claim_id": "C27",
+      "registry_id": "P2:C27",
+      "required_limitations": [
+        "Directed/unweighted variant phải công bố; không universal importance"
+      ],
+      "rq_mapping": [],
+      "scholarly_source_ids": [
+        "S28"
+      ],
+      "scientific_result_ids": [],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "DebtRank literature is distinct from normalized structural centrality.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "evidence_alias_ids": [],
+      "evidence_tier": "SCHOLARLY_SOURCE",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "SCHOLARLY_P2",
+      "original_claim_id": "C28",
+      "registry_id": "P2:C28",
+      "required_limitations": [
+        "Dự án chưa implement DebtRank; không đổi tên điểm normalized"
+      ],
+      "rq_mapping": [],
+      "scholarly_source_ids": [
+        "S27"
+      ],
+      "scientific_result_ids": [],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "Restricted autoregression/uncorrelated-error CV claim; no universal ban on K-fold and no proof of no leakage.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "evidence_alias_ids": [],
+      "evidence_tier": "SCHOLARLY_SOURCE",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "SCHOLARLY_P2",
+      "original_claim_id": "C29",
+      "registry_id": "P2:C29",
+      "required_limitations": [
+        "Không dẫn như lệnh cấm K-fold chung hoặc bằng chứng no-leakage"
+      ],
+      "rq_mapping": [],
+      "scholarly_source_ids": [
+        "S30"
+      ],
+      "scientific_result_ids": [],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "Zero HIGH hours before initial depeg and negative lead; reconstruction/backtest is not successful out-of-sample forecasting.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "evidence_alias_ids": [],
+      "evidence_tier": "SCHOLARLY_SOURCE_WITH_SCOPED_MODEL_CROSSWALK",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "SCHOLARLY_P2",
+      "original_claim_id": "C30",
+      "registry_id": "P2:C30",
+      "required_limitations": [
+        "Source paper không chứng nhận retrospective forecast"
+      ],
+      "rq_mapping": [],
+      "scholarly_source_ids": [],
+      "scientific_result_ids": [
+        "TERRA_PRE_DEPEG_HIGH_ALERT_HOURS",
+        "TERRA_INITIAL_DEPEG_HIGH_LEAD"
+      ],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "Proposed traceable integration contribution; no evidence for first-ever novelty or superiority. Not a quantitative model result.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "evidence_alias_ids": [
+        "E12"
+      ],
+      "evidence_tier": "SCHOLARLY_SOURCE",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "SCHOLARLY_P2",
+      "original_claim_id": "C31",
+      "registry_id": "P2:C31",
+      "required_limitations": [
+        "Không first ever; contribution còn phải audit thực hiện"
+      ],
+      "rq_mapping": [
+        "RQ1",
+        "RQ2",
+        "RQ3",
+        "RQ4",
+        "RQ5",
+        "RQ6"
+      ],
+      "scholarly_source_ids": [
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S19",
+        "S20",
+        "S21",
+        "S22"
+      ],
+      "scientific_result_ids": [],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "A/B/C are counterfactual policies; A is not actual Aave spot feed, B does not prove real feed invariance, C is hypothetical and uncalibrated.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "evidence_alias_ids": [
+        "E02",
+        "E04",
+        "E08",
+        "E12"
+      ],
+      "evidence_tier": "SCHOLARLY_SOURCE",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "SCHOLARLY_P2",
+      "original_claim_id": "C32",
+      "registry_id": "P2:C32",
+      "required_limitations": [
+        "Synthetic feedback không là Aave oracle thật",
+        "Independent static reconstruction of 32688 direct/post HF pairs matched all 72 summary counts and 52 available Wave2 event HF values; all 36 raw NOT_ELIGIBLE skips resolved to NO_MODELLED_USDC_DEBT. Oversized raw CSV cells remain unread, so no exact cell-by-cell source-file comparison claimed."
+      ],
+      "rq_mapping": [
+        "RQ1"
+      ],
+      "scholarly_source_ids": [
+        "S05"
+      ],
+      "scientific_result_ids": [],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "HF transition establishes modeled eligibility under a policy, not execution. All 36 non-executed instances have raw NOT_ELIGIBLE; Work independently resolves NO_MODELLED_USDC_DEBT using snapshot plus recorded Wave1 events; source raw CSV cells remain unread.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "evidence_alias_ids": [
+        "E03",
+        "E08"
+      ],
+      "evidence_tier": "SCHOLARLY_SOURCE_WITH_SCOPED_MODEL_CROSSWALK",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "SCHOLARLY_P2",
+      "original_claim_id": "C33",
+      "registry_id": "P2:C33",
+      "required_limitations": [
+        "Chỉ simulated endogenous eligibility; không phải cascade lịch sử",
+        "Independent static reconstruction of 32688 direct/post HF pairs matched all 72 summary counts and 52 available Wave2 event HF values; all 36 raw NOT_ELIGIBLE skips resolved to NO_MODELLED_USDC_DEBT. Oversized raw CSV cells remain unread, so no exact cell-by-cell source-file comparison claimed."
+      ],
+      "rq_mapping": [
+        "RQ1"
+      ],
+      "scholarly_source_ids": [
+        "S03",
+        "S05"
+      ],
+      "scientific_result_ids": [
+        "INT_A_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_A_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES"
+      ],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "Tick traversal updates active liquidity; price repositioning remains without funded executable swap/fork.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "evidence_alias_ids": [
+        "E01"
+      ],
+      "evidence_tier": "SCHOLARLY_SOURCE",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "SCHOLARLY_P2",
+      "original_claim_id": "C34",
+      "registry_id": "P2:C34",
+      "required_limitations": [
+        "Không giữ lỗi L cũ; funded swap/fork chưa xác nhận"
+      ],
+      "rq_mapping": [
+        "RQ2"
+      ],
+      "scholarly_source_ids": [
+        "S08"
+      ],
+      "scientific_result_ids": [],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "USDC/USD units and limited valuation scope preserved; no full depeg repricing claim.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "evidence_alias_ids": [
+        "E07"
+      ],
+      "evidence_tier": "SCHOLARLY_SOURCE_WITH_SCOPED_MODEL_CROSSWALK",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "SCHOLARLY_P2",
+      "original_claim_id": "C35",
+      "registry_id": "P2:C35",
+      "required_limitations": [
+        "Đã kiểm version; valuation sensitivity không full-depeg validation"
+      ],
+      "rq_mapping": [
+        "RQ5"
+      ],
+      "scholarly_source_ids": [],
+      "scientific_result_ids": [
+        "RQ5_LIQUIDATED_DEBT_TOKEN_QTY",
+        "RQ5_LIQUIDATED_DEBT_USD"
+      ],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "Wave 2 exists in selected tail cases under Policy A and is sensitive to valuation policy.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_audit.csv",
+      "evidence_alias_ids": [
+        "E02",
+        "E03",
+        "E04",
+        "E08",
+        "E12"
+      ],
+      "evidence_tier": "MODEL_COMPUTED_COUNTERFACTUAL",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "INTEGRATION_SCIENTIFIC",
+      "original_claim_id": "CL_INT_RQ1_POLICY_CONDITIONAL",
+      "registry_id": "INT:CL_INT_RQ1_POLICY_CONDITIONAL",
+      "required_limitations": [
+        "No oracle-independent threshold, actual Aave probability or historical causal cascade."
+      ],
+      "rq_mapping": [
+        "RQ1"
+      ],
+      "scholarly_source_ids": [
+        "S03",
+        "S05",
+        "S09"
+      ],
+      "scientific_result_ids": [
+        "RQ1_GRID60_DEPTH2",
+        "RQ1_MC_SEVERE_DEPTH2_COUNT",
+        "INT_A_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
+        "INT_B_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
+        "INT_C_WEAK_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
+        "INT_C_MODERATE_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4"
+      ],
+      "table_figure_ids": [
+        "INT_T01_ELIGIBLE_VS_EXECUTED",
+        "F01",
+        "F02"
+      ]
+    },
+    {
+      "accepted_inference": "Frozen numerical counts remain valid under Policy A.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "data/processed/research_final/frozen_v3/results_registry.json",
+      "evidence_alias_ids": [
+        "E02",
+        "E03",
+        "E04",
+        "E05",
+        "E08",
+        "E12"
+      ],
+      "evidence_tier": "MODEL_COMPUTED_COUNTERFACTUAL",
+      "final_gate_status": "REJECTED_AS_WORDED_SUPERSEDED",
+      "namespace": "INTEGRATION_SCIENTIFIC",
+      "original_claim_id": "CL_FROZEN_RQ1_UNQUALIFIED_WORDING",
+      "registry_id": "INT:CL_FROZEN_RQ1_UNQUALIFIED_WORDING",
+      "required_limitations": [
+        "Downstream wording must add Policy A qualification."
+      ],
+      "rq_mapping": [
+        "RQ1"
+      ],
+      "scholarly_source_ids": [
+        "S03",
+        "S05",
+        "S24"
+      ],
+      "scientific_result_ids": [
+        "RQ1_GRID60_DEPTH2",
+        "RQ1_MC_SEVERE_DEPTH2_COUNT"
+      ],
+      "table_figure_ids": [
+        "F01",
+        "F02"
+      ]
+    },
+    {
+      "accepted_inference": "Liquidity changes DEX absorption; valuation policy controls whether resulting DEX state changes borrower HF.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_audit.csv",
+      "evidence_alias_ids": [
+        "E01",
+        "E02",
+        "E04",
+        "E07",
+        "E08",
+        "E12"
+      ],
+      "evidence_tier": "MODEL_COMPUTED_COUNTERFACTUAL",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "INTEGRATION_SCIENTIFIC",
+      "original_claim_id": "CL_INT_RQ2_TWO_CHANNELS",
+      "registry_id": "INT:CL_INT_RQ2_TWO_CHANNELS",
+      "required_limitations": [
+        "Liquidity weakness alone does not guarantee new eligibility or execution."
+      ],
+      "rq_mapping": [
+        "RQ2"
+      ],
+      "scholarly_source_ids": [
+        "S05",
+        "S07",
+        "S08"
+      ],
+      "scientific_result_ids": [
+        "RQ2_CANONICAL_DEPTH_2PCT",
+        "RQ2_DEPTH2_HAIRCUT90_COUNT",
+        "RQ2_DEPTH2_HAIRCUT95_COUNT"
+      ],
+      "table_figure_ids": [
+        "INT_T01_ELIGIBLE_VS_EXECUTED",
+        "F01",
+        "F02"
+      ]
+    },
+    {
+      "accepted_inference": "Tail haircuts reduce absorption and increase modeled DEX distortion.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "data/processed/research_final/frozen_v3/rq_answer_matrix.json",
+      "evidence_alias_ids": [
+        "E01",
+        "E02",
+        "E04",
+        "E08",
+        "E12"
+      ],
+      "evidence_tier": "MODEL_COMPUTED_COUNTERFACTUAL",
+      "final_gate_status": "REJECTED_AS_WORDED_SUPERSEDED",
+      "namespace": "INTEGRATION_SCIENTIFIC",
+      "original_claim_id": "CL_FROZEN_RQ2_DIRECT_ELIGIBILITY_WORDING",
+      "registry_id": "INT:CL_FROZEN_RQ2_DIRECT_ELIGIBILITY_WORDING",
+      "required_limitations": [
+        "Wording that liquidity itself creates eligibility requires an oracle-policy qualifier."
+      ],
+      "rq_mapping": [
+        "RQ2"
+      ],
+      "scholarly_source_ids": [
+        "S05",
+        "S07",
+        "S08"
+      ],
+      "scientific_result_ids": [
+        "RQ2_DEPTH2_HAIRCUT90_COUNT",
+        "RQ2_DEPTH2_HAIRCUT95_COUNT"
+      ],
+      "table_figure_ids": [
+        "F01",
+        "T05"
+      ]
+    },
+    {
+      "accepted_inference": "HF eligibility, engine evaluation and positive-debt execution are distinct gates; skips carry explicit reason codes.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
+      "evidence_alias_ids": [
+        "E01",
+        "E03",
+        "E07",
+        "E08",
+        "E12"
+      ],
+      "evidence_tier": "MODEL_COMPUTED_COUNTERFACTUAL",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "INTEGRATION_SCIENTIFIC",
+      "original_claim_id": "CL_INT_ELIGIBLE_NOT_EXECUTED",
+      "registry_id": "INT:CL_INT_ELIGIBLE_NOT_EXECUTED",
+      "required_limitations": [
+        "Execution is modeled by one representative liquidator and does not establish external contagion."
+      ],
+      "rq_mapping": [
+        "RQ3"
+      ],
+      "scholarly_source_ids": [
+        "S03",
+        "S05",
+        "S06",
+        "S09"
+      ],
+      "scientific_result_ids": [
+        "INT_A_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_A_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
+        "INT_A_NEWLY_ELIGIBLE_SKIPPED_INSTANCES"
+      ],
+      "table_figure_ids": [
+        "INT_T01_ELIGIBLE_VS_EXECUTED"
+      ]
+    },
+    {
+      "accepted_inference": "Capital binds at low tested levels; delay does not change severity in tested range.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "data/processed/research_final/frozen_v3/results_registry.json",
+      "evidence_alias_ids": [
+        "E01",
+        "E07",
+        "E08",
+        "E12"
+      ],
+      "evidence_tier": "MODEL_COMPUTED_COUNTERFACTUAL",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "INTEGRATION_SCIENTIFIC",
+      "original_claim_id": "CL_INT_RQ3_PRESERVED",
+      "registry_id": "INT:CL_INT_RQ3_PRESERVED",
+      "required_limitations": [
+        "Representative agent, no capital recycling, no fork."
+      ],
+      "rq_mapping": [
+        "RQ3"
+      ],
+      "scholarly_source_ids": [
+        "S03",
+        "S06",
+        "S09"
+      ],
+      "scientific_result_ids": [
+        "RQ3_CAPITAL_25_LIQUIDATED",
+        "RQ3_CAPITAL_100_LIQUIDATED",
+        "RQ3_DELAY_SEVERITY_CHANGE"
+      ],
+      "table_figure_ids": [
+        "F03",
+        "T06"
+      ]
+    },
+    {
+      "accepted_inference": "Arbitrage reduces residual spread but not the same sale's immediate impact.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "data/processed/research_final/frozen_v3/results_registry.json",
+      "evidence_alias_ids": [
+        "E01",
+        "E07"
+      ],
+      "evidence_tier": "MODEL_COMPUTED_COUNTERFACTUAL",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "INTEGRATION_SCIENTIFIC",
+      "original_claim_id": "CL_INT_RQ4_PRESERVED",
+      "registry_id": "INT:CL_INT_RQ4_PRESERVED",
+      "required_limitations": [
+        "Price teleportation; not funded Mainnet execution."
+      ],
+      "rq_mapping": [
+        "RQ4"
+      ],
+      "scholarly_source_ids": [
+        "S08",
+        "S14"
+      ],
+      "scientific_result_ids": [
+        "RQ4_IMMEDIATE_PRICE_IMPACT",
+        "RQ4_SPREAD_ARB0",
+        "RQ4_SPREAD_ARB100"
+      ],
+      "table_figure_ids": [
+        "F04",
+        "T07"
+      ]
+    },
+    {
+      "accepted_inference": "USDC debt valuation changes HF ceteris paribus; token and USD units remain separate.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "data/processed/research_final/frozen_v3/results_registry.json",
+      "evidence_alias_ids": [
+        "E07"
+      ],
+      "evidence_tier": "MODEL_COMPUTED_COUNTERFACTUAL",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "INTEGRATION_SCIENTIFIC",
+      "original_claim_id": "CL_INT_RQ5_PRESERVED",
+      "registry_id": "INT:CL_INT_RQ5_PRESERVED",
+      "required_limitations": [
+        "No liquidity/redemption/settlement channel."
+      ],
+      "rq_mapping": [
+        "RQ5"
+      ],
+      "scholarly_source_ids": [
+        "S02",
+        "S03",
+        "S15",
+        "S16"
+      ],
+      "scientific_result_ids": [
+        "RQ5_HF_LT1_USDC_090",
+        "RQ5_HF_LT1_USDC_100",
+        "RQ5_HF_LT1_USDC_110",
+        "RQ5_LIQUIDATED_DEBT_TOKEN_QTY",
+        "RQ5_LIQUIDATED_DEBT_USD"
+      ],
+      "table_figure_ids": [
+        "T08"
+      ]
+    },
+    {
+      "accepted_inference": "LTV, LT and bonus govern distinct mechanisms and are not interchangeable.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "data/processed/research_final/frozen_v3/results_registry.json",
+      "evidence_alias_ids": [
+        "E07",
+        "E08"
+      ],
+      "evidence_tier": "MODEL_COMPUTED_COUNTERFACTUAL",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "INTEGRATION_SCIENTIFIC",
+      "original_claim_id": "CL_INT_RQ6_PRESERVED",
+      "registry_id": "INT:CL_INT_RQ6_PRESERVED",
+      "required_limitations": [
+        "No borrower behavior/re-underwriting response."
+      ],
+      "rq_mapping": [
+        "RQ6"
+      ],
+      "scholarly_source_ids": [
+        "S04",
+        "S06",
+        "S12"
+      ],
+      "scientific_result_ids": [
+        "RQ6_LTV0755_CAPACITY",
+        "RQ6_LTV0825_CAPACITY",
+        "RQ6_LT083_UNLIQUIDATED",
+        "RQ6_BONUS103_SEIZED",
+        "RQ6_BONUS107_SEIZED"
+      ],
+      "table_figure_ids": [
+        "T09"
+      ]
+    },
+    {
+      "accepted_inference": "28 Pool events; 27 Graph-matched; association tiers 1/2/23/1.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "data/processed/research_final/frozen_v3/results_registry.json",
+      "evidence_alias_ids": [
+        "E03",
+        "E04",
+        "E08",
+        "E09",
+        "E10",
+        "E11"
+      ],
+      "evidence_tier": "ONCHAIN_HISTORICAL_OBSERVATION",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "INTEGRATION_SCIENTIFIC",
+      "original_claim_id": "CL_INT_HISTORICAL_TIERS_PRESERVED",
+      "registry_id": "INT:CL_INT_HISTORICAL_TIERS_PRESERVED",
+      "required_limitations": [
+        "Co-occurrence/receipt route does not prove price causality or endogenous cascade."
+      ],
+      "rq_mapping": [],
+      "scholarly_source_ids": [
+        "S10",
+        "S11",
+        "S13"
+      ],
+      "scientific_result_ids": [
+        "HIST_RPC_CENSUS_EVENTS",
+        "HIST_GRAPH_MATCHED_EVENTS",
+        "HIST_DIRECT_TRANSFER_PATHS",
+        "HIST_SAME_TX_COOCCURRENCE",
+        "HIST_SAME_BLOCK_ASSOCIATION",
+        "HIST_TIME_WINDOW_ASSOCIATION"
+      ],
+      "table_figure_ids": [
+        "T10"
+      ]
+    },
+    {
+      "accepted_inference": "Negative cutoff-safe early-warning finding remains preserved.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "data/processed/research_final/frozen_v3/results_registry.json",
+      "evidence_alias_ids": [],
+      "evidence_tier": "ONCHAIN_HISTORICAL_OBSERVATION",
+      "final_gate_status": "ACCEPTED_WITH_LIMITATIONS",
+      "namespace": "INTEGRATION_SCIENTIFIC",
+      "original_claim_id": "CL_INT_TERRA_NEGATIVE_PRESERVED",
+      "registry_id": "INT:CL_INT_TERRA_NEGATIVE_PRESERVED",
+      "required_limitations": [
+        "No successful out-of-sample forecasting claim."
+      ],
+      "rq_mapping": [],
+      "scholarly_source_ids": [
+        "S02",
+        "S06",
+        "S17",
+        "S18",
+        "S30"
+      ],
+      "scientific_result_ids": [
+        "TERRA_PRE_DEPEG_HIGH_ALERT_HOURS",
+        "TERRA_INITIAL_DEPEG_HIGH_LEAD"
+      ],
+      "table_figure_ids": [
+        "T11"
+      ]
+    },
+    {
+      "accepted_inference": "No affirmative inference allowed.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "docs/research_final/REFERENCE_EVIDENCE_MATRIX.md",
+      "evidence_alias_ids": [
+        "E02",
+        "E04",
+        "E08",
+        "E12"
+      ],
+      "evidence_tier": "EXTERNAL_EMPIRICAL_INFERENCE",
+      "final_gate_status": "UNSUPPORTED",
+      "namespace": "INTEGRATION_SCIENTIFIC",
+      "original_claim_id": "CL_UNSUPPORTED_AAVE_USES_UNISWAP_SPOT",
+      "registry_id": "INT:CL_UNSUPPORTED_AAVE_USES_UNISWAP_SPOT",
+      "required_limitations": [
+        "A/B/C are counterfactual valuation policies; actual Aave/Chainlink feed behavior is not validated."
+      ],
+      "rq_mapping": [
+        "RQ1",
+        "RQ2"
+      ],
+      "scholarly_source_ids": [
+        "S02",
+        "S03",
+        "S05"
+      ],
+      "scientific_result_ids": [],
+      "table_figure_ids": []
+    },
+    {
+      "accepted_inference": "Temporal/transaction association only.",
+      "artifact_locator_commit": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+      "artifact_path": "data/processed/research_final/frozen_v3/results_registry.json",
+      "evidence_alias_ids": [
+        "E03",
+        "E04",
+        "E08",
+        "E09",
+        "E10",
+        "E11"
+      ],
+      "evidence_tier": "EXTERNAL_EMPIRICAL_INFERENCE",
+      "final_gate_status": "UNSUPPORTED",
+      "namespace": "INTEGRATION_SCIENTIFIC",
+      "original_claim_id": "CL_UNSUPPORTED_HISTORICAL_CAUSAL_CONTAGION",
+      "registry_id": "INT:CL_UNSUPPORTED_HISTORICAL_CAUSAL_CONTAGION",
+      "required_limitations": [
+        "No identified historical endogenous liquidation-price-liquidation causal chain."
+      ],
+      "rq_mapping": [
+        "RQ1",
+        "RQ2"
+      ],
+      "scholarly_source_ids": [
+        "S10",
+        "S11",
+        "S13"
+      ],
+      "scientific_result_ids": [
+        "HIST_DIRECT_TRANSFER_PATHS",
+        "HIST_SAME_TX_COOCCURRENCE",
+        "HIST_SAME_BLOCK_ASSOCIATION",
+        "HIST_TIME_WINDOW_ASSOCIATION"
+      ],
+      "table_figure_ids": [
+        "T10"
+      ]
+    }
+  ],
+  "schema_version": "final-accepted-claims-v1.0"
+}

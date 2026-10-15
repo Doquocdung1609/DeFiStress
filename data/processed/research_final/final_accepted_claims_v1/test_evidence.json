@@ -1,0 +1,20 @@
+{
+  "commands": [
+    {
+      "command": ".\\.venv\\Scripts\\python.exe -m pytest -q tests/test_final_accepted_claims_v1.py tests/test_frozen_v3.py tests/test_oracle_diagnostic_artifacts.py tests/test_scientific_integration_v1.py tests/test_scientific_premerge_audit_v1.py",
+      "result": "PASS — 30 passed"
+    },
+    {
+      "command": ".\\.venv\\Scripts\\python.exe -m ruff check scripts/research/build_final_accepted_claims_v1.py tests/test_final_accepted_claims_v1.py",
+      "result": "PASS"
+    },
+    {
+      "command": ".\\.venv\\Scripts\\python.exe -m mypy scripts/research/build_final_accepted_claims_v1.py",
+      "result": "PASS — no issues in 1 source file"
+    }
+  ],
+  "failed": 0,
+  "passed": 30,
+  "status": "PASS",
+  "summary": "Final relevant suite: 30 passed; Ruff passed; mypy passed. The validator is separately implemented but run by the same executor, not an external independent reviewer."
+}
