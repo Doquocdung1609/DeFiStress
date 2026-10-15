@@ -1,0 +1,340 @@
+{
+  "research_questions": [
+    {
+      "accepted_integration_claim_ids": [
+        "CL_INT_RQ1_POLICY_CONDITIONAL"
+      ],
+      "disallowed_or_superseded_claim_ids": [
+        "CL_FROZEN_RQ1_UNQUALIFIED_WORDING",
+        "CL_UNSUPPORTED_AAVE_USES_UNISWAP_SPOT",
+        "CL_UNSUPPORTED_HISTORICAL_CAUSAL_CONTAGION"
+      ],
+      "full_original_research_question": "Với một snapshot borrower và liquidity thực, cú sốc giá ETH tối thiểu ở mức nào bắt đầu tạo liquidation cascade (cascade depth ≥ 2)?",
+      "historical_evidence": "28 Pool events, 27 Graph-matched; tiers 1/2/23/1; association only, no causal contagion.",
+      "integration_scientific_claim_ids": [
+        "CL_INT_RQ1_POLICY_CONDITIONAL"
+      ],
+      "integration_scientific_claim_references": [
+        {
+          "claim_id": "CL_INT_RQ1_POLICY_CONDITIONAL",
+          "final_gate_status": "ACCEPTED_WITH_LIMITATIONS"
+        },
+        {
+          "claim_id": "CL_FROZEN_RQ1_UNQUALIFIED_WORDING",
+          "final_gate_status": "REJECTED_AS_WORDED_SUPERSEDED"
+        },
+        {
+          "claim_id": "CL_UNSUPPORTED_AAVE_USES_UNISWAP_SPOT",
+          "final_gate_status": "UNSUPPORTED"
+        },
+        {
+          "claim_id": "CL_UNSUPPORTED_HISTORICAL_CAUSAL_CONTAGION",
+          "final_gate_status": "UNSUPPORTED"
+        }
+      ],
+      "model_evidence_result_ids": [
+        "INT_A_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
+        "INT_B_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
+        "INT_C_MODERATE_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
+        "INT_C_WEAK_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
+        "RQ1_GRID32_MAX_DEPTH",
+        "RQ1_GRID60_DEPTH2",
+        "RQ1_MC_SEVERE_DEPTH2_COUNT"
+      ],
+      "recommended_vietnamese_conclusion": "Thanh lý dây chuyền depth 2 tồn tại trong mô hình ở tail stress dưới chính sách định giá cụ thể, nhưng không bền với mọi chính sách oracle đã thử.",
+      "required_limitations": [
+        "280/10.000 chỉ là tần suất Severe Policy A; 10 paths được chọn có chủ đích; không có depth ≥3 trong bộ khóa."
+      ],
+      "research_question": "Với một snapshot borrower và liquidity thực, cú sốc giá ETH tối thiểu ở mức nào bắt đầu tạo liquidation cascade (cascade depth ≥ 2)?",
+      "results_allowed_for_reporting": "Có thể báo cáo Wave 2 phản thực dưới Policy A và sensitivity A/B/C; newly eligible phải tách khỏi executed Wave 2.",
+      "results_prohibited_from_extrapolation": "Không có ngưỡng cascade độc lập oracle, xác suất khủng hoảng Ethereum hay xác nhận Aave dùng Uniswap spot.",
+      "rq": "RQ1",
+      "scholarly_claim_registry_ids": [
+        "P2:C01",
+        "P2:C02",
+        "P2:C03",
+        "P2:C09",
+        "P2:C10",
+        "P2:C11",
+        "P2:C17",
+        "P2:C18",
+        "P2:C20",
+        "P2:C22",
+        "P2:C23",
+        "P2:C31",
+        "P2:C32",
+        "P2:C33"
+      ],
+      "scientific_decision_status": "ACCEPTED_WITH_LIMITATIONS",
+      "short_display_label": "Điều kiện và ngưỡng xuất hiện thanh lý dây chuyền."
+    },
+    {
+      "accepted_integration_claim_ids": [
+        "CL_INT_RQ2_TWO_CHANNELS"
+      ],
+      "disallowed_or_superseded_claim_ids": [
+        "CL_FROZEN_RQ2_DIRECT_ELIGIBILITY_WORDING",
+        "CL_UNSUPPORTED_AAVE_USES_UNISWAP_SPOT",
+        "CL_UNSUPPORTED_HISTORICAL_CAUSAL_CONTAGION"
+      ],
+      "full_original_research_question": "Độ sâu thanh khoản DEX và liquidity haircut ảnh hưởng như thế nào đến price impact, cascade amplification và bad debt?",
+      "historical_evidence": "28 Pool events, 27 Graph-matched; tiers 1/2/23/1; association only, no causal contagion.",
+      "integration_scientific_claim_ids": [
+        "CL_INT_RQ2_TWO_CHANNELS"
+      ],
+      "integration_scientific_claim_references": [
+        {
+          "claim_id": "CL_INT_RQ2_TWO_CHANNELS",
+          "final_gate_status": "ACCEPTED_WITH_LIMITATIONS"
+        },
+        {
+          "claim_id": "CL_FROZEN_RQ2_DIRECT_ELIGIBILITY_WORDING",
+          "final_gate_status": "REJECTED_AS_WORDED_SUPERSEDED"
+        },
+        {
+          "claim_id": "CL_UNSUPPORTED_AAVE_USES_UNISWAP_SPOT",
+          "final_gate_status": "UNSUPPORTED"
+        },
+        {
+          "claim_id": "CL_UNSUPPORTED_HISTORICAL_CAUSAL_CONTAGION",
+          "final_gate_status": "UNSUPPORTED"
+        }
+      ],
+      "model_evidence_result_ids": [
+        "RQ2_CANONICAL_DEPTH_2PCT",
+        "RQ2_DEPTH2_HAIRCUT90_COUNT",
+        "RQ2_DEPTH2_HAIRCUT95_COUNT",
+        "RQ4_IMMEDIATE_PRICE_IMPACT",
+        "RQ4_SPREAD_ARB100"
+      ],
+      "recommended_vietnamese_conclusion": "Thanh khoản yếu khuếch đại biến dạng DEX, còn chuyển biến đó sang HF và depth phụ thuộc chính sách định giá.",
+      "required_limitations": [
+        "Một pool, thanh khoản tĩnh/counterfactual, không routing đa venue và không xác minh feed lịch sử."
+      ],
+      "research_question": "Độ sâu thanh khoản DEX và liquidity haircut ảnh hưởng như thế nào đến price impact, cascade amplification và bad debt?",
+      "results_allowed_for_reporting": "Có thể tách sức hấp thụ thanh khoản, immediate price impact, residual spread và HF feedback qua policy.",
+      "results_prohibited_from_extrapolation": "Không suy ra mọi tác động DEX tạo eligibility hoặc cascade; haircut 90/95% không phải quan sát lịch sử tương ứng.",
+      "rq": "RQ2",
+      "scholarly_claim_registry_ids": [
+        "P2:C01",
+        "P2:C07",
+        "P2:C08",
+        "P2:C09",
+        "P2:C10",
+        "P2:C17",
+        "P2:C18",
+        "P2:C20",
+        "P2:C21",
+        "P2:C22",
+        "P2:C24",
+        "P2:C31",
+        "P2:C32",
+        "P2:C34"
+      ],
+      "scientific_decision_status": "ACCEPTED_WITH_LIMITATIONS",
+      "short_display_label": "Vai trò thanh khoản DEX."
+    },
+    {
+      "accepted_integration_claim_ids": [
+        "CL_INT_ELIGIBLE_NOT_EXECUTED",
+        "CL_INT_RQ3_PRESERVED"
+      ],
+      "disallowed_or_superseded_claim_ids": [],
+      "full_original_research_question": "Gas cost, capital/capacity và reaction delay của liquidator ảnh hưởng như thế nào đến tốc độ xử lý vị thế mất an toàn và phần debt chưa được thanh lý?",
+      "historical_evidence": "No additional historical causal evidence required for the accepted scoped claim.",
+      "integration_scientific_claim_ids": [
+        "CL_INT_ELIGIBLE_NOT_EXECUTED",
+        "CL_INT_RQ3_PRESERVED"
+      ],
+      "integration_scientific_claim_references": [
+        {
+          "claim_id": "CL_INT_ELIGIBLE_NOT_EXECUTED",
+          "final_gate_status": "ACCEPTED_WITH_LIMITATIONS"
+        },
+        {
+          "claim_id": "CL_INT_RQ3_PRESERVED",
+          "final_gate_status": "ACCEPTED_WITH_LIMITATIONS"
+        }
+      ],
+      "model_evidence_result_ids": [
+        "INT_A_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_A_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
+        "INT_A_NEWLY_ELIGIBLE_SKIPPED_INSTANCES",
+        "RQ3_CAPITAL_100_LIQUIDATED",
+        "RQ3_CAPITAL_25_LIQUIDATED",
+        "RQ3_DELAY_SEVERITY_CHANGE"
+      ],
+      "recommended_vietnamese_conclusion": "Trong miền thử, các mức vốn thấp ràng buộc thanh lý. Trong tập đối chiếu mục tiêu, 36 trường hợp mới đủ điều kiện theo HF danh mục bị bỏ qua do không có khoản nợ USDC thuộc tuyến thanh lý WETH/USDC được mô hình hóa. Đây là các borrower-case-policy instances; điều kiện HF danh mục khác điều kiện thực thi theo tuyến.",
+      "required_limitations": [
+        "Một liquidator đại diện, vốn không recycle, không fork execution và route mô hình chỉ WETH/USDC."
+      ],
+      "research_question": "Gas cost, capital/capacity và reaction delay của liquidator ảnh hưởng như thế nào đến tốc độ xử lý vị thế mất an toàn và phần debt chưa được thanh lý?",
+      "results_allowed_for_reporting": "Có thể báo cáo riêng vốn, công suất, gas/profitability, delay và route-level execution; eligibility không đồng nghĩa execution.",
+      "results_prohibited_from_extrapolation": "Không gán 36 skip cho gas, vốn hoặc profitability; không suy rộng một liquidator đại diện thành thị trường bot cạnh tranh.",
+      "rq": "RQ3",
+      "scholarly_claim_registry_ids": [
+        "P2:C01",
+        "P2:C03",
+        "P2:C05",
+        "P2:C06",
+        "P2:C12",
+        "P2:C17",
+        "P2:C18",
+        "P2:C19",
+        "P2:C20",
+        "P2:C21",
+        "P2:C22",
+        "P2:C24",
+        "P2:C31",
+        "P2:C33"
+      ],
+      "scientific_decision_status": "ACCEPTED_WITH_LIMITATIONS",
+      "short_display_label": "Gas, vốn, công suất và độ trễ thanh lý."
+    },
+    {
+      "accepted_integration_claim_ids": [
+        "CL_INT_RQ4_PRESERVED"
+      ],
+      "disallowed_or_superseded_claim_ids": [],
+      "full_original_research_question": "Năng lực arbitrage ảnh hưởng như thế nào đến mức lệch giá, số wave liquidation và thời gian phục hồi?",
+      "historical_evidence": "No additional historical causal evidence required for the accepted scoped claim.",
+      "integration_scientific_claim_ids": [
+        "CL_INT_RQ4_PRESERVED"
+      ],
+      "integration_scientific_claim_references": [
+        {
+          "claim_id": "CL_INT_RQ4_PRESERVED",
+          "final_gate_status": "ACCEPTED_WITH_LIMITATIONS"
+        }
+      ],
+      "model_evidence_result_ids": [
+        "RQ4_IMMEDIATE_PRICE_IMPACT",
+        "RQ4_SPREAD_ARB0",
+        "RQ4_SPREAD_ARB100"
+      ],
+      "recommended_vietnamese_conclusion": "Tác nhân kinh doanh chênh lệch giá của mô hình làm giảm độ lệch giá còn lại sau bán bắt buộc nhưng không xóa tác động giá tức thời của lần thực thi.",
+      "required_limitations": [
+        "Price teleportation, một arbitrageur, không cạnh tranh/latency/gas strategy hoặc SwapRouter fork."
+      ],
+      "research_question": "Năng lực arbitrage ảnh hưởng như thế nào đến mức lệch giá, số wave liquidation và thời gian phục hồi?",
+      "results_allowed_for_reporting": "Có thể báo cáo immediate impact và post-arbitrage residual riêng biệt trong mô hình.",
+      "results_prohibited_from_extrapolation": "Không gọi price repositioning là funded executable swap hoặc bằng chứng hiệu quả arbitrage Mainnet.",
+      "rq": "RQ4",
+      "scholarly_claim_registry_ids": [
+        "P2:C01",
+        "P2:C09",
+        "P2:C11",
+        "P2:C13",
+        "P2:C17",
+        "P2:C18",
+        "P2:C19",
+        "P2:C20",
+        "P2:C22",
+        "P2:C31",
+        "P2:C32",
+        "P2:C34"
+      ],
+      "scientific_decision_status": "ACCEPTED_WITH_LIMITATIONS",
+      "short_display_label": "Arbitrage và phục hồi giá."
+    },
+    {
+      "accepted_integration_claim_ids": [
+        "CL_INT_RQ5_PRESERVED"
+      ],
+      "disallowed_or_superseded_claim_ids": [],
+      "full_original_research_question": "Stablecoin depeg làm thay đổi kết quả stress test như thế nào khi stablecoin đóng vai trò debt/settlement asset?",
+      "historical_evidence": "No additional historical causal evidence required for the accepted scoped claim.",
+      "integration_scientific_claim_ids": [
+        "CL_INT_RQ5_PRESERVED"
+      ],
+      "integration_scientific_claim_references": [
+        {
+          "claim_id": "CL_INT_RQ5_PRESERVED",
+          "final_gate_status": "ACCEPTED_WITH_LIMITATIONS"
+        }
+      ],
+      "model_evidence_result_ids": [
+        "RQ5_HF_LT1_USDC_090",
+        "RQ5_HF_LT1_USDC_100",
+        "RQ5_HF_LT1_USDC_110",
+        "RQ5_LIQUIDATED_DEBT_TOKEN_QTY",
+        "RQ5_LIQUIDATED_DEBT_USD"
+      ],
+      "recommended_vietnamese_conclusion": "Giá USD của nợ USDC thay đổi HF trong kênh định giá cô lập, không đại diện toàn bộ cơ chế depeg.",
+      "required_limitations": [
+        "Ceteris paribus debt valuation; không có kênh redemption/liquidity/settlement."
+      ],
+      "research_question": "Stablecoin depeg làm thay đổi kết quả stress test như thế nào khi stablecoin đóng vai trò debt/settlement asset?",
+      "results_allowed_for_reporting": "Có thể báo cáo kênh định giá nợ USDC và tách USDC token quantity khỏi USD-equivalent.",
+      "results_prohibited_from_extrapolation": "Không suy rộng thành mô hình settlement, redemption, confidence hoặc thanh khoản stablecoin đầy đủ.",
+      "rq": "RQ5",
+      "scholarly_claim_registry_ids": [
+        "P2:C01",
+        "P2:C02",
+        "P2:C08",
+        "P2:C13",
+        "P2:C14",
+        "P2:C15",
+        "P2:C17",
+        "P2:C18",
+        "P2:C20",
+        "P2:C22",
+        "P2:C24",
+        "P2:C31",
+        "P2:C35"
+      ],
+      "scientific_decision_status": "ACCEPTED_WITH_LIMITATIONS",
+      "short_display_label": "Mất neo stablecoin và định giá nợ USDC."
+    },
+    {
+      "accepted_integration_claim_ids": [
+        "CL_INT_RQ6_PRESERVED"
+      ],
+      "disallowed_or_superseded_claim_ids": [],
+      "full_original_research_question": "Các counterfactual của LTV, liquidation threshold và liquidation bonus có tạo ra trade-off nào giữa capital efficiency và tail risk?",
+      "historical_evidence": "No additional historical causal evidence required for the accepted scoped claim.",
+      "integration_scientific_claim_ids": [
+        "CL_INT_RQ6_PRESERVED"
+      ],
+      "integration_scientific_claim_references": [
+        {
+          "claim_id": "CL_INT_RQ6_PRESERVED",
+          "final_gate_status": "ACCEPTED_WITH_LIMITATIONS"
+        }
+      ],
+      "model_evidence_result_ids": [
+        "RQ6_BONUS103_SEIZED",
+        "RQ6_BONUS107_SEIZED",
+        "RQ6_LT083_UNLIQUIDATED",
+        "RQ6_LTV0755_CAPACITY",
+        "RQ6_LTV0825_CAPACITY"
+      ],
+      "recommended_vietnamese_conclusion": "LTV điều tiết giới hạn vay ban đầu, ngưỡng thanh lý điều tiết HF và điều kiện thanh lý, còn thưởng thanh lý điều tiết khuyến khích và lượng tài sản thế chấp chuyển giao.",
+      "required_limitations": [
+        "Frozen cohort; không borrower behavior hoặc re-underwriting response."
+      ],
+      "research_question": "Các counterfactual của LTV, liquidation threshold và liquidation bonus có tạo ra trade-off nào giữa capital efficiency và tail risk?",
+      "results_allowed_for_reporting": "Có thể báo cáo riêng tác động của LTV, liquidation threshold và liquidation bonus trong các counterfactual khóa.",
+      "results_prohibited_from_extrapolation": "Không hoán đổi ba tham số hoặc suy ra hành vi tái underwrite/borrower response ngoài mô hình.",
+      "rq": "RQ6",
+      "scholarly_claim_registry_ids": [
+        "P2:C01",
+        "P2:C02",
+        "P2:C04",
+        "P2:C05",
+        "P2:C06",
+        "P2:C12",
+        "P2:C17",
+        "P2:C18",
+        "P2:C20",
+        "P2:C21",
+        "P2:C22",
+        "P2:C24",
+        "P2:C31"
+      ],
+      "scientific_decision_status": "ACCEPTED_WITH_LIMITATIONS",
+      "short_display_label": "Đánh đổi LTV, liquidation threshold, liquidation bonus."
+    }
+  ],
+  "schema_version": "final-accepted-claims-v1.1-targeted-repair"
+}

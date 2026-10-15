@@ -1,0 +1,133 @@
+{
+  "failed_gates": [],
+  "gates": {
+    "accepted_vietnamese_wording_reconciled": true,
+    "all_active_artifact_locators_resolve": true,
+    "all_active_result_ids_resolve": true,
+    "all_active_table_figure_ids_resolve": true,
+    "all_declared_active_locator_hashes_match": true,
+    "c23_denominators_verified_from_locked_artifact": true,
+    "disallowed_claims_excluded_from_affirmative_rq_sets": true,
+    "eight_primary_evidence_tiers_exact": true,
+    "every_rq_has_explicit_limitation": true,
+    "hash_domains_explicit": true,
+    "historical_verification_levels_preserved": true,
+    "int_t01_resolves": true,
+    "integration_claim_ids_13_exact": true,
+    "locked_source_objects_recorded": true,
+    "newly_eligible_distinct_from_executed": true,
+    "no_historical_causal_contagion_overclaim": true,
+    "no_invalid_sha_in_active_locators": true,
+    "no_oracle_independent_cascade_overclaim": true,
+    "numerical_claim_lock_exact": true,
+    "registry_ids_unique": true,
+    "rq3_route_specific_zero_usdc_wording_exact": true,
+    "scholarly_claim_ids_35_complete": true,
+    "six_rq_exact_order_and_full_source_wording": true,
+    "sixteen_slash_rq_mappings_exact": true,
+    "source_commits_and_paths_exist": true,
+    "targeted_paths_not_population_estimator": true,
+    "terra_negative_findings_preserved": true,
+    "usdc_token_and_usd_not_conflated": true
+  },
+  "invalid_active_commits": [],
+  "locator_hash_mismatches": [],
+  "metrics": {
+    "active_locator_hash_checks": 216,
+    "active_locator_hash_matches": 216,
+    "active_locator_instances": 109,
+    "active_locators_resolved": 109,
+    "active_result_id_instances": 78,
+    "active_result_ids_resolved": 78,
+    "active_table_figure_id_instances": 20,
+    "active_table_figure_ids_resolved": 20,
+    "disallowed_in_affirmative_rq_sets": 0,
+    "integration_claims": 13,
+    "primary_evidence_tiers_verified": 8,
+    "registry_records": 48,
+    "scholarly_claims": 35,
+    "slash_rq_mappings_verified": 16
+  },
+  "numerical_claim_lock": {
+    "deterministic_depth2_retained_of_4": {
+      "A": 4,
+      "B": 0,
+      "C_MODERATE": 0,
+      "C_WEAK": 0
+    },
+    "eligible_vs_executed": {
+      "A": {
+        "executed_wave2": 14,
+        "newly_eligible": 35,
+        "skipped": 21
+      },
+      "B": {
+        "executed_wave2": 0,
+        "newly_eligible": 0,
+        "skipped": 0
+      },
+      "C_MODERATE": {
+        "executed_wave2": 2,
+        "newly_eligible": 11,
+        "skipped": 9
+      },
+      "C_WEAK": {
+        "executed_wave2": 0,
+        "newly_eligible": 6,
+        "skipped": 6
+      }
+    },
+    "historical": {
+      "causal_contagion_established": false,
+      "graph_matched_events": 27,
+      "pool_events": 28,
+      "tiers_direct_same_tx_same_block_time": [
+        1,
+        2,
+        23,
+        1
+      ]
+    },
+    "severe_policy_a": {
+      "denominator": 10000,
+      "depth_gte_2": 280,
+      "policy": "A_ADVERSE_PASS_THROUGH",
+      "population_semantics": "locked simulated Severe paths; not Ethereum crisis probability"
+    },
+    "targeted_mc_depth2_retained_of_10": {
+      "A": 10,
+      "B": 0,
+      "C_MODERATE": 2,
+      "C_WEAK": 0
+    },
+    "terra_negative": {
+      "initial_depeg_high_lead_hours": -45.0,
+      "pre_depeg_high_alert_hours": 0,
+      "successful_oos_forecast_established": false
+    }
+  },
+  "review_scope": "Builder validation plus separately implemented pytest validator; same executor, not an independent external reviewer.",
+  "schema_version": "final-accepted-claims-v1.1-targeted-repair",
+  "status": "PASS",
+  "test_evidence": {
+    "commands": [
+      {
+        "command": ".\\.venv\\Scripts\\python.exe -m pytest -q tests/test_final_accepted_claims_v1.py tests/test_frozen_v3.py tests/test_oracle_diagnostic_artifacts.py tests/test_scientific_integration_v1.py tests/test_scientific_premerge_audit_v1.py",
+        "result": "PASS — 35 passed"
+      },
+      {
+        "command": ".\\.venv\\Scripts\\python.exe -m ruff check scripts/research/build_final_accepted_claims_v1.py tests/test_final_accepted_claims_v1.py",
+        "result": "PASS"
+      },
+      {
+        "command": ".\\.venv\\Scripts\\python.exe -m mypy scripts/research/build_final_accepted_claims_v1.py",
+        "result": "PASS — no issues in 1 source file"
+      }
+    ],
+    "failed": 0,
+    "passed": 35,
+    "status": "PASS",
+    "summary": "Final relevant suite: 35 passed; Ruff passed; mypy passed. The validator is separately implemented but run by the same executor, not an external independent reviewer."
+  },
+  "unresolved_locators": []
+}

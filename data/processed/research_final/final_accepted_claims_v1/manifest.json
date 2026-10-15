@@ -1,0 +1,100 @@
+{
+  "artifact_hashes": {
+    "accepted_claims_registry.json": "b60f5c360436a7f54f932b93ced1912505b0564566cb366cfb7175d57f4edd57",
+    "claim_evidence_crosswalk.json": "4834f4f42fc26a6c1d8f574753897c47c35f67fa0a9f02831d093a4a5fbf854e",
+    "scientific_lock_readiness.json": "036ad39cad276035a3c7d2c26a937a3939c128127ec40f6a587422d41987bc6e",
+    "six_rq_accepted_claims_matrix.json": "e867c04026a6bfd96fcbed7139e5ccf84d1839245b30b4c513af0942e6efcd75",
+    "source_provenance_registry.json": "89c61802dfe5d3ec80f9122318bfd78ef7726f962bf7a44671486595babbbaed",
+    "test_evidence.json": "838685c3eb8b1c56a1cce10a17d0c8cc9e727b6cd75689bd525621e14c51ffc9",
+    "validation_report.json": "43701fb47dde1324af4f246f74534d4997c04f1284fb80a58d187bbd15bdded5"
+  },
+  "counts": {
+    "integration_claims": 13,
+    "registry_records": 48,
+    "research_questions": 6,
+    "scholarly_claims": 35
+  },
+  "generation_command": ".\\.venv\\Scripts\\python.exe .\\scripts\\research\\build_final_accepted_claims_v1.py",
+  "implementation_hashes": {
+    "scripts/research/build_final_accepted_claims_v1.py": "cd99c7ebb7357671e520e57279a08839a160a70bb28e418eb97dc6d1beb364ba",
+    "tests/test_final_accepted_claims_v1.py": "ad0e15f5d9ffac68f7673bc48d15a313a052b35bb722b1a219d59599d7168163"
+  },
+  "large_monte_carlo_rerun": false,
+  "locked_sources_modified": false,
+  "manifest_hash_embedded": false,
+  "model_retuned": false,
+  "output_commit": "RECORDED_IN_GIT_HANDOFF_NOT_SELF_EMBEDDED",
+  "report_hashes": {
+    "docs/research_final/FINAL_ACCEPTED_CLAIMS_REGISTRY_v1.md": "90683b072c1bfbb1a718f77e163151a8f0c6a200dfe9ad56776395be32aa80de",
+    "docs/research_final/SCIENTIFIC_CONTENT_LOCK_REVIEW_PACKET.md": "738adfe89114440f179dbda35b45ed88ba44df1a14e7f915b2841e10063a22b2"
+  },
+  "schema_version": "final-accepted-claims-v1.1-targeted-repair",
+  "scientific_content_lock_declared": false,
+  "self_hash_excluded": true,
+  "source_integration_head": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
+  "source_p2_blob_ids": {
+    "docs/research_final/APA_REFERENCES_VERIFIED.md": "c76d7cf482565615a92fb17b888a392e4f8fd9cc",
+    "docs/research_final/LITERATURE_VERIFIED.md": "6ebe0a11e915e942a422d02a0cc5b1d53b51ff3e",
+    "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json": "932c25f633dee7bdb8cfcf9e6e2473b50f7c4ab3",
+    "docs/research_final/P2_ORACLE_RECONCILIATION.md": "2bc140f47ea463a9394858ec8937a808d18eccd7",
+    "docs/research_final/P2_VERSION_RECONCILIATION.md": "323958c95e8bb28b3fe66289332ba1f0f3ac69df",
+    "docs/research_final/REFERENCE_EVIDENCE_MATRIX.md": "504ea91b046e6612c2840c6a434e740ce917b29f",
+    "docs/research_final/TERMINOLOGY_VI.md": "2ca1e29495e6183dfefaf8939e59e6c4eba574fb"
+  },
+  "source_tree_ids": {
+    "frozen_v3": "0e48dfdc408d04d484e5432e7f4e6137b940ce78",
+    "oracle_diagnostic_v1": "455d9a6a67b525e921bda249eb57e17bc6d8a4c5",
+    "scientific_integration_v1": "25cba400a383a9576864acd2ed23967d05316443"
+  },
+  "status": "REGISTRY_TARGETED_REPAIR_COMPLETE",
+  "test_evidence": {
+    "commands": [
+      {
+        "command": ".\\.venv\\Scripts\\python.exe -m pytest -q tests/test_final_accepted_claims_v1.py tests/test_frozen_v3.py tests/test_oracle_diagnostic_artifacts.py tests/test_scientific_integration_v1.py tests/test_scientific_premerge_audit_v1.py",
+        "result": "PASS — 35 passed"
+      },
+      {
+        "command": ".\\.venv\\Scripts\\python.exe -m ruff check scripts/research/build_final_accepted_claims_v1.py tests/test_final_accepted_claims_v1.py",
+        "result": "PASS"
+      },
+      {
+        "command": ".\\.venv\\Scripts\\python.exe -m mypy scripts/research/build_final_accepted_claims_v1.py",
+        "result": "PASS — no issues in 1 source file"
+      }
+    ],
+    "failed": 0,
+    "passed": 35,
+    "status": "PASS",
+    "summary": "Final relevant suite: 35 passed; Ruff passed; mypy passed. The validator is separately implemented but run by the same executor, not an external independent reviewer."
+  },
+  "validation_gates": {
+    "accepted_vietnamese_wording_reconciled": true,
+    "all_active_artifact_locators_resolve": true,
+    "all_active_result_ids_resolve": true,
+    "all_active_table_figure_ids_resolve": true,
+    "all_declared_active_locator_hashes_match": true,
+    "c23_denominators_verified_from_locked_artifact": true,
+    "disallowed_claims_excluded_from_affirmative_rq_sets": true,
+    "eight_primary_evidence_tiers_exact": true,
+    "every_rq_has_explicit_limitation": true,
+    "hash_domains_explicit": true,
+    "historical_verification_levels_preserved": true,
+    "int_t01_resolves": true,
+    "integration_claim_ids_13_exact": true,
+    "locked_source_objects_recorded": true,
+    "newly_eligible_distinct_from_executed": true,
+    "no_historical_causal_contagion_overclaim": true,
+    "no_invalid_sha_in_active_locators": true,
+    "no_oracle_independent_cascade_overclaim": true,
+    "numerical_claim_lock_exact": true,
+    "registry_ids_unique": true,
+    "rq3_route_specific_zero_usdc_wording_exact": true,
+    "scholarly_claim_ids_35_complete": true,
+    "six_rq_exact_order_and_full_source_wording": true,
+    "sixteen_slash_rq_mappings_exact": true,
+    "source_commits_and_paths_exist": true,
+    "targeted_paths_not_population_estimator": true,
+    "terra_negative_findings_preserved": true,
+    "usdc_token_and_usd_not_conflated": true
+  }
+}
