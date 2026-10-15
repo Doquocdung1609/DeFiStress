@@ -1,0 +1,2589 @@
+{
+  "classification_counts": {
+    "NEEDS_DISPLAY_SPEC": 4,
+    "RENDERABLE_FROM_LOCKED_ARTIFACT": 10,
+    "SCHEMATIC_FROM_LOCKED_MODEL_SPEC": 3,
+    "TEXTUAL_SYNTHESIS": 8
+  },
+  "codex_template_disposition": [
+    {
+      "codex_template_id": "P3X:SYSTEM_FEEDBACK_SCHEMATIC",
+      "disposition": "USED",
+      "note": "Reusable technical template; one template may support multiple manuscript displays.",
+      "work_exhibit_ids": [
+        "F3.1",
+        "T3.1"
+      ]
+    },
+    {
+      "codex_template_id": "P3X:ORACLE_POLICY_DEPTH2_COMPARISON",
+      "disposition": "USED",
+      "note": "Reusable technical template; one template may support multiple manuscript displays.",
+      "work_exhibit_ids": [
+        "F5.1",
+        "F5.3",
+        "T3.2",
+        "T5.1"
+      ]
+    },
+    {
+      "codex_template_id": "P3X:ELIGIBLE_VS_EXECUTED",
+      "disposition": "USED",
+      "note": "Reusable technical template; one template may support multiple manuscript displays.",
+      "work_exhibit_ids": [
+        "F5.2",
+        "T5.2"
+      ]
+    },
+    {
+      "codex_template_id": "P3X:LIQUIDITY_ABSORPTION_AND_PRICE_METRICS",
+      "disposition": "USED",
+      "note": "Reusable technical template; one template may support multiple manuscript displays.",
+      "work_exhibit_ids": [
+        "F5.3",
+        "F5.5"
+      ]
+    },
+    {
+      "codex_template_id": "P3X:SEVERE_POLICY_A_MONTE_CARLO",
+      "disposition": "USED",
+      "note": "Reusable technical template; one template may support multiple manuscript displays.",
+      "work_exhibit_ids": [
+        "F5.7",
+        "T3.2"
+      ]
+    },
+    {
+      "codex_template_id": "P3X:HISTORICAL_EVIDENCE_TIERS",
+      "disposition": "USED",
+      "note": "Reusable technical template; one template may support multiple manuscript displays.",
+      "work_exhibit_ids": [
+        "T6.1"
+      ]
+    },
+    {
+      "codex_template_id": "P3X:TERRA_NEGATIVE_EARLY_WARNING",
+      "disposition": "USED",
+      "note": "Reusable technical template; one template may support multiple manuscript displays.",
+      "work_exhibit_ids": [
+        "F6.1"
+      ]
+    },
+    {
+      "codex_template_id": "P3X:NETWORK_EXTENSION_BOUNDARY",
+      "disposition": "USED",
+      "note": "Reusable technical template; one template may support multiple manuscript displays.",
+      "work_exhibit_ids": [
+        "F6.2"
+      ]
+    },
+    {
+      "codex_template_id": "P3X:RISK_PARAMETER_MECHANISMS",
+      "disposition": "USED",
+      "note": "Reusable technical template; one template may support multiple manuscript displays.",
+      "work_exhibit_ids": [
+        "F5.6"
+      ]
+    },
+    {
+      "codex_template_id": "P3X:CANONICAL_SCOPE_PROVENANCE",
+      "disposition": "USED",
+      "note": "Reusable technical template; one template may support multiple manuscript displays.",
+      "work_exhibit_ids": [
+        "F4.1",
+        "T4.1"
+      ]
+    },
+    {
+      "codex_template_id": "P3X:METRIC_SEMANTICS_GLOSSARY",
+      "disposition": "USED",
+      "note": "Reusable technical template; one template may support multiple manuscript displays.",
+      "work_exhibit_ids": [
+        "T3.1",
+        "T3.3",
+        "T4.2"
+      ]
+    }
+  ],
+  "commander_recommendation": "P3_G0_TECHNICAL_REWORK_REQUIRED",
+  "counts": {
+    "affirmative_claims": 44,
+    "codex_audited_formulas": 15,
+    "codex_templates": 11,
+    "disallowed_claims": 4,
+    "inventory_records_unchanged": 67,
+    "work_equations": 8,
+    "work_figures": 11,
+    "work_tables": 14
+  },
+  "exhibit_crosswalk": [
+    {
+      "accepted_claim_ids": [
+        "P2:C31"
+      ],
+      "chapter": 1,
+      "claim_ids_status": "PASS",
+      "codex_template_ids": [],
+      "codex_template_status": "PASS",
+      "evidence_ids_status": "PASS",
+      "existing_evidence_ids": [],
+      "kind": "TABLE",
+      "mandatory_limitations": [
+        "Không dùng short label thay câu hỏi"
+      ],
+      "policy_scenario_cohort": [
+        "Sáu RQ gốc"
+      ],
+      "rendering_decision": "Direct extraction of six locked RQs and their limitations; no numerical transformation.",
+      "rendition_owner": "Codex rendering; Work owns caption/inference",
+      "reproducibility_classification": "TEXTUAL_SYNTHESIS",
+      "requested_output_format": "CSV UTF-8 + Markdown table + provenance JSON",
+      "required_display_controls": [
+        "Use full original RQ wording, not short labels."
+      ],
+      "result_ids": [],
+      "result_ids_status": "PASS",
+      "section": "1.3",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "fffe69d45f2c70e8f4cb781c8b521ef4cf6f1a45",
+          "codex_g0_evidence_id": "P3E:006",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "fffe69d45f2c70e8f4cb781c8b521ef4cf6f1a45",
+          "git_blob_sha256": "428db5ef589bbd2e0e1c4273c36538f0abbe3c29b5601897bd787d78c1a4d080",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "data/processed/research_final/final_accepted_claims_v1/six_rq_accepted_claims_matrix.json",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        }
+      ],
+      "source_locators_status": "PASS",
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "title": "Sáu câu hỏi và phạm vi trả lời",
+      "units": [
+        "không đơn vị"
+      ],
+      "work_exhibit_id": "T1.1",
+      "work_handoff_id": "P3X-T1.1"
+    },
+    {
+      "accepted_claim_ids": [
+        "P2:C06",
+        "P2:C09",
+        "P2:C10",
+        "P2:C11",
+        "P2:C12",
+        "P2:C13",
+        "P2:C16",
+        "P2:C18",
+        "P2:C21"
+      ],
+      "chapter": 2,
+      "claim_ids_status": "PASS",
+      "codex_template_ids": [],
+      "codex_template_status": "PASS",
+      "evidence_ids_status": "PASS",
+      "existing_evidence_ids": [],
+      "kind": "TABLE",
+      "mandatory_limitations": [
+        "Hai raw borrower CSV lớn vẫn chưa được Work đọc đầy đủ/cell-by-cell; giữ source access labels, U01–U08 và mức abstract/metadata/code; S17/S18 cùng nghiên cứu.",
+        "S17/S18 cùng study; S22 là industry"
+      ],
+      "policy_scenario_cohort": [
+        "30 records giữ nguyên; không buộc 30 citation trong một bảng"
+      ],
+      "rendering_decision": "Literature/evidence matrix synthesis from P2 records; no quantitative inference.",
+      "rendition_owner": "Codex rendering; Work owns caption/inference",
+      "reproducibility_classification": "TEXTUAL_SYNTHESIS",
+      "requested_output_format": "CSV UTF-8 + Markdown table + provenance JSON",
+      "required_display_controls": [
+        "Preserve source access levels and treat S17/S18 as one study."
+      ],
+      "result_ids": [],
+      "result_ids_status": "PASS",
+      "section": "2.5",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "6ebe0a11e915e942a422d02a0cc5b1d53b51ff3e",
+          "codex_g0_evidence_id": "P3E:051",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "6ebe0a11e915e942a422d02a0cc5b1d53b51ff3e",
+          "git_blob_sha256": "5ab1f4e53c19fe807a1e919a8e52cce59f6f963e491396f97259be3a176c8935",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "docs/research_final/LITERATURE_VERIFIED.md",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "504ea91b046e6612c2840c6a434e740ce917b29f",
+          "codex_g0_evidence_id": "P3E:055",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "504ea91b046e6612c2840c6a434e740ce917b29f",
+          "git_blob_sha256": "67ea79e466c7bb3f92d26e665361342c038d3562b9cfef70f7b65028ad636a33",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "docs/research_final/REFERENCE_EVIDENCE_MATRIX.md",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "c76d7cf482565615a92fb17b888a392e4f8fd9cc",
+          "codex_g0_evidence_id": "P3E:050",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "c76d7cf482565615a92fb17b888a392e4f8fd9cc",
+          "git_blob_sha256": "39ca11330af2511a12b0884a97e10743ccda941624e3d8e7d27256aa4008d829",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "docs/research_final/APA_REFERENCES_VERIFIED.md",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        }
+      ],
+      "source_locators_status": "PASS",
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "title": "Đối thoại giữa các nhánh nghiên cứu",
+      "units": [
+        "không đơn vị"
+      ],
+      "work_exhibit_id": "T2.1",
+      "work_handoff_id": "P3X-T2.1"
+    },
+    {
+      "accepted_claim_ids": [
+        "P2:C03",
+        "P2:C19",
+        "P2:C32",
+        "P2:C34"
+      ],
+      "chapter": 3,
+      "claim_ids_status": "PASS",
+      "codex_template_ids": [
+        "P3X:SYSTEM_FEEDBACK_SCHEMATIC"
+      ],
+      "codex_template_status": "PASS",
+      "evidence_ids_status": "PASS",
+      "existing_evidence_ids": [],
+      "kind": "FIGURE",
+      "mandatory_limitations": [
+        "Kết quả cascade là mô phỏng phản thực có điều kiện theo policy, cohort và cấu hình thanh khoản; A/B/C chưa được xác minh là feed Aave/Chainlink lịch sử.",
+        "Phân biệt HF danh mục mới dưới 1, engine evaluation, route eligibility và execution có debt repaid dương; đếm borrower-case-policy instances, không unique wallets.",
+        "Arbitrage là price repositioning, chưa funded executable swap; tác động giá tức thời khác spread sau arbitrage."
+      ],
+      "policy_scenario_cohort": [
+        "A/B/C giả định; HF portfolio, route WETH/USDC"
+      ],
+      "rendering_decision": "Renderable only as a model schematic with evidence-tier styling, not as a measured causal network.",
+      "rendition_owner": "Codex rendering; Work owns caption/inference",
+      "reproducibility_classification": "SCHEMATIC_FROM_LOCKED_MODEL_SPEC",
+      "requested_output_format": "SVG/PDF vector + PNG 300 dpi + plot-data CSV + provenance JSON",
+      "required_display_controls": [
+        "Solid arrows for implemented flow; visually distinct hypothetical A/B/C valuation box; no historical causal arrow."
+      ],
+      "result_ids": [],
+      "result_ids_status": "PASS",
+      "section": "3.1",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "2b23c9ee88ee4976755e5f4795026e381d5fe497",
+          "codex_g0_evidence_id": "P3E:059",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "2b23c9ee88ee4976755e5f4795026e381d5fe497",
+          "git_blob_sha256": "93d18336d0b39f221d98765152f4a4716870b5c9b433f724b5a69e666c1ecb8c",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "sim/engine/run.py",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "2ac37f923a4cc35bef95968d353f0724bfdbd3a5",
+          "codex_g0_evidence_id": "P3E:064",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "2ac37f923a4cc35bef95968d353f0724bfdbd3a5",
+          "git_blob_sha256": "826bdab7242624352b5a87edbed4e801d28f6dc807e570c84f0a95c10b50cd42",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "sim/oracle.py",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "9f95f18e8aa52f48facbebe1b3bdc8f88c0f162a",
+          "codex_g0_evidence_id": "P3E:061",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "9f95f18e8aa52f48facbebe1b3bdc8f88c0f162a",
+          "git_blob_sha256": "fd3f4e5cd2f4a9564ca7b23625d693e0661a8162182699a0eb2940603158e96b",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "sim/lending/liquidation.py",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        }
+      ],
+      "source_locators_status": "PASS",
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "title": "Cơ chế thanh lý DEX và định giá vị thế",
+      "units": [
+        "HF: ratio",
+        "Giá: USDC/WETH hoặc USD/WETH ghi rõ"
+      ],
+      "work_exhibit_id": "F3.1",
+      "work_handoff_id": "P3X-F3.1"
+    },
+    {
+      "accepted_claim_ids": [
+        "P2:C03",
+        "P2:C05",
+        "P2:C19",
+        "P2:C34",
+        "P2:C35"
+      ],
+      "chapter": 3,
+      "claim_ids_status": "PASS",
+      "codex_template_ids": [
+        "P3X:SYSTEM_FEEDBACK_SCHEMATIC",
+        "P3X:METRIC_SEMANTICS_GLOSSARY"
+      ],
+      "codex_template_status": "PASS",
+      "evidence_ids_status": "PASS",
+      "existing_evidence_ids": [],
+      "kind": "TABLE",
+      "mandatory_limitations": [
+        "Phân biệt HF danh mục mới dưới 1, engine evaluation, route eligibility và execution có debt repaid dương; đếm borrower-case-policy instances, không unique wallets.",
+        "Liquidator/arbitrageur đại diện; vốn không recycle, kế hoạch vượt vốn không tự chia nhỏ; kết quả gas/capacity/delay chỉ trong miền thử.",
+        "RQ5 chỉ kênh định giá nợ USDC; token quantity khác USD-equivalent; chưa redemption/liquidity/confidence/settlement đầy đủ."
+      ],
+      "policy_scenario_cohort": [
+        "Representative agents; frozen cohort"
+      ],
+      "rendering_decision": "Code-derived agent/gate definition table.",
+      "rendition_owner": "Codex rendering; Work owns caption/inference",
+      "reproducibility_classification": "TEXTUAL_SYNTHESIS",
+      "requested_output_format": "CSV UTF-8 + Markdown table + provenance JSON",
+      "required_display_controls": [
+        "Separate representative agent, route eligibility, attempted evaluation and positive-debt execution."
+      ],
+      "result_ids": [],
+      "result_ids_status": "PASS",
+      "section": "3.2",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "2b23c9ee88ee4976755e5f4795026e381d5fe497",
+          "codex_g0_evidence_id": "P3E:059",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "2b23c9ee88ee4976755e5f4795026e381d5fe497",
+          "git_blob_sha256": "93d18336d0b39f221d98765152f4a4716870b5c9b433f724b5a69e666c1ecb8c",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "sim/engine/run.py",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "9f95f18e8aa52f48facbebe1b3bdc8f88c0f162a",
+          "codex_g0_evidence_id": "P3E:061",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "9f95f18e8aa52f48facbebe1b3bdc8f88c0f162a",
+          "git_blob_sha256": "fd3f4e5cd2f4a9564ca7b23625d693e0661a8162182699a0eb2940603158e96b",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "sim/lending/liquidation.py",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "4172eae06907ae8bf95a10e7e50463111d0eec3d",
+          "codex_g0_evidence_id": "P3E:058",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "4172eae06907ae8bf95a10e7e50463111d0eec3d",
+          "git_blob_sha256": "3fa671f616caee587735eef41073bc8db4a097e91711ef8c9d3511f4f7a0580a",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "sim/dex/uniswap_v3.py",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        }
+      ],
+      "source_locators_status": "PASS",
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "title": "Tác nhân và cổng quyết định",
+      "units": [
+        "USDC token",
+        "WETH",
+        "steps/seconds",
+        "HF ratio"
+      ],
+      "work_exhibit_id": "T3.1",
+      "work_handoff_id": "P3X-T3.1"
+    },
+    {
+      "accepted_claim_ids": [
+        "P2:C21",
+        "P2:C22",
+        "P2:C23",
+        "P2:C32"
+      ],
+      "chapter": 3,
+      "claim_ids_status": "PASS",
+      "codex_template_ids": [
+        "P3X:ORACLE_POLICY_DEPTH2_COMPARISON",
+        "P3X:SEVERE_POLICY_A_MONTE_CARLO"
+      ],
+      "codex_template_status": "PASS",
+      "evidence_ids_status": "PASS",
+      "existing_evidence_ids": [],
+      "kind": "TABLE",
+      "mandatory_limitations": [
+        "Một block 26045352, 454 verified borrowers; 109 là cohort WETH-collateral-enabled/USDC-debt riêng; một Uniswap venue, không đại diện toàn thị trường.",
+        "280/10.000 chỉ Severe Policy A; mười targeted MC paths chọn theo A-depth2; không ước lượng xác suất thị trường, không suy không thể có depth≥3 ngoài tập thử.",
+        "Haircut 90/95% là extreme counterfactual tails, chưa có bằng chứng lịch sử tương ứng; không có independent local-fork execution được kiểm chứng."
+      ],
+      "policy_scenario_cohort": [
+        "32/60 grids; Severe prefixes; selected 4 stress+4 controls+10 MC ×4 policies"
+      ],
+      "rendering_decision": "Direct experiment-design table from locked manifests and tables.",
+      "rendition_owner": "Codex rendering; Work owns caption/inference",
+      "reproducibility_classification": "RENDERABLE_FROM_LOCKED_ARTIFACT",
+      "requested_output_format": "CSV UTF-8 + Markdown table + provenance JSON",
+      "required_display_controls": [
+        "Keep 32/60 grids, nested Severe prefixes and selected 4/4/10 diagnostic sets as separate populations."
+      ],
+      "result_ids": [
+        "RQ1_GRID60_DEPTH2",
+        "MC_INDEPENDENT_PATHS_VALIDATED"
+      ],
+      "result_ids_status": "PASS",
+      "section": "3.5",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "f0e80bc73735de7684feadd2cd3c82519331c033",
+          "codex_g0_evidence_id": "NOT_IN_67_RECORD_INVENTORY_GIT_LOCK_VERIFIED_SEPARATELY",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "f0e80bc73735de7684feadd2cd3c82519331c033",
+          "git_blob_sha256": "e0a5a972aaed33a3b9ceb79406f7a09f47241915292842f47d9441e10b7530e8",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "data/processed/research_final/frozen_v3/tables/rq1_deterministic_depth.csv",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "ea71db6f633b7e5df1f12cd3d9f2533e5d5f9438",
+          "codex_g0_evidence_id": "NOT_IN_67_RECORD_INVENTORY_GIT_LOCK_VERIFIED_SEPARATELY",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "ea71db6f633b7e5df1f12cd3d9f2533e5d5f9438",
+          "git_blob_sha256": "e9f59d71d9ec053431a22a0dde8d577e575b4edc3e15774daee5541f9b8e8153",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "data/processed/research_final/frozen_v3/tables/rq1_monte_carlo.csv",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "1bb5bdea8be74c1e62dc89badbcb8cbae67b7bd3",
+          "codex_g0_evidence_id": "P3E:032",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "1bb5bdea8be74c1e62dc89badbcb8cbae67b7bd3",
+          "git_blob_sha256": "3eb4bd1c2404abfb1a4a2cd402d06d70a971e781b279c599be66438c5e5d253d",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "data/processed/research_final/oracle_transmission_diagnostic_v1/selection_manifest.json",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        }
+      ],
+      "source_locators_status": "PASS",
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "title": "Thiết kế các tập thực nghiệm",
+      "units": [
+        "cells",
+        "paths",
+        "borrower-case-policy instances"
+      ],
+      "work_exhibit_id": "T3.2",
+      "work_handoff_id": "P3X-T3.2"
+    },
+    {
+      "accepted_claim_ids": [
+        "P2:C08",
+        "P2:C22",
+        "P2:C24",
+        "P2:C35"
+      ],
+      "chapter": 3,
+      "claim_ids_status": "PASS",
+      "codex_template_ids": [
+        "P3X:METRIC_SEMANTICS_GLOSSARY"
+      ],
+      "codex_template_status": "PASS",
+      "evidence_ids_status": "PASS",
+      "existing_evidence_ids": [],
+      "kind": "TABLE",
+      "mandatory_limitations": [
+        "Arbitrage là price repositioning, chưa funded executable swap; tác động giá tức thời khác spread sau arbitrage.",
+        "RQ5 chỉ kênh định giá nợ USDC; token quantity khác USD-equivalent; chưa redemption/liquidity/confidence/settlement đầy đủ.",
+        "Modeled bad debt/composite tail exposure khác realized financial loss hoặc market expected shortfall; debt repaid không phải loss."
+      ],
+      "policy_scenario_cohort": [
+        "Mỗi metric dùng đúng scope trong code/registry"
+      ],
+      "rendering_decision": "Definition table from code and locked terminology.",
+      "rendition_owner": "Codex rendering; Work owns caption/inference",
+      "reproducibility_classification": "TEXTUAL_SYNTHESIS",
+      "requested_output_format": "CSV UTF-8 + Markdown table + provenance JSON",
+      "required_display_controls": [
+        "Separate USDC token from USD-equivalent; immediate impact from residual spread; delay from recovery time."
+      ],
+      "result_ids": [],
+      "result_ids_status": "PASS",
+      "section": "3.3",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "2b23c9ee88ee4976755e5f4795026e381d5fe497",
+          "codex_g0_evidence_id": "P3E:059",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "2b23c9ee88ee4976755e5f4795026e381d5fe497",
+          "git_blob_sha256": "93d18336d0b39f221d98765152f4a4716870b5c9b433f724b5a69e666c1ecb8c",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "sim/engine/run.py",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "2ca1e29495e6183dfefaf8939e59e6c4eba574fb",
+          "codex_g0_evidence_id": "P3E:056",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "2ca1e29495e6183dfefaf8939e59e6c4eba574fb",
+          "git_blob_sha256": "547559179690cf9f377ca6ad71e8384f5ba88a490727fe5a4a45257d75ee5880",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "docs/research_final/TERMINOLOGY_VI.md",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "bac44e61633b5efdde3665731ea69fbf4ca345e6",
+          "codex_g0_evidence_id": "P3E:002",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "bac44e61633b5efdde3665731ea69fbf4ca345e6",
+          "git_blob_sha256": "918226582bf2c748d7aea6efbc9ba74689900b34c02117d6e6e3aae8022f509d",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "data/processed/research_final/final_accepted_claims_v1/accepted_claims_registry.json",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        }
+      ],
+      "source_locators_status": "PASS",
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "title": "Từ điển biến và chỉ tiêu",
+      "units": [
+        "USDC tokens",
+        "USD equivalent",
+        "WETH",
+        "ratio/%",
+        "seconds/waves"
+      ],
+      "work_exhibit_id": "T3.3",
+      "work_handoff_id": "P3X-T3.3"
+    },
+    {
+      "accepted_claim_ids": [
+        "P2:C20",
+        "P2:C33"
+      ],
+      "chapter": 4,
+      "claim_ids_status": "PASS",
+      "codex_template_ids": [
+        "P3X:CANONICAL_SCOPE_PROVENANCE"
+      ],
+      "codex_template_status": "PASS",
+      "evidence_ids_status": "PASS",
+      "existing_evidence_ids": [],
+      "kind": "FIGURE",
+      "mandatory_limitations": [
+        "Một block 26045352, 454 verified borrowers; 109 là cohort WETH-collateral-enabled/USDC-debt riêng; một Uniswap venue, không đại diện toàn thị trường.",
+        "Git LF blob bytes khác Windows CRLF checkout bytes; kết quả kiểm thử do Codex báo cáo khác lượt Work tự chạy; không đồng nhất hash domains."
+      ],
+      "policy_scenario_cohort": [
+        "Block26045352;454 verified;109 route cohort"
+      ],
+      "rendering_decision": "Provenance/process schematic using locked block and verified cohort counts.",
+      "rendition_owner": "Codex rendering; Work owns caption/inference",
+      "reproducibility_classification": "SCHEMATIC_FROM_LOCKED_MODEL_SPEC",
+      "requested_output_format": "SVG/PDF vector + PNG 300 dpi + plot-data CSV + provenance JSON",
+      "required_display_controls": [
+        "Do not convert candidate verification into market coverage."
+      ],
+      "result_ids": [
+        "AAVE_SNAPSHOT_BLOCK",
+        "AAVE_VERIFIED_BORROWERS",
+        "AAVE_WETH_USDC_COHORT"
+      ],
+      "result_ids_status": "PASS",
+      "section": "4.1",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "6dde91fc11d189de8899c742b44fea9cf0f386ae",
+          "codex_g0_evidence_id": "P3E:015",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "6dde91fc11d189de8899c742b44fea9cf0f386ae",
+          "git_blob_sha256": "6e31fb66964a66e1e05ce5a39414ebcd399b736c49042328246c6c3986d0e1b8",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "data/processed/research_final/frozen_v3/results_registry.json",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "a6784fd7f1b7288c4f2177ff8ba102be5e01c81e",
+          "codex_g0_evidence_id": "P3E:007",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "a6784fd7f1b7288c4f2177ff8ba102be5e01c81e",
+          "git_blob_sha256": "69809a5bb2bb6db6d8dd5e3699efb63f2faf127d68e9c99e3213a8837549a2fa",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "data/processed/research_final/final_accepted_claims_v1/source_provenance_registry.json",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        }
+      ],
+      "source_locators_status": "PASS",
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "title": "Tái dựng trạng thái và dòng provenance",
+      "units": [
+        "borrowers/positions",
+        "Ethereum block"
+      ],
+      "work_exhibit_id": "F4.1",
+      "work_handoff_id": "P3X-F4.1"
+    },
+    {
+      "accepted_claim_ids": [
+        "P2:C02",
+        "P2:C33"
+      ],
+      "chapter": 4,
+      "claim_ids_status": "PASS",
+      "codex_template_ids": [
+        "P3X:CANONICAL_SCOPE_PROVENANCE"
+      ],
+      "codex_template_status": "PASS",
+      "evidence_ids_status": "PASS",
+      "existing_evidence_ids": [
+        "T02"
+      ],
+      "kind": "TABLE",
+      "mandatory_limitations": [
+        "Không suy độ phủ thị trường; max absolute error không đại diện vùngHF≈1"
+      ],
+      "policy_scenario_cohort": [
+        "454 verified; near-threshold detail chỉ thêm sau Codex evidence pack"
+      ],
+      "rendering_decision": "Direct table from T02/core facts and result registry.",
+      "rendition_owner": "Codex rendering; Work owns caption/inference",
+      "reproducibility_classification": "RENDERABLE_FROM_LOCKED_ARTIFACT",
+      "requested_output_format": "CSV UTF-8 + Markdown table + provenance JSON",
+      "required_display_controls": [
+        "Do not add near-threshold subgroup statistics unless a locked locator is supplied; maxima are not typical error."
+      ],
+      "result_ids": [
+        "AAVE_HF_MAX_ABS_ERROR",
+        "AAVE_HF_MAX_REL_ERROR",
+        "AAVE_VERIFIED_BORROWERS"
+      ],
+      "result_ids_status": "PASS",
+      "section": "4.2",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "52a074b9b8284221c5996d14d903504ee8abe414",
+          "codex_g0_evidence_id": "NOT_IN_67_RECORD_INVENTORY_GIT_LOCK_VERIFIED_SEPARATELY",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "52a074b9b8284221c5996d14d903504ee8abe414",
+          "git_blob_sha256": "0f5790186490f6f60088a2a7ea7f94b37ea02468645073ab42fd19ff2df17a25",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "data/processed/research_final/frozen_v3/tables/core_facts.csv",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "6dde91fc11d189de8899c742b44fea9cf0f386ae",
+          "codex_g0_evidence_id": "P3E:015",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "6dde91fc11d189de8899c742b44fea9cf0f386ae",
+          "git_blob_sha256": "6e31fb66964a66e1e05ce5a39414ebcd399b736c49042328246c6c3986d0e1b8",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "data/processed/research_final/frozen_v3/results_registry.json",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        }
+      ],
+      "source_locators_status": "PASS",
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "title": "Đối chiếu Health Factor và chất lượng dữ liệu",
+      "units": [
+        "HF units",
+        "ratio; quy đổi % ghi rõ",
+        "borrowers"
+      ],
+      "work_exhibit_id": "T4.1",
+      "work_handoff_id": "P3X-T4.1"
+    },
+    {
+      "accepted_claim_ids": [
+        "P2:C17",
+        "P2:C20",
+        "P2:C32",
+        "P2:C33",
+        "P2:C34"
+      ],
+      "chapter": 4,
+      "claim_ids_status": "PASS",
+      "codex_template_ids": [
+        "P3X:METRIC_SEMANTICS_GLOSSARY"
+      ],
+      "codex_template_status": "PASS",
+      "evidence_ids_status": "PASS",
+      "existing_evidence_ids": [],
+      "kind": "TABLE",
+      "mandatory_limitations": [
+        "Haircut 90/95% là extreme counterfactual tails, chưa có bằng chứng lịch sử tương ứng; không có independent local-fork execution được kiểm chứng.",
+        "Hai raw borrower CSV lớn vẫn chưa được Work đọc đầy đủ/cell-by-cell; giữ source access labels, U01–U08 và mức abstract/metadata/code; S17/S18 cùng nghiên cứu.",
+        "Git LF blob bytes khác Windows CRLF checkout bytes; kết quả kiểm thử do Codex báo cáo khác lượt Work tự chạy; không đồng nhất hash domains."
+      ],
+      "policy_scenario_cohort": [
+        "Các kiểm tra đã khóa; không tái chạy"
+      ],
+      "rendering_decision": "Validation-scope/status table from locked audit documents.",
+      "rendition_owner": "Codex rendering; Work owns caption/inference",
+      "reproducibility_classification": "TEXTUAL_SYNTHESIS",
+      "requested_output_format": "CSV UTF-8 + Markdown table + provenance JSON",
+      "required_display_controls": [
+        "Unexecuted fork validation remains unavailable, never PASS."
+      ],
+      "result_ids": [],
+      "result_ids_status": "PASS",
+      "section": "4.3",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "4baa8b825743cacd20b1586cff5fb05d1aad96c2",
+          "codex_g0_evidence_id": "NOT_IN_67_RECORD_INVENTORY_GIT_LOCK_VERIFIED_SEPARATELY",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "4baa8b825743cacd20b1586cff5fb05d1aad96c2",
+          "git_blob_sha256": "107f82ad01ffbe805349e3b2a48e2270356a8c943f179e1afd88da0bf9a85f97",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "docs/research_final/LEVEL2_FORK_VALIDATION.md",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "7e54828a39e05f9e41e9d2b206bcfa0402a6fb7a",
+          "codex_g0_evidence_id": "NOT_IN_67_RECORD_INVENTORY_GIT_LOCK_VERIFIED_SEPARATELY",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "7e54828a39e05f9e41e9d2b206bcfa0402a6fb7a",
+          "git_blob_sha256": "781acb73760ce11ce072a8c3795c4f93b3a2518baffb56de0845e3cdc798d5ab",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "docs/research_final/FINAL_CROSS_PR_CONSISTENCY_REVIEW.md",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "f3fd437b41d0feabacf01f6708ca65d3a738ef05",
+          "codex_g0_evidence_id": "NOT_IN_67_RECORD_INVENTORY_GIT_LOCK_VERIFIED_SEPARATELY",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "f3fd437b41d0feabacf01f6708ca65d3a738ef05",
+          "git_blob_sha256": "a8d508075a490113b870c92675838033722c3fd2f2bf8c8e1f35ec68906f2536",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "docs/research_final/SCIENTIFIC_PREMERGE_AUDIT_v1.md",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        }
+      ],
+      "source_locators_status": "PASS",
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "title": "Phạm vi kiểm chứng và phần chưa xác lập",
+      "units": [
+        "không đơn vị"
+      ],
+      "work_exhibit_id": "T4.2",
+      "work_handoff_id": "P3X-T4.2"
+    },
+    {
+      "accepted_claim_ids": [
+        "INT:CL_INT_RQ1_POLICY_CONDITIONAL",
+        "P2:C23"
+      ],
+      "chapter": 5,
+      "claim_ids_status": "PASS",
+      "codex_template_ids": [
+        "P3X:ORACLE_POLICY_DEPTH2_COMPARISON"
+      ],
+      "codex_template_status": "PASS",
+      "evidence_ids_status": "PASS",
+      "existing_evidence_ids": [
+        "F01"
+      ],
+      "kind": "FIGURE",
+      "mandatory_limitations": [
+        "Kết quả cascade là mô phỏng phản thực có điều kiện theo policy, cohort và cấu hình thanh khoản; A/B/C chưa được xác minh là feed Aave/Chainlink lịch sử.",
+        "Haircut 90/95% là extreme counterfactual tails, chưa có bằng chứng lịch sử tương ứng; không có independent local-fork execution được kiểm chứng."
+      ],
+      "policy_scenario_cohort": [
+        "Baseline Policy A; hai miền grid khác nhau"
+      ],
+      "rendering_decision": "Direct display of locked 32-cell and 60-cell depth counts.",
+      "rendition_owner": "Codex rendering; Work owns caption/inference",
+      "reproducibility_classification": "RENDERABLE_FROM_LOCKED_ARTIFACT",
+      "requested_output_format": "SVG/PDF vector + PNG 300 dpi + plot-data CSV + provenance JSON",
+      "required_display_controls": [
+        "Facet grids separately; 12/20/0 and 18/38/4 use different experiment domains."
+      ],
+      "result_ids": [
+        "RQ1_GRID32_MAX_DEPTH",
+        "RQ1_GRID60_DEPTH0",
+        "RQ1_GRID60_DEPTH1",
+        "RQ1_GRID60_DEPTH2"
+      ],
+      "result_ids_status": "PASS",
+      "section": "5.1",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "f0e80bc73735de7684feadd2cd3c82519331c033",
+          "codex_g0_evidence_id": "NOT_IN_67_RECORD_INVENTORY_GIT_LOCK_VERIFIED_SEPARATELY",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "f0e80bc73735de7684feadd2cd3c82519331c033",
+          "git_blob_sha256": "e0a5a972aaed33a3b9ceb79406f7a09f47241915292842f47d9441e10b7530e8",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "data/processed/research_final/frozen_v3/tables/rq1_deterministic_depth.csv",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        }
+      ],
+      "source_locators_status": "PASS",
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "title": "Phân bố độ sâu trên hai lưới stress",
+      "units": [
+        "cells"
+      ],
+      "work_exhibit_id": "F5.1",
+      "work_handoff_id": "P3X-F5.1"
+    },
+    {
+      "accepted_claim_ids": [
+        "INT:CL_INT_RQ1_POLICY_CONDITIONAL",
+        "INT:CL_INT_RQ2_TWO_CHANNELS",
+        "P2:C32"
+      ],
+      "chapter": 5,
+      "claim_ids_status": "PASS",
+      "codex_template_ids": [
+        "P3X:ORACLE_POLICY_DEPTH2_COMPARISON"
+      ],
+      "codex_template_status": "PASS",
+      "evidence_ids_status": "PASS",
+      "existing_evidence_ids": [],
+      "kind": "TABLE",
+      "mandatory_limitations": [
+        "Kết quả cascade là mô phỏng phản thực có điều kiện theo policy, cohort và cấu hình thanh khoản; A/B/C chưa được xác minh là feed Aave/Chainlink lịch sử.",
+        "280/10.000 chỉ Severe Policy A; mười targeted MC paths chọn theo A-depth2; không ước lượng xác suất thị trường, không suy không thể có depth≥3 ngoài tập thử."
+      ],
+      "policy_scenario_cohort": [
+        "4 selected deterministic depth2;10 targeted MC chosen under A; controls denominator riêng"
+      ],
+      "rendering_decision": "Direct A/B/C retained-depth table for selected deterministic and targeted MC cases.",
+      "rendition_owner": "Codex rendering; Work owns caption/inference",
+      "reproducibility_classification": "RENDERABLE_FROM_LOCKED_ARTIFACT",
+      "requested_output_format": "CSV UTF-8 + Markdown table + provenance JSON",
+      "required_display_controls": [
+        "Show /4 and /10 denominators; controls remain separate; ten paths are not a frequency estimator."
+      ],
+      "result_ids": [
+        "INT_A_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
+        "INT_A_SELECTED_MC_DEPTH2_RETAINED_COUNT_OF_10",
+        "INT_B_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
+        "INT_B_SELECTED_MC_DEPTH2_RETAINED_COUNT_OF_10",
+        "INT_C_WEAK_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
+        "INT_C_WEAK_SELECTED_MC_DEPTH2_RETAINED_COUNT_OF_10",
+        "INT_C_MODERATE_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
+        "INT_C_MODERATE_SELECTED_MC_DEPTH2_RETAINED_COUNT_OF_10"
+      ],
+      "result_ids_status": "PASS",
+      "section": "5.2",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "1bb5bdea8be74c1e62dc89badbcb8cbae67b7bd3",
+          "codex_g0_evidence_id": "P3E:032",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "1bb5bdea8be74c1e62dc89badbcb8cbae67b7bd3",
+          "git_blob_sha256": "3eb4bd1c2404abfb1a4a2cd402d06d70a971e781b279c599be66438c5e5d253d",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "data/processed/research_final/oracle_transmission_diagnostic_v1/selection_manifest.json",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "dee128ff278efe94895220aca5eccec4150c1cc4",
+          "codex_g0_evidence_id": "P3E:029",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "dee128ff278efe94895220aca5eccec4150c1cc4",
+          "git_blob_sha256": "09c2d6dea5868817c57a67329f4d64469d1d7c1340fddc5e980c6b3741bea078",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "data/processed/research_final/oracle_transmission_diagnostic_v1/comparison_matrix.csv",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "664eeac6d3d80a38dc4c2ca6c942070f09d8d9f8",
+          "codex_g0_evidence_id": "P3E:034",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "664eeac6d3d80a38dc4c2ca6c942070f09d8d9f8",
+          "git_blob_sha256": "53dc862ad37d447777ec2ee421d00696d7c52555a931af084d834c88f06df283",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        }
+      ],
+      "source_locators_status": "PASS",
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "title": "Độ nhạy thanh lý vòng hai theo policy",
+      "units": [
+        "cases/4",
+        "paths/10"
+      ],
+      "work_exhibit_id": "T5.1",
+      "work_handoff_id": "P3X-T5.1"
+    },
+    {
+      "accepted_claim_ids": [
+        "INT:CL_INT_ELIGIBLE_NOT_EXECUTED",
+        "P2:C33"
+      ],
+      "chapter": 5,
+      "claim_ids_status": "PASS",
+      "codex_template_ids": [
+        "P3X:ELIGIBLE_VS_EXECUTED"
+      ],
+      "codex_template_status": "PASS",
+      "evidence_ids_status": "PASS",
+      "existing_evidence_ids": [
+        "INT_T01_ELIGIBLE_VS_EXECUTED"
+      ],
+      "kind": "TABLE",
+      "mandatory_limitations": [
+        "Phân biệt HF danh mục mới dưới 1, engine evaluation, route eligibility và execution có debt repaid dương; đếm borrower-case-policy instances, không unique wallets.",
+        "36 skips NO_MODELLED_USDC_DEBT; no claim unique-wallet count"
+      ],
+      "policy_scenario_cohort": [
+        "18 cases×4policies×454;109 cohort khác; A35/14/21 B0/0/0 Cweak6/0/6 Cmod11/2/9"
+      ],
+      "rendering_decision": "Direct extraction of the locked eligible/executed summary.",
+      "rendition_owner": "Codex rendering; Work owns caption/inference",
+      "reproducibility_classification": "RENDERABLE_FROM_LOCKED_ARTIFACT",
+      "requested_output_format": "CSV UTF-8 + Markdown table + provenance JSON",
+      "required_display_controls": [
+        "Units are borrower-case-policy instances; 36 skips are route-ineligible due to zero modeled USDC route debt."
+      ],
+      "result_ids": [
+        "INT_A_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_A_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
+        "INT_A_NEWLY_ELIGIBLE_SKIPPED_INSTANCES",
+        "INT_B_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_B_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
+        "INT_B_NEWLY_ELIGIBLE_SKIPPED_INSTANCES",
+        "INT_C_WEAK_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_C_WEAK_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
+        "INT_C_WEAK_NEWLY_ELIGIBLE_SKIPPED_INSTANCES",
+        "INT_C_MODERATE_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_C_MODERATE_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
+        "INT_C_MODERATE_NEWLY_ELIGIBLE_SKIPPED_INSTANCES"
+      ],
+      "result_ids_status": "PASS",
+      "section": "5.3",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "664eeac6d3d80a38dc4c2ca6c942070f09d8d9f8",
+          "codex_g0_evidence_id": "P3E:034",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "664eeac6d3d80a38dc4c2ca6c942070f09d8d9f8",
+          "git_blob_sha256": "53dc862ad37d447777ec2ee421d00696d7c52555a931af084d834c88f06df283",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "c74345f75c02a4550151a0cf7802fa96fecdd202",
+          "codex_g0_evidence_id": "P3E:037",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "c74345f75c02a4550151a0cf7802fa96fecdd202",
+          "git_blob_sha256": "6df818552d703e4f6c38224e30ecda45f67d5d823b254c247143bf8e77b99548",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "data/processed/research_final/scientific_integration_v1/table_figure_registry.json",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        }
+      ],
+      "source_locators_status": "PASS",
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "title": "Mới đủ điều kiện và thanh lý đã thực thi",
+      "units": [
+        "borrower-case-policy instances",
+        "USDC token quantity"
+      ],
+      "work_exhibit_id": "T5.2",
+      "work_handoff_id": "P3X-T5.2"
+    },
+    {
+      "accepted_claim_ids": [
+        "P2:C03",
+        "P2:C33",
+        "INT:CL_INT_ELIGIBLE_NOT_EXECUTED"
+      ],
+      "chapter": 5,
+      "claim_ids_status": "PASS",
+      "codex_template_ids": [
+        "P3X:ELIGIBLE_VS_EXECUTED"
+      ],
+      "codex_template_status": "PASS",
+      "evidence_ids_status": "PASS",
+      "existing_evidence_ids": [],
+      "kind": "FIGURE",
+      "mandatory_limitations": [
+        "Phân biệt HF danh mục mới dưới 1, engine evaluation, route eligibility và execution có debt repaid dương; đếm borrower-case-policy instances, không unique wallets.",
+        "Hai raw borrower CSV lớn vẫn chưa được Work đọc đầy đủ/cell-by-cell; giữ source access labels, U01–U08 và mức abstract/metadata/code; S17/S18 cùng nghiên cứu."
+      ],
+      "policy_scenario_cohort": [
+        "Chỉ targeted72policy-cases; event examples không phải rawCSV đượcWorkđọctoànbộ"
+      ],
+      "rendering_decision": "Aggregate gates are supported, but any borrower event example needs a deterministic predeclared selector and exact trace locator.",
+      "rendition_owner": "Codex rendering; Work owns caption/inference",
+      "reproducibility_classification": "NEEDS_DISPLAY_SPEC",
+      "requested_output_format": "SVG/PDF vector + PNG 300 dpi + plot-data CSV + provenance JSON",
+      "required_display_controls": [
+        "Use the smallest stable case/borrower key within the predeclared executed/skipped category; preserve pseudonymization; do not sample after viewing outcomes."
+      ],
+      "result_ids": [
+        "INT_A_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_A_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
+        "INT_A_NEWLY_ELIGIBLE_SKIPPED_INSTANCES",
+        "INT_B_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_B_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
+        "INT_B_NEWLY_ELIGIBLE_SKIPPED_INSTANCES",
+        "INT_C_WEAK_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_C_WEAK_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
+        "INT_C_WEAK_NEWLY_ELIGIBLE_SKIPPED_INSTANCES",
+        "INT_C_MODERATE_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_C_MODERATE_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
+        "INT_C_MODERATE_NEWLY_ELIGIBLE_SKIPPED_INSTANCES"
+      ],
+      "result_ids_status": "PASS",
+      "section": "5.3",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "664eeac6d3d80a38dc4c2ca6c942070f09d8d9f8",
+          "codex_g0_evidence_id": "P3E:034",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "664eeac6d3d80a38dc4c2ca6c942070f09d8d9f8",
+          "git_blob_sha256": "53dc862ad37d447777ec2ee421d00696d7c52555a931af084d834c88f06df283",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "f3fd437b41d0feabacf01f6708ca65d3a738ef05",
+          "codex_g0_evidence_id": "NOT_IN_67_RECORD_INVENTORY_GIT_LOCK_VERIFIED_SEPARATELY",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "f3fd437b41d0feabacf01f6708ca65d3a738ef05",
+          "git_blob_sha256": "a8d508075a490113b870c92675838033722c3fd2f2bf8c8e1f35ec68906f2536",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "docs/research_final/SCIENTIFIC_PREMERGE_AUDIT_v1.md",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        }
+      ],
+      "source_locators_status": "PASS",
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "title": "Các cổng từ HF danh mục tới execution",
+      "units": [
+        "instances",
+        "HF ratio"
+      ],
+      "work_exhibit_id": "F5.2",
+      "work_handoff_id": "P3X-F5.2"
+    },
+    {
+      "accepted_claim_ids": [
+        "P2:C07",
+        "P2:C32",
+        "INT:CL_INT_RQ2_TWO_CHANNELS"
+      ],
+      "chapter": 5,
+      "claim_ids_status": "PASS",
+      "codex_template_ids": [
+        "P3X:LIQUIDITY_ABSORPTION_AND_PRICE_METRICS",
+        "P3X:ORACLE_POLICY_DEPTH2_COMPARISON"
+      ],
+      "codex_template_status": "PASS",
+      "evidence_ids_status": "PASS",
+      "existing_evidence_ids": [],
+      "kind": "FIGURE",
+      "mandatory_limitations": [
+        "Kết quả cascade là mô phỏng phản thực có điều kiện theo policy, cohort và cấu hình thanh khoản; A/B/C chưa được xác minh là feed Aave/Chainlink lịch sử.",
+        "Một block 26045352, 454 verified borrowers; 109 là cohort WETH-collateral-enabled/USDC-debt riêng; một Uniswap venue, không đại diện toàn thị trường.",
+        "Haircut 90/95% là extreme counterfactual tails, chưa có bằng chứng lịch sử tương ứng; không có independent local-fork execution được kiểm chứng."
+      ],
+      "policy_scenario_cohort": [
+        "One pool; targeted comparison; không trộn maxima latertrade với immediate effect"
+      ],
+      "rendering_decision": "Both panels are supported but must not imply that every nonzero haircut is observed or that DEX distortion automatically becomes HF feedback.",
+      "rendition_owner": "Codex rendering; Work owns caption/inference",
+      "reproducibility_classification": "NEEDS_DISPLAY_SPEC",
+      "requested_output_format": "SVG/PDF vector + PNG 300 dpi + plot-data CSV + provenance JSON",
+      "required_display_controls": [
+        "Only 0% is the unmodified canonical pool; 25–95% haircuts are modeled counterfactual transformations; 90/95% are extreme unobserved tails.",
+        "Use separate axes for cells and USD/WETH."
+      ],
+      "result_ids": [
+        "RQ2_CANONICAL_DEPTH_2PCT",
+        "RQ2_DEPTH2_HAIRCUT90_COUNT",
+        "RQ2_DEPTH2_HAIRCUT95_COUNT"
+      ],
+      "result_ids_status": "PASS",
+      "section": "5.2",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "d753e24d06d35cc6d31ab2ef07ea6740ce862edb",
+          "codex_g0_evidence_id": "NOT_IN_67_RECORD_INVENTORY_GIT_LOCK_VERIFIED_SEPARATELY",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "d753e24d06d35cc6d31ab2ef07ea6740ce862edb",
+          "git_blob_sha256": "40dea37ff9f90efbae58f7b3a386f671de507a9757603dc528a2f438a9550c9e",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "data/processed/research_final/frozen_v3/tables/rq2_liquidity.csv",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "dee128ff278efe94895220aca5eccec4150c1cc4",
+          "codex_g0_evidence_id": "P3E:029",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "dee128ff278efe94895220aca5eccec4150c1cc4",
+          "git_blob_sha256": "09c2d6dea5868817c57a67329f4d64469d1d7c1340fddc5e980c6b3741bea078",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "data/processed/research_final/oracle_transmission_diagnostic_v1/comparison_matrix.csv",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        }
+      ],
+      "source_locators_status": "PASS",
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "title": "Sức hấp thụ DEX và kênh phản hồi định giá",
+      "units": [
+        "% haircut",
+        "cells",
+        "USD/WETH"
+      ],
+      "work_exhibit_id": "F5.3",
+      "work_handoff_id": "P3X-F5.3"
+    },
+    {
+      "accepted_claim_ids": [
+        "P2:C19",
+        "INT:CL_INT_RQ3_PRESERVED"
+      ],
+      "chapter": 5,
+      "claim_ids_status": "PASS",
+      "codex_template_ids": [],
+      "codex_template_status": "PASS",
+      "evidence_ids_status": "PASS",
+      "existing_evidence_ids": [
+        "F03",
+        "T06"
+      ],
+      "kind": "FIGURE",
+      "mandatory_limitations": [
+        "Liquidator/arbitrageur đại diện; vốn không recycle, kế hoạch vượt vốn không tự chia nhỏ; kết quả gas/capacity/delay chỉ trong miền thử.",
+        "Recovery0 không có nghĩa reaction delay0"
+      ],
+      "policy_scenario_cohort": [
+        "Professor Demo; delays0/1/2/4steps; no recycle/no plan splitting"
+      ],
+      "rendering_decision": "Direct display from locked RQ3 constraints table.",
+      "rendition_owner": "Codex rendering; Work owns caption/inference",
+      "reproducibility_classification": "RENDERABLE_FROM_LOCKED_ARTIFACT",
+      "requested_output_format": "SVG/PDF vector + PNG 300 dpi + plot-data CSV + provenance JSON",
+      "required_display_controls": [
+        "Debt repaid is USDC token quantity; processing delay is seconds; zero recovery is not zero reaction delay."
+      ],
+      "result_ids": [
+        "RQ3_CAPITAL_25_LIQUIDATED",
+        "RQ3_CAPITAL_100_LIQUIDATED",
+        "RQ3_DELAY_SEVERITY_CHANGE"
+      ],
+      "result_ids_status": "PASS",
+      "section": "5.3",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "0a51fb795e562c0276ac36903662be92d52ce86f",
+          "codex_g0_evidence_id": "P3E:017",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "0a51fb795e562c0276ac36903662be92d52ce86f",
+          "git_blob_sha256": "de66ec8d972aa5c5a31ee00b1815bb4f6fae16d04772fb3b49e8ca9293b4ec50",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "data/processed/research_final/frozen_v3/tables/rq3_constraints.csv",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        }
+      ],
+      "source_locators_status": "PASS",
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "title": "Ràng buộc vốn và độ trễ xử lý",
+      "units": [
+        "%reference demand",
+        "USDC token",
+        "seconds"
+      ],
+      "work_exhibit_id": "F5.4",
+      "work_handoff_id": "P3X-F5.4"
+    },
+    {
+      "accepted_claim_ids": [
+        "P2:C13",
+        "P2:C34",
+        "INT:CL_INT_RQ4_PRESERVED"
+      ],
+      "chapter": 5,
+      "claim_ids_status": "PASS",
+      "codex_template_ids": [
+        "P3X:LIQUIDITY_ABSORPTION_AND_PRICE_METRICS"
+      ],
+      "codex_template_status": "PASS",
+      "evidence_ids_status": "PASS",
+      "existing_evidence_ids": [
+        "F04",
+        "T07"
+      ],
+      "kind": "FIGURE",
+      "mandatory_limitations": [
+        "Arbitrage là price repositioning, chưa funded executable swap; tác động giá tức thời khác spread sau arbitrage."
+      ],
+      "policy_scenario_cohort": [
+        "Same sale;−20%shock/40%haircut;0/50/100capacity"
+      ],
+      "rendering_decision": "Direct display from locked RQ4 table.",
+      "rendition_owner": "Codex rendering; Work owns caption/inference",
+      "reproducibility_classification": "RENDERABLE_FROM_LOCKED_ARTIFACT",
+      "requested_output_format": "SVG/PDF vector + PNG 300 dpi + plot-data CSV + provenance JSON",
+      "required_display_controls": [
+        "Immediate price impact and post-arbitrage residual are separate ratios; price repositioning is not a funded swap."
+      ],
+      "result_ids": [
+        "RQ4_IMMEDIATE_PRICE_IMPACT",
+        "RQ4_SPREAD_ARB0",
+        "RQ4_SPREAD_ARB100"
+      ],
+      "result_ids_status": "PASS",
+      "section": "5.4",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "1fdeb6b31a7537d79e9e8c9e97544dbf78bb4f2e",
+          "codex_g0_evidence_id": "P3E:018",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "1fdeb6b31a7537d79e9e8c9e97544dbf78bb4f2e",
+          "git_blob_sha256": "4fbc8e0f0d39c937e0acf28cf8abba3bf8d85bed9d319a6164a3f389f73ed85e",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "data/processed/research_final/frozen_v3/tables/rq4_arbitrage.csv",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        }
+      ],
+      "source_locators_status": "PASS",
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "title": "Tác động giá tức thời và spread sau arbitrage",
+      "units": [
+        "ratio; hiển thị% bằng×100"
+      ],
+      "work_exhibit_id": "F5.5",
+      "work_handoff_id": "P3X-F5.5"
+    },
+    {
+      "accepted_claim_ids": [
+        "P2:C15",
+        "P2:C35",
+        "INT:CL_INT_RQ5_PRESERVED"
+      ],
+      "chapter": 5,
+      "claim_ids_status": "PASS",
+      "codex_template_ids": [],
+      "codex_template_status": "PASS",
+      "evidence_ids_status": "PASS",
+      "existing_evidence_ids": [
+        "T08"
+      ],
+      "kind": "TABLE",
+      "mandatory_limitations": [
+        "RQ5 chỉ kênh định giá nợ USDC; token quantity khác USD-equivalent; chưa redemption/liquidity/confidence/settlement đầy đủ."
+      ],
+      "policy_scenario_cohort": [
+        "109WETH/USDC frozen cohort;0.90…1.10"
+      ],
+      "rendering_decision": "Direct display from locked RQ5 table.",
+      "rendition_owner": "Codex rendering; Work owns caption/inference",
+      "reproducibility_classification": "RENDERABLE_FROM_LOCKED_ARTIFACT",
+      "requested_output_format": "CSV UTF-8 + Markdown table + provenance JSON",
+      "required_display_controls": [
+        "Keep USDC token debt and USD-equivalent debt in separate columns with explicit price."
+      ],
+      "result_ids": [
+        "RQ5_HF_LT1_USDC_090",
+        "RQ5_HF_LT1_USDC_100",
+        "RQ5_HF_LT1_USDC_110",
+        "RQ5_LIQUIDATED_DEBT_TOKEN_QTY",
+        "RQ5_LIQUIDATED_DEBT_USD"
+      ],
+      "result_ids_status": "PASS",
+      "section": "5.5",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "3f36a867c750f90d5a88ae5b1b00eae6be151b6e",
+          "codex_g0_evidence_id": "P3E:019",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "3f36a867c750f90d5a88ae5b1b00eae6be151b6e",
+          "git_blob_sha256": "d6ec0ff75f076b3c4ba0344578fb1ff86c8819d14231d41d40024355f1a4f58a",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "data/processed/research_final/frozen_v3/tables/rq5_usdc_valuation.csv",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        }
+      ],
+      "source_locators_status": "PASS",
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "title": "Định giá nợ USDC và hệ số sức khỏe",
+      "units": [
+        "USD/USDC",
+        "borrowers",
+        "USDC token",
+        "USD equivalent"
+      ],
+      "work_exhibit_id": "T5.3",
+      "work_handoff_id": "P3X-T5.3"
+    },
+    {
+      "accepted_claim_ids": [
+        "P2:C04",
+        "P2:C05",
+        "P2:C12",
+        "INT:CL_INT_RQ6_PRESERVED"
+      ],
+      "chapter": 5,
+      "claim_ids_status": "PASS",
+      "codex_template_ids": [
+        "P3X:RISK_PARAMETER_MECHANISMS"
+      ],
+      "codex_template_status": "PASS",
+      "evidence_ids_status": "PASS",
+      "existing_evidence_ids": [
+        "T09"
+      ],
+      "kind": "FIGURE",
+      "mandatory_limitations": [
+        "Không dùng recordedLT cũ thay scenarioLT; không policy optimality"
+      ],
+      "policy_scenario_cohort": [
+        "Frozen109; ba thí nghiệm riêng; không borrower re-underwriting"
+      ],
+      "rendering_decision": "All values are locked, but three mechanisms and three outcome units require facets or a mechanism table, not one shared axis.",
+      "rendition_owner": "Codex rendering; Work owns caption/inference",
+      "reproducibility_classification": "NEEDS_DISPLAY_SPEC",
+      "requested_output_format": "SVG/PDF vector + PNG 300 dpi + plot-data CSV + provenance JSON",
+      "required_display_controls": [
+        "LTV→USD capacity, LT→USDC-token unliquidated debt, bonus→WETH seized; retain scenario LT semantics."
+      ],
+      "result_ids": [
+        "RQ6_LTV0755_CAPACITY",
+        "RQ6_LTV0825_CAPACITY",
+        "RQ6_LT083_UNLIQUIDATED",
+        "RQ6_LT0855_UNLIQUIDATED",
+        "RQ6_BONUS103_SEIZED",
+        "RQ6_BONUS107_SEIZED"
+      ],
+      "result_ids_status": "PASS",
+      "section": "5.6",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "deab1f45c56d8c836fead08190faffb1a5000fd2",
+          "codex_g0_evidence_id": "P3E:020",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "deab1f45c56d8c836fead08190faffb1a5000fd2",
+          "git_blob_sha256": "1fb3321ac4df248102a54bbe5f1e1108a4f4d404cfab7e9e2a8948179c50f912",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "data/processed/research_final/frozen_v3/tables/rq6_policy.csv",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        }
+      ],
+      "source_locators_status": "PASS",
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "title": "Ba cơ chế LTV LT và thưởng thanh lý",
+      "units": [
+        "%parameter hoặc bonusfactor ghi rõ",
+        "USD",
+        "USDCtoken",
+        "WETH"
+      ],
+      "work_exhibit_id": "F5.6",
+      "work_handoff_id": "P3X-F5.6"
+    },
+    {
+      "accepted_claim_ids": [
+        "P2:C22",
+        "P2:C23",
+        "P2:C24"
+      ],
+      "chapter": 5,
+      "claim_ids_status": "PASS",
+      "codex_template_ids": [
+        "P3X:SEVERE_POLICY_A_MONTE_CARLO"
+      ],
+      "codex_template_status": "PASS",
+      "evidence_ids_status": "PASS",
+      "existing_evidence_ids": [
+        "F02",
+        "T04"
+      ],
+      "kind": "FIGURE",
+      "mandatory_limitations": [
+        "280/10.000 chỉ Severe Policy A; mười targeted MC paths chọn theo A-depth2; không ước lượng xác suất thị trường, không suy không thể có depth≥3 ngoài tập thử.",
+        "Modeled bad debt/composite tail exposure khác realized financial loss hoặc market expected shortfall; debt repaid không phải loss."
+      ],
+      "policy_scenario_cohort": [
+        "Severe Policy A; nested prefixes; selectedMC10 không đặt chung frequencychart"
+      ],
+      "rendering_decision": "Reuse/re-render only locked prefix frequency and Wilson columns.",
+      "rendition_owner": "Codex rendering; Work owns caption/inference",
+      "reproducibility_classification": "RENDERABLE_FROM_LOCKED_ARTIFACT",
+      "requested_output_format": "SVG/PDF vector + PNG 300 dpi + plot-data CSV + provenance JSON",
+      "required_display_controls": [
+        "Prefixes are nested, Policy A only; no new interval; selected ten diagnostic paths stay off this frequency chart."
+      ],
+      "result_ids": [
+        "RQ1_MC_SEVERE_DEPTH2_COUNT",
+        "RQ1_MC_SEVERE_DEPTH2_FREQUENCY",
+        "RQ1_MC_SEVERE_DEPTH3_COUNT"
+      ],
+      "result_ids_status": "PASS",
+      "section": "5.7",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "ea71db6f633b7e5df1f12cd3d9f2533e5d5f9438",
+          "codex_g0_evidence_id": "NOT_IN_67_RECORD_INVENTORY_GIT_LOCK_VERIFIED_SEPARATELY",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "ea71db6f633b7e5df1f12cd3d9f2533e5d5f9438",
+          "git_blob_sha256": "e9f59d71d9ec053431a22a0dde8d577e575b4edc3e15774daee5541f9b8e8153",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "data/processed/research_final/frozen_v3/tables/rq1_monte_carlo.csv",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        }
+      ],
+      "source_locators_status": "PASS",
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "title": "Tần suất Severe và khoảng Wilson qua checkpoint",
+      "units": [
+        "paths",
+        "ratio/%"
+      ],
+      "work_exhibit_id": "F5.7",
+      "work_handoff_id": "P3X-F5.7"
+    },
+    {
+      "accepted_claim_ids": [
+        "P2:C09",
+        "P2:C10",
+        "INT:CL_INT_HISTORICAL_TIERS_PRESERVED"
+      ],
+      "chapter": 6,
+      "claim_ids_status": "PASS",
+      "codex_template_ids": [
+        "P3X:HISTORICAL_EVIDENCE_TIERS"
+      ],
+      "codex_template_status": "PASS",
+      "evidence_ids_status": "PASS",
+      "existing_evidence_ids": [
+        "T10"
+      ],
+      "kind": "TABLE",
+      "mandatory_limitations": [
+        "28 Pool events/27 Graph matches và tiers 1/2/23/1 chỉ theo cửa sổ đã khai báo; receipt route và đồng xuất hiện không xác lập lây lan nhân quả."
+      ],
+      "policy_scenario_cohort": [
+        "AavePool2026-09-01…07UTC; tiersdenominator27"
+      ],
+      "rendering_decision": "Direct historical evidence ladder table.",
+      "rendition_owner": "Codex rendering; Work owns caption/inference",
+      "reproducibility_classification": "RENDERABLE_FROM_LOCKED_ARTIFACT",
+      "requested_output_format": "CSV UTF-8 + Markdown table + provenance JSON",
+      "required_display_controls": [
+        "28 Pool/27 Graph; tier denominator 27; association does not prove causal contagion."
+      ],
+      "result_ids": [
+        "HIST_RPC_CENSUS_EVENTS",
+        "HIST_GRAPH_MATCHED_EVENTS",
+        "HIST_DIRECT_TRANSFER_PATHS",
+        "HIST_SAME_TX_COOCCURRENCE",
+        "HIST_SAME_BLOCK_ASSOCIATION",
+        "HIST_TIME_WINDOW_ASSOCIATION"
+      ],
+      "result_ids_status": "PASS",
+      "section": "6.1",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "ea2d04143baee6a2d561b588bd8174b6dbfbc64b",
+          "codex_g0_evidence_id": "P3E:016",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "ea2d04143baee6a2d561b588bd8174b6dbfbc64b",
+          "git_blob_sha256": "374dd47d8c10a74bd588059be2b019b4f9fc81dc64237dfd0e10ec2c6ebf5d1e",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "data/processed/research_final/frozen_v3/tables/historical_evidence.csv",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "e56da602592dd53fe52c830a3ca05537179a9b7a",
+          "codex_g0_evidence_id": "NOT_IN_67_RECORD_INVENTORY_GIT_LOCK_VERIFIED_SEPARATELY",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "e56da602592dd53fe52c830a3ca05537179a9b7a",
+          "git_blob_sha256": "2cfc1df7781a53ab4f2773ecef8b8165b444ac214bdda167baaf0926c965238b",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "docs/research_final/LEVEL3_HISTORICAL_EVENT_STUDY.md",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        }
+      ],
+      "source_locators_status": "PASS",
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "title": "Census lịch sử và tầng liên hệ",
+      "units": [
+        "LiquidationCall events"
+      ],
+      "work_exhibit_id": "T6.1",
+      "work_handoff_id": "P3X-T6.1"
+    },
+    {
+      "accepted_claim_ids": [
+        "P2:C29",
+        "P2:C30",
+        "INT:CL_INT_TERRA_NEGATIVE_PRESERVED"
+      ],
+      "chapter": 6,
+      "claim_ids_status": "PASS",
+      "codex_template_ids": [
+        "P3X:TERRA_NEGATIVE_EARLY_WARNING"
+      ],
+      "codex_template_status": "PASS",
+      "evidence_ids_status": "PASS",
+      "existing_evidence_ids": [
+        "T11"
+      ],
+      "kind": "FIGURE",
+      "mandatory_limitations": [
+        "Terra tái dựng hồi cứu khác dự báo; giữ HIGH trước initial depeg bằng 0, lead −45 giờ và kết luận âm ngoài mẫu; không dùng Terra xác nhận tham số Aave."
+      ],
+      "policy_scenario_cohort": [
+        "1630pre-initial-depeghours theoresultpopulation; derivedvalidation"
+      ],
+      "rendering_decision": "Negative results are locked; use two annotated panels or a table because zero alert-hours and −45-hour lead are distinct quantities.",
+      "rendition_owner": "Codex rendering; Work owns caption/inference",
+      "reproducibility_classification": "NEEDS_DISPLAY_SPEC",
+      "requested_output_format": "SVG/PDF vector + PNG 300 dpi + plot-data CSV + provenance JSON",
+      "required_display_controls": [
+        "Preserve the negative cutoff-safe/OOS conclusion; do not turn later-threshold behavior into forecast success."
+      ],
+      "result_ids": [
+        "TERRA_PRE_DEPEG_HIGH_ALERT_HOURS",
+        "TERRA_INITIAL_DEPEG_HIGH_LEAD"
+      ],
+      "result_ids_status": "PASS",
+      "section": "6.2",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "264d5294bd8da978f8718c15b9ca7bcb221c704b",
+          "codex_g0_evidence_id": "P3E:021",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "264d5294bd8da978f8718c15b9ca7bcb221c704b",
+          "git_blob_sha256": "a6aba884922a6c01ed271173fbb91480d7917c887d3f3ceee41ddd5b51e8d635",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "data/processed/research_final/frozen_v3/tables/terra_limitations.csv",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "c57615dbfe686863b366db648234cf0af1d6b8ca",
+          "codex_g0_evidence_id": "P3E:049",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "c57615dbfe686863b366db648234cf0af1d6b8ca",
+          "git_blob_sha256": "0d71ad963fe9263c8c943c594622e4cb67a38b1f168d1c7a217b1de3f5b19116",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "data/processed/research_final/validation_audit/phase5_terra_early_warning_audit.json",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        }
+      ],
+      "source_locators_status": "PASS",
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "title": "Kết quả âm cảnh báo trước mất neo ban đầu",
+      "units": [
+        "hours",
+        "HIGH alert hours; không gộp hai đại lượng"
+      ],
+      "work_exhibit_id": "F6.1",
+      "work_handoff_id": "P3X-F6.1"
+    },
+    {
+      "accepted_claim_ids": [
+        "P2:C25",
+        "P2:C26",
+        "P2:C27",
+        "P2:C28"
+      ],
+      "chapter": 6,
+      "claim_ids_status": "PASS",
+      "codex_template_ids": [
+        "P3X:NETWORK_EXTENSION_BOUNDARY"
+      ],
+      "codex_template_status": "PASS",
+      "evidence_ids_status": "PASS",
+      "existing_evidence_ids": [],
+      "kind": "FIGURE",
+      "mandatory_limitations": [
+        "Graph typed/aggregated và centrality cấu trúc chưa là full multilayer contagion, DebtRank đã triển khai hoặc xếp hạng rủi ro toàn DeFi.",
+        "Không mã hóa edge giả định thành historical causal link"
+      ],
+      "policy_scenario_cohort": [
+        "Project structural subnetwork; conceptual/code/derived context, không new risk finding"
+      ],
+      "rendering_decision": "Render exact locked nodes/edges and aggregation rule as a scoped structural diagram.",
+      "rendition_owner": "Codex rendering; Work owns caption/inference",
+      "reproducibility_classification": "SCHEMATIC_FROM_LOCKED_MODEL_SPEC",
+      "requested_output_format": "SVG/PDF vector + PNG 300 dpi + plot-data CSV + provenance JSON",
+      "required_display_controls": [
+        "No invented edge, DebtRank label, empirical causal styling or all-DeFi ranking; centrality is within-model and dimensionless."
+      ],
+      "result_ids": [],
+      "result_ids_status": "PASS",
+      "section": "6.3",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "b3608bd848b0594ec86a70fbe28d5b94d2358fa7",
+          "codex_g0_evidence_id": "NOT_IN_67_RECORD_INVENTORY_GIT_LOCK_VERIFIED_SEPARATELY",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "b3608bd848b0594ec86a70fbe28d5b94d2358fa7",
+          "git_blob_sha256": "c5297abc0fea5122287ba1e36558a9f883be51ea92851d130db36e814d81c2d1",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "data/processed/research_final/network/structural_centrality.json",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "8c980da9a10d1ef52f3b13cf8a14398b0e0cd75d",
+          "codex_g0_evidence_id": "NOT_IN_67_RECORD_INVENTORY_GIT_LOCK_VERIFIED_SEPARATELY",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "8c980da9a10d1ef52f3b13cf8a14398b0e0cd75d",
+          "git_blob_sha256": "0154bafb8ae8a2f4ae432fb1fa7a30c847a0de1fae6fce1bab26948ad51565ba",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "data/processed/research_final/network/structural_graph.json",
+          "read_scope_declared_by_work": "OBJECT_LOCATED_NOT_CONTENT_READ_G0",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "db7aca57029e973637e4969d3a20d5c61e2e330d",
+          "codex_g0_evidence_id": "P3E:063",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "db7aca57029e973637e4969d3a20d5c61e2e330d",
+          "git_blob_sha256": "a1c154205fe060814b6830bba26c3120f03a02ecfa2b5153d9e1c07e502f6830",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "sim/network/metrics.py",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        }
+      ],
+      "source_locators_status": "PASS",
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "title": "Mạng kênh quan hệ và phép gộp cấu trúc",
+      "units": [
+        "nodes",
+        "dimensionless centrality"
+      ],
+      "work_exhibit_id": "F6.2",
+      "work_handoff_id": "P3X-F6.2"
+    },
+    {
+      "accepted_claim_ids": [
+        "P2:C17",
+        "P2:C30",
+        "P2:C33",
+        "INT:CL_INT_HISTORICAL_TIERS_PRESERVED"
+      ],
+      "chapter": 6,
+      "claim_ids_status": "PASS",
+      "codex_template_ids": [],
+      "codex_template_status": "PASS",
+      "evidence_ids_status": "PASS",
+      "existing_evidence_ids": [],
+      "kind": "TABLE",
+      "mandatory_limitations": [
+        "28 Pool events/27 Graph matches và tiers 1/2/23/1 chỉ theo cửa sổ đã khai báo; receipt route và đồng xuất hiện không xác lập lây lan nhân quả.",
+        "Hai raw borrower CSV lớn vẫn chưa được Work đọc đầy đủ/cell-by-cell; giữ source access labels, U01–U08 và mức abstract/metadata/code; S17/S18 cùng nghiên cứu.",
+        "Git LF blob bytes khác Windows CRLF checkout bytes; kết quả kiểm thử do Codex báo cáo khác lượt Work tự chạy; không đồng nhất hash domains."
+      ],
+      "policy_scenario_cohort": [
+        "Tổng hợp từclaim registry; không new experiment"
+      ],
+      "rendering_decision": "Claim-registry synthesis by evidence tier.",
+      "rendition_owner": "Codex rendering; Work owns caption/inference",
+      "reproducibility_classification": "TEXTUAL_SYNTHESIS",
+      "requested_output_format": "CSV UTF-8 + Markdown table + provenance JSON",
+      "required_display_controls": [
+        "Hash integrity and code observation must not be elevated to empirical validation."
+      ],
+      "result_ids": [],
+      "result_ids_status": "PASS",
+      "section": "6.4",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "bac44e61633b5efdde3665731ea69fbf4ca345e6",
+          "codex_g0_evidence_id": "P3E:002",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "bac44e61633b5efdde3665731ea69fbf4ca345e6",
+          "git_blob_sha256": "918226582bf2c748d7aea6efbc9ba74689900b34c02117d6e6e3aae8022f509d",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "data/processed/research_final/final_accepted_claims_v1/accepted_claims_registry.json",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "f3fd437b41d0feabacf01f6708ca65d3a738ef05",
+          "codex_g0_evidence_id": "NOT_IN_67_RECORD_INVENTORY_GIT_LOCK_VERIFIED_SEPARATELY",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "f3fd437b41d0feabacf01f6708ca65d3a738ef05",
+          "git_blob_sha256": "a8d508075a490113b870c92675838033722c3fd2f2bf8c8e1f35ec68906f2536",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "docs/research_final/SCIENTIFIC_PREMERGE_AUDIT_v1.md",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        }
+      ],
+      "source_locators_status": "PASS",
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "title": "Vai trò của từng lớp bằng chứng",
+      "units": [
+        "không đơn vị"
+      ],
+      "work_exhibit_id": "T6.2",
+      "work_handoff_id": "P3X-T6.2"
+    },
+    {
+      "accepted_claim_ids": [
+        "INT:CL_INT_RQ1_POLICY_CONDITIONAL",
+        "INT:CL_INT_RQ2_TWO_CHANNELS",
+        "INT:CL_INT_RQ3_PRESERVED",
+        "INT:CL_INT_RQ4_PRESERVED",
+        "INT:CL_INT_RQ5_PRESERVED",
+        "INT:CL_INT_RQ6_PRESERVED"
+      ],
+      "chapter": 7,
+      "claim_ids_status": "PASS",
+      "codex_template_ids": [],
+      "codex_template_status": "PASS",
+      "evidence_ids_status": "PASS",
+      "existing_evidence_ids": [],
+      "kind": "TABLE",
+      "mandatory_limitations": [
+        "Kết quả cascade là mô phỏng phản thực có điều kiện theo policy, cohort và cấu hình thanh khoản; A/B/C chưa được xác minh là feed Aave/Chainlink lịch sử.",
+        "Một block 26045352, 454 verified borrowers; 109 là cohort WETH-collateral-enabled/USDC-debt riêng; một Uniswap venue, không đại diện toàn thị trường.",
+        "Phân biệt HF danh mục mới dưới 1, engine evaluation, route eligibility và execution có debt repaid dương; đếm borrower-case-policy instances, không unique wallets.",
+        "280/10.000 chỉ Severe Policy A; mười targeted MC paths chọn theo A-depth2; không ước lượng xác suất thị trường, không suy không thể có depth≥3 ngoài tập thử.",
+        "Liquidator/arbitrageur đại diện; vốn không recycle, kế hoạch vượt vốn không tự chia nhỏ; kết quả gas/capacity/delay chỉ trong miền thử.",
+        "Arbitrage là price repositioning, chưa funded executable swap; tác động giá tức thời khác spread sau arbitrage.",
+        "RQ5 chỉ kênh định giá nợ USDC; token quantity khác USD-equivalent; chưa redemption/liquidity/confidence/settlement đầy đủ.",
+        "Haircut 90/95% là extreme counterfactual tails, chưa có bằng chứng lịch sử tương ứng; không có independent local-fork execution được kiểm chứng.",
+        "28 Pool events/27 Graph matches và tiers 1/2/23/1 chỉ theo cửa sổ đã khai báo; receipt route và đồng xuất hiện không xác lập lây lan nhân quả.",
+        "Terra tái dựng hồi cứu khác dự báo; giữ HIGH trước initial depeg bằng 0, lead −45 giờ và kết luận âm ngoài mẫu; không dùng Terra xác nhận tham số Aave.",
+        "Graph typed/aggregated và centrality cấu trúc chưa là full multilayer contagion, DebtRank đã triển khai hoặc xếp hạng rủi ro toàn DeFi.",
+        "Modeled bad debt/composite tail exposure khác realized financial loss hoặc market expected shortfall; debt repaid không phải loss.",
+        "Hai raw borrower CSV lớn vẫn chưa được Work đọc đầy đủ/cell-by-cell; giữ source access labels, U01–U08 và mức abstract/metadata/code; S17/S18 cùng nghiên cứu.",
+        "Git LF blob bytes khác Windows CRLF checkout bytes; kết quả kiểm thử do Codex báo cáo khác lượt Work tự chạy; không đồng nhất hash domains."
+      ],
+      "policy_scenario_cohort": [
+        "Accepted-only sets;4excluded omitted"
+      ],
+      "rendering_decision": "Accepted-only six-RQ summary table with links to Chapter 5 exhibits.",
+      "rendition_owner": "Codex rendering; Work owns caption/inference",
+      "reproducibility_classification": "TEXTUAL_SYNTHESIS",
+      "requested_output_format": "CSV UTF-8 + Markdown table + provenance JSON",
+      "required_display_controls": [
+        "Exclude all four disallowed records and preserve each RQ limitation."
+      ],
+      "result_ids": [],
+      "result_ids_status": "PASS",
+      "section": "7.1",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "fffe69d45f2c70e8f4cb781c8b521ef4cf6f1a45",
+          "codex_g0_evidence_id": "P3E:006",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "fffe69d45f2c70e8f4cb781c8b521ef4cf6f1a45",
+          "git_blob_sha256": "428db5ef589bbd2e0e1c4273c36538f0abbe3c29b5601897bd787d78c1a4d080",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "data/processed/research_final/final_accepted_claims_v1/six_rq_accepted_claims_matrix.json",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        }
+      ],
+      "source_locators_status": "PASS",
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "title": "Sáu câu trả lời và điều kiện diễn giải",
+      "units": [
+        "không đơn vị"
+      ],
+      "work_exhibit_id": "T7.1",
+      "work_handoff_id": "P3X-T7.1"
+    },
+    {
+      "accepted_claim_ids": [
+        "P2:C17",
+        "P2:C31",
+        "INT:CL_INT_ELIGIBLE_NOT_EXECUTED",
+        "INT:CL_INT_TERRA_NEGATIVE_PRESERVED"
+      ],
+      "chapter": 7,
+      "claim_ids_status": "PASS",
+      "codex_template_ids": [],
+      "codex_template_status": "PASS",
+      "evidence_ids_status": "PASS",
+      "existing_evidence_ids": [],
+      "kind": "TABLE",
+      "mandatory_limitations": [
+        "Không first-ever, không risk-advice calibrated to live market"
+      ],
+      "policy_scenario_cohort": [
+        "Synthesis only"
+      ],
+      "rendering_decision": "Contribution/boundary synthesis from accepted claims.",
+      "rendition_owner": "Codex rendering; Work owns caption/inference",
+      "reproducibility_classification": "TEXTUAL_SYNTHESIS",
+      "requested_output_format": "CSV UTF-8 + Markdown table + provenance JSON",
+      "required_display_controls": [
+        "No first-ever, calibrated live-risk advice or stronger external validity claim."
+      ],
+      "result_ids": [],
+      "result_ids_status": "PASS",
+      "section": "7.2",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "bac44e61633b5efdde3665731ea69fbf4ca345e6",
+          "codex_g0_evidence_id": "P3E:002",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "bac44e61633b5efdde3665731ea69fbf4ca345e6",
+          "git_blob_sha256": "918226582bf2c748d7aea6efbc9ba74689900b34c02117d6e6e3aae8022f509d",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "data/processed/research_final/final_accepted_claims_v1/accepted_claims_registry.json",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "6ebe0a11e915e942a422d02a0cc5b1d53b51ff3e",
+          "codex_g0_evidence_id": "P3E:051",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "6ebe0a11e915e942a422d02a0cc5b1d53b51ff3e",
+          "git_blob_sha256": "5ab1f4e53c19fe807a1e919a8e52cce59f6f963e491396f97259be3a176c8935",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "docs/research_final/LITERATURE_VERIFIED.md",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        }
+      ],
+      "source_locators_status": "PASS",
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "title": "Đóng góp và phạm vi hiệu lực",
+      "units": [
+        "không đơn vị"
+      ],
+      "work_exhibit_id": "T7.2",
+      "work_handoff_id": "P3X-T7.2"
+    }
+  ],
+  "findings": [
+    {
+      "affected_ids": [
+        "T1.1",
+        "T2.1",
+        "F3.1",
+        "T3.1",
+        "T3.2",
+        "T3.3",
+        "F4.1",
+        "T4.1",
+        "T4.2",
+        "F5.1",
+        "T5.1",
+        "T5.2",
+        "F5.2",
+        "F5.3",
+        "F5.4",
+        "F5.5",
+        "T5.3",
+        "F5.6",
+        "F5.7",
+        "T6.1",
+        "F6.1",
+        "F6.2",
+        "T6.2",
+        "T7.1",
+        "T7.2",
+        "E3.1",
+        "E3.2",
+        "E3.3",
+        "E3.4",
+        "E3.5",
+        "E3.6",
+        "E3.7",
+        "E3.8"
+      ],
+      "finding": "Work HEAD does not yet contain the Commander-requested Work-ID→Codex-template/formula crosswalk; its handoff IDs are editorial IDs only.",
+      "finding_id": "G0-X01",
+      "minimum_remediation": "Work should mirror or explicitly adopt this validated crosswalk in its next delta; no scientific number or claim changes are required.",
+      "scientific_impact": "Blocks final Blueprint Lock provenance, not the underlying evidence.",
+      "severity": "P1_METADATA"
+    },
+    {
+      "affected_ids": [
+        "E3.7"
+      ],
+      "finding": "The Work locator list gives literature/background files for Wilson but omits the locked project implementation and numerical table; its own note acknowledges the NIST title is Agresti–Coull.",
+      "finding_id": "G0-X02",
+      "minimum_remediation": "Use sim/research/aave_suite.py:211, scripts/research/run_deep_cascade_study.py:353 and frozen_v3/tables/rq1_monte_carlo.csv as primary project locators; retain scholarship as background only.",
+      "scientific_impact": "Without correction, formula provenance is ambiguous; locked interval values themselves remain unchanged.",
+      "severity": "P1_METADATA"
+    },
+    {
+      "affected_ids": [
+        "F5.2",
+        "F5.3",
+        "F5.6",
+        "F6.1",
+        "T4.1"
+      ],
+      "finding": "Locked sources support these displays, but deterministic event selection, counterfactual labeling, mixed-unit faceting or optional-detail boundaries must be fixed before rendering.",
+      "finding_id": "G0-X03",
+      "minimum_remediation": "Apply each row's required_display_controls during chapter evidence-pack specification.",
+      "scientific_impact": "No new experiment is needed; careless rendering could overstate evidence or mix units.",
+      "severity": "P2_DISPLAY_SPEC"
+    }
+  ],
+  "formula_crosswalk": [
+    {
+      "accepted_claim_ids": [
+        "P2:C02",
+        "P2:C03"
+      ],
+      "audited_source_locators": [
+        "sim/lending/health_factor.py:5",
+        "sim/schemas.py:29"
+      ],
+      "chapter": 3,
+      "claim_ids_status": "PASS",
+      "codex_formula_ids": [
+        "P3F01",
+        "P3F02"
+      ],
+      "compatibility_status": "PASS_WITH_REQUIRED_LIMITATIONS",
+      "evidence_ids_status": "PASS",
+      "existing_evidence_ids": [],
+      "formula_category": "PROTOCOL_SHAPED_PROJECT_IMPLEMENTATION",
+      "input_variables": [
+        "c_ij collateral token quantity",
+        "p_j USD/token under the selected valuation policy",
+        "LT_j ratio",
+        "d_ik debt token quantity",
+        "q_k USD/token"
+      ],
+      "mandatory_limitations": [
+        "c chỉ tài sản collateral-enabled; denominator0→Infinity ở code, dữ liệu xuất phải có status; q vàp dùng policy đúng tài sản"
+      ],
+      "policy_scenario_cohort": [
+        "Đặc tả mô hình khóa; notation P3 không thay numerical implementation"
+      ],
+      "related_rqs": [
+        "RQ1",
+        "RQ3",
+        "RQ5",
+        "RQ6"
+      ],
+      "rendition_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_format": "LaTeX + MathML/Word equation source và symbol/unit dictionary",
+      "required_limitations": [
+        "Collateral must be enabled; zero debt returns Infinity; valuation policy is separate from actual Aave/Chainlink oracle behavior."
+      ],
+      "result_ids": [],
+      "result_ids_status": "PASS",
+      "safe_manuscript_wording": "Aave-style portfolio HF implemented by DeFiStress; HF<1 is portfolio eligibility, not proof of route execution.",
+      "section": "3.3",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "8d8cae6754e718856867ce3696498bd68134a294",
+          "codex_g0_evidence_id": "P3E:060",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "8d8cae6754e718856867ce3696498bd68134a294",
+          "git_blob_sha256": "c8ed78fc4a4dc8e213b5cd145278211218514465d5e73aa998ec4977ca066670",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "sim/lending/health_factor.py",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "9f95f18e8aa52f48facbebe1b3bdc8f88c0f162a",
+          "codex_g0_evidence_id": "P3E:061",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "9f95f18e8aa52f48facbebe1b3bdc8f88c0f162a",
+          "git_blob_sha256": "fd3f4e5cd2f4a9564ca7b23625d693e0661a8162182699a0eb2940603158e96b",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "sim/lending/liquidation.py",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        }
+      ],
+      "source_locators_status": "PASS",
+      "title": "Health Factor danh mục",
+      "units": [
+        "amount token",
+        "USD/token",
+        "HF dimensionless"
+      ],
+      "work_exhibit_id": "E3.1",
+      "work_formula": "HF_i(t)=\\frac{\\sum_j c_{ij}p_j(t)LT_j}{\\sum_k d_{ik}q_k(t)};\\quad HF<1\\text{ is eligibility only}",
+      "work_handoff_id": "P3X-E3.1"
+    },
+    {
+      "accepted_claim_ids": [
+        "P2:C08"
+      ],
+      "audited_source_locators": [
+        "sim/dex/uniswap_v3.py:26",
+        "sim/dex/uniswap_v3.py:48"
+      ],
+      "chapter": 3,
+      "claim_ids_status": "PASS",
+      "codex_formula_ids": [
+        "P3F05"
+      ],
+      "compatibility_status": "PASS_WITH_REQUIRED_LIMITATIONS",
+      "evidence_ids_status": "PASS",
+      "existing_evidence_ids": [],
+      "formula_category": "PROTOCOL_IDENTITY_IMPLEMENTED_BY_PROJECT",
+      "input_variables": [
+        "s normalized sqrtPrice",
+        "d0/d1 token decimals",
+        "P1/0 token1 per token0",
+        "P0/1 reciprocal"
+      ],
+      "mandatory_limitations": [
+        "Phải xác minh token0/token1 và decimals của pool. Khi biểu diễn USDC/WETH, dùng đúng chiều nghịch đảo; không đổi chiều token theo trực giác."
+      ],
+      "policy_scenario_cohort": [
+        "Đặc tả mô hình khóa; notation P3 không thay numerical implementation"
+      ],
+      "related_rqs": [
+        "RQ2",
+        "RQ4"
+      ],
+      "rendition_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_format": "LaTeX + MathML/Word equation source và symbol/unit dictionary",
+      "required_limitations": [
+        "State the price direction explicitly; the manuscript usually needs the reciprocal USDC/WETH value."
+      ],
+      "result_ids": [],
+      "result_ids_status": "PASS",
+      "safe_manuscript_wording": "Token-order-aware conversion used by the locked USDC-token0/WETH-token1 pool implementation.",
+      "section": "3.3",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "4172eae06907ae8bf95a10e7e50463111d0eec3d",
+          "codex_g0_evidence_id": "P3E:058",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "4172eae06907ae8bf95a10e7e50463111d0eec3d",
+          "git_blob_sha256": "3fa671f616caee587735eef41073bc8db4a097e91711ef8c9d3511f4f7a0580a",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "sim/dex/uniswap_v3.py",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        }
+      ],
+      "source_locators_status": "PASS",
+      "title": "Giá từ sqrtPriceX96",
+      "units": [
+        "token1/token0",
+        "token0/token1"
+      ],
+      "work_exhibit_id": "E3.2",
+      "work_formula": "s=\\mathrm{sqrtPriceX96}/2^{96};\\quad P_{1/0}=s^2 10^{d_0-d_1};\\quad P_{0/1}=1/P_{1/0}",
+      "work_handoff_id": "P3X-E3.2"
+    },
+    {
+      "accepted_claim_ids": [
+        "P2:C07",
+        "P2:C08",
+        "P2:C34"
+      ],
+      "audited_source_locators": [
+        "sim/dex/uniswap_v3.py:77"
+      ],
+      "chapter": 3,
+      "claim_ids_status": "PASS",
+      "codex_formula_ids": [
+        "P3F06"
+      ],
+      "compatibility_status": "PASS_WITH_REQUIRED_LIMITATIONS",
+      "evidence_ids_status": "PASS",
+      "existing_evidence_ids": [],
+      "formula_category": "PROTOCOL_IDENTITY_IMPLEMENTED_PIECEWISE",
+      "input_variables": [
+        "L active liquidity",
+        "s_a/s_b interval boundary square-root prices",
+        "Δy token1 input",
+        "Δx token0 output"
+      ],
+      "mandatory_limitations": [
+        "Công thức áp dụng cho net input sau phí trong một khoảng; qua tick phải cập nhật L. Không dùng quan hệ này như constant product cho toàn pool."
+      ],
+      "policy_scenario_cohort": [
+        "Đặc tả mô hình khóa; notation P3 không thay numerical implementation"
+      ],
+      "related_rqs": [
+        "RQ2",
+        "RQ4"
+      ],
+      "rendition_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_format": "LaTeX + MathML/Word equation source và symbol/unit dictionary",
+      "required_limitations": [
+        "Crossing an initialized tick updates active liquidity; this is not a whole-pool constant-product formula or a funded Mainnet trade."
+      ],
+      "result_ids": [],
+      "result_ids_status": "PASS",
+      "safe_manuscript_wording": "Within-tick V3 amount relation applied piecewise by the project after fees.",
+      "section": "3.3",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "4172eae06907ae8bf95a10e7e50463111d0eec3d",
+          "codex_g0_evidence_id": "P3E:058",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "4172eae06907ae8bf95a10e7e50463111d0eec3d",
+          "git_blob_sha256": "3fa671f616caee587735eef41073bc8db4a097e91711ef8c9d3511f4f7a0580a",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "sim/dex/uniswap_v3.py",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        }
+      ],
+      "source_locators_status": "PASS",
+      "title": "Dịch chuyển trong một khoảng thanh khoản",
+      "units": [
+        "raw token amounts trước decimal normalization",
+        "s dimensionless"
+      ],
+      "work_exhibit_id": "E3.3",
+      "work_formula": "\\Delta y=L(s_b-s_a);\\quad\\Delta x=L(1/s_a-1/s_b)\\quad(s_b>s_a)",
+      "work_handoff_id": "P3X-E3.3"
+    },
+    {
+      "accepted_claim_ids": [
+        "P2:C32"
+      ],
+      "audited_source_locators": [
+        "sim/oracle.py:43",
+        "data/processed/research_final/oracle_transmission_diagnostic_v1/selection_manifest.json"
+      ],
+      "chapter": 3,
+      "claim_ids_status": "PASS",
+      "codex_formula_ids": [
+        "P3F08"
+      ],
+      "compatibility_status": "PASS_WITH_REQUIRED_LIMITATIONS",
+      "evidence_ids_status": "PASS",
+      "existing_evidence_ids": [],
+      "formula_category": "PROJECT_SPECIFIC_HYPOTHETICAL_POLICY",
+      "input_variables": [
+        "reference and DEX price in USD/WETH",
+        "α transmission coefficient",
+        "lag/window completed-wave parameters"
+      ],
+      "mandatory_limitations": [
+        "Mean chỉ lấy các completed waves theo lag/window trong code: C weak α=0,25/lag1/window3; C moderate α=0,50/lag1/window2. Không gọi đây là feed Aave/Chainlink đã xác minh."
+      ],
+      "policy_scenario_cohort": [
+        "Đặc tả mô hình khóa; notation P3 không thay numerical implementation"
+      ],
+      "related_rqs": [
+        "RQ1",
+        "RQ2",
+        "RQ4"
+      ],
+      "rendition_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_format": "LaTeX + MathML/Word equation source và symbol/unit dictionary",
+      "required_limitations": [
+        "C uses completed waves only and caps adverse transmission; none of A/B/C is established as the historical Aave or Chainlink feed."
+      ],
+      "result_ids": [],
+      "result_ids_status": "PASS",
+      "safe_manuscript_wording": "Hypothetical A/B/C valuation-policy sensitivity used by DeFiStress.",
+      "section": "3.4",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "2ac37f923a4cc35bef95968d353f0724bfdbd3a5",
+          "codex_g0_evidence_id": "P3E:064",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "2ac37f923a4cc35bef95968d353f0724bfdbd3a5",
+          "git_blob_sha256": "826bdab7242624352b5a87edbed4e801d28f6dc807e570c84f0a95c10b50cd42",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "sim/oracle.py",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "1bb5bdea8be74c1e62dc89badbcb8cbae67b7bd3",
+          "codex_g0_evidence_id": "P3E:032",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "1bb5bdea8be74c1e62dc89badbcb8cbae67b7bd3",
+          "git_blob_sha256": "3eb4bd1c2404abfb1a4a2cd402d06d70a971e781b279c599be66438c5e5d253d",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "data/processed/research_final/oracle_transmission_diagnostic_v1/selection_manifest.json",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        }
+      ],
+      "source_locators_status": "PASS",
+      "title": "Chính sách định giá phản thực",
+      "units": [
+        "USDC/WETH theo model price convention; đổiUSDkhi cần"
+      ],
+      "work_exhibit_id": "E3.4",
+      "work_formula": "p^A=\\min(p^{ref},p^{DEX});\\quad p^B=p^{ref};\\quad p^C=\\min(p^{ref},p^{ref}+\\alpha(\\overline p^{DEX}_{lag,w}-p^{ref}))",
+      "work_handoff_id": "P3X-E3.4"
+    },
+    {
+      "accepted_claim_ids": [
+        "P2:C03",
+        "P2:C33",
+        "INT:CL_INT_ELIGIBLE_NOT_EXECUTED"
+      ],
+      "audited_source_locators": [
+        "sim/lending/liquidation.py:38",
+        "sim/engine/run.py:102",
+        "sim/engine/run.py:152"
+      ],
+      "chapter": 3,
+      "claim_ids_status": "PASS",
+      "codex_formula_ids": [
+        "P3F02"
+      ],
+      "compatibility_status": "PASS_WITH_REQUIRED_LIMITATIONS",
+      "evidence_ids_status": "PASS",
+      "existing_evidence_ids": [],
+      "formula_category": "PROJECT_STATE_CLASSIFICATION_DISPLAY_IDENTITY",
+      "input_variables": [
+        "E portfolio HF indicator",
+        "R modeled WETH/USDC route-asset indicator",
+        "X positive-debt liquidation-event indicator"
+      ],
+      "mandatory_limitations": [
+        "Route condition không tự đủ cho execution: plan, profitability, vốn, công suất và độ trễ là các cổng riêng. Attempted là engine evaluation, không phải giao dịch broadcast."
+      ],
+      "policy_scenario_cohort": [
+        "Đặc tả mô hình khóa; notation P3 không thay numerical implementation"
+      ],
+      "related_rqs": [
+        "RQ1",
+        "RQ3"
+      ],
+      "rendition_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_format": "LaTeX + MathML/Word equation source và symbol/unit dictionary",
+      "required_limitations": [
+        "R alone is not sufficient: active status, planning, profit, capital, capacity, delay and horizon remain separate gates; attempted is evaluation, not broadcast."
+      ],
+      "result_ids": [],
+      "result_ids_status": "PASS",
+      "safe_manuscript_wording": "Three distinct indicators for portfolio eligibility, route asset availability and positive-debt model execution.",
+      "section": "3.2",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "9f95f18e8aa52f48facbebe1b3bdc8f88c0f162a",
+          "codex_g0_evidence_id": "P3E:061",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "9f95f18e8aa52f48facbebe1b3bdc8f88c0f162a",
+          "git_blob_sha256": "fd3f4e5cd2f4a9564ca7b23625d693e0661a8162182699a0eb2940603158e96b",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "sim/lending/liquidation.py",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "2b23c9ee88ee4976755e5f4795026e381d5fe497",
+          "codex_g0_evidence_id": "P3E:059",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "2b23c9ee88ee4976755e5f4795026e381d5fe497",
+          "git_blob_sha256": "93d18336d0b39f221d98765152f4a4716870b5c9b433f724b5a69e666c1ecb8c",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "sim/engine/run.py",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        }
+      ],
+      "source_locators_status": "PASS",
+      "title": "Các trạng thái eligibility và execution",
+      "units": [
+        "indicators; token quantities"
+      ],
+      "work_exhibit_id": "E3.5",
+      "work_formula": "E_i=1[HF_i<1];\\ R_i=1[d_i^{USDC}>0\\land c_i^{WETH}>0];\\ X_i=1[\\mathrm{LIQUIDATION}\\land\\mathrm{debt\\_repaid}>0]",
+      "work_handoff_id": "P3X-E3.5"
+    },
+    {
+      "accepted_claim_ids": [
+        "P2:C22",
+        "P2:C23"
+      ],
+      "audited_source_locators": [
+        "data/processed/research_final/frozen_v3/tables/rq1_monte_carlo.csv"
+      ],
+      "chapter": 3,
+      "claim_ids_status": "PASS",
+      "codex_formula_ids": [
+        "P3F15"
+      ],
+      "compatibility_status": "PASS_WITH_REQUIRED_LIMITATIONS",
+      "evidence_ids_status": "PASS",
+      "existing_evidence_ids": [],
+      "formula_category": "DISPLAY_TRANSFORMATION_OF_LOCKED_RUNS",
+      "input_variables": [
+        "D_r locked path cascade depth",
+        "n paths in one declared batch/seed/scenario/policy"
+      ],
+      "mandatory_limitations": [
+        "Mỗi n thuộc một batch/seed/scenario/policy. Mười targeted paths không là mẫu ước lượng quần thể; không cộng các nested prefixes."
+      ],
+      "policy_scenario_cohort": [
+        "Đặc tả mô hình khóa; notation P3 không thay numerical implementation"
+      ],
+      "related_rqs": [
+        "RQ1"
+      ],
+      "rendition_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_format": "LaTeX + MathML/Word equation source và symbol/unit dictionary",
+      "required_limitations": [
+        "Nested prefixes are not additive; targeted ten paths are not a population sample; never call the value an Ethereum crisis probability."
+      ],
+      "result_ids": [],
+      "result_ids_status": "PASS",
+      "safe_manuscript_wording": "Model-conditional sample frequency within each locked batch.",
+      "section": "3.5",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "ea71db6f633b7e5df1f12cd3d9f2533e5d5f9438",
+          "codex_g0_evidence_id": "NOT_IN_67_RECORD_INVENTORY_GIT_LOCK_VERIFIED_SEPARATELY",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "ea71db6f633b7e5df1f12cd3d9f2533e5d5f9438",
+          "git_blob_sha256": "e9f59d71d9ec053431a22a0dde8d577e575b4edc3e15774daee5541f9b8e8153",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "data/processed/research_final/frozen_v3/tables/rq1_monte_carlo.csv",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        }
+      ],
+      "source_locators_status": "PASS",
+      "title": "Tần suất mô phỏng có điều kiện",
+      "units": [
+        "ratio"
+      ],
+      "work_exhibit_id": "E3.6",
+      "work_formula": "\\widehat f_{\\ge2}=\\frac1n\\sum_{r=1}^{n}1[D_r\\ge2]",
+      "work_handoff_id": "P3X-E3.6"
+    },
+    {
+      "accepted_claim_ids": [
+        "P2:C23"
+      ],
+      "audited_source_locators": [
+        "sim/research/aave_suite.py:211",
+        "scripts/research/run_deep_cascade_study.py:353",
+        "data/processed/research_final/frozen_v3/tables/rq1_monte_carlo.csv"
+      ],
+      "chapter": 3,
+      "claim_ids_status": "PASS",
+      "codex_formula_ids": [
+        "P3F15"
+      ],
+      "compatibility_status": "PASS_WITH_REQUIRED_LIMITATIONS",
+      "evidence_ids_status": "PASS",
+      "existing_evidence_ids": [],
+      "formula_category": "DISPLAY_TRANSFORMATION_LOCKED_VALUES_ONLY",
+      "input_variables": [
+        "f-hat locked sample frequency",
+        "n locked batch size",
+        "z=1.96 for the reported 95% interval"
+      ],
+      "mandatory_limitations": [
+        "Nguồn S24 là trang NIST có tiêu đề Agresti Coull, nhưng công thức sử dụng là Wilson. Phân biệt adjusted Wald; công bố điều kiện lấy mẫu mô phỏng."
+      ],
+      "policy_scenario_cohort": [
+        "Đặc tả mô hình khóa; notation P3 không thay numerical implementation"
+      ],
+      "related_rqs": [
+        "RQ1"
+      ],
+      "rendition_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_format": "LaTeX + MathML/Word equation source và symbol/unit dictionary",
+      "required_limitations": [
+        "Do not use the NIST Agresti–Coull page as if it directly validates the Wilson implementation; cite the locked implementation/table and use scholarship only as background. Do not compute a new interval without change review."
+      ],
+      "result_ids": [],
+      "result_ids_status": "PASS",
+      "safe_manuscript_wording": "Wilson score interval already computed for locked model batches.",
+      "section": "3.5",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "c76d7cf482565615a92fb17b888a392e4f8fd9cc",
+          "codex_g0_evidence_id": "P3E:050",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "c76d7cf482565615a92fb17b888a392e4f8fd9cc",
+          "git_blob_sha256": "39ca11330af2511a12b0884a97e10743ccda941624e3d8e7d27256aa4008d829",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "docs/research_final/APA_REFERENCES_VERIFIED.md",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "6ebe0a11e915e942a422d02a0cc5b1d53b51ff3e",
+          "codex_g0_evidence_id": "P3E:051",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "6ebe0a11e915e942a422d02a0cc5b1d53b51ff3e",
+          "git_blob_sha256": "5ab1f4e53c19fe807a1e919a8e52cce59f6f963e491396f97259be3a176c8935",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "docs/research_final/LITERATURE_VERIFIED.md",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        }
+      ],
+      "source_locators_status": "PASS",
+      "title": "Khoảng Wilson cho tần suất",
+      "units": [
+        "ratio; z≈1.96 cho95%"
+      ],
+      "work_exhibit_id": "E3.7",
+      "work_formula": "\\frac{\\hat f+z^2/(2n)\\ \\pm\\ z\\sqrt{\\hat f(1-\\hat f)/n+z^2/(4n^2)}}{1+z^2/n}",
+      "work_handoff_id": "P3X-E3.7"
+    },
+    {
+      "accepted_claim_ids": [
+        "P2:C15",
+        "P2:C35"
+      ],
+      "audited_source_locators": [
+        "sim/schemas.py:25",
+        "data/processed/research_final/frozen_v3/tables/rq5_usdc_valuation.csv"
+      ],
+      "chapter": 3,
+      "claim_ids_status": "PASS",
+      "codex_formula_ids": [
+        "P3F09"
+      ],
+      "compatibility_status": "PASS_WITH_REQUIRED_LIMITATIONS",
+      "evidence_ids_status": "PASS",
+      "existing_evidence_ids": [],
+      "formula_category": "ANALYTICAL_IDENTITY_INSIDE_MODEL",
+      "input_variables": [
+        "Q debt in USDC tokens",
+        "q USD per USDC",
+        "V USD-equivalent debt"
+      ],
+      "mandatory_limitations": [
+        "Chỉ định giá nợ; không tự mở rộng việc repricing cho seize, repayment quote hoặc dust ngoài mã đã khóa."
+      ],
+      "policy_scenario_cohort": [
+        "Đặc tả mô hình khóa; notation P3 không thay numerical implementation"
+      ],
+      "related_rqs": [
+        "RQ5"
+      ],
+      "rendition_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_format": "LaTeX + MathML/Word equation source và symbol/unit dictionary",
+      "required_limitations": [
+        "Valuation only; it does not implement redemption, settlement, confidence, liquidity or every execution-price channel."
+      ],
+      "result_ids": [],
+      "result_ids_status": "PASS",
+      "safe_manuscript_wording": "Modeled conversion of USDC debt token quantity to USD-equivalent debt value.",
+      "section": "3.3",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "3f36a867c750f90d5a88ae5b1b00eae6be151b6e",
+          "codex_g0_evidence_id": "P3E:019",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "3f36a867c750f90d5a88ae5b1b00eae6be151b6e",
+          "git_blob_sha256": "d6ec0ff75f076b3c4ba0344578fb1ff86c8819d14231d41d40024355f1a4f58a",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "data/processed/research_final/frozen_v3/tables/rq5_usdc_valuation.csv",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "8d8cae6754e718856867ce3696498bd68134a294",
+          "codex_g0_evidence_id": "P3E:060",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "8d8cae6754e718856867ce3696498bd68134a294",
+          "git_blob_sha256": "c8ed78fc4a4dc8e213b5cd145278211218514465d5e73aa998ec4977ca066670",
+          "hash_domain": "Git object ID (SHA-1) and SHA-256 of Git blob bytes; not Windows checkout bytes",
+          "path": "sim/lending/health_factor.py",
+          "read_scope_declared_by_work": "READ_CONTENT_G0",
+          "status": "PASS"
+        }
+      ],
+      "source_locators_status": "PASS",
+      "title": "Đơn vị nợ USDC và USD tương đương",
+      "units": [
+        "USDCtoken",
+        "USD/USDC",
+        "USD"
+      ],
+      "work_exhibit_id": "E3.8",
+      "work_formula": "V_{debt}^{USD}=Q_{debt}^{USDC}\\,q_{USDC/USD}",
+      "work_handoff_id": "P3X-E3.8"
+    }
+  ],
+  "lock_validation": {
+    "affirmative_allocation": {
+      "affirmative_allocated": 44,
+      "affirmative_total": 44,
+      "excluded": 4,
+      "rq_original_count": 6
+    },
+    "disallowed_ids": [
+      "INT:CL_FROZEN_RQ1_UNQUALIFIED_WORDING",
+      "INT:CL_FROZEN_RQ2_DIRECT_ELIGIBILITY_WORDING",
+      "INT:CL_UNSUPPORTED_AAVE_USES_UNISWAP_SPOT",
+      "INT:CL_UNSUPPORTED_HISTORICAL_CAUSAL_CONTAGION"
+    ],
+    "disallowed_used_as_affirmative": [],
+    "frozen_oracle_integration_p2_registry_modified": false,
+    "hash_domain_rule": "Git object IDs, Git-blob SHA-256 and checkout SHA-256 are distinct domains.",
+    "new_simulation_or_estimated_finding": false,
+    "six_rqs": 6,
+    "status": "PASS",
+    "work_claim_matrix_lock": "3f6e5302483681209e2408531eb5a15389f9fded",
+    "work_plan_lock": "3f6e5302483681209e2408531eb5a15389f9fded"
+  },
+  "output_provenance": {
+    "content_sha256": "d9f7184ee1df725589a1fc633c2232954e5aa88fe3c0a3019f948ce37d684034",
+    "content_sha256_domain": "UTF-8 canonical JSON with output_provenance.content_sha256 omitted"
+  },
+  "recommendation_reason": "All 25 displays and 8 formulas are supported or safely specifiable, but Work HEAD has not yet published the final crosswalk and E3.7 primary project locators require correction before Blueprint Lock.",
+  "review_scope": "25 manuscript tables/figures and 8 manuscript equations; no rendering or new finding.",
+  "reviewed_heads": {
+    "codex_pr_14_input": "17b839528e58a622aa0554067b19823a8f33bda5",
+    "work_pr_15": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80"
+  },
+  "schema_version": "p3-g0-cross-agent-exhibit-validation-v1",
+  "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+  "stop_state": "AWAITING_WORK_FINAL_CROSSWALK_DELTA_AND_COMMANDER_BLUEPRINT_DECISION",
+  "technical_blockers": [],
+  "transformation_version": "p3-g0-cross-agent-validator-v1",
+  "work_delta_required": [
+    "G0-X01",
+    "G0-X02"
+  ]
+}
