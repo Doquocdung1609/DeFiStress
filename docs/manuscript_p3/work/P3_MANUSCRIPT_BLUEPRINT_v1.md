@@ -698,6 +698,71 @@ Claim anchors: P2:C31, P2:C17.
 - Không có claim first-ever, realized loss, xác suất thị trường hoặc nhân quả Mainnet.
 - Đạt rubric CP1–CP6 và chưa có P0/P1; chapter lock chỉ do Commander cấp.
 
+## G0 đối chiếu Work và Codex
+
+Work baseline `e26e2d5a21c6ac78bd4db7be345409b5c7690a80`; Codex catalog/formula audit đọc tại `f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a`. Scientific input vẫn `3f6e5302483681209e2408531eb5a15389f9fded`. Theo Commander comments PR14/6197267439 và PR15/6197268184, đây là reconciliation trước phê duyệt, không phải blueprint lock.
+
+Giữ nguyên bảy chương, nhiệm vụ lập luận,44 primary destinations, bốn exclusions và sáu câu hỏi. Đường dẫn `P3_G0_WORK_CODEX_EXHIBIT_CROSSWALK.json` là cầu nối WorkID→template/evidence→source→owner; chưa sửa các WORK_TO_ASSIGN trong file Codex.
+
+### Placement và references của 25 displays
+
+| Work ID | Chapter/section | Codex reusable template | Display | Mapping status |
+|---|---|---|---|---|
+| T1.1 | 1/1.3 | Direct locked source; no template required | table | DIRECT_LOCKED_SOURCE |
+| T2.1 | 2/2.5 | Direct locked source; no template required | table | DIRECT_LOCKED_SOURCE |
+| F3.1 | 3/3.1 | P3X:SYSTEM_FEEDBACK_SCHEMATIC | schematic | MATCHED |
+| T3.1 | 3/3.2 | P3X:SYSTEM_FEEDBACK_SCHEMATIC, P3X:METRIC_SEMANTICS_GLOSSARY | table | CODEX_SPEC_REQUIRED |
+| T3.2 | 3/3.5 | P3X:ORACLE_POLICY_DEPTH2_COMPARISON, P3X:SEVERE_POLICY_A_MONTE_CARLO (context; source trực tiếp) | table | DIRECT_LOCKED_SOURCE |
+| T3.3 | 3/3.3 | P3X:METRIC_SEMANTICS_GLOSSARY | table | MATCHED |
+| F4.1 | 4/4.1 | P3X:CANONICAL_SCOPE_PROVENANCE | schematic | CODEX_SPEC_REQUIRED |
+| T4.1 | 4/4.2 | P3X:CANONICAL_SCOPE_PROVENANCE | table | CODEX_SPEC_REQUIRED |
+| T4.2 | 4/4.3 | P3X:METRIC_SEMANTICS_GLOSSARY (context; source trực tiếp) | table | DIRECT_LOCKED_SOURCE |
+| F5.1 | 5/5.1 | P3X:ORACLE_POLICY_DEPTH2_COMPARISON (context; source trực tiếp) | figure | DIRECT_LOCKED_SOURCE |
+| T5.1 | 5/5.2 | P3X:ORACLE_POLICY_DEPTH2_COMPARISON | table | MATCHED |
+| T5.2 | 5/5.3 | P3X:ELIGIBLE_VS_EXECUTED | table | MATCHED |
+| F5.2 | 5/5.3 | P3X:ELIGIBLE_VS_EXECUTED, P3X:SYSTEM_FEEDBACK_SCHEMATIC | schematic | CODEX_SPEC_REQUIRED |
+| F5.3 | 5/5.2 | P3X:LIQUIDITY_ABSORPTION_AND_PRICE_METRICS, P3X:ORACLE_POLICY_DEPTH2_COMPARISON | combined | CODEX_SPEC_REQUIRED |
+| F5.4 | 5/5.3 | Direct locked source; no template required | combined | DIRECT_LOCKED_SOURCE |
+| F5.5 | 5/5.4 | P3X:LIQUIDITY_ABSORPTION_AND_PRICE_METRICS | figure | MATCHED |
+| T5.3 | 5/5.5 | Direct locked source; no template required | table | DIRECT_LOCKED_SOURCE |
+| F5.6 | 5/5.6 | P3X:RISK_PARAMETER_MECHANISMS | combined | CODEX_SPEC_REQUIRED |
+| F5.7 | 5/5.7 | P3X:SEVERE_POLICY_A_MONTE_CARLO | figure | MATCHED |
+| T6.1 | 6/6.1 | P3X:HISTORICAL_EVIDENCE_TIERS | table | MATCHED |
+| F6.1 | 6/6.2 | P3X:TERRA_NEGATIVE_EARLY_WARNING | combined | CODEX_SPEC_REQUIRED |
+| F6.2 | 6/6.3 | P3X:NETWORK_EXTENSION_BOUNDARY | schematic | CODEX_SPEC_REQUIRED |
+| T6.2 | 6/6.4 | Direct locked source; no template required | table | DIRECT_LOCKED_SOURCE |
+| T7.1 | 7/7.1 | Direct locked source; no template required | table | DIRECT_LOCKED_SOURCE |
+| T7.2 | 7/7.2 | Direct locked source; no template required | table | DIRECT_LOCKED_SOURCE |
+
+### Placement tám biểu thức đã đề xuất
+
+Không sửa LaTeX hoặc thêm biểu thức: năm quan hệ cốt lõi ở thân bài; ba chi tiết chuyển đổi/tính toán ở phụ lục. Giữ mã E3.x như request IDs để không tạo nguồn/ID khoa học mới.
+
+| Work E3.x | Codex P3Fxx | Placement | Source/category note |
+|---|---|---|---|
+| E3.1 | P3F01, P3F02 | 3.3.1 | Protocol-shaped project implementation |
+| E3.2 | P3F05 | Phụ lục A.1; dẫn từ3.3.2 | Protocol identity / inverse display transformation |
+| E3.3 | P3F06 | Phụ lục A.2; dẫn từ3.3.2 | Piecewise implementation identity |
+| E3.4 | P3F08 | 3.4.1 | Hypothetical project valuation policy |
+| E3.5 | P3F02, P3F13 | 3.2.2 | Project route/status definition |
+| E3.6 | P3F15 | 3.5.3 | Statistical display definition |
+| E3.7 | P3F15 | Phụ lục A.3; dẫn từ3.5.3 | Statistical display; exact typography review before production |
+| E3.8 | P3F09 | 3.3.1; áp dụng ở5.5.2 | Scoped analytical component identity |
+
+E3.8 là giá trị USD của **phần nợ USDC**, không thay tổng nợ danh mục có Dother của P3F09. E3.5 tách HF/route/executed, không gán P3F02 cho cả ba trạng thái. E3.6/E3.7 cùng trỏ P3F15 nhưng không cho phép tính CI mới. Các candidate P3F03/04/07/10/11/12/14 được giải thích bằng văn bản hoặc không cần equation display; chi tiết dispositions trong crosswalk/report.
+
+Tất cả11Codextemplates có ít nhất một đề xuất sử dụng; tám renditions mới cần Codex bổ sung spec theo crosswalk. Codex đã phản biện Work starting HEAD tại PR15/6197557479; delta Work cuối này còn chờ Codex kiểm tra lại và Commander approval. Đây không phải xác nhận rendering/technicalpass. `TEMPLATE_VERIFICATION_PENDING` không chặn nội dung blueprint nhưng chặn final DOCX formatting.
+
+**Điểm dừng: AWAITING_COMMANDER_BLUEPRINT_APPROVAL — chưa viết Chương 1.**
+
+### Delta theo Codex cross-verdict mới nhất
+
+Đã đọc `P3_G0_EXHIBIT_CROSSWALK_VALIDATION.json` và technical review tại Codex HEAD `f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a`. Áp dụng G0-X01–G0-X03; không sửa file Codex. E3.7 primary provenance: `sim/research/aave_suite.py:211`, `scripts/research/run_deep_cascade_study.py:353`, `data/processed/research_final/frozen_v3/tables/rq1_monte_carlo.csv`. S24/NIST là background; không dùng làm bằng chứng code Wilson và không tính khoảng mới.
+
+F5.2: predeclare category, chọn stable case/borrower key nhỏ nhất theo thứ tự từ điển, giữ pseudonymization và pin trace/event ở CP1 trước rendering; nếu chưa có locator thì bỏ ví dụ, không chọn tay. F5.3: chỉ haircut 0% là canonical pool chưa biến đổi; các haircut dương là phản thực, 90/95% là extreme tails; tách cell counts và USD/WETH. F5.6: ba facets USD capacity/USDC-token debt/WETH seized, không chung trục y. F6.1: hai panels alert-hours và lead-hours khác đại lượng. T4.1: bỏ optional near-threshold subgroup khi chưa có locked locator.
+
+Codex phân loại khả năng tái dựng 10 numerical/3 schematic/8 synthesis/4 cần display-spec; Work có tám renditions cần bổ sung hoặc xác nhận spec. Hai hệ status đo hai khía cạnh, không cộng hoặc đồng nhất. Các context links khác được typed riêng trong JSON, không ép quan hệ 1:1. **Final Work delta cross-verdict PENDING; AWAITING_COMMANDER_BLUEPRINT_APPROVAL.**
+
 ## Các quyết định xin Commander phê duyệt tại G0
 
 1. Phê duyệt hoặc sửa đúng cấu trúc bảy chương và primary destinations; không đổi sáu RQ/scientific lock.
