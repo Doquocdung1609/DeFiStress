@@ -1,0 +1,290 @@
+{
+  "allowed_statuses": [
+    "REQUESTED",
+    "SOURCE_VERIFIED",
+    "PRODUCED",
+    "TECHNICAL_REVIEW_PASS",
+    "ACADEMIC_REVIEW_PASS",
+    "BLOCKED",
+    "CHAPTER_LOCKED"
+  ],
+  "output_provenance": {
+    "content_sha256": "b17b03f46a0163f33fc983f43e8c84201b8e3141f7fa38bb9e9ac20aeaba0d94",
+    "content_sha256_domain": "UTF-8 canonical JSON with output_provenance.content_sha256 omitted"
+  },
+  "requests": [
+    {
+      "blocking_issues": [
+        "Awaiting Work chapter blueprint and Commander exhibit approval."
+      ],
+      "chapter_id": "WORK_TO_ASSIGN",
+      "claim_ids": [
+        "P2:C19",
+        "P2:C32",
+        "INT:CL_INT_RQ1_POLICY_CONDITIONAL",
+        "INT:CL_INT_RQ2_TWO_CHANNELS"
+      ],
+      "codex_validation_state": "G0_SOURCE_AND_LOCATOR_VERIFIED",
+      "commander_approval_state": "PENDING",
+      "current_status": "SOURCE_VERIFIED",
+      "exhibit_request_id": "P3X:SYSTEM_FEEDBACK_SCHEMATIC",
+      "requested_interpretation": "Phân biệt bán bắt buộc, trạng thái DEX, chính sách định giá phản thực và eligibility vòng tiếp theo.",
+      "result_ids": [],
+      "section_id": "WORK_TO_ASSIGN",
+      "source_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "work_review_state": "AWAITING_BLUEPRINT"
+    },
+    {
+      "blocking_issues": [
+        "Awaiting Work chapter blueprint and Commander exhibit approval."
+      ],
+      "chapter_id": "WORK_TO_ASSIGN",
+      "claim_ids": [
+        "P2:C32",
+        "INT:CL_INT_RQ1_POLICY_CONDITIONAL"
+      ],
+      "codex_validation_state": "G0_SOURCE_AND_LOCATOR_VERIFIED",
+      "commander_approval_state": "PENDING",
+      "current_status": "SOURCE_VERIFIED",
+      "exhibit_request_id": "P3X:ORACLE_POLICY_DEPTH2_COMPARISON",
+      "requested_interpretation": "Show policy dependence without pooling incompatible selected samples.",
+      "result_ids": [
+        "INT_A_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
+        "INT_B_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
+        "INT_C_WEAK_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
+        "INT_C_MODERATE_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
+        "INT_A_SELECTED_MC_DEPTH2_RETAINED_COUNT_OF_10",
+        "INT_B_SELECTED_MC_DEPTH2_RETAINED_COUNT_OF_10",
+        "INT_C_WEAK_SELECTED_MC_DEPTH2_RETAINED_COUNT_OF_10",
+        "INT_C_MODERATE_SELECTED_MC_DEPTH2_RETAINED_COUNT_OF_10"
+      ],
+      "section_id": "WORK_TO_ASSIGN",
+      "source_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "work_review_state": "AWAITING_BLUEPRINT"
+    },
+    {
+      "blocking_issues": [
+        "Awaiting Work chapter blueprint and Commander exhibit approval."
+      ],
+      "chapter_id": "WORK_TO_ASSIGN",
+      "claim_ids": [
+        "P2:C03",
+        "P2:C33",
+        "INT:CL_INT_ELIGIBLE_NOT_EXECUTED"
+      ],
+      "codex_validation_state": "G0_SOURCE_AND_LOCATOR_VERIFIED",
+      "commander_approval_state": "PENDING",
+      "current_status": "SOURCE_VERIFIED",
+      "exhibit_request_id": "P3X:ELIGIBLE_VS_EXECUTED",
+      "requested_interpretation": "Prevent conflation of portfolio eligibility, attempted route processing and positive-debt execution.",
+      "result_ids": [
+        "INT_A_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_A_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
+        "INT_A_NEWLY_ELIGIBLE_SKIPPED_INSTANCES",
+        "INT_B_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_B_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
+        "INT_B_NEWLY_ELIGIBLE_SKIPPED_INSTANCES",
+        "INT_C_WEAK_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_C_WEAK_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
+        "INT_C_WEAK_NEWLY_ELIGIBLE_SKIPPED_INSTANCES",
+        "INT_C_MODERATE_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_C_MODERATE_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
+        "INT_C_MODERATE_NEWLY_ELIGIBLE_SKIPPED_INSTANCES"
+      ],
+      "section_id": "WORK_TO_ASSIGN",
+      "source_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "work_review_state": "AWAITING_BLUEPRINT"
+    },
+    {
+      "blocking_issues": [
+        "Awaiting Work chapter blueprint and Commander exhibit approval."
+      ],
+      "chapter_id": "WORK_TO_ASSIGN",
+      "claim_ids": [
+        "P2:C07",
+        "P2:C13",
+        "P2:C34",
+        "INT:CL_INT_RQ2_TWO_CHANNELS",
+        "INT:CL_INT_RQ4_PRESERVED"
+      ],
+      "codex_validation_state": "G0_SOURCE_AND_LOCATOR_VERIFIED",
+      "commander_approval_state": "PENDING",
+      "current_status": "SOURCE_VERIFIED",
+      "exhibit_request_id": "P3X:LIQUIDITY_ABSORPTION_AND_PRICE_METRICS",
+      "requested_interpretation": "Separate DEX depth, forced-sale impact and stabilization residual before relating them to HF policy.",
+      "result_ids": [
+        "RQ2_CANONICAL_DEPTH_2PCT",
+        "RQ4_IMMEDIATE_PRICE_IMPACT",
+        "RQ4_SPREAD_ARB0",
+        "RQ4_SPREAD_ARB100"
+      ],
+      "section_id": "WORK_TO_ASSIGN",
+      "source_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "work_review_state": "AWAITING_BLUEPRINT"
+    },
+    {
+      "blocking_issues": [
+        "Awaiting Work chapter blueprint and Commander exhibit approval."
+      ],
+      "chapter_id": "WORK_TO_ASSIGN",
+      "claim_ids": [
+        "P2:C23",
+        "INT:CL_INT_RQ1_POLICY_CONDITIONAL"
+      ],
+      "codex_validation_state": "G0_SOURCE_AND_LOCATOR_VERIFIED",
+      "commander_approval_state": "PENDING",
+      "current_status": "SOURCE_VERIFIED",
+      "exhibit_request_id": "P3X:SEVERE_POLICY_A_MONTE_CARLO",
+      "requested_interpretation": "Present 280/10,000 with its conditional sampling scope and already locked uncertainty only.",
+      "result_ids": [
+        "RQ1_MC_SEVERE_DEPTH2_COUNT",
+        "RQ1_MC_SEVERE_DEPTH2_FREQUENCY",
+        "MC_INDEPENDENT_PATHS_VALIDATED"
+      ],
+      "section_id": "WORK_TO_ASSIGN",
+      "source_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "work_review_state": "AWAITING_BLUEPRINT"
+    },
+    {
+      "blocking_issues": [
+        "Awaiting Work chapter blueprint and Commander exhibit approval."
+      ],
+      "chapter_id": "WORK_TO_ASSIGN",
+      "claim_ids": [
+        "P2:C09",
+        "P2:C10",
+        "INT:CL_INT_HISTORICAL_TIERS_PRESERVED"
+      ],
+      "codex_validation_state": "G0_SOURCE_AND_LOCATOR_VERIFIED",
+      "commander_approval_state": "PENDING",
+      "current_status": "SOURCE_VERIFIED",
+      "exhibit_request_id": "P3X:HISTORICAL_EVIDENCE_TIERS",
+      "requested_interpretation": "Report the 28/27 census and 1/2/23/1 evidence tiers without causal arrows.",
+      "result_ids": [
+        "HIST_RPC_CENSUS_EVENTS",
+        "HIST_GRAPH_MATCHED_EVENTS",
+        "HIST_DIRECT_TRANSFER_PATHS",
+        "HIST_SAME_TX_COOCCURRENCE",
+        "HIST_SAME_BLOCK_ASSOCIATION",
+        "HIST_TIME_WINDOW_ASSOCIATION"
+      ],
+      "section_id": "WORK_TO_ASSIGN",
+      "source_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "work_review_state": "AWAITING_BLUEPRINT"
+    },
+    {
+      "blocking_issues": [
+        "Awaiting Work chapter blueprint and Commander exhibit approval."
+      ],
+      "chapter_id": "WORK_TO_ASSIGN",
+      "claim_ids": [
+        "P2:C30",
+        "INT:CL_INT_TERRA_NEGATIVE_PRESERVED"
+      ],
+      "codex_validation_state": "G0_SOURCE_AND_LOCATOR_VERIFIED",
+      "commander_approval_state": "PENDING",
+      "current_status": "SOURCE_VERIFIED",
+      "exhibit_request_id": "P3X:TERRA_NEGATIVE_EARLY_WARNING",
+      "requested_interpretation": "Preserve the negative pre-initial-depeg warning finding and distinguish retrospective reconstruction from forecasting.",
+      "result_ids": [
+        "TERRA_PRE_DEPEG_HIGH_ALERT_HOURS",
+        "TERRA_INITIAL_DEPEG_HIGH_LEAD"
+      ],
+      "section_id": "WORK_TO_ASSIGN",
+      "source_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "work_review_state": "AWAITING_BLUEPRINT"
+    },
+    {
+      "blocking_issues": [
+        "Awaiting Work chapter blueprint and Commander exhibit approval."
+      ],
+      "chapter_id": "WORK_TO_ASSIGN",
+      "claim_ids": [
+        "P2:C26",
+        "P2:C27",
+        "P2:C29"
+      ],
+      "codex_validation_state": "G0_SOURCE_AND_LOCATOR_VERIFIED",
+      "commander_approval_state": "PENDING",
+      "current_status": "SOURCE_VERIFIED",
+      "exhibit_request_id": "P3X:NETWORK_EXTENSION_BOUNDARY",
+      "requested_interpretation": "Show what the structural graph represents and what it does not implement.",
+      "result_ids": [],
+      "section_id": "WORK_TO_ASSIGN",
+      "source_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "work_review_state": "AWAITING_BLUEPRINT"
+    },
+    {
+      "blocking_issues": [
+        "Awaiting Work chapter blueprint and Commander exhibit approval."
+      ],
+      "chapter_id": "WORK_TO_ASSIGN",
+      "claim_ids": [
+        "P2:C04",
+        "P2:C12",
+        "INT:CL_INT_RQ6_PRESERVED"
+      ],
+      "codex_validation_state": "G0_SOURCE_AND_LOCATOR_VERIFIED",
+      "commander_approval_state": "PENDING",
+      "current_status": "SOURCE_VERIFIED",
+      "exhibit_request_id": "P3X:RISK_PARAMETER_MECHANISMS",
+      "requested_interpretation": "Prevent parameter substitution in RQ6 reporting.",
+      "result_ids": [
+        "RQ6_LTV0755_CAPACITY",
+        "RQ6_LTV0825_CAPACITY",
+        "RQ6_LT083_UNLIQUIDATED",
+        "RQ6_BONUS103_SEIZED",
+        "RQ6_BONUS107_SEIZED"
+      ],
+      "section_id": "WORK_TO_ASSIGN",
+      "source_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "work_review_state": "AWAITING_BLUEPRINT"
+    },
+    {
+      "blocking_issues": [
+        "Awaiting Work chapter blueprint and Commander exhibit approval."
+      ],
+      "chapter_id": "WORK_TO_ASSIGN",
+      "claim_ids": [
+        "P2:C03",
+        "P2:C17",
+        "INT:CL_INT_RQ3_PRESERVED"
+      ],
+      "codex_validation_state": "G0_SOURCE_AND_LOCATOR_VERIFIED",
+      "commander_approval_state": "PENDING",
+      "current_status": "SOURCE_VERIFIED",
+      "exhibit_request_id": "P3X:CANONICAL_SCOPE_PROVENANCE",
+      "requested_interpretation": "Keep block, borrower population and WETH/USDC cohort denominators explicit.",
+      "result_ids": [],
+      "section_id": "WORK_TO_ASSIGN",
+      "source_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "work_review_state": "AWAITING_BLUEPRINT"
+    },
+    {
+      "blocking_issues": [
+        "Awaiting Work chapter blueprint and Commander exhibit approval."
+      ],
+      "chapter_id": "WORK_TO_ASSIGN",
+      "claim_ids": [
+        "P2:C24",
+        "P2:C35",
+        "INT:CL_INT_RQ3_PRESERVED",
+        "INT:CL_INT_RQ4_PRESERVED",
+        "INT:CL_INT_RQ5_PRESERVED"
+      ],
+      "codex_validation_state": "G0_SOURCE_AND_LOCATOR_VERIFIED",
+      "commander_approval_state": "PENDING",
+      "current_status": "SOURCE_VERIFIED",
+      "exhibit_request_id": "P3X:METRIC_SEMANTICS_GLOSSARY",
+      "requested_interpretation": "Align every manuscript table and caption with engine definitions.",
+      "result_ids": [],
+      "section_id": "WORK_TO_ASSIGN",
+      "source_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "work_review_state": "AWAITING_BLUEPRINT"
+    }
+  ],
+  "schema_version": "p3-work-codex-evidence-handoff-v1",
+  "source_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+  "stage_rule": "No record may be set to CHAPTER_LOCKED without Commander approval.",
+  "transformation_version": "p3-g0-builder-v1"
+}

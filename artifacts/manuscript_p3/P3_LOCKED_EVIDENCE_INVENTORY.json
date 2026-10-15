@@ -1,0 +1,3444 @@
+{
+  "counts": {
+    "accepted_claims": 44,
+    "accepted_result_ids": 38,
+    "accepted_table_figure_ids": 11,
+    "disallowed_claims": 4,
+    "inventory_records": 67,
+    "research_questions": 6
+  },
+  "limitations": [
+    "P3 evidence IDs are technical rendering locators, not new scientific result IDs.",
+    "Modeled counterfactuals are not Mainnet observations.",
+    "External DOCX files are manuscript baselines only and are outside the scientific lock."
+  ],
+  "locked_claim_counts": {
+    "affirmative": 44,
+    "disallowed": 4,
+    "integration_scientific": 13,
+    "scholarly": 35
+  },
+  "output_provenance": {
+    "content_sha256": "910b0e573918d82de0f5e52fd76446a2ad1ec8e03649bf60e89b01c6f7ab67b6",
+    "content_sha256_domain": "UTF-8 canonical JSON with output_provenance.content_sha256 omitted"
+  },
+  "path_to_p3_evidence_id": {
+    "data/processed/mainnet/aave_uniswap_snapshot_26045352.json": "P3E:001",
+    "data/processed/research_final/final_accepted_claims_v1/accepted_claims_registry.json": "P3E:002",
+    "data/processed/research_final/final_accepted_claims_v1/claim_evidence_crosswalk.json": "P3E:003",
+    "data/processed/research_final/final_accepted_claims_v1/manifest.json": "P3E:004",
+    "data/processed/research_final/final_accepted_claims_v1/scientific_lock_readiness.json": "P3E:005",
+    "data/processed/research_final/final_accepted_claims_v1/six_rq_accepted_claims_matrix.json": "P3E:006",
+    "data/processed/research_final/final_accepted_claims_v1/source_provenance_registry.json": "P3E:007",
+    "data/processed/research_final/final_accepted_claims_v1/validation_report.json": "P3E:008",
+    "data/processed/research_final/frozen_v3/evidence_source_matrix.json": "P3E:009",
+    "data/processed/research_final/frozen_v3/figures/F01_deterministic_depth_distribution.png": "P3E:010",
+    "data/processed/research_final/frozen_v3/figures/F02_severe_mc_prefix_convergence.png": "P3E:011",
+    "data/processed/research_final/frozen_v3/figures/F03_liquidator_capital_constraint.png": "P3E:012",
+    "data/processed/research_final/frozen_v3/figures/F04_arbitrage_impact_and_residual_spread.png": "P3E:013",
+    "data/processed/research_final/frozen_v3/manifest.json": "P3E:014",
+    "data/processed/research_final/frozen_v3/results_registry.json": "P3E:015",
+    "data/processed/research_final/frozen_v3/tables/historical_evidence.csv": "P3E:016",
+    "data/processed/research_final/frozen_v3/tables/rq3_constraints.csv": "P3E:017",
+    "data/processed/research_final/frozen_v3/tables/rq4_arbitrage.csv": "P3E:018",
+    "data/processed/research_final/frozen_v3/tables/rq5_usdc_valuation.csv": "P3E:019",
+    "data/processed/research_final/frozen_v3/tables/rq6_policy.csv": "P3E:020",
+    "data/processed/research_final/frozen_v3/tables/terra_limitations.csv": "P3E:021",
+    "data/processed/research_final/level3_extension/deep_stress/deterministic_grid.csv": "P3E:022",
+    "data/processed/research_final/level3_extension/deep_stress/monte_carlo_batches.json": "P3E:023",
+    "data/processed/research_final/level3_extension/manifest.json": "P3E:024",
+    "data/processed/research_final/level3_p1_targeted_repair/historical/census_reconciliation.json": "P3E:025",
+    "data/processed/research_final/level3_p1_targeted_repair/historical/linkage_route_audit.json": "P3E:026",
+    "data/processed/research_final/level3_p1_targeted_repair/manifest.json": "P3E:027",
+    "data/processed/research_final/level3_p1_targeted_repair/monte_carlo/checkpoint_validation.json": "P3E:028",
+    "data/processed/research_final/oracle_transmission_diagnostic_v1/comparison_matrix.csv": "P3E:029",
+    "data/processed/research_final/oracle_transmission_diagnostic_v1/manifest.json": "P3E:030",
+    "data/processed/research_final/oracle_transmission_diagnostic_v1/scientific_interpretation.json": "P3E:031",
+    "data/processed/research_final/oracle_transmission_diagnostic_v1/selection_manifest.json": "P3E:032",
+    "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_audit.csv": "P3E:033",
+    "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv": "P3E:034",
+    "data/processed/research_final/scientific_integration_v1/integration_result_registry.json": "P3E:035",
+    "data/processed/research_final/scientific_integration_v1/manifest.json": "P3E:036",
+    "data/processed/research_final/scientific_integration_v1/table_figure_registry.json": "P3E:037",
+    "data/processed/research_final/terra/audit/reproducibility_manifest.json": "P3E:038",
+    "data/processed/research_final/validation_audit/corrected_run_v2/aave/deterministic_scenarios.csv": "P3E:039",
+    "data/processed/research_final/validation_audit/corrected_run_v2/aave/research_summary.json": "P3E:040",
+    "data/processed/research_final/validation_audit/corrected_run_v2/manifest.json": "P3E:041",
+    "data/processed/research_final/validation_audit/corrected_run_v2/network/structural_graph.json": "P3E:042",
+    "data/processed/research_final/validation_audit/corrected_run_v2/rq_completion/rq3_capital_constraint.csv": "P3E:043",
+    "data/processed/research_final/validation_audit/corrected_run_v2/rq_completion/rq3_reaction_delay.csv": "P3E:044",
+    "data/processed/research_final/validation_audit/corrected_run_v2/rq_completion/rq5_usdc_depeg.csv": "P3E:045",
+    "data/processed/research_final/validation_audit/corrected_run_v2/rq_completion/rq6_liquidation_bonus.csv": "P3E:046",
+    "data/processed/research_final/validation_audit/corrected_run_v2/rq_completion/rq6_liquidation_threshold.csv": "P3E:047",
+    "data/processed/research_final/validation_audit/corrected_run_v2/rq_completion/rq6_ltv_capital_efficiency.csv": "P3E:048",
+    "data/processed/research_final/validation_audit/phase5_terra_early_warning_audit.json": "P3E:049",
+    "docs/research_final/APA_REFERENCES_VERIFIED.md": "P3E:050",
+    "docs/research_final/LITERATURE_VERIFIED.md": "P3E:051",
+    "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json": "P3E:052",
+    "docs/research_final/P2_ORACLE_RECONCILIATION.md": "P3E:053",
+    "docs/research_final/P2_VERSION_RECONCILIATION.md": "P3E:054",
+    "docs/research_final/REFERENCE_EVIDENCE_MATRIX.md": "P3E:055",
+    "docs/research_final/TERMINOLOGY_VI.md": "P3E:056",
+    "sim/agents/liquidator.py": "P3E:057",
+    "sim/dex/uniswap_v3.py": "P3E:058",
+    "sim/engine/run.py": "P3E:059",
+    "sim/lending/health_factor.py": "P3E:060",
+    "sim/lending/liquidation.py": "P3E:061",
+    "sim/metrics/risk.py": "P3E:062",
+    "sim/network/metrics.py": "P3E:063",
+    "sim/oracle.py": "P3E:064",
+    "sim/schemas.py": "P3E:065"
+  },
+  "records": [
+    {
+      "cardinality": {
+        "kind": "top-level object keys",
+        "value": 21
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99",
+        "git_blob_id": "18234390e54f353ab7fd7c85ad0a86b46c34937b",
+        "git_blob_sha256": "76dae833c5b1a6e620cf116e332f1f47c53454a1f3530a02fefacd800cb3b329",
+        "normalized_lf_sha256": "76dae833c5b1a6e620cf116e332f1f47c53454a1f3530a02fefacd800cb3b329"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [
+        "P2:C03",
+        "P2:C05",
+        "P2:C07",
+        "P2:C11",
+        "P2:C19",
+        "P2:C22",
+        "P2:C32",
+        "P2:C33"
+      ],
+      "data_type": "STRUCTURED_JSON",
+      "evidence_id": "P3E:001",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "18234390e54f353ab7fd7c85ad0a86b46c34937b",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "data/processed/mainnet/aave_uniswap_snapshot_26045352.json",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "SOURCE_VERIFIED_TRANSFORMATION_SPEC_REQUIRED",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "JSON records records",
+        "value": 48
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "b60f5c360436a7f54f932b93ced1912505b0564566cb366cfb7175d57f4edd57",
+        "git_blob_id": "bac44e61633b5efdde3665731ea69fbf4ca345e6",
+        "git_blob_sha256": "918226582bf2c748d7aea6efbc9ba74689900b34c02117d6e6e3aae8022f509d",
+        "normalized_lf_sha256": "918226582bf2c748d7aea6efbc9ba74689900b34c02117d6e6e3aae8022f509d"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [],
+      "data_type": "STRUCTURED_JSON",
+      "evidence_id": "P3E:002",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "bac44e61633b5efdde3665731ea69fbf4ca345e6",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "data/processed/research_final/final_accepted_claims_v1/accepted_claims_registry.json",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "PROVENANCE_OR_REGISTRY_SOURCE",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "JSON rows records",
+        "value": 48
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "4834f4f42fc26a6c1d8f574753897c47c35f67fa0a9f02831d093a4a5fbf854e",
+        "git_blob_id": "312b72f23b0115d1de69eec2dc1a87b0f490070a",
+        "git_blob_sha256": "630e768be7abc5615d2b3a6eff7ec3e73d668d0cfbfd6a4b4038f656837493d8",
+        "normalized_lf_sha256": "630e768be7abc5615d2b3a6eff7ec3e73d668d0cfbfd6a4b4038f656837493d8"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [],
+      "data_type": "STRUCTURED_JSON",
+      "evidence_id": "P3E:003",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "312b72f23b0115d1de69eec2dc1a87b0f490070a",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "data/processed/research_final/final_accepted_claims_v1/claim_evidence_crosswalk.json",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "PROVENANCE_OR_REGISTRY_SOURCE",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "top-level object keys",
+        "value": 19
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "1406111a2cd17efeecea878d44ee6fba6b3f68bf8a6de46daf96bfe45fef8311",
+        "git_blob_id": "bad223e0859a4fe135dd4f7b48b78513ade88123",
+        "git_blob_sha256": "dcb9a8d326cd3d28393851c555deac75c58f039732df8ed9d70893ac6a229384",
+        "normalized_lf_sha256": "dcb9a8d326cd3d28393851c555deac75c58f039732df8ed9d70893ac6a229384"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [],
+      "data_type": "STRUCTURED_JSON",
+      "evidence_id": "P3E:004",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "bad223e0859a4fe135dd4f7b48b78513ade88123",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "data/processed/research_final/final_accepted_claims_v1/manifest.json",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "PROVENANCE_OR_REGISTRY_SOURCE",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "top-level object keys",
+        "value": 11
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "036ad39cad276035a3c7d2c26a937a3939c128127ec40f6a587422d41987bc6e",
+        "git_blob_id": "a381359eeeff8cc9cd393d79f0f84138a17b6056",
+        "git_blob_sha256": "b58ff72637304eb7ee969768aef0004c45c13903f190f506a8e64c707a36ab88",
+        "normalized_lf_sha256": "b58ff72637304eb7ee969768aef0004c45c13903f190f506a8e64c707a36ab88"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [],
+      "data_type": "STRUCTURED_JSON",
+      "evidence_id": "P3E:005",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "a381359eeeff8cc9cd393d79f0f84138a17b6056",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "data/processed/research_final/final_accepted_claims_v1/scientific_lock_readiness.json",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "PROVENANCE_OR_REGISTRY_SOURCE",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "JSON research_questions records",
+        "value": 6
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "e867c04026a6bfd96fcbed7139e5ccf84d1839245b30b4c513af0942e6efcd75",
+        "git_blob_id": "fffe69d45f2c70e8f4cb781c8b521ef4cf6f1a45",
+        "git_blob_sha256": "428db5ef589bbd2e0e1c4273c36538f0abbe3c29b5601897bd787d78c1a4d080",
+        "normalized_lf_sha256": "428db5ef589bbd2e0e1c4273c36538f0abbe3c29b5601897bd787d78c1a4d080"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [],
+      "data_type": "STRUCTURED_JSON",
+      "evidence_id": "P3E:006",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "fffe69d45f2c70e8f4cb781c8b521ef4cf6f1a45",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "data/processed/research_final/final_accepted_claims_v1/six_rq_accepted_claims_matrix.json",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "PROVENANCE_OR_REGISTRY_SOURCE",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "top-level object keys",
+        "value": 6
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "89c61802dfe5d3ec80f9122318bfd78ef7726f962bf7a44671486595babbbaed",
+        "git_blob_id": "a6784fd7f1b7288c4f2177ff8ba102be5e01c81e",
+        "git_blob_sha256": "69809a5bb2bb6db6d8dd5e3699efb63f2faf127d68e9c99e3213a8837549a2fa",
+        "normalized_lf_sha256": "69809a5bb2bb6db6d8dd5e3699efb63f2faf127d68e9c99e3213a8837549a2fa"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [],
+      "data_type": "STRUCTURED_JSON",
+      "evidence_id": "P3E:007",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "a6784fd7f1b7288c4f2177ff8ba102be5e01c81e",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "data/processed/research_final/final_accepted_claims_v1/source_provenance_registry.json",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "PROVENANCE_OR_REGISTRY_SOURCE",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "top-level object keys",
+        "value": 11
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "43701fb47dde1324af4f246f74534d4997c04f1284fb80a58d187bbd15bdded5",
+        "git_blob_id": "3e467a7894589062791c3546050d59316b4bf2b2",
+        "git_blob_sha256": "7eb31baff466a691315ed4b2d1578863df5e62a3f8fc045f2f3b47c9aae0e1e4",
+        "normalized_lf_sha256": "7eb31baff466a691315ed4b2d1578863df5e62a3f8fc045f2f3b47c9aae0e1e4"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [],
+      "data_type": "STRUCTURED_JSON",
+      "evidence_id": "P3E:008",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "3e467a7894589062791c3546050d59316b4bf2b2",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "data/processed/research_final/final_accepted_claims_v1/validation_report.json",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "PROVENANCE_OR_REGISTRY_SOURCE",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "top-level object keys",
+        "value": 3
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "5412a1ce992516c21340fb86a1c724e32903c99c73ed2eb0da6bce3b67d636c3",
+        "git_blob_id": "ece34ff3c883ca17af3b2b55fc046ff0328e790f",
+        "git_blob_sha256": "ad15a8c92f484dfd965f267246e1c673b52c20698d817e8a9631a66e27aa9409",
+        "normalized_lf_sha256": "ad15a8c92f484dfd965f267246e1c673b52c20698d817e8a9631a66e27aa9409"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [],
+      "data_type": "STRUCTURED_JSON",
+      "evidence_id": "P3E:009",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "ece34ff3c883ca17af3b2b55fc046ff0328e790f",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "data/processed/research_final/frozen_v3/evidence_source_matrix.json",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "PROVENANCE_OR_REGISTRY_SOURCE",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "NOT_APPLICABLE",
+        "value": null
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "0f13cf951217b5b8a3e4bbd6aed32f341e41cc1065563322c159d9cbe894de89",
+        "git_blob_id": "3cf097b9dbd8643a69f5649fc5db219b18b26187",
+        "git_blob_sha256": "0f13cf951217b5b8a3e4bbd6aed32f341e41cc1065563322c159d9cbe894de89",
+        "normalized_lf_sha256": "0f13cf951217b5b8a3e4bbd6aed32f341e41cc1065563322c159d9cbe894de89"
+      },
+      "cohort": [
+        "60 deterministic cells"
+      ],
+      "corresponding_accepted_claim_ids": [
+        "INT:CL_INT_RQ1_POLICY_CONDITIONAL"
+      ],
+      "data_type": "LOCKED_RASTER_FIGURE",
+      "evidence_id": "P3E:010",
+      "evidence_tier": [
+        "SIMULATED"
+      ],
+      "git_blob_id": "3cf097b9dbd8643a69f5649fc5db219b18b26187",
+      "mandatory_limitations": [
+        "Bốn cell sử dụng tail haircuts 90/95%, là giả định counterfactual chưa quan sát.",
+        "Kết quả có điều kiện trên snapshot, cohort và miền tham số đã khai báo; không phải dự báo Mainnet."
+      ],
+      "original_artifact_path": "data/processed/research_final/frozen_v3/figures/F01_deterministic_depth_distribution.png",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "EXISTING_RENDERED_LOCKED_REUSE_REQUIRES_CAPTION_REVIEW",
+      "result_ids": [
+        "RQ1_GRID60_DEPTH0",
+        "RQ1_GRID60_DEPTH1",
+        "RQ1_GRID60_DEPTH2"
+      ],
+      "scenario": [
+        "prespecified extended grid"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [
+        "F01"
+      ],
+      "units": [
+        "cells"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "NOT_APPLICABLE",
+        "value": null
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "be1177ad7b805b6d210214d3292ee4031c3d7cbd296deb5c66202b1201be0b9f",
+        "git_blob_id": "b677ec3730cf60e0382e69fac30840362bdf4417",
+        "git_blob_sha256": "be1177ad7b805b6d210214d3292ee4031c3d7cbd296deb5c66202b1201be0b9f",
+        "normalized_lf_sha256": "be1177ad7b805b6d210214d3292ee4031c3d7cbd296deb5c66202b1201be0b9f"
+      },
+      "cohort": [
+        "10,000 Severe paths"
+      ],
+      "corresponding_accepted_claim_ids": [
+        "INT:CL_INT_RQ1_POLICY_CONDITIONAL",
+        "P2:C11",
+        "P2:C23"
+      ],
+      "data_type": "LOCKED_RASTER_FIGURE",
+      "evidence_id": "P3E:011",
+      "evidence_tier": [
+        "SIMULATED"
+      ],
+      "git_blob_id": "b677ec3730cf60e0382e69fac30840362bdf4417",
+      "mandatory_limitations": [
+        "Checkpoint được xác minh, không chạy lại 10.000 đường trong P1.",
+        "Tần suất mô hình, không phải xác suất khủng hoảng thực tế."
+      ],
+      "original_artifact_path": "data/processed/research_final/frozen_v3/figures/F02_severe_mc_prefix_convergence.png",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "EXISTING_RENDERED_LOCKED_REUSE_REQUIRES_CAPTION_REVIEW",
+      "result_ids": [
+        "RQ1_MC_SEVERE_DEPTH2_COUNT",
+        "RQ1_MC_SEVERE_DEPTH2_FREQUENCY"
+      ],
+      "scenario": [
+        "same as count",
+        "seed=20260914; max_waves=100; horizon=120"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [
+        "F02"
+      ],
+      "units": [
+        "paths",
+        "ratio"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "NOT_APPLICABLE",
+        "value": null
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "5127e6f8f69337fa1bbe6273f4937d7a87dac889f179d19ba9d5a86b448e95e0",
+        "git_blob_id": "85890ee8967dca3d96e3e9f6ac6420f966e76a13",
+        "git_blob_sha256": "5127e6f8f69337fa1bbe6273f4937d7a87dac889f179d19ba9d5a86b448e95e0",
+        "normalized_lf_sha256": "5127e6f8f69337fa1bbe6273f4937d7a87dac889f179d19ba9d5a86b448e95e0"
+      },
+      "cohort": [
+        "109-position WETH/USDC cohort"
+      ],
+      "corresponding_accepted_claim_ids": [
+        "INT:CL_INT_RQ3_PRESERVED"
+      ],
+      "data_type": "LOCKED_RASTER_FIGURE",
+      "evidence_id": "P3E:012",
+      "evidence_tier": [
+        "SIMULATED"
+      ],
+      "git_blob_id": "85890ee8967dca3d96e3e9f6ac6420f966e76a13",
+      "mandatory_limitations": [
+        "Kết quả có điều kiện trên snapshot, cohort và miền tham số đã khai báo; không phải dự báo Mainnet."
+      ],
+      "original_artifact_path": "data/processed/research_final/frozen_v3/figures/F03_liquidator_capital_constraint.png",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "EXISTING_RENDERED_LOCKED_REUSE_REQUIRES_CAPTION_REVIEW",
+      "result_ids": [
+        "RQ3_CAPITAL_100_LIQUIDATED",
+        "RQ3_CAPITAL_25_LIQUIDATED"
+      ],
+      "scenario": [
+        "capital=100% reference demand",
+        "capital=25% reference demand"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [
+        "F03"
+      ],
+      "units": [
+        "USDC token quantity"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "NOT_APPLICABLE",
+        "value": null
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "d8da62e558b3b854bafbe0461fc822e98eaed9912588228c2e45929eaec20710",
+        "git_blob_id": "e070dc3cedaa14f540548c22d71b9ea95ed66202",
+        "git_blob_sha256": "d8da62e558b3b854bafbe0461fc822e98eaed9912588228c2e45929eaec20710",
+        "normalized_lf_sha256": "d8da62e558b3b854bafbe0461fc822e98eaed9912588228c2e45929eaec20710"
+      },
+      "cohort": [
+        "Professor Demo liquidation sale",
+        "same scenario"
+      ],
+      "corresponding_accepted_claim_ids": [
+        "INT:CL_INT_RQ4_PRESERVED",
+        "P2:C13"
+      ],
+      "data_type": "LOCKED_RASTER_FIGURE",
+      "evidence_id": "P3E:013",
+      "evidence_tier": [
+        "SIMULATED"
+      ],
+      "git_blob_id": "e070dc3cedaa14f540548c22d71b9ea95ed66202",
+      "mandatory_limitations": [
+        "Zero trong mô hình là tái định vị hoàn toàn theo quy tắc agent.",
+        "Đây là tác động ngay sau bán, không phải spread sau arbitrage.",
+        "Độ lệch mô phỏng sau arbitrage, không phải quote lịch sử."
+      ],
+      "original_artifact_path": "data/processed/research_final/frozen_v3/figures/F04_arbitrage_impact_and_residual_spread.png",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "EXISTING_RENDERED_LOCKED_REUSE_REQUIRES_CAPTION_REVIEW",
+      "result_ids": [
+        "RQ4_IMMEDIATE_PRICE_IMPACT",
+        "RQ4_SPREAD_ARB0",
+        "RQ4_SPREAD_ARB100"
+      ],
+      "scenario": [
+        "arbitrage capacity=0%",
+        "arbitrage capacity=100%",
+        "−20% shock; haircut 40%"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [
+        "F04"
+      ],
+      "units": [
+        "ratio"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "top-level object keys",
+        "value": 14
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "0ee158ad67cd16a009a6d064960619fd03ab93657d12fa25f4b860e351157613",
+        "git_blob_id": "5fa6f68d25dd4df88b042a7b31be014f8b46dd38",
+        "git_blob_sha256": "d31660ba134656c2882d95cc26545bd6aba9bf79ad59bd7d88e9d7a8ae0d1168",
+        "normalized_lf_sha256": "d31660ba134656c2882d95cc26545bd6aba9bf79ad59bd7d88e9d7a8ae0d1168"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [
+        "P2:C20",
+        "P2:C31"
+      ],
+      "data_type": "STRUCTURED_JSON",
+      "evidence_id": "P3E:014",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "5fa6f68d25dd4df88b042a7b31be014f8b46dd38",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "data/processed/research_final/frozen_v3/manifest.json",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "PROVENANCE_OR_REGISTRY_SOURCE",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "JSON results records",
+        "value": 41
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "8c0a2455209505341c1f4c89f01b0db8677446e58bdcf4903604b123c6abedad",
+        "git_blob_id": "6dde91fc11d189de8899c742b44fea9cf0f386ae",
+        "git_blob_sha256": "6e31fb66964a66e1e05ce5a39414ebcd399b736c49042328246c6c3986d0e1b8",
+        "normalized_lf_sha256": "6e31fb66964a66e1e05ce5a39414ebcd399b736c49042328246c6c3986d0e1b8"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [
+        "INT:CL_INT_HISTORICAL_TIERS_PRESERVED",
+        "INT:CL_INT_RQ3_PRESERVED",
+        "INT:CL_INT_RQ4_PRESERVED",
+        "INT:CL_INT_RQ5_PRESERVED",
+        "INT:CL_INT_RQ6_PRESERVED",
+        "INT:CL_INT_TERRA_NEGATIVE_PRESERVED",
+        "P2:C04",
+        "P2:C07",
+        "P2:C09",
+        "P2:C10",
+        "P2:C11",
+        "P2:C12",
+        "P2:C13",
+        "P2:C15",
+        "P2:C22",
+        "P2:C23",
+        "P2:C30",
+        "P2:C35"
+      ],
+      "data_type": "STRUCTURED_JSON",
+      "evidence_id": "P3E:015",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "6dde91fc11d189de8899c742b44fea9cf0f386ae",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "data/processed/research_final/frozen_v3/results_registry.json",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "PROVENANCE_OR_REGISTRY_SOURCE",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "CSV data rows",
+        "value": 6
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "e88f644ac8afd0e8cf148fbaea5f1da2e513e1b239e27482ac457ede9556fba8",
+        "git_blob_id": "ea2d04143baee6a2d561b588bd8174b6dbfbc64b",
+        "git_blob_sha256": "374dd47d8c10a74bd588059be2b019b4f9fc81dc64237dfd0e10ec2c6ebf5d1e",
+        "normalized_lf_sha256": "374dd47d8c10a74bd588059be2b019b4f9fc81dc64237dfd0e10ec2c6ebf5d1e"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [],
+      "data_type": "RAW_OR_DERIVED_TABULAR_CSV",
+      "evidence_id": "P3E:016",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "ea2d04143baee6a2d561b588bd8174b6dbfbc64b",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "data/processed/research_final/frozen_v3/tables/historical_evidence.csv",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "SOURCE_VERIFIED_TRANSFORMATION_SPEC_REQUIRED",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "CSV data rows",
+        "value": 8
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "9d21949b1503747de542faf81e5ea437a257f907c053b7a4b4333b9458f93b91",
+        "git_blob_id": "0a51fb795e562c0276ac36903662be92d52ce86f",
+        "git_blob_sha256": "de66ec8d972aa5c5a31ee00b1815bb4f6fae16d04772fb3b49e8ca9293b4ec50",
+        "normalized_lf_sha256": "de66ec8d972aa5c5a31ee00b1815bb4f6fae16d04772fb3b49e8ca9293b4ec50"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [],
+      "data_type": "RAW_OR_DERIVED_TABULAR_CSV",
+      "evidence_id": "P3E:017",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "0a51fb795e562c0276ac36903662be92d52ce86f",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "data/processed/research_final/frozen_v3/tables/rq3_constraints.csv",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "SOURCE_VERIFIED_TRANSFORMATION_SPEC_REQUIRED",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "CSV data rows",
+        "value": 3
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "5830f51151c8bd5800420c8d890fba156aa3ca6530d35af24a7f7e0fb0358419",
+        "git_blob_id": "1fdeb6b31a7537d79e9e8c9e97544dbf78bb4f2e",
+        "git_blob_sha256": "4fbc8e0f0d39c937e0acf28cf8abba3bf8d85bed9d319a6164a3f389f73ed85e",
+        "normalized_lf_sha256": "4fbc8e0f0d39c937e0acf28cf8abba3bf8d85bed9d319a6164a3f389f73ed85e"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [],
+      "data_type": "RAW_OR_DERIVED_TABULAR_CSV",
+      "evidence_id": "P3E:018",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "1fdeb6b31a7537d79e9e8c9e97544dbf78bb4f2e",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "data/processed/research_final/frozen_v3/tables/rq4_arbitrage.csv",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "SOURCE_VERIFIED_TRANSFORMATION_SPEC_REQUIRED",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "CSV data rows",
+        "value": 7
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "5b17304a3a4948093e35207ea3c494e13d4f762c1f982b4d606a3662cb01722e",
+        "git_blob_id": "3f36a867c750f90d5a88ae5b1b00eae6be151b6e",
+        "git_blob_sha256": "d6ec0ff75f076b3c4ba0344578fb1ff86c8819d14231d41d40024355f1a4f58a",
+        "normalized_lf_sha256": "d6ec0ff75f076b3c4ba0344578fb1ff86c8819d14231d41d40024355f1a4f58a"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [],
+      "data_type": "RAW_OR_DERIVED_TABULAR_CSV",
+      "evidence_id": "P3E:019",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "3f36a867c750f90d5a88ae5b1b00eae6be151b6e",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "data/processed/research_final/frozen_v3/tables/rq5_usdc_valuation.csv",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "SOURCE_VERIFIED_TRANSFORMATION_SPEC_REQUIRED",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "CSV data rows",
+        "value": 15
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "3c566f35b2ba8bed7e00bdf478eb560cdc529fd912404c64329705d271fb17d6",
+        "git_blob_id": "deab1f45c56d8c836fead08190faffb1a5000fd2",
+        "git_blob_sha256": "1fb3321ac4df248102a54bbe5f1e1108a4f4d404cfab7e9e2a8948179c50f912",
+        "normalized_lf_sha256": "1fb3321ac4df248102a54bbe5f1e1108a4f4d404cfab7e9e2a8948179c50f912"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [],
+      "data_type": "RAW_OR_DERIVED_TABULAR_CSV",
+      "evidence_id": "P3E:020",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "deab1f45c56d8c836fead08190faffb1a5000fd2",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "data/processed/research_final/frozen_v3/tables/rq6_policy.csv",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "SOURCE_VERIFIED_TRANSFORMATION_SPEC_REQUIRED",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "CSV data rows",
+        "value": 3
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "645113a69223ea6da4967bc50d8df450700f3303826a84ac18e0aaaa3e214488",
+        "git_blob_id": "264d5294bd8da978f8718c15b9ca7bcb221c704b",
+        "git_blob_sha256": "a6aba884922a6c01ed271173fbb91480d7917c887d3f3ceee41ddd5b51e8d635",
+        "normalized_lf_sha256": "a6aba884922a6c01ed271173fbb91480d7917c887d3f3ceee41ddd5b51e8d635"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [],
+      "data_type": "RAW_OR_DERIVED_TABULAR_CSV",
+      "evidence_id": "P3E:021",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "264d5294bd8da978f8718c15b9ca7bcb221c704b",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "data/processed/research_final/frozen_v3/tables/terra_limitations.csv",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "SOURCE_VERIFIED_TRANSFORMATION_SPEC_REQUIRED",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "CSV data rows",
+        "value": 60
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "fe784f084cdc8b8f2fef25a40d4a6937fb6a907d9054bf4e2c37aed198bac9cc",
+        "git_blob_id": "4f1b5682445306a48751a231eadf87c6d03dbc8c",
+        "git_blob_sha256": "a2b605466703ab4c26f46df7c76455a09c278e39f497643b7af29c31da07a947",
+        "normalized_lf_sha256": "a2b605466703ab4c26f46df7c76455a09c278e39f497643b7af29c31da07a947"
+      },
+      "cohort": [
+        "60 deterministic cells"
+      ],
+      "corresponding_accepted_claim_ids": [
+        "INT:CL_INT_RQ1_POLICY_CONDITIONAL",
+        "INT:CL_INT_RQ2_TWO_CHANNELS",
+        "P2:C07"
+      ],
+      "data_type": "RAW_OR_DERIVED_TABULAR_CSV",
+      "evidence_id": "P3E:022",
+      "evidence_tier": [
+        "SIMULATED"
+      ],
+      "git_blob_id": "4f1b5682445306a48751a231eadf87c6d03dbc8c",
+      "mandatory_limitations": [
+        "Bốn cell sử dụng tail haircuts 90/95%, là giả định counterfactual chưa quan sát.",
+        "Haircut 90% chưa được xác nhận bằng độ sâu lịch sử.",
+        "Haircut 95% chưa được xác nhận bằng độ sâu lịch sử."
+      ],
+      "original_artifact_path": "data/processed/research_final/level3_extension/deep_stress/deterministic_grid.csv",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "SOURCE_VERIFIED_TRANSFORMATION_SPEC_REQUIRED",
+      "result_ids": [
+        "RQ1_GRID60_DEPTH2",
+        "RQ2_DEPTH2_HAIRCUT90_COUNT",
+        "RQ2_DEPTH2_HAIRCUT95_COUNT"
+      ],
+      "scenario": [
+        "haircut=90%",
+        "haircut=95%",
+        "prespecified extended grid"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "cells"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "top-level object keys",
+        "value": 2
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "5907dd287efee848c4bb2bedfacea44d9b9a22defd43965d96aa2c4fd8da23bb",
+        "git_blob_id": "3a38cce65c91dcc9eb4ca957aa6946d34bb2e7e3",
+        "git_blob_sha256": "507bf53ddc6ff8492b18cf6c9ec56bbf4aace09f049f69d083188476da9481d8",
+        "normalized_lf_sha256": "507bf53ddc6ff8492b18cf6c9ec56bbf4aace09f049f69d083188476da9481d8"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [
+        "P2:C23",
+        "P2:C24"
+      ],
+      "data_type": "STRUCTURED_JSON",
+      "evidence_id": "P3E:023",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "3a38cce65c91dcc9eb4ca957aa6946d34bb2e7e3",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "data/processed/research_final/level3_extension/deep_stress/monte_carlo_batches.json",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "SOURCE_VERIFIED_TRANSFORMATION_SPEC_REQUIRED",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "top-level object keys",
+        "value": 14
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "8156499175e498e1d80903ff66f07f174b16df7d79a021c922567f35bd436770",
+        "git_blob_id": "e4cd57c8a03e72081529c5fe623c1f7479a0cc29",
+        "git_blob_sha256": "99d5bf475c0812fa1d01cfd4b82c2cfd11036b77df03c61700f4bba5a0e6b652",
+        "normalized_lf_sha256": "99d5bf475c0812fa1d01cfd4b82c2cfd11036b77df03c61700f4bba5a0e6b652"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [],
+      "data_type": "STRUCTURED_JSON",
+      "evidence_id": "P3E:024",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "e4cd57c8a03e72081529c5fe623c1f7479a0cc29",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "data/processed/research_final/level3_extension/manifest.json",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "SOURCE_VERIFIED_TRANSFORMATION_SPEC_REQUIRED",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "top-level object keys",
+        "value": 21
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "0d9c2c93e2ea084d38ee53ef9589cf9a5b9f8f050c1fa2c34a35f94e983b0b2d",
+        "git_blob_id": "008ee07e710933bf4ee10cc049f889b695406654",
+        "git_blob_sha256": "c28454d7c56e9998a0ea12c18d2a6fa65623db093e9fc88d5fb04fecd155ba33",
+        "normalized_lf_sha256": "c28454d7c56e9998a0ea12c18d2a6fa65623db093e9fc88d5fb04fecd155ba33"
+      },
+      "cohort": [
+        "Aave V3 Pool, 2026-09-01…07 UTC",
+        "same week"
+      ],
+      "corresponding_accepted_claim_ids": [
+        "INT:CL_INT_HISTORICAL_TIERS_PRESERVED",
+        "P2:C10"
+      ],
+      "data_type": "STRUCTURED_JSON",
+      "evidence_id": "P3E:025",
+      "evidence_tier": [
+        "OBSERVED"
+      ],
+      "git_blob_id": "008ee07e710933bf4ee10cc049f889b695406654",
+      "mandatory_limitations": [
+        "Graph bỏ sót một event trong RPC census.",
+        "Một tuần tiền đăng ký; không phải toàn bộ lịch sử Aave."
+      ],
+      "original_artifact_path": "data/processed/research_final/level3_p1_targeted_repair/historical/census_reconciliation.json",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "SOURCE_VERIFIED_TRANSFORMATION_SPEC_REQUIRED",
+      "result_ids": [
+        "HIST_GRAPH_MATCHED_EVENTS",
+        "HIST_RPC_CENSUS_EVENTS"
+      ],
+      "scenario": [
+        "Graph candidates reverified by RPC",
+        "independent RPC log census"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "LiquidationCall events",
+        "events"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "top-level object keys",
+        "value": 6
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "bfdb31c2eb683551a876d56d30c80b3e2218634dd14a7681b59ceb318d22f71d",
+        "git_blob_id": "b56ac7ecf46026efccd85b2bab2e5da5c836b442",
+        "git_blob_sha256": "bbc11050f342cbd7f1189fd5cee9035e02f86c6633980cc8e1cbfa9f0f0e03d4",
+        "normalized_lf_sha256": "bbc11050f342cbd7f1189fd5cee9035e02f86c6633980cc8e1cbfa9f0f0e03d4"
+      },
+      "cohort": [
+        "27 Graph-matched events"
+      ],
+      "corresponding_accepted_claim_ids": [
+        "INT:CL_INT_HISTORICAL_TIERS_PRESERVED",
+        "P2:C09"
+      ],
+      "data_type": "STRUCTURED_JSON",
+      "evidence_id": "P3E:026",
+      "evidence_tier": [
+        "OBSERVED"
+      ],
+      "git_blob_id": "b56ac7ecf46026efccd85b2bab2e5da5c836b442",
+      "mandatory_limitations": [
+        "Bằng chứng tuyến tài sản không tự chứng minh nhân quả thị trường.",
+        "Không gọi là direct transfer hoặc causal transmission.",
+        "Temporal association only.",
+        "Weakest evidence tier; no direct linkage."
+      ],
+      "original_artifact_path": "data/processed/research_final/level3_p1_targeted_repair/historical/linkage_route_audit.json",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "SOURCE_VERIFIED_TRANSFORMATION_SPEC_REQUIRED",
+      "result_ids": [
+        "HIST_DIRECT_TRANSFER_PATHS",
+        "HIST_SAME_BLOCK_ASSOCIATION",
+        "HIST_SAME_TX_COOCCURRENCE",
+        "HIST_TIME_WINDOW_ASSOCIATION"
+      ],
+      "scenario": [
+        "nearby in time",
+        "ordered exact-amount WETH transfer path",
+        "same block",
+        "same transaction without verified direct transfer path"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "events"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "top-level object keys",
+        "value": 12
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "769c49d10c0539ed8d3b07306a4f0078062730d81abd4911762503a1b2cbdb34",
+        "git_blob_id": "95685ccd7e3ba2ddb1866d501dc03c055452f907",
+        "git_blob_sha256": "6a9ed472474390147f2bdc2bf49a745884458c3b2105c5622f81e8916702b636",
+        "normalized_lf_sha256": "6a9ed472474390147f2bdc2bf49a745884458c3b2105c5622f81e8916702b636"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [],
+      "data_type": "STRUCTURED_JSON",
+      "evidence_id": "P3E:027",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "95685ccd7e3ba2ddb1866d501dc03c055452f907",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "data/processed/research_final/level3_p1_targeted_repair/manifest.json",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "SOURCE_VERIFIED_TRANSFORMATION_SPEC_REQUIRED",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "top-level object keys",
+        "value": 9
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "b3eb68e74ef96c3f76fa56654b72274428741d88f4815710b77abc11f1d6cb5a",
+        "git_blob_id": "bc8c06873698ec01620e3dd5e260ed29c8c1e55f",
+        "git_blob_sha256": "3c299fa8b35d2d54c452a7abf14f40004c6d6a656f2a0bc282c9e978283bac5a",
+        "normalized_lf_sha256": "3c299fa8b35d2d54c452a7abf14f40004c6d6a656f2a0bc282c9e978283bac5a"
+      },
+      "cohort": [
+        "10,000 Severe paths",
+        "locked Level-3 checkpoints"
+      ],
+      "corresponding_accepted_claim_ids": [
+        "INT:CL_INT_RQ1_POLICY_CONDITIONAL",
+        "P2:C11",
+        "P2:C22",
+        "P2:C23"
+      ],
+      "data_type": "STRUCTURED_JSON",
+      "evidence_id": "P3E:028",
+      "evidence_tier": [
+        "DERIVED",
+        "SIMULATED"
+      ],
+      "git_blob_id": "bc8c06873698ec01620e3dd5e260ed29c8c1e55f",
+      "mandatory_limitations": [
+        "Checkpoint được xác minh, không chạy lại 10.000 đường trong P1.",
+        "Historical execution duration for legacy 10k is unavailable; no rerun in P1.",
+        "Tần suất mô hình, không phải xác suất khủng hoảng thực tế."
+      ],
+      "original_artifact_path": "data/processed/research_final/level3_p1_targeted_repair/monte_carlo/checkpoint_validation.json",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "SOURCE_VERIFIED_TRANSFORMATION_SPEC_REQUIRED",
+      "result_ids": [
+        "MC_INDEPENDENT_PATHS_VALIDATED",
+        "RQ1_MC_SEVERE_DEPTH2_COUNT",
+        "RQ1_MC_SEVERE_DEPTH2_FREQUENCY"
+      ],
+      "scenario": [
+        "identity and nested-prefix audit",
+        "same as count",
+        "seed=20260914; max_waves=100; horizon=120"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "paths",
+        "ratio"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "CSV data rows",
+        "value": 72
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "dd134d792c3b9c8a155a752d6849c17a31c19b65716c4021c2532db426138156",
+        "git_blob_id": "dee128ff278efe94895220aca5eccec4150c1cc4",
+        "git_blob_sha256": "09c2d6dea5868817c57a67329f4d64469d1d7c1340fddc5e980c6b3741bea078",
+        "normalized_lf_sha256": "09c2d6dea5868817c57a67329f4d64469d1d7c1340fddc5e980c6b3741bea078"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [
+        "P2:C07",
+        "P2:C11",
+        "P2:C13",
+        "P2:C32"
+      ],
+      "data_type": "RAW_OR_DERIVED_TABULAR_CSV",
+      "evidence_id": "P3E:029",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "dee128ff278efe94895220aca5eccec4150c1cc4",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "data/processed/research_final/oracle_transmission_diagnostic_v1/comparison_matrix.csv",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "PROVENANCE_OR_REGISTRY_SOURCE",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "top-level object keys",
+        "value": 22
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "fb391166fe61805b0690f393f63da844c8449a969a53e692d04b9adae36fc8e6",
+        "git_blob_id": "f9fe56ca2325dca85a8cfe580571cfc0964ce7f5",
+        "git_blob_sha256": "213a58b5856a52b7d200b1a537475bb3f5ba10d6b4a28c9b7235738950e334c9",
+        "normalized_lf_sha256": "213a58b5856a52b7d200b1a537475bb3f5ba10d6b4a28c9b7235738950e334c9"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [],
+      "data_type": "STRUCTURED_JSON",
+      "evidence_id": "P3E:030",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "f9fe56ca2325dca85a8cfe580571cfc0964ce7f5",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "data/processed/research_final/oracle_transmission_diagnostic_v1/manifest.json",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "PROVENANCE_OR_REGISTRY_SOURCE",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "top-level object keys",
+        "value": 8
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "ee5ca1a27638f3900f1651b37033e852bb57d6e41b4f580633a318e1d472fc66",
+        "git_blob_id": "91075b9beef037c046abd3fdcfa3df469a70382d",
+        "git_blob_sha256": "f761e582db4a701d852b5f9c3ce82e42b4963c2da33969b0ac238501f9614361",
+        "normalized_lf_sha256": "f761e582db4a701d852b5f9c3ce82e42b4963c2da33969b0ac238501f9614361"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [],
+      "data_type": "STRUCTURED_JSON",
+      "evidence_id": "P3E:031",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "91075b9beef037c046abd3fdcfa3df469a70382d",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "data/processed/research_final/oracle_transmission_diagnostic_v1/scientific_interpretation.json",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "PROVENANCE_OR_REGISTRY_SOURCE",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "top-level object keys",
+        "value": 14
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "LF_OR_BINARY",
+        "checkout_sha256": "3eb4bd1c2404abfb1a4a2cd402d06d70a971e781b279c599be66438c5e5d253d",
+        "git_blob_id": "1bb5bdea8be74c1e62dc89badbcb8cbae67b7bd3",
+        "git_blob_sha256": "3eb4bd1c2404abfb1a4a2cd402d06d70a971e781b279c599be66438c5e5d253d",
+        "normalized_lf_sha256": "3eb4bd1c2404abfb1a4a2cd402d06d70a971e781b279c599be66438c5e5d253d"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [
+        "P2:C22",
+        "P2:C32"
+      ],
+      "data_type": "STRUCTURED_JSON",
+      "evidence_id": "P3E:032",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "1bb5bdea8be74c1e62dc89badbcb8cbae67b7bd3",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "data/processed/research_final/oracle_transmission_diagnostic_v1/selection_manifest.json",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "PROVENANCE_OR_REGISTRY_SOURCE",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "CSV data rows",
+        "value": 32688
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "802d84e2774f3840dd50d504eab40cb3681b3e468e5581a988e86f5a2c16dc6c",
+        "git_blob_id": "e441a0fc77cb084609e439bc3ff8ebf189e71ccd",
+        "git_blob_sha256": "a4cb39f4300f0e05dfb700b9b6493a3b0de4f050f5a41ccb0c6031b038144f3e",
+        "normalized_lf_sha256": "a4cb39f4300f0e05dfb700b9b6493a3b0de4f050f5a41ccb0c6031b038144f3e"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [
+        "INT:CL_INT_RQ1_POLICY_CONDITIONAL",
+        "INT:CL_INT_RQ2_TWO_CHANNELS"
+      ],
+      "data_type": "RAW_OR_DERIVED_TABULAR_CSV",
+      "evidence_id": "P3E:033",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "e441a0fc77cb084609e439bc3ff8ebf189e71ccd",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_audit.csv",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "PROVENANCE_OR_REGISTRY_SOURCE",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "CSV data rows",
+        "value": 72
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "f9fe744dbc3a28e071bdc944adfad469a65dc2f47d29e3beab5d5e446de955a4",
+        "git_blob_id": "664eeac6d3d80a38dc4c2ca6c942070f09d8d9f8",
+        "git_blob_sha256": "53dc862ad37d447777ec2ee421d00696d7c52555a931af084d834c88f06df283",
+        "normalized_lf_sha256": "53dc862ad37d447777ec2ee421d00696d7c52555a931af084d834c88f06df283"
+      },
+      "cohort": [
+        "18 selected cases × borrowers",
+        "newly eligible borrower-case instances",
+        "selected deterministic cases"
+      ],
+      "corresponding_accepted_claim_ids": [
+        "INT:CL_INT_ELIGIBLE_NOT_EXECUTED",
+        "INT:CL_INT_RQ1_POLICY_CONDITIONAL",
+        "P2:C03",
+        "P2:C05",
+        "P2:C33"
+      ],
+      "data_type": "RAW_OR_DERIVED_TABULAR_CSV",
+      "evidence_id": "P3E:034",
+      "evidence_tier": [
+        "MODEL_COMPUTED_COUNTERFACTUAL"
+      ],
+      "git_blob_id": "664eeac6d3d80a38dc4c2ca6c942070f09d8d9f8",
+      "mandatory_limitations": [
+        "Targeted selected cases only; not a population probability or historical event rate."
+      ],
+      "original_artifact_path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
+      "original_source_commits": [
+        "c113fc1ec6dd98ffcc31241c1dbd1a93b20aa193"
+      ],
+      "policy": [
+        "A_ADVERSE_PASS_THROUGH",
+        "B_REFERENCE_ONLY",
+        "C_MODERATE_LAGGED_SMOOTHED_PROXY",
+        "C_WEAK_LAGGED_SMOOTHED_PROXY"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "PROVENANCE_OR_REGISTRY_SOURCE",
+      "result_ids": [
+        "INT_A_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
+        "INT_A_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_A_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
+        "INT_A_NEWLY_ELIGIBLE_SKIPPED_INSTANCES",
+        "INT_B_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
+        "INT_C_MODERATE_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
+        "INT_C_WEAK_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4"
+      ],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [
+        "INT_T01_ELIGIBLE_VS_EXECUTED"
+      ],
+      "units": [
+        "borrower-case instances",
+        "cases"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "JSON results records",
+        "value": 32
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "50c35160bb574a7565f40728edc3bdc1af595df8b685f73b7190c20995ce2267",
+        "git_blob_id": "64b78e13f87adcc9bcc70188ca692d4a4196bff1",
+        "git_blob_sha256": "e2c2916b02b332d662ceb7b995d674d81698dc46029b13efff55c2fe0e5079d9",
+        "normalized_lf_sha256": "e2c2916b02b332d662ceb7b995d674d81698dc46029b13efff55c2fe0e5079d9"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [],
+      "data_type": "STRUCTURED_JSON",
+      "evidence_id": "P3E:035",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "64b78e13f87adcc9bcc70188ca692d4a4196bff1",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "data/processed/research_final/scientific_integration_v1/integration_result_registry.json",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "PROVENANCE_OR_REGISTRY_SOURCE",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "top-level object keys",
+        "value": 23
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "71f75f5556cac8563c222b57fb8e55211404886936bb52f28b179d19b9974485",
+        "git_blob_id": "2c80327f45bcb1bc3173c0017718dc933410a0fd",
+        "git_blob_sha256": "a36f761a1bd4135a50ab95de2f1fba2f7c2a867b3378bb878ea15aef289f2f60",
+        "normalized_lf_sha256": "a36f761a1bd4135a50ab95de2f1fba2f7c2a867b3378bb878ea15aef289f2f60"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [],
+      "data_type": "STRUCTURED_JSON",
+      "evidence_id": "P3E:036",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "2c80327f45bcb1bc3173c0017718dc933410a0fd",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "data/processed/research_final/scientific_integration_v1/manifest.json",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "PROVENANCE_OR_REGISTRY_SOURCE",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "JSON figures records",
+        "value": 0
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "ac9c8137c90b31709e3f2d04a4bdb232386b86cbef191fff698858f24a81eaaf",
+        "git_blob_id": "c74345f75c02a4550151a0cf7802fa96fecdd202",
+        "git_blob_sha256": "6df818552d703e4f6c38224e30ecda45f67d5d823b254c247143bf8e77b99548",
+        "normalized_lf_sha256": "6df818552d703e4f6c38224e30ecda45f67d5d823b254c247143bf8e77b99548"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [
+        "P2:C03",
+        "P2:C07",
+        "P2:C32",
+        "P2:C33"
+      ],
+      "data_type": "STRUCTURED_JSON",
+      "evidence_id": "P3E:037",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "c74345f75c02a4550151a0cf7802fa96fecdd202",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "data/processed/research_final/scientific_integration_v1/table_figure_registry.json",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "PROVENANCE_OR_REGISTRY_SOURCE",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "top-level object keys",
+        "value": 23
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "e5ff826470e7121f6d899e111669549c2db5590efa01ca407e125320a178e064",
+        "git_blob_id": "531598eb588afbe3abbd4b6163877ce6191d6aa9",
+        "git_blob_sha256": "fe53373269c49e2320b4d0375c874d0258b87eb39662711581210ddd9b236cdf",
+        "normalized_lf_sha256": "fe53373269c49e2320b4d0375c874d0258b87eb39662711581210ddd9b236cdf"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [],
+      "data_type": "STRUCTURED_JSON",
+      "evidence_id": "P3E:038",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "531598eb588afbe3abbd4b6163877ce6191d6aa9",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "data/processed/research_final/terra/audit/reproducibility_manifest.json",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "SOURCE_VERIFIED_TRANSFORMATION_SPEC_REQUIRED",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "CSV data rows",
+        "value": 9
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "91aa61b70970b90f646ce623732933740357551546fb4f759968c09a3f2e0dfc",
+        "git_blob_id": "d07430e0acedb59f95df67c31ae4ed72250f95b6",
+        "git_blob_sha256": "c447eb011bf24d36f57ca0352ceb4cae9ce51cd0302c94b6b8f3fa700c3b75b1",
+        "normalized_lf_sha256": "c447eb011bf24d36f57ca0352ceb4cae9ce51cd0302c94b6b8f3fa700c3b75b1"
+      },
+      "cohort": [
+        "Professor Demo liquidation sale",
+        "same scenario"
+      ],
+      "corresponding_accepted_claim_ids": [
+        "INT:CL_INT_RQ4_PRESERVED",
+        "P2:C13"
+      ],
+      "data_type": "RAW_OR_DERIVED_TABULAR_CSV",
+      "evidence_id": "P3E:039",
+      "evidence_tier": [
+        "SIMULATED"
+      ],
+      "git_blob_id": "d07430e0acedb59f95df67c31ae4ed72250f95b6",
+      "mandatory_limitations": [
+        "Zero trong mô hình là tái định vị hoàn toàn theo quy tắc agent.",
+        "Đây là tác động ngay sau bán, không phải spread sau arbitrage.",
+        "Độ lệch mô phỏng sau arbitrage, không phải quote lịch sử."
+      ],
+      "original_artifact_path": "data/processed/research_final/validation_audit/corrected_run_v2/aave/deterministic_scenarios.csv",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "SOURCE_VERIFIED_TRANSFORMATION_SPEC_REQUIRED",
+      "result_ids": [
+        "RQ4_IMMEDIATE_PRICE_IMPACT",
+        "RQ4_SPREAD_ARB0",
+        "RQ4_SPREAD_ARB100"
+      ],
+      "scenario": [
+        "arbitrage capacity=0%",
+        "arbitrage capacity=100%",
+        "−20% shock; haircut 40%"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "ratio"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "top-level object keys",
+        "value": 14
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "855dd3691a8509f8964041c4af861ae89776b35e877108ded55817b41deae662",
+        "git_blob_id": "ad810fd60b1b4fb02e28ba2d9213b1d07801bafd",
+        "git_blob_sha256": "c9edf0b2c82b9b3ad28caf6a34a2ee6b8b7263ba4681d8391e914ccadf3f9d55",
+        "normalized_lf_sha256": "c9edf0b2c82b9b3ad28caf6a34a2ee6b8b7263ba4681d8391e914ccadf3f9d55"
+      },
+      "cohort": [
+        "canonical WETH/USDC 0.3% pool"
+      ],
+      "corresponding_accepted_claim_ids": [
+        "INT:CL_INT_RQ2_TWO_CHANNELS",
+        "P2:C07"
+      ],
+      "data_type": "STRUCTURED_JSON",
+      "evidence_id": "P3E:040",
+      "evidence_tier": [
+        "OBSERVED"
+      ],
+      "git_blob_id": "ad810fd60b1b4fb02e28ba2d9213b1d07801bafd",
+      "mandatory_limitations": [
+        "Một pool và một block, không đại diện toàn thanh khoản ETH."
+      ],
+      "original_artifact_path": "data/processed/research_final/validation_audit/corrected_run_v2/aave/research_summary.json",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "SOURCE_VERIFIED_TRANSFORMATION_SPEC_REQUIRED",
+      "result_ids": [
+        "RQ2_CANONICAL_DEPTH_2PCT"
+      ],
+      "scenario": [
+        "executable depth within 2%"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "USDC"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "top-level object keys",
+        "value": 10
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "e8a55abb0b6398beea5ff7dd4fc79bd042a55bfd43f21c3646fdf889826a77d8",
+        "git_blob_id": "76d7706cf9cba566e7a602e0e9d12b53cff7ef62",
+        "git_blob_sha256": "475bcaffb75c714af2102d6f3632587b23f0148ea7454951a96b9d4a836f0038",
+        "normalized_lf_sha256": "475bcaffb75c714af2102d6f3632587b23f0148ea7454951a96b9d4a836f0038"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [],
+      "data_type": "STRUCTURED_JSON",
+      "evidence_id": "P3E:041",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "76d7706cf9cba566e7a602e0e9d12b53cff7ef62",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "data/processed/research_final/validation_audit/corrected_run_v2/manifest.json",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "SOURCE_VERIFIED_TRANSFORMATION_SPEC_REQUIRED",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "top-level object keys",
+        "value": 20
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "c20a5f8f0892cff0cc8a4583ce8d26579a60ec32e4f591aa9474111f318668c8",
+        "git_blob_id": "8c980da9a10d1ef52f3b13cf8a14398b0e0cd75d",
+        "git_blob_sha256": "0154bafb8ae8a2f4ae432fb1fa7a30c847a0de1fae6fce1bab26948ad51565ba",
+        "normalized_lf_sha256": "0154bafb8ae8a2f4ae432fb1fa7a30c847a0de1fae6fce1bab26948ad51565ba"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [],
+      "data_type": "STRUCTURED_JSON",
+      "evidence_id": "P3E:042",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "8c980da9a10d1ef52f3b13cf8a14398b0e0cd75d",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "data/processed/research_final/validation_audit/corrected_run_v2/network/structural_graph.json",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "SOURCE_VERIFIED_TRANSFORMATION_SPEC_REQUIRED",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "CSV data rows",
+        "value": 4
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "d624343fe8417ec51b702adde30af2ce048222a26aea9a61318beb40b615afd6",
+        "git_blob_id": "f9e1f9d42ea4fa09df9dbea38a6ead6dfd74df8d",
+        "git_blob_sha256": "1f5cc3e82b4cf31b9968e54b29c9db7fd206729857e00d9b1664b791ff511851",
+        "normalized_lf_sha256": "1f5cc3e82b4cf31b9968e54b29c9db7fd206729857e00d9b1664b791ff511851"
+      },
+      "cohort": [
+        "109-position WETH/USDC cohort"
+      ],
+      "corresponding_accepted_claim_ids": [
+        "INT:CL_INT_RQ3_PRESERVED"
+      ],
+      "data_type": "RAW_OR_DERIVED_TABULAR_CSV",
+      "evidence_id": "P3E:043",
+      "evidence_tier": [
+        "SIMULATED"
+      ],
+      "git_blob_id": "f9e1f9d42ea4fa09df9dbea38a6ead6dfd74df8d",
+      "mandatory_limitations": [
+        "Kết quả có điều kiện trên snapshot, cohort và miền tham số đã khai báo; không phải dự báo Mainnet."
+      ],
+      "original_artifact_path": "data/processed/research_final/validation_audit/corrected_run_v2/rq_completion/rq3_capital_constraint.csv",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "SOURCE_VERIFIED_TRANSFORMATION_SPEC_REQUIRED",
+      "result_ids": [
+        "RQ3_CAPITAL_100_LIQUIDATED",
+        "RQ3_CAPITAL_25_LIQUIDATED"
+      ],
+      "scenario": [
+        "capital=100% reference demand",
+        "capital=25% reference demand"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "USDC token quantity"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "CSV data rows",
+        "value": 4
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "78aaf8262b2a8acbee024c984a0ca809bb7c2535da501e3e8eddcc3e179878ba",
+        "git_blob_id": "40a74a06037306c123d839d71e66ae83efa56b5f",
+        "git_blob_sha256": "56d8d5f672fe4cb1812d97e69f3f045f717ad6e54889fcba3d64fb98d87e9586",
+        "normalized_lf_sha256": "56d8d5f672fe4cb1812d97e69f3f045f717ad6e54889fcba3d64fb98d87e9586"
+      },
+      "cohort": [
+        "delay sweep 0/1/2/4 steps"
+      ],
+      "corresponding_accepted_claim_ids": [
+        "INT:CL_INT_RQ3_PRESERVED"
+      ],
+      "data_type": "RAW_OR_DERIVED_TABULAR_CSV",
+      "evidence_id": "P3E:044",
+      "evidence_tier": [
+        "SIMULATED"
+      ],
+      "git_blob_id": "40a74a06037306c123d839d71e66ae83efa56b5f",
+      "mandatory_limitations": [
+        "Delay chỉ trì hoãn thời điểm xử lý trong range này; không phải time-to-recovery."
+      ],
+      "original_artifact_path": "data/processed/research_final/validation_audit/corrected_run_v2/rq_completion/rq3_reaction_delay.csv",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "SOURCE_VERIFIED_TRANSFORMATION_SPEC_REQUIRED",
+      "result_ids": [
+        "RQ3_DELAY_SEVERITY_CHANGE"
+      ],
+      "scenario": [
+        "−20% shock; haircut 40%"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "USDC"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "CSV data rows",
+        "value": 7
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "27987e0dd989fb7eb28401e22afa287b09d867d18db93e7ab742c70030e859ec",
+        "git_blob_id": "f241506314372d6b66eb3c65b82647aa3c761c30",
+        "git_blob_sha256": "362fdd0a06bf41cc2edd0320366e0288ca360e6f41b27809188d29e3ffec560d",
+        "normalized_lf_sha256": "362fdd0a06bf41cc2edd0320366e0288ca360e6f41b27809188d29e3ffec560d"
+      },
+      "cohort": [
+        "109-position WETH/USDC cohort"
+      ],
+      "corresponding_accepted_claim_ids": [
+        "INT:CL_INT_RQ5_PRESERVED",
+        "P2:C15",
+        "P2:C35"
+      ],
+      "data_type": "RAW_OR_DERIVED_TABULAR_CSV",
+      "evidence_id": "P3E:045",
+      "evidence_tier": [
+        "SIMULATED"
+      ],
+      "git_blob_id": "f241506314372d6b66eb3c65b82647aa3c761c30",
+      "mandatory_limitations": [
+        "Không có liquidity/redemption/settlement channel.",
+        "Phải phân biệt token quantity với USD-equivalent.",
+        "Định giá theo giả định USDC=1.10 USD."
+      ],
+      "original_artifact_path": "data/processed/research_final/validation_audit/corrected_run_v2/rq_completion/rq5_usdc_depeg.csv",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "SOURCE_VERIFIED_TRANSFORMATION_SPEC_REQUIRED",
+      "result_ids": [
+        "RQ5_HF_LT1_USDC_090",
+        "RQ5_HF_LT1_USDC_100",
+        "RQ5_HF_LT1_USDC_110",
+        "RQ5_LIQUIDATED_DEBT_TOKEN_QTY",
+        "RQ5_LIQUIDATED_DEBT_USD"
+      ],
+      "scenario": [
+        "USDC price=0.90 USD; debt valuation only",
+        "USDC price=1.00 USD",
+        "USDC price=1.10 USD",
+        "USDC price=1.10 USD; debt valuation only"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "USD equivalent",
+        "USDC token quantity",
+        "borrowers"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "CSV data rows",
+        "value": 5
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "465b1fe78df4a5e4a9e7bd3611c9b63da4c9b59e4eef3b07466fcaeaa6b6e9a4",
+        "git_blob_id": "b41cf430a2dce96fe2e5a3754652b5cf00bd5b2d",
+        "git_blob_sha256": "25094c9d1a175b1a261d92d2b4ffcd18ccb726c092b90fe18410096f1e5f6917",
+        "normalized_lf_sha256": "25094c9d1a175b1a261d92d2b4ffcd18ccb726c092b90fe18410096f1e5f6917"
+      },
+      "cohort": [
+        "executed liquidation in test scenario"
+      ],
+      "corresponding_accepted_claim_ids": [
+        "INT:CL_INT_RQ6_PRESERVED",
+        "P2:C04",
+        "P2:C12"
+      ],
+      "data_type": "RAW_OR_DERIVED_TABULAR_CSV",
+      "evidence_id": "P3E:046",
+      "evidence_tier": [
+        "SIMULATED"
+      ],
+      "git_blob_id": "b41cf430a2dce96fe2e5a3754652b5cf00bd5b2d",
+      "mandatory_limitations": [
+        "Policy counterfactual, không phải executed Mainnet liquidation."
+      ],
+      "original_artifact_path": "data/processed/research_final/validation_audit/corrected_run_v2/rq_completion/rq6_liquidation_bonus.csv",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "SOURCE_VERIFIED_TRANSFORMATION_SPEC_REQUIRED",
+      "result_ids": [
+        "RQ6_BONUS103_SEIZED",
+        "RQ6_BONUS107_SEIZED"
+      ],
+      "scenario": [
+        "bonus=3%",
+        "bonus=7%"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "WETH"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "CSV data rows",
+        "value": 5
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "c6fbc1a111c0a370b8ae18db824f0afb9c72d86ad5726d4e2b6465d7ab4bd5c9",
+        "git_blob_id": "841c4e9935c74b9a18a10aa39f0fb9c721e7e142",
+        "git_blob_sha256": "9243481aa843802c0bd3de6c4814f026b0526f3b55882009629fe421601294e6",
+        "normalized_lf_sha256": "9243481aa843802c0bd3de6c4814f026b0526f3b55882009629fe421601294e6"
+      },
+      "cohort": [
+        "109-position frozen cohort"
+      ],
+      "corresponding_accepted_claim_ids": [
+        "INT:CL_INT_RQ6_PRESERVED",
+        "P2:C04"
+      ],
+      "data_type": "RAW_OR_DERIVED_TABULAR_CSV",
+      "evidence_id": "P3E:047",
+      "evidence_tier": [
+        "SIMULATED"
+      ],
+      "git_blob_id": "841c4e9935c74b9a18a10aa39f0fb9c721e7e142",
+      "mandatory_limitations": [
+        "Dùng scenario LT; legacy recorded-LT field chỉ để đối chiếu."
+      ],
+      "original_artifact_path": "data/processed/research_final/validation_audit/corrected_run_v2/rq_completion/rq6_liquidation_threshold.csv",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "SOURCE_VERIFIED_TRANSFORMATION_SPEC_REQUIRED",
+      "result_ids": [
+        "RQ6_LT083_UNLIQUIDATED"
+      ],
+      "scenario": [
+        "WETH LT override=83%"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "USDC token quantity"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "CSV data rows",
+        "value": 5
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "ab1d6cda32106ef695a5e8e88cc9f7d9f9c42f519ea3416c0c37f52d8587db67",
+        "git_blob_id": "fb34d336bbd05b348c75b11f714ed9abe7f2e90f",
+        "git_blob_sha256": "084482ee1a20210eb5c0386b16e73ec332c68ae927aec96584ad3fee1521c2be",
+        "normalized_lf_sha256": "084482ee1a20210eb5c0386b16e73ec332c68ae927aec96584ad3fee1521c2be"
+      },
+      "cohort": [
+        "109-position frozen cohort"
+      ],
+      "corresponding_accepted_claim_ids": [
+        "INT:CL_INT_RQ6_PRESERVED",
+        "P2:C04"
+      ],
+      "data_type": "RAW_OR_DERIVED_TABULAR_CSV",
+      "evidence_id": "P3E:048",
+      "evidence_tier": [
+        "SIMULATED"
+      ],
+      "git_blob_id": "fb34d336bbd05b348c75b11f714ed9abe7f2e90f",
+      "mandatory_limitations": [
+        "Ex-ante capacity, không phải liquidation trigger."
+      ],
+      "original_artifact_path": "data/processed/research_final/validation_audit/corrected_run_v2/rq_completion/rq6_ltv_capital_efficiency.csv",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "SOURCE_VERIFIED_TRANSFORMATION_SPEC_REQUIRED",
+      "result_ids": [
+        "RQ6_LTV0755_CAPACITY",
+        "RQ6_LTV0825_CAPACITY"
+      ],
+      "scenario": [
+        "counterfactual LTV=75.5%",
+        "counterfactual LTV=82.5%"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "USD"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "top-level object keys",
+        "value": 9
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "9c9ac9b63bb9443ad0ab63fd01a1fc6c95fb23d326961a05e131af144fd8a63c",
+        "git_blob_id": "c57615dbfe686863b366db648234cf0af1d6b8ca",
+        "git_blob_sha256": "0d71ad963fe9263c8c943c594622e4cb67a38b1f168d1c7a217b1de3f5b19116",
+        "normalized_lf_sha256": "0d71ad963fe9263c8c943c594622e4cb67a38b1f168d1c7a217b1de3f5b19116"
+      },
+      "cohort": [
+        "1,630 pre-initial-depeg hours",
+        "UST < 0.995 event"
+      ],
+      "corresponding_accepted_claim_ids": [
+        "INT:CL_INT_TERRA_NEGATIVE_PRESERVED",
+        "P2:C30"
+      ],
+      "data_type": "STRUCTURED_JSON",
+      "evidence_id": "P3E:049",
+      "evidence_tier": [
+        "DERIVED"
+      ],
+      "git_blob_id": "c57615dbfe686863b366db648234cf0af1d6b8ca",
+      "mandatory_limitations": [
+        "Negative finding; no genuine out-of-sample forecast claim.",
+        "Negative means warning after event; design choices were event-informed."
+      ],
+      "original_artifact_path": "data/processed/research_final/validation_audit/phase5_terra_early_warning_audit.json",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "SOURCE_VERIFIED_TRANSFORMATION_SPEC_REQUIRED",
+      "result_ids": [
+        "TERRA_INITIAL_DEPEG_HIGH_LEAD",
+        "TERRA_PRE_DEPEG_HIGH_ALERT_HOURS"
+      ],
+      "scenario": [
+        "cutoff-safe HIGH threshold",
+        "cutoff-safe indicator"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "hours"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "NOT_APPLICABLE",
+        "value": null
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "96beb25bb4cf2178d648326d798ee5b0f09f9a498f504291df6530b71213e752",
+        "git_blob_id": "c76d7cf482565615a92fb17b888a392e4f8fd9cc",
+        "git_blob_sha256": "39ca11330af2511a12b0884a97e10743ccda941624e3d8e7d27256aa4008d829",
+        "normalized_lf_sha256": "39ca11330af2511a12b0884a97e10743ccda941624e3d8e7d27256aa4008d829"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [],
+      "data_type": "DOCUMENTATION",
+      "evidence_id": "P3E:050",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "c76d7cf482565615a92fb17b888a392e4f8fd9cc",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "docs/research_final/APA_REFERENCES_VERIFIED.md",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "PROVENANCE_OR_REGISTRY_SOURCE",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "NOT_APPLICABLE",
+        "value": null
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "1e9104e84c013515d8f49e1423c1881432b46c2983cdb613edc1fcd9bf637c96",
+        "git_blob_id": "6ebe0a11e915e942a422d02a0cc5b1d53b51ff3e",
+        "git_blob_sha256": "5ab1f4e53c19fe807a1e919a8e52cce59f6f963e491396f97259be3a176c8935",
+        "normalized_lf_sha256": "5ab1f4e53c19fe807a1e919a8e52cce59f6f963e491396f97259be3a176c8935"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [],
+      "data_type": "DOCUMENTATION",
+      "evidence_id": "P3E:051",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "6ebe0a11e915e942a422d02a0cc5b1d53b51ff3e",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "docs/research_final/LITERATURE_VERIFIED.md",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "PROVENANCE_OR_REGISTRY_SOURCE",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "JSON claims records",
+        "value": 35
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "4085da3383eb96a6af23e8932ab13d9815eb6185302ecfe7a0388c5ffbcb5f35",
+        "git_blob_id": "932c25f633dee7bdb8cfcf9e6e2473b50f7c4ab3",
+        "git_blob_sha256": "818c606235335a268da7cf27d0ab77391cd0e7ed57bf25a301d28bd5c9b1895d",
+        "normalized_lf_sha256": "818c606235335a268da7cf27d0ab77391cd0e7ed57bf25a301d28bd5c9b1895d"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [],
+      "data_type": "STRUCTURED_JSON",
+      "evidence_id": "P3E:052",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "932c25f633dee7bdb8cfcf9e6e2473b50f7c4ab3",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "PROVENANCE_OR_REGISTRY_SOURCE",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "NOT_APPLICABLE",
+        "value": null
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "66daf588b3d6d6fb6021ac089b29ad430a4dac97506b4dbe222d50db3d01c679",
+        "git_blob_id": "2bc140f47ea463a9394858ec8937a808d18eccd7",
+        "git_blob_sha256": "5aea7b00224889cdcb7c720ea15be652c8d23050f67b27f370f6dedd68d928f4",
+        "normalized_lf_sha256": "5aea7b00224889cdcb7c720ea15be652c8d23050f67b27f370f6dedd68d928f4"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [],
+      "data_type": "DOCUMENTATION",
+      "evidence_id": "P3E:053",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "2bc140f47ea463a9394858ec8937a808d18eccd7",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "docs/research_final/P2_ORACLE_RECONCILIATION.md",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "PROVENANCE_OR_REGISTRY_SOURCE",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "NOT_APPLICABLE",
+        "value": null
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "0fd539b1288aa4c9bc3a97c39372356f43df79e65957d9dc0690f0b1dfb3e2de",
+        "git_blob_id": "323958c95e8bb28b3fe66289332ba1f0f3ac69df",
+        "git_blob_sha256": "5f0e52f55aa1d1954aca9d40aa7f2495bc2406d1b494982c8046cbda3f1ac918",
+        "normalized_lf_sha256": "5f0e52f55aa1d1954aca9d40aa7f2495bc2406d1b494982c8046cbda3f1ac918"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [],
+      "data_type": "DOCUMENTATION",
+      "evidence_id": "P3E:054",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "323958c95e8bb28b3fe66289332ba1f0f3ac69df",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "docs/research_final/P2_VERSION_RECONCILIATION.md",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "PROVENANCE_OR_REGISTRY_SOURCE",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "NOT_APPLICABLE",
+        "value": null
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "231436e275ecabe33ac794650f8653a9c5caec70c7d5c182f5a7f9c51153dfac",
+        "git_blob_id": "504ea91b046e6612c2840c6a434e740ce917b29f",
+        "git_blob_sha256": "67ea79e466c7bb3f92d26e665361342c038d3562b9cfef70f7b65028ad636a33",
+        "normalized_lf_sha256": "67ea79e466c7bb3f92d26e665361342c038d3562b9cfef70f7b65028ad636a33"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [],
+      "data_type": "DOCUMENTATION",
+      "evidence_id": "P3E:055",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "504ea91b046e6612c2840c6a434e740ce917b29f",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "docs/research_final/REFERENCE_EVIDENCE_MATRIX.md",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "PROVENANCE_OR_REGISTRY_SOURCE",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "NOT_APPLICABLE",
+        "value": null
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "CRLF_OR_MIXED",
+        "checkout_sha256": "4fa5e2cb3a0e5250525f32f3f062bdd1afb3a8c682779258761550b89fb92ba2",
+        "git_blob_id": "2ca1e29495e6183dfefaf8939e59e6c4eba574fb",
+        "git_blob_sha256": "547559179690cf9f377ca6ad71e8384f5ba88a490727fe5a4a45257d75ee5880",
+        "normalized_lf_sha256": "547559179690cf9f377ca6ad71e8384f5ba88a490727fe5a4a45257d75ee5880"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [],
+      "data_type": "DOCUMENTATION",
+      "evidence_id": "P3E:056",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "2ca1e29495e6183dfefaf8939e59e6c4eba574fb",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "docs/research_final/TERMINOLOGY_VI.md",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "PROVENANCE_OR_REGISTRY_SOURCE",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "NOT_APPLICABLE",
+        "value": null
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "LF_OR_BINARY",
+        "checkout_sha256": "8f12dc659647ba3d49feb20b3505c7163aabb8b3c4ca0066fd88ca732126c684",
+        "git_blob_id": "9f44ba9a8037f239b2b5ef8881ad2d49c25ecf6d",
+        "git_blob_sha256": "8f12dc659647ba3d49feb20b3505c7163aabb8b3c4ca0066fd88ca732126c684",
+        "normalized_lf_sha256": "8f12dc659647ba3d49feb20b3505c7163aabb8b3c4ca0066fd88ca732126c684"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [
+        "P2:C19"
+      ],
+      "data_type": "SOURCE_CODE",
+      "evidence_id": "P3E:057",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "9f44ba9a8037f239b2b5ef8881ad2d49c25ecf6d",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "sim/agents/liquidator.py",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "FORMULA_OR_IMPLEMENTATION_SOURCE_ONLY",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "NOT_APPLICABLE",
+        "value": null
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "LF_OR_BINARY",
+        "checkout_sha256": "3fa671f616caee587735eef41073bc8db4a097e91711ef8c9d3511f4f7a0580a",
+        "git_blob_id": "4172eae06907ae8bf95a10e7e50463111d0eec3d",
+        "git_blob_sha256": "3fa671f616caee587735eef41073bc8db4a097e91711ef8c9d3511f4f7a0580a",
+        "normalized_lf_sha256": "3fa671f616caee587735eef41073bc8db4a097e91711ef8c9d3511f4f7a0580a"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [
+        "P2:C08",
+        "P2:C34"
+      ],
+      "data_type": "SOURCE_CODE",
+      "evidence_id": "P3E:058",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "4172eae06907ae8bf95a10e7e50463111d0eec3d",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "sim/dex/uniswap_v3.py",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "FORMULA_OR_IMPLEMENTATION_SOURCE_ONLY",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "NOT_APPLICABLE",
+        "value": null
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "LF_OR_BINARY",
+        "checkout_sha256": "93d18336d0b39f221d98765152f4a4716870b5c9b433f724b5a69e666c1ecb8c",
+        "git_blob_id": "2b23c9ee88ee4976755e5f4795026e381d5fe497",
+        "git_blob_sha256": "93d18336d0b39f221d98765152f4a4716870b5c9b433f724b5a69e666c1ecb8c",
+        "normalized_lf_sha256": "93d18336d0b39f221d98765152f4a4716870b5c9b433f724b5a69e666c1ecb8c"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [
+        "P2:C19"
+      ],
+      "data_type": "SOURCE_CODE",
+      "evidence_id": "P3E:059",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "2b23c9ee88ee4976755e5f4795026e381d5fe497",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "sim/engine/run.py",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "FORMULA_OR_IMPLEMENTATION_SOURCE_ONLY",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "NOT_APPLICABLE",
+        "value": null
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "LF_OR_BINARY",
+        "checkout_sha256": "c8ed78fc4a4dc8e213b5cd145278211218514465d5e73aa998ec4977ca066670",
+        "git_blob_id": "8d8cae6754e718856867ce3696498bd68134a294",
+        "git_blob_sha256": "c8ed78fc4a4dc8e213b5cd145278211218514465d5e73aa998ec4977ca066670",
+        "normalized_lf_sha256": "c8ed78fc4a4dc8e213b5cd145278211218514465d5e73aa998ec4977ca066670"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [],
+      "data_type": "SOURCE_CODE",
+      "evidence_id": "P3E:060",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "8d8cae6754e718856867ce3696498bd68134a294",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "sim/lending/health_factor.py",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "FORMULA_OR_IMPLEMENTATION_SOURCE_ONLY",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "NOT_APPLICABLE",
+        "value": null
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "LF_OR_BINARY",
+        "checkout_sha256": "fd3f4e5cd2f4a9564ca7b23625d693e0661a8162182699a0eb2940603158e96b",
+        "git_blob_id": "9f95f18e8aa52f48facbebe1b3bdc8f88c0f162a",
+        "git_blob_sha256": "fd3f4e5cd2f4a9564ca7b23625d693e0661a8162182699a0eb2940603158e96b",
+        "normalized_lf_sha256": "fd3f4e5cd2f4a9564ca7b23625d693e0661a8162182699a0eb2940603158e96b"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [
+        "P2:C05",
+        "P2:C35"
+      ],
+      "data_type": "SOURCE_CODE",
+      "evidence_id": "P3E:061",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "9f95f18e8aa52f48facbebe1b3bdc8f88c0f162a",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "sim/lending/liquidation.py",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "FORMULA_OR_IMPLEMENTATION_SOURCE_ONLY",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "NOT_APPLICABLE",
+        "value": null
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "LF_OR_BINARY",
+        "checkout_sha256": "d09c81b304f4500cb7cdf4deb08a7d9fa20141fe67531d073873d0a4f58cee23",
+        "git_blob_id": "794593593b2afc0d2a23eb375744c0a9e4eae7aa",
+        "git_blob_sha256": "d09c81b304f4500cb7cdf4deb08a7d9fa20141fe67531d073873d0a4f58cee23",
+        "normalized_lf_sha256": "d09c81b304f4500cb7cdf4deb08a7d9fa20141fe67531d073873d0a4f58cee23"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [],
+      "data_type": "SOURCE_CODE",
+      "evidence_id": "P3E:062",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "794593593b2afc0d2a23eb375744c0a9e4eae7aa",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "sim/metrics/risk.py",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "FORMULA_OR_IMPLEMENTATION_SOURCE_ONLY",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "NOT_APPLICABLE",
+        "value": null
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "LF_OR_BINARY",
+        "checkout_sha256": "a1c154205fe060814b6830bba26c3120f03a02ecfa2b5153d9e1c07e502f6830",
+        "git_blob_id": "db7aca57029e973637e4969d3a20d5c61e2e330d",
+        "git_blob_sha256": "a1c154205fe060814b6830bba26c3120f03a02ecfa2b5153d9e1c07e502f6830",
+        "normalized_lf_sha256": "a1c154205fe060814b6830bba26c3120f03a02ecfa2b5153d9e1c07e502f6830"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [
+        "P2:C26",
+        "P2:C27",
+        "P2:C28"
+      ],
+      "data_type": "SOURCE_CODE",
+      "evidence_id": "P3E:063",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "db7aca57029e973637e4969d3a20d5c61e2e330d",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "sim/network/metrics.py",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "FORMULA_OR_IMPLEMENTATION_SOURCE_ONLY",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "NOT_APPLICABLE",
+        "value": null
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "LF_OR_BINARY",
+        "checkout_sha256": "826bdab7242624352b5a87edbed4e801d28f6dc807e570c84f0a95c10b50cd42",
+        "git_blob_id": "2ac37f923a4cc35bef95968d353f0724bfdbd3a5",
+        "git_blob_sha256": "826bdab7242624352b5a87edbed4e801d28f6dc807e570c84f0a95c10b50cd42",
+        "normalized_lf_sha256": "826bdab7242624352b5a87edbed4e801d28f6dc807e570c84f0a95c10b50cd42"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [
+        "P2:C32"
+      ],
+      "data_type": "SOURCE_CODE",
+      "evidence_id": "P3E:064",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "2ac37f923a4cc35bef95968d353f0724bfdbd3a5",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "sim/oracle.py",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "FORMULA_OR_IMPLEMENTATION_SOURCE_ONLY",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "NOT_APPLICABLE",
+        "value": null
+      },
+      "checksum_domain": "Git blob LF bytes and local checkout bytes reported separately",
+      "checksums": {
+        "checkout_line_endings": "LF_OR_BINARY",
+        "checkout_sha256": "6869ec619a5c91916d608b9a1297899664a8c0a1eca89c8718e42c0223b53689",
+        "git_blob_id": "0f9a93180ada5912c55d0d36d5c142d0e4a356a6",
+        "git_blob_sha256": "6869ec619a5c91916d608b9a1297899664a8c0a1eca89c8718e42c0223b53689",
+        "normalized_lf_sha256": "6869ec619a5c91916d608b9a1297899664a8c0a1eca89c8718e42c0223b53689"
+      },
+      "cohort": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "corresponding_accepted_claim_ids": [
+        "P2:C02",
+        "P2:C15",
+        "P2:C35"
+      ],
+      "data_type": "SOURCE_CODE",
+      "evidence_id": "P3E:065",
+      "evidence_tier": [
+        "LOCKED_PROVENANCE_OR_CODE_OBSERVATION"
+      ],
+      "git_blob_id": "0f9a93180ada5912c55d0d36d5c142d0e4a356a6",
+      "mandatory_limitations": [
+        "Use only within the locked claim and source scope."
+      ],
+      "original_artifact_path": "sim/schemas.py",
+      "original_source_commits": [
+        "3f6e5302483681209e2408531eb5a15389f9fded"
+      ],
+      "policy": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "read_verification_level": "BYTE_HASH_AND_GIT_BLOB_VERIFIED_AT_SOURCE_LOCK",
+      "rendering_readiness": "FORMULA_OR_IMPLEMENTATION_SOURCE_ONLY",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE_OR_DEFINED_BY_SOURCE"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "table_figure_ids": [],
+      "units": [
+        "NOT_APPLICABLE"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "rendered pages",
+        "value": 33
+      },
+      "checksum_domain": "External DOCX binary bytes",
+      "checksums": {
+        "external_binary_sha256": "9c8486027efcd35fe8fbcb8ba4c9fd6cfb714d2785f40ca6a64c247627dceb96"
+      },
+      "cohort": [
+        "NOT_APPLICABLE"
+      ],
+      "corresponding_accepted_claim_ids": [],
+      "data_type": "DOCX_BASELINE",
+      "evidence_id": "P3EXT:DOCX1",
+      "evidence_tier": [
+        "TECHNICAL_MANUSCRIPT_BASELINE_ONLY"
+      ],
+      "git_blob_id": "NOT_APPLICABLE",
+      "mandatory_limitations": [
+        "Historical manuscript baseline only; not a locked numerical source and not verified as the official school template."
+      ],
+      "original_artifact_path": "external://Downloads/DeFiStress_BAO_CAO_NCKH_HOAN_CHINH.docx",
+      "original_source_commits": [
+        "NOT_VERSIONED_IN_REPOSITORY"
+      ],
+      "policy": [
+        "NOT_APPLICABLE"
+      ],
+      "read_verification_level": "ALL_33_PAGES_REVIEWED_READ_ONLY",
+      "rendering_readiness": "READ_ONLY_BASELINE_AUDITED_NOT_APPROVED_FOR_REUSE",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE"
+      ],
+      "scientific_lock_commit": "NOT_APPLICABLE_EXTERNAL_FILE",
+      "table_figure_ids": [],
+      "technical_summary": {
+        "accessibility_findings": {
+          "high": 16,
+          "low": 0,
+          "medium": 22
+        },
+        "caption_style_paragraphs": 31,
+        "comments": 0,
+        "file_name": "DeFiStress_BAO_CAO_NCKH_HOAN_CHINH.docx",
+        "heading_style_counts": {
+          "Heading 1": 5,
+          "Heading 2": 40,
+          "Heading 3": 12
+        },
+        "inline_images": 16,
+        "omml_equations": 0,
+        "paragraphs": 349,
+        "rendered_pages": 33,
+        "role": "HISTORICAL_FIVE_CHAPTER_BASELINE_NOT_SCHOOL_TEMPLATE_TRUTH",
+        "sections": 3,
+        "sha256": "9c8486027efcd35fe8fbcb8ba4c9fd6cfb714d2785f40ca6a64c247627dceb96",
+        "size_bytes": 3820731,
+        "source_note_style_paragraphs": 31,
+        "table_geometry_findings": 229,
+        "tables": 22,
+        "tracked_deletions": 0,
+        "tracked_insertions": 0,
+        "visual_review": "ALL_33_PAGES_REVIEWED_READ_ONLY",
+        "word_fields": {
+          "PAGE": 1,
+          "REF": 0,
+          "SEQ": 0,
+          "TOC": 1
+        }
+      },
+      "units": [
+        "pages",
+        "tables",
+        "figures",
+        "styles",
+        "fields"
+      ]
+    },
+    {
+      "cardinality": {
+        "kind": "rendered pages",
+        "value": 13
+      },
+      "checksum_domain": "External DOCX binary bytes",
+      "checksums": {
+        "external_binary_sha256": "582d489189a156f00a563d22b6db36caab8094d7a3581d220b96d8b3f1aebdd5"
+      },
+      "cohort": [
+        "NOT_APPLICABLE"
+      ],
+      "corresponding_accepted_claim_ids": [],
+      "data_type": "DOCX_BASELINE",
+      "evidence_id": "P3EXT:DOCX2",
+      "evidence_tier": [
+        "TECHNICAL_MANUSCRIPT_BASELINE_ONLY"
+      ],
+      "git_blob_id": "NOT_APPLICABLE",
+      "mandatory_limitations": [
+        "Historical manuscript baseline only; not a locked numerical source and not verified as the official school template."
+      ],
+      "original_artifact_path": "external://Downloads/DeFi_Stress_Lab_Mo_Dau_Tong_Quan_Nghien_Cuu.docx",
+      "original_source_commits": [
+        "NOT_VERSIONED_IN_REPOSITORY"
+      ],
+      "policy": [
+        "NOT_APPLICABLE"
+      ],
+      "read_verification_level": "ALL_13_PAGES_REVIEWED_READ_ONLY",
+      "rendering_readiness": "READ_ONLY_BASELINE_AUDITED_NOT_APPROVED_FOR_REUSE",
+      "result_ids": [],
+      "scenario": [
+        "NOT_APPLICABLE"
+      ],
+      "scientific_lock_commit": "NOT_APPLICABLE_EXTERNAL_FILE",
+      "table_figure_ids": [],
+      "technical_summary": {
+        "accessibility_findings": {
+          "high": 0,
+          "low": 0,
+          "medium": 4
+        },
+        "caption_style_paragraphs": 0,
+        "comments": 0,
+        "file_name": "DeFi_Stress_Lab_Mo_Dau_Tong_Quan_Nghien_Cuu.docx",
+        "heading_style_counts": {
+          "Heading 1": 11,
+          "Heading 2": 12,
+          "Heading 3": 0
+        },
+        "inline_images": 0,
+        "omml_equations": 0,
+        "paragraphs": 106,
+        "rendered_pages": 13,
+        "role": "HISTORICAL_INTRODUCTION_AND_LITERATURE_BASELINE_NOT_SCHOOL_TEMPLATE_TRUTH",
+        "sections": 1,
+        "sha256": "582d489189a156f00a563d22b6db36caab8094d7a3581d220b96d8b3f1aebdd5",
+        "size_bytes": 52834,
+        "source_note_style_paragraphs": 0,
+        "table_geometry_findings": 36,
+        "tables": 8,
+        "tracked_deletions": 0,
+        "tracked_insertions": 0,
+        "visual_review": "ALL_13_PAGES_REVIEWED_READ_ONLY",
+        "word_fields": {
+          "PAGE": 1,
+          "REF": 0,
+          "SEQ": 0,
+          "TOC": 0
+        }
+      },
+      "units": [
+        "pages",
+        "tables",
+        "figures",
+        "styles",
+        "fields"
+      ]
+    }
+  ],
+  "schema_version": "p3-g0-locked-evidence-inventory-v1",
+  "scope": "Accepted-claim evidence, approved historical/model artifacts, formula sources and read-only manuscript baselines.",
+  "source_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+  "stage": "P3-G0_TECHNICAL_BLUEPRINT_ONLY",
+  "transformation_version": "p3-g0-builder-v1"
+}
