@@ -1,0 +1,2073 @@
+{
+  "schema_version": "p3-g0-exhibits-v1",
+  "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+  "status": "PROPOSED_AWAITING_COMMANDER_APPROVAL",
+  "ownership": "Work specifies purpose/caption; Codex owns numeric exhibit registry/rendering and technical reconciliation. No Codex work has been executed by this blueprint.",
+  "counts": {
+    "TABLE": 14,
+    "FIGURE": 11,
+    "EQUATION": 8
+  },
+  "exhibits": [
+    {
+      "proposed_manuscript_id": "T1.1",
+      "handoff_id": "P3X-T1.1",
+      "id_semantics": "Proposed P3 exhibit ID; not a new scientific result ID. Final numbering depends on template approval.",
+      "chapter": 1,
+      "section": "1.3",
+      "kind": "TABLE",
+      "title": "Sáu câu hỏi và phạm vi trả lời",
+      "research_purpose": "Giữ nguyên câu hỏi; định hướng loại bằng chứng, không tóm tắt số liệu kết quả",
+      "accepted_claim_ids": [
+        "P2:C31"
+      ],
+      "exact_result_ids": [],
+      "existing_evidence_ids": [],
+      "evidence_id_status": "NOT_APPLICABLE_CONCEPTUAL_OR_DIRECT_ARTIFACT",
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/final_accepted_claims_v1/six_rq_accepted_claims_matrix.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "fffe69d45f2c70e8f4cb781c8b521ef4cf6f1a45",
+          "read_scope": "READ_CONTENT_G0"
+        }
+      ],
+      "fields_or_axes": [
+        "RQ ID",
+        "Nguyên văn",
+        "Chương phương pháp",
+        "Chương kết quả",
+        "Giới hạn chính"
+      ],
+      "units": [
+        "không đơn vị"
+      ],
+      "policy_scenario_cohort": [
+        "Sáu RQ gốc"
+      ],
+      "requested_output_format": "CSV UTF-8 + Markdown table + provenance JSON",
+      "proposed_output_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_directory": "docs/manuscript_p3/codex/chapter_1/",
+      "citation_provenance_note": "Caption phân biệt loại bằng chứng, artifact pin, result IDs, đơn vị và mẫu số; scholarly source background không xác nhận code. Giữ original source object/version trong sidecar.",
+      "mandatory_limitations": [
+        "Không dùng short label thay câu hỏi"
+      ],
+      "status": "READY",
+      "status_semantics": "READY chỉ là nguồn/cấu trúc sẵn sàng; không khẳng định đã render. CODEX_REQUIRED là yêu cầu sau phê duyệt, chưa phải Codex đã nhận/hoàn tất.",
+      "formula": null,
+      "required_review": "Codex technical reconciliation + Work self-review; Commander chapter approval pending"
+    },
+    {
+      "proposed_manuscript_id": "T2.1",
+      "handoff_id": "P3X-T2.1",
+      "id_semantics": "Proposed P3 exhibit ID; not a new scientific result ID. Final numbering depends on template approval.",
+      "chapter": 2,
+      "section": "2.5",
+      "kind": "TABLE",
+      "title": "Đối thoại giữa các nhánh nghiên cứu",
+      "research_purpose": "So sánh cơ chế, thiết kế, horizon và giới hạn để lý giải lựa chọn mô hình",
+      "accepted_claim_ids": [
+        "P2:C06",
+        "P2:C09",
+        "P2:C10",
+        "P2:C11",
+        "P2:C12",
+        "P2:C13",
+        "P2:C16",
+        "P2:C18",
+        "P2:C21"
+      ],
+      "exact_result_ids": [],
+      "existing_evidence_ids": [],
+      "evidence_id_status": "NOT_APPLICABLE_CONCEPTUAL_OR_DIRECT_ARTIFACT",
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "artifact_locators": [
+        {
+          "path": "docs/research_final/LITERATURE_VERIFIED.md",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "6ebe0a11e915e942a422d02a0cc5b1d53b51ff3e",
+          "read_scope": "READ_CONTENT_G0"
+        },
+        {
+          "path": "docs/research_final/REFERENCE_EVIDENCE_MATRIX.md",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "504ea91b046e6612c2840c6a434e740ce917b29f",
+          "read_scope": "READ_CONTENT_G0"
+        },
+        {
+          "path": "docs/research_final/APA_REFERENCES_VERIFIED.md",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "c76d7cf482565615a92fb17b888a392e4f8fd9cc",
+          "read_scope": "READ_CONTENT_G0"
+        }
+      ],
+      "fields_or_axes": [
+        "Nhánh",
+        "S IDs",
+        "Câu hỏi",
+        "Dữ liệu/phương pháp",
+        "Phát biểu được hỗ trợ",
+        "Horizon",
+        "Access level",
+        "Liên hệ/khác biệt DeFiStress"
+      ],
+      "units": [
+        "không đơn vị"
+      ],
+      "policy_scenario_cohort": [
+        "30 records giữ nguyên; không buộc 30 citation trong một bảng"
+      ],
+      "requested_output_format": "CSV UTF-8 + Markdown table + provenance JSON",
+      "proposed_output_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_directory": "docs/manuscript_p3/codex/chapter_2/",
+      "citation_provenance_note": "Caption phân biệt loại bằng chứng, artifact pin, result IDs, đơn vị và mẫu số; scholarly source background không xác nhận code. Giữ original source object/version trong sidecar.",
+      "mandatory_limitations": [
+        "Hai raw borrower CSV lớn vẫn chưa được Work đọc đầy đủ/cell-by-cell; giữ source access labels, U01–U08 và mức abstract/metadata/code; S17/S18 cùng nghiên cứu.",
+        "S17/S18 cùng study; S22 là industry"
+      ],
+      "status": "READY",
+      "status_semantics": "READY chỉ là nguồn/cấu trúc sẵn sàng; không khẳng định đã render. CODEX_REQUIRED là yêu cầu sau phê duyệt, chưa phải Codex đã nhận/hoàn tất.",
+      "formula": null,
+      "required_review": "Codex technical reconciliation + Work self-review; Commander chapter approval pending"
+    },
+    {
+      "proposed_manuscript_id": "F3.1",
+      "handoff_id": "P3X-F3.1",
+      "id_semantics": "Proposed P3 exhibit ID; not a new scientific result ID. Final numbering depends on template approval.",
+      "chapter": 3,
+      "section": "3.1",
+      "kind": "FIGURE",
+      "title": "Cơ chế thanh lý DEX và định giá vị thế",
+      "research_purpose": "Làm rõ hai cơ chế absorption và valuation cùng các cổng thực thi",
+      "accepted_claim_ids": [
+        "P2:C03",
+        "P2:C19",
+        "P2:C32",
+        "P2:C34"
+      ],
+      "exact_result_ids": [],
+      "existing_evidence_ids": [],
+      "evidence_id_status": "NOT_APPLICABLE_CONCEPTUAL_OR_DIRECT_ARTIFACT",
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "artifact_locators": [
+        {
+          "path": "sim/engine/run.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "2b23c9ee88ee4976755e5f4795026e381d5fe497",
+          "read_scope": "READ_CONTENT_G0"
+        },
+        {
+          "path": "sim/oracle.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "2ac37f923a4cc35bef95968d353f0724bfdbd3a5",
+          "read_scope": "READ_CONTENT_G0"
+        },
+        {
+          "path": "sim/lending/liquidation.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "9f95f18e8aa52f48facbebe1b3bdc8f88c0f162a",
+          "read_scope": "READ_CONTENT_G0"
+        }
+      ],
+      "fields_or_axes": [
+        "Nodes: shock/HF/route plan/execution/DEX/policy/reference/arbitrage",
+        "Edges phân biệt giả định/engine/quan sát",
+        "Wave index"
+      ],
+      "units": [
+        "HF: ratio",
+        "Giá: USDC/WETH hoặc USD/WETH ghi rõ"
+      ],
+      "policy_scenario_cohort": [
+        "A/B/C giả định; HF portfolio, route WETH/USDC"
+      ],
+      "requested_output_format": "SVG/PDF vector + PNG 300 dpi + plot-data CSV + provenance JSON",
+      "proposed_output_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_directory": "docs/manuscript_p3/codex/chapter_3/",
+      "citation_provenance_note": "Caption phân biệt loại bằng chứng, artifact pin, result IDs, đơn vị và mẫu số; scholarly source background không xác nhận code. Giữ original source object/version trong sidecar.",
+      "mandatory_limitations": [
+        "Kết quả cascade là mô phỏng phản thực có điều kiện theo policy, cohort và cấu hình thanh khoản; A/B/C chưa được xác minh là feed Aave/Chainlink lịch sử.",
+        "Phân biệt HF danh mục mới dưới 1, engine evaluation, route eligibility và execution có debt repaid dương; đếm borrower-case-policy instances, không unique wallets.",
+        "Arbitrage là price repositioning, chưa funded executable swap; tác động giá tức thời khác spread sau arbitrage."
+      ],
+      "status": "CODEX_REQUIRED",
+      "status_semantics": "READY chỉ là nguồn/cấu trúc sẵn sàng; không khẳng định đã render. CODEX_REQUIRED là yêu cầu sau phê duyệt, chưa phải Codex đã nhận/hoàn tất.",
+      "formula": null,
+      "required_review": "Codex technical reconciliation + Work self-review; Commander chapter approval pending"
+    },
+    {
+      "proposed_manuscript_id": "T3.1",
+      "handoff_id": "P3X-T3.1",
+      "id_semantics": "Proposed P3 exhibit ID; not a new scientific result ID. Final numbering depends on template approval.",
+      "chapter": 3,
+      "section": "3.2",
+      "kind": "TABLE",
+      "title": "Tác nhân và cổng quyết định",
+      "research_purpose": "Tách hành vi mô hình khỏi năng lực sản phẩm và actual bot market",
+      "accepted_claim_ids": [
+        "P2:C03",
+        "P2:C05",
+        "P2:C19",
+        "P2:C34",
+        "P2:C35"
+      ],
+      "exact_result_ids": [],
+      "existing_evidence_ids": [],
+      "evidence_id_status": "NOT_APPLICABLE_CONCEPTUAL_OR_DIRECT_ARTIFACT",
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "artifact_locators": [
+        {
+          "path": "sim/engine/run.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "2b23c9ee88ee4976755e5f4795026e381d5fe497",
+          "read_scope": "READ_CONTENT_G0"
+        },
+        {
+          "path": "sim/lending/liquidation.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "9f95f18e8aa52f48facbebe1b3bdc8f88c0f162a",
+          "read_scope": "READ_CONTENT_G0"
+        },
+        {
+          "path": "sim/dex/uniswap_v3.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "4172eae06907ae8bf95a10e7e50463111d0eec3d",
+          "read_scope": "READ_CONTENT_G0"
+        }
+      ],
+      "fields_or_axes": [
+        "Agent/state",
+        "Decision gate",
+        "Scope",
+        "Skipped meaning",
+        "Unmodeled behavior"
+      ],
+      "units": [
+        "USDC token",
+        "WETH",
+        "steps/seconds",
+        "HF ratio"
+      ],
+      "policy_scenario_cohort": [
+        "Representative agents; frozen cohort"
+      ],
+      "requested_output_format": "CSV UTF-8 + Markdown table + provenance JSON",
+      "proposed_output_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_directory": "docs/manuscript_p3/codex/chapter_3/",
+      "citation_provenance_note": "Caption phân biệt loại bằng chứng, artifact pin, result IDs, đơn vị và mẫu số; scholarly source background không xác nhận code. Giữ original source object/version trong sidecar.",
+      "mandatory_limitations": [
+        "Phân biệt HF danh mục mới dưới 1, engine evaluation, route eligibility và execution có debt repaid dương; đếm borrower-case-policy instances, không unique wallets.",
+        "Liquidator/arbitrageur đại diện; vốn không recycle, kế hoạch vượt vốn không tự chia nhỏ; kết quả gas/capacity/delay chỉ trong miền thử.",
+        "RQ5 chỉ kênh định giá nợ USDC; token quantity khác USD-equivalent; chưa redemption/liquidity/confidence/settlement đầy đủ."
+      ],
+      "status": "CODEX_REQUIRED",
+      "status_semantics": "READY chỉ là nguồn/cấu trúc sẵn sàng; không khẳng định đã render. CODEX_REQUIRED là yêu cầu sau phê duyệt, chưa phải Codex đã nhận/hoàn tất.",
+      "formula": null,
+      "required_review": "Codex technical reconciliation + Work self-review; Commander chapter approval pending"
+    },
+    {
+      "proposed_manuscript_id": "T3.2",
+      "handoff_id": "P3X-T3.2",
+      "id_semantics": "Proposed P3 exhibit ID; not a new scientific result ID. Final numbering depends on template approval.",
+      "chapter": 3,
+      "section": "3.5",
+      "kind": "TABLE",
+      "title": "Thiết kế các tập thực nghiệm",
+      "research_purpose": "Ngăn gộp mẫu số giữa grids, prefixes và targeted paths",
+      "accepted_claim_ids": [
+        "P2:C21",
+        "P2:C22",
+        "P2:C23",
+        "P2:C32"
+      ],
+      "exact_result_ids": [
+        "RQ1_GRID60_DEPTH2",
+        "MC_INDEPENDENT_PATHS_VALIDATED"
+      ],
+      "existing_evidence_ids": [],
+      "evidence_id_status": "RESOLVED_EXISTING_RESULT_IDS",
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/tables/rq1_deterministic_depth.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "f0e80bc73735de7684feadd2cd3c82519331c033",
+          "read_scope": "READ_CONTENT_G0"
+        },
+        {
+          "path": "data/processed/research_final/frozen_v3/tables/rq1_monte_carlo.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "ea71db6f633b7e5df1f12cd3d9f2533e5d5f9438",
+          "read_scope": "READ_CONTENT_G0"
+        },
+        {
+          "path": "data/processed/research_final/oracle_transmission_diagnostic_v1/selection_manifest.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "1bb5bdea8be74c1e62dc89badbcb8cbae67b7bd3",
+          "read_scope": "READ_CONTENT_G0"
+        }
+      ],
+      "fields_or_axes": [
+        "Experiment family",
+        "Selection",
+        "Parameter range",
+        "n",
+        "Policy",
+        "RQ",
+        "Version"
+      ],
+      "units": [
+        "cells",
+        "paths",
+        "borrower-case-policy instances"
+      ],
+      "policy_scenario_cohort": [
+        "32/60 grids; Severe prefixes; selected 4 stress+4 controls+10 MC ×4 policies"
+      ],
+      "requested_output_format": "CSV UTF-8 + Markdown table + provenance JSON",
+      "proposed_output_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_directory": "docs/manuscript_p3/codex/chapter_3/",
+      "citation_provenance_note": "Caption phân biệt loại bằng chứng, artifact pin, result IDs, đơn vị và mẫu số; scholarly source background không xác nhận code. Giữ original source object/version trong sidecar.",
+      "mandatory_limitations": [
+        "Một block 26045352, 454 verified borrowers; 109 là cohort WETH-collateral-enabled/USDC-debt riêng; một Uniswap venue, không đại diện toàn thị trường.",
+        "280/10.000 chỉ Severe Policy A; mười targeted MC paths chọn theo A-depth2; không ước lượng xác suất thị trường, không suy không thể có depth≥3 ngoài tập thử.",
+        "Haircut 90/95% là extreme counterfactual tails, chưa có bằng chứng lịch sử tương ứng; không có independent local-fork execution được kiểm chứng."
+      ],
+      "status": "CODEX_REQUIRED",
+      "status_semantics": "READY chỉ là nguồn/cấu trúc sẵn sàng; không khẳng định đã render. CODEX_REQUIRED là yêu cầu sau phê duyệt, chưa phải Codex đã nhận/hoàn tất.",
+      "formula": null,
+      "required_review": "Codex technical reconciliation + Work self-review; Commander chapter approval pending"
+    },
+    {
+      "proposed_manuscript_id": "T3.3",
+      "handoff_id": "P3X-T3.3",
+      "id_semantics": "Proposed P3 exhibit ID; not a new scientific result ID. Final numbering depends on template approval.",
+      "chapter": 3,
+      "section": "3.3",
+      "kind": "TABLE",
+      "title": "Từ điển biến và chỉ tiêu",
+      "research_purpose": "Ngăn nhầm debt repaid, modeled bad debt, immediate impact và residual",
+      "accepted_claim_ids": [
+        "P2:C08",
+        "P2:C22",
+        "P2:C24",
+        "P2:C35"
+      ],
+      "exact_result_ids": [],
+      "existing_evidence_ids": [],
+      "evidence_id_status": "NOT_APPLICABLE_CONCEPTUAL_OR_DIRECT_ARTIFACT",
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "artifact_locators": [
+        {
+          "path": "sim/engine/run.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "2b23c9ee88ee4976755e5f4795026e381d5fe497",
+          "read_scope": "READ_CONTENT_G0"
+        },
+        {
+          "path": "docs/research_final/TERMINOLOGY_VI.md",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "2ca1e29495e6183dfefaf8939e59e6c4eba574fb",
+          "read_scope": "READ_CONTENT_G0"
+        },
+        {
+          "path": "data/processed/research_final/final_accepted_claims_v1/accepted_claims_registry.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "bac44e61633b5efdde3665731ea69fbf4ca345e6",
+          "read_scope": "READ_CONTENT_G0"
+        }
+      ],
+      "fields_or_axes": [
+        "Metric",
+        "Definition",
+        "Unit",
+        "Timing",
+        "Denominator",
+        "Legacy superseded field",
+        "Allowed interpretation"
+      ],
+      "units": [
+        "USDC tokens",
+        "USD equivalent",
+        "WETH",
+        "ratio/%",
+        "seconds/waves"
+      ],
+      "policy_scenario_cohort": [
+        "Mỗi metric dùng đúng scope trong code/registry"
+      ],
+      "requested_output_format": "CSV UTF-8 + Markdown table + provenance JSON",
+      "proposed_output_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_directory": "docs/manuscript_p3/codex/chapter_3/",
+      "citation_provenance_note": "Caption phân biệt loại bằng chứng, artifact pin, result IDs, đơn vị và mẫu số; scholarly source background không xác nhận code. Giữ original source object/version trong sidecar.",
+      "mandatory_limitations": [
+        "Arbitrage là price repositioning, chưa funded executable swap; tác động giá tức thời khác spread sau arbitrage.",
+        "RQ5 chỉ kênh định giá nợ USDC; token quantity khác USD-equivalent; chưa redemption/liquidity/confidence/settlement đầy đủ.",
+        "Modeled bad debt/composite tail exposure khác realized financial loss hoặc market expected shortfall; debt repaid không phải loss."
+      ],
+      "status": "CODEX_REQUIRED",
+      "status_semantics": "READY chỉ là nguồn/cấu trúc sẵn sàng; không khẳng định đã render. CODEX_REQUIRED là yêu cầu sau phê duyệt, chưa phải Codex đã nhận/hoàn tất.",
+      "formula": null,
+      "required_review": "Codex technical reconciliation + Work self-review; Commander chapter approval pending"
+    },
+    {
+      "proposed_manuscript_id": "F4.1",
+      "handoff_id": "P3X-F4.1",
+      "id_semantics": "Proposed P3 exhibit ID; not a new scientific result ID. Final numbering depends on template approval.",
+      "chapter": 4,
+      "section": "4.1",
+      "kind": "FIGURE",
+      "title": "Tái dựng trạng thái và dòng provenance",
+      "research_purpose": "Phân biệt discovery, RPC verification, 454 portfolio và109 route cohort",
+      "accepted_claim_ids": [
+        "P2:C20",
+        "P2:C33"
+      ],
+      "exact_result_ids": [
+        "AAVE_SNAPSHOT_BLOCK",
+        "AAVE_VERIFIED_BORROWERS",
+        "AAVE_WETH_USDC_COHORT"
+      ],
+      "existing_evidence_ids": [],
+      "evidence_id_status": "RESOLVED_EXISTING_RESULT_IDS",
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/results_registry.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "6dde91fc11d189de8899c742b44fea9cf0f386ae",
+          "read_scope": "READ_CONTENT_G0"
+        },
+        {
+          "path": "data/processed/research_final/final_accepted_claims_v1/source_provenance_registry.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "a6784fd7f1b7288c4f2177ff8ba102be5e01c81e",
+          "read_scope": "READ_CONTENT_G0"
+        }
+      ],
+      "fields_or_axes": [
+        "Discovery→block-tagged reads→verified positions→route filter",
+        "Provenance checkpoints"
+      ],
+      "units": [
+        "borrowers/positions",
+        "Ethereum block"
+      ],
+      "policy_scenario_cohort": [
+        "Block26045352;454 verified;109 route cohort"
+      ],
+      "requested_output_format": "SVG/PDF vector + PNG 300 dpi + plot-data CSV + provenance JSON",
+      "proposed_output_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_directory": "docs/manuscript_p3/codex/chapter_4/",
+      "citation_provenance_note": "Caption phân biệt loại bằng chứng, artifact pin, result IDs, đơn vị và mẫu số; scholarly source background không xác nhận code. Giữ original source object/version trong sidecar.",
+      "mandatory_limitations": [
+        "Một block 26045352, 454 verified borrowers; 109 là cohort WETH-collateral-enabled/USDC-debt riêng; một Uniswap venue, không đại diện toàn thị trường.",
+        "Git LF blob bytes khác Windows CRLF checkout bytes; kết quả kiểm thử do Codex báo cáo khác lượt Work tự chạy; không đồng nhất hash domains."
+      ],
+      "status": "CODEX_REQUIRED",
+      "status_semantics": "READY chỉ là nguồn/cấu trúc sẵn sàng; không khẳng định đã render. CODEX_REQUIRED là yêu cầu sau phê duyệt, chưa phải Codex đã nhận/hoàn tất.",
+      "formula": null,
+      "required_review": "Codex technical reconciliation + Work self-review; Commander chapter approval pending"
+    },
+    {
+      "proposed_manuscript_id": "T4.1",
+      "handoff_id": "P3X-T4.1",
+      "id_semantics": "Proposed P3 exhibit ID; not a new scientific result ID. Final numbering depends on template approval.",
+      "chapter": 4,
+      "section": "4.2",
+      "kind": "TABLE",
+      "title": "Đối chiếu Health Factor và chất lượng dữ liệu",
+      "research_purpose": "Báo lỗi tuyệt đối/tương đối, tách vùng gần thanh lý",
+      "accepted_claim_ids": [
+        "P2:C02",
+        "P2:C33"
+      ],
+      "exact_result_ids": [
+        "AAVE_HF_MAX_ABS_ERROR",
+        "AAVE_HF_MAX_REL_ERROR",
+        "AAVE_VERIFIED_BORROWERS"
+      ],
+      "existing_evidence_ids": [
+        "T02"
+      ],
+      "evidence_id_status": "RESOLVED_EXISTING_RESULT_IDS",
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/tables/core_facts.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "52a074b9b8284221c5996d14d903504ee8abe414",
+          "read_scope": "READ_CONTENT_G0"
+        },
+        {
+          "path": "data/processed/research_final/frozen_v3/results_registry.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "6dde91fc11d189de8899c742b44fea9cf0f386ae",
+          "read_scope": "READ_CONTENT_G0"
+        }
+      ],
+      "fields_or_axes": [
+        "Count",
+        "HF error metric",
+        "Value",
+        "Unit",
+        "Scope",
+        "Source"
+      ],
+      "units": [
+        "HF units",
+        "ratio; quy đổi % ghi rõ",
+        "borrowers"
+      ],
+      "policy_scenario_cohort": [
+        "454 verified; near-threshold detail chỉ thêm sau Codex evidence pack"
+      ],
+      "requested_output_format": "CSV UTF-8 + Markdown table + provenance JSON",
+      "proposed_output_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_directory": "docs/manuscript_p3/codex/chapter_4/",
+      "citation_provenance_note": "Caption phân biệt loại bằng chứng, artifact pin, result IDs, đơn vị và mẫu số; scholarly source background không xác nhận code. Giữ original source object/version trong sidecar.",
+      "mandatory_limitations": [
+        "Không suy độ phủ thị trường; max absolute error không đại diện vùngHF≈1"
+      ],
+      "status": "CODEX_REQUIRED",
+      "status_semantics": "READY chỉ là nguồn/cấu trúc sẵn sàng; không khẳng định đã render. CODEX_REQUIRED là yêu cầu sau phê duyệt, chưa phải Codex đã nhận/hoàn tất.",
+      "formula": null,
+      "required_review": "Codex technical reconciliation + Work self-review; Commander chapter approval pending"
+    },
+    {
+      "proposed_manuscript_id": "T4.2",
+      "handoff_id": "P3X-T4.2",
+      "id_semantics": "Proposed P3 exhibit ID; not a new scientific result ID. Final numbering depends on template approval.",
+      "chapter": 4,
+      "section": "4.3",
+      "kind": "TABLE",
+      "title": "Phạm vi kiểm chứng và phần chưa xác lập",
+      "research_purpose": "Phân tầng data/code/model/historical/fork thay vì một nhãn validated",
+      "accepted_claim_ids": [
+        "P2:C17",
+        "P2:C20",
+        "P2:C32",
+        "P2:C33",
+        "P2:C34"
+      ],
+      "exact_result_ids": [],
+      "existing_evidence_ids": [],
+      "evidence_id_status": "NOT_APPLICABLE_CONCEPTUAL_OR_DIRECT_ARTIFACT",
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "artifact_locators": [
+        {
+          "path": "docs/research_final/LEVEL2_FORK_VALIDATION.md",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "4baa8b825743cacd20b1586cff5fb05d1aad96c2",
+          "read_scope": "READ_CONTENT_G0"
+        },
+        {
+          "path": "docs/research_final/FINAL_CROSS_PR_CONSISTENCY_REVIEW.md",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "7e54828a39e05f9e41e9d2b206bcfa0402a6fb7a",
+          "read_scope": "READ_CONTENT_G0"
+        },
+        {
+          "path": "docs/research_final/SCIENTIFIC_PREMERGE_AUDIT_v1.md",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "f3fd437b41d0feabacf01f6708ca65d3a738ef05",
+          "read_scope": "READ_CONTENT_G0"
+        }
+      ],
+      "fields_or_axes": [
+        "Test layer",
+        "Executor",
+        "Artifact",
+        "Actual check",
+        "Inference boundary",
+        "Status"
+      ],
+      "units": [
+        "không đơn vị"
+      ],
+      "policy_scenario_cohort": [
+        "Các kiểm tra đã khóa; không tái chạy"
+      ],
+      "requested_output_format": "CSV UTF-8 + Markdown table + provenance JSON",
+      "proposed_output_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_directory": "docs/manuscript_p3/codex/chapter_4/",
+      "citation_provenance_note": "Caption phân biệt loại bằng chứng, artifact pin, result IDs, đơn vị và mẫu số; scholarly source background không xác nhận code. Giữ original source object/version trong sidecar.",
+      "mandatory_limitations": [
+        "Haircut 90/95% là extreme counterfactual tails, chưa có bằng chứng lịch sử tương ứng; không có independent local-fork execution được kiểm chứng.",
+        "Hai raw borrower CSV lớn vẫn chưa được Work đọc đầy đủ/cell-by-cell; giữ source access labels, U01–U08 và mức abstract/metadata/code; S17/S18 cùng nghiên cứu.",
+        "Git LF blob bytes khác Windows CRLF checkout bytes; kết quả kiểm thử do Codex báo cáo khác lượt Work tự chạy; không đồng nhất hash domains."
+      ],
+      "status": "CODEX_REQUIRED",
+      "status_semantics": "READY chỉ là nguồn/cấu trúc sẵn sàng; không khẳng định đã render. CODEX_REQUIRED là yêu cầu sau phê duyệt, chưa phải Codex đã nhận/hoàn tất.",
+      "formula": null,
+      "required_review": "Codex technical reconciliation + Work self-review; Commander chapter approval pending"
+    },
+    {
+      "proposed_manuscript_id": "F5.1",
+      "handoff_id": "P3X-F5.1",
+      "id_semantics": "Proposed P3 exhibit ID; not a new scientific result ID. Final numbering depends on template approval.",
+      "chapter": 5,
+      "section": "5.1",
+      "kind": "FIGURE",
+      "title": "Phân bố độ sâu trên hai lưới stress",
+      "research_purpose": "Đối chiếu miền thử cũ/mở rộng và tác động của extreme tails",
+      "accepted_claim_ids": [
+        "INT:CL_INT_RQ1_POLICY_CONDITIONAL",
+        "P2:C23"
+      ],
+      "exact_result_ids": [
+        "RQ1_GRID32_MAX_DEPTH",
+        "RQ1_GRID60_DEPTH0",
+        "RQ1_GRID60_DEPTH1",
+        "RQ1_GRID60_DEPTH2"
+      ],
+      "existing_evidence_ids": [
+        "F01"
+      ],
+      "evidence_id_status": "RESOLVED_EXISTING_RESULT_IDS",
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/tables/rq1_deterministic_depth.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "f0e80bc73735de7684feadd2cd3c82519331c033",
+          "read_scope": "READ_CONTENT_G0"
+        }
+      ],
+      "fields_or_axes": [
+        "x: depth0/1/2",
+        "y: số ô",
+        "Panels32/60",
+        "12/20/0 và18/38/4"
+      ],
+      "units": [
+        "cells"
+      ],
+      "policy_scenario_cohort": [
+        "Baseline Policy A; hai miền grid khác nhau"
+      ],
+      "requested_output_format": "SVG/PDF vector + PNG 300 dpi + plot-data CSV + provenance JSON",
+      "proposed_output_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_directory": "docs/manuscript_p3/codex/chapter_5/",
+      "citation_provenance_note": "Caption phân biệt loại bằng chứng, artifact pin, result IDs, đơn vị và mẫu số; scholarly source background không xác nhận code. Giữ original source object/version trong sidecar.",
+      "mandatory_limitations": [
+        "Kết quả cascade là mô phỏng phản thực có điều kiện theo policy, cohort và cấu hình thanh khoản; A/B/C chưa được xác minh là feed Aave/Chainlink lịch sử.",
+        "Haircut 90/95% là extreme counterfactual tails, chưa có bằng chứng lịch sử tương ứng; không có independent local-fork execution được kiểm chứng."
+      ],
+      "status": "CODEX_REQUIRED",
+      "status_semantics": "READY chỉ là nguồn/cấu trúc sẵn sàng; không khẳng định đã render. CODEX_REQUIRED là yêu cầu sau phê duyệt, chưa phải Codex đã nhận/hoàn tất.",
+      "formula": null,
+      "required_review": "Codex technical reconciliation + Work self-review; Commander chapter approval pending"
+    },
+    {
+      "proposed_manuscript_id": "T5.1",
+      "handoff_id": "P3X-T5.1",
+      "id_semantics": "Proposed P3 exhibit ID; not a new scientific result ID. Final numbering depends on template approval.",
+      "chapter": 5,
+      "section": "5.2",
+      "kind": "TABLE",
+      "title": "Độ nhạy thanh lý vòng hai theo policy",
+      "research_purpose": "Đặt 4/0/0/0 và10/0/0/2 đúng tập chọn",
+      "accepted_claim_ids": [
+        "INT:CL_INT_RQ1_POLICY_CONDITIONAL",
+        "INT:CL_INT_RQ2_TWO_CHANNELS",
+        "P2:C32"
+      ],
+      "exact_result_ids": [
+        "INT_A_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
+        "INT_A_SELECTED_MC_DEPTH2_RETAINED_COUNT_OF_10",
+        "INT_B_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
+        "INT_B_SELECTED_MC_DEPTH2_RETAINED_COUNT_OF_10",
+        "INT_C_WEAK_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
+        "INT_C_WEAK_SELECTED_MC_DEPTH2_RETAINED_COUNT_OF_10",
+        "INT_C_MODERATE_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
+        "INT_C_MODERATE_SELECTED_MC_DEPTH2_RETAINED_COUNT_OF_10"
+      ],
+      "existing_evidence_ids": [],
+      "evidence_id_status": "RESOLVED_EXISTING_RESULT_IDS",
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/oracle_transmission_diagnostic_v1/selection_manifest.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "1bb5bdea8be74c1e62dc89badbcb8cbae67b7bd3",
+          "read_scope": "READ_CONTENT_G0"
+        },
+        {
+          "path": "data/processed/research_final/oracle_transmission_diagnostic_v1/comparison_matrix.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "dee128ff278efe94895220aca5eccec4150c1cc4",
+          "read_scope": "READ_CONTENT_G0"
+        },
+        {
+          "path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "664eeac6d3d80a38dc4c2ca6c942070f09d8d9f8",
+          "read_scope": "READ_CONTENT_G0"
+        }
+      ],
+      "fields_or_axes": [
+        "Policy",
+        "α/lag/window",
+        "Det retained/4",
+        "MC retained/10",
+        "Control results separate"
+      ],
+      "units": [
+        "cases/4",
+        "paths/10"
+      ],
+      "policy_scenario_cohort": [
+        "4 selected deterministic depth2;10 targeted MC chosen under A; controls denominator riêng"
+      ],
+      "requested_output_format": "CSV UTF-8 + Markdown table + provenance JSON",
+      "proposed_output_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_directory": "docs/manuscript_p3/codex/chapter_5/",
+      "citation_provenance_note": "Caption phân biệt loại bằng chứng, artifact pin, result IDs, đơn vị và mẫu số; scholarly source background không xác nhận code. Giữ original source object/version trong sidecar.",
+      "mandatory_limitations": [
+        "Kết quả cascade là mô phỏng phản thực có điều kiện theo policy, cohort và cấu hình thanh khoản; A/B/C chưa được xác minh là feed Aave/Chainlink lịch sử.",
+        "280/10.000 chỉ Severe Policy A; mười targeted MC paths chọn theo A-depth2; không ước lượng xác suất thị trường, không suy không thể có depth≥3 ngoài tập thử."
+      ],
+      "status": "CODEX_REQUIRED",
+      "status_semantics": "READY chỉ là nguồn/cấu trúc sẵn sàng; không khẳng định đã render. CODEX_REQUIRED là yêu cầu sau phê duyệt, chưa phải Codex đã nhận/hoàn tất.",
+      "formula": null,
+      "required_review": "Codex technical reconciliation + Work self-review; Commander chapter approval pending"
+    },
+    {
+      "proposed_manuscript_id": "T5.2",
+      "handoff_id": "P3X-T5.2",
+      "id_semantics": "Proposed P3 exhibit ID; not a new scientific result ID. Final numbering depends on template approval.",
+      "chapter": 5,
+      "section": "5.3",
+      "kind": "TABLE",
+      "title": "Mới đủ điều kiện và thanh lý đã thực thi",
+      "research_purpose": "Bảng chính cho kết quả eligible/executed/skipped",
+      "accepted_claim_ids": [
+        "INT:CL_INT_ELIGIBLE_NOT_EXECUTED",
+        "P2:C33"
+      ],
+      "exact_result_ids": [
+        "INT_A_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_A_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
+        "INT_A_NEWLY_ELIGIBLE_SKIPPED_INSTANCES",
+        "INT_B_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_B_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
+        "INT_B_NEWLY_ELIGIBLE_SKIPPED_INSTANCES",
+        "INT_C_WEAK_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_C_WEAK_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
+        "INT_C_WEAK_NEWLY_ELIGIBLE_SKIPPED_INSTANCES",
+        "INT_C_MODERATE_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_C_MODERATE_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
+        "INT_C_MODERATE_NEWLY_ELIGIBLE_SKIPPED_INSTANCES"
+      ],
+      "existing_evidence_ids": [
+        "INT_T01_ELIGIBLE_VS_EXECUTED"
+      ],
+      "evidence_id_status": "RESOLVED_EXISTING_RESULT_IDS",
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "664eeac6d3d80a38dc4c2ca6c942070f09d8d9f8",
+          "read_scope": "READ_CONTENT_G0"
+        },
+        {
+          "path": "data/processed/research_final/scientific_integration_v1/table_figure_registry.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "c74345f75c02a4550151a0cf7802fa96fecdd202",
+          "read_scope": "READ_CONTENT_G0"
+        }
+      ],
+      "fields_or_axes": [
+        "Policy",
+        "Newly eligible",
+        "Evaluated",
+        "Executed Wave2",
+        "Skipped",
+        "Reason",
+        "Debt repaid USDC"
+      ],
+      "units": [
+        "borrower-case-policy instances",
+        "USDC token quantity"
+      ],
+      "policy_scenario_cohort": [
+        "18 cases×4policies×454;109 cohort khác; A35/14/21 B0/0/0 Cweak6/0/6 Cmod11/2/9"
+      ],
+      "requested_output_format": "CSV UTF-8 + Markdown table + provenance JSON",
+      "proposed_output_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_directory": "docs/manuscript_p3/codex/chapter_5/",
+      "citation_provenance_note": "Caption phân biệt loại bằng chứng, artifact pin, result IDs, đơn vị và mẫu số; scholarly source background không xác nhận code. Giữ original source object/version trong sidecar.",
+      "mandatory_limitations": [
+        "Phân biệt HF danh mục mới dưới 1, engine evaluation, route eligibility và execution có debt repaid dương; đếm borrower-case-policy instances, không unique wallets.",
+        "36 skips NO_MODELLED_USDC_DEBT; no claim unique-wallet count"
+      ],
+      "status": "CODEX_REQUIRED",
+      "status_semantics": "READY chỉ là nguồn/cấu trúc sẵn sàng; không khẳng định đã render. CODEX_REQUIRED là yêu cầu sau phê duyệt, chưa phải Codex đã nhận/hoàn tất.",
+      "formula": null,
+      "required_review": "Codex technical reconciliation + Work self-review; Commander chapter approval pending"
+    },
+    {
+      "proposed_manuscript_id": "F5.2",
+      "handoff_id": "P3X-F5.2",
+      "id_semantics": "Proposed P3 exhibit ID; not a new scientific result ID. Final numbering depends on template approval.",
+      "chapter": 5,
+      "section": "5.3",
+      "kind": "FIGURE",
+      "title": "Các cổng từ HF danh mục tới execution",
+      "research_purpose": "Sơ đồ phân nhánh giải thích vì sao newly eligible không bằng executed",
+      "accepted_claim_ids": [
+        "P2:C03",
+        "P2:C33",
+        "INT:CL_INT_ELIGIBLE_NOT_EXECUTED"
+      ],
+      "exact_result_ids": [
+        "INT_A_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_A_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
+        "INT_A_NEWLY_ELIGIBLE_SKIPPED_INSTANCES",
+        "INT_B_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_B_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
+        "INT_B_NEWLY_ELIGIBLE_SKIPPED_INSTANCES",
+        "INT_C_WEAK_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_C_WEAK_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
+        "INT_C_WEAK_NEWLY_ELIGIBLE_SKIPPED_INSTANCES",
+        "INT_C_MODERATE_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_C_MODERATE_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
+        "INT_C_MODERATE_NEWLY_ELIGIBLE_SKIPPED_INSTANCES"
+      ],
+      "existing_evidence_ids": [],
+      "evidence_id_status": "RESOLVED_EXISTING_RESULT_IDS",
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "664eeac6d3d80a38dc4c2ca6c942070f09d8d9f8",
+          "read_scope": "READ_CONTENT_G0"
+        },
+        {
+          "path": "docs/research_final/SCIENTIFIC_PREMERGE_AUDIT_v1.md",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "f3fd437b41d0feabacf01f6708ca65d3a738ef05",
+          "read_scope": "READ_CONTENT_G0"
+        }
+      ],
+      "fields_or_axes": [
+        "HF newly unsafe→engine evaluated→route check→positive-debt execution/skip",
+        "Policy facets",
+        "Một event example đã redacted do Codex chọn từ audit"
+      ],
+      "units": [
+        "instances",
+        "HF ratio"
+      ],
+      "policy_scenario_cohort": [
+        "Chỉ targeted72policy-cases; event examples không phải rawCSV đượcWorkđọctoànbộ"
+      ],
+      "requested_output_format": "SVG/PDF vector + PNG 300 dpi + plot-data CSV + provenance JSON",
+      "proposed_output_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_directory": "docs/manuscript_p3/codex/chapter_5/",
+      "citation_provenance_note": "Caption phân biệt loại bằng chứng, artifact pin, result IDs, đơn vị và mẫu số; scholarly source background không xác nhận code. Giữ original source object/version trong sidecar.",
+      "mandatory_limitations": [
+        "Phân biệt HF danh mục mới dưới 1, engine evaluation, route eligibility và execution có debt repaid dương; đếm borrower-case-policy instances, không unique wallets.",
+        "Hai raw borrower CSV lớn vẫn chưa được Work đọc đầy đủ/cell-by-cell; giữ source access labels, U01–U08 và mức abstract/metadata/code; S17/S18 cùng nghiên cứu."
+      ],
+      "status": "CODEX_REQUIRED",
+      "status_semantics": "READY chỉ là nguồn/cấu trúc sẵn sàng; không khẳng định đã render. CODEX_REQUIRED là yêu cầu sau phê duyệt, chưa phải Codex đã nhận/hoàn tất.",
+      "formula": null,
+      "required_review": "Codex technical reconciliation + Work self-review; Commander chapter approval pending"
+    },
+    {
+      "proposed_manuscript_id": "F5.3",
+      "handoff_id": "P3X-F5.3",
+      "id_semantics": "Proposed P3 exhibit ID; not a new scientific result ID. Final numbering depends on template approval.",
+      "chapter": 5,
+      "section": "5.2",
+      "kind": "FIGURE",
+      "title": "Sức hấp thụ DEX và kênh phản hồi định giá",
+      "research_purpose": "Hai panel tránh đánh đồng impact với eligibility",
+      "accepted_claim_ids": [
+        "P2:C07",
+        "P2:C32",
+        "INT:CL_INT_RQ2_TWO_CHANNELS"
+      ],
+      "exact_result_ids": [
+        "RQ2_CANONICAL_DEPTH_2PCT",
+        "RQ2_DEPTH2_HAIRCUT90_COUNT",
+        "RQ2_DEPTH2_HAIRCUT95_COUNT"
+      ],
+      "existing_evidence_ids": [],
+      "evidence_id_status": "RESOLVED_EXISTING_RESULT_IDS",
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/tables/rq2_liquidity.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "d753e24d06d35cc6d31ab2ef07ea6740ce862edb",
+          "read_scope": "READ_CONTENT_G0"
+        },
+        {
+          "path": "data/processed/research_final/oracle_transmission_diagnostic_v1/comparison_matrix.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "dee128ff278efe94895220aca5eccec4150c1cc4",
+          "read_scope": "READ_CONTENT_G0"
+        }
+      ],
+      "fields_or_axes": [
+        "Panel1: liquidity_haircut_pct và depth2_cells từ rq2_liquidity.csv; đây là số ô, không phải đường độ sâu",
+        "Panel2: case_id/policy_id, post_wave1_dex_trade_price_usd_per_weth và post_wave1_borrower_valuation_price_usd_per_weth từ comparison_matrix.csv"
+      ],
+      "units": [
+        "% haircut",
+        "cells",
+        "USD/WETH"
+      ],
+      "policy_scenario_cohort": [
+        "One pool; targeted comparison; không trộn maxima latertrade với immediate effect"
+      ],
+      "requested_output_format": "SVG/PDF vector + PNG 300 dpi + plot-data CSV + provenance JSON",
+      "proposed_output_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_directory": "docs/manuscript_p3/codex/chapter_5/",
+      "citation_provenance_note": "Caption phân biệt loại bằng chứng, artifact pin, result IDs, đơn vị và mẫu số; scholarly source background không xác nhận code. Giữ original source object/version trong sidecar.",
+      "mandatory_limitations": [
+        "Kết quả cascade là mô phỏng phản thực có điều kiện theo policy, cohort và cấu hình thanh khoản; A/B/C chưa được xác minh là feed Aave/Chainlink lịch sử.",
+        "Một block 26045352, 454 verified borrowers; 109 là cohort WETH-collateral-enabled/USDC-debt riêng; một Uniswap venue, không đại diện toàn thị trường.",
+        "Haircut 90/95% là extreme counterfactual tails, chưa có bằng chứng lịch sử tương ứng; không có independent local-fork execution được kiểm chứng."
+      ],
+      "status": "CODEX_REQUIRED",
+      "status_semantics": "READY chỉ là nguồn/cấu trúc sẵn sàng; không khẳng định đã render. CODEX_REQUIRED là yêu cầu sau phê duyệt, chưa phải Codex đã nhận/hoàn tất.",
+      "formula": null,
+      "required_review": "Codex technical reconciliation + Work self-review; Commander chapter approval pending"
+    },
+    {
+      "proposed_manuscript_id": "F5.4",
+      "handoff_id": "P3X-F5.4",
+      "id_semantics": "Proposed P3 exhibit ID; not a new scientific result ID. Final numbering depends on template approval.",
+      "chapter": 5,
+      "section": "5.3",
+      "kind": "FIGURE",
+      "title": "Ràng buộc vốn và độ trễ xử lý",
+      "research_purpose": "Phân biệt capital gate và timing, không đồng nhất recovery với processing delay",
+      "accepted_claim_ids": [
+        "P2:C19",
+        "INT:CL_INT_RQ3_PRESERVED"
+      ],
+      "exact_result_ids": [
+        "RQ3_CAPITAL_25_LIQUIDATED",
+        "RQ3_CAPITAL_100_LIQUIDATED",
+        "RQ3_DELAY_SEVERITY_CHANGE"
+      ],
+      "existing_evidence_ids": [
+        "F03",
+        "T06"
+      ],
+      "evidence_id_status": "RESOLVED_EXISTING_RESULT_IDS",
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/tables/rq3_constraints.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "0a51fb795e562c0276ac36903662be92d52ce86f",
+          "read_scope": "READ_CONTENT_G0"
+        }
+      ],
+      "fields_or_axes": [
+        "x:capital25/50/100/200% reference demand; y:debt repaid",
+        "Panel delay level vs processing_delay_seconds"
+      ],
+      "units": [
+        "%reference demand",
+        "USDC token",
+        "seconds"
+      ],
+      "policy_scenario_cohort": [
+        "Professor Demo; delays0/1/2/4steps; no recycle/no plan splitting"
+      ],
+      "requested_output_format": "SVG/PDF vector + PNG 300 dpi + plot-data CSV + provenance JSON",
+      "proposed_output_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_directory": "docs/manuscript_p3/codex/chapter_5/",
+      "citation_provenance_note": "Caption phân biệt loại bằng chứng, artifact pin, result IDs, đơn vị và mẫu số; scholarly source background không xác nhận code. Giữ original source object/version trong sidecar.",
+      "mandatory_limitations": [
+        "Liquidator/arbitrageur đại diện; vốn không recycle, kế hoạch vượt vốn không tự chia nhỏ; kết quả gas/capacity/delay chỉ trong miền thử.",
+        "Recovery0 không có nghĩa reaction delay0"
+      ],
+      "status": "CODEX_REQUIRED",
+      "status_semantics": "READY chỉ là nguồn/cấu trúc sẵn sàng; không khẳng định đã render. CODEX_REQUIRED là yêu cầu sau phê duyệt, chưa phải Codex đã nhận/hoàn tất.",
+      "formula": null,
+      "required_review": "Codex technical reconciliation + Work self-review; Commander chapter approval pending"
+    },
+    {
+      "proposed_manuscript_id": "F5.5",
+      "handoff_id": "P3X-F5.5",
+      "id_semantics": "Proposed P3 exhibit ID; not a new scientific result ID. Final numbering depends on template approval.",
+      "chapter": 5,
+      "section": "5.4",
+      "kind": "FIGURE",
+      "title": "Tác động giá tức thời và spread sau arbitrage",
+      "research_purpose": "Sửa kết luận cũ arbitrage không phản ứng",
+      "accepted_claim_ids": [
+        "P2:C13",
+        "P2:C34",
+        "INT:CL_INT_RQ4_PRESERVED"
+      ],
+      "exact_result_ids": [
+        "RQ4_IMMEDIATE_PRICE_IMPACT",
+        "RQ4_SPREAD_ARB0",
+        "RQ4_SPREAD_ARB100"
+      ],
+      "existing_evidence_ids": [
+        "F04",
+        "T07"
+      ],
+      "evidence_id_status": "RESOLVED_EXISTING_RESULT_IDS",
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/tables/rq4_arbitrage.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "1fdeb6b31a7537d79e9e8c9e97544dbf78bb4f2e",
+          "read_scope": "READ_CONTENT_G0"
+        }
+      ],
+      "fields_or_axes": [
+        "x:arbitrage_capacity_pct",
+        "y1:immediate_price_impact_ratio",
+        "y2:post_arbitrage_spread_ratio"
+      ],
+      "units": [
+        "ratio; hiển thị% bằng×100"
+      ],
+      "policy_scenario_cohort": [
+        "Same sale;−20%shock/40%haircut;0/50/100capacity"
+      ],
+      "requested_output_format": "SVG/PDF vector + PNG 300 dpi + plot-data CSV + provenance JSON",
+      "proposed_output_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_directory": "docs/manuscript_p3/codex/chapter_5/",
+      "citation_provenance_note": "Caption phân biệt loại bằng chứng, artifact pin, result IDs, đơn vị và mẫu số; scholarly source background không xác nhận code. Giữ original source object/version trong sidecar.",
+      "mandatory_limitations": [
+        "Arbitrage là price repositioning, chưa funded executable swap; tác động giá tức thời khác spread sau arbitrage."
+      ],
+      "status": "CODEX_REQUIRED",
+      "status_semantics": "READY chỉ là nguồn/cấu trúc sẵn sàng; không khẳng định đã render. CODEX_REQUIRED là yêu cầu sau phê duyệt, chưa phải Codex đã nhận/hoàn tất.",
+      "formula": null,
+      "required_review": "Codex technical reconciliation + Work self-review; Commander chapter approval pending"
+    },
+    {
+      "proposed_manuscript_id": "T5.3",
+      "handoff_id": "P3X-T5.3",
+      "id_semantics": "Proposed P3 exhibit ID; not a new scientific result ID. Final numbering depends on template approval.",
+      "chapter": 5,
+      "section": "5.5",
+      "kind": "TABLE",
+      "title": "Định giá nợ USDC và hệ số sức khỏe",
+      "research_purpose": "Tách hướng tác động ceteris paribus và đơn vị tiền",
+      "accepted_claim_ids": [
+        "P2:C15",
+        "P2:C35",
+        "INT:CL_INT_RQ5_PRESERVED"
+      ],
+      "exact_result_ids": [
+        "RQ5_HF_LT1_USDC_090",
+        "RQ5_HF_LT1_USDC_100",
+        "RQ5_HF_LT1_USDC_110",
+        "RQ5_LIQUIDATED_DEBT_TOKEN_QTY",
+        "RQ5_LIQUIDATED_DEBT_USD"
+      ],
+      "existing_evidence_ids": [
+        "T08"
+      ],
+      "evidence_id_status": "RESOLVED_EXISTING_RESULT_IDS",
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/tables/rq5_usdc_valuation.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "3f36a867c750f90d5a88ae5b1b00eae6be151b6e",
+          "read_scope": "READ_CONTENT_G0"
+        }
+      ],
+      "fields_or_axes": [
+        "usdc_price_usd",
+        "borrowers_hf_below_1",
+        "liquidated_debt_usdc_token",
+        "liquidated_debt_usd_equivalent"
+      ],
+      "units": [
+        "USD/USDC",
+        "borrowers",
+        "USDC token",
+        "USD equivalent"
+      ],
+      "policy_scenario_cohort": [
+        "109WETH/USDC frozen cohort;0.90…1.10"
+      ],
+      "requested_output_format": "CSV UTF-8 + Markdown table + provenance JSON",
+      "proposed_output_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_directory": "docs/manuscript_p3/codex/chapter_5/",
+      "citation_provenance_note": "Caption phân biệt loại bằng chứng, artifact pin, result IDs, đơn vị và mẫu số; scholarly source background không xác nhận code. Giữ original source object/version trong sidecar.",
+      "mandatory_limitations": [
+        "RQ5 chỉ kênh định giá nợ USDC; token quantity khác USD-equivalent; chưa redemption/liquidity/confidence/settlement đầy đủ."
+      ],
+      "status": "CODEX_REQUIRED",
+      "status_semantics": "READY chỉ là nguồn/cấu trúc sẵn sàng; không khẳng định đã render. CODEX_REQUIRED là yêu cầu sau phê duyệt, chưa phải Codex đã nhận/hoàn tất.",
+      "formula": null,
+      "required_review": "Codex technical reconciliation + Work self-review; Commander chapter approval pending"
+    },
+    {
+      "proposed_manuscript_id": "F5.6",
+      "handoff_id": "P3X-F5.6",
+      "id_semantics": "Proposed P3 exhibit ID; not a new scientific result ID. Final numbering depends on template approval.",
+      "chapter": 5,
+      "section": "5.6",
+      "kind": "FIGURE",
+      "title": "Ba cơ chế LTV LT và thưởng thanh lý",
+      "research_purpose": "Ba panels không tạo một trục risk score chưa định nghĩa",
+      "accepted_claim_ids": [
+        "P2:C04",
+        "P2:C05",
+        "P2:C12",
+        "INT:CL_INT_RQ6_PRESERVED"
+      ],
+      "exact_result_ids": [
+        "RQ6_LTV0755_CAPACITY",
+        "RQ6_LTV0825_CAPACITY",
+        "RQ6_LT083_UNLIQUIDATED",
+        "RQ6_LT0855_UNLIQUIDATED",
+        "RQ6_BONUS103_SEIZED",
+        "RQ6_BONUS107_SEIZED"
+      ],
+      "existing_evidence_ids": [
+        "T09"
+      ],
+      "evidence_id_status": "RESOLVED_EXISTING_RESULT_IDS",
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/tables/rq6_policy.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "deab1f45c56d8c836fead08190faffb1a5000fd2",
+          "read_scope": "READ_CONTENT_G0"
+        }
+      ],
+      "fields_or_axes": [
+        "LTV→exantecapacityUSD",
+        "ScenarioLT→unliquidateddebtUSDC",
+        "Bonus→seizedWETH"
+      ],
+      "units": [
+        "%parameter hoặc bonusfactor ghi rõ",
+        "USD",
+        "USDCtoken",
+        "WETH"
+      ],
+      "policy_scenario_cohort": [
+        "Frozen109; ba thí nghiệm riêng; không borrower re-underwriting"
+      ],
+      "requested_output_format": "SVG/PDF vector + PNG 300 dpi + plot-data CSV + provenance JSON",
+      "proposed_output_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_directory": "docs/manuscript_p3/codex/chapter_5/",
+      "citation_provenance_note": "Caption phân biệt loại bằng chứng, artifact pin, result IDs, đơn vị và mẫu số; scholarly source background không xác nhận code. Giữ original source object/version trong sidecar.",
+      "mandatory_limitations": [
+        "Không dùng recordedLT cũ thay scenarioLT; không policy optimality"
+      ],
+      "status": "CODEX_REQUIRED",
+      "status_semantics": "READY chỉ là nguồn/cấu trúc sẵn sàng; không khẳng định đã render. CODEX_REQUIRED là yêu cầu sau phê duyệt, chưa phải Codex đã nhận/hoàn tất.",
+      "formula": null,
+      "required_review": "Codex technical reconciliation + Work self-review; Commander chapter approval pending"
+    },
+    {
+      "proposed_manuscript_id": "F5.7",
+      "handoff_id": "P3X-F5.7",
+      "id_semantics": "Proposed P3 exhibit ID; not a new scientific result ID. Final numbering depends on template approval.",
+      "chapter": 5,
+      "section": "5.7",
+      "kind": "FIGURE",
+      "title": "Tần suất Severe và khoảng Wilson qua checkpoint",
+      "research_purpose": "Trình bày hội tụ có điều kiện không đếm prefix như samples độc lập",
+      "accepted_claim_ids": [
+        "P2:C22",
+        "P2:C23",
+        "P2:C24"
+      ],
+      "exact_result_ids": [
+        "RQ1_MC_SEVERE_DEPTH2_COUNT",
+        "RQ1_MC_SEVERE_DEPTH2_FREQUENCY",
+        "RQ1_MC_SEVERE_DEPTH3_COUNT"
+      ],
+      "existing_evidence_ids": [
+        "F02",
+        "T04"
+      ],
+      "evidence_id_status": "RESOLVED_EXISTING_RESULT_IDS",
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/tables/rq1_monte_carlo.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "ea71db6f633b7e5df1f12cd3d9f2533e5d5f9438",
+          "read_scope": "READ_CONTENT_G0"
+        }
+      ],
+      "fields_or_axes": [
+        "x:actual_runs200/1000/5000/10000",
+        "y:depth≥2frequency; Wilson bounds",
+        "lowliquidity0/1000 panel riêng nếu dùng"
+      ],
+      "units": [
+        "paths",
+        "ratio/%"
+      ],
+      "policy_scenario_cohort": [
+        "Severe Policy A; nested prefixes; selectedMC10 không đặt chung frequencychart"
+      ],
+      "requested_output_format": "SVG/PDF vector + PNG 300 dpi + plot-data CSV + provenance JSON",
+      "proposed_output_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_directory": "docs/manuscript_p3/codex/chapter_5/",
+      "citation_provenance_note": "Caption phân biệt loại bằng chứng, artifact pin, result IDs, đơn vị và mẫu số; scholarly source background không xác nhận code. Giữ original source object/version trong sidecar.",
+      "mandatory_limitations": [
+        "280/10.000 chỉ Severe Policy A; mười targeted MC paths chọn theo A-depth2; không ước lượng xác suất thị trường, không suy không thể có depth≥3 ngoài tập thử.",
+        "Modeled bad debt/composite tail exposure khác realized financial loss hoặc market expected shortfall; debt repaid không phải loss."
+      ],
+      "status": "CODEX_REQUIRED",
+      "status_semantics": "READY chỉ là nguồn/cấu trúc sẵn sàng; không khẳng định đã render. CODEX_REQUIRED là yêu cầu sau phê duyệt, chưa phải Codex đã nhận/hoàn tất.",
+      "formula": null,
+      "required_review": "Codex technical reconciliation + Work self-review; Commander chapter approval pending"
+    },
+    {
+      "proposed_manuscript_id": "T6.1",
+      "handoff_id": "P3X-T6.1",
+      "id_semantics": "Proposed P3 exhibit ID; not a new scientific result ID. Final numbering depends on template approval.",
+      "chapter": 6,
+      "section": "6.1",
+      "kind": "TABLE",
+      "title": "Census lịch sử và tầng liên hệ",
+      "research_purpose": "Tách coverage/event selection và sức mạnh từng liên hệ",
+      "accepted_claim_ids": [
+        "P2:C09",
+        "P2:C10",
+        "INT:CL_INT_HISTORICAL_TIERS_PRESERVED"
+      ],
+      "exact_result_ids": [
+        "HIST_RPC_CENSUS_EVENTS",
+        "HIST_GRAPH_MATCHED_EVENTS",
+        "HIST_DIRECT_TRANSFER_PATHS",
+        "HIST_SAME_TX_COOCCURRENCE",
+        "HIST_SAME_BLOCK_ASSOCIATION",
+        "HIST_TIME_WINDOW_ASSOCIATION"
+      ],
+      "existing_evidence_ids": [
+        "T10"
+      ],
+      "evidence_id_status": "RESOLVED_EXISTING_RESULT_IDS",
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/tables/historical_evidence.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "ea2d04143baee6a2d561b588bd8174b6dbfbc64b",
+          "read_scope": "READ_CONTENT_G0"
+        },
+        {
+          "path": "docs/research_final/LEVEL3_HISTORICAL_EVENT_STUDY.md",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "e56da602592dd53fe52c830a3ca05537179a9b7a",
+          "read_scope": "READ_CONTENT_G0"
+        }
+      ],
+      "fields_or_axes": [
+        "28Pool/27Graph/1RPC-only",
+        "Tier1/2/23/1among27",
+        "Selection/window",
+        "Allowed evidence strength"
+      ],
+      "units": [
+        "LiquidationCall events"
+      ],
+      "policy_scenario_cohort": [
+        "AavePool2026-09-01…07UTC; tiersdenominator27"
+      ],
+      "requested_output_format": "CSV UTF-8 + Markdown table + provenance JSON",
+      "proposed_output_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_directory": "docs/manuscript_p3/codex/chapter_6/",
+      "citation_provenance_note": "Caption phân biệt loại bằng chứng, artifact pin, result IDs, đơn vị và mẫu số; scholarly source background không xác nhận code. Giữ original source object/version trong sidecar.",
+      "mandatory_limitations": [
+        "28 Pool events/27 Graph matches và tiers 1/2/23/1 chỉ theo cửa sổ đã khai báo; receipt route và đồng xuất hiện không xác lập lây lan nhân quả."
+      ],
+      "status": "CODEX_REQUIRED",
+      "status_semantics": "READY chỉ là nguồn/cấu trúc sẵn sàng; không khẳng định đã render. CODEX_REQUIRED là yêu cầu sau phê duyệt, chưa phải Codex đã nhận/hoàn tất.",
+      "formula": null,
+      "required_review": "Codex technical reconciliation + Work self-review; Commander chapter approval pending"
+    },
+    {
+      "proposed_manuscript_id": "F6.1",
+      "handoff_id": "P3X-F6.1",
+      "id_semantics": "Proposed P3 exhibit ID; not a new scientific result ID. Final numbering depends on template approval.",
+      "chapter": 6,
+      "section": "6.2",
+      "kind": "FIGURE",
+      "title": "Kết quả âm cảnh báo trước mất neo ban đầu",
+      "research_purpose": "Đặt negative finding ở vị trí trung tâm thay chọn ngưỡng thuận lợi",
+      "accepted_claim_ids": [
+        "P2:C29",
+        "P2:C30",
+        "INT:CL_INT_TERRA_NEGATIVE_PRESERVED"
+      ],
+      "exact_result_ids": [
+        "TERRA_PRE_DEPEG_HIGH_ALERT_HOURS",
+        "TERRA_INITIAL_DEPEG_HIGH_LEAD"
+      ],
+      "existing_evidence_ids": [
+        "T11"
+      ],
+      "evidence_id_status": "RESOLVED_EXISTING_RESULT_IDS",
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/tables/terra_limitations.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "264d5294bd8da978f8718c15b9ca7bcb221c704b",
+          "read_scope": "READ_CONTENT_G0"
+        },
+        {
+          "path": "data/processed/research_final/validation_audit/phase5_terra_early_warning_audit.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "c57615dbfe686863b366db648234cf0af1d6b8ca",
+          "read_scope": "READ_CONTENT_G0"
+        }
+      ],
+      "fields_or_axes": [
+        "Panel1 zero HIGH pre-initial-depeg",
+        "Panel2 lead−45h relative toUST<0.995event",
+        "Cutoff/info boundary annotation"
+      ],
+      "units": [
+        "hours",
+        "HIGH alert hours; không gộp hai đại lượng"
+      ],
+      "policy_scenario_cohort": [
+        "1630pre-initial-depeghours theoresultpopulation; derivedvalidation"
+      ],
+      "requested_output_format": "SVG/PDF vector + PNG 300 dpi + plot-data CSV + provenance JSON",
+      "proposed_output_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_directory": "docs/manuscript_p3/codex/chapter_6/",
+      "citation_provenance_note": "Caption phân biệt loại bằng chứng, artifact pin, result IDs, đơn vị và mẫu số; scholarly source background không xác nhận code. Giữ original source object/version trong sidecar.",
+      "mandatory_limitations": [
+        "Terra tái dựng hồi cứu khác dự báo; giữ HIGH trước initial depeg bằng 0, lead −45 giờ và kết luận âm ngoài mẫu; không dùng Terra xác nhận tham số Aave."
+      ],
+      "status": "CODEX_REQUIRED",
+      "status_semantics": "READY chỉ là nguồn/cấu trúc sẵn sàng; không khẳng định đã render. CODEX_REQUIRED là yêu cầu sau phê duyệt, chưa phải Codex đã nhận/hoàn tất.",
+      "formula": null,
+      "required_review": "Codex technical reconciliation + Work self-review; Commander chapter approval pending"
+    },
+    {
+      "proposed_manuscript_id": "F6.2",
+      "handoff_id": "P3X-F6.2",
+      "id_semantics": "Proposed P3 exhibit ID; not a new scientific result ID. Final numbering depends on template approval.",
+      "chapter": 6,
+      "section": "6.3",
+      "kind": "FIGURE",
+      "title": "Mạng kênh quan hệ và phép gộp cấu trúc",
+      "research_purpose": "Giải thích topology/centrality chưa phải fullmultilayer contagion",
+      "accepted_claim_ids": [
+        "P2:C25",
+        "P2:C26",
+        "P2:C27",
+        "P2:C28"
+      ],
+      "exact_result_ids": [],
+      "existing_evidence_ids": [],
+      "evidence_id_status": "NOT_APPLICABLE_CONCEPTUAL_OR_DIRECT_ARTIFACT",
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/network/structural_centrality.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "b3608bd848b0594ec86a70fbe28d5b94d2358fa7",
+          "read_scope": "READ_CONTENT_G0"
+        },
+        {
+          "path": "data/processed/research_final/network/structural_graph.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "8c980da9a10d1ef52f3b13cf8a14398b0e0cd75d",
+          "read_scope": "OBJECT_LOCATED_NOT_CONTENT_READ_G0"
+        },
+        {
+          "path": "sim/network/metrics.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "db7aca57029e973637e4969d3a20d5c61e2e330d",
+          "read_scope": "READ_CONTENT_G0"
+        }
+      ],
+      "fields_or_axes": [
+        "8nodeIDs từstructuralcentrality",
+        "Edge set phảiCodex resolve graph pin; không tự tạoedge",
+        "Aggregation annotation",
+        "Centrality optional phảiunitless/normalizationnote"
+      ],
+      "units": [
+        "nodes",
+        "dimensionless centrality"
+      ],
+      "policy_scenario_cohort": [
+        "Project structural subnetwork; conceptual/code/derived context, không new risk finding"
+      ],
+      "requested_output_format": "SVG/PDF vector + PNG 300 dpi + plot-data CSV + provenance JSON",
+      "proposed_output_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_directory": "docs/manuscript_p3/codex/chapter_6/",
+      "citation_provenance_note": "Caption phân biệt loại bằng chứng, artifact pin, result IDs, đơn vị và mẫu số; scholarly source background không xác nhận code. Giữ original source object/version trong sidecar.",
+      "mandatory_limitations": [
+        "Graph typed/aggregated và centrality cấu trúc chưa là full multilayer contagion, DebtRank đã triển khai hoặc xếp hạng rủi ro toàn DeFi.",
+        "Không mã hóa edge giả định thành historical causal link"
+      ],
+      "status": "CODEX_REQUIRED",
+      "status_semantics": "READY chỉ là nguồn/cấu trúc sẵn sàng; không khẳng định đã render. CODEX_REQUIRED là yêu cầu sau phê duyệt, chưa phải Codex đã nhận/hoàn tất.",
+      "formula": null,
+      "required_review": "Codex technical reconciliation + Work self-review; Commander chapter approval pending"
+    },
+    {
+      "proposed_manuscript_id": "T6.2",
+      "handoff_id": "P3X-T6.2",
+      "id_semantics": "Proposed P3 exhibit ID; not a new scientific result ID. Final numbering depends on template approval.",
+      "chapter": 6,
+      "section": "6.4",
+      "kind": "TABLE",
+      "title": "Vai trò của từng lớp bằng chứng",
+      "research_purpose": "Giúp độc giả hiểu simulated/observed/derived/code khác nhau",
+      "accepted_claim_ids": [
+        "P2:C17",
+        "P2:C30",
+        "P2:C33",
+        "INT:CL_INT_HISTORICAL_TIERS_PRESERVED"
+      ],
+      "exact_result_ids": [],
+      "existing_evidence_ids": [],
+      "evidence_id_status": "NOT_APPLICABLE_CONCEPTUAL_OR_DIRECT_ARTIFACT",
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/final_accepted_claims_v1/accepted_claims_registry.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "bac44e61633b5efdde3665731ea69fbf4ca345e6",
+          "read_scope": "READ_CONTENT_G0"
+        },
+        {
+          "path": "docs/research_final/SCIENTIFIC_PREMERGE_AUDIT_v1.md",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "f3fd437b41d0feabacf01f6708ca65d3a738ef05",
+          "read_scope": "READ_CONTENT_G0"
+        }
+      ],
+      "fields_or_axes": [
+        "Evidence class",
+        "Question addressed",
+        "Verification performed",
+        "Inference boundary",
+        "Chapter reference"
+      ],
+      "units": [
+        "không đơn vị"
+      ],
+      "policy_scenario_cohort": [
+        "Tổng hợp từclaim registry; không new experiment"
+      ],
+      "requested_output_format": "CSV UTF-8 + Markdown table + provenance JSON",
+      "proposed_output_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_directory": "docs/manuscript_p3/codex/chapter_6/",
+      "citation_provenance_note": "Caption phân biệt loại bằng chứng, artifact pin, result IDs, đơn vị và mẫu số; scholarly source background không xác nhận code. Giữ original source object/version trong sidecar.",
+      "mandatory_limitations": [
+        "28 Pool events/27 Graph matches và tiers 1/2/23/1 chỉ theo cửa sổ đã khai báo; receipt route và đồng xuất hiện không xác lập lây lan nhân quả.",
+        "Hai raw borrower CSV lớn vẫn chưa được Work đọc đầy đủ/cell-by-cell; giữ source access labels, U01–U08 và mức abstract/metadata/code; S17/S18 cùng nghiên cứu.",
+        "Git LF blob bytes khác Windows CRLF checkout bytes; kết quả kiểm thử do Codex báo cáo khác lượt Work tự chạy; không đồng nhất hash domains."
+      ],
+      "status": "READY",
+      "status_semantics": "READY chỉ là nguồn/cấu trúc sẵn sàng; không khẳng định đã render. CODEX_REQUIRED là yêu cầu sau phê duyệt, chưa phải Codex đã nhận/hoàn tất.",
+      "formula": null,
+      "required_review": "Codex technical reconciliation + Work self-review; Commander chapter approval pending"
+    },
+    {
+      "proposed_manuscript_id": "T7.1",
+      "handoff_id": "P3X-T7.1",
+      "id_semantics": "Proposed P3 exhibit ID; not a new scientific result ID. Final numbering depends on template approval.",
+      "chapter": 7,
+      "section": "7.1",
+      "kind": "TABLE",
+      "title": "Sáu câu trả lời và điều kiện diễn giải",
+      "research_purpose": "Tổng hợp kết luận, không nhân bản toàn bộ bảng kết quả",
+      "accepted_claim_ids": [
+        "INT:CL_INT_RQ1_POLICY_CONDITIONAL",
+        "INT:CL_INT_RQ2_TWO_CHANNELS",
+        "INT:CL_INT_RQ3_PRESERVED",
+        "INT:CL_INT_RQ4_PRESERVED",
+        "INT:CL_INT_RQ5_PRESERVED",
+        "INT:CL_INT_RQ6_PRESERVED"
+      ],
+      "exact_result_ids": [],
+      "existing_evidence_ids": [],
+      "evidence_id_status": "NOT_APPLICABLE_CONCEPTUAL_OR_DIRECT_ARTIFACT",
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/final_accepted_claims_v1/six_rq_accepted_claims_matrix.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "fffe69d45f2c70e8f4cb781c8b521ef4cf6f1a45",
+          "read_scope": "READ_CONTENT_G0"
+        }
+      ],
+      "fields_or_axes": [
+        "RQ",
+        "Accepted answer",
+        "Ch5exhibit",
+        "Policy/cohort",
+        "Limitation"
+      ],
+      "units": [
+        "không đơn vị"
+      ],
+      "policy_scenario_cohort": [
+        "Accepted-only sets;4excluded omitted"
+      ],
+      "requested_output_format": "CSV UTF-8 + Markdown table + provenance JSON",
+      "proposed_output_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_directory": "docs/manuscript_p3/codex/chapter_7/",
+      "citation_provenance_note": "Caption phân biệt loại bằng chứng, artifact pin, result IDs, đơn vị và mẫu số; scholarly source background không xác nhận code. Giữ original source object/version trong sidecar.",
+      "mandatory_limitations": [
+        "Kết quả cascade là mô phỏng phản thực có điều kiện theo policy, cohort và cấu hình thanh khoản; A/B/C chưa được xác minh là feed Aave/Chainlink lịch sử.",
+        "Một block 26045352, 454 verified borrowers; 109 là cohort WETH-collateral-enabled/USDC-debt riêng; một Uniswap venue, không đại diện toàn thị trường.",
+        "Phân biệt HF danh mục mới dưới 1, engine evaluation, route eligibility và execution có debt repaid dương; đếm borrower-case-policy instances, không unique wallets.",
+        "280/10.000 chỉ Severe Policy A; mười targeted MC paths chọn theo A-depth2; không ước lượng xác suất thị trường, không suy không thể có depth≥3 ngoài tập thử.",
+        "Liquidator/arbitrageur đại diện; vốn không recycle, kế hoạch vượt vốn không tự chia nhỏ; kết quả gas/capacity/delay chỉ trong miền thử.",
+        "Arbitrage là price repositioning, chưa funded executable swap; tác động giá tức thời khác spread sau arbitrage.",
+        "RQ5 chỉ kênh định giá nợ USDC; token quantity khác USD-equivalent; chưa redemption/liquidity/confidence/settlement đầy đủ.",
+        "Haircut 90/95% là extreme counterfactual tails, chưa có bằng chứng lịch sử tương ứng; không có independent local-fork execution được kiểm chứng.",
+        "28 Pool events/27 Graph matches và tiers 1/2/23/1 chỉ theo cửa sổ đã khai báo; receipt route và đồng xuất hiện không xác lập lây lan nhân quả.",
+        "Terra tái dựng hồi cứu khác dự báo; giữ HIGH trước initial depeg bằng 0, lead −45 giờ và kết luận âm ngoài mẫu; không dùng Terra xác nhận tham số Aave.",
+        "Graph typed/aggregated và centrality cấu trúc chưa là full multilayer contagion, DebtRank đã triển khai hoặc xếp hạng rủi ro toàn DeFi.",
+        "Modeled bad debt/composite tail exposure khác realized financial loss hoặc market expected shortfall; debt repaid không phải loss.",
+        "Hai raw borrower CSV lớn vẫn chưa được Work đọc đầy đủ/cell-by-cell; giữ source access labels, U01–U08 và mức abstract/metadata/code; S17/S18 cùng nghiên cứu.",
+        "Git LF blob bytes khác Windows CRLF checkout bytes; kết quả kiểm thử do Codex báo cáo khác lượt Work tự chạy; không đồng nhất hash domains."
+      ],
+      "status": "READY",
+      "status_semantics": "READY chỉ là nguồn/cấu trúc sẵn sàng; không khẳng định đã render. CODEX_REQUIRED là yêu cầu sau phê duyệt, chưa phải Codex đã nhận/hoàn tất.",
+      "formula": null,
+      "required_review": "Codex technical reconciliation + Work self-review; Commander chapter approval pending"
+    },
+    {
+      "proposed_manuscript_id": "T7.2",
+      "handoff_id": "P3X-T7.2",
+      "id_semantics": "Proposed P3 exhibit ID; not a new scientific result ID. Final numbering depends on template approval.",
+      "chapter": 7,
+      "section": "7.2",
+      "kind": "TABLE",
+      "title": "Đóng góp và phạm vi hiệu lực",
+      "research_purpose": "Thể hiện đóng góp tích hợp/truy vết thay claims ưu việt phổ quát",
+      "accepted_claim_ids": [
+        "P2:C17",
+        "P2:C31",
+        "INT:CL_INT_ELIGIBLE_NOT_EXECUTED",
+        "INT:CL_INT_TERRA_NEGATIVE_PRESERVED"
+      ],
+      "exact_result_ids": [],
+      "existing_evidence_ids": [],
+      "evidence_id_status": "NOT_APPLICABLE_CONCEPTUAL_OR_DIRECT_ARTIFACT",
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/final_accepted_claims_v1/accepted_claims_registry.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "bac44e61633b5efdde3665731ea69fbf4ca345e6",
+          "read_scope": "READ_CONTENT_G0"
+        },
+        {
+          "path": "docs/research_final/LITERATURE_VERIFIED.md",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "6ebe0a11e915e942a422d02a0cc5b1d53b51ff3e",
+          "read_scope": "READ_CONTENT_G0"
+        }
+      ],
+      "fields_or_axes": [
+        "Contribution",
+        "Evidence already shown",
+        "What is added within project",
+        "Boundary",
+        "Future dependency"
+      ],
+      "units": [
+        "không đơn vị"
+      ],
+      "policy_scenario_cohort": [
+        "Synthesis only"
+      ],
+      "requested_output_format": "CSV UTF-8 + Markdown table + provenance JSON",
+      "proposed_output_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_directory": "docs/manuscript_p3/codex/chapter_7/",
+      "citation_provenance_note": "Caption phân biệt loại bằng chứng, artifact pin, result IDs, đơn vị và mẫu số; scholarly source background không xác nhận code. Giữ original source object/version trong sidecar.",
+      "mandatory_limitations": [
+        "Không first-ever, không risk-advice calibrated to live market"
+      ],
+      "status": "READY",
+      "status_semantics": "READY chỉ là nguồn/cấu trúc sẵn sàng; không khẳng định đã render. CODEX_REQUIRED là yêu cầu sau phê duyệt, chưa phải Codex đã nhận/hoàn tất.",
+      "formula": null,
+      "required_review": "Codex technical reconciliation + Work self-review; Commander chapter approval pending"
+    },
+    {
+      "proposed_manuscript_id": "E3.1",
+      "handoff_id": "P3X-E3.1",
+      "id_semantics": "Proposed P3 exhibit ID; not a new scientific result ID. Final numbering depends on template approval.",
+      "chapter": 3,
+      "section": "3.3",
+      "kind": "EQUATION",
+      "title": "Health Factor danh mục",
+      "research_purpose": "Giải thích quan hệ và giả định trước khi đọc kết quả",
+      "accepted_claim_ids": [
+        "P2:C02",
+        "P2:C03"
+      ],
+      "exact_result_ids": [],
+      "existing_evidence_ids": [],
+      "evidence_id_status": "NOT_APPLICABLE_CONCEPTUAL_OR_DIRECT_ARTIFACT",
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "artifact_locators": [
+        {
+          "path": "sim/lending/health_factor.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "8d8cae6754e718856867ce3696498bd68134a294",
+          "read_scope": "READ_CONTENT_G0"
+        },
+        {
+          "path": "sim/lending/liquidation.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "9f95f18e8aa52f48facbebe1b3bdc8f88c0f162a",
+          "read_scope": "READ_CONTENT_G0"
+        }
+      ],
+      "fields_or_axes": [
+        "Biến",
+        "Đơn vị",
+        "Miền áp dụng",
+        "Quy tắc biên",
+        "Timing"
+      ],
+      "units": [
+        "amount token",
+        "USD/token",
+        "HF dimensionless"
+      ],
+      "policy_scenario_cohort": [
+        "Đặc tả mô hình khóa; notation P3 không thay numerical implementation"
+      ],
+      "requested_output_format": "LaTeX + MathML/Word equation source và symbol/unit dictionary",
+      "proposed_output_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_directory": "docs/manuscript_p3/codex/chapter_3/",
+      "citation_provenance_note": "Caption phân biệt loại bằng chứng, artifact pin, result IDs, đơn vị và mẫu số; scholarly source background không xác nhận code. Giữ original source object/version trong sidecar.",
+      "mandatory_limitations": [
+        "c chỉ tài sản collateral-enabled; denominator0→Infinity ở code, dữ liệu xuất phải có status; q vàp dùng policy đúng tài sản"
+      ],
+      "status": "CODEX_REQUIRED",
+      "status_semantics": "READY chỉ là nguồn/cấu trúc sẵn sàng; không khẳng định đã render. CODEX_REQUIRED là yêu cầu sau phê duyệt, chưa phải Codex đã nhận/hoàn tất.",
+      "formula": "HF_i(t)=\\frac{\\sum_j c_{ij}p_j(t)LT_j}{\\sum_k d_{ik}q_k(t)};\\quad HF<1\\text{ is eligibility only}",
+      "required_review": "Codex technical reconciliation + Work self-review; Commander chapter approval pending"
+    },
+    {
+      "proposed_manuscript_id": "E3.2",
+      "handoff_id": "P3X-E3.2",
+      "id_semantics": "Proposed P3 exhibit ID; not a new scientific result ID. Final numbering depends on template approval.",
+      "chapter": 3,
+      "section": "3.3",
+      "kind": "EQUATION",
+      "title": "Giá từ sqrtPriceX96",
+      "research_purpose": "Giải thích quan hệ và giả định trước khi đọc kết quả",
+      "accepted_claim_ids": [
+        "P2:C08"
+      ],
+      "exact_result_ids": [],
+      "existing_evidence_ids": [],
+      "evidence_id_status": "NOT_APPLICABLE_CONCEPTUAL_OR_DIRECT_ARTIFACT",
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "artifact_locators": [
+        {
+          "path": "sim/dex/uniswap_v3.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "4172eae06907ae8bf95a10e7e50463111d0eec3d",
+          "read_scope": "READ_CONTENT_G0"
+        }
+      ],
+      "fields_or_axes": [
+        "Biến",
+        "Đơn vị",
+        "Miền áp dụng",
+        "Quy tắc biên",
+        "Timing"
+      ],
+      "units": [
+        "token1/token0",
+        "token0/token1"
+      ],
+      "policy_scenario_cohort": [
+        "Đặc tả mô hình khóa; notation P3 không thay numerical implementation"
+      ],
+      "requested_output_format": "LaTeX + MathML/Word equation source và symbol/unit dictionary",
+      "proposed_output_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_directory": "docs/manuscript_p3/codex/chapter_3/",
+      "citation_provenance_note": "Caption phân biệt loại bằng chứng, artifact pin, result IDs, đơn vị và mẫu số; scholarly source background không xác nhận code. Giữ original source object/version trong sidecar.",
+      "mandatory_limitations": [
+        "Phải xác minh token0/token1 và decimals của pool. Khi biểu diễn USDC/WETH, dùng đúng chiều nghịch đảo; không đổi chiều token theo trực giác."
+      ],
+      "status": "CODEX_REQUIRED",
+      "status_semantics": "READY chỉ là nguồn/cấu trúc sẵn sàng; không khẳng định đã render. CODEX_REQUIRED là yêu cầu sau phê duyệt, chưa phải Codex đã nhận/hoàn tất.",
+      "formula": "s=\\mathrm{sqrtPriceX96}/2^{96};\\quad P_{1/0}=s^2 10^{d_0-d_1};\\quad P_{0/1}=1/P_{1/0}",
+      "required_review": "Codex technical reconciliation + Work self-review; Commander chapter approval pending"
+    },
+    {
+      "proposed_manuscript_id": "E3.3",
+      "handoff_id": "P3X-E3.3",
+      "id_semantics": "Proposed P3 exhibit ID; not a new scientific result ID. Final numbering depends on template approval.",
+      "chapter": 3,
+      "section": "3.3",
+      "kind": "EQUATION",
+      "title": "Dịch chuyển trong một khoảng thanh khoản",
+      "research_purpose": "Giải thích quan hệ và giả định trước khi đọc kết quả",
+      "accepted_claim_ids": [
+        "P2:C07",
+        "P2:C08",
+        "P2:C34"
+      ],
+      "exact_result_ids": [],
+      "existing_evidence_ids": [],
+      "evidence_id_status": "NOT_APPLICABLE_CONCEPTUAL_OR_DIRECT_ARTIFACT",
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "artifact_locators": [
+        {
+          "path": "sim/dex/uniswap_v3.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "4172eae06907ae8bf95a10e7e50463111d0eec3d",
+          "read_scope": "READ_CONTENT_G0"
+        }
+      ],
+      "fields_or_axes": [
+        "Biến",
+        "Đơn vị",
+        "Miền áp dụng",
+        "Quy tắc biên",
+        "Timing"
+      ],
+      "units": [
+        "raw token amounts trước decimal normalization",
+        "s dimensionless"
+      ],
+      "policy_scenario_cohort": [
+        "Đặc tả mô hình khóa; notation P3 không thay numerical implementation"
+      ],
+      "requested_output_format": "LaTeX + MathML/Word equation source và symbol/unit dictionary",
+      "proposed_output_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_directory": "docs/manuscript_p3/codex/chapter_3/",
+      "citation_provenance_note": "Caption phân biệt loại bằng chứng, artifact pin, result IDs, đơn vị và mẫu số; scholarly source background không xác nhận code. Giữ original source object/version trong sidecar.",
+      "mandatory_limitations": [
+        "Công thức áp dụng cho net input sau phí trong một khoảng; qua tick phải cập nhật L. Không dùng quan hệ này như constant product cho toàn pool."
+      ],
+      "status": "CODEX_REQUIRED",
+      "status_semantics": "READY chỉ là nguồn/cấu trúc sẵn sàng; không khẳng định đã render. CODEX_REQUIRED là yêu cầu sau phê duyệt, chưa phải Codex đã nhận/hoàn tất.",
+      "formula": "\\Delta y=L(s_b-s_a);\\quad\\Delta x=L(1/s_a-1/s_b)\\quad(s_b>s_a)",
+      "required_review": "Codex technical reconciliation + Work self-review; Commander chapter approval pending"
+    },
+    {
+      "proposed_manuscript_id": "E3.4",
+      "handoff_id": "P3X-E3.4",
+      "id_semantics": "Proposed P3 exhibit ID; not a new scientific result ID. Final numbering depends on template approval.",
+      "chapter": 3,
+      "section": "3.4",
+      "kind": "EQUATION",
+      "title": "Chính sách định giá phản thực",
+      "research_purpose": "Giải thích quan hệ và giả định trước khi đọc kết quả",
+      "accepted_claim_ids": [
+        "P2:C32"
+      ],
+      "exact_result_ids": [],
+      "existing_evidence_ids": [],
+      "evidence_id_status": "NOT_APPLICABLE_CONCEPTUAL_OR_DIRECT_ARTIFACT",
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "artifact_locators": [
+        {
+          "path": "sim/oracle.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "2ac37f923a4cc35bef95968d353f0724bfdbd3a5",
+          "read_scope": "READ_CONTENT_G0"
+        },
+        {
+          "path": "data/processed/research_final/oracle_transmission_diagnostic_v1/selection_manifest.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "1bb5bdea8be74c1e62dc89badbcb8cbae67b7bd3",
+          "read_scope": "READ_CONTENT_G0"
+        }
+      ],
+      "fields_or_axes": [
+        "Biến",
+        "Đơn vị",
+        "Miền áp dụng",
+        "Quy tắc biên",
+        "Timing"
+      ],
+      "units": [
+        "USDC/WETH theo model price convention; đổiUSDkhi cần"
+      ],
+      "policy_scenario_cohort": [
+        "Đặc tả mô hình khóa; notation P3 không thay numerical implementation"
+      ],
+      "requested_output_format": "LaTeX + MathML/Word equation source và symbol/unit dictionary",
+      "proposed_output_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_directory": "docs/manuscript_p3/codex/chapter_3/",
+      "citation_provenance_note": "Caption phân biệt loại bằng chứng, artifact pin, result IDs, đơn vị và mẫu số; scholarly source background không xác nhận code. Giữ original source object/version trong sidecar.",
+      "mandatory_limitations": [
+        "Mean chỉ lấy các completed waves theo lag/window trong code: C weak α=0,25/lag1/window3; C moderate α=0,50/lag1/window2. Không gọi đây là feed Aave/Chainlink đã xác minh."
+      ],
+      "status": "CODEX_REQUIRED",
+      "status_semantics": "READY chỉ là nguồn/cấu trúc sẵn sàng; không khẳng định đã render. CODEX_REQUIRED là yêu cầu sau phê duyệt, chưa phải Codex đã nhận/hoàn tất.",
+      "formula": "p^A=\\min(p^{ref},p^{DEX});\\quad p^B=p^{ref};\\quad p^C=\\min(p^{ref},p^{ref}+\\alpha(\\overline p^{DEX}_{lag,w}-p^{ref}))",
+      "required_review": "Codex technical reconciliation + Work self-review; Commander chapter approval pending"
+    },
+    {
+      "proposed_manuscript_id": "E3.5",
+      "handoff_id": "P3X-E3.5",
+      "id_semantics": "Proposed P3 exhibit ID; not a new scientific result ID. Final numbering depends on template approval.",
+      "chapter": 3,
+      "section": "3.2",
+      "kind": "EQUATION",
+      "title": "Các trạng thái eligibility và execution",
+      "research_purpose": "Giải thích quan hệ và giả định trước khi đọc kết quả",
+      "accepted_claim_ids": [
+        "P2:C03",
+        "P2:C33",
+        "INT:CL_INT_ELIGIBLE_NOT_EXECUTED"
+      ],
+      "exact_result_ids": [],
+      "existing_evidence_ids": [],
+      "evidence_id_status": "NOT_APPLICABLE_CONCEPTUAL_OR_DIRECT_ARTIFACT",
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "artifact_locators": [
+        {
+          "path": "sim/lending/liquidation.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "9f95f18e8aa52f48facbebe1b3bdc8f88c0f162a",
+          "read_scope": "READ_CONTENT_G0"
+        },
+        {
+          "path": "sim/engine/run.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "2b23c9ee88ee4976755e5f4795026e381d5fe497",
+          "read_scope": "READ_CONTENT_G0"
+        }
+      ],
+      "fields_or_axes": [
+        "Biến",
+        "Đơn vị",
+        "Miền áp dụng",
+        "Quy tắc biên",
+        "Timing"
+      ],
+      "units": [
+        "indicators; token quantities"
+      ],
+      "policy_scenario_cohort": [
+        "Đặc tả mô hình khóa; notation P3 không thay numerical implementation"
+      ],
+      "requested_output_format": "LaTeX + MathML/Word equation source và symbol/unit dictionary",
+      "proposed_output_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_directory": "docs/manuscript_p3/codex/chapter_3/",
+      "citation_provenance_note": "Caption phân biệt loại bằng chứng, artifact pin, result IDs, đơn vị và mẫu số; scholarly source background không xác nhận code. Giữ original source object/version trong sidecar.",
+      "mandatory_limitations": [
+        "Route condition không tự đủ cho execution: plan, profitability, vốn, công suất và độ trễ là các cổng riêng. Attempted là engine evaluation, không phải giao dịch broadcast."
+      ],
+      "status": "CODEX_REQUIRED",
+      "status_semantics": "READY chỉ là nguồn/cấu trúc sẵn sàng; không khẳng định đã render. CODEX_REQUIRED là yêu cầu sau phê duyệt, chưa phải Codex đã nhận/hoàn tất.",
+      "formula": "E_i=1[HF_i<1];\\ R_i=1[d_i^{USDC}>0\\land c_i^{WETH}>0];\\ X_i=1[\\mathrm{LIQUIDATION}\\land\\mathrm{debt\\_repaid}>0]",
+      "required_review": "Codex technical reconciliation + Work self-review; Commander chapter approval pending"
+    },
+    {
+      "proposed_manuscript_id": "E3.6",
+      "handoff_id": "P3X-E3.6",
+      "id_semantics": "Proposed P3 exhibit ID; not a new scientific result ID. Final numbering depends on template approval.",
+      "chapter": 3,
+      "section": "3.5",
+      "kind": "EQUATION",
+      "title": "Tần suất mô phỏng có điều kiện",
+      "research_purpose": "Giải thích quan hệ và giả định trước khi đọc kết quả",
+      "accepted_claim_ids": [
+        "P2:C22",
+        "P2:C23"
+      ],
+      "exact_result_ids": [],
+      "existing_evidence_ids": [],
+      "evidence_id_status": "NOT_APPLICABLE_CONCEPTUAL_OR_DIRECT_ARTIFACT",
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/tables/rq1_monte_carlo.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "ea71db6f633b7e5df1f12cd3d9f2533e5d5f9438",
+          "read_scope": "READ_CONTENT_G0"
+        }
+      ],
+      "fields_or_axes": [
+        "Biến",
+        "Đơn vị",
+        "Miền áp dụng",
+        "Quy tắc biên",
+        "Timing"
+      ],
+      "units": [
+        "ratio"
+      ],
+      "policy_scenario_cohort": [
+        "Đặc tả mô hình khóa; notation P3 không thay numerical implementation"
+      ],
+      "requested_output_format": "LaTeX + MathML/Word equation source và symbol/unit dictionary",
+      "proposed_output_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_directory": "docs/manuscript_p3/codex/chapter_3/",
+      "citation_provenance_note": "Caption phân biệt loại bằng chứng, artifact pin, result IDs, đơn vị và mẫu số; scholarly source background không xác nhận code. Giữ original source object/version trong sidecar.",
+      "mandatory_limitations": [
+        "Mỗi n thuộc một batch/seed/scenario/policy. Mười targeted paths không là mẫu ước lượng quần thể; không cộng các nested prefixes."
+      ],
+      "status": "CODEX_REQUIRED",
+      "status_semantics": "READY chỉ là nguồn/cấu trúc sẵn sàng; không khẳng định đã render. CODEX_REQUIRED là yêu cầu sau phê duyệt, chưa phải Codex đã nhận/hoàn tất.",
+      "formula": "\\widehat f_{\\ge2}=\\frac1n\\sum_{r=1}^{n}1[D_r\\ge2]",
+      "required_review": "Codex technical reconciliation + Work self-review; Commander chapter approval pending"
+    },
+    {
+      "proposed_manuscript_id": "E3.7",
+      "handoff_id": "P3X-E3.7",
+      "id_semantics": "Proposed P3 exhibit ID; not a new scientific result ID. Final numbering depends on template approval.",
+      "chapter": 3,
+      "section": "3.5",
+      "kind": "EQUATION",
+      "title": "Khoảng Wilson cho tần suất",
+      "research_purpose": "Giải thích quan hệ và giả định trước khi đọc kết quả",
+      "accepted_claim_ids": [
+        "P2:C23"
+      ],
+      "exact_result_ids": [],
+      "existing_evidence_ids": [],
+      "evidence_id_status": "NOT_APPLICABLE_CONCEPTUAL_OR_DIRECT_ARTIFACT",
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "artifact_locators": [
+        {
+          "path": "docs/research_final/APA_REFERENCES_VERIFIED.md",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "c76d7cf482565615a92fb17b888a392e4f8fd9cc",
+          "read_scope": "READ_CONTENT_G0"
+        },
+        {
+          "path": "docs/research_final/LITERATURE_VERIFIED.md",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "6ebe0a11e915e942a422d02a0cc5b1d53b51ff3e",
+          "read_scope": "READ_CONTENT_G0"
+        }
+      ],
+      "fields_or_axes": [
+        "Biến",
+        "Đơn vị",
+        "Miền áp dụng",
+        "Quy tắc biên",
+        "Timing"
+      ],
+      "units": [
+        "ratio; z≈1.96 cho95%"
+      ],
+      "policy_scenario_cohort": [
+        "Đặc tả mô hình khóa; notation P3 không thay numerical implementation"
+      ],
+      "requested_output_format": "LaTeX + MathML/Word equation source và symbol/unit dictionary",
+      "proposed_output_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_directory": "docs/manuscript_p3/codex/chapter_3/",
+      "citation_provenance_note": "Caption phân biệt loại bằng chứng, artifact pin, result IDs, đơn vị và mẫu số; scholarly source background không xác nhận code. Giữ original source object/version trong sidecar.",
+      "mandatory_limitations": [
+        "Nguồn S24 là trang NIST có tiêu đề Agresti Coull, nhưng công thức sử dụng là Wilson. Phân biệt adjusted Wald; công bố điều kiện lấy mẫu mô phỏng."
+      ],
+      "status": "CODEX_REQUIRED",
+      "status_semantics": "READY chỉ là nguồn/cấu trúc sẵn sàng; không khẳng định đã render. CODEX_REQUIRED là yêu cầu sau phê duyệt, chưa phải Codex đã nhận/hoàn tất.",
+      "formula": "\\frac{\\hat f+z^2/(2n)\\ \\pm\\ z\\sqrt{\\hat f(1-\\hat f)/n+z^2/(4n^2)}}{1+z^2/n}",
+      "required_review": "Codex technical reconciliation + Work self-review; Commander chapter approval pending"
+    },
+    {
+      "proposed_manuscript_id": "E3.8",
+      "handoff_id": "P3X-E3.8",
+      "id_semantics": "Proposed P3 exhibit ID; not a new scientific result ID. Final numbering depends on template approval.",
+      "chapter": 3,
+      "section": "3.3",
+      "kind": "EQUATION",
+      "title": "Đơn vị nợ USDC và USD tương đương",
+      "research_purpose": "Giải thích quan hệ và giả định trước khi đọc kết quả",
+      "accepted_claim_ids": [
+        "P2:C15",
+        "P2:C35"
+      ],
+      "exact_result_ids": [],
+      "existing_evidence_ids": [],
+      "evidence_id_status": "NOT_APPLICABLE_CONCEPTUAL_OR_DIRECT_ARTIFACT",
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/tables/rq5_usdc_valuation.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "3f36a867c750f90d5a88ae5b1b00eae6be151b6e",
+          "read_scope": "READ_CONTENT_G0"
+        },
+        {
+          "path": "sim/lending/health_factor.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "8d8cae6754e718856867ce3696498bd68134a294",
+          "read_scope": "READ_CONTENT_G0"
+        }
+      ],
+      "fields_or_axes": [
+        "Biến",
+        "Đơn vị",
+        "Miền áp dụng",
+        "Quy tắc biên",
+        "Timing"
+      ],
+      "units": [
+        "USDCtoken",
+        "USD/USDC",
+        "USD"
+      ],
+      "policy_scenario_cohort": [
+        "Đặc tả mô hình khóa; notation P3 không thay numerical implementation"
+      ],
+      "requested_output_format": "LaTeX + MathML/Word equation source và symbol/unit dictionary",
+      "proposed_output_owner": "Codex rendering; Work owns caption/inference",
+      "requested_output_directory": "docs/manuscript_p3/codex/chapter_3/",
+      "citation_provenance_note": "Caption phân biệt loại bằng chứng, artifact pin, result IDs, đơn vị và mẫu số; scholarly source background không xác nhận code. Giữ original source object/version trong sidecar.",
+      "mandatory_limitations": [
+        "Chỉ định giá nợ; không tự mở rộng việc repricing cho seize, repayment quote hoặc dust ngoài mã đã khóa."
+      ],
+      "status": "CODEX_REQUIRED",
+      "status_semantics": "READY chỉ là nguồn/cấu trúc sẵn sàng; không khẳng định đã render. CODEX_REQUIRED là yêu cầu sau phê duyệt, chưa phải Codex đã nhận/hoàn tất.",
+      "formula": "V_{debt}^{USD}=Q_{debt}^{USDC}\\,q_{USDC/USD}",
+      "required_review": "Codex technical reconciliation + Work self-review; Commander chapter approval pending"
+    }
+  ],
+  "evidence_requests": [
+    {
+      "request_id": "ER-G0-TEMPLATE",
+      "status": "TEMPLATE_VERIFICATION_PENDING",
+      "owner": "Commander",
+      "needed": "Template/quy định báo cáo NCKH PTIT chính thức hoặc chỉ dẫn có nguồn gốc",
+      "impact": "Không chặn nội dung G0; chặn chốt format/numbering/page budget và finalDOCX."
+    },
+    {
+      "request_id": "ER-G0-LEGACY-TERRA",
+      "status": "OPTIONAL_NOT_AUTHORIZED_FOR_NEW_FINDING",
+      "owner": "Commander/Codex sau approval nếu muốn giữ",
+      "needed": "Xác nhận vai trò/locator của các legacy Terra fit/mechanism/stress figures trước khi tái dùng; không tự đưa thêm numerical claim vào44affirmative.",
+      "impact": "Không chặn blueprint; bảy chương dùngnegativeTerra đãkhóa. Khôngchạymôphỏngmới."
+    },
+    {
+      "request_id": "ER-G0-RAW-READ",
+      "status": "PRESERVED_READ_LIMITATION",
+      "owner": "Codex evidence pack",
+      "needed": "Dùng audit/event samples đãkhóa cho minh họa eligible/executed; Work không tự khai đọc đủ2largeCSV.",
+      "impact": "KhôngchặnG0; nếu exhibit đòi raw-cell mới phảiCodexđưa extract+provenance, chờCommander quyếtđịnhphạm vi."
+    }
+  ]
+}
