@@ -10,14 +10,30 @@ from typing import Any
 ROOT = Path("data/processed/research_final/final_accepted_claims_v1")
 SOURCE_HEAD = "6560f799f81223cd4a720bd3f6b798aeef1732b9"
 RQ_ORDER = [f"RQ{index}" for index in range(1, 7)]
-RQ_QUESTIONS = [
-    "Điều kiện và ngưỡng xuất hiện thanh lý dây chuyền.",
-    "Vai trò thanh khoản DEX.",
-    "Gas, vốn, công suất và độ trễ thanh lý.",
-    "Arbitrage và phục hồi giá.",
-    "Mất neo stablecoin và định giá nợ USDC.",
-    "Đánh đổi LTV, liquidation threshold, liquidation bonus.",
-]
+DISALLOWED_IDS = {
+    "CL_FROZEN_RQ1_UNQUALIFIED_WORDING",
+    "CL_FROZEN_RQ2_DIRECT_ELIGIBILITY_WORDING",
+    "CL_UNSUPPORTED_AAVE_USES_UNISWAP_SPOT",
+    "CL_UNSUPPORTED_HISTORICAL_CAUSAL_CONTAGION",
+}
+EXPECTED_SLASH_RQ_MAPPINGS = {
+    "C02": ["RQ1", "RQ5", "RQ6"],
+    "C03": ["RQ1", "RQ3"],
+    "C05": ["RQ3", "RQ6"],
+    "C06": ["RQ3", "RQ6"],
+    "C08": ["RQ2", "RQ5"],
+    "C09": ["RQ1", "RQ2", "RQ4"],
+    "C10": ["RQ1", "RQ2"],
+    "C11": ["RQ1", "RQ4"],
+    "C12": ["RQ3", "RQ6"],
+    "C13": ["RQ4", "RQ5"],
+    "C19": ["RQ3", "RQ4"],
+    "C21": ["RQ2", "RQ3", "RQ6"],
+    "C24": ["RQ2", "RQ3", "RQ5", "RQ6"],
+    "C32": ["RQ1", "RQ2", "RQ4"],
+    "C33": ["RQ1", "RQ3"],
+    "C34": ["RQ2", "RQ4"],
+}
 
 
 def _load(path: Path) -> dict[str, Any]:
@@ -33,9 +49,20 @@ def _git(*args: str, binary: bool = False) -> bytes | str:
     return value if binary else value.decode("utf-8").strip()
 
 
+def _locked_rq_questions() -> list[str]:
+    raw = _git(
+        "show",
+        f"{SOURCE_HEAD}:docs/research_final/REFERENCE_EVIDENCE_MATRIX.md",
+    )
+    assert isinstance(raw, str)
+    matches = re.findall(r"^\d+\. \*\*RQ([1-6])\.\*\* (.+)$", raw, re.MULTILINE)
+    assert [f"RQ{number}" for number, _ in matches] == RQ_ORDER
+    return [wording for _, wording in matches]
+
+
 def test_manifest_has_no_self_hash_and_resolves_all_outputs() -> None:
     manifest = _load(ROOT / "manifest.json")
-    assert manifest["status"] == "FINAL_REGISTRY_READY_FOR_COMMANDER_REVIEW"
+    assert manifest["status"] == "REGISTRY_TARGETED_REPAIR_COMPLETE"
     assert manifest["source_integration_head"] == SOURCE_HEAD
     assert manifest["output_commit"] == "RECORDED_IN_GIT_HANDOFF_NOT_SELF_EMBEDDED"
     assert manifest["self_hash_excluded"] is True
@@ -72,7 +99,9 @@ def test_two_namespaces_are_complete_and_unique() -> None:
 def test_six_rq_matrix_preserves_questions_and_limitations() -> None:
     rows = _load(ROOT / "six_rq_accepted_claims_matrix.json")["research_questions"]
     assert [row["rq"] for row in rows] == RQ_ORDER
-    assert [row["research_question"] for row in rows] == RQ_QUESTIONS
+    assert [row["research_question"] for row in rows] == _locked_rq_questions()
+    assert [row["full_original_research_question"] for row in rows] == _locked_rq_questions()
+    assert all(row["short_display_label"] != row["research_question"] for row in rows)
     assert all(row["required_limitations"] for row in rows)
     assert all(row["results_prohibited_from_extrapolation"] for row in rows)
     assert all(row["scientific_decision_status"] == "ACCEPTED_WITH_LIMITATIONS" for row in rows)
@@ -172,6 +201,134 @@ def test_numerical_claim_lock_is_exact_and_scoped() -> None:
     assert numerical["terra_negative"]["successful_oos_forecast_established"] is False
 
 
+def test_ar01_primary_evidence_tiers_and_background_are_exact() -> None:
+    records = _load(ROOT / "accepted_claims_registry.json")["records"]
+    by_id = {row["original_claim_id"]: row for row in records}
+    expected = {
+        "C19": "CODE_OBSERVATION",
+        "C24": "PROJECT_METRIC_DEFINITION",
+        "C26": "CODE_OBSERVATION",
+        "C30": "DERIVED_HISTORICAL_VALIDATION_RESULT",
+        "C32": "CODE_OBSERVATION_AND_MODEL_COMPUTED_COUNTERFACTUAL",
+        "C34": "CODE_OBSERVATION",
+        "C35": "CODE_OBSERVATION_WITH_SCOPED_MODEL_LIMITATION",
+        "CL_INT_TERRA_NEGATIVE_PRESERVED": "DERIVED_HISTORICAL_VALIDATION_RESULT",
+    }
+    assert {claim_id: by_id[claim_id]["primary_evidence_tier"] for claim_id in expected} == expected
+    assert by_id["C19"]["supporting_scholarly_background"]["status"] == "NOT_APPLICABLE"
+    assert by_id["C24"]["supporting_scholarly_background"]["status"] == "SCHOLARLY_BACKGROUND_ONLY"
+    assert by_id["C26"]["supporting_scholarly_background"]["source_ids"] == ["S25", "S26"]
+    assert by_id["C32"]["supporting_scholarly_background"]["source_ids"] == ["S05"]
+    assert by_id["C34"]["supporting_scholarly_background"]["source_ids"] == ["S08"]
+    assert by_id["C35"]["supporting_scholarly_background"]["status"] == "NOT_APPLICABLE"
+    assert "ONCHAIN_HISTORICAL_OBSERVATION" in by_id["C09"]["primary_evidence_components"]
+    assert "ONCHAIN_HISTORICAL_OBSERVATION" in by_id["C10"]["primary_evidence_components"]
+
+
+def test_ar02_all_sixteen_slash_rq_mappings_are_restored() -> None:
+    records = _load(ROOT / "accepted_claims_registry.json")["records"]
+    scholarly = {
+        row["original_claim_id"]: row
+        for row in records
+        if row["namespace"] == "SCHOLARLY_P2"
+    }
+    assert {
+        claim_id: scholarly[claim_id]["rq_mapping"]
+        for claim_id in EXPECTED_SLASH_RQ_MAPPINGS
+    } == EXPECTED_SLASH_RQ_MAPPINGS
+    crosswalk = {
+        row["original_claim_id"]: row
+        for row in _load(ROOT / "claim_evidence_crosswalk.json")["rows"]
+    }
+    assert {
+        claim_id: crosswalk[claim_id]["rq_mapping"]
+        for claim_id in EXPECTED_SLASH_RQ_MAPPINGS
+    } == EXPECTED_SLASH_RQ_MAPPINGS
+    rq_rows = _load(ROOT / "six_rq_accepted_claims_matrix.json")["research_questions"]
+    support = {
+        row["rq"]: set(row["scholarly_claim_registry_ids"])
+        for row in rq_rows
+    }
+    for claim_id, mappings in EXPECTED_SLASH_RQ_MAPPINGS.items():
+        for rq in mappings:
+            assert f"P2:{claim_id}" in support[rq]
+
+
+def test_ar03_accepted_wording_and_rq3_route_semantics_are_exact() -> None:
+    records = _load(ROOT / "accepted_claims_registry.json")["records"]
+    by_id = {row["original_claim_id"]: row for row in records}
+    expected = {
+        "C07": (
+            "Thanh khoản Uniswap V3 phụ thuộc các khoảng tick. Trong mô phỏng, suy giảm độ sâu "
+            "làm thay đổi khả năng hấp thụ bán thế chấp và tác động giá; eligibility mới còn phụ thuộc "
+            "chính sách định giá."
+        ),
+        "C11": (
+            "S13 không tìm thấy tác động giá kéo dài có ý nghĩa thống kê trong thiết kế đã xét; "
+            "DeFiStress mô phỏng thanh lý vòng hai ở những trường hợp stress được chọn dưới Policy A. "
+            "Hai kết quả có phạm vi và chuẩn đối chiếu khác nhau."
+        ),
+        "C19": (
+            "Nhánh Aave của DeFiStress sử dụng một tác nhân thanh lý và một tác nhân kinh doanh "
+            "chênh lệch giá đại diện."
+        ),
+        "C23": (
+            "Trong cấu hình baseline Policy A, Severe ghi nhận 8/200 đường mô phỏng ở P0 v2 và "
+            "280/10.000 đường ở Level-3 có độ sâu thanh lý từ hai vòng trở lên; Low Liquidity ghi nhận "
+            "0/1.000. Khoảng Wilson mô tả bất định lấy mẫu có điều kiện trong từng cấu hình."
+        ),
+        "C32": (
+            "Policy A của mô hình lấy giá trị nhỏ hơn giữa giá tham chiếu và giá DEX; Policy B chỉ dùng "
+            "giá tham chiếu; các Policy C là giả định truyền giá có độ trễ và làm trơn. Các chính sách này "
+            "chưa được xác minh là cơ chế oracle thực tế của Aave hoặc Chainlink."
+        ),
+        "C33": (
+            "Kiểm toán HF trong mô hình theo Policy A ghi nhận các vị thế mới mất an toàn sau Wave 1; "
+            "việc mới đủ điều kiện theo HF được đối chiếu riêng với các lần thanh lý vòng hai có hoàn trả "
+            "nợ dương."
+        ),
+    }
+    for claim_id, wording in expected.items():
+        assert by_id[claim_id]["accepted_vietnamese_wording"] == wording
+        assert by_id[claim_id]["accepted_vietnamese_wording"] != by_id[claim_id]["original_source_wording"]
+    rq3 = _load(ROOT / "six_rq_accepted_claims_matrix.json")["research_questions"][2]
+    conclusion = rq3["recommended_vietnamese_conclusion"]
+    assert "36 trường hợp mới đủ điều kiện theo HF danh mục" in conclusion
+    assert "không có khoản nợ USDC thuộc tuyến thanh lý WETH/USDC" in conclusion
+    assert "borrower-case-policy instances" in conclusion
+    assert "không còn modeled USDC debt" not in conclusion
+    assert "đã được trả hết" not in conclusion
+
+
+def test_ar03_c23_denominators_resolve_from_locked_artifact() -> None:
+    batches = _load(
+        Path(
+            "data/processed/research_final/level3_extension/deep_stress/monte_carlo_batches.json"
+        )
+    )["batches"]
+    observed = {
+        (row["scenario"]["name"], int(row["actual_runs"])): (
+            int(row["cascade_frequencies"]["2"]["successes"]),
+            int(row["cascade_frequencies"]["2"]["runs"]),
+        )
+        for row in batches
+    }
+    assert observed[("Severe", 200)] == (8, 200)
+    assert observed[("Severe", 10000)] == (280, 10000)
+    assert observed[("Low Liquidity", 1000)] == (0, 1000)
+
+
+def test_ar04_superseded_wording_is_not_mislabeled_as_historical_quote() -> None:
+    records = _load(ROOT / "accepted_claims_registry.json")["records"]
+    by_id = {row["original_claim_id"]: row for row in records}
+    for claim_id in {
+        "CL_FROZEN_RQ1_UNQUALIFIED_WORDING",
+        "CL_FROZEN_RQ2_DIRECT_ELIGIBILITY_WORDING",
+    }:
+        assert by_id[claim_id]["original_source_wording"] == "NOT_VERBATIM_HISTORICAL_QUOTATION"
+        assert by_id[claim_id]["historical_disposition_summary"] != "NOT_APPLICABLE"
+
+
 def test_unsupported_and_superseded_claims_are_not_promoted() -> None:
     records = _load(ROOT / "accepted_claims_registry.json")["records"]
     status = {row["original_claim_id"]: row["final_gate_status"] for row in records}
@@ -184,6 +341,26 @@ def test_unsupported_and_superseded_claims_are_not_promoted() -> None:
             assert row["not_established_semantics"].startswith("No affirmative")
         if row["namespace"] == "SCHOLARLY_P2" and row["not_applicable_semantics"].startswith("No project"):
             assert "not a numerical PASS" in row["not_applicable_semantics"]
+    rq_rows = _load(ROOT / "six_rq_accepted_claims_matrix.json")["research_questions"]
+    affirmative = {
+        claim_id
+        for row in rq_rows
+        for claim_id in row["accepted_integration_claim_ids"]
+    }
+    disallowed = {
+        claim_id
+        for row in rq_rows
+        for claim_id in row["disallowed_or_superseded_claim_ids"]
+    }
+    assert affirmative.isdisjoint(DISALLOWED_IDS)
+    assert disallowed >= DISALLOWED_IDS
+    assert all(
+        reference["claim_id"] not in DISALLOWED_IDS
+        or reference["final_gate_status"]
+        in {"REJECTED_AS_WORDED_SUPERSEDED", "UNSUPPORTED"}
+        for row in rq_rows
+        for reference in row["integration_scientific_claim_references"]
+    )
 
 
 def test_validation_gates_and_readiness_are_proposed_not_granted() -> None:
@@ -196,11 +373,12 @@ def test_validation_gates_and_readiness_are_proposed_not_granted() -> None:
         "active_locator_hash_matches"
     ]
     assert validation["locator_hash_mismatches"] == []
-    assert readiness["proposed_status"] == "FINAL_REGISTRY_READY_FOR_COMMANDER_REVIEW"
+    assert readiness["proposed_status"] == "REGISTRY_TARGETED_REPAIR_COMPLETE"
     assert readiness["scientific_content_lock_declared"] is False
     assert readiness["commander_decision_required"] is True
     assert readiness["blocking_conflicts"] == []
     assert len(readiness["rejected_or_unsupported_integration_records"]) == 4
+    assert set(readiness["academic_repair_status"].values()) == {"PASS"}
 
 
 def test_registry_exposes_no_raw_wallet_or_secret() -> None:

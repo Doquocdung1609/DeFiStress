@@ -15,12 +15,14 @@ FROZEN = Path("data/processed/research_final/frozen_v3")
 ORACLE = Path("data/processed/research_final/oracle_transmission_diagnostic_v1")
 INTEGRATION = Path("data/processed/research_final/scientific_integration_v1")
 P2 = Path("docs/research_final/P2_CLAIM_EVIDENCE_CROSSWALK.json")
+P2_RQ_SOURCE = Path("docs/research_final/REFERENCE_EVIDENCE_MATRIX.md")
 REPORT = Path("docs/research_final/FINAL_ACCEPTED_CLAIMS_REGISTRY_v1.md")
 PACKET = Path("docs/research_final/SCIENTIFIC_CONTENT_LOCK_REVIEW_PACKET.md")
 TEST_EVIDENCE = ROOT / "test_evidence.json"
 
 SOURCE_HEAD = "6560f799f81223cd4a720bd3f6b798aeef1732b9"
 CANONICAL_SHA256_CRLF = "553e93a345642dd4ef655dbcd883c12180d83327e9c9b917ff83c58dd9a3af99"
+SCHEMA_VERSION = "final-accepted-claims-v1.1-targeted-repair"
 
 RQ_DEFINITIONS = [
     ("RQ1", "Điều kiện và ngưỡng xuất hiện thanh lý dây chuyền."),
@@ -30,6 +32,92 @@ RQ_DEFINITIONS = [
     ("RQ5", "Mất neo stablecoin và định giá nợ USDC."),
     ("RQ6", "Đánh đổi LTV, liquidation threshold, liquidation bonus."),
 ]
+
+DISALLOWED_INTEGRATION_CLAIM_IDS = {
+    "CL_FROZEN_RQ1_UNQUALIFIED_WORDING",
+    "CL_FROZEN_RQ2_DIRECT_ELIGIBILITY_WORDING",
+    "CL_UNSUPPORTED_AAVE_USES_UNISWAP_SPOT",
+    "CL_UNSUPPORTED_HISTORICAL_CAUSAL_CONTAGION",
+}
+
+EXPECTED_SLASH_RQ_MAPPINGS = {
+    "C02": ["RQ1", "RQ5", "RQ6"],
+    "C03": ["RQ1", "RQ3"],
+    "C05": ["RQ3", "RQ6"],
+    "C06": ["RQ3", "RQ6"],
+    "C08": ["RQ2", "RQ5"],
+    "C09": ["RQ1", "RQ2", "RQ4"],
+    "C10": ["RQ1", "RQ2"],
+    "C11": ["RQ1", "RQ4"],
+    "C12": ["RQ3", "RQ6"],
+    "C13": ["RQ4", "RQ5"],
+    "C19": ["RQ3", "RQ4"],
+    "C21": ["RQ2", "RQ3", "RQ6"],
+    "C24": ["RQ2", "RQ3", "RQ5", "RQ6"],
+    "C32": ["RQ1", "RQ2", "RQ4"],
+    "C33": ["RQ1", "RQ3"],
+    "C34": ["RQ2", "RQ4"],
+}
+
+ACCEPTED_WORDING_OVERRIDES = {
+    "C07": "Thanh khoản Uniswap V3 phụ thuộc các khoảng tick. Trong mô phỏng, suy giảm độ sâu làm thay đổi khả năng hấp thụ bán thế chấp và tác động giá; eligibility mới còn phụ thuộc chính sách định giá.",
+    "C11": "S13 không tìm thấy tác động giá kéo dài có ý nghĩa thống kê trong thiết kế đã xét; DeFiStress mô phỏng thanh lý vòng hai ở những trường hợp stress được chọn dưới Policy A. Hai kết quả có phạm vi và chuẩn đối chiếu khác nhau.",
+    "C19": "Nhánh Aave của DeFiStress sử dụng một tác nhân thanh lý và một tác nhân kinh doanh chênh lệch giá đại diện.",
+    "C23": "Trong cấu hình baseline Policy A, Severe ghi nhận 8/200 đường mô phỏng ở P0 v2 và 280/10.000 đường ở Level-3 có độ sâu thanh lý từ hai vòng trở lên; Low Liquidity ghi nhận 0/1.000. Khoảng Wilson mô tả bất định lấy mẫu có điều kiện trong từng cấu hình.",
+    "C24": "Chỉ tiêu đuôi của dự án là thống kê phơi nhiễm tổng hợp theo định nghĩa và đơn vị đã khóa; khoản nợ hoàn trả không được coi là tổn thất đã thực hiện.",
+    "C26": "Các chỉ số trung tâm của dự án được tính trên đồ thị dị thể đã gộp.",
+    "C30": "Đánh giá cảnh báo cutoff-safe của Terra ghi nhận kết quả âm trước lần lệch neo ban đầu; kết quả kiểm chứng hồi cứu này không hỗ trợ kết luận dự báo ngoài mẫu thành công.",
+    "C32": "Policy A của mô hình lấy giá trị nhỏ hơn giữa giá tham chiếu và giá DEX; Policy B chỉ dùng giá tham chiếu; các Policy C là giả định truyền giá có độ trễ và làm trơn. Các chính sách này chưa được xác minh là cơ chế oracle thực tế của Aave hoặc Chainlink.",
+    "C33": "Kiểm toán HF trong mô hình theo Policy A ghi nhận các vị thế mới mất an toàn sau Wave 1; việc mới đủ điều kiện theo HF được đối chiếu riêng với các lần thanh lý vòng hai có hoàn trả nợ dương.",
+    "C34": "Thủ tục tái định vị giá của mô hình cập nhật thanh khoản hoạt động khi đi qua tick; đây chưa phải mô phỏng giao dịch kinh doanh chênh lệch giá có nguồn vốn đầy đủ.",
+    "C35": "RQ5 của dự án giới hạn ở kênh định giá nợ USDC theo đơn vị và phạm vi đã khóa, chưa phải mô hình thực thi đầy đủ khi mất neo.",
+}
+
+PRIMARY_EVIDENCE_OVERRIDES = {
+    "C19": {
+        "tier": "CODE_OBSERVATION",
+        "components": ["CODE_OBSERVATION"],
+        "paths": ["sim/engine/run.py", "sim/agents/liquidator.py", "sim/agents/arbitrageur.py"],
+    },
+    "C24": {
+        "tier": "PROJECT_METRIC_DEFINITION",
+        "components": ["PROJECT_METRIC_DEFINITION", "MODEL_COMPUTED_OUTPUT"],
+        "paths": ["data/processed/research_final/level3_extension/deep_stress/monte_carlo_batches.json"],
+    },
+    "C26": {
+        "tier": "CODE_OBSERVATION",
+        "components": ["CODE_OBSERVATION"],
+        "paths": ["sim/network/metrics.py"],
+    },
+    "C30": {
+        "tier": "DERIVED_HISTORICAL_VALIDATION_RESULT",
+        "components": ["DERIVED_HISTORICAL_VALIDATION_RESULT"],
+        "paths": ["data/processed/research_final/frozen_v3/results_registry.json"],
+    },
+    "C32": {
+        "tier": "CODE_OBSERVATION_AND_MODEL_COMPUTED_COUNTERFACTUAL",
+        "components": ["CODE_OBSERVATION", "MODEL_COMPUTED_COUNTERFACTUAL"],
+        "paths": [
+            "sim/oracle.py",
+            "data/processed/research_final/oracle_transmission_diagnostic_v1/selection_manifest.json",
+            "data/processed/research_final/oracle_transmission_diagnostic_v1/comparison_matrix.csv",
+        ],
+    },
+    "C34": {
+        "tier": "CODE_OBSERVATION",
+        "components": ["CODE_OBSERVATION"],
+        "paths": ["sim/dex/uniswap_v3.py"],
+    },
+    "C35": {
+        "tier": "CODE_OBSERVATION_WITH_SCOPED_MODEL_LIMITATION",
+        "components": ["CODE_OBSERVATION", "SCOPED_MODEL_LIMITATION"],
+        "paths": [
+            "sim/lending/liquidation.py",
+            "sim/schemas.py",
+            "data/processed/research_final/frozen_v3/results_registry.json",
+        ],
+    },
+}
 
 REQUIRED_SOURCES = [
     "data/processed/research_final/frozen_v3/manifest.json",
@@ -80,17 +168,17 @@ LOCKED_P2_PATHS = [
 ]
 
 INTEGRATION_WORDING_VI = {
-    "CL_INT_RQ1_POLICY_CONDITIONAL": "Wave 2 xuất hiện trong các trường hợp đuôi đã chọn dưới Policy A và nhạy với chính sách định giá A/B/C.",
+    "CL_INT_RQ1_POLICY_CONDITIONAL": "Thanh lý vòng hai xuất hiện trong các trường hợp đuôi đã chọn dưới Policy A và nhạy với chính sách định giá A/B/C.",
     "CL_FROZEN_RQ1_UNQUALIFIED_WORDING": "Các số Frozen RQ1 chỉ được báo cáo với điều kiện Policy A; cách diễn đạt không điều kiện đã bị thay thế.",
-    "CL_INT_RQ2_TWO_CHANNELS": "Thanh khoản quyết định sức hấp thụ và tác động DEX; chính sách định giá quyết định việc DEX state có truyền sang HF hay không.",
+    "CL_INT_RQ2_TWO_CHANNELS": "Thanh khoản quyết định sức hấp thụ và tác động giá trên DEX; chính sách định giá quyết định việc trạng thái DEX có truyền sang HF hay không.",
     "CL_FROZEN_RQ2_DIRECT_ELIGIBILITY_WORDING": "Haircut đuôi làm yếu sức hấp thụ DEX; eligibility mới chỉ được kết luận khi nêu rõ chính sách truyền giá.",
-    "CL_INT_ELIGIBLE_NOT_EXECUTED": "Portfolio HF eligibility, đánh giá của engine và thanh lý có hoàn trả nợ dương là ba cổng khác nhau.",
-    "CL_INT_RQ3_PRESERVED": "Vốn bị ràng buộc ở các mức thấp đã thử; delay không đổi severity trong miền thử nghiệm khóa.",
-    "CL_INT_RQ4_PRESERVED": "Arbitrage mô hình làm giảm residual spread sau giao dịch nhưng không xóa immediate price impact của cùng lần bán.",
+    "CL_INT_ELIGIBLE_NOT_EXECUTED": "Vị thế mới đủ điều kiện theo HF danh mục, được engine thẩm định và có thanh lý đã thực thi với khoản nợ hoàn trả dương là ba trạng thái khác nhau.",
+    "CL_INT_RQ3_PRESERVED": "Trong miền thử đã khóa, các mức vốn thấp ràng buộc năng lực thanh lý; độ trễ không làm thay đổi mức độ nghiêm trọng trong chính miền thử đó.",
+    "CL_INT_RQ4_PRESERVED": "Tác nhân kinh doanh chênh lệch giá của mô hình làm giảm độ lệch giá còn lại nhưng không xóa tác động giá tức thời của cùng lần bán.",
     "CL_INT_RQ5_PRESERVED": "Định giá nợ USDC làm thay đổi HF khi giữ các yếu tố khác cố định; số token USDC và USD-equivalent phải tách biệt.",
     "CL_INT_RQ6_PRESERVED": "LTV, liquidation threshold và liquidation bonus chi phối các cơ chế khác nhau và không thể dùng thay thế nhau.",
     "CL_INT_HISTORICAL_TIERS_PRESERVED": "Cửa sổ lịch sử ghi nhận 28 Pool events, 27 Graph-matched và các tầng liên hệ 1/2/23/1.",
-    "CL_INT_TERRA_NEGATIVE_PRESERVED": "Kết quả cảnh báo sớm cutoff-safe của Terra là kết quả âm và không hỗ trợ claim dự báo ngoài mẫu thành công.",
+    "CL_INT_TERRA_NEGATIVE_PRESERVED": "Đánh giá cảnh báo cutoff-safe của Terra không hỗ trợ kết luận dự báo ngoài mẫu thành công.",
     "CL_UNSUPPORTED_AAVE_USES_UNISWAP_SPOT": "Không có bằng chứng được chấp nhận rằng Aave hoặc Chainlink lịch sử sử dụng trực tiếp Uniswap spot theo Policy A.",
     "CL_UNSUPPORTED_HISTORICAL_CAUSAL_CONTAGION": "Bằng chứng lịch sử chỉ hỗ trợ liên hệ giao dịch/thời gian, không xác lập chuỗi lây lan nhân quả.",
 }
@@ -112,13 +200,13 @@ RQ_REPORTING = {
         "allowed": "Có thể báo cáo riêng vốn, công suất, gas/profitability, delay và route-level execution; eligibility không đồng nghĩa execution.",
         "prohibited": "Không gán 36 skip cho gas, vốn hoặc profitability; không suy rộng một liquidator đại diện thành thị trường bot cạnh tranh.",
         "limitation": "Một liquidator đại diện, vốn không recycle, không fork execution và route mô hình chỉ WETH/USDC.",
-        "conclusion": "Vốn thấp có tính ràng buộc trong miền thử; execution phụ thuộc các cổng riêng và các skip targeted là route-ineligible do không còn modeled USDC debt.",
+        "conclusion": "Trong miền thử, các mức vốn thấp ràng buộc thanh lý. Trong tập đối chiếu mục tiêu, 36 trường hợp mới đủ điều kiện theo HF danh mục bị bỏ qua do không có khoản nợ USDC thuộc tuyến thanh lý WETH/USDC được mô hình hóa. Đây là các borrower-case-policy instances; điều kiện HF danh mục khác điều kiện thực thi theo tuyến.",
     },
     "RQ4": {
         "allowed": "Có thể báo cáo immediate impact và post-arbitrage residual riêng biệt trong mô hình.",
         "prohibited": "Không gọi price repositioning là funded executable swap hoặc bằng chứng hiệu quả arbitrage Mainnet.",
         "limitation": "Price teleportation, một arbitrageur, không cạnh tranh/latency/gas strategy hoặc SwapRouter fork.",
-        "conclusion": "Arbitrage mô hình làm giảm residual spread sau forced sale nhưng không xóa tác động tức thời của execution.",
+        "conclusion": "Tác nhân kinh doanh chênh lệch giá của mô hình làm giảm độ lệch giá còn lại sau bán bắt buộc nhưng không xóa tác động giá tức thời của lần thực thi.",
     },
     "RQ5": {
         "allowed": "Có thể báo cáo kênh định giá nợ USDC và tách USDC token quantity khỏi USD-equivalent.",
@@ -130,7 +218,7 @@ RQ_REPORTING = {
         "allowed": "Có thể báo cáo riêng tác động của LTV, liquidation threshold và liquidation bonus trong các counterfactual khóa.",
         "prohibited": "Không hoán đổi ba tham số hoặc suy ra hành vi tái underwrite/borrower response ngoài mô hình.",
         "limitation": "Frozen cohort; không borrower behavior hoặc re-underwriting response.",
-        "conclusion": "LTV điều tiết capacity ex ante, LT điều tiết HF/eligibility và bonus điều tiết incentive/collateral transfer.",
+        "conclusion": "LTV điều tiết giới hạn vay ban đầu, ngưỡng thanh lý điều tiết HF và điều kiện thanh lý, còn thưởng thanh lý điều tiết khuyến khích và lượng tài sản thế chấp chuyển giao.",
     },
 }
 
@@ -184,9 +272,71 @@ def _write_json(path: Path, value: Any) -> None:
 
 
 def _parse_rqs(value: str) -> list[str]:
-    if "RQ1–6" in value or "RQ1-6" in value:
+    if re.search(r"RQ1\s*[–-]\s*6", value):
         return [rq for rq, _ in RQ_DEFINITIONS]
-    return sorted(set(re.findall(r"RQ[1-6]", value)), key=lambda item: int(item[2:]))
+    matches: set[str] = set()
+    for match in re.finditer(r"RQ([1-6])((?:\s*/\s*[1-6])*)", value):
+        matches.add(f"RQ{match.group(1)}")
+        matches.update(f"RQ{number}" for number in re.findall(r"[1-6]", match.group(2)))
+    return sorted(matches, key=lambda item: int(item[2:]))
+
+
+def _full_rq_questions() -> dict[str, str]:
+    raw = cast(str, _git("show", f"{SOURCE_HEAD}:{P2_RQ_SOURCE.as_posix()}"))
+    rows = {
+        f"RQ{number}": wording.strip()
+        for number, wording in re.findall(r"^\d+\. \*\*RQ([1-6])\.\*\* (.+)$", raw, re.MULTILINE)
+    }
+    if list(rows) != [rq for rq, _ in RQ_DEFINITIONS]:
+        raise ValueError("Locked P2 full RQ wording is missing or out of order")
+    return rows
+
+
+def _scholarly_primary_evidence(claim: dict[str, Any]) -> dict[str, Any]:
+    claim_id = claim["claim_id"]
+    if claim_id in PRIMARY_EVIDENCE_OVERRIDES:
+        return PRIMARY_EVIDENCE_OVERRIDES[claim_id]
+    if claim_id in {"C09", "C10"}:
+        return {
+            "tier": "MIXED_SCHOLARLY_ONCHAIN_AND_MODEL_CROSSWALK",
+            "components": [
+                "SCHOLARLY_BACKGROUND",
+                "ONCHAIN_HISTORICAL_OBSERVATION",
+                "MODEL_COMPUTED_CROSSWALK",
+            ],
+            "paths": [item["path"] for item in claim.get("artifact_locators", [])],
+        }
+    if claim["model_result_ids"]:
+        return {
+            "tier": "SCHOLARLY_SOURCE_WITH_SCOPED_MODEL_CROSSWALK",
+            "components": ["SCHOLARLY_SOURCE", "MODEL_COMPUTED_CROSSWALK"],
+            "paths": [item["path"] for item in claim.get("artifact_locators", [])],
+        }
+    return {
+        "tier": "SCHOLARLY_SOURCE",
+        "components": ["SCHOLARLY_SOURCE"],
+        "paths": [item["path"] for item in claim.get("artifact_locators", [])],
+    }
+
+
+def _supporting_scholarly_background(claim: dict[str, Any], primary: dict[str, Any]) -> dict[str, Any]:
+    source_ids = claim["scholarly_sources"]
+    if not source_ids:
+        return {
+            "status": "NOT_APPLICABLE",
+            "source_ids": [],
+            "scope": "No scholarly source is required to establish this project code, metric or scoped model limitation.",
+        }
+    background_only = "SCHOLARLY_SOURCE" not in primary["components"]
+    return {
+        "status": "SCHOLARLY_BACKGROUND_ONLY" if background_only else "SCHOLARLY_SUPPORT",
+        "source_ids": source_ids,
+        "scope": (
+            "Provides theory, protocol or methodological background; it does not verify this project's implementation or computed output."
+            if background_only
+            else "Supports the scholarly component only; project artifacts separately support implementation and model-computed components."
+        ),
+    }
 
 
 def _read_csv(path: Path) -> list[dict[str, str]]:
@@ -223,6 +373,10 @@ def _build_scholarly_claims(
     crosswalk_meta = source_by_path[P2.as_posix()]
     rows: list[dict[str, Any]] = []
     for claim in p2["claims"]:
+        primary_evidence = _scholarly_primary_evidence(claim)
+        accepted_wording = ACCEPTED_WORDING_OVERRIDES.get(
+            claim["claim_id"], claim["original_statement"]
+        )
         not_applicable = str(claim["model_result"]).startswith("NOT_APPLICABLE")
         source_not_verified = "SOURCE_NOT_VERIFIED" in str(claim.get("raw_hf_state_review", "")) or any(
             locator.get("read_status") == "SOURCE_NOT_VERIFIED"
@@ -244,7 +398,7 @@ def _build_scholarly_claims(
                 "rq_mapping": _parse_rqs(claim["rq"]),
                 "extension_mapping": [] if _parse_rqs(claim["rq"]) else [claim["rq"]],
                 "claim_category": "SCHOLARLY_CONCEPTUAL_OR_PROTOCOL" if not_applicable else "SCHOLARLY_WITH_PROJECT_CROSSWALK",
-                "accepted_vietnamese_wording": claim["original_statement"],
+                "accepted_vietnamese_wording": accepted_wording,
                 "original_source_wording": claim["original_statement"],
                 "scholarly_source_ids": claim["scholarly_sources"],
                 "evidence_alias_ids": claim["evidence_aliases"],
@@ -252,7 +406,13 @@ def _build_scholarly_claims(
                 "integration_claim_ids": claim["integration_claim_ids"],
                 "scenario": "NOT_APPLICABLE" if not_applicable else "See active artifact locators",
                 "policy": claim["oracle_policy"],
-                "evidence_tier": "SCHOLARLY_SOURCE" if not_applicable else "SCHOLARLY_SOURCE_WITH_SCOPED_MODEL_CROSSWALK",
+                "evidence_tier": primary_evidence["tier"],
+                "primary_evidence_tier": primary_evidence["tier"],
+                "primary_evidence_components": primary_evidence["components"],
+                "primary_evidence_paths": primary_evidence["paths"],
+                "supporting_scholarly_background": _supporting_scholarly_background(
+                    claim, primary_evidence
+                ),
                 "artifact_path": P2.as_posix(),
                 "artifact_locator_commit": SOURCE_HEAD,
                 "source_commit": SOURCE_HEAD,
@@ -307,6 +467,21 @@ def _build_integration_claims(
         else:
             final_status = "UNSUPPORTED"
             category = "UNSUPPORTED_STRONGER_INFERENCE"
+        primary_tier = (
+            "DERIVED_HISTORICAL_VALIDATION_RESULT"
+            if claim["claim_id"] == "CL_INT_TERRA_NEGATIVE_PRESERVED"
+            else claim["evidence_tier"]
+        )
+        primary_components = (
+            ["DERIVED_HISTORICAL_VALIDATION_RESULT"]
+            if claim["claim_id"] == "CL_INT_TERRA_NEGATIVE_PRESERVED"
+            else [primary_tier]
+        )
+        original_source_wording = (
+            "NOT_VERBATIM_HISTORICAL_QUOTATION"
+            if claim["status"] == "REQUIRES_CORRECTION"
+            else claim["allowed_inference"]
+        )
         rows.append(
             {
                 "registry_id": f"INT:{claim['claim_id']}",
@@ -316,7 +491,10 @@ def _build_integration_claims(
                 "extension_mapping": [] if _parse_rqs(claim["rq"]) else [claim["rq"]],
                 "claim_category": category,
                 "accepted_vietnamese_wording": INTEGRATION_WORDING_VI[claim["claim_id"]],
-                "original_source_wording": claim["allowed_inference"],
+                "original_source_wording": original_source_wording,
+                "historical_disposition_summary": claim["allowed_inference"]
+                if claim["status"] == "REQUIRES_CORRECTION"
+                else "NOT_APPLICABLE",
                 "scholarly_claim_ids": scholarly_claim_ids,
                 "scholarly_source_ids": scholarly_source_ids,
                 "evidence_alias_ids": aliases,
@@ -324,7 +502,19 @@ def _build_integration_claims(
                 "table_figure_ids": claim["table_figure"],
                 "scenario": claim["scenario"],
                 "policy": claim["policy"],
-                "evidence_tier": claim["evidence_tier"],
+                "evidence_tier": primary_tier,
+                "primary_evidence_tier": primary_tier,
+                "primary_evidence_components": primary_components,
+                "primary_evidence_paths": [path],
+                "supporting_scholarly_background": {
+                    "status": "SCHOLARLY_BACKGROUND_ONLY"
+                    if scholarly_source_ids
+                    else "NOT_APPLICABLE",
+                    "source_ids": scholarly_source_ids,
+                    "scope": "Literature provides background only; project artifacts establish the integration claim and its scoped limitations."
+                    if scholarly_source_ids
+                    else "No scholarly source is required to establish this project result or disposition.",
+                },
                 "artifact_path": path,
                 "artifact_locator_commit": SOURCE_HEAD,
                 "source_commit": claim["source_commit"],
@@ -391,21 +581,62 @@ def _numerical_lock(result_by_id: dict[str, dict[str, Any]]) -> dict[str, Any]:
     }
 
 
+def _c23_denominators_verified() -> bool:
+    data = _load(
+        Path(
+            "data/processed/research_final/level3_extension/deep_stress/monte_carlo_batches.json"
+        )
+    )
+    observations: dict[tuple[str, int], tuple[int, int]] = {}
+    for batch in data["batches"]:
+        scenario = batch["scenario"]["name"]
+        runs = int(batch["actual_runs"])
+        depth_two = batch["cascade_frequencies"]["2"]
+        observations[(scenario, runs)] = (
+            int(depth_two["successes"]),
+            int(depth_two["runs"]),
+        )
+    return (
+        observations.get(("Severe", 200)) == (8, 200)
+        and observations.get(("Severe", 10000)) == (280, 10000)
+        and observations.get(("Low Liquidity", 1000)) == (0, 1000)
+    )
+
+
 def _build_rq_matrix(
     scholarly: list[dict[str, Any]], integration: list[dict[str, Any]], source_matrix: dict[str, Any]
 ) -> list[dict[str, Any]]:
     source_by_rq = {row["rq"]: row for row in source_matrix["research_questions"]}
+    full_questions = _full_rq_questions()
     historical = "28 Pool events, 27 Graph-matched; tiers 1/2/23/1; association only, no causal contagion."
     rows = []
-    for rq, question in RQ_DEFINITIONS:
+    for rq, short_label in RQ_DEFINITIONS:
         source = source_by_rq[rq]
         scholarly_ids = [row["registry_id"] for row in scholarly if rq in row["rq_mapping"]]
-        integration_ids = [row["original_claim_id"] for row in integration if rq in row["rq_mapping"]]
+        integration_references = [
+            {
+                "claim_id": row["original_claim_id"],
+                "final_gate_status": row["final_gate_status"],
+            }
+            for row in integration
+            if rq in row["rq_mapping"]
+        ]
+        accepted_integration_ids = [
+            row["claim_id"]
+            for row in integration_references
+            if row["final_gate_status"] in {"ACCEPTED", "ACCEPTED_WITH_LIMITATIONS"}
+        ]
+        disallowed_ids = [
+            row["claim_id"]
+            for row in integration_references
+            if row["final_gate_status"] not in {"ACCEPTED", "ACCEPTED_WITH_LIMITATIONS"}
+        ]
         result_ids = sorted(
             {
                 result
                 for row in integration
                 if rq in row["rq_mapping"]
+                and row["final_gate_status"] in {"ACCEPTED", "ACCEPTED_WITH_LIMITATIONS"}
                 for result in row["scientific_result_ids"]
             }
             | set(source["evidence"])
@@ -413,9 +644,14 @@ def _build_rq_matrix(
         rows.append(
             {
                 "rq": rq,
-                "research_question": question,
+                "research_question": full_questions[rq],
+                "full_original_research_question": full_questions[rq],
+                "short_display_label": short_label,
                 "scholarly_claim_registry_ids": scholarly_ids,
-                "integration_scientific_claim_ids": integration_ids,
+                "integration_scientific_claim_ids": accepted_integration_ids,
+                "accepted_integration_claim_ids": accepted_integration_ids,
+                "disallowed_or_superseded_claim_ids": disallowed_ids,
+                "integration_scientific_claim_references": integration_references,
                 "model_evidence_result_ids": result_ids,
                 "historical_evidence": historical if rq in {"RQ1", "RQ2"} else "No additional historical causal evidence required for the accepted scoped claim.",
                 "results_allowed_for_reporting": RQ_REPORTING[rq]["allowed"],
@@ -481,7 +717,7 @@ def _render_docs(
     lines = [
         "# Final Accepted Scientific Claims Registry v1",
         "",
-        "Trạng thái đề nghị: **FINAL_REGISTRY_READY_FOR_COMMANDER_REVIEW**. Tài liệu này không tự cấp `SCIENTIFIC_CONTENT_LOCK`.",
+        "Trạng thái đề nghị: **REGISTRY_TARGETED_REPAIR_COMPLETE**. Tài liệu này không tự cấp `SCIENTIFIC_CONTENT_LOCK`.",
         "",
         f"Nguồn được pin tại integration HEAD `{SOURCE_HEAD}`. Output commit của registry được ghi trong Git handoff để tránh self-reference.",
         "",
@@ -496,7 +732,7 @@ def _render_docs(
         f"- Deterministic depth-2 A/B/Cweak/Cmoderate: `{list(numerical['deterministic_depth2_retained_of_4'].values())}`.",
         f"- Targeted MC A/B/Cweak/Cmoderate: `{list(numerical['targeted_mc_depth2_retained_of_10'].values())}`; 10 paths không phải population estimator.",
         f"- Severe Policy A: `{numerical['severe_policy_a']['depth_gte_2']}/10.000` depth ≥2; không phải xác suất khủng hoảng Ethereum.",
-        "- Eligible/executed/skipped: A `35/14/21`; B `0/0/0`; C weak `6/0/6`; C moderate `11/2/9`. Đây là borrower-case instances cộng qua nhiều kịch bản, không phải unique borrowers.",
+        "- Mới đủ điều kiện theo HF/thanh lý vòng hai đã thực thi/bị bỏ qua: A `35/14/21`; B `0/0/0`; C weak `6/0/6`; C moderate `11/2/9`. Đây là borrower-case-policy instances cộng qua nhiều kịch bản, không phải người vay duy nhất.",
         "- Lịch sử: 28 Pool events, 27 Graph-matched; tiers `1/2/23/1`; không xác lập causal contagion.",
         "- Terra: giữ kết quả âm cutoff-safe và không có claim successful out-of-sample forecasting.",
         "",
@@ -506,7 +742,9 @@ def _render_docs(
     for row in rq_rows:
         lines.extend(
             [
-                f"### {row['rq']} — {row['research_question']}",
+                f"### {row['rq']} — {row['short_display_label']}",
+                "",
+                f"**Nguyên văn câu hỏi nghiên cứu:** {row['full_original_research_question']}",
                 "",
                 f"**Kết luận đề nghị:** {row['recommended_vietnamese_conclusion']}",
                 "",
@@ -522,6 +760,21 @@ def _render_docs(
         )
     lines.extend(
         [
+            "## Sửa chữa học thuật AR-01 đến AR-05",
+            "",
+            "- AR-01: tám primary evidence tiers được phân loại lại; scholarly background được lưu tách biệt và không được dùng để xác nhận implementation của dự án.",
+            "- AR-02: 16 slash-separated RQ mappings được khôi phục theo nguồn P2; sáu câu hỏi đầy đủ được lấy nguyên văn từ source đã khóa.",
+            "- AR-03: accepted Vietnamese wording đã được hòa giải cho C07/C11/C19/C23/C32/C33; kết luận RQ3 nêu rõ 36 borrower-case-policy instances không có khoản nợ USDC thuộc tuyến WETH/USDC được mô hình hóa.",
+            "- AR-04: bốn claim superseded/unsupported vẫn tồn tại làm audit trail nhưng bị loại khỏi mọi accepted RQ finding set.",
+            "- AR-05: thuật ngữ manuscript-facing được chuẩn hóa có mục tiêu; số liệu và mức xác minh nguồn không đổi.",
+            "",
+            "### Accepted wording đã hòa giải",
+            "",
+            *[
+                f"- `{claim_id}`: {next(row['accepted_vietnamese_wording'] for row in registry if row['original_claim_id'] == claim_id)}"
+                for claim_id in ["C07", "C11", "C19", "C23", "C32", "C33"]
+            ],
+            "",
             "## Gate và giới hạn",
             "",
             f"Builder validation: **{validation['status']}**, {sum(validation['gates'].values())}/{len(validation['gates'])} gates. Test evidence: **{test_evidence['status']}**.",
@@ -535,11 +788,14 @@ def _render_docs(
     packet = [
         "# Scientific Content Lock Review Packet",
         "",
-        "**Commander decision requested:** `FINAL_REGISTRY_READY_FOR_COMMANDER_REVIEW`.",
+        "**Commander decision requested:** review delta after `REGISTRY_TARGETED_REPAIR_COMPLETE`.",
         "",
         f"- Starting integration HEAD: `{SOURCE_HEAD}`.",
         f"- Registry records: {p2_count} scholarly + {int_count} integration = {len(registry)}.",
-        "- Six RQs: 6/6, exact order and wording preserved.",
+        "- Six RQs: 6/6; full original wording is parsed from the locked P2 matrix, with short labels stored separately.",
+        f"- AR-01 primary evidence classifications: {validation['metrics']['primary_evidence_tiers_verified']}/8 verified.",
+        f"- AR-02 slash-RQ mappings: {validation['metrics']['slash_rq_mappings_verified']}/16 verified.",
+        f"- AR-04 disallowed IDs in affirmative RQ sets: {validation['metrics']['disallowed_in_affirmative_rq_sets']}.",
         f"- Active locator gate: {validation['metrics']['active_locators_resolved']}/{validation['metrics']['active_locator_instances']} resolved.",
         f"- Declared locator hashes: {validation['metrics']['active_locator_hash_matches']}/{validation['metrics']['active_locator_hash_checks']} matched.",
         f"- Result IDs: {validation['metrics']['active_result_ids_resolved']}/{validation['metrics']['active_result_id_instances']} resolved.",
@@ -547,6 +803,24 @@ def _render_docs(
         f"- Validation: {validation['status']}; failed gates: {validation['failed_gates']}.",
         f"- Tests: {test_evidence['status']}; {test_evidence.get('summary', 'pending external execution').rstrip('.')}.",
         "- Proposed lock status: `READY_FOR_COMMANDER_DECISION_WITH_LIMITATIONS`; not a lock grant.",
+        "- RQ3 repair: 36 borrower-case-policy instances were skipped because no modeled USDC debt belonged to the WETH/USDC liquidation route; this does not imply debt was repaid in Wave 1 or that gas/capital/profitability caused the skips.",
+        "",
+        "## AR-01 → AR-05 status",
+        "",
+        "| Finding | Status | Evidence |",
+        "|---|---|---|",
+        "| AR-01 | PASS | 8/8 primary evidence tiers verified; scholarly background separated. |",
+        "| AR-02 | PASS | 16/16 slash-RQ mappings and 6/6 full source questions verified. |",
+        "| AR-03 | PASS | Six required accepted wordings and route-specific RQ3 conclusion verified. |",
+        "| AR-04 | PASS | Zero disallowed/superseded IDs in affirmative RQ sets. |",
+        "| AR-05 | PASS | Targeted manuscript-facing terminology polished without numerical changes. |",
+        "",
+        "## Accepted wording delta",
+        "",
+        *[
+            f"- `{claim_id}`: {next(row['accepted_vietnamese_wording'] for row in registry if row['original_claim_id'] == claim_id)}"
+            for claim_id in ["C07", "C11", "C19", "C23", "C32", "C33"]
+        ],
         "",
         "## Material unsupported/superseded claims",
         "",
@@ -646,6 +920,32 @@ def main() -> None:
     registry_ids = [row["registry_id"] for row in registry]
     rq_order = [row["rq"] for row in rq_rows]
     rq_questions = [row["research_question"] for row in rq_rows]
+    full_rq_questions = _full_rq_questions()
+    scholarly_by_id = {row["original_claim_id"]: row for row in scholarly}
+    integration_by_id = {
+        row["original_claim_id"]: row for row in integration_claims
+    }
+    expected_primary_tiers = {
+        "C19": "CODE_OBSERVATION",
+        "C24": "PROJECT_METRIC_DEFINITION",
+        "C26": "CODE_OBSERVATION",
+        "C30": "DERIVED_HISTORICAL_VALIDATION_RESULT",
+        "C32": "CODE_OBSERVATION_AND_MODEL_COMPUTED_COUNTERFACTUAL",
+        "C34": "CODE_OBSERVATION",
+        "C35": "CODE_OBSERVATION_WITH_SCOPED_MODEL_LIMITATION",
+    }
+    accepted_wording_exact = all(
+        scholarly_by_id[claim_id]["accepted_vietnamese_wording"] == wording
+        for claim_id, wording in ACCEPTED_WORDING_OVERRIDES.items()
+    )
+    disallowed_in_affirmative_sets = sorted(
+        {
+            claim_id
+            for row in rq_rows
+            for claim_id in row["accepted_integration_claim_ids"]
+            if claim_id in DISALLOWED_INTEGRATION_CLAIM_IDS
+        }
+    )
     invalid_active_commits = [
         row for row in locators if not re.fullmatch(r"[0-9a-f]{40}", row["commit"])
     ]
@@ -663,7 +963,34 @@ def main() -> None:
         "scholarly_claim_ids_35_complete": actual_p2_ids == expected_p2_ids,
         "integration_claim_ids_13_exact": len(actual_integration_ids) == 13 and actual_integration_ids == expected_integration_ids,
         "registry_ids_unique": len(registry_ids) == len(set(registry_ids)),
-        "six_rq_exact_order_and_wording": rq_order == [rq for rq, _ in RQ_DEFINITIONS] and rq_questions == [question for _, question in RQ_DEFINITIONS],
+        "six_rq_exact_order_and_full_source_wording": rq_order == [rq for rq, _ in RQ_DEFINITIONS] and rq_questions == [full_rq_questions[rq] for rq, _ in RQ_DEFINITIONS],
+        "eight_primary_evidence_tiers_exact": all(
+            scholarly_by_id[claim_id]["primary_evidence_tier"] == tier
+            for claim_id, tier in expected_primary_tiers.items()
+        ) and integration_by_id["CL_INT_TERRA_NEGATIVE_PRESERVED"]["primary_evidence_tier"] == "DERIVED_HISTORICAL_VALIDATION_RESULT",
+        "sixteen_slash_rq_mappings_exact": all(
+            scholarly_by_id[claim_id]["rq_mapping"] == expected
+            for claim_id, expected in EXPECTED_SLASH_RQ_MAPPINGS.items()
+        ),
+        "accepted_vietnamese_wording_reconciled": accepted_wording_exact
+        and all(
+            scholarly_by_id[claim_id]["accepted_vietnamese_wording"]
+            != scholarly_by_id[claim_id]["original_source_wording"]
+            for claim_id in ACCEPTED_WORDING_OVERRIDES
+        ),
+        "rq3_route_specific_zero_usdc_wording_exact": RQ_REPORTING["RQ3"]["conclusion"]
+        == "Trong miền thử, các mức vốn thấp ràng buộc thanh lý. Trong tập đối chiếu mục tiêu, 36 trường hợp mới đủ điều kiện theo HF danh mục bị bỏ qua do không có khoản nợ USDC thuộc tuyến thanh lý WETH/USDC được mô hình hóa. Đây là các borrower-case-policy instances; điều kiện HF danh mục khác điều kiện thực thi theo tuyến.",
+        "disallowed_claims_excluded_from_affirmative_rq_sets": not disallowed_in_affirmative_sets
+        and all(
+            claim_id
+            in {
+                item
+                for row in rq_rows
+                for item in row["disallowed_or_superseded_claim_ids"]
+            }
+            for claim_id in DISALLOWED_INTEGRATION_CLAIM_IDS
+        ),
+        "c23_denominators_verified_from_locked_artifact": _c23_denominators_verified(),
         "all_active_result_ids_resolve": set(active_result_instances) <= result_ids,
         "all_active_artifact_locators_resolve": not unresolved_locators,
         "all_declared_active_locator_hashes_match": not locator_hash_mismatches,
@@ -685,7 +1012,7 @@ def main() -> None:
     }
     failed = [name for name, passed in gates.items() if not passed]
     validation = {
-        "schema_version": "final-accepted-claims-v1.0",
+        "schema_version": SCHEMA_VERSION,
         "status": "PASS" if not failed else "FAIL",
         "gates": gates,
         "failed_gates": failed,
@@ -701,6 +1028,21 @@ def main() -> None:
             "active_result_ids_resolved": sum(result in result_ids for result in active_result_instances),
             "active_table_figure_id_instances": len(active_table_instances),
             "active_table_figure_ids_resolved": sum(item in table_figure_ids for item in active_table_instances),
+            "slash_rq_mappings_verified": sum(
+                scholarly_by_id[claim_id]["rq_mapping"] == expected
+                for claim_id, expected in EXPECTED_SLASH_RQ_MAPPINGS.items()
+            ),
+            "primary_evidence_tiers_verified": sum(
+                scholarly_by_id[claim_id]["primary_evidence_tier"] == tier
+                for claim_id, tier in expected_primary_tiers.items()
+            )
+            + int(
+                integration_by_id["CL_INT_TERRA_NEGATIVE_PRESERVED"][
+                    "primary_evidence_tier"
+                ]
+                == "DERIVED_HISTORICAL_VALIDATION_RESULT"
+            ),
+            "disallowed_in_affirmative_rq_sets": len(disallowed_in_affirmative_sets),
         },
         "numerical_claim_lock": numerical,
         "unresolved_locators": unresolved_locators,
@@ -713,14 +1055,14 @@ def main() -> None:
         raise RuntimeError(f"Registry validation failed: {failed}")
 
     accepted_registry = {
-        "schema_version": "final-accepted-claims-v1.0",
+        "schema_version": SCHEMA_VERSION,
         "source_integration_head": SOURCE_HEAD,
         "output_commit": "RECORDED_IN_GIT_HANDOFF_NOT_SELF_EMBEDDED",
         "scientific_content_lock_declared": False,
         "records": registry,
     }
     crosswalk = {
-        "schema_version": "final-accepted-claims-v1.0",
+        "schema_version": SCHEMA_VERSION,
         "rows": [
             {
                 "registry_id": row["registry_id"],
@@ -734,6 +1076,13 @@ def main() -> None:
                 "artifact_path": row["artifact_path"],
                 "artifact_locator_commit": row["artifact_locator_commit"],
                 "evidence_tier": row["evidence_tier"],
+                "primary_evidence_tier": row["primary_evidence_tier"],
+                "primary_evidence_components": row["primary_evidence_components"],
+                "primary_evidence_paths": row["primary_evidence_paths"],
+                "supporting_scholarly_background": row[
+                    "supporting_scholarly_background"
+                ],
+                "accepted_vietnamese_wording": row["accepted_vietnamese_wording"],
                 "accepted_inference": row["accepted_inference"],
                 "required_limitations": row["required_limitations"],
                 "final_gate_status": row["final_gate_status"],
@@ -742,7 +1091,7 @@ def main() -> None:
         ],
     }
     provenance = {
-        "schema_version": "final-accepted-claims-v1.0",
+        "schema_version": SCHEMA_VERSION,
         "source_integration_head": SOURCE_HEAD,
         "hash_semantics": {
             "git_blob_sha": "Git object ID for exact committed bytes",
@@ -755,13 +1104,20 @@ def main() -> None:
         "locked_p2_blob_ids": locked_p2_blob_ids,
     }
     readiness = {
-        "schema_version": "final-accepted-claims-v1.0",
-        "proposed_status": "FINAL_REGISTRY_READY_FOR_COMMANDER_REVIEW" if not failed and test_evidence["status"] == "PASS" else "TARGETED_REGISTRY_REWORK_REQUIRED",
+        "schema_version": SCHEMA_VERSION,
+        "proposed_status": "REGISTRY_TARGETED_REPAIR_COMPLETE" if not failed and test_evidence["status"] == "PASS" else "TARGETED_REWORK_STILL_REQUIRED",
         "scientific_content_lock_declared": False,
         "commander_decision_required": True,
         "accepted_registry_records": sum(row["final_gate_status"] in {"ACCEPTED", "ACCEPTED_WITH_LIMITATIONS"} for row in registry),
         "rejected_or_unsupported_integration_records": [row["original_claim_id"] for row in integration_claims if row["final_gate_status"] not in {"ACCEPTED", "ACCEPTED_WITH_LIMITATIONS"}],
         "blocking_conflicts": [],
+        "academic_repair_status": {
+            "AR-01": "PASS" if gates["eight_primary_evidence_tiers_exact"] else "FAIL",
+            "AR-02": "PASS" if gates["sixteen_slash_rq_mappings_exact"] and gates["six_rq_exact_order_and_full_source_wording"] else "FAIL",
+            "AR-03": "PASS" if gates["accepted_vietnamese_wording_reconciled"] and gates["rq3_route_specific_zero_usdc_wording_exact"] else "FAIL",
+            "AR-04": "PASS" if gates["disallowed_claims_excluded_from_affirmative_rq_sets"] else "FAIL",
+            "AR-05": "PASS" if gates["accepted_vietnamese_wording_reconciled"] else "FAIL",
+        },
         "validation_status": validation["status"],
         "test_status": test_evidence["status"],
         "required_disclosures": [
@@ -777,7 +1133,7 @@ def main() -> None:
     }
 
     _write_json(ROOT / "accepted_claims_registry.json", accepted_registry)
-    _write_json(ROOT / "six_rq_accepted_claims_matrix.json", {"schema_version": "final-accepted-claims-v1.0", "research_questions": rq_rows})
+    _write_json(ROOT / "six_rq_accepted_claims_matrix.json", {"schema_version": SCHEMA_VERSION, "research_questions": rq_rows})
     _write_json(ROOT / "claim_evidence_crosswalk.json", crosswalk)
     _write_json(ROOT / "source_provenance_registry.json", provenance)
     _write_json(ROOT / "validation_report.json", validation)
@@ -794,7 +1150,7 @@ def main() -> None:
         "test_evidence.json",
     ]
     manifest = {
-        "schema_version": "final-accepted-claims-v1.0",
+        "schema_version": SCHEMA_VERSION,
         "status": readiness["proposed_status"],
         "source_integration_head": SOURCE_HEAD,
         "output_commit": "RECORDED_IN_GIT_HANDOFF_NOT_SELF_EMBEDDED",

@@ -19,7 +19,7 @@
     "oracle_diagnostic_v1": "455d9a6a67b525e921bda249eb57e17bc6d8a4c5",
     "scientific_integration_v1": "25cba400a383a9576864acd2ed23967d05316443"
   },
-  "schema_version": "final-accepted-claims-v1.0",
+  "schema_version": "final-accepted-claims-v1.1-targeted-repair",
   "source_integration_head": "6560f799f81223cd4a720bd3f6b798aeef1732b9",
   "sources": [
     {

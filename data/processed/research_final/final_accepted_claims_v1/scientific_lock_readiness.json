@@ -1,8 +1,15 @@
 {
+  "academic_repair_status": {
+    "AR-01": "PASS",
+    "AR-02": "PASS",
+    "AR-03": "PASS",
+    "AR-04": "PASS",
+    "AR-05": "PASS"
+  },
   "accepted_registry_records": 44,
   "blocking_conflicts": [],
   "commander_decision_required": true,
-  "proposed_status": "FINAL_REGISTRY_READY_FOR_COMMANDER_REVIEW",
+  "proposed_status": "REGISTRY_TARGETED_REPAIR_COMPLETE",
   "rejected_or_unsupported_integration_records": [
     "CL_FROZEN_RQ1_UNQUALIFIED_WORDING",
     "CL_FROZEN_RQ2_DIRECT_ELIGIBILITY_WORDING",
@@ -19,7 +26,7 @@
     "Terra early-warning outcome is negative and not successful OOS forecasting",
     "Existing SOURCE_NOT_VERIFIED large-CSV limitations remain disclosed"
   ],
-  "schema_version": "final-accepted-claims-v1.0",
+  "schema_version": "final-accepted-claims-v1.1-targeted-repair",
   "scientific_content_lock_declared": false,
   "test_status": "PASS",
   "validation_status": "PASS"

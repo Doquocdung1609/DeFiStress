@@ -1,10 +1,14 @@
 {
   "failed_gates": [],
   "gates": {
+    "accepted_vietnamese_wording_reconciled": true,
     "all_active_artifact_locators_resolve": true,
     "all_active_result_ids_resolve": true,
     "all_active_table_figure_ids_resolve": true,
     "all_declared_active_locator_hashes_match": true,
+    "c23_denominators_verified_from_locked_artifact": true,
+    "disallowed_claims_excluded_from_affirmative_rq_sets": true,
+    "eight_primary_evidence_tiers_exact": true,
     "every_rq_has_explicit_limitation": true,
     "hash_domains_explicit": true,
     "historical_verification_levels_preserved": true,
@@ -17,8 +21,10 @@
     "no_oracle_independent_cascade_overclaim": true,
     "numerical_claim_lock_exact": true,
     "registry_ids_unique": true,
+    "rq3_route_specific_zero_usdc_wording_exact": true,
     "scholarly_claim_ids_35_complete": true,
-    "six_rq_exact_order_and_wording": true,
+    "six_rq_exact_order_and_full_source_wording": true,
+    "sixteen_slash_rq_mappings_exact": true,
     "source_commits_and_paths_exist": true,
     "targeted_paths_not_population_estimator": true,
     "terra_negative_findings_preserved": true,
@@ -35,9 +41,12 @@
     "active_result_ids_resolved": 78,
     "active_table_figure_id_instances": 20,
     "active_table_figure_ids_resolved": 20,
+    "disallowed_in_affirmative_rq_sets": 0,
     "integration_claims": 13,
+    "primary_evidence_tiers_verified": 8,
     "registry_records": 48,
-    "scholarly_claims": 35
+    "scholarly_claims": 35,
+    "slash_rq_mappings_verified": 16
   },
   "numerical_claim_lock": {
     "deterministic_depth2_retained_of_4": {
@@ -98,13 +107,13 @@
     }
   },
   "review_scope": "Builder validation plus separately implemented pytest validator; same executor, not an independent external reviewer.",
-  "schema_version": "final-accepted-claims-v1.0",
+  "schema_version": "final-accepted-claims-v1.1-targeted-repair",
   "status": "PASS",
   "test_evidence": {
     "commands": [
       {
         "command": ".\\.venv\\Scripts\\python.exe -m pytest -q tests/test_final_accepted_claims_v1.py tests/test_frozen_v3.py tests/test_oracle_diagnostic_artifacts.py tests/test_scientific_integration_v1.py tests/test_scientific_premerge_audit_v1.py",
-        "result": "PASS — 30 passed"
+        "result": "PASS — 35 passed"
       },
       {
         "command": ".\\.venv\\Scripts\\python.exe -m ruff check scripts/research/build_final_accepted_claims_v1.py tests/test_final_accepted_claims_v1.py",
@@ -116,9 +125,9 @@
       }
     ],
     "failed": 0,
-    "passed": 30,
+    "passed": 35,
     "status": "PASS",
-    "summary": "Final relevant suite: 30 passed; Ruff passed; mypy passed. The validator is separately implemented but run by the same executor, not an external independent reviewer."
+    "summary": "Final relevant suite: 35 passed; Ruff passed; mypy passed. The validator is separately implemented but run by the same executor, not an external independent reviewer."
   },
   "unresolved_locators": []
 }
