@@ -1,0 +1,3921 @@
+{
+  "schema_version": "p3-g0-work-codex-crosswalk-v1",
+  "decision_recommendation": "P3_BLUEPRINT_RECONCILED_READY_FOR_COMMANDER_REVIEW",
+  "execution_state": "AWAITING_COMMANDER_BLUEPRINT_APPROVAL",
+  "source_versions": {
+    "scientific_lock": "3f6e5302483681209e2408531eb5a15389f9fded",
+    "work_starting_head": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80",
+    "codex_reviewed_head": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+    "commander_comments": {
+      "PR14": 6197267439,
+      "PR15": 6197268184
+    },
+    "codex_catalog_path": "artifacts/manuscript_p3/P3_EXHIBIT_CATALOG_v1.json",
+    "codex_inventory_path": "artifacts/manuscript_p3/P3_LOCKED_EVIDENCE_INVENTORY.json",
+    "codex_formula_path": "docs/manuscript_p3/codex/P3_FORMULA_AUDIT_PLAN.md",
+    "codex_catalog_origin_head": "17b839528e58a622aa0554067b19823a8f33bda5",
+    "codex_delta_validation": {
+      "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+      "path": "artifacts/manuscript_p3/P3_G0_EXHIBIT_CROSSWALK_VALIDATION.json",
+      "selector": "exhibit_crosswalk / formula_crosswalk / findings"
+    },
+    "codex_review_comments": {
+      "PR14": 6197556915,
+      "PR15": 6197557479
+    }
+  },
+  "counts": {
+    "work_displays": 25,
+    "tables": 14,
+    "figures_including_schematics_and_combined": 11,
+    "work_equations": 8,
+    "codex_templates": 11,
+    "codex_formula_candidates": 15
+  },
+  "mapping_rules": [
+    "Many-to-many; a template is a reusable source/display spec, not an already produced manuscript exhibit.",
+    "Work P3X-<ID>, Codex P3X:<name>, P3E:nnn, P3Fnn, Frozen table IDs and scientific result IDs are distinct namespaces.",
+    "P3E IDs identify rendering evidence, not new scholarly sources or scientific results.",
+    "Only44affirmative candidates support conclusions;4excluded stay in audit ledger.",
+    "Codex independent cross-verdict is pending, not implied by Work self-review.",
+    "Codex reproducibility classification (10 renderable/3 schematic/8 synthesis/4 display-spec) is a separate axis from Work mapping status (7 matched/10 direct/8 spec). These counts do not conflict.",
+    "Codex prior cross-verdict reviews Work starting HEAD only. This final Work delta requires Codex delta verification; no technical acceptance is self-granted."
+  ],
+  "display_crosswalk": [
+    {
+      "proposed_manuscript_id": "T1.1",
+      "work_handoff_id": "P3X-T1.1",
+      "chapter": 1,
+      "section": "1.3",
+      "academic_purpose": "Giữ nguyên câu hỏi; định hướng loại bằng chứng, không tóm tắt số liệu kết quả",
+      "related_accepted_claim_ids": [
+        "P2:C31"
+      ],
+      "related_rq_ids": [
+        "RQ1",
+        "RQ2",
+        "RQ3",
+        "RQ4",
+        "RQ5",
+        "RQ6"
+      ],
+      "rq_scope_note": "Main RQs as mapped in accepted registry; no new RQ is created.",
+      "codex_exhibit_template_ids": [],
+      "template_link_type": "NO_TEMPLATE_REQUIRED_DIRECT_SOURCE",
+      "locked_result_ids": [],
+      "locked_table_figure_ids": [],
+      "locked_codex_evidence_ids": [
+        "P3E:006"
+      ],
+      "exact_source_artifact_locators": [
+        {
+          "path": "data/processed/research_final/final_accepted_claims_v1/six_rq_accepted_claims_matrix.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "fffe69d45f2c70e8f4cb781c8b521ef4cf6f1a45",
+          "selector": "research_questions[]; preserve full original questions and accepted-only claim sets",
+          "codex_evidence_id": "P3E:006"
+        }
+      ],
+      "codex_template_source_context": [],
+      "display_type": "table",
+      "reuse_policy": {
+        "rule": "Reuse source values/definitions only. A template may support several displays; display choice does not create new results.",
+        "specific": "Bảng văn bản lấy nguyên văn sáu RQ, không cần template số riêng.",
+        "new_statistics_allowed": false,
+        "existing_images": "Do not edit a Frozen PNG silently. Prefer source-data re-display under a new Work display ID with provenance; no rendering in G0."
+      },
+      "rendering_owner": "Codex; Work owns academic purpose, caption and prose. No file is shared for writing.",
+      "required_caption": "Sáu câu hỏi được giữ nguyên văn từ RQ matrix tại scientific lock. Bảng chỉ định hướng phạm vi trả lời, không trình bày phát hiện mới. Điều kiện hiển thị: Use full original RQ wording, not short labels.",
+      "units": [
+        "không đơn vị"
+      ],
+      "denominators": [
+        "NOT_APPLICABLE_TO_EMPIRICAL_SAMPLE; six original RQs"
+      ],
+      "caption_limitations": [
+        "Không dùng short label thay câu hỏi"
+      ],
+      "status": "DIRECT_LOCKED_SOURCE",
+      "status_semantics": "Source/template mapping status only, not production, technical review, chapter approval or rendering authorization.",
+      "codex_review_state": "PENDING_INDEPENDENT_CROSS_VERDICT",
+      "commander_approval_state": "PENDING",
+      "codex_template_locators": [],
+      "codex_inventory_locator": {
+        "path": "artifacts/manuscript_p3/P3_LOCKED_EVIDENCE_INVENTORY.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "records[evidence_id in locked_codex_evidence_ids]"
+      },
+      "codex_validated_primary_template_ids": [],
+      "work_additional_context_template_ids": [],
+      "codex_validation_reference": {
+        "path": "artifacts/manuscript_p3/P3_G0_EXHIBIT_CROSSWALK_VALIDATION.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "exhibit_crosswalk[work_exhibit_id=T1.1]",
+        "work_head_reviewed": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80"
+      },
+      "codex_reproducibility_classification": "TEXTUAL_SYNTHESIS",
+      "required_display_controls": [
+        "Use full original RQ wording, not short labels."
+      ],
+      "codex_prior_technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE"
+    },
+    {
+      "proposed_manuscript_id": "T2.1",
+      "work_handoff_id": "P3X-T2.1",
+      "chapter": 2,
+      "section": "2.5",
+      "academic_purpose": "So sánh cơ chế, thiết kế, horizon và giới hạn để lý giải lựa chọn mô hình",
+      "related_accepted_claim_ids": [
+        "P2:C06",
+        "P2:C09",
+        "P2:C10",
+        "P2:C11",
+        "P2:C12",
+        "P2:C13",
+        "P2:C16",
+        "P2:C18",
+        "P2:C21"
+      ],
+      "related_rq_ids": [
+        "RQ1",
+        "RQ2",
+        "RQ3",
+        "RQ4",
+        "RQ5",
+        "RQ6"
+      ],
+      "rq_scope_note": "Main RQs as mapped in accepted registry; no new RQ is created.",
+      "codex_exhibit_template_ids": [],
+      "template_link_type": "NO_TEMPLATE_REQUIRED_DIRECT_SOURCE",
+      "locked_result_ids": [],
+      "locked_table_figure_ids": [],
+      "locked_codex_evidence_ids": [
+        "P3E:050",
+        "P3E:051",
+        "P3E:055"
+      ],
+      "exact_source_artifact_locators": [
+        {
+          "path": "docs/research_final/LITERATURE_VERIFIED.md",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "6ebe0a11e915e942a422d02a0cc5b1d53b51ff3e",
+          "selector": "Declared locked artifact for T2.1; Codex must pin extraction selector before rendering; no new statistic.",
+          "codex_evidence_id": "P3E:051"
+        },
+        {
+          "path": "docs/research_final/REFERENCE_EVIDENCE_MATRIX.md",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "504ea91b046e6612c2840c6a434e740ce917b29f",
+          "selector": "Declared locked artifact for T2.1; Codex must pin extraction selector before rendering; no new statistic.",
+          "codex_evidence_id": "P3E:055"
+        },
+        {
+          "path": "docs/research_final/APA_REFERENCES_VERIFIED.md",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "c76d7cf482565615a92fb17b888a392e4f8fd9cc",
+          "selector": "Declared locked artifact for T2.1; Codex must pin extraction selector before rendering; no new statistic.",
+          "codex_evidence_id": "P3E:050"
+        }
+      ],
+      "codex_template_source_context": [],
+      "display_type": "table",
+      "reuse_policy": {
+        "rule": "Reuse source values/definitions only. A template may support several displays; display choice does not create new results.",
+        "specific": "Tổng hợp học thuật từ nguồn P2; Work sở hữu nội dung/citation, không tạo numerical estimate.",
+        "new_statistics_allowed": false,
+        "existing_images": "Do not edit a Frozen PNG silently. Prefer source-data re-display under a new Work display ID with provenance; no rendering in G0."
+      },
+      "rendering_owner": "Codex; Work owns academic purpose, caption and prose. No file is shared for writing.",
+      "required_caption": "Tổng hợp nguồn P2 theo câu hỏi, thiết kế, horizon và mức truy cập. S17/S18 là hai phiên bản cùng nghiên cứu; abstract và industry sources giữ nguyên mức xác minh. Điều kiện hiển thị: Preserve source access levels and treat S17/S18 as one study.",
+      "units": [
+        "không đơn vị"
+      ],
+      "denominators": [
+        "30 source records; S17/S18 are two versions of one study, not30independentstudies"
+      ],
+      "caption_limitations": [
+        "Hai raw borrower CSV lớn vẫn chưa được Work đọc đầy đủ/cell-by-cell; giữ source access labels, U01–U08 và mức abstract/metadata/code; S17/S18 cùng nghiên cứu.",
+        "S17/S18 cùng study; S22 là industry"
+      ],
+      "status": "DIRECT_LOCKED_SOURCE",
+      "status_semantics": "Source/template mapping status only, not production, technical review, chapter approval or rendering authorization.",
+      "codex_review_state": "PENDING_INDEPENDENT_CROSS_VERDICT",
+      "commander_approval_state": "PENDING",
+      "codex_template_locators": [],
+      "codex_inventory_locator": {
+        "path": "artifacts/manuscript_p3/P3_LOCKED_EVIDENCE_INVENTORY.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "records[evidence_id in locked_codex_evidence_ids]"
+      },
+      "codex_validated_primary_template_ids": [],
+      "work_additional_context_template_ids": [],
+      "codex_validation_reference": {
+        "path": "artifacts/manuscript_p3/P3_G0_EXHIBIT_CROSSWALK_VALIDATION.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "exhibit_crosswalk[work_exhibit_id=T2.1]",
+        "work_head_reviewed": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80"
+      },
+      "codex_reproducibility_classification": "TEXTUAL_SYNTHESIS",
+      "required_display_controls": [
+        "Preserve source access levels and treat S17/S18 as one study."
+      ],
+      "codex_prior_technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE"
+    },
+    {
+      "proposed_manuscript_id": "F3.1",
+      "work_handoff_id": "P3X-F3.1",
+      "chapter": 3,
+      "section": "3.1",
+      "academic_purpose": "Làm rõ hai cơ chế absorption và valuation cùng các cổng thực thi",
+      "related_accepted_claim_ids": [
+        "P2:C03",
+        "P2:C19",
+        "P2:C32",
+        "P2:C34"
+      ],
+      "related_rq_ids": [
+        "RQ1",
+        "RQ2",
+        "RQ3",
+        "RQ4"
+      ],
+      "rq_scope_note": "Main RQs as mapped in accepted registry; no new RQ is created.",
+      "codex_exhibit_template_ids": [
+        "P3X:SYSTEM_FEEDBACK_SCHEMATIC"
+      ],
+      "template_link_type": "REUSABLE_TEMPLATE",
+      "locked_result_ids": [],
+      "locked_table_figure_ids": [],
+      "locked_codex_evidence_ids": [
+        "P3E:059",
+        "P3E:061",
+        "P3E:064"
+      ],
+      "exact_source_artifact_locators": [
+        {
+          "path": "sim/engine/run.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "2b23c9ee88ee4976755e5f4795026e381d5fe497",
+          "selector": "Implementation definition only; inspect named gates/metrics used by F3.1; not an external protocol-validation claim.",
+          "codex_evidence_id": "P3E:059"
+        },
+        {
+          "path": "sim/oracle.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "2ac37f923a4cc35bef95968d353f0724bfdbd3a5",
+          "selector": "Implementation definition only; inspect named gates/metrics used by F3.1; not an external protocol-validation claim.",
+          "codex_evidence_id": "P3E:064"
+        },
+        {
+          "path": "sim/lending/liquidation.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "9f95f18e8aa52f48facbebe1b3bdc8f88c0f162a",
+          "selector": "Implementation definition only; inspect named gates/metrics used by F3.1; not an external protocol-validation claim.",
+          "codex_evidence_id": "P3E:061"
+        }
+      ],
+      "codex_template_source_context": [
+        {
+          "path": "sim/agents/liquidator.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "9f44ba9a8037f239b2b5ef8881ad2d49c25ecf6d",
+          "selector": "Template source context; use only the subset needed by this Work display.",
+          "codex_evidence_id": "P3E:057"
+        },
+        {
+          "path": "sim/dex/uniswap_v3.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "4172eae06907ae8bf95a10e7e50463111d0eec3d",
+          "selector": "Template source context; use only the subset needed by this Work display.",
+          "codex_evidence_id": "P3E:058"
+        }
+      ],
+      "display_type": "schematic",
+      "reuse_policy": {
+        "rule": "Reuse source values/definitions only. A template may support several displays; display choice does not create new results.",
+        "specific": "Tái dùng đúng template sơ đồ feedback và ký hiệu đường giả định.",
+        "new_statistics_allowed": false,
+        "existing_images": "Do not edit a Frozen PNG silently. Prefer source-data re-display under a new Work display ID with provenance; no rendering in G0."
+      },
+      "rendering_owner": "Codex; Work owns academic purpose, caption and prose. No file is shared for writing.",
+      "required_caption": "Sơ đồ cơ chế mô hình: forced sale tác động lên DEX, còn phản hồi sang HF đi qua policy A/B/C giả định. Đây không phải chuỗi nhân quả lịch sử đã quan sát. Điều kiện hiển thị: Solid arrows for implemented flow; visually distinct hypothetical A/B/C valuation box; no historical causal arrow.",
+      "units": [
+        "HF: ratio",
+        "Giá: USDC/WETH hoặc USD/WETH ghi rõ"
+      ],
+      "denominators": [
+        "NOT_APPLICABLE_MODEL_SCHEMATIC"
+      ],
+      "caption_limitations": [
+        "Kết quả cascade là mô phỏng phản thực có điều kiện theo policy, cohort và cấu hình thanh khoản; A/B/C chưa được xác minh là feed Aave/Chainlink lịch sử.",
+        "Phân biệt HF danh mục mới dưới 1, engine evaluation, route eligibility và execution có debt repaid dương; đếm borrower-case-policy instances, không unique wallets.",
+        "Arbitrage là price repositioning, chưa funded executable swap; tác động giá tức thời khác spread sau arbitrage."
+      ],
+      "status": "MATCHED",
+      "status_semantics": "Source/template mapping status only, not production, technical review, chapter approval or rendering authorization.",
+      "codex_review_state": "PENDING_INDEPENDENT_CROSS_VERDICT",
+      "commander_approval_state": "PENDING",
+      "codex_template_locators": [
+        {
+          "path": "artifacts/manuscript_p3/P3_EXHIBIT_CATALOG_v1.json",
+          "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+          "selector": "P3X:SYSTEM_FEEDBACK_SCHEMATIC"
+        }
+      ],
+      "codex_inventory_locator": {
+        "path": "artifacts/manuscript_p3/P3_LOCKED_EVIDENCE_INVENTORY.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "records[evidence_id in locked_codex_evidence_ids]"
+      },
+      "codex_validated_primary_template_ids": [
+        "P3X:SYSTEM_FEEDBACK_SCHEMATIC"
+      ],
+      "work_additional_context_template_ids": [],
+      "codex_validation_reference": {
+        "path": "artifacts/manuscript_p3/P3_G0_EXHIBIT_CROSSWALK_VALIDATION.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "exhibit_crosswalk[work_exhibit_id=F3.1]",
+        "work_head_reviewed": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80"
+      },
+      "codex_reproducibility_classification": "SCHEMATIC_FROM_LOCKED_MODEL_SPEC",
+      "required_display_controls": [
+        "Solid arrows for implemented flow; visually distinct hypothetical A/B/C valuation box; no historical causal arrow."
+      ],
+      "codex_prior_technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE"
+    },
+    {
+      "proposed_manuscript_id": "T3.1",
+      "work_handoff_id": "P3X-T3.1",
+      "chapter": 3,
+      "section": "3.2",
+      "academic_purpose": "Tách hành vi mô hình khỏi năng lực sản phẩm và actual bot market",
+      "related_accepted_claim_ids": [
+        "P2:C03",
+        "P2:C05",
+        "P2:C19",
+        "P2:C34",
+        "P2:C35"
+      ],
+      "related_rq_ids": [
+        "RQ1",
+        "RQ2",
+        "RQ3",
+        "RQ4",
+        "RQ5",
+        "RQ6"
+      ],
+      "rq_scope_note": "Main RQs as mapped in accepted registry; no new RQ is created.",
+      "codex_exhibit_template_ids": [
+        "P3X:SYSTEM_FEEDBACK_SCHEMATIC",
+        "P3X:METRIC_SEMANTICS_GLOSSARY"
+      ],
+      "template_link_type": "SOURCE_COMPONENTS_ONLY_NEW_DISPLAY_SPEC",
+      "locked_result_ids": [],
+      "locked_table_figure_ids": [],
+      "locked_codex_evidence_ids": [
+        "P3E:058",
+        "P3E:059",
+        "P3E:061"
+      ],
+      "exact_source_artifact_locators": [
+        {
+          "path": "sim/engine/run.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "2b23c9ee88ee4976755e5f4795026e381d5fe497",
+          "selector": "Implementation definition only; inspect named gates/metrics used by T3.1; not an external protocol-validation claim.",
+          "codex_evidence_id": "P3E:059"
+        },
+        {
+          "path": "sim/lending/liquidation.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "9f95f18e8aa52f48facbebe1b3bdc8f88c0f162a",
+          "selector": "Implementation definition only; inspect named gates/metrics used by T3.1; not an external protocol-validation claim.",
+          "codex_evidence_id": "P3E:061"
+        },
+        {
+          "path": "sim/dex/uniswap_v3.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "4172eae06907ae8bf95a10e7e50463111d0eec3d",
+          "selector": "Implementation definition only; inspect named gates/metrics used by T3.1; not an external protocol-validation claim.",
+          "codex_evidence_id": "P3E:058"
+        }
+      ],
+      "codex_template_source_context": [
+        {
+          "path": "docs/research_final/TERMINOLOGY_VI.md",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "2ca1e29495e6183dfefaf8939e59e6c4eba574fb",
+          "selector": "Template source context; use only the subset needed by this Work display.",
+          "codex_evidence_id": "P3E:056"
+        },
+        {
+          "path": "sim/agents/liquidator.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "9f44ba9a8037f239b2b5ef8881ad2d49c25ecf6d",
+          "selector": "Template source context; use only the subset needed by this Work display.",
+          "codex_evidence_id": "P3E:057"
+        },
+        {
+          "path": "sim/metrics/risk.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "794593593b2afc0d2a23eb375744c0a9e4eae7aa",
+          "selector": "Template source context; use only the subset needed by this Work display.",
+          "codex_evidence_id": "P3E:062"
+        },
+        {
+          "path": "sim/oracle.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "2ac37f923a4cc35bef95968d353f0724bfdbd3a5",
+          "selector": "Template source context; use only the subset needed by this Work display.",
+          "codex_evidence_id": "P3E:064"
+        },
+        {
+          "path": "sim/schemas.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "0f9a93180ada5912c55d0d36d5c142d0e4a356a6",
+          "selector": "Template source context; use only the subset needed by this Work display.",
+          "codex_evidence_id": "P3E:065"
+        }
+      ],
+      "display_type": "table",
+      "reuse_policy": {
+        "rule": "Reuse source values/definitions only. A template may support several displays; display choice does not create new results.",
+        "specific": "Tái dùng nguồn về agent/metric; cần spec bảng agent-state/gate, không xem schematic template là bảng đã có.",
+        "new_statistics_allowed": false,
+        "existing_images": "Do not edit a Frozen PNG silently. Prefer source-data re-display under a new Work display ID with provenance; no rendering in G0."
+      },
+      "rendering_owner": "Codex; Work owns academic purpose, caption and prose. No file is shared for writing.",
+      "required_caption": "Trạng thái và các cổng quyết định của tác nhân trong DeFiStress. Một liquidator và arbitrageur đại diện; HF, route, plan, evaluation và execution có debt repaid dương là các điều kiện khác nhau. Điều kiện hiển thị: Separate representative agent, route eligibility, attempted evaluation and positive-debt execution.",
+      "units": [
+        "USDC token",
+        "WETH",
+        "steps/seconds",
+        "HF ratio"
+      ],
+      "denominators": [
+        "NOT_APPLICABLE_IMPLEMENTATION_DEFINITION"
+      ],
+      "caption_limitations": [
+        "Phân biệt HF danh mục mới dưới 1, engine evaluation, route eligibility và execution có debt repaid dương; đếm borrower-case-policy instances, không unique wallets.",
+        "Liquidator/arbitrageur đại diện; vốn không recycle, kế hoạch vượt vốn không tự chia nhỏ; kết quả gas/capacity/delay chỉ trong miền thử.",
+        "RQ5 chỉ kênh định giá nợ USDC; token quantity khác USD-equivalent; chưa redemption/liquidity/confidence/settlement đầy đủ."
+      ],
+      "status": "CODEX_SPEC_REQUIRED",
+      "status_semantics": "Source/template mapping status only, not production, technical review, chapter approval or rendering authorization.",
+      "codex_review_state": "PENDING_INDEPENDENT_CROSS_VERDICT",
+      "commander_approval_state": "PENDING",
+      "codex_template_locators": [
+        {
+          "path": "artifacts/manuscript_p3/P3_EXHIBIT_CATALOG_v1.json",
+          "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+          "selector": "P3X:SYSTEM_FEEDBACK_SCHEMATIC"
+        },
+        {
+          "path": "artifacts/manuscript_p3/P3_EXHIBIT_CATALOG_v1.json",
+          "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+          "selector": "P3X:METRIC_SEMANTICS_GLOSSARY"
+        }
+      ],
+      "codex_inventory_locator": {
+        "path": "artifacts/manuscript_p3/P3_LOCKED_EVIDENCE_INVENTORY.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "records[evidence_id in locked_codex_evidence_ids]"
+      },
+      "codex_validated_primary_template_ids": [
+        "P3X:SYSTEM_FEEDBACK_SCHEMATIC",
+        "P3X:METRIC_SEMANTICS_GLOSSARY"
+      ],
+      "work_additional_context_template_ids": [],
+      "codex_validation_reference": {
+        "path": "artifacts/manuscript_p3/P3_G0_EXHIBIT_CROSSWALK_VALIDATION.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "exhibit_crosswalk[work_exhibit_id=T3.1]",
+        "work_head_reviewed": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80"
+      },
+      "codex_reproducibility_classification": "TEXTUAL_SYNTHESIS",
+      "required_display_controls": [
+        "Separate representative agent, route eligibility, attempted evaluation and positive-debt execution."
+      ],
+      "codex_prior_technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE"
+    },
+    {
+      "proposed_manuscript_id": "T3.2",
+      "work_handoff_id": "P3X-T3.2",
+      "chapter": 3,
+      "section": "3.5",
+      "academic_purpose": "Ngăn gộp mẫu số giữa grids, prefixes và targeted paths",
+      "related_accepted_claim_ids": [
+        "P2:C21",
+        "P2:C22",
+        "P2:C23",
+        "P2:C32"
+      ],
+      "related_rq_ids": [
+        "RQ1",
+        "RQ2",
+        "RQ3",
+        "RQ4",
+        "RQ5",
+        "RQ6"
+      ],
+      "rq_scope_note": "Main RQs as mapped in accepted registry; no new RQ is created.",
+      "codex_exhibit_template_ids": [
+        "P3X:ORACLE_POLICY_DEPTH2_COMPARISON",
+        "P3X:SEVERE_POLICY_A_MONTE_CARLO"
+      ],
+      "template_link_type": "NO_TEMPLATE_REQUIRED_DIRECT_SOURCE",
+      "locked_result_ids": [
+        "RQ1_GRID60_DEPTH2",
+        "MC_INDEPENDENT_PATHS_VALIDATED"
+      ],
+      "locked_table_figure_ids": [],
+      "locked_codex_evidence_ids": [
+        "P3E:032"
+      ],
+      "exact_source_artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/tables/rq1_deterministic_depth.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "f0e80bc73735de7684feadd2cd3c82519331c033",
+          "selector": "Locked rows/columns for T3.2; fields/axes: Experiment family; Selection; Parameter range; n; Policy; RQ; Version",
+          "codex_evidence_id": null
+        },
+        {
+          "path": "data/processed/research_final/frozen_v3/tables/rq1_monte_carlo.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "ea71db6f633b7e5df1f12cd3d9f2533e5d5f9438",
+          "selector": "Locked rows/columns for T3.2; fields/axes: Experiment family; Selection; Parameter range; n; Policy; RQ; Version",
+          "codex_evidence_id": null
+        },
+        {
+          "path": "data/processed/research_final/oracle_transmission_diagnostic_v1/selection_manifest.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "1bb5bdea8be74c1e62dc89badbcb8cbae67b7bd3",
+          "selector": "Declared locked artifact for T3.2; Codex must pin extraction selector before rendering; no new statistic.",
+          "codex_evidence_id": "P3E:032"
+        }
+      ],
+      "codex_template_source_context": [],
+      "display_type": "table",
+      "reuse_policy": {
+        "rule": "Reuse source values/definitions only. A template may support several displays; display choice does not create new results.",
+        "specific": "Bảng thiết kế lấy từ selection manifest, bảng grid/prefix; không chạy lại thí nghiệm.",
+        "new_statistics_allowed": false,
+        "existing_images": "Do not edit a Frozen PNG silently. Prefer source-data re-display under a new Work display ID with provenance; no rendering in G0."
+      },
+      "rendering_owner": "Codex; Work owns academic purpose, caption and prose. No file is shared for writing.",
+      "required_caption": "Các tập thử đã khóa có miền tham số và mẫu số riêng: grid32/grid60, các prefix Monte Carlo và 18 selected cases × 4 policies. Không cộng prefix hoặc dùng targeted paths như probability sample. Điều kiện hiển thị: Keep 32/60 grids, nested Severe prefixes and selected 4/4/10 diagnostic sets as separate populations.",
+      "units": [
+        "cells",
+        "paths",
+        "borrower-case-policy instances"
+      ],
+      "denominators": [
+        "32/60 deterministic cells; scenario-specific MC batches/prefixes",
+        "18 selected cases×4 policies×454 verified borrowers for diagnostic; do not pool experiment families"
+      ],
+      "caption_limitations": [
+        "Một block 26045352, 454 verified borrowers; 109 là cohort WETH-collateral-enabled/USDC-debt riêng; một Uniswap venue, không đại diện toàn thị trường.",
+        "280/10.000 chỉ Severe Policy A; mười targeted MC paths chọn theo A-depth2; không ước lượng xác suất thị trường, không suy không thể có depth≥3 ngoài tập thử.",
+        "Haircut 90/95% là extreme counterfactual tails, chưa có bằng chứng lịch sử tương ứng; không có independent local-fork execution được kiểm chứng."
+      ],
+      "status": "DIRECT_LOCKED_SOURCE",
+      "status_semantics": "Source/template mapping status only, not production, technical review, chapter approval or rendering authorization.",
+      "codex_review_state": "PENDING_INDEPENDENT_CROSS_VERDICT",
+      "commander_approval_state": "PENDING",
+      "codex_template_locators": [
+        {
+          "path": "artifacts/manuscript_p3/P3_EXHIBIT_CATALOG_v1.json",
+          "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+          "selector": "P3X:ORACLE_POLICY_DEPTH2_COMPARISON"
+        },
+        {
+          "path": "artifacts/manuscript_p3/P3_EXHIBIT_CATALOG_v1.json",
+          "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+          "selector": "P3X:SEVERE_POLICY_A_MONTE_CARLO"
+        }
+      ],
+      "codex_inventory_locator": {
+        "path": "artifacts/manuscript_p3/P3_LOCKED_EVIDENCE_INVENTORY.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "records[evidence_id in locked_codex_evidence_ids]"
+      },
+      "codex_validated_primary_template_ids": [
+        "P3X:ORACLE_POLICY_DEPTH2_COMPARISON",
+        "P3X:SEVERE_POLICY_A_MONTE_CARLO"
+      ],
+      "work_additional_context_template_ids": [],
+      "codex_validation_reference": {
+        "path": "artifacts/manuscript_p3/P3_G0_EXHIBIT_CROSSWALK_VALIDATION.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "exhibit_crosswalk[work_exhibit_id=T3.2]",
+        "work_head_reviewed": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80"
+      },
+      "codex_reproducibility_classification": "RENDERABLE_FROM_LOCKED_ARTIFACT",
+      "required_display_controls": [
+        "Keep 32/60 grids, nested Severe prefixes and selected 4/4/10 diagnostic sets as separate populations."
+      ],
+      "codex_prior_technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE"
+    },
+    {
+      "proposed_manuscript_id": "T3.3",
+      "work_handoff_id": "P3X-T3.3",
+      "chapter": 3,
+      "section": "3.3",
+      "academic_purpose": "Ngăn nhầm debt repaid, modeled bad debt, immediate impact và residual",
+      "related_accepted_claim_ids": [
+        "P2:C08",
+        "P2:C22",
+        "P2:C24",
+        "P2:C35"
+      ],
+      "related_rq_ids": [
+        "RQ1",
+        "RQ2",
+        "RQ3",
+        "RQ4",
+        "RQ5",
+        "RQ6"
+      ],
+      "rq_scope_note": "Main RQs as mapped in accepted registry; no new RQ is created.",
+      "codex_exhibit_template_ids": [
+        "P3X:METRIC_SEMANTICS_GLOSSARY"
+      ],
+      "template_link_type": "REUSABLE_TEMPLATE",
+      "locked_result_ids": [],
+      "locked_table_figure_ids": [],
+      "locked_codex_evidence_ids": [
+        "P3E:002",
+        "P3E:056",
+        "P3E:059"
+      ],
+      "exact_source_artifact_locators": [
+        {
+          "path": "sim/engine/run.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "2b23c9ee88ee4976755e5f4795026e381d5fe497",
+          "selector": "Implementation definition only; inspect named gates/metrics used by T3.3; not an external protocol-validation claim.",
+          "codex_evidence_id": "P3E:059"
+        },
+        {
+          "path": "docs/research_final/TERMINOLOGY_VI.md",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "2ca1e29495e6183dfefaf8939e59e6c4eba574fb",
+          "selector": "Declared locked artifact for T3.3; Codex must pin extraction selector before rendering; no new statistic.",
+          "codex_evidence_id": "P3E:056"
+        },
+        {
+          "path": "data/processed/research_final/final_accepted_claims_v1/accepted_claims_registry.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "bac44e61633b5efdde3665731ea69fbf4ca345e6",
+          "selector": "records filtered by registry_id in P2:C08,P2:C22,P2:C24,P2:C35",
+          "codex_evidence_id": "P3E:002"
+        }
+      ],
+      "codex_template_source_context": [
+        {
+          "path": "sim/metrics/risk.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "794593593b2afc0d2a23eb375744c0a9e4eae7aa",
+          "selector": "Template source context; use only the subset needed by this Work display.",
+          "codex_evidence_id": "P3E:062"
+        },
+        {
+          "path": "sim/schemas.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "0f9a93180ada5912c55d0d36d5c142d0e4a356a6",
+          "selector": "Template source context; use only the subset needed by this Work display.",
+          "codex_evidence_id": "P3E:065"
+        }
+      ],
+      "display_type": "table",
+      "reuse_policy": {
+        "rule": "Reuse source values/definitions only. A template may support several displays; display choice does not create new results.",
+        "specific": "Template glossary khớp chức năng định nghĩa và ranh giới metric.",
+        "new_statistics_allowed": false,
+        "existing_images": "Do not edit a Frozen PNG silently. Prefer source-data re-display under a new Work display ID with provenance; no rendering in G0."
+      },
+      "rendering_owner": "Codex; Work owns academic purpose, caption and prose. No file is shared for writing.",
+      "required_caption": "Định nghĩa metric theo mô hình, kèm đơn vị và thời điểm đo. Tách debt repaid, modeled bad debt/composite exposure, immediate impact, residual, processing delay và recovery. Điều kiện hiển thị: Separate USDC token from USD-equivalent; immediate impact from residual spread; delay from recovery time.",
+      "units": [
+        "USDC tokens",
+        "USD equivalent",
+        "WETH",
+        "ratio/%",
+        "seconds/waves"
+      ],
+      "denominators": [
+        "NOT_APPLICABLE_METRIC_DICTIONARY"
+      ],
+      "caption_limitations": [
+        "Arbitrage là price repositioning, chưa funded executable swap; tác động giá tức thời khác spread sau arbitrage.",
+        "RQ5 chỉ kênh định giá nợ USDC; token quantity khác USD-equivalent; chưa redemption/liquidity/confidence/settlement đầy đủ.",
+        "Modeled bad debt/composite tail exposure khác realized financial loss hoặc market expected shortfall; debt repaid không phải loss."
+      ],
+      "status": "MATCHED",
+      "status_semantics": "Source/template mapping status only, not production, technical review, chapter approval or rendering authorization.",
+      "codex_review_state": "PENDING_INDEPENDENT_CROSS_VERDICT",
+      "commander_approval_state": "PENDING",
+      "codex_template_locators": [
+        {
+          "path": "artifacts/manuscript_p3/P3_EXHIBIT_CATALOG_v1.json",
+          "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+          "selector": "P3X:METRIC_SEMANTICS_GLOSSARY"
+        }
+      ],
+      "codex_inventory_locator": {
+        "path": "artifacts/manuscript_p3/P3_LOCKED_EVIDENCE_INVENTORY.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "records[evidence_id in locked_codex_evidence_ids]"
+      },
+      "codex_validated_primary_template_ids": [
+        "P3X:METRIC_SEMANTICS_GLOSSARY"
+      ],
+      "work_additional_context_template_ids": [],
+      "codex_validation_reference": {
+        "path": "artifacts/manuscript_p3/P3_G0_EXHIBIT_CROSSWALK_VALIDATION.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "exhibit_crosswalk[work_exhibit_id=T3.3]",
+        "work_head_reviewed": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80"
+      },
+      "codex_reproducibility_classification": "TEXTUAL_SYNTHESIS",
+      "required_display_controls": [
+        "Separate USDC token from USD-equivalent; immediate impact from residual spread; delay from recovery time."
+      ],
+      "codex_prior_technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE"
+    },
+    {
+      "proposed_manuscript_id": "F4.1",
+      "work_handoff_id": "P3X-F4.1",
+      "chapter": 4,
+      "section": "4.1",
+      "academic_purpose": "Phân biệt discovery, RPC verification, 454 portfolio và109 route cohort",
+      "related_accepted_claim_ids": [
+        "P2:C20",
+        "P2:C33"
+      ],
+      "related_rq_ids": [
+        "RQ1",
+        "RQ2",
+        "RQ3",
+        "RQ4",
+        "RQ5",
+        "RQ6"
+      ],
+      "rq_scope_note": "Main RQs as mapped in accepted registry; no new RQ is created.",
+      "codex_exhibit_template_ids": [
+        "P3X:CANONICAL_SCOPE_PROVENANCE"
+      ],
+      "template_link_type": "SOURCE_COMPONENTS_ONLY_NEW_DISPLAY_SPEC",
+      "locked_result_ids": [
+        "AAVE_SNAPSHOT_BLOCK",
+        "AAVE_VERIFIED_BORROWERS",
+        "AAVE_WETH_USDC_COHORT"
+      ],
+      "locked_table_figure_ids": [],
+      "locked_codex_evidence_ids": [
+        "P3E:007",
+        "P3E:015"
+      ],
+      "exact_source_artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/results_registry.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "6dde91fc11d189de8899c742b44fea9cf0f386ae",
+          "selector": "results filtered by result_id in AAVE_SNAPSHOT_BLOCK,AAVE_VERIFIED_BORROWERS,AAVE_WETH_USDC_COHORT",
+          "codex_evidence_id": "P3E:015"
+        },
+        {
+          "path": "data/processed/research_final/final_accepted_claims_v1/source_provenance_registry.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "a6784fd7f1b7288c4f2177ff8ba102be5e01c81e",
+          "selector": "Declared locked artifact for F4.1; Codex must pin extraction selector before rendering; no new statistic.",
+          "codex_evidence_id": "P3E:007"
+        }
+      ],
+      "codex_template_source_context": [
+        {
+          "path": "data/processed/mainnet/aave_uniswap_snapshot_26045352.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "18234390e54f353ab7fd7c85ad0a86b46c34937b",
+          "selector": "Template source context; use only the subset needed by this Work display.",
+          "codex_evidence_id": "P3E:001"
+        },
+        {
+          "path": "data/processed/research_final/frozen_v3/manifest.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "5fa6f68d25dd4df88b042a7b31be014f8b46dd38",
+          "selector": "Template source context; use only the subset needed by this Work display.",
+          "codex_evidence_id": "P3E:014"
+        }
+      ],
+      "display_type": "schematic",
+      "reuse_policy": {
+        "rule": "Reuse source values/definitions only. A template may support several displays; display choice does not create new results.",
+        "specific": "Dùng nguồn canonical provenance để dựng lineage schematic; nguồn là bảng, rendition mới cần spec.",
+        "new_statistics_allowed": false,
+        "existing_images": "Do not edit a Frozen PNG silently. Prefer source-data re-display under a new Work display ID with provenance; no rendering in G0."
+      },
+      "rendering_owner": "Codex; Work owns academic purpose, caption and prose. No file is shared for writing.",
+      "required_caption": "Tái dựng tại block 26045352: 454 người vay được xác minh và 109 vị thế WETH/USDC mục tiêu. Đây là mẫu dự án, không đại diện toàn thị trường Aave. Điều kiện hiển thị: Do not convert candidate verification into market coverage.",
+      "units": [
+        "borrowers/positions",
+        "Ethereum block"
+      ],
+      "denominators": [
+        "454verified borrowers;109WETH-enabled/USDC-debt positions;block26045352"
+      ],
+      "caption_limitations": [
+        "Một block 26045352, 454 verified borrowers; 109 là cohort WETH-collateral-enabled/USDC-debt riêng; một Uniswap venue, không đại diện toàn thị trường.",
+        "Git LF blob bytes khác Windows CRLF checkout bytes; kết quả kiểm thử do Codex báo cáo khác lượt Work tự chạy; không đồng nhất hash domains."
+      ],
+      "status": "CODEX_SPEC_REQUIRED",
+      "status_semantics": "Source/template mapping status only, not production, technical review, chapter approval or rendering authorization.",
+      "codex_review_state": "PENDING_INDEPENDENT_CROSS_VERDICT",
+      "commander_approval_state": "PENDING",
+      "codex_template_locators": [
+        {
+          "path": "artifacts/manuscript_p3/P3_EXHIBIT_CATALOG_v1.json",
+          "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+          "selector": "P3X:CANONICAL_SCOPE_PROVENANCE"
+        }
+      ],
+      "codex_inventory_locator": {
+        "path": "artifacts/manuscript_p3/P3_LOCKED_EVIDENCE_INVENTORY.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "records[evidence_id in locked_codex_evidence_ids]"
+      },
+      "codex_validated_primary_template_ids": [
+        "P3X:CANONICAL_SCOPE_PROVENANCE"
+      ],
+      "work_additional_context_template_ids": [],
+      "codex_validation_reference": {
+        "path": "artifacts/manuscript_p3/P3_G0_EXHIBIT_CROSSWALK_VALIDATION.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "exhibit_crosswalk[work_exhibit_id=F4.1]",
+        "work_head_reviewed": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80"
+      },
+      "codex_reproducibility_classification": "SCHEMATIC_FROM_LOCKED_MODEL_SPEC",
+      "required_display_controls": [
+        "Do not convert candidate verification into market coverage."
+      ],
+      "codex_prior_technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE"
+    },
+    {
+      "proposed_manuscript_id": "T4.1",
+      "work_handoff_id": "P3X-T4.1",
+      "chapter": 4,
+      "section": "4.2",
+      "academic_purpose": "Báo lỗi tuyệt đối/tương đối, tách vùng gần thanh lý",
+      "related_accepted_claim_ids": [
+        "P2:C02",
+        "P2:C33"
+      ],
+      "related_rq_ids": [
+        "RQ1",
+        "RQ3",
+        "RQ5",
+        "RQ6"
+      ],
+      "rq_scope_note": "Main RQs as mapped in accepted registry; no new RQ is created.",
+      "codex_exhibit_template_ids": [
+        "P3X:CANONICAL_SCOPE_PROVENANCE"
+      ],
+      "template_link_type": "SOURCE_COMPONENTS_ONLY_NEW_DISPLAY_SPEC",
+      "locked_result_ids": [
+        "AAVE_HF_MAX_ABS_ERROR",
+        "AAVE_HF_MAX_REL_ERROR",
+        "AAVE_VERIFIED_BORROWERS"
+      ],
+      "locked_table_figure_ids": [
+        "T02"
+      ],
+      "locked_codex_evidence_ids": [
+        "P3E:015"
+      ],
+      "exact_source_artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/tables/core_facts.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "52a074b9b8284221c5996d14d903504ee8abe414",
+          "selector": "Locked rows/columns for T4.1; fields/axes: Count; HF error metric; Value; Unit; Scope; Source",
+          "codex_evidence_id": null
+        },
+        {
+          "path": "data/processed/research_final/frozen_v3/results_registry.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "6dde91fc11d189de8899c742b44fea9cf0f386ae",
+          "selector": "results filtered by result_id in AAVE_HF_MAX_ABS_ERROR,AAVE_HF_MAX_REL_ERROR,AAVE_VERIFIED_BORROWERS",
+          "codex_evidence_id": "P3E:015"
+        }
+      ],
+      "codex_template_source_context": [
+        {
+          "path": "data/processed/mainnet/aave_uniswap_snapshot_26045352.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "18234390e54f353ab7fd7c85ad0a86b46c34937b",
+          "selector": "Template source context; use only the subset needed by this Work display.",
+          "codex_evidence_id": "P3E:001"
+        },
+        {
+          "path": "data/processed/research_final/frozen_v3/manifest.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "5fa6f68d25dd4df88b042a7b31be014f8b46dd38",
+          "selector": "Template source context; use only the subset needed by this Work display.",
+          "codex_evidence_id": "P3E:014"
+        }
+      ],
+      "display_type": "table",
+      "reuse_policy": {
+        "rule": "Reuse source values/definitions only. A template may support several displays; display choice does not create new results.",
+        "specific": "Canonical scope template chỉ hỗ trợ block/cohort; bổ sung HF errors từ source đã khóa, không giả template đã bao gồm validation.",
+        "new_statistics_allowed": false,
+        "existing_images": "Do not edit a Frozen PNG silently. Prefer source-data re-display under a new Work display ID with provenance; no rendering in G0."
+      },
+      "rendering_owner": "Codex; Work owns academic purpose, caption and prose. No file is shared for writing.",
+      "required_caption": "Đối chiếu HF trên 454 verified borrowers; HF units khác relative ratio. Sai số cực trị không tự đại diện vùng HF gần 1. Cohort 109 vị thế có phạm vi riêng. Điều kiện hiển thị: Do not add near-threshold subgroup statistics unless a locked locator is supplied; maxima are not typical error.",
+      "units": [
+        "HF units",
+        "ratio; quy đổi % ghi rõ",
+        "borrowers"
+      ],
+      "denominators": [
+        "454verified borrowers for aggregate HF checks;109targetcohort is separate"
+      ],
+      "caption_limitations": [
+        "Không suy độ phủ thị trường; max absolute error không đại diện vùngHF≈1"
+      ],
+      "status": "CODEX_SPEC_REQUIRED",
+      "status_semantics": "Source/template mapping status only, not production, technical review, chapter approval or rendering authorization.",
+      "codex_review_state": "PENDING_INDEPENDENT_CROSS_VERDICT",
+      "commander_approval_state": "PENDING",
+      "codex_template_locators": [
+        {
+          "path": "artifacts/manuscript_p3/P3_EXHIBIT_CATALOG_v1.json",
+          "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+          "selector": "P3X:CANONICAL_SCOPE_PROVENANCE"
+        }
+      ],
+      "codex_inventory_locator": {
+        "path": "artifacts/manuscript_p3/P3_LOCKED_EVIDENCE_INVENTORY.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "records[evidence_id in locked_codex_evidence_ids]"
+      },
+      "codex_validated_primary_template_ids": [
+        "P3X:CANONICAL_SCOPE_PROVENANCE"
+      ],
+      "work_additional_context_template_ids": [],
+      "codex_validation_reference": {
+        "path": "artifacts/manuscript_p3/P3_G0_EXHIBIT_CROSSWALK_VALIDATION.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "exhibit_crosswalk[work_exhibit_id=T4.1]",
+        "work_head_reviewed": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80"
+      },
+      "codex_reproducibility_classification": "RENDERABLE_FROM_LOCKED_ARTIFACT",
+      "required_display_controls": [
+        "Do not add near-threshold subgroup statistics unless a locked locator is supplied; maxima are not typical error."
+      ],
+      "codex_prior_technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE"
+    },
+    {
+      "proposed_manuscript_id": "T4.2",
+      "work_handoff_id": "P3X-T4.2",
+      "chapter": 4,
+      "section": "4.3",
+      "academic_purpose": "Phân tầng data/code/model/historical/fork thay vì một nhãn validated",
+      "related_accepted_claim_ids": [
+        "P2:C17",
+        "P2:C20",
+        "P2:C32",
+        "P2:C33",
+        "P2:C34"
+      ],
+      "related_rq_ids": [
+        "RQ1",
+        "RQ2",
+        "RQ3",
+        "RQ4",
+        "RQ5",
+        "RQ6"
+      ],
+      "rq_scope_note": "Main RQs as mapped in accepted registry; no new RQ is created.",
+      "codex_exhibit_template_ids": [
+        "P3X:METRIC_SEMANTICS_GLOSSARY"
+      ],
+      "template_link_type": "NO_TEMPLATE_REQUIRED_DIRECT_SOURCE",
+      "locked_result_ids": [],
+      "locked_table_figure_ids": [],
+      "locked_codex_evidence_ids": [],
+      "exact_source_artifact_locators": [
+        {
+          "path": "docs/research_final/LEVEL2_FORK_VALIDATION.md",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "4baa8b825743cacd20b1586cff5fb05d1aad96c2",
+          "selector": "Declared locked artifact for T4.2; Codex must pin extraction selector before rendering; no new statistic.",
+          "codex_evidence_id": null
+        },
+        {
+          "path": "docs/research_final/FINAL_CROSS_PR_CONSISTENCY_REVIEW.md",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "7e54828a39e05f9e41e9d2b206bcfa0402a6fb7a",
+          "selector": "Declared locked artifact for T4.2; Codex must pin extraction selector before rendering; no new statistic.",
+          "codex_evidence_id": null
+        },
+        {
+          "path": "docs/research_final/SCIENTIFIC_PREMERGE_AUDIT_v1.md",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "f3fd437b41d0feabacf01f6708ca65d3a738ef05",
+          "selector": "Declared locked artifact for T4.2; Codex must pin extraction selector before rendering; no new statistic.",
+          "codex_evidence_id": null
+        }
+      ],
+      "codex_template_source_context": [],
+      "display_type": "table",
+      "reuse_policy": {
+        "rule": "Reuse source values/definitions only. A template may support several displays; display choice does not create new results.",
+        "specific": "Tổng hợp các kiểm tra/report đã có; tách executor và phạm vi, không numerical test mới.",
+        "new_statistics_allowed": false,
+        "existing_images": "Do not edit a Frozen PNG silently. Prefer source-data re-display under a new Work display ID with provenance; no rendering in G0."
+      },
+      "rendering_owner": "Codex; Work owns academic purpose, caption and prose. No file is shared for writing.",
+      "required_caption": "Phạm vi kiểm tra được gắn artifact và executor. Nhất quán dữ liệu, HF hoặc báo giá không đồng nghĩa đã xác minh nguồn giá lịch sử hay independent fork execution. Điều kiện hiển thị: Unexecuted fork validation remains unavailable, never PASS.",
+      "units": [
+        "không đơn vị"
+      ],
+      "denominators": [
+        "NOT_APPLICABLE_TO_EMPIRICAL_SAMPLE; scope depends on each verification record"
+      ],
+      "caption_limitations": [
+        "Haircut 90/95% là extreme counterfactual tails, chưa có bằng chứng lịch sử tương ứng; không có independent local-fork execution được kiểm chứng.",
+        "Hai raw borrower CSV lớn vẫn chưa được Work đọc đầy đủ/cell-by-cell; giữ source access labels, U01–U08 và mức abstract/metadata/code; S17/S18 cùng nghiên cứu.",
+        "Git LF blob bytes khác Windows CRLF checkout bytes; kết quả kiểm thử do Codex báo cáo khác lượt Work tự chạy; không đồng nhất hash domains."
+      ],
+      "status": "DIRECT_LOCKED_SOURCE",
+      "status_semantics": "Source/template mapping status only, not production, technical review, chapter approval or rendering authorization.",
+      "codex_review_state": "PENDING_INDEPENDENT_CROSS_VERDICT",
+      "commander_approval_state": "PENDING",
+      "codex_template_locators": [
+        {
+          "path": "artifacts/manuscript_p3/P3_EXHIBIT_CATALOG_v1.json",
+          "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+          "selector": "P3X:METRIC_SEMANTICS_GLOSSARY"
+        }
+      ],
+      "codex_inventory_locator": {
+        "path": "artifacts/manuscript_p3/P3_LOCKED_EVIDENCE_INVENTORY.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "records[evidence_id in locked_codex_evidence_ids]"
+      },
+      "codex_validated_primary_template_ids": [
+        "P3X:METRIC_SEMANTICS_GLOSSARY"
+      ],
+      "work_additional_context_template_ids": [],
+      "codex_validation_reference": {
+        "path": "artifacts/manuscript_p3/P3_G0_EXHIBIT_CROSSWALK_VALIDATION.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "exhibit_crosswalk[work_exhibit_id=T4.2]",
+        "work_head_reviewed": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80"
+      },
+      "codex_reproducibility_classification": "TEXTUAL_SYNTHESIS",
+      "required_display_controls": [
+        "Unexecuted fork validation remains unavailable, never PASS."
+      ],
+      "codex_prior_technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE"
+    },
+    {
+      "proposed_manuscript_id": "F5.1",
+      "work_handoff_id": "P3X-F5.1",
+      "chapter": 5,
+      "section": "5.1",
+      "academic_purpose": "Đối chiếu miền thử cũ/mở rộng và tác động của extreme tails",
+      "related_accepted_claim_ids": [
+        "INT:CL_INT_RQ1_POLICY_CONDITIONAL",
+        "P2:C23"
+      ],
+      "related_rq_ids": [
+        "RQ1"
+      ],
+      "rq_scope_note": "Main RQs as mapped in accepted registry; no new RQ is created.",
+      "codex_exhibit_template_ids": [
+        "P3X:ORACLE_POLICY_DEPTH2_COMPARISON"
+      ],
+      "template_link_type": "NO_TEMPLATE_REQUIRED_DIRECT_SOURCE",
+      "locked_result_ids": [
+        "RQ1_GRID32_MAX_DEPTH",
+        "RQ1_GRID60_DEPTH0",
+        "RQ1_GRID60_DEPTH1",
+        "RQ1_GRID60_DEPTH2"
+      ],
+      "locked_table_figure_ids": [
+        "F01"
+      ],
+      "locked_codex_evidence_ids": [],
+      "exact_source_artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/tables/rq1_deterministic_depth.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "f0e80bc73735de7684feadd2cd3c82519331c033",
+          "selector": "Locked rows/columns for F5.1; fields/axes: x: depth0/1/2; y: số ô; Panels32/60; 12/20/0 và18/38/4",
+          "codex_evidence_id": null
+        }
+      ],
+      "codex_template_source_context": [],
+      "display_type": "figure",
+      "reuse_policy": {
+        "rule": "Reuse source values/definitions only. A template may support several displays; display choice does not create new results.",
+        "specific": "Không có template Codex riêng cho grid; nguồn trực tiếp là bảng phân bố32/60 và Frozen F01. Chỉ dựng lại display từ counts đã khóa.",
+        "new_statistics_allowed": false,
+        "existing_images": "Do not edit a Frozen PNG silently. Prefer source-data re-display under a new Work display ID with provenance; no rendering in G0."
+      },
+      "rendering_owner": "Codex; Work owns academic purpose, caption and prose. No file is shared for writing.",
+      "required_caption": "Số ô depth 0/1/2 lần lượt là 12/20/0 trong lưới32 và 18/38/4 trong lưới60 theo Policy A. Miền thử khác nhau; haircut 90/95% là extreme counterfactual tails. Điều kiện hiển thị: Facet grids separately; 12/20/0 and 18/38/4 use different experiment domains.",
+      "units": [
+        "cells"
+      ],
+      "denominators": [
+        "32cells and60cells are separate grids, PolicyA"
+      ],
+      "caption_limitations": [
+        "Kết quả cascade là mô phỏng phản thực có điều kiện theo policy, cohort và cấu hình thanh khoản; A/B/C chưa được xác minh là feed Aave/Chainlink lịch sử.",
+        "Haircut 90/95% là extreme counterfactual tails, chưa có bằng chứng lịch sử tương ứng; không có independent local-fork execution được kiểm chứng."
+      ],
+      "status": "DIRECT_LOCKED_SOURCE",
+      "status_semantics": "Source/template mapping status only, not production, technical review, chapter approval or rendering authorization.",
+      "codex_review_state": "PENDING_INDEPENDENT_CROSS_VERDICT",
+      "commander_approval_state": "PENDING",
+      "codex_template_locators": [
+        {
+          "path": "artifacts/manuscript_p3/P3_EXHIBIT_CATALOG_v1.json",
+          "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+          "selector": "P3X:ORACLE_POLICY_DEPTH2_COMPARISON"
+        }
+      ],
+      "codex_inventory_locator": {
+        "path": "artifacts/manuscript_p3/P3_LOCKED_EVIDENCE_INVENTORY.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "records[evidence_id in locked_codex_evidence_ids]"
+      },
+      "codex_validated_primary_template_ids": [
+        "P3X:ORACLE_POLICY_DEPTH2_COMPARISON"
+      ],
+      "work_additional_context_template_ids": [],
+      "codex_validation_reference": {
+        "path": "artifacts/manuscript_p3/P3_G0_EXHIBIT_CROSSWALK_VALIDATION.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "exhibit_crosswalk[work_exhibit_id=F5.1]",
+        "work_head_reviewed": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80"
+      },
+      "codex_reproducibility_classification": "RENDERABLE_FROM_LOCKED_ARTIFACT",
+      "required_display_controls": [
+        "Facet grids separately; 12/20/0 and 18/38/4 use different experiment domains."
+      ],
+      "codex_prior_technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE"
+    },
+    {
+      "proposed_manuscript_id": "T5.1",
+      "work_handoff_id": "P3X-T5.1",
+      "chapter": 5,
+      "section": "5.2",
+      "academic_purpose": "Đặt 4/0/0/0 và10/0/0/2 đúng tập chọn",
+      "related_accepted_claim_ids": [
+        "INT:CL_INT_RQ1_POLICY_CONDITIONAL",
+        "INT:CL_INT_RQ2_TWO_CHANNELS",
+        "P2:C32"
+      ],
+      "related_rq_ids": [
+        "RQ1",
+        "RQ2",
+        "RQ4"
+      ],
+      "rq_scope_note": "Main RQs as mapped in accepted registry; no new RQ is created.",
+      "codex_exhibit_template_ids": [
+        "P3X:ORACLE_POLICY_DEPTH2_COMPARISON"
+      ],
+      "template_link_type": "REUSABLE_TEMPLATE",
+      "locked_result_ids": [
+        "INT_A_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
+        "INT_A_SELECTED_MC_DEPTH2_RETAINED_COUNT_OF_10",
+        "INT_B_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
+        "INT_B_SELECTED_MC_DEPTH2_RETAINED_COUNT_OF_10",
+        "INT_C_WEAK_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
+        "INT_C_WEAK_SELECTED_MC_DEPTH2_RETAINED_COUNT_OF_10",
+        "INT_C_MODERATE_DETERMINISTIC_DEPTH2_RETAINED_COUNT_OF_4",
+        "INT_C_MODERATE_SELECTED_MC_DEPTH2_RETAINED_COUNT_OF_10"
+      ],
+      "locked_table_figure_ids": [],
+      "locked_codex_evidence_ids": [
+        "P3E:029",
+        "P3E:032",
+        "P3E:034"
+      ],
+      "exact_source_artifact_locators": [
+        {
+          "path": "data/processed/research_final/oracle_transmission_diagnostic_v1/selection_manifest.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "1bb5bdea8be74c1e62dc89badbcb8cbae67b7bd3",
+          "selector": "Declared locked artifact for T5.1; Codex must pin extraction selector before rendering; no new statistic.",
+          "codex_evidence_id": "P3E:032"
+        },
+        {
+          "path": "data/processed/research_final/oracle_transmission_diagnostic_v1/comparison_matrix.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "dee128ff278efe94895220aca5eccec4150c1cc4",
+          "selector": "Locked rows/columns for T5.1; fields/axes: Policy; α/lag/window; Det retained/4; MC retained/10; Control results separate",
+          "codex_evidence_id": "P3E:029"
+        },
+        {
+          "path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "664eeac6d3d80a38dc4c2ca6c942070f09d8d9f8",
+          "selector": "Locked rows/columns for T5.1; fields/axes: Policy; α/lag/window; Det retained/4; MC retained/10; Control results separate",
+          "codex_evidence_id": "P3E:034"
+        }
+      ],
+      "codex_template_source_context": [],
+      "display_type": "table",
+      "reuse_policy": {
+        "rule": "Reuse source values/definitions only. A template may support several displays; display choice does not create new results.",
+        "specific": "Template policy counts khớp; giữ hai denominators4 và10 riêng, controls riêng.",
+        "new_statistics_allowed": false,
+        "existing_images": "Do not edit a Frozen PNG silently. Prefer source-data re-display under a new Work display ID with provenance; no rendering in G0."
+      },
+      "rendering_owner": "Codex; Work owns academic purpose, caption and prose. No file is shared for writing.",
+      "required_caption": "Bốn selected deterministic cases cho 4/0/0/0 và mười targeted MC paths cho 10/0/0/2 ở A/B/C weak/C moderate. Paths được chọn theo depth2 dưới A, không ước lượng xác suất quần thể. Điều kiện hiển thị: Show /4 and /10 denominators; controls remain separate; ten paths are not a frequency estimator.",
+      "units": [
+        "cases/4",
+        "paths/10"
+      ],
+      "denominators": [
+        "4preselected deterministic depth2cases;10targetedMCpaths chosen underPolicyA",
+        "4deterministic controls remain a separate denominator"
+      ],
+      "caption_limitations": [
+        "Kết quả cascade là mô phỏng phản thực có điều kiện theo policy, cohort và cấu hình thanh khoản; A/B/C chưa được xác minh là feed Aave/Chainlink lịch sử.",
+        "280/10.000 chỉ Severe Policy A; mười targeted MC paths chọn theo A-depth2; không ước lượng xác suất thị trường, không suy không thể có depth≥3 ngoài tập thử."
+      ],
+      "status": "MATCHED",
+      "status_semantics": "Source/template mapping status only, not production, technical review, chapter approval or rendering authorization.",
+      "codex_review_state": "PENDING_INDEPENDENT_CROSS_VERDICT",
+      "commander_approval_state": "PENDING",
+      "codex_template_locators": [
+        {
+          "path": "artifacts/manuscript_p3/P3_EXHIBIT_CATALOG_v1.json",
+          "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+          "selector": "P3X:ORACLE_POLICY_DEPTH2_COMPARISON"
+        }
+      ],
+      "codex_inventory_locator": {
+        "path": "artifacts/manuscript_p3/P3_LOCKED_EVIDENCE_INVENTORY.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "records[evidence_id in locked_codex_evidence_ids]"
+      },
+      "codex_validated_primary_template_ids": [
+        "P3X:ORACLE_POLICY_DEPTH2_COMPARISON"
+      ],
+      "work_additional_context_template_ids": [],
+      "codex_validation_reference": {
+        "path": "artifacts/manuscript_p3/P3_G0_EXHIBIT_CROSSWALK_VALIDATION.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "exhibit_crosswalk[work_exhibit_id=T5.1]",
+        "work_head_reviewed": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80"
+      },
+      "codex_reproducibility_classification": "RENDERABLE_FROM_LOCKED_ARTIFACT",
+      "required_display_controls": [
+        "Show /4 and /10 denominators; controls remain separate; ten paths are not a frequency estimator."
+      ],
+      "codex_prior_technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE"
+    },
+    {
+      "proposed_manuscript_id": "T5.2",
+      "work_handoff_id": "P3X-T5.2",
+      "chapter": 5,
+      "section": "5.3",
+      "academic_purpose": "Bảng chính cho kết quả eligible/executed/skipped",
+      "related_accepted_claim_ids": [
+        "INT:CL_INT_ELIGIBLE_NOT_EXECUTED",
+        "P2:C33"
+      ],
+      "related_rq_ids": [
+        "RQ1",
+        "RQ3"
+      ],
+      "rq_scope_note": "Main RQs as mapped in accepted registry; no new RQ is created.",
+      "codex_exhibit_template_ids": [
+        "P3X:ELIGIBLE_VS_EXECUTED"
+      ],
+      "template_link_type": "REUSABLE_TEMPLATE",
+      "locked_result_ids": [
+        "INT_A_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_A_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
+        "INT_A_NEWLY_ELIGIBLE_SKIPPED_INSTANCES",
+        "INT_B_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_B_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
+        "INT_B_NEWLY_ELIGIBLE_SKIPPED_INSTANCES",
+        "INT_C_WEAK_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_C_WEAK_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
+        "INT_C_WEAK_NEWLY_ELIGIBLE_SKIPPED_INSTANCES",
+        "INT_C_MODERATE_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_C_MODERATE_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
+        "INT_C_MODERATE_NEWLY_ELIGIBLE_SKIPPED_INSTANCES"
+      ],
+      "locked_table_figure_ids": [
+        "INT_T01_ELIGIBLE_VS_EXECUTED"
+      ],
+      "locked_codex_evidence_ids": [
+        "P3E:034",
+        "P3E:037"
+      ],
+      "exact_source_artifact_locators": [
+        {
+          "path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "664eeac6d3d80a38dc4c2ca6c942070f09d8d9f8",
+          "selector": "Locked rows/columns for T5.2; fields/axes: Policy; Newly eligible; Evaluated; Executed Wave2; Skipped; Reason; Debt repaid USDC",
+          "codex_evidence_id": "P3E:034"
+        },
+        {
+          "path": "data/processed/research_final/scientific_integration_v1/table_figure_registry.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "c74345f75c02a4550151a0cf7802fa96fecdd202",
+          "selector": "Declared locked artifact for T5.2; Codex must pin extraction selector before rendering; no new statistic.",
+          "codex_evidence_id": "P3E:037"
+        }
+      ],
+      "codex_template_source_context": [
+        {
+          "path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_audit.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "e441a0fc77cb084609e439bc3ff8ebf189e71ccd",
+          "selector": "Template source context; use only the subset needed by this Work display.",
+          "codex_evidence_id": "P3E:033"
+        }
+      ],
+      "display_type": "table",
+      "reuse_policy": {
+        "rule": "Reuse source values/definitions only. A template may support several displays; display choice does not create new results.",
+        "specific": "Tái dùng INT_T01/summary với eligible/executed/skipped; không đếm unique wallets.",
+        "new_statistics_allowed": false,
+        "existing_images": "Do not edit a Frozen PNG silently. Prefer source-data re-display under a new Work display ID with provenance; no rendering in G0."
+      },
+      "rendering_owner": "Codex; Work owns academic purpose, caption and prose. No file is shared for writing.",
+      "required_caption": "Eligible/executed/skipped: A 35/14/21; B 0/0/0; C weak 6/0/6; C moderate 11/2/9. Đơn vị borrower-case-policy instances, không unique wallets; 36 skips không có modeled USDC debt trên tuyến WETH/USDC. Điều kiện hiển thị: Units are borrower-case-policy instances; 36 skips are route-ineligible due to zero modeled USDC route debt.",
+      "units": [
+        "borrower-case-policy instances",
+        "USDC token quantity"
+      ],
+      "denominators": [
+        "18selected cases×4policies×454verified borrowers; totals perpolicy are borrower-case-policy instances, not unique wallets"
+      ],
+      "caption_limitations": [
+        "Phân biệt HF danh mục mới dưới 1, engine evaluation, route eligibility và execution có debt repaid dương; đếm borrower-case-policy instances, không unique wallets.",
+        "36 skips NO_MODELLED_USDC_DEBT; no claim unique-wallet count"
+      ],
+      "status": "MATCHED",
+      "status_semantics": "Source/template mapping status only, not production, technical review, chapter approval or rendering authorization.",
+      "codex_review_state": "PENDING_INDEPENDENT_CROSS_VERDICT",
+      "commander_approval_state": "PENDING",
+      "codex_template_locators": [
+        {
+          "path": "artifacts/manuscript_p3/P3_EXHIBIT_CATALOG_v1.json",
+          "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+          "selector": "P3X:ELIGIBLE_VS_EXECUTED"
+        }
+      ],
+      "codex_inventory_locator": {
+        "path": "artifacts/manuscript_p3/P3_LOCKED_EVIDENCE_INVENTORY.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "records[evidence_id in locked_codex_evidence_ids]"
+      },
+      "codex_validated_primary_template_ids": [
+        "P3X:ELIGIBLE_VS_EXECUTED"
+      ],
+      "work_additional_context_template_ids": [],
+      "codex_validation_reference": {
+        "path": "artifacts/manuscript_p3/P3_G0_EXHIBIT_CROSSWALK_VALIDATION.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "exhibit_crosswalk[work_exhibit_id=T5.2]",
+        "work_head_reviewed": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80"
+      },
+      "codex_reproducibility_classification": "RENDERABLE_FROM_LOCKED_ARTIFACT",
+      "required_display_controls": [
+        "Units are borrower-case-policy instances; 36 skips are route-ineligible due to zero modeled USDC route debt."
+      ],
+      "codex_prior_technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE"
+    },
+    {
+      "proposed_manuscript_id": "F5.2",
+      "work_handoff_id": "P3X-F5.2",
+      "chapter": 5,
+      "section": "5.3",
+      "academic_purpose": "Sơ đồ phân nhánh giải thích vì sao newly eligible không bằng executed",
+      "related_accepted_claim_ids": [
+        "P2:C03",
+        "P2:C33",
+        "INT:CL_INT_ELIGIBLE_NOT_EXECUTED"
+      ],
+      "related_rq_ids": [
+        "RQ1",
+        "RQ3"
+      ],
+      "rq_scope_note": "Main RQs as mapped in accepted registry; no new RQ is created.",
+      "codex_exhibit_template_ids": [
+        "P3X:ELIGIBLE_VS_EXECUTED",
+        "P3X:SYSTEM_FEEDBACK_SCHEMATIC"
+      ],
+      "template_link_type": "SOURCE_COMPONENTS_ONLY_NEW_DISPLAY_SPEC",
+      "locked_result_ids": [
+        "INT_A_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_A_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
+        "INT_A_NEWLY_ELIGIBLE_SKIPPED_INSTANCES",
+        "INT_B_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_B_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
+        "INT_B_NEWLY_ELIGIBLE_SKIPPED_INSTANCES",
+        "INT_C_WEAK_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_C_WEAK_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
+        "INT_C_WEAK_NEWLY_ELIGIBLE_SKIPPED_INSTANCES",
+        "INT_C_MODERATE_NEWLY_ELIGIBLE_BORROWER_CASE_INSTANCES",
+        "INT_C_MODERATE_NEWLY_ELIGIBLE_EXECUTED_WAVE2_INSTANCES",
+        "INT_C_MODERATE_NEWLY_ELIGIBLE_SKIPPED_INSTANCES"
+      ],
+      "locked_table_figure_ids": [],
+      "locked_codex_evidence_ids": [
+        "P3E:034"
+      ],
+      "exact_source_artifact_locators": [
+        {
+          "path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "664eeac6d3d80a38dc4c2ca6c942070f09d8d9f8",
+          "selector": "Locked rows/columns for F5.2; fields/axes: HF newly unsafe→engine evaluated→route check→positive-debt execution/skip; Policy facets; Một event example đã redacted do Codex chọn từ audit",
+          "codex_evidence_id": "P3E:034"
+        },
+        {
+          "path": "docs/research_final/SCIENTIFIC_PREMERGE_AUDIT_v1.md",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "f3fd437b41d0feabacf01f6708ca65d3a738ef05",
+          "selector": "Declared locked artifact for F5.2; Codex must pin extraction selector before rendering; no new statistic.",
+          "codex_evidence_id": null
+        }
+      ],
+      "codex_template_source_context": [
+        {
+          "path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_audit.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "e441a0fc77cb084609e439bc3ff8ebf189e71ccd",
+          "selector": "Template source context; use only the subset needed by this Work display.",
+          "codex_evidence_id": "P3E:033"
+        },
+        {
+          "path": "sim/agents/liquidator.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "9f44ba9a8037f239b2b5ef8881ad2d49c25ecf6d",
+          "selector": "Template source context; use only the subset needed by this Work display.",
+          "codex_evidence_id": "P3E:057"
+        },
+        {
+          "path": "sim/dex/uniswap_v3.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "4172eae06907ae8bf95a10e7e50463111d0eec3d",
+          "selector": "Template source context; use only the subset needed by this Work display.",
+          "codex_evidence_id": "P3E:058"
+        },
+        {
+          "path": "sim/engine/run.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "2b23c9ee88ee4976755e5f4795026e381d5fe497",
+          "selector": "Template source context; use only the subset needed by this Work display.",
+          "codex_evidence_id": "P3E:059"
+        },
+        {
+          "path": "sim/oracle.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "2ac37f923a4cc35bef95968d353f0724bfdbd3a5",
+          "selector": "Template source context; use only the subset needed by this Work display.",
+          "codex_evidence_id": "P3E:064"
+        }
+      ],
+      "display_type": "schematic",
+      "reuse_policy": {
+        "rule": "Reuse source values/definitions only. A template may support several displays; display choice does not create new results.",
+        "specific": "Cùng evidence có thể tạo sơ đồ gate khác bảngT5.2; cần spec luồng và event-example locator, không tạo event mới.",
+        "new_statistics_allowed": false,
+        "existing_images": "Do not edit a Frozen PNG silently. Prefer source-data re-display under a new Work display ID with provenance; no rendering in G0."
+      },
+      "rendering_owner": "Codex; Work owns academic purpose, caption and prose. No file is shared for writing.",
+      "required_caption": "Phân biệt HF danh mục mới dưới 1, engine evaluation, route eligibility và execution có khoản nợ hoàn trả dương. 36 route skips không được gán cho gas, vốn hoặc profitability; ví dụ chỉ dùng event ID đã khóa. Điều kiện hiển thị: Use the smallest stable case/borrower key within the predeclared executed/skipped category; preserve pseudonymization; do not sample after viewing outcomes. Predeclare category (executed or skipped); sort case key then stable pseudonymized borrower key lexicographically; select the smallest key per category; pin exact trace/event locator in CP1 before rendering. No outcome-dependent manual choice; omit the example if locator/selector cannot be verified.",
+      "units": [
+        "instances",
+        "HF ratio"
+      ],
+      "denominators": [
+        "Same targeted18×4×454 set asT5.2; only newly eligible instances branch into execution/skip"
+      ],
+      "caption_limitations": [
+        "Phân biệt HF danh mục mới dưới 1, engine evaluation, route eligibility và execution có debt repaid dương; đếm borrower-case-policy instances, không unique wallets.",
+        "Hai raw borrower CSV lớn vẫn chưa được Work đọc đầy đủ/cell-by-cell; giữ source access labels, U01–U08 và mức abstract/metadata/code; S17/S18 cùng nghiên cứu."
+      ],
+      "status": "CODEX_SPEC_REQUIRED",
+      "status_semantics": "Source/template mapping status only, not production, technical review, chapter approval or rendering authorization.",
+      "codex_review_state": "PENDING_INDEPENDENT_CROSS_VERDICT",
+      "commander_approval_state": "PENDING",
+      "codex_template_locators": [
+        {
+          "path": "artifacts/manuscript_p3/P3_EXHIBIT_CATALOG_v1.json",
+          "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+          "selector": "P3X:ELIGIBLE_VS_EXECUTED"
+        },
+        {
+          "path": "artifacts/manuscript_p3/P3_EXHIBIT_CATALOG_v1.json",
+          "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+          "selector": "P3X:SYSTEM_FEEDBACK_SCHEMATIC"
+        }
+      ],
+      "codex_inventory_locator": {
+        "path": "artifacts/manuscript_p3/P3_LOCKED_EVIDENCE_INVENTORY.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "records[evidence_id in locked_codex_evidence_ids]"
+      },
+      "codex_validated_primary_template_ids": [
+        "P3X:ELIGIBLE_VS_EXECUTED"
+      ],
+      "work_additional_context_template_ids": [
+        "P3X:SYSTEM_FEEDBACK_SCHEMATIC"
+      ],
+      "codex_validation_reference": {
+        "path": "artifacts/manuscript_p3/P3_G0_EXHIBIT_CROSSWALK_VALIDATION.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "exhibit_crosswalk[work_exhibit_id=F5.2]",
+        "work_head_reviewed": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80"
+      },
+      "codex_reproducibility_classification": "NEEDS_DISPLAY_SPEC",
+      "required_display_controls": [
+        "Use the smallest stable case/borrower key within the predeclared executed/skipped category; preserve pseudonymization; do not sample after viewing outcomes.",
+        "Predeclare category (executed or skipped); sort case key then stable pseudonymized borrower key lexicographically; select the smallest key per category; pin exact trace/event locator in CP1 before rendering. No outcome-dependent manual choice; omit the example if locator/selector cannot be verified."
+      ],
+      "codex_prior_technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE"
+    },
+    {
+      "proposed_manuscript_id": "F5.3",
+      "work_handoff_id": "P3X-F5.3",
+      "chapter": 5,
+      "section": "5.2",
+      "academic_purpose": "Hai panel tránh đánh đồng impact với eligibility",
+      "related_accepted_claim_ids": [
+        "P2:C07",
+        "P2:C32",
+        "INT:CL_INT_RQ2_TWO_CHANNELS"
+      ],
+      "related_rq_ids": [
+        "RQ1",
+        "RQ2",
+        "RQ4"
+      ],
+      "rq_scope_note": "Main RQs as mapped in accepted registry; no new RQ is created.",
+      "codex_exhibit_template_ids": [
+        "P3X:LIQUIDITY_ABSORPTION_AND_PRICE_METRICS",
+        "P3X:ORACLE_POLICY_DEPTH2_COMPARISON"
+      ],
+      "template_link_type": "SOURCE_COMPONENTS_ONLY_NEW_DISPLAY_SPEC",
+      "locked_result_ids": [
+        "RQ2_CANONICAL_DEPTH_2PCT",
+        "RQ2_DEPTH2_HAIRCUT90_COUNT",
+        "RQ2_DEPTH2_HAIRCUT95_COUNT"
+      ],
+      "locked_table_figure_ids": [],
+      "locked_codex_evidence_ids": [
+        "P3E:029"
+      ],
+      "exact_source_artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/tables/rq2_liquidity.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "d753e24d06d35cc6d31ab2ef07ea6740ce862edb",
+          "selector": "Locked rows/columns for F5.3; fields/axes: Panel1: liquidity_haircut_pct và depth2_cells từ rq2_liquidity.csv; đây là số ô, không phải đường độ sâu; Panel2: case_id/policy_id, post_wave1_dex_trade_price_usd_per_weth và post_wave1_borrower_valuation_price_usd_per_weth từ comparison_matrix.csv",
+          "codex_evidence_id": null
+        },
+        {
+          "path": "data/processed/research_final/oracle_transmission_diagnostic_v1/comparison_matrix.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "dee128ff278efe94895220aca5eccec4150c1cc4",
+          "selector": "Locked rows/columns for F5.3; fields/axes: Panel1: liquidity_haircut_pct và depth2_cells từ rq2_liquidity.csv; đây là số ô, không phải đường độ sâu; Panel2: case_id/policy_id, post_wave1_dex_trade_price_usd_per_weth và post_wave1_borrower_valuation_price_usd_per_weth từ comparison_matrix.csv",
+          "codex_evidence_id": "P3E:029"
+        }
+      ],
+      "codex_template_source_context": [
+        {
+          "path": "data/processed/research_final/frozen_v3/figures/F04_arbitrage_impact_and_residual_spread.png",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "e070dc3cedaa14f540548c22d71b9ea95ed66202",
+          "selector": "Template source context; use only the subset needed by this Work display.",
+          "codex_evidence_id": "P3E:013"
+        },
+        {
+          "path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "664eeac6d3d80a38dc4c2ca6c942070f09d8d9f8",
+          "selector": "Template source context; use only the subset needed by this Work display.",
+          "codex_evidence_id": "P3E:034"
+        },
+        {
+          "path": "data/processed/research_final/validation_audit/corrected_run_v2/aave/deterministic_scenarios.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "d07430e0acedb59f95df67c31ae4ed72250f95b6",
+          "selector": "Template source context; use only the subset needed by this Work display.",
+          "codex_evidence_id": "P3E:039"
+        },
+        {
+          "path": "data/processed/research_final/validation_audit/corrected_run_v2/aave/research_summary.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "ad810fd60b1b4fb02e28ba2d9213b1d07801bafd",
+          "selector": "Template source context; use only the subset needed by this Work display.",
+          "codex_evidence_id": "P3E:040"
+        }
+      ],
+      "display_type": "combined",
+      "reuse_policy": {
+        "rule": "Reuse source values/definitions only. A template may support several displays; display choice does not create new results.",
+        "specific": "Composite mới: haircut/depth2 cells và common postWave1 DEX/valuation; không đồng nhất với bảng arbitrage hoặc depth curve chưa có.",
+        "new_statistics_allowed": false,
+        "existing_images": "Do not edit a Frozen PNG silently. Prefer source-data re-display under a new Work display ID with provenance; no rendering in G0."
+      },
+      "rendering_owner": "Codex; Work owns academic purpose, caption and prose. No file is shared for writing.",
+      "required_caption": "Panel haircut dùng phần trăm và số ô, không phải đường độ sâu. Panel giá so cùng trạng thái sau Wave 1 theo USD/WETH trong comparison CSV. Policy A/B/C là giả định; later-trade maxima không là hiệu ứng arbitrage thuần. Điều kiện hiển thị: Only 0% is the unmodified canonical pool; 25–95% haircuts are modeled counterfactual transformations; 90/95% are extreme unobserved tails. Use separate axes for cells and USD/WETH.",
+      "units": [
+        "% haircut",
+        "cells",
+        "USD/WETH"
+      ],
+      "denominators": [
+        "60cell grid for haircut/depth2counts",
+        "72policy-case comparison rows; common postWave1 state only, exactfilters requireCodexspec"
+      ],
+      "caption_limitations": [
+        "Kết quả cascade là mô phỏng phản thực có điều kiện theo policy, cohort và cấu hình thanh khoản; A/B/C chưa được xác minh là feed Aave/Chainlink lịch sử.",
+        "Một block 26045352, 454 verified borrowers; 109 là cohort WETH-collateral-enabled/USDC-debt riêng; một Uniswap venue, không đại diện toàn thị trường.",
+        "Haircut 90/95% là extreme counterfactual tails, chưa có bằng chứng lịch sử tương ứng; không có independent local-fork execution được kiểm chứng."
+      ],
+      "status": "CODEX_SPEC_REQUIRED",
+      "status_semantics": "Source/template mapping status only, not production, technical review, chapter approval or rendering authorization.",
+      "codex_review_state": "PENDING_INDEPENDENT_CROSS_VERDICT",
+      "commander_approval_state": "PENDING",
+      "codex_template_locators": [
+        {
+          "path": "artifacts/manuscript_p3/P3_EXHIBIT_CATALOG_v1.json",
+          "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+          "selector": "P3X:LIQUIDITY_ABSORPTION_AND_PRICE_METRICS"
+        },
+        {
+          "path": "artifacts/manuscript_p3/P3_EXHIBIT_CATALOG_v1.json",
+          "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+          "selector": "P3X:ORACLE_POLICY_DEPTH2_COMPARISON"
+        }
+      ],
+      "codex_inventory_locator": {
+        "path": "artifacts/manuscript_p3/P3_LOCKED_EVIDENCE_INVENTORY.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "records[evidence_id in locked_codex_evidence_ids]"
+      },
+      "codex_validated_primary_template_ids": [
+        "P3X:LIQUIDITY_ABSORPTION_AND_PRICE_METRICS",
+        "P3X:ORACLE_POLICY_DEPTH2_COMPARISON"
+      ],
+      "work_additional_context_template_ids": [],
+      "codex_validation_reference": {
+        "path": "artifacts/manuscript_p3/P3_G0_EXHIBIT_CROSSWALK_VALIDATION.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "exhibit_crosswalk[work_exhibit_id=F5.3]",
+        "work_head_reviewed": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80"
+      },
+      "codex_reproducibility_classification": "NEEDS_DISPLAY_SPEC",
+      "required_display_controls": [
+        "Only 0% is the unmodified canonical pool; 25–95% haircuts are modeled counterfactual transformations; 90/95% are extreme unobserved tails.",
+        "Use separate axes for cells and USD/WETH."
+      ],
+      "codex_prior_technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE"
+    },
+    {
+      "proposed_manuscript_id": "F5.4",
+      "work_handoff_id": "P3X-F5.4",
+      "chapter": 5,
+      "section": "5.3",
+      "academic_purpose": "Phân biệt capital gate và timing, không đồng nhất recovery với processing delay",
+      "related_accepted_claim_ids": [
+        "P2:C19",
+        "INT:CL_INT_RQ3_PRESERVED"
+      ],
+      "related_rq_ids": [
+        "RQ3",
+        "RQ4"
+      ],
+      "rq_scope_note": "Main RQs as mapped in accepted registry; no new RQ is created.",
+      "codex_exhibit_template_ids": [],
+      "template_link_type": "NO_TEMPLATE_REQUIRED_DIRECT_SOURCE",
+      "locked_result_ids": [
+        "RQ3_CAPITAL_25_LIQUIDATED",
+        "RQ3_CAPITAL_100_LIQUIDATED",
+        "RQ3_DELAY_SEVERITY_CHANGE"
+      ],
+      "locked_table_figure_ids": [
+        "F03",
+        "T06"
+      ],
+      "locked_codex_evidence_ids": [
+        "P3E:017"
+      ],
+      "exact_source_artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/tables/rq3_constraints.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "0a51fb795e562c0276ac36903662be92d52ce86f",
+          "selector": "Locked rows/columns for F5.4; fields/axes: x:capital25/50/100/200% reference demand; y:debt repaid; Panel delay level vs processing_delay_seconds",
+          "codex_evidence_id": "P3E:017"
+        }
+      ],
+      "codex_template_source_context": [],
+      "display_type": "combined",
+      "reuse_policy": {
+        "rule": "Reuse source values/definitions only. A template may support several displays; display choice does not create new results.",
+        "specific": "Capital/delay chưa có một template riêng trong11; dùng trực tiếp T06/F03 và fields đã khóa.",
+        "new_statistics_allowed": false,
+        "existing_images": "Do not edit a Frozen PNG silently. Prefer source-data re-display under a new Work display ID with provenance; no rendering in G0."
+      },
+      "rendering_owner": "Codex; Work owns academic purpose, caption and prose. No file is shared for writing.",
+      "required_caption": "Vốn tính theo phần trăm nhu cầu tham chiếu, debt repaid bằng USDC token; độ trễ tính bằng bước/giây. Không recycle vốn hoặc tự chia plan. Processing delay khác time to recovery. Điều kiện hiển thị: Debt repaid is USDC token quantity; processing delay is seconds; zero recovery is not zero reaction delay.",
+      "units": [
+        "%reference demand",
+        "USDC token",
+        "seconds"
+      ],
+      "denominators": [
+        "4capital levels25/50/100/200% of reference demand",
+        "Delay sweep0/1/2/4steps; one locked scenario"
+      ],
+      "caption_limitations": [
+        "Liquidator/arbitrageur đại diện; vốn không recycle, kế hoạch vượt vốn không tự chia nhỏ; kết quả gas/capacity/delay chỉ trong miền thử.",
+        "Recovery0 không có nghĩa reaction delay0"
+      ],
+      "status": "DIRECT_LOCKED_SOURCE",
+      "status_semantics": "Source/template mapping status only, not production, technical review, chapter approval or rendering authorization.",
+      "codex_review_state": "PENDING_INDEPENDENT_CROSS_VERDICT",
+      "commander_approval_state": "PENDING",
+      "codex_template_locators": [],
+      "codex_inventory_locator": {
+        "path": "artifacts/manuscript_p3/P3_LOCKED_EVIDENCE_INVENTORY.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "records[evidence_id in locked_codex_evidence_ids]"
+      },
+      "codex_validated_primary_template_ids": [],
+      "work_additional_context_template_ids": [],
+      "codex_validation_reference": {
+        "path": "artifacts/manuscript_p3/P3_G0_EXHIBIT_CROSSWALK_VALIDATION.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "exhibit_crosswalk[work_exhibit_id=F5.4]",
+        "work_head_reviewed": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80"
+      },
+      "codex_reproducibility_classification": "RENDERABLE_FROM_LOCKED_ARTIFACT",
+      "required_display_controls": [
+        "Debt repaid is USDC token quantity; processing delay is seconds; zero recovery is not zero reaction delay."
+      ],
+      "codex_prior_technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE"
+    },
+    {
+      "proposed_manuscript_id": "F5.5",
+      "work_handoff_id": "P3X-F5.5",
+      "chapter": 5,
+      "section": "5.4",
+      "academic_purpose": "Sửa kết luận cũ arbitrage không phản ứng",
+      "related_accepted_claim_ids": [
+        "P2:C13",
+        "P2:C34",
+        "INT:CL_INT_RQ4_PRESERVED"
+      ],
+      "related_rq_ids": [
+        "RQ2",
+        "RQ4",
+        "RQ5"
+      ],
+      "rq_scope_note": "Main RQs as mapped in accepted registry; no new RQ is created.",
+      "codex_exhibit_template_ids": [
+        "P3X:LIQUIDITY_ABSORPTION_AND_PRICE_METRICS"
+      ],
+      "template_link_type": "REUSABLE_TEMPLATE",
+      "locked_result_ids": [
+        "RQ4_IMMEDIATE_PRICE_IMPACT",
+        "RQ4_SPREAD_ARB0",
+        "RQ4_SPREAD_ARB100"
+      ],
+      "locked_table_figure_ids": [
+        "F04",
+        "T07"
+      ],
+      "locked_codex_evidence_ids": [
+        "P3E:018"
+      ],
+      "exact_source_artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/tables/rq4_arbitrage.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "1fdeb6b31a7537d79e9e8c9e97544dbf78bb4f2e",
+          "selector": "Locked rows/columns for F5.5; fields/axes: x:arbitrage_capacity_pct; y1:immediate_price_impact_ratio; y2:post_arbitrage_spread_ratio",
+          "codex_evidence_id": "P3E:018"
+        }
+      ],
+      "codex_template_source_context": [
+        {
+          "path": "data/processed/research_final/frozen_v3/figures/F04_arbitrage_impact_and_residual_spread.png",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "e070dc3cedaa14f540548c22d71b9ea95ed66202",
+          "selector": "Template source context; use only the subset needed by this Work display.",
+          "codex_evidence_id": "P3E:013"
+        },
+        {
+          "path": "data/processed/research_final/validation_audit/corrected_run_v2/aave/deterministic_scenarios.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "d07430e0acedb59f95df67c31ae4ed72250f95b6",
+          "selector": "Template source context; use only the subset needed by this Work display.",
+          "codex_evidence_id": "P3E:039"
+        },
+        {
+          "path": "data/processed/research_final/validation_audit/corrected_run_v2/aave/research_summary.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "ad810fd60b1b4fb02e28ba2d9213b1d07801bafd",
+          "selector": "Template source context; use only the subset needed by this Work display.",
+          "codex_evidence_id": "P3E:040"
+        }
+      ],
+      "display_type": "figure",
+      "reuse_policy": {
+        "rule": "Reuse source values/definitions only. A template may support several displays; display choice does not create new results.",
+        "specific": "Chọn phần immediate/residual của template, nguồn T07/F04; không kéo thêm các kết luận về valuation.",
+        "new_statistics_allowed": false,
+        "existing_images": "Do not edit a Frozen PNG silently. Prefer source-data re-display under a new Work display ID with provenance; no rendering in G0."
+      },
+      "rendering_owner": "Codex; Work owns academic purpose, caption and prose. No file is shared for writing.",
+      "required_caption": "Với cùng forced sale, immediate impact và post-arbitrage residual là các tỷ lệ riêng, hiển thị phần trăm bằng nhân 100. Repositioning giảm residual chưa là funded executable swap. Điều kiện hiển thị: Immediate price impact and post-arbitrage residual are separate ratios; price repositioning is not a funded swap.",
+      "units": [
+        "ratio; hiển thị% bằng×100"
+      ],
+      "denominators": [
+        "One−20%shock/40%haircut scenario;3arbitragecapacitylevels0/50/100%;sameforcedsale"
+      ],
+      "caption_limitations": [
+        "Arbitrage là price repositioning, chưa funded executable swap; tác động giá tức thời khác spread sau arbitrage."
+      ],
+      "status": "MATCHED",
+      "status_semantics": "Source/template mapping status only, not production, technical review, chapter approval or rendering authorization.",
+      "codex_review_state": "PENDING_INDEPENDENT_CROSS_VERDICT",
+      "commander_approval_state": "PENDING",
+      "codex_template_locators": [
+        {
+          "path": "artifacts/manuscript_p3/P3_EXHIBIT_CATALOG_v1.json",
+          "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+          "selector": "P3X:LIQUIDITY_ABSORPTION_AND_PRICE_METRICS"
+        }
+      ],
+      "codex_inventory_locator": {
+        "path": "artifacts/manuscript_p3/P3_LOCKED_EVIDENCE_INVENTORY.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "records[evidence_id in locked_codex_evidence_ids]"
+      },
+      "codex_validated_primary_template_ids": [
+        "P3X:LIQUIDITY_ABSORPTION_AND_PRICE_METRICS"
+      ],
+      "work_additional_context_template_ids": [],
+      "codex_validation_reference": {
+        "path": "artifacts/manuscript_p3/P3_G0_EXHIBIT_CROSSWALK_VALIDATION.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "exhibit_crosswalk[work_exhibit_id=F5.5]",
+        "work_head_reviewed": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80"
+      },
+      "codex_reproducibility_classification": "RENDERABLE_FROM_LOCKED_ARTIFACT",
+      "required_display_controls": [
+        "Immediate price impact and post-arbitrage residual are separate ratios; price repositioning is not a funded swap."
+      ],
+      "codex_prior_technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE"
+    },
+    {
+      "proposed_manuscript_id": "T5.3",
+      "work_handoff_id": "P3X-T5.3",
+      "chapter": 5,
+      "section": "5.5",
+      "academic_purpose": "Tách hướng tác động ceteris paribus và đơn vị tiền",
+      "related_accepted_claim_ids": [
+        "P2:C15",
+        "P2:C35",
+        "INT:CL_INT_RQ5_PRESERVED"
+      ],
+      "related_rq_ids": [
+        "RQ5"
+      ],
+      "rq_scope_note": "Main RQs as mapped in accepted registry; no new RQ is created.",
+      "codex_exhibit_template_ids": [],
+      "template_link_type": "NO_TEMPLATE_REQUIRED_DIRECT_SOURCE",
+      "locked_result_ids": [
+        "RQ5_HF_LT1_USDC_090",
+        "RQ5_HF_LT1_USDC_100",
+        "RQ5_HF_LT1_USDC_110",
+        "RQ5_LIQUIDATED_DEBT_TOKEN_QTY",
+        "RQ5_LIQUIDATED_DEBT_USD"
+      ],
+      "locked_table_figure_ids": [
+        "T08"
+      ],
+      "locked_codex_evidence_ids": [
+        "P3E:019"
+      ],
+      "exact_source_artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/tables/rq5_usdc_valuation.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "3f36a867c750f90d5a88ae5b1b00eae6be151b6e",
+          "selector": "Locked rows/columns for T5.3; fields/axes: usdc_price_usd; borrowers_hf_below_1; liquidated_debt_usdc_token; liquidated_debt_usd_equivalent",
+          "codex_evidence_id": "P3E:019"
+        }
+      ],
+      "codex_template_source_context": [],
+      "display_type": "table",
+      "reuse_policy": {
+        "rule": "Reuse source values/definitions only. A template may support several displays; display choice does not create new results.",
+        "specific": "Bảng RQ5 dùng trực tiếp T08; glossary chỉ là diễn giải, không ép gán thành template dữ liệu.",
+        "new_statistics_allowed": false,
+        "existing_images": "Do not edit a Frozen PNG silently. Prefer source-data re-display under a new Work display ID with provenance; no rendering in G0."
+      },
+      "rendering_owner": "Codex; Work owns academic purpose, caption and prose. No file is shared for writing.",
+      "required_caption": "RQ5 cô lập định giá nợ USDC trong cohort109. Báo riêng USD/USDC, số borrower HF<1, USDC token và USD-equivalent; chưa bao gồm redemption, liquidity hoặc settlement đầy đủ. Điều kiện hiển thị: Keep USDC token debt and USD-equivalent debt in separate columns with explicit price.",
+      "units": [
+        "USD/USDC",
+        "borrowers",
+        "USDC token",
+        "USD equivalent"
+      ],
+      "denominators": [
+        "109-position cohort;7USDCprice levels0.90…1.10; debt valuation only"
+      ],
+      "caption_limitations": [
+        "RQ5 chỉ kênh định giá nợ USDC; token quantity khác USD-equivalent; chưa redemption/liquidity/confidence/settlement đầy đủ."
+      ],
+      "status": "DIRECT_LOCKED_SOURCE",
+      "status_semantics": "Source/template mapping status only, not production, technical review, chapter approval or rendering authorization.",
+      "codex_review_state": "PENDING_INDEPENDENT_CROSS_VERDICT",
+      "commander_approval_state": "PENDING",
+      "codex_template_locators": [],
+      "codex_inventory_locator": {
+        "path": "artifacts/manuscript_p3/P3_LOCKED_EVIDENCE_INVENTORY.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "records[evidence_id in locked_codex_evidence_ids]"
+      },
+      "codex_validated_primary_template_ids": [],
+      "work_additional_context_template_ids": [],
+      "codex_validation_reference": {
+        "path": "artifacts/manuscript_p3/P3_G0_EXHIBIT_CROSSWALK_VALIDATION.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "exhibit_crosswalk[work_exhibit_id=T5.3]",
+        "work_head_reviewed": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80"
+      },
+      "codex_reproducibility_classification": "RENDERABLE_FROM_LOCKED_ARTIFACT",
+      "required_display_controls": [
+        "Keep USDC token debt and USD-equivalent debt in separate columns with explicit price."
+      ],
+      "codex_prior_technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE"
+    },
+    {
+      "proposed_manuscript_id": "F5.6",
+      "work_handoff_id": "P3X-F5.6",
+      "chapter": 5,
+      "section": "5.6",
+      "academic_purpose": "Ba panels không tạo một trục risk score chưa định nghĩa",
+      "related_accepted_claim_ids": [
+        "P2:C04",
+        "P2:C05",
+        "P2:C12",
+        "INT:CL_INT_RQ6_PRESERVED"
+      ],
+      "related_rq_ids": [
+        "RQ3",
+        "RQ6"
+      ],
+      "rq_scope_note": "Main RQs as mapped in accepted registry; no new RQ is created.",
+      "codex_exhibit_template_ids": [
+        "P3X:RISK_PARAMETER_MECHANISMS"
+      ],
+      "template_link_type": "SOURCE_COMPONENTS_ONLY_NEW_DISPLAY_SPEC",
+      "locked_result_ids": [
+        "RQ6_LTV0755_CAPACITY",
+        "RQ6_LTV0825_CAPACITY",
+        "RQ6_LT083_UNLIQUIDATED",
+        "RQ6_LT0855_UNLIQUIDATED",
+        "RQ6_BONUS103_SEIZED",
+        "RQ6_BONUS107_SEIZED"
+      ],
+      "locked_table_figure_ids": [
+        "T09"
+      ],
+      "locked_codex_evidence_ids": [
+        "P3E:020"
+      ],
+      "exact_source_artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/tables/rq6_policy.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "deab1f45c56d8c836fead08190faffb1a5000fd2",
+          "selector": "Locked rows/columns for F5.6; fields/axes: LTV→exantecapacityUSD; ScenarioLT→unliquidateddebtUSDC; Bonus→seizedWETH",
+          "codex_evidence_id": "P3E:020"
+        }
+      ],
+      "codex_template_source_context": [
+        {
+          "path": "sim/lending/liquidation.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "9f95f18e8aa52f48facbebe1b3bdc8f88c0f162a",
+          "selector": "Template source context; use only the subset needed by this Work display.",
+          "codex_evidence_id": "P3E:061"
+        },
+        {
+          "path": "sim/schemas.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "0f9a93180ada5912c55d0d36d5c142d0e4a356a6",
+          "selector": "Template source context; use only the subset needed by this Work display.",
+          "codex_evidence_id": "P3E:065"
+        }
+      ],
+      "display_type": "combined",
+      "reuse_policy": {
+        "rule": "Reuse source values/definitions only. A template may support several displays; display choice does not create new results.",
+        "specific": "Template gốc là mechanism table; ba panels LTV/LT/bonus cần spec riêng, lấy các hàng T09 đã khóa.",
+        "new_statistics_allowed": false,
+        "existing_images": "Do not edit a Frozen PNG silently. Prefer source-data re-display under a new Work display ID with provenance; no rendering in G0."
+      },
+      "rendering_owner": "Codex; Work owns academic purpose, caption and prose. No file is shared for writing.",
+      "required_caption": "Ba panels biểu diễn ba cơ chế: LTV và ex-ante capacity USD; scenario LT và unliquidated USDC; bonus và WETH seized. Frozen cohort không có borrower response hoặc tối ưu governance. Điều kiện hiển thị: LTV→USD capacity, LT→USDC-token unliquidated debt, bonus→WETH seized; retain scenario LT semantics. Use separate facets with independent labelled axes; never combine USD, USDC token and WETH on one y-axis.",
+      "units": [
+        "%parameter hoặc bonusfactor ghi rõ",
+        "USD",
+        "USDCtoken",
+        "WETH"
+      ],
+      "denominators": [
+        "109frozen positions for LTV/LT;bonus applies to executed locked testscenario; separate panels"
+      ],
+      "caption_limitations": [
+        "Không dùng recordedLT cũ thay scenarioLT; không policy optimality"
+      ],
+      "status": "CODEX_SPEC_REQUIRED",
+      "status_semantics": "Source/template mapping status only, not production, technical review, chapter approval or rendering authorization.",
+      "codex_review_state": "PENDING_INDEPENDENT_CROSS_VERDICT",
+      "commander_approval_state": "PENDING",
+      "codex_template_locators": [
+        {
+          "path": "artifacts/manuscript_p3/P3_EXHIBIT_CATALOG_v1.json",
+          "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+          "selector": "P3X:RISK_PARAMETER_MECHANISMS"
+        }
+      ],
+      "codex_inventory_locator": {
+        "path": "artifacts/manuscript_p3/P3_LOCKED_EVIDENCE_INVENTORY.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "records[evidence_id in locked_codex_evidence_ids]"
+      },
+      "codex_validated_primary_template_ids": [
+        "P3X:RISK_PARAMETER_MECHANISMS"
+      ],
+      "work_additional_context_template_ids": [],
+      "codex_validation_reference": {
+        "path": "artifacts/manuscript_p3/P3_G0_EXHIBIT_CROSSWALK_VALIDATION.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "exhibit_crosswalk[work_exhibit_id=F5.6]",
+        "work_head_reviewed": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80"
+      },
+      "codex_reproducibility_classification": "NEEDS_DISPLAY_SPEC",
+      "required_display_controls": [
+        "LTV→USD capacity, LT→USDC-token unliquidated debt, bonus→WETH seized; retain scenario LT semantics.",
+        "Use separate facets with independent labelled axes; never combine USD, USDC token and WETH on one y-axis."
+      ],
+      "codex_prior_technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE"
+    },
+    {
+      "proposed_manuscript_id": "F5.7",
+      "work_handoff_id": "P3X-F5.7",
+      "chapter": 5,
+      "section": "5.7",
+      "academic_purpose": "Trình bày hội tụ có điều kiện không đếm prefix như samples độc lập",
+      "related_accepted_claim_ids": [
+        "P2:C22",
+        "P2:C23",
+        "P2:C24"
+      ],
+      "related_rq_ids": [
+        "RQ1",
+        "RQ2",
+        "RQ3",
+        "RQ4",
+        "RQ5",
+        "RQ6"
+      ],
+      "rq_scope_note": "Main RQs as mapped in accepted registry; no new RQ is created.",
+      "codex_exhibit_template_ids": [
+        "P3X:SEVERE_POLICY_A_MONTE_CARLO"
+      ],
+      "template_link_type": "REUSABLE_TEMPLATE",
+      "locked_result_ids": [
+        "RQ1_MC_SEVERE_DEPTH2_COUNT",
+        "RQ1_MC_SEVERE_DEPTH2_FREQUENCY",
+        "RQ1_MC_SEVERE_DEPTH3_COUNT"
+      ],
+      "locked_table_figure_ids": [
+        "F02",
+        "T04"
+      ],
+      "locked_codex_evidence_ids": [],
+      "exact_source_artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/tables/rq1_monte_carlo.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "ea71db6f633b7e5df1f12cd3d9f2533e5d5f9438",
+          "selector": "Locked rows/columns for F5.7; fields/axes: x:actual_runs200/1000/5000/10000; y:depth≥2frequency; Wilson bounds; lowliquidity0/1000 panel riêng nếu dùng",
+          "codex_evidence_id": null
+        }
+      ],
+      "codex_template_source_context": [
+        {
+          "path": "data/processed/research_final/frozen_v3/figures/F02_severe_mc_prefix_convergence.png",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "b677ec3730cf60e0382e69fac30840362bdf4417",
+          "selector": "Template source context; use only the subset needed by this Work display.",
+          "codex_evidence_id": "P3E:011"
+        },
+        {
+          "path": "data/processed/research_final/level3_extension/deep_stress/monte_carlo_batches.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "3a38cce65c91dcc9eb4ca957aa6946d34bb2e7e3",
+          "selector": "Template source context; use only the subset needed by this Work display.",
+          "codex_evidence_id": "P3E:023"
+        },
+        {
+          "path": "data/processed/research_final/level3_p1_targeted_repair/monte_carlo/checkpoint_validation.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "bc8c06873698ec01620e3dd5e260ed29c8c1e55f",
+          "selector": "Template source context; use only the subset needed by this Work display.",
+          "codex_evidence_id": "P3E:028"
+        }
+      ],
+      "display_type": "figure",
+      "reuse_policy": {
+        "rule": "Reuse source values/definitions only. A template may support several displays; display choice does not create new results.",
+        "specific": "Tái dùng nguồn/figure prefix; cập nhật captionPolicyA, không tính CI mới hoặc cộng nested samples.",
+        "new_statistics_allowed": false,
+        "existing_images": "Do not edit a Frozen PNG silently. Prefer source-data re-display under a new Work display ID with provenance; no rendering in G0."
+      },
+      "rendering_owner": "Codex; Work owns academic purpose, caption and prose. No file is shared for writing.",
+      "required_caption": "Severe Policy A có 280/10.000 đường depth≥2, không thấy depth≥3 trong tập kiểm tra. Prefix 200/1.000/5.000/10.000 lồng nhau; dùng Wilson bounds đã khóa, không CI mới hoặc xác suất khủng hoảng. Điều kiện hiển thị: Prefixes are nested, Policy A only; no new interval; selected ten diagnostic paths stay off this frequency chart.",
+      "units": [
+        "paths",
+        "ratio/%"
+      ],
+      "denominators": [
+        "SeverePolicyA nested prefixes200/1000/5000/10000",
+        "LowLiquidity0/1000 only as separate optional panel; selected10paths are not this denominator"
+      ],
+      "caption_limitations": [
+        "280/10.000 chỉ Severe Policy A; mười targeted MC paths chọn theo A-depth2; không ước lượng xác suất thị trường, không suy không thể có depth≥3 ngoài tập thử.",
+        "Modeled bad debt/composite tail exposure khác realized financial loss hoặc market expected shortfall; debt repaid không phải loss."
+      ],
+      "status": "MATCHED",
+      "status_semantics": "Source/template mapping status only, not production, technical review, chapter approval or rendering authorization.",
+      "codex_review_state": "PENDING_INDEPENDENT_CROSS_VERDICT",
+      "commander_approval_state": "PENDING",
+      "codex_template_locators": [
+        {
+          "path": "artifacts/manuscript_p3/P3_EXHIBIT_CATALOG_v1.json",
+          "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+          "selector": "P3X:SEVERE_POLICY_A_MONTE_CARLO"
+        }
+      ],
+      "codex_inventory_locator": {
+        "path": "artifacts/manuscript_p3/P3_LOCKED_EVIDENCE_INVENTORY.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "records[evidence_id in locked_codex_evidence_ids]"
+      },
+      "codex_validated_primary_template_ids": [
+        "P3X:SEVERE_POLICY_A_MONTE_CARLO"
+      ],
+      "work_additional_context_template_ids": [],
+      "codex_validation_reference": {
+        "path": "artifacts/manuscript_p3/P3_G0_EXHIBIT_CROSSWALK_VALIDATION.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "exhibit_crosswalk[work_exhibit_id=F5.7]",
+        "work_head_reviewed": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80"
+      },
+      "codex_reproducibility_classification": "RENDERABLE_FROM_LOCKED_ARTIFACT",
+      "required_display_controls": [
+        "Prefixes are nested, Policy A only; no new interval; selected ten diagnostic paths stay off this frequency chart."
+      ],
+      "codex_prior_technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE"
+    },
+    {
+      "proposed_manuscript_id": "T6.1",
+      "work_handoff_id": "P3X-T6.1",
+      "chapter": 6,
+      "section": "6.1",
+      "academic_purpose": "Tách coverage/event selection và sức mạnh từng liên hệ",
+      "related_accepted_claim_ids": [
+        "P2:C09",
+        "P2:C10",
+        "INT:CL_INT_HISTORICAL_TIERS_PRESERVED"
+      ],
+      "related_rq_ids": [
+        "RQ1",
+        "RQ2",
+        "RQ4"
+      ],
+      "rq_scope_note": "Main RQs as mapped in accepted registry; no new RQ is created.",
+      "codex_exhibit_template_ids": [
+        "P3X:HISTORICAL_EVIDENCE_TIERS"
+      ],
+      "template_link_type": "REUSABLE_TEMPLATE",
+      "locked_result_ids": [
+        "HIST_RPC_CENSUS_EVENTS",
+        "HIST_GRAPH_MATCHED_EVENTS",
+        "HIST_DIRECT_TRANSFER_PATHS",
+        "HIST_SAME_TX_COOCCURRENCE",
+        "HIST_SAME_BLOCK_ASSOCIATION",
+        "HIST_TIME_WINDOW_ASSOCIATION"
+      ],
+      "locked_table_figure_ids": [
+        "T10"
+      ],
+      "locked_codex_evidence_ids": [
+        "P3E:016"
+      ],
+      "exact_source_artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/tables/historical_evidence.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "ea2d04143baee6a2d561b588bd8174b6dbfbc64b",
+          "selector": "Locked rows/columns for T6.1; fields/axes: 28Pool/27Graph/1RPC-only; Tier1/2/23/1among27; Selection/window; Allowed evidence strength",
+          "codex_evidence_id": "P3E:016"
+        },
+        {
+          "path": "docs/research_final/LEVEL3_HISTORICAL_EVENT_STUDY.md",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "e56da602592dd53fe52c830a3ca05537179a9b7a",
+          "selector": "Declared locked artifact for T6.1; Codex must pin extraction selector before rendering; no new statistic.",
+          "codex_evidence_id": null
+        }
+      ],
+      "codex_template_source_context": [
+        {
+          "path": "data/processed/research_final/level3_p1_targeted_repair/historical/census_reconciliation.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "008ee07e710933bf4ee10cc049f889b695406654",
+          "selector": "Template source context; use only the subset needed by this Work display.",
+          "codex_evidence_id": "P3E:025"
+        },
+        {
+          "path": "data/processed/research_final/level3_p1_targeted_repair/historical/linkage_route_audit.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "b56ac7ecf46026efccd85b2bab2e5da5c836b442",
+          "selector": "Template source context; use only the subset needed by this Work display.",
+          "codex_evidence_id": "P3E:026"
+        }
+      ],
+      "display_type": "table",
+      "reuse_policy": {
+        "rule": "Reuse source values/definitions only. A template may support several displays; display choice does not create new results.",
+        "specific": "Evidence ladder và census khớp template; không causal arrows.",
+        "new_statistics_allowed": false,
+        "existing_images": "Do not edit a Frozen PNG silently. Prefer source-data re-display under a new Work display ID with provenance; no rendering in G0."
+      },
+      "rendering_owner": "Codex; Work owns academic purpose, caption and prose. No file is shared for writing.",
+      "required_caption": "Cửa sổ 01–07/09/2026 UTC có 28 Pool events và 27 Graph matches. Trong 27 matches: 1 transfer path, 2 same-transaction, 23 same-block và 1 time-window association; chưa xác lập causal contagion. Điều kiện hiển thị: 28 Pool/27 Graph; tier denominator 27; association does not prove causal contagion.",
+      "units": [
+        "LiquidationCall events"
+      ],
+      "denominators": [
+        "28Pool events;27Graphmatches; tiercounts1/2/23/1 use27denominator"
+      ],
+      "caption_limitations": [
+        "28 Pool events/27 Graph matches và tiers 1/2/23/1 chỉ theo cửa sổ đã khai báo; receipt route và đồng xuất hiện không xác lập lây lan nhân quả."
+      ],
+      "status": "MATCHED",
+      "status_semantics": "Source/template mapping status only, not production, technical review, chapter approval or rendering authorization.",
+      "codex_review_state": "PENDING_INDEPENDENT_CROSS_VERDICT",
+      "commander_approval_state": "PENDING",
+      "codex_template_locators": [
+        {
+          "path": "artifacts/manuscript_p3/P3_EXHIBIT_CATALOG_v1.json",
+          "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+          "selector": "P3X:HISTORICAL_EVIDENCE_TIERS"
+        }
+      ],
+      "codex_inventory_locator": {
+        "path": "artifacts/manuscript_p3/P3_LOCKED_EVIDENCE_INVENTORY.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "records[evidence_id in locked_codex_evidence_ids]"
+      },
+      "codex_validated_primary_template_ids": [
+        "P3X:HISTORICAL_EVIDENCE_TIERS"
+      ],
+      "work_additional_context_template_ids": [],
+      "codex_validation_reference": {
+        "path": "artifacts/manuscript_p3/P3_G0_EXHIBIT_CROSSWALK_VALIDATION.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "exhibit_crosswalk[work_exhibit_id=T6.1]",
+        "work_head_reviewed": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80"
+      },
+      "codex_reproducibility_classification": "RENDERABLE_FROM_LOCKED_ARTIFACT",
+      "required_display_controls": [
+        "28 Pool/27 Graph; tier denominator 27; association does not prove causal contagion."
+      ],
+      "codex_prior_technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE"
+    },
+    {
+      "proposed_manuscript_id": "F6.1",
+      "work_handoff_id": "P3X-F6.1",
+      "chapter": 6,
+      "section": "6.2",
+      "academic_purpose": "Đặt negative finding ở vị trí trung tâm thay chọn ngưỡng thuận lợi",
+      "related_accepted_claim_ids": [
+        "P2:C29",
+        "P2:C30",
+        "INT:CL_INT_TERRA_NEGATIVE_PRESERVED"
+      ],
+      "related_rq_ids": [],
+      "rq_scope_note": "Extension/context; no additional research question.",
+      "codex_exhibit_template_ids": [
+        "P3X:TERRA_NEGATIVE_EARLY_WARNING"
+      ],
+      "template_link_type": "SOURCE_COMPONENTS_ONLY_NEW_DISPLAY_SPEC",
+      "locked_result_ids": [
+        "TERRA_PRE_DEPEG_HIGH_ALERT_HOURS",
+        "TERRA_INITIAL_DEPEG_HIGH_LEAD"
+      ],
+      "locked_table_figure_ids": [
+        "T11"
+      ],
+      "locked_codex_evidence_ids": [
+        "P3E:021",
+        "P3E:049"
+      ],
+      "exact_source_artifact_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/tables/terra_limitations.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "264d5294bd8da978f8718c15b9ca7bcb221c704b",
+          "selector": "Locked rows/columns for F6.1; fields/axes: Panel1 zero HIGH pre-initial-depeg; Panel2 lead−45h relative toUST<0.995event; Cutoff/info boundary annotation",
+          "codex_evidence_id": "P3E:021"
+        },
+        {
+          "path": "data/processed/research_final/validation_audit/phase5_terra_early_warning_audit.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "c57615dbfe686863b366db648234cf0af1d6b8ca",
+          "selector": "Declared locked artifact for F6.1; Codex must pin extraction selector before rendering; no new statistic.",
+          "codex_evidence_id": "P3E:049"
+        }
+      ],
+      "codex_template_source_context": [],
+      "display_type": "combined",
+      "reuse_policy": {
+        "rule": "Reuse source values/definitions only. A template may support several displays; display choice does not create new results.",
+        "specific": "Negative-finding table có thể thành hai panels count/lead; mỗi panel có đơn vị riêng, không vẽ timeline giả.",
+        "new_statistics_allowed": false,
+        "existing_images": "Do not edit a Frozen PNG silently. Prefer source-data re-display under a new Work display ID with provenance; no rendering in G0."
+      },
+      "rendering_owner": "Codex; Work owns academic purpose, caption and prose. No file is shared for writing.",
+      "required_caption": "Terra cutoff-safe là kết quả kiểm chứng suy dẫn: 0 giờ HIGH trong 1.630 giờ trước mất neo ban đầu và lead −45 giờ đối với UST<0,995. Hai đại lượng ở hai panels riêng; không kết luận dự báo ngoài mẫu thành công. Điều kiện hiển thị: Preserve the negative cutoff-safe/OOS conclusion; do not turn later-threshold behavior into forecast success. Use two panels: zero HIGH-alert hours and minus 45 hours lead; distinct labels and denominators, no shared interpretation as forecast success.",
+      "units": [
+        "hours",
+        "HIGH alert hours; không gộp hai đại lượng"
+      ],
+      "denominators": [
+        "1630pre-initial-depeg hours for HIGHcount",
+        "Lead−45hours relative toUST<0.995 event; not forecast-success rate"
+      ],
+      "caption_limitations": [
+        "Terra tái dựng hồi cứu khác dự báo; giữ HIGH trước initial depeg bằng 0, lead −45 giờ và kết luận âm ngoài mẫu; không dùng Terra xác nhận tham số Aave."
+      ],
+      "status": "CODEX_SPEC_REQUIRED",
+      "status_semantics": "Source/template mapping status only, not production, technical review, chapter approval or rendering authorization.",
+      "codex_review_state": "PENDING_INDEPENDENT_CROSS_VERDICT",
+      "commander_approval_state": "PENDING",
+      "codex_template_locators": [
+        {
+          "path": "artifacts/manuscript_p3/P3_EXHIBIT_CATALOG_v1.json",
+          "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+          "selector": "P3X:TERRA_NEGATIVE_EARLY_WARNING"
+        }
+      ],
+      "codex_inventory_locator": {
+        "path": "artifacts/manuscript_p3/P3_LOCKED_EVIDENCE_INVENTORY.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "records[evidence_id in locked_codex_evidence_ids]"
+      },
+      "codex_validated_primary_template_ids": [
+        "P3X:TERRA_NEGATIVE_EARLY_WARNING"
+      ],
+      "work_additional_context_template_ids": [],
+      "codex_validation_reference": {
+        "path": "artifacts/manuscript_p3/P3_G0_EXHIBIT_CROSSWALK_VALIDATION.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "exhibit_crosswalk[work_exhibit_id=F6.1]",
+        "work_head_reviewed": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80"
+      },
+      "codex_reproducibility_classification": "NEEDS_DISPLAY_SPEC",
+      "required_display_controls": [
+        "Preserve the negative cutoff-safe/OOS conclusion; do not turn later-threshold behavior into forecast success.",
+        "Use two panels: zero HIGH-alert hours and minus 45 hours lead; distinct labels and denominators, no shared interpretation as forecast success."
+      ],
+      "codex_prior_technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE"
+    },
+    {
+      "proposed_manuscript_id": "F6.2",
+      "work_handoff_id": "P3X-F6.2",
+      "chapter": 6,
+      "section": "6.3",
+      "academic_purpose": "Giải thích topology/centrality chưa phải fullmultilayer contagion",
+      "related_accepted_claim_ids": [
+        "P2:C25",
+        "P2:C26",
+        "P2:C27",
+        "P2:C28"
+      ],
+      "related_rq_ids": [],
+      "rq_scope_note": "Extension/context; no additional research question.",
+      "codex_exhibit_template_ids": [
+        "P3X:NETWORK_EXTENSION_BOUNDARY"
+      ],
+      "template_link_type": "SOURCE_COMPONENTS_ONLY_NEW_DISPLAY_SPEC",
+      "locked_result_ids": [],
+      "locked_table_figure_ids": [],
+      "locked_codex_evidence_ids": [
+        "P3E:042",
+        "P3E:063"
+      ],
+      "exact_source_artifact_locators": [
+        {
+          "path": "data/processed/research_final/network/structural_centrality.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "b3608bd848b0594ec86a70fbe28d5b94d2358fa7",
+          "selector": "Declared locked artifact for F6.2; Codex must pin extraction selector before rendering; no new statistic.",
+          "codex_evidence_id": null
+        },
+        {
+          "path": "data/processed/research_final/network/structural_graph.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "8c980da9a10d1ef52f3b13cf8a14398b0e0cd75d",
+          "selector": "Declared locked artifact for F6.2; Codex must pin extraction selector before rendering; no new statistic.",
+          "codex_evidence_id": "P3E:042",
+          "codex_evidence_path": "data/processed/research_final/validation_audit/corrected_run_v2/network/structural_graph.json",
+          "alias_basis": "Same exact Git blob at scientific lock; paths are retained separately."
+        },
+        {
+          "path": "sim/network/metrics.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "db7aca57029e973637e4969d3a20d5c61e2e330d",
+          "selector": "Implementation definition only; inspect named gates/metrics used by F6.2; not an external protocol-validation claim.",
+          "codex_evidence_id": "P3E:063"
+        }
+      ],
+      "codex_template_source_context": [
+        {
+          "path": "data/processed/research_final/validation_audit/corrected_run_v2/network/structural_graph.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "8c980da9a10d1ef52f3b13cf8a14398b0e0cd75d",
+          "selector": "Template source context; use only the subset needed by this Work display.",
+          "codex_evidence_id": "P3E:042"
+        }
+      ],
+      "display_type": "schematic",
+      "reuse_policy": {
+        "rule": "Reuse source values/definitions only. A template may support several displays; display choice does not create new results.",
+        "specific": "Boundary template và graph dùng cùng Git blob ở hai path. Chỉ dùng claim network đúng vai trò; C29 của template không được kế thừa làm chứng cứ cấu trúc.",
+        "new_statistics_allowed": false,
+        "existing_images": "Do not edit a Frozen PNG silently. Prefer source-data re-display under a new Work display ID with provenance; no rendering in G0."
+      },
+      "rendering_owner": "Codex; Work owns academic purpose, caption and prose. No file is shared for writing.",
+      "required_caption": "Mạng con typed/aggregated và chỉ số cấu trúc của DeFiStress chưa là full multilayer contagion hoặc DebtRank đã triển khai. Cạnh định giá là giả định mô hình, không phải quan sát nhân quả lịch sử. Điều kiện hiển thị: No invented edge, DebtRank label, empirical causal styling or all-DeFi ranking; centrality is within-model and dimensionless.",
+      "units": [
+        "nodes",
+        "dimensionless centrality"
+      ],
+      "denominators": [
+        "8nodes in project structural graph; not an empirical market-wide denominator"
+      ],
+      "caption_limitations": [
+        "Graph typed/aggregated và centrality cấu trúc chưa là full multilayer contagion, DebtRank đã triển khai hoặc xếp hạng rủi ro toàn DeFi.",
+        "Không mã hóa edge giả định thành historical causal link"
+      ],
+      "status": "CODEX_SPEC_REQUIRED",
+      "status_semantics": "Source/template mapping status only, not production, technical review, chapter approval or rendering authorization.",
+      "codex_review_state": "PENDING_INDEPENDENT_CROSS_VERDICT",
+      "commander_approval_state": "PENDING",
+      "not_inherited_codex_template_claim_ids": [
+        "P2:C29"
+      ],
+      "claim_relation_note": "C29 concerns time-series validation, not structural network evidence. Use Work C25/C26/C27/C28 as appropriate; request Codex catalog correction without changing any locked claim.",
+      "codex_template_locators": [
+        {
+          "path": "artifacts/manuscript_p3/P3_EXHIBIT_CATALOG_v1.json",
+          "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+          "selector": "P3X:NETWORK_EXTENSION_BOUNDARY"
+        }
+      ],
+      "codex_inventory_locator": {
+        "path": "artifacts/manuscript_p3/P3_LOCKED_EVIDENCE_INVENTORY.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "records[evidence_id in locked_codex_evidence_ids]"
+      },
+      "codex_validated_primary_template_ids": [
+        "P3X:NETWORK_EXTENSION_BOUNDARY"
+      ],
+      "work_additional_context_template_ids": [],
+      "codex_validation_reference": {
+        "path": "artifacts/manuscript_p3/P3_G0_EXHIBIT_CROSSWALK_VALIDATION.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "exhibit_crosswalk[work_exhibit_id=F6.2]",
+        "work_head_reviewed": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80"
+      },
+      "codex_reproducibility_classification": "SCHEMATIC_FROM_LOCKED_MODEL_SPEC",
+      "required_display_controls": [
+        "No invented edge, DebtRank label, empirical causal styling or all-DeFi ranking; centrality is within-model and dimensionless."
+      ],
+      "codex_prior_technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE"
+    },
+    {
+      "proposed_manuscript_id": "T6.2",
+      "work_handoff_id": "P3X-T6.2",
+      "chapter": 6,
+      "section": "6.4",
+      "academic_purpose": "Giúp độc giả hiểu simulated/observed/derived/code khác nhau",
+      "related_accepted_claim_ids": [
+        "P2:C17",
+        "P2:C30",
+        "P2:C33",
+        "INT:CL_INT_HISTORICAL_TIERS_PRESERVED"
+      ],
+      "related_rq_ids": [
+        "RQ1",
+        "RQ2",
+        "RQ3",
+        "RQ4",
+        "RQ5",
+        "RQ6"
+      ],
+      "rq_scope_note": "Main RQs as mapped in accepted registry; no new RQ is created.",
+      "codex_exhibit_template_ids": [],
+      "template_link_type": "NO_TEMPLATE_REQUIRED_DIRECT_SOURCE",
+      "locked_result_ids": [],
+      "locked_table_figure_ids": [],
+      "locked_codex_evidence_ids": [
+        "P3E:002"
+      ],
+      "exact_source_artifact_locators": [
+        {
+          "path": "data/processed/research_final/final_accepted_claims_v1/accepted_claims_registry.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "bac44e61633b5efdde3665731ea69fbf4ca345e6",
+          "selector": "records filtered by registry_id in P2:C17,P2:C30,P2:C33,INT:CL_INT_HISTORICAL_TIERS_PRESERVED",
+          "codex_evidence_id": "P3E:002"
+        },
+        {
+          "path": "docs/research_final/SCIENTIFIC_PREMERGE_AUDIT_v1.md",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "f3fd437b41d0feabacf01f6708ca65d3a738ef05",
+          "selector": "Declared locked artifact for T6.2; Codex must pin extraction selector before rendering; no new statistic.",
+          "codex_evidence_id": null
+        }
+      ],
+      "codex_template_source_context": [],
+      "display_type": "table",
+      "reuse_policy": {
+        "rule": "Reuse source values/definitions only. A template may support several displays; display choice does not create new results.",
+        "specific": "Bảng phân tầng evidence là synthesis từ registry/report, không một phép kiểm mới.",
+        "new_statistics_allowed": false,
+        "existing_images": "Do not edit a Frozen PNG silently. Prefer source-data re-display under a new Work display ID with provenance; no rendering in G0."
+      },
+      "rendering_owner": "Codex; Work owns academic purpose, caption and prose. No file is shared for writing.",
+      "required_caption": "Phân biệt code observation, modeled counterfactual, historical observation và derived validation. Một tầng bằng chứng không tự xác minh kết luận ở tầng khác. Điều kiện hiển thị: Hash integrity and code observation must not be elevated to empirical validation.",
+      "units": [
+        "không đơn vị"
+      ],
+      "denominators": [
+        "NOT_APPLICABLE_EVIDENCE_CLASSIFICATION"
+      ],
+      "caption_limitations": [
+        "28 Pool events/27 Graph matches và tiers 1/2/23/1 chỉ theo cửa sổ đã khai báo; receipt route và đồng xuất hiện không xác lập lây lan nhân quả.",
+        "Hai raw borrower CSV lớn vẫn chưa được Work đọc đầy đủ/cell-by-cell; giữ source access labels, U01–U08 và mức abstract/metadata/code; S17/S18 cùng nghiên cứu.",
+        "Git LF blob bytes khác Windows CRLF checkout bytes; kết quả kiểm thử do Codex báo cáo khác lượt Work tự chạy; không đồng nhất hash domains."
+      ],
+      "status": "DIRECT_LOCKED_SOURCE",
+      "status_semantics": "Source/template mapping status only, not production, technical review, chapter approval or rendering authorization.",
+      "codex_review_state": "PENDING_INDEPENDENT_CROSS_VERDICT",
+      "commander_approval_state": "PENDING",
+      "codex_template_locators": [],
+      "codex_inventory_locator": {
+        "path": "artifacts/manuscript_p3/P3_LOCKED_EVIDENCE_INVENTORY.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "records[evidence_id in locked_codex_evidence_ids]"
+      },
+      "codex_validated_primary_template_ids": [],
+      "work_additional_context_template_ids": [],
+      "codex_validation_reference": {
+        "path": "artifacts/manuscript_p3/P3_G0_EXHIBIT_CROSSWALK_VALIDATION.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "exhibit_crosswalk[work_exhibit_id=T6.2]",
+        "work_head_reviewed": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80"
+      },
+      "codex_reproducibility_classification": "TEXTUAL_SYNTHESIS",
+      "required_display_controls": [
+        "Hash integrity and code observation must not be elevated to empirical validation."
+      ],
+      "codex_prior_technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE"
+    },
+    {
+      "proposed_manuscript_id": "T7.1",
+      "work_handoff_id": "P3X-T7.1",
+      "chapter": 7,
+      "section": "7.1",
+      "academic_purpose": "Tổng hợp kết luận, không nhân bản toàn bộ bảng kết quả",
+      "related_accepted_claim_ids": [
+        "INT:CL_INT_RQ1_POLICY_CONDITIONAL",
+        "INT:CL_INT_RQ2_TWO_CHANNELS",
+        "INT:CL_INT_RQ3_PRESERVED",
+        "INT:CL_INT_RQ4_PRESERVED",
+        "INT:CL_INT_RQ5_PRESERVED",
+        "INT:CL_INT_RQ6_PRESERVED"
+      ],
+      "related_rq_ids": [
+        "RQ1",
+        "RQ2",
+        "RQ3",
+        "RQ4",
+        "RQ5",
+        "RQ6"
+      ],
+      "rq_scope_note": "Main RQs as mapped in accepted registry; no new RQ is created.",
+      "codex_exhibit_template_ids": [],
+      "template_link_type": "NO_TEMPLATE_REQUIRED_DIRECT_SOURCE",
+      "locked_result_ids": [],
+      "locked_table_figure_ids": [],
+      "locked_codex_evidence_ids": [
+        "P3E:006"
+      ],
+      "exact_source_artifact_locators": [
+        {
+          "path": "data/processed/research_final/final_accepted_claims_v1/six_rq_accepted_claims_matrix.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "fffe69d45f2c70e8f4cb781c8b521ef4cf6f1a45",
+          "selector": "research_questions[]; preserve full original questions and accepted-only claim sets",
+          "codex_evidence_id": "P3E:006"
+        }
+      ],
+      "codex_template_source_context": [],
+      "display_type": "table",
+      "reuse_policy": {
+        "rule": "Reuse source values/definitions only. A template may support several displays; display choice does not create new results.",
+        "specific": "Accepted-only RQ matrix là nguồn trực tiếp; không có nhu cầu numerical template mới.",
+        "new_statistics_allowed": false,
+        "existing_images": "Do not edit a Frozen PNG silently. Prefer source-data re-display under a new Work display ID with provenance; no rendering in G0."
+      },
+      "rendering_owner": "Codex; Work owns academic purpose, caption and prose. No file is shared for writing.",
+      "required_caption": "Tóm lược sáu accepted RQ answers cùng policy, cohort và giới hạn. Bốn excluded records không thuộc affirmative findings. Điều kiện hiển thị: Exclude all four disallowed records and preserve each RQ limitation.",
+      "units": [
+        "không đơn vị"
+      ],
+      "denominators": [
+        "Six original RQs; accepted-only support sets"
+      ],
+      "caption_limitations": [
+        "Kết quả cascade là mô phỏng phản thực có điều kiện theo policy, cohort và cấu hình thanh khoản; A/B/C chưa được xác minh là feed Aave/Chainlink lịch sử.",
+        "Một block 26045352, 454 verified borrowers; 109 là cohort WETH-collateral-enabled/USDC-debt riêng; một Uniswap venue, không đại diện toàn thị trường.",
+        "Phân biệt HF danh mục mới dưới 1, engine evaluation, route eligibility và execution có debt repaid dương; đếm borrower-case-policy instances, không unique wallets.",
+        "280/10.000 chỉ Severe Policy A; mười targeted MC paths chọn theo A-depth2; không ước lượng xác suất thị trường, không suy không thể có depth≥3 ngoài tập thử.",
+        "Liquidator/arbitrageur đại diện; vốn không recycle, kế hoạch vượt vốn không tự chia nhỏ; kết quả gas/capacity/delay chỉ trong miền thử.",
+        "Arbitrage là price repositioning, chưa funded executable swap; tác động giá tức thời khác spread sau arbitrage.",
+        "RQ5 chỉ kênh định giá nợ USDC; token quantity khác USD-equivalent; chưa redemption/liquidity/confidence/settlement đầy đủ.",
+        "Haircut 90/95% là extreme counterfactual tails, chưa có bằng chứng lịch sử tương ứng; không có independent local-fork execution được kiểm chứng.",
+        "28 Pool events/27 Graph matches và tiers 1/2/23/1 chỉ theo cửa sổ đã khai báo; receipt route và đồng xuất hiện không xác lập lây lan nhân quả.",
+        "Terra tái dựng hồi cứu khác dự báo; giữ HIGH trước initial depeg bằng 0, lead −45 giờ và kết luận âm ngoài mẫu; không dùng Terra xác nhận tham số Aave.",
+        "Graph typed/aggregated và centrality cấu trúc chưa là full multilayer contagion, DebtRank đã triển khai hoặc xếp hạng rủi ro toàn DeFi.",
+        "Modeled bad debt/composite tail exposure khác realized financial loss hoặc market expected shortfall; debt repaid không phải loss.",
+        "Hai raw borrower CSV lớn vẫn chưa được Work đọc đầy đủ/cell-by-cell; giữ source access labels, U01–U08 và mức abstract/metadata/code; S17/S18 cùng nghiên cứu.",
+        "Git LF blob bytes khác Windows CRLF checkout bytes; kết quả kiểm thử do Codex báo cáo khác lượt Work tự chạy; không đồng nhất hash domains."
+      ],
+      "status": "DIRECT_LOCKED_SOURCE",
+      "status_semantics": "Source/template mapping status only, not production, technical review, chapter approval or rendering authorization.",
+      "codex_review_state": "PENDING_INDEPENDENT_CROSS_VERDICT",
+      "commander_approval_state": "PENDING",
+      "codex_template_locators": [],
+      "codex_inventory_locator": {
+        "path": "artifacts/manuscript_p3/P3_LOCKED_EVIDENCE_INVENTORY.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "records[evidence_id in locked_codex_evidence_ids]"
+      },
+      "codex_validated_primary_template_ids": [],
+      "work_additional_context_template_ids": [],
+      "codex_validation_reference": {
+        "path": "artifacts/manuscript_p3/P3_G0_EXHIBIT_CROSSWALK_VALIDATION.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "exhibit_crosswalk[work_exhibit_id=T7.1]",
+        "work_head_reviewed": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80"
+      },
+      "codex_reproducibility_classification": "TEXTUAL_SYNTHESIS",
+      "required_display_controls": [
+        "Exclude all four disallowed records and preserve each RQ limitation."
+      ],
+      "codex_prior_technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE"
+    },
+    {
+      "proposed_manuscript_id": "T7.2",
+      "work_handoff_id": "P3X-T7.2",
+      "chapter": 7,
+      "section": "7.2",
+      "academic_purpose": "Thể hiện đóng góp tích hợp/truy vết thay claims ưu việt phổ quát",
+      "related_accepted_claim_ids": [
+        "P2:C17",
+        "P2:C31",
+        "INT:CL_INT_ELIGIBLE_NOT_EXECUTED",
+        "INT:CL_INT_TERRA_NEGATIVE_PRESERVED"
+      ],
+      "related_rq_ids": [
+        "RQ1",
+        "RQ2",
+        "RQ3",
+        "RQ4",
+        "RQ5",
+        "RQ6"
+      ],
+      "rq_scope_note": "Main RQs as mapped in accepted registry; no new RQ is created.",
+      "codex_exhibit_template_ids": [],
+      "template_link_type": "NO_TEMPLATE_REQUIRED_DIRECT_SOURCE",
+      "locked_result_ids": [],
+      "locked_table_figure_ids": [],
+      "locked_codex_evidence_ids": [
+        "P3E:002",
+        "P3E:051"
+      ],
+      "exact_source_artifact_locators": [
+        {
+          "path": "data/processed/research_final/final_accepted_claims_v1/accepted_claims_registry.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "bac44e61633b5efdde3665731ea69fbf4ca345e6",
+          "selector": "records filtered by registry_id in P2:C17,P2:C31,INT:CL_INT_ELIGIBLE_NOT_EXECUTED,INT:CL_INT_TERRA_NEGATIVE_PRESERVED",
+          "codex_evidence_id": "P3E:002"
+        },
+        {
+          "path": "docs/research_final/LITERATURE_VERIFIED.md",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "6ebe0a11e915e942a422d02a0cc5b1d53b51ff3e",
+          "selector": "Declared locked artifact for T7.2; Codex must pin extraction selector before rendering; no new statistic.",
+          "codex_evidence_id": "P3E:051"
+        }
+      ],
+      "codex_template_source_context": [],
+      "display_type": "table",
+      "reuse_policy": {
+        "rule": "Reuse source values/definitions only. A template may support several displays; display choice does not create new results.",
+        "specific": "Bảng tổng hợp contribution/limits dùng claims và literature đã duyệt; không chấm điểm đóng góp mới.",
+        "new_statistics_allowed": false,
+        "existing_images": "Do not edit a Frozen PNG silently. Prefer source-data re-display under a new Work display ID with provenance; no rendering in G0."
+      },
+      "rendering_owner": "Codex; Work owns academic purpose, caption and prose. No file is shared for writing.",
+      "required_caption": "Đóng góp tích hợp, đối chiếu và truy vết trong phạm vi đề tài; không first-ever, calibrated live-risk prescription hoặc phát hiện định lượng mới. Điều kiện hiển thị: No first-ever, calibrated live-risk advice or stronger external validity claim.",
+      "units": [
+        "không đơn vị"
+      ],
+      "denominators": [
+        "NOT_APPLICABLE_ACADEMIC_SYNTHESIS;44acceptedcandidates are source scope,not statisticalsample"
+      ],
+      "caption_limitations": [
+        "Không first-ever, không risk-advice calibrated to live market"
+      ],
+      "status": "DIRECT_LOCKED_SOURCE",
+      "status_semantics": "Source/template mapping status only, not production, technical review, chapter approval or rendering authorization.",
+      "codex_review_state": "PENDING_INDEPENDENT_CROSS_VERDICT",
+      "commander_approval_state": "PENDING",
+      "codex_template_locators": [],
+      "codex_inventory_locator": {
+        "path": "artifacts/manuscript_p3/P3_LOCKED_EVIDENCE_INVENTORY.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "records[evidence_id in locked_codex_evidence_ids]"
+      },
+      "codex_validated_primary_template_ids": [],
+      "work_additional_context_template_ids": [],
+      "codex_validation_reference": {
+        "path": "artifacts/manuscript_p3/P3_G0_EXHIBIT_CROSSWALK_VALIDATION.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "exhibit_crosswalk[work_exhibit_id=T7.2]",
+        "work_head_reviewed": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80"
+      },
+      "codex_reproducibility_classification": "TEXTUAL_SYNTHESIS",
+      "required_display_controls": [
+        "No first-ever, calibrated live-risk advice or stronger external validity claim."
+      ],
+      "codex_prior_technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE"
+    }
+  ],
+  "formula_crosswalk": [
+    {
+      "work_equation_id": "E3.1",
+      "chapter_anchor": 3,
+      "section_anchor": "3.3",
+      "codex_formula_ids": [
+        "P3F01",
+        "P3F02"
+      ],
+      "formula_category": "Protocol-shaped project implementation",
+      "placement_mode": "MAIN_TEXT",
+      "manuscript_placement": "3.3.1",
+      "academic_selection_reason": "Giữ quan hệ kinh tế/định nghĩa cốt lõi trong thân bài; chuyển chi tiết chuyển đổi giá, tick và khoảng tin cậy sang phụ lục để tránh đứt mạch lập luận.",
+      "source_locators": [
+        {
+          "path": "sim/lending/health_factor.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "8d8cae6754e718856867ce3696498bd68134a294",
+          "selector": "`sim/lending/health_factor.py:5`; portfolio implementation `sim/schemas.py:29`; retain Work source scope.",
+          "codex_evidence_id": "P3E:060"
+        },
+        {
+          "path": "sim/lending/liquidation.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "9f95f18e8aa52f48facbebe1b3bdc8f88c0f162a",
+          "selector": "`sim/lending/health_factor.py:5`; portfolio implementation `sim/schemas.py:29`; retain Work source scope.",
+          "codex_evidence_id": "P3E:061"
+        }
+      ],
+      "codex_formula_records": [
+        {
+          "codex_formula_id": "P3F01",
+          "category": "Protocol-shaped project implementation",
+          "latex_display": "`$HF_i(t)=\\frac{\\sum_j q^C_{ij}P^C_j(t)LT_j}{\\sum_k q^D_{ik}P^D_k(t)}$`",
+          "variables_units": "`q`: token quantity; `P`: USD/token; `LT`: ratio; HF dimensionless",
+          "source_locator": "`sim/lending/health_factor.py:5`; portfolio implementation `sim/schemas.py:29`",
+          "rqs": "RQ1, RQ3, RQ5, RQ6",
+          "limitation": "Aave-style aggregate; project cohort has WETH/USDC route plus aggregate other collateral/debt. Oracle policy is separate."
+        }
+      ],
+      "work_formula_verbatim": "HF_i(t)=\\frac{\\sum_j c_{ij}p_j(t)LT_j}{\\sum_k d_{ik}q_k(t)};\\quad HF<1\\text{ is eligibility only}",
+      "formula_changed": false,
+      "semantic_relation": "Tương đương theo ký hiệu; giữ collateral-enabled, HF danh mục và debt0; không xác nhận actual oracle. P3F02 bổ sung cổng HF<1; không thay P3F01 và không coi eligibility là execution.",
+      "units_implementation_check": "Khớp cấu trúc tổng collateral/debt; dictionary đơn vị phải chỉ rõUSD/token.",
+      "related_accepted_claim_ids": [
+        "P2:C02",
+        "P2:C03"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "codex_review_state": "PENDING_INDEPENDENT_CROSS_VERDICT",
+      "commander_approval_state": "PENDING",
+      "codex_audit_locator": {
+        "path": "docs/manuscript_p3/codex/P3_FORMULA_AUDIT_PLAN.md",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": [
+          "P3F01"
+        ]
+      },
+      "codex_validated_primary_formula_ids": [
+        "P3F01",
+        "P3F02"
+      ],
+      "work_additional_semantic_context_formula_ids": [],
+      "codex_validation_reference": {
+        "path": "artifacts/manuscript_p3/P3_G0_EXHIBIT_CROSSWALK_VALIDATION.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "formula_crosswalk[work_exhibit_id=E3.1]",
+        "work_head_reviewed": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80"
+      },
+      "audited_project_source_locators": [
+        "sim/lending/health_factor.py:5",
+        "sim/schemas.py:29"
+      ]
+    },
+    {
+      "work_equation_id": "E3.2",
+      "chapter_anchor": 3,
+      "section_anchor": "3.3",
+      "codex_formula_ids": [
+        "P3F05"
+      ],
+      "formula_category": "Protocol identity / inverse display transformation",
+      "placement_mode": "APPENDIX",
+      "manuscript_placement": "Phụ lục A.1; dẫn từ3.3.2",
+      "academic_selection_reason": "Giữ quan hệ kinh tế/định nghĩa cốt lõi trong thân bài; chuyển chi tiết chuyển đổi giá, tick và khoảng tin cậy sang phụ lục để tránh đứt mạch lập luận.",
+      "source_locators": [
+        {
+          "path": "sim/dex/uniswap_v3.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "4172eae06907ae8bf95a10e7e50463111d0eec3d",
+          "selector": "`sim/dex/uniswap_v3.py:26`, `:35`; retain Work source scope.",
+          "codex_evidence_id": "P3E:058"
+        }
+      ],
+      "codex_formula_records": [
+        {
+          "codex_formula_id": "P3F05",
+          "category": "Uniswap V3 identity used by the project",
+          "latex_display": "`$\\sqrt{P}_{X96}=2^{96}\\sqrt{10^{d_1-d_0}/P_{WETH}}$`; `$tick=\\lfloor\\log_{1.0001}((\\sqrt{P}_{X96}/2^{96})^2)\\rfloor$`",
+          "variables_units": "`P`: USDC/WETH; token decimals; tick integer",
+          "source_locator": "`sim/dex/uniswap_v3.py:26`, `:35`",
+          "rqs": "RQ2, RQ4",
+          "limitation": "Token ordering is USDC token0/WETH token1. Tick rounding is the project implementation."
+        }
+      ],
+      "work_formula_verbatim": "s=\\mathrm{sqrtPriceX96}/2^{96};\\quad P_{1/0}=s^2 10^{d_0-d_1};\\quad P_{0/1}=1/P_{1/0}",
+      "formula_changed": false,
+      "semantic_relation": "Work biểu diễn raw-price tới human-price và nghịch đảo; Codex biểu diễn chiều chuyển đổi ngược và tick. Chỉ tái dùng quan hệ chuyển đổi đã có, không thêm công thức tick riêng.",
+      "units_implementation_check": "Giữ token0 USDC/token1 WETH và decimals. USDC/WETH không tự tương đương USD/WETH khi giá USDC khác 1.",
+      "related_accepted_claim_ids": [
+        "P2:C08"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "codex_review_state": "PENDING_INDEPENDENT_CROSS_VERDICT",
+      "commander_approval_state": "PENDING",
+      "codex_audit_locator": {
+        "path": "docs/manuscript_p3/codex/P3_FORMULA_AUDIT_PLAN.md",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": [
+          "P3F05"
+        ]
+      },
+      "codex_validated_primary_formula_ids": [
+        "P3F05"
+      ],
+      "work_additional_semantic_context_formula_ids": [],
+      "codex_validation_reference": {
+        "path": "artifacts/manuscript_p3/P3_G0_EXHIBIT_CROSSWALK_VALIDATION.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "formula_crosswalk[work_exhibit_id=E3.2]",
+        "work_head_reviewed": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80"
+      },
+      "audited_project_source_locators": [
+        "sim/dex/uniswap_v3.py:26",
+        "sim/dex/uniswap_v3.py:48"
+      ]
+    },
+    {
+      "work_equation_id": "E3.3",
+      "chapter_anchor": 3,
+      "section_anchor": "3.3",
+      "codex_formula_ids": [
+        "P3F06"
+      ],
+      "formula_category": "Piecewise implementation identity",
+      "placement_mode": "APPENDIX",
+      "manuscript_placement": "Phụ lục A.2; dẫn từ3.3.2",
+      "academic_selection_reason": "Giữ quan hệ kinh tế/định nghĩa cốt lõi trong thân bài; chuyển chi tiết chuyển đổi giá, tick và khoảng tin cậy sang phụ lục để tránh đứt mạch lập luận.",
+      "source_locators": [
+        {
+          "path": "sim/dex/uniswap_v3.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "4172eae06907ae8bf95a10e7e50463111d0eec3d",
+          "selector": "`sim/dex/uniswap_v3.py:77`; retain Work source scope.",
+          "codex_evidence_id": "P3E:058"
+        }
+      ],
+      "codex_formula_records": [
+        {
+          "codex_formula_id": "P3F06",
+          "category": "Project swap calculation across initialized ticks",
+          "latex_display": "`$\\Delta y=L(\\sqrt{P_b}-\\sqrt{P_a});\\quad \\Delta x=L(1/\\sqrt{P_a}-1/\\sqrt{P_b})$`",
+          "variables_units": "raw token1 in and token0 out; active liquidity `L`",
+          "source_locator": "`sim/dex/uniswap_v3.py:77`",
+          "rqs": "RQ2, RQ4",
+          "limitation": "Applied piecewise with fee and liquidityNet tick crossing; quotes are model outputs, not funded Mainnet swaps."
+        }
+      ],
+      "work_formula_verbatim": "\\Delta y=L(s_b-s_a);\\quad\\Delta x=L(1/s_a-1/s_b)\\quad(s_b>s_a)",
+      "formula_changed": false,
+      "semantic_relation": "Cùng quan hệ lượng token trong một khoảng sqrt-price. Quy tắc phí và cập nhật liquidityNet giải thích theo code; biểu thức Work không thay đổi.",
+      "units_implementation_check": "Dùng raw token1 đầu vào/token0 đầu ra và net input sau phí. Codex kiểm symbol/decimal convention trước production.",
+      "related_accepted_claim_ids": [
+        "P2:C07",
+        "P2:C08",
+        "P2:C34"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "codex_review_state": "PENDING_INDEPENDENT_CROSS_VERDICT",
+      "commander_approval_state": "PENDING",
+      "codex_audit_locator": {
+        "path": "docs/manuscript_p3/codex/P3_FORMULA_AUDIT_PLAN.md",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": [
+          "P3F06"
+        ]
+      },
+      "codex_validated_primary_formula_ids": [
+        "P3F06"
+      ],
+      "work_additional_semantic_context_formula_ids": [],
+      "codex_validation_reference": {
+        "path": "artifacts/manuscript_p3/P3_G0_EXHIBIT_CROSSWALK_VALIDATION.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "formula_crosswalk[work_exhibit_id=E3.3]",
+        "work_head_reviewed": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80"
+      },
+      "audited_project_source_locators": [
+        "sim/dex/uniswap_v3.py:77"
+      ]
+    },
+    {
+      "work_equation_id": "E3.4",
+      "chapter_anchor": 3,
+      "section_anchor": "3.4",
+      "codex_formula_ids": [
+        "P3F08"
+      ],
+      "formula_category": "Hypothetical project valuation policy",
+      "placement_mode": "MAIN_TEXT",
+      "manuscript_placement": "3.4.1",
+      "academic_selection_reason": "Giữ quan hệ kinh tế/định nghĩa cốt lõi trong thân bài; chuyển chi tiết chuyển đổi giá, tick và khoảng tin cậy sang phụ lục để tránh đứt mạch lập luận.",
+      "source_locators": [
+        {
+          "path": "data/processed/research_final/oracle_transmission_diagnostic_v1/selection_manifest.json",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "1bb5bdea8be74c1e62dc89badbcb8cbae67b7bd3",
+          "selector": "`sim/oracle.py:43`; retain Work source scope.",
+          "codex_evidence_id": "P3E:032"
+        },
+        {
+          "path": "sim/oracle.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "2ac37f923a4cc35bef95968d353f0724bfdbd3a5",
+          "selector": "`sim/oracle.py:43`; retain Work source scope.",
+          "codex_evidence_id": "P3E:064"
+        }
+      ],
+      "codex_formula_records": [
+        {
+          "codex_formula_id": "P3F08",
+          "category": "Hypothetical model policy",
+          "latex_display": "`$P_A=\\min(P_{ref},P_{DEX});\\ P_B=P_{ref};\\ P_C=P_{ref}+\\alpha(\\overline{P}_{DEX,lag}-P_{ref})$`, capped adverse",
+          "variables_units": "USD/WETH; alpha ratio; lag/window steps",
+          "source_locator": "`sim/oracle.py:43`",
+          "rqs": "RQ1, RQ2, RQ4",
+          "limitation": "A/B/C are sensitivity policies, not verified Aave or Chainlink feeds. C is causal in time and uses completed waves only."
+        }
+      ],
+      "work_formula_verbatim": "p^A=\\min(p^{ref},p^{DEX});\\quad p^B=p^{ref};\\quad p^C=\\min(p^{ref},p^{ref}+\\alpha(\\overline p^{DEX}_{lag,w}-p^{ref}))",
+      "formula_changed": false,
+      "semantic_relation": "Work in rõ min-cap; Codex ghi capped adverse. Đều là valuation policy giả định, không phải feed Aave/Chainlink đã xác minh.",
+      "units_implementation_check": "C chỉ dùng completed waves theo alpha, lag và window đã khóa. Dictionary đơn vị phải khớp các trường reference/valuation của oracle code.",
+      "related_accepted_claim_ids": [
+        "P2:C32"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "codex_review_state": "PENDING_INDEPENDENT_CROSS_VERDICT",
+      "commander_approval_state": "PENDING",
+      "codex_audit_locator": {
+        "path": "docs/manuscript_p3/codex/P3_FORMULA_AUDIT_PLAN.md",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": [
+          "P3F08"
+        ]
+      },
+      "codex_validated_primary_formula_ids": [
+        "P3F08"
+      ],
+      "work_additional_semantic_context_formula_ids": [],
+      "codex_validation_reference": {
+        "path": "artifacts/manuscript_p3/P3_G0_EXHIBIT_CROSSWALK_VALIDATION.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "formula_crosswalk[work_exhibit_id=E3.4]",
+        "work_head_reviewed": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80"
+      },
+      "audited_project_source_locators": [
+        "sim/oracle.py:43",
+        "data/processed/research_final/oracle_transmission_diagnostic_v1/selection_manifest.json"
+      ]
+    },
+    {
+      "work_equation_id": "E3.5",
+      "chapter_anchor": 3,
+      "section_anchor": "3.2",
+      "codex_formula_ids": [
+        "P3F02",
+        "P3F13"
+      ],
+      "formula_category": "Project route/status definition",
+      "placement_mode": "MAIN_TEXT",
+      "manuscript_placement": "3.2.2",
+      "academic_selection_reason": "Giữ quan hệ kinh tế/định nghĩa cốt lõi trong thân bài; chuyển chi tiết chuyển đổi giá, tick và khoảng tin cậy sang phụ lục để tránh đứt mạch lập luận.",
+      "source_locators": [
+        {
+          "path": "sim/engine/run.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "2b23c9ee88ee4976755e5f4795026e381d5fe497",
+          "selector": "`sim/lending/liquidation.py:38`; `sim/engine/run.py:246`–`:287`; retain Work source scope.",
+          "codex_evidence_id": "P3E:059"
+        },
+        {
+          "path": "sim/lending/liquidation.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "9f95f18e8aa52f48facbebe1b3bdc8f88c0f162a",
+          "selector": "`sim/lending/liquidation.py:38`; `sim/engine/run.py:246`–`:287`; retain Work source scope.",
+          "codex_evidence_id": "P3E:061"
+        },
+        {
+          "path": "sim/schemas.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "0f9a93180ada5912c55d0d36d5c142d0e4a356a6",
+          "selector": "`sim/lending/liquidation.py:38`; `sim/engine/run.py:246`–`:287`; retain Work source scope.",
+          "codex_evidence_id": "P3E:065"
+        }
+      ],
+      "codex_formula_records": [
+        {
+          "codex_formula_id": "P3F02",
+          "category": "Project route eligibility rule",
+          "latex_display": "`$Eligible_i = [HF_i<1]\\land[D^{USDC}_i>0]\\land[C^{WETH}_i>0]$`",
+          "variables_units": "Boolean; modeled USDC debt and WETH collateral quantities",
+          "source_locator": "`sim/lending/liquidation.py:38`",
+          "rqs": "RQ1, RQ3",
+          "limitation": "Portfolio HF eligibility is not route eligibility, attempted processing or positive-debt execution."
+        },
+        {
+          "codex_formula_id": "P3F13",
+          "category": "Project event/time definition",
+          "latex_display": "`$Depth=\\max(wave\\ with\\ positive\\ repaid\\ debt)$`; recovery is the first post-exceedance wave-end time with residual `≤0.5%`",
+          "variables_units": "waves; seconds",
+          "source_locator": "`sim/engine/run.py:246`–`:287`",
+          "rqs": "RQ1, RQ3, RQ4",
+          "limitation": "Max-waves=100 is a cap, not observed depth. Delay and time-to-recovery are different measures."
+        }
+      ],
+      "work_formula_verbatim": "E_i=1[HF_i<1];\\ R_i=1[d_i^{USDC}>0\\land c_i^{WETH}>0];\\ X_i=1[\\mathrm{LIQUIDATION}\\land\\mathrm{debt\\_repaid}>0]",
+      "formula_changed": false,
+      "semantic_relation": "Work tách điều kiện HF, tuyến và positive-debt event; P3F02 là điều kiện route kết hợp, P3F13 cung cấp điều kiện đếm wave thực thi. Không đồng nhất ba trạng thái. Codex cross-verdict primary mapping là P3F02; P3F13 chỉ bổ sung ngữ nghĩa positive-debt event, không thêm equation.",
+      "units_implementation_check": "Codex kiểm event predicates. Attempted là engine evaluation, không phải transaction broadcast; route availability chưa đủ khi còn các cổng capital/profit/capacity/delay.",
+      "related_accepted_claim_ids": [
+        "P2:C03",
+        "P2:C33",
+        "INT:CL_INT_ELIGIBLE_NOT_EXECUTED"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "codex_review_state": "PENDING_INDEPENDENT_CROSS_VERDICT",
+      "commander_approval_state": "PENDING",
+      "codex_audit_locator": {
+        "path": "docs/manuscript_p3/codex/P3_FORMULA_AUDIT_PLAN.md",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": [
+          "P3F02",
+          "P3F13"
+        ]
+      },
+      "codex_validated_primary_formula_ids": [
+        "P3F02"
+      ],
+      "work_additional_semantic_context_formula_ids": [
+        "P3F13"
+      ],
+      "codex_validation_reference": {
+        "path": "artifacts/manuscript_p3/P3_G0_EXHIBIT_CROSSWALK_VALIDATION.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "formula_crosswalk[work_exhibit_id=E3.5]",
+        "work_head_reviewed": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80"
+      },
+      "audited_project_source_locators": [
+        "sim/lending/liquidation.py:38",
+        "sim/engine/run.py:102",
+        "sim/engine/run.py:152"
+      ]
+    },
+    {
+      "work_equation_id": "E3.6",
+      "chapter_anchor": 3,
+      "section_anchor": "3.5",
+      "codex_formula_ids": [
+        "P3F15"
+      ],
+      "formula_category": "Statistical display definition",
+      "placement_mode": "MAIN_TEXT",
+      "manuscript_placement": "3.5.3",
+      "academic_selection_reason": "Giữ quan hệ kinh tế/định nghĩa cốt lõi trong thân bài; chuyển chi tiết chuyển đổi giá, tick và khoảng tin cậy sang phụ lục để tránh đứt mạch lập luận.",
+      "source_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/tables/rq1_monte_carlo.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "ea71db6f633b7e5df1f12cd3d9f2533e5d5f9438",
+          "selector": "P2:C23; `data/processed/research_final/level3_extension/deep_stress/monte_carlo_batches.json`; retain Work source scope.",
+          "codex_evidence_id": null
+        }
+      ],
+      "codex_formula_records": [
+        {
+          "codex_formula_id": "P3F15",
+          "category": "Display-only statistical formula, approval required",
+          "latex_display": "`$\\hat p=k/n$`; Wilson score interval only for locked `k/n` pairs",
+          "variables_units": "count/paths and dimensionless interval",
+          "source_locator": "P2:C23; `data/processed/research_final/level3_extension/deep_stress/monte_carlo_batches.json`",
+          "rqs": "RQ1",
+          "limitation": "G0 will not calculate a new CI. Any manuscript interval must reproduce an already locked pair and remain model-conditional."
+        }
+      ],
+      "work_formula_verbatim": "\\widehat f_{\\ge2}=\\frac1n\\sum_{r=1}^{n}1[D_r\\ge2]",
+      "formula_changed": false,
+      "semantic_relation": "Chỉ báo depth≥2 cho tần suất k/n. P3F15 quy định phạm vi display, không cho phép một ước lượng xác suất thị trường mới.",
+      "units_implementation_check": "Chỉ dùng locked k/n, không cộng prefix và không dùng mười selected paths làm population denominator.",
+      "related_accepted_claim_ids": [
+        "P2:C22",
+        "P2:C23"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "codex_review_state": "PENDING_INDEPENDENT_CROSS_VERDICT",
+      "commander_approval_state": "PENDING",
+      "codex_audit_locator": {
+        "path": "docs/manuscript_p3/codex/P3_FORMULA_AUDIT_PLAN.md",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": [
+          "P3F15"
+        ]
+      },
+      "codex_validated_primary_formula_ids": [
+        "P3F15"
+      ],
+      "work_additional_semantic_context_formula_ids": [],
+      "codex_validation_reference": {
+        "path": "artifacts/manuscript_p3/P3_G0_EXHIBIT_CROSSWALK_VALIDATION.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "formula_crosswalk[work_exhibit_id=E3.6]",
+        "work_head_reviewed": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80"
+      },
+      "audited_project_source_locators": [
+        "data/processed/research_final/frozen_v3/tables/rq1_monte_carlo.csv"
+      ]
+    },
+    {
+      "work_equation_id": "E3.7",
+      "chapter_anchor": 3,
+      "section_anchor": "3.5",
+      "codex_formula_ids": [
+        "P3F15"
+      ],
+      "formula_category": "Statistical display; exact typography review before production",
+      "placement_mode": "APPENDIX",
+      "manuscript_placement": "Phụ lục A.3; dẫn từ3.5.3",
+      "academic_selection_reason": "Giữ quan hệ kinh tế/định nghĩa cốt lõi trong thân bài; chuyển chi tiết chuyển đổi giá, tick và khoảng tin cậy sang phụ lục để tránh đứt mạch lập luận.",
+      "source_locators": [
+        {
+          "path": "sim/research/aave_suite.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "ac82a2c5df8c0cc10d55712f3d9a0a4bf1110123",
+          "selector": "L211-L220: _wilson",
+          "codex_evidence_id": null
+        },
+        {
+          "path": "scripts/research/run_deep_cascade_study.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "90d248dbadf5e78df20d5eb8eb05a533245f55f7",
+          "selector": "L353-L364: _wilson",
+          "codex_evidence_id": null
+        },
+        {
+          "path": "data/processed/research_final/frozen_v3/tables/rq1_monte_carlo.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "ea71db6f633b7e5df1f12cd3d9f2533e5d5f9438",
+          "selector": "locked k/n and depth_ge_2_wilson_lower/upper",
+          "codex_evidence_id": null
+        }
+      ],
+      "codex_formula_records": [
+        {
+          "codex_formula_id": "P3F15",
+          "category": "Display-only statistical formula, approval required",
+          "latex_display": "`$\\hat p=k/n$`; Wilson score interval only for locked `k/n` pairs",
+          "variables_units": "count/paths and dimensionless interval",
+          "source_locator": "P2:C23; `data/processed/research_final/level3_extension/deep_stress/monte_carlo_batches.json`",
+          "rqs": "RQ1",
+          "limitation": "G0 will not calculate a new CI. Any manuscript interval must reproduce an already locked pair and remain model-conditional."
+        }
+      ],
+      "work_formula_verbatim": "\\frac{\\hat f+z^2/(2n)\\ \\pm\\ z\\sqrt{\\hat f(1-\\hat f)/n+z^2/(4n^2)}}{1+z^2/n}",
+      "formula_changed": false,
+      "semantic_relation": "Giữ nguyên biểu thức Wilson Work; primary provenance là hai implementations _wilson và bảng locked k/n/bounds. S24/NIST chỉ là background, không xác nhận implementation Wilson.",
+      "units_implementation_check": "Work đã đọc trực tiếp hai implementations và locked table tại scientific lock; đối chiếu biểu thức bằng static inspection, không chạy/recompute CI. z trong code dùng NormalDist quantile; 1,96 là ký hiệu xấp xỉ, không thay locked bounds.",
+      "related_accepted_claim_ids": [
+        "P2:C23"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "codex_review_state": "PENDING_INDEPENDENT_CROSS_VERDICT",
+      "commander_approval_state": "PENDING",
+      "codex_audit_locator": {
+        "path": "docs/manuscript_p3/codex/P3_FORMULA_AUDIT_PLAN.md",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": [
+          "P3F15"
+        ]
+      },
+      "codex_validated_primary_formula_ids": [
+        "P3F15"
+      ],
+      "work_additional_semantic_context_formula_ids": [],
+      "codex_validation_reference": {
+        "path": "artifacts/manuscript_p3/P3_G0_EXHIBIT_CROSSWALK_VALIDATION.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "formula_crosswalk[work_exhibit_id=E3.7]",
+        "work_head_reviewed": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80"
+      },
+      "audited_project_source_locators": [
+        "sim/research/aave_suite.py:211",
+        "scripts/research/run_deep_cascade_study.py:353",
+        "data/processed/research_final/frozen_v3/tables/rq1_monte_carlo.csv"
+      ],
+      "scholarly_background_locators": [
+        {
+          "path": "docs/research_final/APA_REFERENCES_VERIFIED.md",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "c76d7cf482565615a92fb17b888a392e4f8fd9cc",
+          "selector": "P2:C23; `data/processed/research_final/level3_extension/deep_stress/monte_carlo_batches.json`; retain Work source scope.",
+          "codex_evidence_id": "P3E:050"
+        },
+        {
+          "path": "docs/research_final/LITERATURE_VERIFIED.md",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "6ebe0a11e915e942a422d02a0cc5b1d53b51ff3e",
+          "selector": "P2:C23; `data/processed/research_final/level3_extension/deep_stress/monte_carlo_batches.json`; retain Work source scope.",
+          "codex_evidence_id": "P3E:051"
+        }
+      ]
+    },
+    {
+      "work_equation_id": "E3.8",
+      "chapter_anchor": 3,
+      "section_anchor": "3.3",
+      "codex_formula_ids": [
+        "P3F09"
+      ],
+      "formula_category": "Scoped analytical component identity",
+      "placement_mode": "MAIN_TEXT",
+      "manuscript_placement": "3.3.1; áp dụng ở5.5.2",
+      "academic_selection_reason": "Giữ quan hệ kinh tế/định nghĩa cốt lõi trong thân bài; chuyển chi tiết chuyển đổi giá, tick và khoảng tin cậy sang phụ lục để tránh đứt mạch lập luận.",
+      "source_locators": [
+        {
+          "path": "data/processed/research_final/frozen_v3/tables/rq5_usdc_valuation.csv",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "3f36a867c750f90d5a88ae5b1b00eae6be151b6e",
+          "selector": "`sim/schemas.py:25`; retain Work source scope.",
+          "codex_evidence_id": "P3E:019"
+        },
+        {
+          "path": "sim/lending/health_factor.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "8d8cae6754e718856867ce3696498bd68134a294",
+          "selector": "`sim/schemas.py:25`; retain Work source scope.",
+          "codex_evidence_id": "P3E:060"
+        },
+        {
+          "path": "sim/schemas.py",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "git_blob_sha": "0f9a93180ada5912c55d0d36d5c142d0e4a356a6",
+          "selector": "`sim/schemas.py:25`; retain Work source scope.",
+          "codex_evidence_id": "P3E:065"
+        }
+      ],
+      "codex_formula_records": [
+        {
+          "codex_formula_id": "P3F09",
+          "category": "Analytical identity inside the model",
+          "latex_display": "`$D_{USD}=q_{USDC}P_{USDC/USD}+D_{other,USD}$`",
+          "variables_units": "USDC token quantity, USD/USDC, USD",
+          "source_locator": "`sim/schemas.py:25`",
+          "rqs": "RQ5",
+          "limitation": "Isolates debt valuation only; no redemption, settlement, confidence or stablecoin-liquidity channel."
+        }
+      ],
+      "work_formula_verbatim": "V_{debt}^{USD}=Q_{debt}^{USDC}\\,q_{USDC/USD}",
+      "formula_changed": false,
+      "semantic_relation": "E3.8 biểu diễn riêng giá trị USD của phần nợ USDC. P3F09 là tổng nợ có thêm other_debt_usd; không dùng E3.8 thay tổng nợ danh mục.",
+      "units_implementation_check": "Caption phải ghi “phần nợ USDC”; bỏ thành phần nợ khác chỉ khi nó bằng 0. Không tự repricing seize/quote/dust ngoài implementation đã khóa.",
+      "related_accepted_claim_ids": [
+        "P2:C15",
+        "P2:C35"
+      ],
+      "scientific_lock_commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+      "codex_review_state": "PENDING_INDEPENDENT_CROSS_VERDICT",
+      "commander_approval_state": "PENDING",
+      "codex_audit_locator": {
+        "path": "docs/manuscript_p3/codex/P3_FORMULA_AUDIT_PLAN.md",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": [
+          "P3F09"
+        ]
+      },
+      "codex_validated_primary_formula_ids": [
+        "P3F09"
+      ],
+      "work_additional_semantic_context_formula_ids": [],
+      "codex_validation_reference": {
+        "path": "artifacts/manuscript_p3/P3_G0_EXHIBIT_CROSSWALK_VALIDATION.json",
+        "commit": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+        "selector": "formula_crosswalk[work_exhibit_id=E3.8]",
+        "work_head_reviewed": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80"
+      },
+      "audited_project_source_locators": [
+        "sim/schemas.py:25",
+        "data/processed/research_final/frozen_v3/tables/rq5_usdc_valuation.csv"
+      ]
+    }
+  ],
+  "codex_formula_dispositions": [
+    {
+      "codex_formula_id": "P3F01",
+      "category": "Protocol-shaped project implementation",
+      "source_locator": "`sim/lending/health_factor.py:5`; portfolio implementation `sim/schemas.py:29`",
+      "disposition": "MAIN_TEXT",
+      "work_equation_ids": [
+        "E3.1"
+      ],
+      "placement": "3.3.1",
+      "reason": "Giữ HF; mã dự án là nguồn implementation.",
+      "new_formula_authorized": false
+    },
+    {
+      "codex_formula_id": "P3F02",
+      "category": "Project route eligibility rule",
+      "source_locator": "`sim/lending/liquidation.py:38`",
+      "disposition": "MAIN_TEXT",
+      "work_equation_ids": [
+        "E3.1",
+        "E3.5"
+      ],
+      "placement": "3.2.2",
+      "reason": "Giải thích riêng HF eligibility và route eligibility.",
+      "new_formula_authorized": false
+    },
+    {
+      "codex_formula_id": "P3F03",
+      "category": "Protocol-shaped project liquidation mapping",
+      "source_locator": "`sim/lending/liquidation.py:26`, `:38`",
+      "disposition": "PROSE_ONLY_UNIT_REVIEW_REQUIRED",
+      "work_equation_ids": [],
+      "placement": "3.2.2;5.6.3",
+      "reason": "Không thêm equation display. Repay là USDC token trong khi P_WETH được gắn USD/WETH; cần giữ quy ước baseline và giới hạn C35, không suy full USDC-depeg execution identity.",
+      "new_formula_authorized": false
+    },
+    {
+      "codex_formula_id": "P3F04",
+      "category": "Project-specific liquidator decision",
+      "source_locator": "`sim/agents/liquidator.py:33`",
+      "disposition": "PROSE_ONLY",
+      "work_equation_ids": [],
+      "placement": "3.2.2;5.3.1",
+      "reason": "Giải thích lợi nhuận và các cổng bằng văn bản/bảng tác nhân; không thêm công thức hay mô hình cạnh tranh liquidator.",
+      "new_formula_authorized": false
+    },
+    {
+      "codex_formula_id": "P3F05",
+      "category": "Uniswap V3 identity used by the project",
+      "source_locator": "`sim/dex/uniswap_v3.py:26`, `:35`",
+      "disposition": "APPENDIX",
+      "work_equation_ids": [
+        "E3.2"
+      ],
+      "placement": "A.1;3.3.2 dẫn chiếu",
+      "reason": "Chọn phần chuyển đổi giá ở phụ lục; giải thích tick rounding bằng văn bản theo mã.",
+      "new_formula_authorized": false
+    },
+    {
+      "codex_formula_id": "P3F06",
+      "category": "Project swap calculation across initialized ticks",
+      "source_locator": "`sim/dex/uniswap_v3.py:77`",
+      "disposition": "APPENDIX",
+      "work_equation_ids": [
+        "E3.3"
+      ],
+      "placement": "A.2;3.3.2 dẫn chiếu",
+      "reason": "Đặt chi tiết swap ở phụ lục để thân bài tập trung cơ chế tài chính.",
+      "new_formula_authorized": false
+    },
+    {
+      "codex_formula_id": "P3F07",
+      "category": "Display transformation",
+      "source_locator": "`sim/engine/run.py:143`, `:248`, metrics `:278`–`:282`",
+      "disposition": "PROSE_ONLY",
+      "work_equation_ids": [],
+      "placement": "3.3.3;5.4;T3.3",
+      "reason": "Định nghĩa immediate impact và residual bằng văn bản với denominator reference; không đồng nhất trường legacy max_price_impact.",
+      "new_formula_authorized": false
+    },
+    {
+      "codex_formula_id": "P3F08",
+      "category": "Hypothetical model policy",
+      "source_locator": "`sim/oracle.py:43`",
+      "disposition": "MAIN_TEXT",
+      "work_equation_ids": [
+        "E3.4"
+      ],
+      "placement": "3.4.1",
+      "reason": "Giả định valuation là một mắt xích quyết định, cần equation thân bài.",
+      "new_formula_authorized": false
+    },
+    {
+      "codex_formula_id": "P3F09",
+      "category": "Analytical identity inside the model",
+      "source_locator": "`sim/schemas.py:25`",
+      "disposition": "MAIN_TEXT_SCOPED_COMPONENT",
+      "work_equation_ids": [
+        "E3.8"
+      ],
+      "placement": "3.3.1;5.5.2",
+      "reason": "Chọn thành phần USDC và giải thích nợ khác trong HF danh mục; không sửa công thức Codex.",
+      "new_formula_authorized": false
+    },
+    {
+      "codex_formula_id": "P3F10",
+      "category": "Project metric definition",
+      "source_locator": "`sim/metrics/risk.py:9`",
+      "disposition": "PROSE_ONLY",
+      "work_equation_ids": [],
+      "placement": "3.3.3;T3.3",
+      "reason": "Uncovered debt là metric mô hình; không thêm phương trình hoặc realized-loss claim.",
+      "new_formula_authorized": false
+    },
+    {
+      "codex_formula_id": "P3F11",
+      "category": "Project metric definition",
+      "source_locator": "`sim/metrics/risk.py:20`; call with scenario LT `sim/engine/run.py:262`",
+      "disposition": "PROSE_ONLY",
+      "work_equation_ids": [],
+      "placement": "3.3.3;5.6.2;T3.3",
+      "reason": "Scenario LT và USD-equivalent trong định nghĩa metric khác cột USDC token của một số bảng xuất; caption theo đúng artifact.",
+      "new_formula_authorized": false
+    },
+    {
+      "codex_formula_id": "P3F12",
+      "category": "Analytical identity inside the model",
+      "source_locator": "`sim/metrics/risk.py:36`",
+      "disposition": "NOT_NEEDED_AS_STANDALONE_EQUATION",
+      "work_equation_ids": [],
+      "placement": "T3.3 nếu chỉ tiêu được dùng",
+      "reason": "Không cần display độc lập. Nếu dùng amplification thì giải thích denominator bằng 0 là undefined và hai vế cùng đơn vị.",
+      "new_formula_authorized": false
+    },
+    {
+      "codex_formula_id": "P3F13",
+      "category": "Project event/time definition",
+      "source_locator": "`sim/engine/run.py:246`–`:287`",
+      "disposition": "PROSE_WITH_STATUS_COMPONENT",
+      "work_equation_ids": [
+        "E3.5"
+      ],
+      "placement": "3.2.2;3.3.3;5.3",
+      "reason": "Chỉ điều kiện positive-debt event hỗ trợ E3.5; depth và recovery được giải thích bằng văn bản.",
+      "new_formula_authorized": false
+    },
+    {
+      "codex_formula_id": "P3F14",
+      "category": "Policy mechanism identity",
+      "source_locator": "`sim/schemas.py:17`; `sim/lending/liquidation.py:38`; locked RQ6 results",
+      "disposition": "PROSE_ONLY",
+      "work_equation_ids": [],
+      "placement": "2.1.2;5.6;F5.6",
+      "reason": "Giải thích ba cơ chế cùng các panels đã có; không thêm equation chỉ để tăng số lượng.",
+      "new_formula_authorized": false
+    },
+    {
+      "codex_formula_id": "P3F15",
+      "category": "Display-only statistical formula, approval required",
+      "source_locator": "P2:C23; `data/processed/research_final/level3_extension/deep_stress/monte_carlo_batches.json`",
+      "disposition": "MAIN_TEXT_AND_APPENDIX",
+      "work_equation_ids": [
+        "E3.6",
+        "E3.7"
+      ],
+      "placement": "3.5.3 vàA.3",
+      "reason": "Tần suất k/n trong thân bài, Wilson ở phụ lục; chỉ dùng locked intervals.",
+      "new_formula_authorized": false
+    }
+  ],
+  "codex_template_reverse_assignments": [
+    {
+      "codex_exhibit_template_id": "P3X:SYSTEM_FEEDBACK_SCHEMATIC",
+      "assigned_work_displays": [
+        {
+          "proposed_manuscript_id": "F3.1",
+          "chapter": 3,
+          "section": "3.1",
+          "status": "MATCHED"
+        },
+        {
+          "proposed_manuscript_id": "T3.1",
+          "chapter": 3,
+          "section": "3.2",
+          "status": "CODEX_SPEC_REQUIRED"
+        },
+        {
+          "proposed_manuscript_id": "F5.2",
+          "chapter": 5,
+          "section": "5.3",
+          "status": "CODEX_SPEC_REQUIRED"
+        }
+      ],
+      "codex_file_assignment_state": "Work-owned proposal; Codex catalog placeholders have not been edited.",
+      "codex_review_state": "PENDING"
+    },
+    {
+      "codex_exhibit_template_id": "P3X:ORACLE_POLICY_DEPTH2_COMPARISON",
+      "assigned_work_displays": [
+        {
+          "proposed_manuscript_id": "T3.2",
+          "chapter": 3,
+          "section": "3.5",
+          "status": "DIRECT_LOCKED_SOURCE"
+        },
+        {
+          "proposed_manuscript_id": "F5.1",
+          "chapter": 5,
+          "section": "5.1",
+          "status": "DIRECT_LOCKED_SOURCE"
+        },
+        {
+          "proposed_manuscript_id": "T5.1",
+          "chapter": 5,
+          "section": "5.2",
+          "status": "MATCHED"
+        },
+        {
+          "proposed_manuscript_id": "F5.3",
+          "chapter": 5,
+          "section": "5.2",
+          "status": "CODEX_SPEC_REQUIRED"
+        }
+      ],
+      "codex_file_assignment_state": "Work-owned proposal; Codex catalog placeholders have not been edited.",
+      "codex_review_state": "PENDING"
+    },
+    {
+      "codex_exhibit_template_id": "P3X:ELIGIBLE_VS_EXECUTED",
+      "assigned_work_displays": [
+        {
+          "proposed_manuscript_id": "T5.2",
+          "chapter": 5,
+          "section": "5.3",
+          "status": "MATCHED"
+        },
+        {
+          "proposed_manuscript_id": "F5.2",
+          "chapter": 5,
+          "section": "5.3",
+          "status": "CODEX_SPEC_REQUIRED"
+        }
+      ],
+      "codex_file_assignment_state": "Work-owned proposal; Codex catalog placeholders have not been edited.",
+      "codex_review_state": "PENDING"
+    },
+    {
+      "codex_exhibit_template_id": "P3X:LIQUIDITY_ABSORPTION_AND_PRICE_METRICS",
+      "assigned_work_displays": [
+        {
+          "proposed_manuscript_id": "F5.3",
+          "chapter": 5,
+          "section": "5.2",
+          "status": "CODEX_SPEC_REQUIRED"
+        },
+        {
+          "proposed_manuscript_id": "F5.5",
+          "chapter": 5,
+          "section": "5.4",
+          "status": "MATCHED"
+        }
+      ],
+      "codex_file_assignment_state": "Work-owned proposal; Codex catalog placeholders have not been edited.",
+      "codex_review_state": "PENDING"
+    },
+    {
+      "codex_exhibit_template_id": "P3X:SEVERE_POLICY_A_MONTE_CARLO",
+      "assigned_work_displays": [
+        {
+          "proposed_manuscript_id": "T3.2",
+          "chapter": 3,
+          "section": "3.5",
+          "status": "DIRECT_LOCKED_SOURCE"
+        },
+        {
+          "proposed_manuscript_id": "F5.7",
+          "chapter": 5,
+          "section": "5.7",
+          "status": "MATCHED"
+        }
+      ],
+      "codex_file_assignment_state": "Work-owned proposal; Codex catalog placeholders have not been edited.",
+      "codex_review_state": "PENDING"
+    },
+    {
+      "codex_exhibit_template_id": "P3X:HISTORICAL_EVIDENCE_TIERS",
+      "assigned_work_displays": [
+        {
+          "proposed_manuscript_id": "T6.1",
+          "chapter": 6,
+          "section": "6.1",
+          "status": "MATCHED"
+        }
+      ],
+      "codex_file_assignment_state": "Work-owned proposal; Codex catalog placeholders have not been edited.",
+      "codex_review_state": "PENDING"
+    },
+    {
+      "codex_exhibit_template_id": "P3X:TERRA_NEGATIVE_EARLY_WARNING",
+      "assigned_work_displays": [
+        {
+          "proposed_manuscript_id": "F6.1",
+          "chapter": 6,
+          "section": "6.2",
+          "status": "CODEX_SPEC_REQUIRED"
+        }
+      ],
+      "codex_file_assignment_state": "Work-owned proposal; Codex catalog placeholders have not been edited.",
+      "codex_review_state": "PENDING"
+    },
+    {
+      "codex_exhibit_template_id": "P3X:NETWORK_EXTENSION_BOUNDARY",
+      "assigned_work_displays": [
+        {
+          "proposed_manuscript_id": "F6.2",
+          "chapter": 6,
+          "section": "6.3",
+          "status": "CODEX_SPEC_REQUIRED"
+        }
+      ],
+      "codex_file_assignment_state": "Work-owned proposal; Codex catalog placeholders have not been edited.",
+      "codex_review_state": "PENDING"
+    },
+    {
+      "codex_exhibit_template_id": "P3X:RISK_PARAMETER_MECHANISMS",
+      "assigned_work_displays": [
+        {
+          "proposed_manuscript_id": "F5.6",
+          "chapter": 5,
+          "section": "5.6",
+          "status": "CODEX_SPEC_REQUIRED"
+        }
+      ],
+      "codex_file_assignment_state": "Work-owned proposal; Codex catalog placeholders have not been edited.",
+      "codex_review_state": "PENDING"
+    },
+    {
+      "codex_exhibit_template_id": "P3X:CANONICAL_SCOPE_PROVENANCE",
+      "assigned_work_displays": [
+        {
+          "proposed_manuscript_id": "F4.1",
+          "chapter": 4,
+          "section": "4.1",
+          "status": "CODEX_SPEC_REQUIRED"
+        },
+        {
+          "proposed_manuscript_id": "T4.1",
+          "chapter": 4,
+          "section": "4.2",
+          "status": "CODEX_SPEC_REQUIRED"
+        }
+      ],
+      "codex_file_assignment_state": "Work-owned proposal; Codex catalog placeholders have not been edited.",
+      "codex_review_state": "PENDING"
+    },
+    {
+      "codex_exhibit_template_id": "P3X:METRIC_SEMANTICS_GLOSSARY",
+      "assigned_work_displays": [
+        {
+          "proposed_manuscript_id": "T3.1",
+          "chapter": 3,
+          "section": "3.2",
+          "status": "CODEX_SPEC_REQUIRED"
+        },
+        {
+          "proposed_manuscript_id": "T3.3",
+          "chapter": 3,
+          "section": "3.3",
+          "status": "MATCHED"
+        },
+        {
+          "proposed_manuscript_id": "T4.2",
+          "chapter": 4,
+          "section": "4.3",
+          "status": "DIRECT_LOCKED_SOURCE"
+        }
+      ],
+      "codex_file_assignment_state": "Work-owned proposal; Codex catalog placeholders have not been edited.",
+      "codex_review_state": "PENDING"
+    }
+  ],
+  "unmapped_codex_template_ids": [],
+  "unselected_codex_formula_ids": [
+    "P3F03",
+    "P3F04",
+    "P3F07",
+    "P3F10",
+    "P3F11",
+    "P3F12",
+    "P3F14"
+  ],
+  "unresolved_requests": [
+    {
+      "request_id": "G0-REC-01",
+      "owner": "Codex",
+      "scope": [
+        "T3.1",
+        "F4.1",
+        "T4.1",
+        "F5.2",
+        "F5.3",
+        "F5.6",
+        "F6.1",
+        "F6.2"
+      ],
+      "severity": "PENDING_DISPLAY_SPEC",
+      "issue": "Source/template reuse is grounded but these renditions/compositions exceed the 11 đặc tả template hiện có.",
+      "acceptance_criterion": "Acknowledge each Work ID/section, exact filters/units/denominators and feasibility without new simulation/statistics; produce specification only, not rendered exhibits.",
+      "blocks": "Production/CP1 technical completeness; not content blueprint mapping."
+    },
+    {
+      "request_id": "G0-REC-02",
+      "owner": "Codex",
+      "scope": [
+        "E3.2",
+        "E3.3",
+        "E3.5",
+        "E3.7",
+        "E3.8"
+      ],
+      "severity": "PRE_PRODUCTION_SEMANTICS_CHECK",
+      "issue": "Inverse token-price convention, raw versus normalized swap amounts, route/status predicates, fullWilson typography and USDCcomponent versus portfolio debt require explicit review.",
+      "acceptance_criterion": "Cross-verdict confirms declared domains and unchanged formulas; no additional CI or formula/model rewrite.",
+      "blocks": "Equation production/technical sign-off."
+    },
+    {
+      "request_id": "G0-REC-03",
+      "owner": "Codex",
+      "scope": [
+        "P3X:NETWORK_EXTENSION_BOUNDARY"
+      ],
+      "severity": "P2_CATALOG_CLAIM_ASSOCIATION",
+      "issue": "Template currently lists P2:C29 (time-series CV/validation). It does not support network topology. Work uses network C25/C26/C27/C28 and does not inherit C29 for F6.2.",
+      "acceptance_criterion": "Correct or explain the catalog association on Codex branch; no change to locked C29 or Work files.",
+      "blocks": "Catalog reconciliation acknowledgement before final Commander gate."
+    },
+    {
+      "request_id": "G0-REC-04",
+      "owner": "Codex",
+      "scope": [
+        "P3F03"
+      ],
+      "severity": "SCOPED_UNIT_NOTE_NOT_SELECTED_EQUATION",
+      "issue": "repay USDC token × bonus / price labelledUSD/WETH needs baseline/peg convention; source implementation does not provide universal USDC-depeg seize repricing.",
+      "acceptance_criterion": "Keep formula verbatim as implementation approximation, state unit/convention limitation C35; do not render a general depeg execution identity.",
+      "blocks": "Use of this candidate formula beyond prose; it is not selected for formal display."
+    },
+    {
+      "request_id": "G0-REC-05",
+      "owner": "Commander",
+      "scope": [
+        "FINAL_DOCX"
+      ],
+      "severity": "TEMPLATE_VERIFICATION_PENDING",
+      "issue": "2024report is a reference example; no authoritative current school-formatting regulation verified.",
+      "acceptance_criterion": "Verify applicable template/rules before final DOCX; can approve content blueprint independently.",
+      "blocks": "Final DOCX formatting only."
+    },
+    {
+      "request_id": "G0-REC-06",
+      "owner": "Codex/Commander",
+      "scope": [
+        "RAW_CSV",
+        "LEGACY_TERRA"
+      ],
+      "severity": "PRESERVED_LIMITATION",
+      "issue": "Work has not fully read two large borrower CSVs; optional legacy Terra fit/mechanism/stress are not automatically affirmative additions.",
+      "acceptance_criterion": "Use pinned summary/audit extracts with declared scope; request separate review for added findings, no invented data.",
+      "blocks": "Any new dependent extract/inference; does not block existing mapping."
+    }
+  ],
+  "scientific_conflicts": [],
+  "metadata_or_display_issues": [
+    "G0-REC-01",
+    "G0-REC-02",
+    "G0-REC-03",
+    "G0-REC-04"
+  ],
+  "template_status": "TEMPLATE_VERIFICATION_PENDING; REFERENCE_EXAMPLE_AVAILABLE",
+  "work_review_state": "CONTENT_MAPPING_SELF_REVIEW_COMPLETE",
+  "codex_independent_cross_verdict": "PENDING",
+  "commander_blueprint_approval": "PENDING",
+  "codex_prior_independent_verdict": {
+    "work_reviewed_head": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80",
+    "codex_head": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+    "verdict": "P3_G0_TECHNICAL_REWORK_REQUIRED",
+    "scope": "25 displays / 8 formulas; G0-X01/G0-X02 metadata hold, G0-X03 display controls. Final Work delta is not yet independently verified."
+  },
+  "adopted_codex_findings": [
+    {
+      "finding_id": "G0-X01",
+      "work_disposition": "ADDRESSED_PENDING_CODEX_DELTA_CHECK",
+      "repair": "All 25/8 Codex validated primary mappings adopted, with Work additional schematic/status context separately typed."
+    },
+    {
+      "finding_id": "G0-X02",
+      "work_disposition": "ADDRESSED_PENDING_CODEX_DELTA_CHECK",
+      "repair": "E3.7 primary project source pointers replaced by locked implementations and numerical table; scholarship demoted to explicit background; no formula or interval changed."
+    },
+    {
+      "finding_id": "G0-X03",
+      "work_disposition": "CONTROLS_ADOPTED_PENDING_CODEX_DELTA_CHECK",
+      "repair": "Exact Codex per-display controls embedded in crosswalk/plan. T4.1 subgroup omitted; F5.2 deterministic predeclared pseudonymized selector required; mixed-unit facets and Terra split fixed as production requirements."
+    }
+  ]
+}
