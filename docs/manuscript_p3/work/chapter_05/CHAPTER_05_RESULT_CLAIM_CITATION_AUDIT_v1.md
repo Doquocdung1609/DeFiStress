@@ -1,6 +1,6 @@
 # CHAPTER_05_RESULT_CLAIM_CITATION_AUDIT_v1
 
-**Overall recommendation: `CHAPTER_05_TARGETED_REPAIR_REQUIRED`.** Toàn văn đã hoàn chỉnh; static content/source checks có thể PASS nhưng hai sai khác metadata nguồn RQ6 chưa có quyết định hòa giải. Không đồng nhất content PASS với scientific acceptance. Không sửa source, không tạo số mới.
+**Overall recommendation: `CHAPTER_05_TARGETED_REPAIR_COMPLETE — READY_FOR_COMMANDER_FINAL_REVIEW`.** CH05-P01 và CH05-P02 được `RESOLVED_FOR_MANUSCRIPT_INTERPRETATION` theo quyết định Commander. Ghi chú diễn giải Chương 5 v1, hiệu lực ngày 16/10/2026, chỉ quy định nhãn và phạm vi sử dụng trong bản thảo; không tái ban hành Scientific Lock, không sửa metadata nguồn hoặc số liệu. Commander giữ quyền nghiệm thu cuối và khóa chương.
 
 - Scientific Lock: `3f6e5302483681209e2408531eb5a15389f9fded`; registry `final-accepted-claims-v1.1-targeted-repair`.
 - Blueprint: `8de52bebabef376be700836e6f93a92d7394d2c3`.
@@ -9,7 +9,9 @@
 - `WORK_STATIC_RESULT_SOURCE_REVIEW_AND_SELF_REVIEW`; không engine/MC/RPC/fullregression/newstatisticaltest/interval. Không là external independent peer review.
 - `TEMPLATE_VERIFICATION_PENDING`; chưa DOCX. Chỉ ba file Work/chapter_05.
 
-## 1. Hai findings nguồn cần sửa/xác nhận có mục tiêu
+## 1. Ghi chú diễn giải Chương 5 v1 — hai findings đã giải quyết cho bản thảo
+
+Authority và ngày: [Commander, 16/10/2026](https://github.com/Doquocdung1609/DeFiStress/pull/21#issuecomment-6214848952). Starting Work HEAD: `7423e184272881afda6291b688a23ba1d63e2d56`. Trạng thái từng finding: `RESOLVED_FOR_MANUSCRIPT_INTERPRETATION`. Quyết định này ưu tiên artifact tính toán chi tiết/code cho nhãn sử dụng của Chương 5; metadata Frozen gốc vẫn được bảo lưu, không được chứng nhận ngược là đúng. Downstream registry consumers phải đọc ghi chú này; mọi erratum nguồn riêng cần được phê duyệt riêng.
 
 ### CH05-P01 — P1: LTV population metadata không khớp artifact tính toán
 
@@ -18,9 +20,9 @@
 - Detailed [data/processed/research_final/validation_audit/corrected_run_v2/rq_completion/rq6_ltv_capital_efficiency.json](https://github.com/Doquocdung1609/DeFiStress/blob/3f6e5302483681209e2408531eb5a15389f9fded/data/processed/research_final/validation_audit/corrected_run_v2/rq_completion/rq6_ltv_capital_efficiency.json): `cohort_size=255`; `method` giữ othercollateral observedLTV proxy và frozen debt.
 - Code [sim/research/rq_completion.py](https://github.com/Doquocdung1609/DeFiStress/blob/3f6e5302483681209e2408531eb5a15389f9fded/sim/research/rq_completion.py): `run_ltv_capital_efficiency_analysis`, cohort có `collateral_weth>0 and debt_value()>0`, không filter debtUSDC>0.
 - Values 50797988.977634266 và53675575.37423773 USD không đổi. Không thể gán chắc cùng hai values cho cohort109 chỉ từ metadata khi detailed source khai báo255.
-- Current manuscript wording: “Artifact chi tiết ... ghi cohort_size=255 ... trường population ... ghi109 ... cần Commander/Codex xác nhận cách đồng bộ”.
-- Proposed resolved wording, subject to Commander decision: “Kết quả khả năng vay LTV tổng hợp trên255 vị thế có WETH thế chấp và có nợ, theo artifact tính toán đã khóa; không phải riêng cohort109 tuyếnWETH/USDC.”
-- Exact repair criterion: Commander/Codex trace nguồn tạo bảng, xác nhận population thực tế của các totals; đồng bộ hoặc ban hành correction/precedence note cho affected registry metadata và exhibit caption bằng quyết định có version. Không chạy/tính lại mô phỏng; không áp số109 bằng cách tự đổi output. Work không sửa numerical registry.
+- Effective manuscript population/label: 255 danh mục có WETH thế chấp và có nợ; khả năng vay tối đa bằng USD. Hai totals 50797988.977634266 và 53675575.37423773 thuộc phạm vi này, không phải cohort 109 tuyến WETH/USDC.
+- Resolution applied: 5.6.1 và panel LTV của F5.6 dùng phạm vi chi tiết theo Commander; literal `109-position frozen cohort` ở trên là legacy metadata chưa thống nhất, không là denominator hiệu lực.
+- Acceptance recheck: PASS — main, caption và display spec thống nhất population255; số và source bytes không đổi. `RESOLVED_FOR_MANUSCRIPT_INTERPRETATION`; không sửa numerical registry.
 
 ### CH05-P02 — P1: LT unliquidated-debt label không cùng nghĩa metric code
 
@@ -28,11 +30,12 @@
 - Frozen [data/processed/research_final/frozen_v3/tables/rq6_policy.csv](https://github.com/Doquocdung1609/DeFiStress/blob/3f6e5302483681209e2408531eb5a15389f9fded/data/processed/research_final/frozen_v3/tables/rq6_policy.csv): `parameter=LT` rows có `outcome_unit=USDC token quantity, scenario-LT`. Frozen results `RQ6_LT083_UNLIQUIDATED`/`RQ6_LT0855_UNLIQUIDATED` có unit `USDC token quantity` và population `109-position frozen cohort`.
 - Code [sim/metrics/risk.py](https://github.com/Doquocdung1609/DeFiStress/blob/3f6e5302483681209e2408531eb5a15389f9fded/sim/metrics/risk.py): `unliquidated_debt` cộng `position.debt_value(usdc_price_usd)` trên các vị thế HF<1 của danh sách truyền vào; là tổng giá trị nợ danh mục, bao gồm otherdebt, không chỉ tổng debtUSDC token. `run_liquidation_threshold_sensitivity` gọi engine với danh sách positions, còn `_hf_counts` có cohortfilter riêng.
 - Detailed [data/processed/research_final/validation_audit/corrected_run_v2/rq_completion/rq6_liquidation_threshold.json](https://github.com/Doquocdung1609/DeFiStress/blob/3f6e5302483681209e2408531eb5a15389f9fded/data/processed/research_final/validation_audit/corrected_run_v2/rq_completion/rq6_liquidation_threshold.json): scenario `usdc_price_usd=1` trong mọi row; values229830.81461902/96839.39478531/88458.67265557 giữ nguyên. Bình đẳng số tại q=1 không chứng minh bình đẳng đơn vị token và portfolioUSD.
-- Current manuscript wording: đọc values là giá trị nợ danh mục ở baseline q=1; nêu original label và yêu cầu đồng bộ, không khẳng định toàn bộ là USDCtoken.
-- Proposed resolved wording: “Giá trị USD của nợ chưa thanh lý theo scenarioLT tại baseline USDC/USD=1; tách khỏi lượngUSDC đã hoàn trả và xác định population metric từ input positions.”
-- Exact repair criterion: Commander/Codex trace metric/denominator tới bảng; xác nhận unit và population phù hợp (portfolio aggregate hay filteredroute), cập nhật/bổ sung metadata correction có version và caption. Không đổi numerical values, không tự filter rồi tính output mới. Nếu thật sự cần một output token-only/cohort109 khác, đó là thay đổi khoa học ngoài nhiệm vụ này và cần quyết định riêng.
+- Additional code locator: [sim/schemas.py:BorrowerPosition.debt_value](https://github.com/Doquocdung1609/DeFiStress/blob/3f6e5302483681209e2408531eb5a15389f9fded/sim/schemas.py), `return self.debt_usdc * usdc_price_usd + self.other_debt_usd`; Git blob `0f9a93180ada5912c55d0d36d5c142d0e4a356a6`, đọc trực tiếp trong lượt sửa.
+- Effective manuscript label/unit: giá trị nợ danh mục chưa thanh lý, USD, tại USDC/USD = 1; gồm phần USDC quy đổi và nợ khác. Phạm vi là tập vị thế truyền vào metric, trong đó các danh mục HF<1 đóng góp tổng; chưa gán mẫu số 109 hoặc một denominator chính xác chưa được nguồn xác lập.
+- Resolution applied: 5.6.2, trục y, caption và dữ liệu hiển thị LT của F5.6 dùng USD cho 229830.81461902, 96839.39478531 và các điểm LT khác. Nhãn USDC-token gốc chỉ còn trong cột legacy/audit trail.
+- Acceptance recheck: PASS — không còn nhãn USDC-token hiệu lực hoặc denominator109 cho metric LT; không đổi giá trị, filter hoặc source. `RESOLVED_FOR_MANUSCRIPT_INTERPRETATION`.
 
-CH05-P01/P02 là sai khác metadata có tác động đến phạm vi diễn giải, không phải bằng chứng simulation arithmetic sai. Bản thảo công bố cả hai, F5.6 chưa production-ready; không tự phán chúng là nonblocking để tạo overallPASS. Các phần không phụ thuộc hai nhãn đã được viết đầy đủ.
+Hai sai khác metadata gốc được giữ trong audit trail; cách diễn giải bản thảo đã được Commander giải quyết. F5.6 có đặc tả nhãn/phạm vi sẵn sàng, chưa render. Quyết định chương không xác nhận ngược metadata Frozen và không thay đổi kết quả số học; final review/Chapter Lock vẫn thuộc Commander.
 
 ### CH05-N01 — known label caveat, resolved for manuscript by approved crosswalk
 
@@ -40,7 +43,7 @@ Frozen rq2_liquidity.csv dùng OBSERVED_BASELINE cho haircut25/50/75. Crosswalk 
 
 ## 2. Claims thật sự dùng và allocation
 
-23 accepted components (16P2+7Integration), đủ8/8 primary destinations. Coverage không đồng nghĩa mọi source-metadata issue đã được giải quyết. Những claims khái niệm có thể được dùng theo component; không ép numerical result vào conceptual claim.
+23 accepted components (16P2+7Integration), đủ8/8 primary destinations. Coverage không thay thế quyết định nghiệm thu; hai nhãn RQ6 sử dụng ghi chú diễn giải Chương 5 v1. Những claims khái niệm có thể được dùng theo component; không ép numerical result vào conceptual claim.
 
 | Registry ID | Final gate | Primary | Secondary approved | Primary evidence tier | Use |
 | --- | --- | --- | --- | --- | --- |
@@ -66,7 +69,7 @@ Frozen rq2_liquidity.csv dùng OBSERVED_BASELINE cho haircut25/50/75. Crosswalk 
 | INT:CL_INT_RQ3_PRESERVED | ACCEPTED_WITH_LIMITATIONS | 5 | 3, 7 | MODEL_COMPUTED_COUNTERFACTUAL | 5.3.1 — PRIMARY resources/timing và testedrange |
 | INT:CL_INT_RQ4_PRESERVED | ACCEPTED_WITH_LIMITATIONS | 5 | 3, 7 | MODEL_COMPUTED_COUNTERFACTUAL | 5.4 — PRIMARY residualstabilization, immediateimpact giữ |
 | INT:CL_INT_RQ5_PRESERVED | ACCEPTED_WITH_LIMITATIONS | 5 | 3, 7 | MODEL_COMPUTED_COUNTERFACTUAL | 5.5 — PRIMARY quantity/USD và debtvaluation only |
-| INT:CL_INT_RQ6_PRESERVED | ACCEPTED_WITH_LIMITATIONS | 5 | 3, 7 | MODEL_COMPUTED_COUNTERFACTUAL | 5.6 — PRIMARY distinctmechanisms; metadata caveats CH05-P01/P02 pending |
+| INT:CL_INT_RQ6_PRESERVED | ACCEPTED_WITH_LIMITATIONS | 5 | 3, 7 | MODEL_COMPUTED_COUNTERFACTUAL | 5.6 — PRIMARY distinctmechanisms; CH05-P01/P02 RESOLVED_FOR_MANUSCRIPT_INTERPRETATION; nhãn hiệu lực theo ghi chú Chương 5 v1 |
 
 Accepted-wording source: [data/processed/research_final/final_accepted_claims_v1/accepted_claims_registry.json](https://github.com/Doquocdung1609/DeFiStress/blob/3f6e5302483681209e2408531eb5a15389f9fded/data/processed/research_final/final_accepted_claims_v1/accepted_claims_registry.json); allocation source [docs/manuscript_p3/work/P3_CLAIM_TO_CHAPTER_MATRIX.json](https://github.com/Doquocdung1609/DeFiStress/blob/8de52bebabef376be700836e6f93a92d7394d2c3/docs/manuscript_p3/work/P3_CLAIM_TO_CHAPTER_MATRIX.json). Mandatory limitations không bị lược khỏi hợp đồng khi main chỉ công bố phần liên quan ở từng mục.
 
@@ -91,7 +94,7 @@ Accepted-wording source: [data/processed/research_final/final_accepted_claims_v1
 
 ## 4. Result registry join và numeric precedence
 
-Các scientific IDs dưới đây tồn tại ở Frozen/Integration tại ScientificLock. Values/units/population là nguyên metadata nguồn, kể cả hai findings đã nêu; không dùng bảng này để che bất nhất.
+Các scientific IDs dưới đây tồn tại ở Frozen/Integration tại ScientificLock. Values/units/population trong bảng này là nguyên metadata nguồn, không phải bảng nhãn hiển thị hiệu lực. Riêng bốn hàng LT/LTV có legacy metadata chưa thống nhất; áp dụng bảng precedence ngay sau bảng để sử dụng trong bản thảo, không đọc nhãn cũ như kết luận hiện hành.
 
 | Result ID | Value | Unit source | Population / condition source | Locator |
 | --- | --- | --- | --- | --- |
@@ -142,6 +145,13 @@ Các scientific IDs dưới đây tồn tại ở Frozen/Integration tại Scien
 | RQ6_LT0855_UNLIQUIDATED | 96839.39478531 | USDC token quantity | 109-position frozen cohort; WETH LT override=85.5% | [data/processed/research_final/validation_audit/corrected_run_v2/rq_completion/rq6_liquidation_threshold.csv](https://github.com/Doquocdung1609/DeFiStress/blob/3f6e5302483681209e2408531eb5a15389f9fded/data/processed/research_final/validation_audit/corrected_run_v2/rq_completion/rq6_liquidation_threshold.csv) |
 | RQ6_LTV0755_CAPACITY | 50797988.977634266 | USD | 109-position frozen cohort; counterfactual LTV=75.5% | [data/processed/research_final/validation_audit/corrected_run_v2/rq_completion/rq6_ltv_capital_efficiency.csv](https://github.com/Doquocdung1609/DeFiStress/blob/3f6e5302483681209e2408531eb5a15389f9fded/data/processed/research_final/validation_audit/corrected_run_v2/rq_completion/rq6_ltv_capital_efficiency.csv) |
 | RQ6_LTV0825_CAPACITY | 53675575.37423773 | USD | 109-position frozen cohort; counterfactual LTV=82.5% | [data/processed/research_final/validation_audit/corrected_run_v2/rq_completion/rq6_ltv_capital_efficiency.csv](https://github.com/Doquocdung1609/DeFiStress/blob/3f6e5302483681209e2408531eb5a15389f9fded/data/processed/research_final/validation_audit/corrected_run_v2/rq_completion/rq6_ltv_capital_efficiency.csv) |
+
+**Effective manuscript precedence — theo Commander ngày 16/10/2026; values không đổi:**
+
+| Result IDs | Effective unit | Effective population/scope | Legacy labels retained above |
+| --- | --- | --- | --- |
+| RQ6_LTV0755_CAPACITY; RQ6_LTV0825_CAPACITY | USD max borrowing capacity | 255 danh mục có WETH thế chấp và có nợ; khác cohort109 WETH/USDC | `109-position frozen cohort` không dùng làm population hiệu lực |
+| RQ6_LT083_UNLIQUIDATED; RQ6_LT0855_UNLIQUIDATED | USD portfolio debt valuation, USDC/USD = 1 | Tập vị thế truyền vào metric; HF<1 đóng góp tổng; không gán denominator109 | `USDC token quantity` và population109 chỉ là legacy metadata |
 
 Oracle comparison row IDs ORACLE_DIAG::… được giữ theo CSV, không bịa một namespace outcome khác. T5.2 table locator INT_T01_ELIGIBLE_VS_EXECUTED có population18×4×454, units instances/USDCtoken và tier MODEL_COMPUTED_COUNTERFACTUAL. Không dùng count instances như uniquewallets hoặc empiricalprobabilities.
 
@@ -336,31 +346,32 @@ PanelB: selector case_id=DET_D2_M40_H90, allfourpolicies.
 - Related accepted claims: P2:C04, P2:C05, P2:C12, INT:CL_INT_RQ6_PRESERVED.
 - Related RQs: RQ3, RQ6.
 - Codex templates: P3X:RISK_PARAMETER_MECHANISMS.
-- Display: Three facets, no sharedyaxis; x=LTV; LT; bonusrate; y/fields=USDcapacity; portfolioUSD atq1 pendingunitlabel; WETHseized.
-- Actual production status: `DISPLAY_SPEC_WITH_PROVENANCE_REPAIR_PENDING`; G0 source-mapping status remains `CODEX_SPEC_REQUIRED`.
-- Scope/denominator/caption controls: P01LTV255vs109;P02LTunit/population; no governanceoptimum.
-- Required caption: Ba panels biểu diễn ba cơ chế: LTV và ex-ante capacity USD; scenario LT và unliquidated USDC; bonus và WETH seized. Frozen cohort không có borrower response hoặc tối ưu governance. Điều kiện hiển thị: LTV→USD capacity, LT→USDC-token unliquidated debt, bonus→WETH seized; retain scenario LT semantics. Use separate facets with independent labelled axes; never combine USD, USDC token and WETH on one y-axis.
-- Main caption có bổ sung findings nơi cần; không sửa numeric source hoặc originalmetadata.
+- Display: Three facets with independent axes. LTV panel: x=LTV ratio, y=khả năng vay tối đa (USD), population255 danh mục WETH-positive và có nợ. LT panel: x=LT WETH theo kịch bản, y=giá trị nợ danh mục chưa thanh lý (USD), USDC/USD = 1; phạm vi tập vị thế truyền vào metric, không gán denominator109. Bonus panel: x=bonus rate, y=WETH seized trong thí nghiệm đã khóa.
+- Actual production status: `DISPLAY_SPEC_READY_NOT_RENDERED`; G0 source-mapping status remains `CODEX_SPEC_REQUIRED` (yêu cầu production kỹ thuật, không phải tình trạng chờ quyết định diễn giải).
+- Scope/denominator/caption controls: LTV255, không cohort109; LT portfolioUSD tại q=1, không denominator109; CH05-P01/CH05-P02 `RESOLVED_FOR_MANUSCRIPT_INTERPRETATION`; không governance optimum.
+- Required caption: Ba panel biểu diễn ba cơ chế: LTV và khả năng vay tối đa (USD) trên255 danh mục có WETH thế chấp và có nợ; scenario LT và giá trị nợ danh mục chưa thanh lý (USD) tại USDC/USD = 1 trên tập vị thế truyền vào metric, chưa gán mẫu số109; bonus và WETH thu giữ. Hai tổng LTV không thuộc riêng cohort109 WETH/USDC. Các nhãn hiệu lực áp dụng ghi chú diễn giải Chương 5 v1 theo quyết định Commander 16/10/2026; metadata Frozen gốc chưa thống nhất được bảo lưu trong audit. Không borrower response/tối ưu governance; các panel có trục riêng, không ghép USD và WETH lên một trục.
+- Main caption và nhãn renderer thống nhất ghi chú diễn giải đã được quyết định; không sửa numeric source hoặc original metadata.
 - Exact locked sources: [data/processed/research_final/frozen_v3/tables/rq6_policy.csv](https://github.com/Doquocdung1609/DeFiStress/blob/3f6e5302483681209e2408531eb5a15389f9fded/data/processed/research_final/frozen_v3/tables/rq6_policy.csv).
 
-Exactpoints; renderer không chọn unit/population cuối trước khiP01/P02 đượcCommander giải quyết. Bonusrawrate có floatingrepresentation; display3–7% là formatting, multiplier lấy detailedJSON.
-| parameter | value | outcome | outcome_unit |
-| --- | --- | --- | --- |
-| LTV | 0.755 | 50797988.977634266 | USD max borrowing capacity |
-| LTV | 0.78 | 51825698.40499265 | USD max borrowing capacity |
-| LTV | 0.805 | 52853407.83235103 | USD max borrowing capacity |
-| LTV | 0.815 | 53264491.60329438 | USD max borrowing capacity |
-| LTV | 0.825 | 53675575.37423773 | USD max borrowing capacity |
-| LT | 0.81 | 229830.81461902 | USDC token quantity, scenario-LT |
-| LT | 0.82 | 229830.81461902 | USDC token quantity, scenario-LT |
-| LT | 0.83 | 229830.81461902 | USDC token quantity, scenario-LT |
-| LT | 0.855 | 96839.39478531 | USDC token quantity, scenario-LT |
-| LT | 0.88 | 88458.67265557 | USDC token quantity, scenario-LT |
-| bonus | 0.030000000000000027 | 4.324574159823337 | WETH seized |
-| bonus | 0.040000000000000036 | 4.366560316714826 | WETH seized |
-| bonus | 0.050000000000000044 | 4.4085464736063145 | WETH seized |
-| bonus | 0.06000000000000005 | 4.450532630497803 | WETH seized |
-| bonus | 0.07000000000000006 | 4.492518787389292 | WETH seized |
+Exact locked points dưới đây giữ literal `outcome_unit` nguồn trong cột legacy để kiểm toán, KHÔNG dùng cột đó làm nhãn renderer. Cột đơn vị/phạm vi hiệu lực áp dụng ghi chú diễn giải đã được Commander quyết định. Bonus raw rate có floating representation; display3–7% là formatting, multiplier lấy detailedJSON.
+
+| parameter | value | outcome | outcome_unit — legacy source literal | Effective display unit / scope |
+| --- | --- | --- | --- | --- |
+| LTV | 0.755 | 50797988.977634266 | USD max borrowing capacity | USD capacity; 255 danh mục có WETH thế chấp và có nợ |
+| LTV | 0.78 | 51825698.40499265 | USD max borrowing capacity | USD capacity; 255 danh mục có WETH thế chấp và có nợ |
+| LTV | 0.805 | 52853407.83235103 | USD max borrowing capacity | USD capacity; 255 danh mục có WETH thế chấp và có nợ |
+| LTV | 0.815 | 53264491.60329438 | USD max borrowing capacity | USD capacity; 255 danh mục có WETH thế chấp và có nợ |
+| LTV | 0.825 | 53675575.37423773 | USD max borrowing capacity | USD capacity; 255 danh mục có WETH thế chấp và có nợ |
+| LT | 0.81 | 229830.81461902 | USDC token quantity, scenario-LT | USD portfolio debt valuation; USDC/USD = 1; tập vị thế truyền vào metric, không denominator109 |
+| LT | 0.82 | 229830.81461902 | USDC token quantity, scenario-LT | USD portfolio debt valuation; USDC/USD = 1; tập vị thế truyền vào metric, không denominator109 |
+| LT | 0.83 | 229830.81461902 | USDC token quantity, scenario-LT | USD portfolio debt valuation; USDC/USD = 1; tập vị thế truyền vào metric, không denominator109 |
+| LT | 0.855 | 96839.39478531 | USDC token quantity, scenario-LT | USD portfolio debt valuation; USDC/USD = 1; tập vị thế truyền vào metric, không denominator109 |
+| LT | 0.88 | 88458.67265557 | USDC token quantity, scenario-LT | USD portfolio debt valuation; USDC/USD = 1; tập vị thế truyền vào metric, không denominator109 |
+| bonus | 0.030000000000000027 | 4.324574159823337 | WETH seized | WETH seized; thí nghiệm bonus đã khóa |
+| bonus | 0.040000000000000036 | 4.366560316714826 | WETH seized | WETH seized; thí nghiệm bonus đã khóa |
+| bonus | 0.050000000000000044 | 4.4085464736063145 | WETH seized | WETH seized; thí nghiệm bonus đã khóa |
+| bonus | 0.06000000000000005 | 4.450532630497803 | WETH seized | WETH seized; thí nghiệm bonus đã khóa |
+| bonus | 0.07000000000000006 | 4.492518787389292 | WETH seized | WETH seized; thí nghiệm bonus đã khóa |
 
 ### F5.7 — section 5.7; handoff P3X-F5.7
 
@@ -472,7 +483,7 @@ Các bảng sau chỉ lọc/chép existingfields, không tính thêm totals/stat
 
 ## 8. Source-read limits, integrity và boundaries
 
-62 files fetched đúng ref và kiểm Gitblob. Bốn lockedchapters lấy toàn văn đúng integration, identitymatches bản đã đọc/biên soạn; không sửa. Mã đọc bổ sung chỉ nhằm xác minh metric/cohort/decision gates, không fullrepoaudit.
+Lượt toàn văn: 62 files fetched đúng ref và kiểm Gitblob. Bốn lockedchapters lấy toàn văn đúng integration, identitymatches bản đã đọc/biên soạn; không sửa. Lượt targeted repair đọc lại hai artifact chi tiết RQ6 và hai code locators đã dùng, đồng thời đọc bổ sung `sim/schemas.py:debt_value` tại Scientific Lock (SHA ở mục1). Mã đọc bổ sung chỉ nhằm xác minh metric/cohort/decision gates, không fullrepoaudit.
 
 Hai oversized borrowerCSVs vẫn chưa Work directfullrow/fullcellread: Oracle borrower_level_evidence.csv (8.775.089bytes) và Integration eligible_vs_executed_audit.csv (18.489.195bytes). Không có targeted_event_trace.jsonl read trong lượt này, nên F5.2 không thêm borrowerexample hoặc claim raw event verification. Addendum/premerge reports được dùng như reports có executor/scope đã nêu.
 
@@ -480,7 +491,7 @@ WORK_INDEPENDENT_STATIC_RECONSTRUCTION là hoạt độngP2 thừa kế; CODEX_R
 
 Hash table dùng SHA1 Gitblob/LF domain, khác SHA256 filebytes. WindowsCRLF checkout bytes có thể khác GitLF; không khẳng định byte-identical crossOS hay dùng hashmatch làm economicvalidation. source access labels abstract/preview giữ nguyên.
 
-Một snapshot26045352,454verifiedportfolios,109routecohort; thêm LTVdetail255 là provenancefindingP01, không cohorttự tạo. Một venue/representativeagents/nonrecycle/nonsplit, A/B/Chypothetical, extremehaircuts, no validatedfundedfork, stablecoinvaluationonly, metricexposurekhácrealizedloss đều đặt giới hạn kết luận. Historical/Terra/network phân tích ởCh6, không newcausal/forecast claim.
+Một snapshot26045352,454verifiedportfolios,109routecohort; LTVdetail255 theo ghi chú diễn giải Chương 5 v1 đã được Commander quyết định, khác109routecohort. LT metric dùngUSD trên tập vị thế truyền vào, không gán denominator109. Một venue/representativeagents/nonrecycle/nonsplit, A/B/Chypothetical, extremehaircuts, no validatedfundedfork, stablecoinvaluationonly, metricexposurekhácrealizedloss đều đặt giới hạn kết luận. Historical/Terra/network phân tích ởCh6, không newcausal/forecast claim.
 
 ## 9. Four disallowed records
 
@@ -558,4 +569,4 @@ Một snapshot26045352,454verifiedportfolios,109routecohort; thêm LTVdetail255 
 | [data/processed/research_final/validation_audit/corrected_run_v2/aave/shock_liquidity_grid.csv](https://github.com/Doquocdung1609/DeFiStress/blob/3f6e5302483681209e2408531eb5a15389f9fded/data/processed/research_final/validation_audit/corrected_run_v2/aave/shock_liquidity_grid.csv) | 3f6e5302483681209e2408531eb5a15389f9fded | 6fcdd0ef1cb674ea467a577d2eea6cc8ba5a63b4 |
 | [scripts/run_full_research_pipeline.py](https://github.com/Doquocdung1609/DeFiStress/blob/3f6e5302483681209e2408531eb5a15389f9fded/scripts/run_full_research_pipeline.py) | 3f6e5302483681209e2408531eb5a15389f9fded | 460e7d79f3ca9835df56181f65e9d2c83a3d2748 |
 
-**Handoff decision:** `CHAPTER_05_TARGETED_REPAIR_REQUIRED` vì CH05-P01/P02. Fullmanuscript và exhibitspecs hoàn chỉnh; cần source metadata decision/repair có mục tiêu trước scientificacceptance, không viết lại toàn chương và không tự merge/lock.
+**Handoff decision:** `CHAPTER_05_TARGETED_REPAIR_COMPLETE — READY_FOR_COMMANDER_FINAL_REVIEW`. CH05-P01/CH05-P02 `RESOLVED_FOR_MANUSCRIPT_INTERPRETATION`; main5.6.1–5.6.2/F5.6 và nhãn hiệu lực trong audit đã đồng bộ. Frozen legacy metadata vẫn giữ nguyên; không reissue Scientific Lock hoặc đổi số. Chỉ chờ Commander final review/Chapter Lock, không còn chờ quyết định hai nhãn RQ6.
