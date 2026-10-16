@@ -1,0 +1,1702 @@
+{
+  "commander_recommendation": "P3_G0_FINAL_TECHNICAL_PASS",
+  "coverage": {
+    "accepted_claims": 44,
+    "codex_formula_candidates": 15,
+    "codex_templates": 11,
+    "displays": 25,
+    "equations": 8,
+    "excluded_records": 4,
+    "figures": 11,
+    "mapping_status_counts": {
+      "CODEX_SPEC_REQUIRED": 8,
+      "DIRECT_LOCKED_SOURCE": 10,
+      "MATCHED": 7
+    },
+    "original_rqs": 6,
+    "tables": 14,
+    "unsupported_displays": 0
+  },
+  "display_validation": [
+    {
+      "chapter": 1,
+      "claim_status": "PASS",
+      "codex_template_ids": [],
+      "mapping_status": "DIRECT_LOCKED_SOURCE",
+      "mapping_status_is_not_render_status": true,
+      "prior_validated_template_ids": [],
+      "production_state": "SOURCE_MAPPING_VALIDATED_NOT_RENDERED",
+      "reproducibility_classification": "TEXTUAL_SYNTHESIS",
+      "required_display_controls": [
+        "Use full original RQ wording, not short labels."
+      ],
+      "section": "1.3",
+      "source_locator_status": "PASS",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "fffe69d45f2c70e8f4cb781c8b521ef4cf6f1a45",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "fffe69d45f2c70e8f4cb781c8b521ef4cf6f1a45",
+          "git_blob_sha256": "428db5ef589bbd2e0e1c4273c36538f0abbe3c29b5601897bd787d78c1a4d080",
+          "path": "data/processed/research_final/final_accepted_claims_v1/six_rq_accepted_claims_matrix.json",
+          "selector": "research_questions[]; preserve full original questions and accepted-only claim sets",
+          "status": "PASS"
+        }
+      ],
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "template_mapping_status": "PASS",
+      "validated_primary_template_ids": [],
+      "work_id": "T1.1"
+    },
+    {
+      "chapter": 2,
+      "claim_status": "PASS",
+      "codex_template_ids": [],
+      "mapping_status": "DIRECT_LOCKED_SOURCE",
+      "mapping_status_is_not_render_status": true,
+      "prior_validated_template_ids": [],
+      "production_state": "SOURCE_MAPPING_VALIDATED_NOT_RENDERED",
+      "reproducibility_classification": "TEXTUAL_SYNTHESIS",
+      "required_display_controls": [
+        "Preserve source access levels and treat S17/S18 as one study."
+      ],
+      "section": "2.5",
+      "source_locator_status": "PASS",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "6ebe0a11e915e942a422d02a0cc5b1d53b51ff3e",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "6ebe0a11e915e942a422d02a0cc5b1d53b51ff3e",
+          "git_blob_sha256": "5ab1f4e53c19fe807a1e919a8e52cce59f6f963e491396f97259be3a176c8935",
+          "path": "docs/research_final/LITERATURE_VERIFIED.md",
+          "selector": "Declared locked artifact for T2.1; Codex must pin extraction selector before rendering; no new statistic.",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "504ea91b046e6612c2840c6a434e740ce917b29f",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "504ea91b046e6612c2840c6a434e740ce917b29f",
+          "git_blob_sha256": "67ea79e466c7bb3f92d26e665361342c038d3562b9cfef70f7b65028ad636a33",
+          "path": "docs/research_final/REFERENCE_EVIDENCE_MATRIX.md",
+          "selector": "Declared locked artifact for T2.1; Codex must pin extraction selector before rendering; no new statistic.",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "c76d7cf482565615a92fb17b888a392e4f8fd9cc",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "c76d7cf482565615a92fb17b888a392e4f8fd9cc",
+          "git_blob_sha256": "39ca11330af2511a12b0884a97e10743ccda941624e3d8e7d27256aa4008d829",
+          "path": "docs/research_final/APA_REFERENCES_VERIFIED.md",
+          "selector": "Declared locked artifact for T2.1; Codex must pin extraction selector before rendering; no new statistic.",
+          "status": "PASS"
+        }
+      ],
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "template_mapping_status": "PASS",
+      "validated_primary_template_ids": [],
+      "work_id": "T2.1"
+    },
+    {
+      "chapter": 3,
+      "claim_status": "PASS",
+      "codex_template_ids": [
+        "P3X:SYSTEM_FEEDBACK_SCHEMATIC"
+      ],
+      "mapping_status": "MATCHED",
+      "mapping_status_is_not_render_status": true,
+      "prior_validated_template_ids": [
+        "P3X:SYSTEM_FEEDBACK_SCHEMATIC"
+      ],
+      "production_state": "SOURCE_MAPPING_VALIDATED_NOT_RENDERED",
+      "reproducibility_classification": "SCHEMATIC_FROM_LOCKED_MODEL_SPEC",
+      "required_display_controls": [
+        "Solid arrows for implemented flow; visually distinct hypothetical A/B/C valuation box; no historical causal arrow."
+      ],
+      "section": "3.1",
+      "source_locator_status": "PASS",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "2b23c9ee88ee4976755e5f4795026e381d5fe497",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "2b23c9ee88ee4976755e5f4795026e381d5fe497",
+          "git_blob_sha256": "93d18336d0b39f221d98765152f4a4716870b5c9b433f724b5a69e666c1ecb8c",
+          "path": "sim/engine/run.py",
+          "selector": "Implementation definition only; inspect named gates/metrics used by F3.1; not an external protocol-validation claim.",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "2ac37f923a4cc35bef95968d353f0724bfdbd3a5",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "2ac37f923a4cc35bef95968d353f0724bfdbd3a5",
+          "git_blob_sha256": "826bdab7242624352b5a87edbed4e801d28f6dc807e570c84f0a95c10b50cd42",
+          "path": "sim/oracle.py",
+          "selector": "Implementation definition only; inspect named gates/metrics used by F3.1; not an external protocol-validation claim.",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "9f95f18e8aa52f48facbebe1b3bdc8f88c0f162a",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "9f95f18e8aa52f48facbebe1b3bdc8f88c0f162a",
+          "git_blob_sha256": "fd3f4e5cd2f4a9564ca7b23625d693e0661a8162182699a0eb2940603158e96b",
+          "path": "sim/lending/liquidation.py",
+          "selector": "Implementation definition only; inspect named gates/metrics used by F3.1; not an external protocol-validation claim.",
+          "status": "PASS"
+        }
+      ],
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "template_mapping_status": "PASS",
+      "validated_primary_template_ids": [
+        "P3X:SYSTEM_FEEDBACK_SCHEMATIC"
+      ],
+      "work_id": "F3.1"
+    },
+    {
+      "chapter": 3,
+      "claim_status": "PASS",
+      "codex_template_ids": [
+        "P3X:METRIC_SEMANTICS_GLOSSARY",
+        "P3X:SYSTEM_FEEDBACK_SCHEMATIC"
+      ],
+      "mapping_status": "CODEX_SPEC_REQUIRED",
+      "mapping_status_is_not_render_status": true,
+      "prior_validated_template_ids": [
+        "P3X:METRIC_SEMANTICS_GLOSSARY",
+        "P3X:SYSTEM_FEEDBACK_SCHEMATIC"
+      ],
+      "production_state": "SPECIFICATION_PENDING_NOT_RENDERED",
+      "reproducibility_classification": "TEXTUAL_SYNTHESIS",
+      "required_display_controls": [
+        "Separate representative agent, route eligibility, attempted evaluation and positive-debt execution."
+      ],
+      "section": "3.2",
+      "source_locator_status": "PASS",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "2b23c9ee88ee4976755e5f4795026e381d5fe497",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "2b23c9ee88ee4976755e5f4795026e381d5fe497",
+          "git_blob_sha256": "93d18336d0b39f221d98765152f4a4716870b5c9b433f724b5a69e666c1ecb8c",
+          "path": "sim/engine/run.py",
+          "selector": "Implementation definition only; inspect named gates/metrics used by T3.1; not an external protocol-validation claim.",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "9f95f18e8aa52f48facbebe1b3bdc8f88c0f162a",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "9f95f18e8aa52f48facbebe1b3bdc8f88c0f162a",
+          "git_blob_sha256": "fd3f4e5cd2f4a9564ca7b23625d693e0661a8162182699a0eb2940603158e96b",
+          "path": "sim/lending/liquidation.py",
+          "selector": "Implementation definition only; inspect named gates/metrics used by T3.1; not an external protocol-validation claim.",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "4172eae06907ae8bf95a10e7e50463111d0eec3d",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "4172eae06907ae8bf95a10e7e50463111d0eec3d",
+          "git_blob_sha256": "3fa671f616caee587735eef41073bc8db4a097e91711ef8c9d3511f4f7a0580a",
+          "path": "sim/dex/uniswap_v3.py",
+          "selector": "Implementation definition only; inspect named gates/metrics used by T3.1; not an external protocol-validation claim.",
+          "status": "PASS"
+        }
+      ],
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "template_mapping_status": "PASS",
+      "validated_primary_template_ids": [
+        "P3X:METRIC_SEMANTICS_GLOSSARY",
+        "P3X:SYSTEM_FEEDBACK_SCHEMATIC"
+      ],
+      "work_id": "T3.1"
+    },
+    {
+      "chapter": 3,
+      "claim_status": "PASS",
+      "codex_template_ids": [
+        "P3X:ORACLE_POLICY_DEPTH2_COMPARISON",
+        "P3X:SEVERE_POLICY_A_MONTE_CARLO"
+      ],
+      "mapping_status": "DIRECT_LOCKED_SOURCE",
+      "mapping_status_is_not_render_status": true,
+      "prior_validated_template_ids": [
+        "P3X:ORACLE_POLICY_DEPTH2_COMPARISON",
+        "P3X:SEVERE_POLICY_A_MONTE_CARLO"
+      ],
+      "production_state": "SOURCE_MAPPING_VALIDATED_NOT_RENDERED",
+      "reproducibility_classification": "RENDERABLE_FROM_LOCKED_ARTIFACT",
+      "required_display_controls": [
+        "Keep 32/60 grids, nested Severe prefixes and selected 4/4/10 diagnostic sets as separate populations."
+      ],
+      "section": "3.5",
+      "source_locator_status": "PASS",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "f0e80bc73735de7684feadd2cd3c82519331c033",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "f0e80bc73735de7684feadd2cd3c82519331c033",
+          "git_blob_sha256": "e0a5a972aaed33a3b9ceb79406f7a09f47241915292842f47d9441e10b7530e8",
+          "path": "data/processed/research_final/frozen_v3/tables/rq1_deterministic_depth.csv",
+          "selector": "Locked rows/columns for T3.2; fields/axes: Experiment family; Selection; Parameter range; n; Policy; RQ; Version",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "ea71db6f633b7e5df1f12cd3d9f2533e5d5f9438",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "ea71db6f633b7e5df1f12cd3d9f2533e5d5f9438",
+          "git_blob_sha256": "e9f59d71d9ec053431a22a0dde8d577e575b4edc3e15774daee5541f9b8e8153",
+          "path": "data/processed/research_final/frozen_v3/tables/rq1_monte_carlo.csv",
+          "selector": "Locked rows/columns for T3.2; fields/axes: Experiment family; Selection; Parameter range; n; Policy; RQ; Version",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "1bb5bdea8be74c1e62dc89badbcb8cbae67b7bd3",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "1bb5bdea8be74c1e62dc89badbcb8cbae67b7bd3",
+          "git_blob_sha256": "3eb4bd1c2404abfb1a4a2cd402d06d70a971e781b279c599be66438c5e5d253d",
+          "path": "data/processed/research_final/oracle_transmission_diagnostic_v1/selection_manifest.json",
+          "selector": "Declared locked artifact for T3.2; Codex must pin extraction selector before rendering; no new statistic.",
+          "status": "PASS"
+        }
+      ],
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "template_mapping_status": "PASS",
+      "validated_primary_template_ids": [
+        "P3X:ORACLE_POLICY_DEPTH2_COMPARISON",
+        "P3X:SEVERE_POLICY_A_MONTE_CARLO"
+      ],
+      "work_id": "T3.2"
+    },
+    {
+      "chapter": 3,
+      "claim_status": "PASS",
+      "codex_template_ids": [
+        "P3X:METRIC_SEMANTICS_GLOSSARY"
+      ],
+      "mapping_status": "MATCHED",
+      "mapping_status_is_not_render_status": true,
+      "prior_validated_template_ids": [
+        "P3X:METRIC_SEMANTICS_GLOSSARY"
+      ],
+      "production_state": "SOURCE_MAPPING_VALIDATED_NOT_RENDERED",
+      "reproducibility_classification": "TEXTUAL_SYNTHESIS",
+      "required_display_controls": [
+        "Separate USDC token from USD-equivalent; immediate impact from residual spread; delay from recovery time."
+      ],
+      "section": "3.3",
+      "source_locator_status": "PASS",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "2b23c9ee88ee4976755e5f4795026e381d5fe497",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "2b23c9ee88ee4976755e5f4795026e381d5fe497",
+          "git_blob_sha256": "93d18336d0b39f221d98765152f4a4716870b5c9b433f724b5a69e666c1ecb8c",
+          "path": "sim/engine/run.py",
+          "selector": "Implementation definition only; inspect named gates/metrics used by T3.3; not an external protocol-validation claim.",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "2ca1e29495e6183dfefaf8939e59e6c4eba574fb",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "2ca1e29495e6183dfefaf8939e59e6c4eba574fb",
+          "git_blob_sha256": "547559179690cf9f377ca6ad71e8384f5ba88a490727fe5a4a45257d75ee5880",
+          "path": "docs/research_final/TERMINOLOGY_VI.md",
+          "selector": "Declared locked artifact for T3.3; Codex must pin extraction selector before rendering; no new statistic.",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "bac44e61633b5efdde3665731ea69fbf4ca345e6",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "bac44e61633b5efdde3665731ea69fbf4ca345e6",
+          "git_blob_sha256": "918226582bf2c748d7aea6efbc9ba74689900b34c02117d6e6e3aae8022f509d",
+          "path": "data/processed/research_final/final_accepted_claims_v1/accepted_claims_registry.json",
+          "selector": "records filtered by registry_id in P2:C08,P2:C22,P2:C24,P2:C35",
+          "status": "PASS"
+        }
+      ],
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "template_mapping_status": "PASS",
+      "validated_primary_template_ids": [
+        "P3X:METRIC_SEMANTICS_GLOSSARY"
+      ],
+      "work_id": "T3.3"
+    },
+    {
+      "chapter": 4,
+      "claim_status": "PASS",
+      "codex_template_ids": [
+        "P3X:CANONICAL_SCOPE_PROVENANCE"
+      ],
+      "mapping_status": "CODEX_SPEC_REQUIRED",
+      "mapping_status_is_not_render_status": true,
+      "prior_validated_template_ids": [
+        "P3X:CANONICAL_SCOPE_PROVENANCE"
+      ],
+      "production_state": "SPECIFICATION_PENDING_NOT_RENDERED",
+      "reproducibility_classification": "SCHEMATIC_FROM_LOCKED_MODEL_SPEC",
+      "required_display_controls": [
+        "Do not convert candidate verification into market coverage."
+      ],
+      "section": "4.1",
+      "source_locator_status": "PASS",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "6dde91fc11d189de8899c742b44fea9cf0f386ae",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "6dde91fc11d189de8899c742b44fea9cf0f386ae",
+          "git_blob_sha256": "6e31fb66964a66e1e05ce5a39414ebcd399b736c49042328246c6c3986d0e1b8",
+          "path": "data/processed/research_final/frozen_v3/results_registry.json",
+          "selector": "results filtered by result_id in AAVE_SNAPSHOT_BLOCK,AAVE_VERIFIED_BORROWERS,AAVE_WETH_USDC_COHORT",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "a6784fd7f1b7288c4f2177ff8ba102be5e01c81e",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "a6784fd7f1b7288c4f2177ff8ba102be5e01c81e",
+          "git_blob_sha256": "69809a5bb2bb6db6d8dd5e3699efb63f2faf127d68e9c99e3213a8837549a2fa",
+          "path": "data/processed/research_final/final_accepted_claims_v1/source_provenance_registry.json",
+          "selector": "Declared locked artifact for F4.1; Codex must pin extraction selector before rendering; no new statistic.",
+          "status": "PASS"
+        }
+      ],
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "template_mapping_status": "PASS",
+      "validated_primary_template_ids": [
+        "P3X:CANONICAL_SCOPE_PROVENANCE"
+      ],
+      "work_id": "F4.1"
+    },
+    {
+      "chapter": 4,
+      "claim_status": "PASS",
+      "codex_template_ids": [
+        "P3X:CANONICAL_SCOPE_PROVENANCE"
+      ],
+      "mapping_status": "CODEX_SPEC_REQUIRED",
+      "mapping_status_is_not_render_status": true,
+      "prior_validated_template_ids": [
+        "P3X:CANONICAL_SCOPE_PROVENANCE"
+      ],
+      "production_state": "SPECIFICATION_PENDING_NOT_RENDERED",
+      "reproducibility_classification": "RENDERABLE_FROM_LOCKED_ARTIFACT",
+      "required_display_controls": [
+        "Do not add near-threshold subgroup statistics unless a locked locator is supplied; maxima are not typical error."
+      ],
+      "section": "4.2",
+      "source_locator_status": "PASS",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "52a074b9b8284221c5996d14d903504ee8abe414",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "52a074b9b8284221c5996d14d903504ee8abe414",
+          "git_blob_sha256": "0f5790186490f6f60088a2a7ea7f94b37ea02468645073ab42fd19ff2df17a25",
+          "path": "data/processed/research_final/frozen_v3/tables/core_facts.csv",
+          "selector": "Locked rows/columns for T4.1; fields/axes: Count; HF error metric; Value; Unit; Scope; Source",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "6dde91fc11d189de8899c742b44fea9cf0f386ae",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "6dde91fc11d189de8899c742b44fea9cf0f386ae",
+          "git_blob_sha256": "6e31fb66964a66e1e05ce5a39414ebcd399b736c49042328246c6c3986d0e1b8",
+          "path": "data/processed/research_final/frozen_v3/results_registry.json",
+          "selector": "results filtered by result_id in AAVE_HF_MAX_ABS_ERROR,AAVE_HF_MAX_REL_ERROR,AAVE_VERIFIED_BORROWERS",
+          "status": "PASS"
+        }
+      ],
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "template_mapping_status": "PASS",
+      "validated_primary_template_ids": [
+        "P3X:CANONICAL_SCOPE_PROVENANCE"
+      ],
+      "work_id": "T4.1"
+    },
+    {
+      "chapter": 4,
+      "claim_status": "PASS",
+      "codex_template_ids": [
+        "P3X:METRIC_SEMANTICS_GLOSSARY"
+      ],
+      "mapping_status": "DIRECT_LOCKED_SOURCE",
+      "mapping_status_is_not_render_status": true,
+      "prior_validated_template_ids": [
+        "P3X:METRIC_SEMANTICS_GLOSSARY"
+      ],
+      "production_state": "SOURCE_MAPPING_VALIDATED_NOT_RENDERED",
+      "reproducibility_classification": "TEXTUAL_SYNTHESIS",
+      "required_display_controls": [
+        "Unexecuted fork validation remains unavailable, never PASS."
+      ],
+      "section": "4.3",
+      "source_locator_status": "PASS",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "4baa8b825743cacd20b1586cff5fb05d1aad96c2",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "4baa8b825743cacd20b1586cff5fb05d1aad96c2",
+          "git_blob_sha256": "107f82ad01ffbe805349e3b2a48e2270356a8c943f179e1afd88da0bf9a85f97",
+          "path": "docs/research_final/LEVEL2_FORK_VALIDATION.md",
+          "selector": "Declared locked artifact for T4.2; Codex must pin extraction selector before rendering; no new statistic.",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "7e54828a39e05f9e41e9d2b206bcfa0402a6fb7a",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "7e54828a39e05f9e41e9d2b206bcfa0402a6fb7a",
+          "git_blob_sha256": "781acb73760ce11ce072a8c3795c4f93b3a2518baffb56de0845e3cdc798d5ab",
+          "path": "docs/research_final/FINAL_CROSS_PR_CONSISTENCY_REVIEW.md",
+          "selector": "Declared locked artifact for T4.2; Codex must pin extraction selector before rendering; no new statistic.",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "f3fd437b41d0feabacf01f6708ca65d3a738ef05",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "f3fd437b41d0feabacf01f6708ca65d3a738ef05",
+          "git_blob_sha256": "a8d508075a490113b870c92675838033722c3fd2f2bf8c8e1f35ec68906f2536",
+          "path": "docs/research_final/SCIENTIFIC_PREMERGE_AUDIT_v1.md",
+          "selector": "Declared locked artifact for T4.2; Codex must pin extraction selector before rendering; no new statistic.",
+          "status": "PASS"
+        }
+      ],
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "template_mapping_status": "PASS",
+      "validated_primary_template_ids": [
+        "P3X:METRIC_SEMANTICS_GLOSSARY"
+      ],
+      "work_id": "T4.2"
+    },
+    {
+      "chapter": 5,
+      "claim_status": "PASS",
+      "codex_template_ids": [
+        "P3X:ORACLE_POLICY_DEPTH2_COMPARISON"
+      ],
+      "mapping_status": "DIRECT_LOCKED_SOURCE",
+      "mapping_status_is_not_render_status": true,
+      "prior_validated_template_ids": [
+        "P3X:ORACLE_POLICY_DEPTH2_COMPARISON"
+      ],
+      "production_state": "SOURCE_MAPPING_VALIDATED_NOT_RENDERED",
+      "reproducibility_classification": "RENDERABLE_FROM_LOCKED_ARTIFACT",
+      "required_display_controls": [
+        "Facet grids separately; 12/20/0 and 18/38/4 use different experiment domains."
+      ],
+      "section": "5.1",
+      "source_locator_status": "PASS",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "f0e80bc73735de7684feadd2cd3c82519331c033",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "f0e80bc73735de7684feadd2cd3c82519331c033",
+          "git_blob_sha256": "e0a5a972aaed33a3b9ceb79406f7a09f47241915292842f47d9441e10b7530e8",
+          "path": "data/processed/research_final/frozen_v3/tables/rq1_deterministic_depth.csv",
+          "selector": "Locked rows/columns for F5.1; fields/axes: x: depth0/1/2; y: số ô; Panels32/60; 12/20/0 và18/38/4",
+          "status": "PASS"
+        }
+      ],
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "template_mapping_status": "PASS",
+      "validated_primary_template_ids": [
+        "P3X:ORACLE_POLICY_DEPTH2_COMPARISON"
+      ],
+      "work_id": "F5.1"
+    },
+    {
+      "chapter": 5,
+      "claim_status": "PASS",
+      "codex_template_ids": [
+        "P3X:ORACLE_POLICY_DEPTH2_COMPARISON"
+      ],
+      "mapping_status": "MATCHED",
+      "mapping_status_is_not_render_status": true,
+      "prior_validated_template_ids": [
+        "P3X:ORACLE_POLICY_DEPTH2_COMPARISON"
+      ],
+      "production_state": "SOURCE_MAPPING_VALIDATED_NOT_RENDERED",
+      "reproducibility_classification": "RENDERABLE_FROM_LOCKED_ARTIFACT",
+      "required_display_controls": [
+        "Show /4 and /10 denominators; controls remain separate; ten paths are not a frequency estimator."
+      ],
+      "section": "5.2",
+      "source_locator_status": "PASS",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "1bb5bdea8be74c1e62dc89badbcb8cbae67b7bd3",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "1bb5bdea8be74c1e62dc89badbcb8cbae67b7bd3",
+          "git_blob_sha256": "3eb4bd1c2404abfb1a4a2cd402d06d70a971e781b279c599be66438c5e5d253d",
+          "path": "data/processed/research_final/oracle_transmission_diagnostic_v1/selection_manifest.json",
+          "selector": "Declared locked artifact for T5.1; Codex must pin extraction selector before rendering; no new statistic.",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "dee128ff278efe94895220aca5eccec4150c1cc4",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "dee128ff278efe94895220aca5eccec4150c1cc4",
+          "git_blob_sha256": "09c2d6dea5868817c57a67329f4d64469d1d7c1340fddc5e980c6b3741bea078",
+          "path": "data/processed/research_final/oracle_transmission_diagnostic_v1/comparison_matrix.csv",
+          "selector": "Locked rows/columns for T5.1; fields/axes: Policy; α/lag/window; Det retained/4; MC retained/10; Control results separate",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "664eeac6d3d80a38dc4c2ca6c942070f09d8d9f8",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "664eeac6d3d80a38dc4c2ca6c942070f09d8d9f8",
+          "git_blob_sha256": "53dc862ad37d447777ec2ee421d00696d7c52555a931af084d834c88f06df283",
+          "path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
+          "selector": "Locked rows/columns for T5.1; fields/axes: Policy; α/lag/window; Det retained/4; MC retained/10; Control results separate",
+          "status": "PASS"
+        }
+      ],
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "template_mapping_status": "PASS",
+      "validated_primary_template_ids": [
+        "P3X:ORACLE_POLICY_DEPTH2_COMPARISON"
+      ],
+      "work_id": "T5.1"
+    },
+    {
+      "chapter": 5,
+      "claim_status": "PASS",
+      "codex_template_ids": [
+        "P3X:ELIGIBLE_VS_EXECUTED"
+      ],
+      "mapping_status": "MATCHED",
+      "mapping_status_is_not_render_status": true,
+      "prior_validated_template_ids": [
+        "P3X:ELIGIBLE_VS_EXECUTED"
+      ],
+      "production_state": "SOURCE_MAPPING_VALIDATED_NOT_RENDERED",
+      "reproducibility_classification": "RENDERABLE_FROM_LOCKED_ARTIFACT",
+      "required_display_controls": [
+        "Units are borrower-case-policy instances; 36 skips are route-ineligible due to zero modeled USDC route debt."
+      ],
+      "section": "5.3",
+      "source_locator_status": "PASS",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "664eeac6d3d80a38dc4c2ca6c942070f09d8d9f8",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "664eeac6d3d80a38dc4c2ca6c942070f09d8d9f8",
+          "git_blob_sha256": "53dc862ad37d447777ec2ee421d00696d7c52555a931af084d834c88f06df283",
+          "path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
+          "selector": "Locked rows/columns for T5.2; fields/axes: Policy; Newly eligible; Evaluated; Executed Wave2; Skipped; Reason; Debt repaid USDC",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "c74345f75c02a4550151a0cf7802fa96fecdd202",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "c74345f75c02a4550151a0cf7802fa96fecdd202",
+          "git_blob_sha256": "6df818552d703e4f6c38224e30ecda45f67d5d823b254c247143bf8e77b99548",
+          "path": "data/processed/research_final/scientific_integration_v1/table_figure_registry.json",
+          "selector": "Declared locked artifact for T5.2; Codex must pin extraction selector before rendering; no new statistic.",
+          "status": "PASS"
+        }
+      ],
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "template_mapping_status": "PASS",
+      "validated_primary_template_ids": [
+        "P3X:ELIGIBLE_VS_EXECUTED"
+      ],
+      "work_id": "T5.2"
+    },
+    {
+      "chapter": 5,
+      "claim_status": "PASS",
+      "codex_template_ids": [
+        "P3X:ELIGIBLE_VS_EXECUTED",
+        "P3X:SYSTEM_FEEDBACK_SCHEMATIC"
+      ],
+      "mapping_status": "CODEX_SPEC_REQUIRED",
+      "mapping_status_is_not_render_status": true,
+      "prior_validated_template_ids": [
+        "P3X:ELIGIBLE_VS_EXECUTED"
+      ],
+      "production_state": "SPECIFICATION_PENDING_NOT_RENDERED",
+      "reproducibility_classification": "NEEDS_DISPLAY_SPEC",
+      "required_display_controls": [
+        "Use the smallest stable case/borrower key within the predeclared executed/skipped category; preserve pseudonymization; do not sample after viewing outcomes.",
+        "Predeclare category (executed or skipped); sort case key then stable pseudonymized borrower key lexicographically; select the smallest key per category; pin exact trace/event locator in CP1 before rendering. No outcome-dependent manual choice; omit the example if locator/selector cannot be verified."
+      ],
+      "section": "5.3",
+      "source_locator_status": "PASS",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "664eeac6d3d80a38dc4c2ca6c942070f09d8d9f8",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "664eeac6d3d80a38dc4c2ca6c942070f09d8d9f8",
+          "git_blob_sha256": "53dc862ad37d447777ec2ee421d00696d7c52555a931af084d834c88f06df283",
+          "path": "data/processed/research_final/scientific_integration_v1/eligible_vs_executed_summary.csv",
+          "selector": "Locked rows/columns for F5.2; fields/axes: HF newly unsafe→engine evaluated→route check→positive-debt execution/skip; Policy facets; Một event example đã redacted do Codex chọn từ audit",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "f3fd437b41d0feabacf01f6708ca65d3a738ef05",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "f3fd437b41d0feabacf01f6708ca65d3a738ef05",
+          "git_blob_sha256": "a8d508075a490113b870c92675838033722c3fd2f2bf8c8e1f35ec68906f2536",
+          "path": "docs/research_final/SCIENTIFIC_PREMERGE_AUDIT_v1.md",
+          "selector": "Declared locked artifact for F5.2; Codex must pin extraction selector before rendering; no new statistic.",
+          "status": "PASS"
+        }
+      ],
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "template_mapping_status": "PASS",
+      "validated_primary_template_ids": [
+        "P3X:ELIGIBLE_VS_EXECUTED"
+      ],
+      "work_id": "F5.2"
+    },
+    {
+      "chapter": 5,
+      "claim_status": "PASS",
+      "codex_template_ids": [
+        "P3X:LIQUIDITY_ABSORPTION_AND_PRICE_METRICS",
+        "P3X:ORACLE_POLICY_DEPTH2_COMPARISON"
+      ],
+      "mapping_status": "CODEX_SPEC_REQUIRED",
+      "mapping_status_is_not_render_status": true,
+      "prior_validated_template_ids": [
+        "P3X:LIQUIDITY_ABSORPTION_AND_PRICE_METRICS",
+        "P3X:ORACLE_POLICY_DEPTH2_COMPARISON"
+      ],
+      "production_state": "SPECIFICATION_PENDING_NOT_RENDERED",
+      "reproducibility_classification": "NEEDS_DISPLAY_SPEC",
+      "required_display_controls": [
+        "Only 0% is the unmodified canonical pool; 25–95% haircuts are modeled counterfactual transformations; 90/95% are extreme unobserved tails.",
+        "Use separate axes for cells and USD/WETH."
+      ],
+      "section": "5.2",
+      "source_locator_status": "PASS",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "d753e24d06d35cc6d31ab2ef07ea6740ce862edb",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "d753e24d06d35cc6d31ab2ef07ea6740ce862edb",
+          "git_blob_sha256": "40dea37ff9f90efbae58f7b3a386f671de507a9757603dc528a2f438a9550c9e",
+          "path": "data/processed/research_final/frozen_v3/tables/rq2_liquidity.csv",
+          "selector": "Locked rows/columns for F5.3; fields/axes: Panel1: liquidity_haircut_pct và depth2_cells từ rq2_liquidity.csv; đây là số ô, không phải đường độ sâu; Panel2: case_id/policy_id, post_wave1_dex_trade_price_usd_per_weth và post_wave1_borrower_valuation_price_usd_per_weth từ comparison_matrix.csv",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "dee128ff278efe94895220aca5eccec4150c1cc4",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "dee128ff278efe94895220aca5eccec4150c1cc4",
+          "git_blob_sha256": "09c2d6dea5868817c57a67329f4d64469d1d7c1340fddc5e980c6b3741bea078",
+          "path": "data/processed/research_final/oracle_transmission_diagnostic_v1/comparison_matrix.csv",
+          "selector": "Locked rows/columns for F5.3; fields/axes: Panel1: liquidity_haircut_pct và depth2_cells từ rq2_liquidity.csv; đây là số ô, không phải đường độ sâu; Panel2: case_id/policy_id, post_wave1_dex_trade_price_usd_per_weth và post_wave1_borrower_valuation_price_usd_per_weth từ comparison_matrix.csv",
+          "status": "PASS"
+        }
+      ],
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "template_mapping_status": "PASS",
+      "validated_primary_template_ids": [
+        "P3X:LIQUIDITY_ABSORPTION_AND_PRICE_METRICS",
+        "P3X:ORACLE_POLICY_DEPTH2_COMPARISON"
+      ],
+      "work_id": "F5.3"
+    },
+    {
+      "chapter": 5,
+      "claim_status": "PASS",
+      "codex_template_ids": [],
+      "mapping_status": "DIRECT_LOCKED_SOURCE",
+      "mapping_status_is_not_render_status": true,
+      "prior_validated_template_ids": [],
+      "production_state": "SOURCE_MAPPING_VALIDATED_NOT_RENDERED",
+      "reproducibility_classification": "RENDERABLE_FROM_LOCKED_ARTIFACT",
+      "required_display_controls": [
+        "Debt repaid is USDC token quantity; processing delay is seconds; zero recovery is not zero reaction delay."
+      ],
+      "section": "5.3",
+      "source_locator_status": "PASS",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "0a51fb795e562c0276ac36903662be92d52ce86f",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "0a51fb795e562c0276ac36903662be92d52ce86f",
+          "git_blob_sha256": "de66ec8d972aa5c5a31ee00b1815bb4f6fae16d04772fb3b49e8ca9293b4ec50",
+          "path": "data/processed/research_final/frozen_v3/tables/rq3_constraints.csv",
+          "selector": "Locked rows/columns for F5.4; fields/axes: x:capital25/50/100/200% reference demand; y:debt repaid; Panel delay level vs processing_delay_seconds",
+          "status": "PASS"
+        }
+      ],
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "template_mapping_status": "PASS",
+      "validated_primary_template_ids": [],
+      "work_id": "F5.4"
+    },
+    {
+      "chapter": 5,
+      "claim_status": "PASS",
+      "codex_template_ids": [
+        "P3X:LIQUIDITY_ABSORPTION_AND_PRICE_METRICS"
+      ],
+      "mapping_status": "MATCHED",
+      "mapping_status_is_not_render_status": true,
+      "prior_validated_template_ids": [
+        "P3X:LIQUIDITY_ABSORPTION_AND_PRICE_METRICS"
+      ],
+      "production_state": "SOURCE_MAPPING_VALIDATED_NOT_RENDERED",
+      "reproducibility_classification": "RENDERABLE_FROM_LOCKED_ARTIFACT",
+      "required_display_controls": [
+        "Immediate price impact and post-arbitrage residual are separate ratios; price repositioning is not a funded swap."
+      ],
+      "section": "5.4",
+      "source_locator_status": "PASS",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "1fdeb6b31a7537d79e9e8c9e97544dbf78bb4f2e",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "1fdeb6b31a7537d79e9e8c9e97544dbf78bb4f2e",
+          "git_blob_sha256": "4fbc8e0f0d39c937e0acf28cf8abba3bf8d85bed9d319a6164a3f389f73ed85e",
+          "path": "data/processed/research_final/frozen_v3/tables/rq4_arbitrage.csv",
+          "selector": "Locked rows/columns for F5.5; fields/axes: x:arbitrage_capacity_pct; y1:immediate_price_impact_ratio; y2:post_arbitrage_spread_ratio",
+          "status": "PASS"
+        }
+      ],
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "template_mapping_status": "PASS",
+      "validated_primary_template_ids": [
+        "P3X:LIQUIDITY_ABSORPTION_AND_PRICE_METRICS"
+      ],
+      "work_id": "F5.5"
+    },
+    {
+      "chapter": 5,
+      "claim_status": "PASS",
+      "codex_template_ids": [],
+      "mapping_status": "DIRECT_LOCKED_SOURCE",
+      "mapping_status_is_not_render_status": true,
+      "prior_validated_template_ids": [],
+      "production_state": "SOURCE_MAPPING_VALIDATED_NOT_RENDERED",
+      "reproducibility_classification": "RENDERABLE_FROM_LOCKED_ARTIFACT",
+      "required_display_controls": [
+        "Keep USDC token debt and USD-equivalent debt in separate columns with explicit price."
+      ],
+      "section": "5.5",
+      "source_locator_status": "PASS",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "3f36a867c750f90d5a88ae5b1b00eae6be151b6e",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "3f36a867c750f90d5a88ae5b1b00eae6be151b6e",
+          "git_blob_sha256": "d6ec0ff75f076b3c4ba0344578fb1ff86c8819d14231d41d40024355f1a4f58a",
+          "path": "data/processed/research_final/frozen_v3/tables/rq5_usdc_valuation.csv",
+          "selector": "Locked rows/columns for T5.3; fields/axes: usdc_price_usd; borrowers_hf_below_1; liquidated_debt_usdc_token; liquidated_debt_usd_equivalent",
+          "status": "PASS"
+        }
+      ],
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "template_mapping_status": "PASS",
+      "validated_primary_template_ids": [],
+      "work_id": "T5.3"
+    },
+    {
+      "chapter": 5,
+      "claim_status": "PASS",
+      "codex_template_ids": [
+        "P3X:RISK_PARAMETER_MECHANISMS"
+      ],
+      "mapping_status": "CODEX_SPEC_REQUIRED",
+      "mapping_status_is_not_render_status": true,
+      "prior_validated_template_ids": [
+        "P3X:RISK_PARAMETER_MECHANISMS"
+      ],
+      "production_state": "SPECIFICATION_PENDING_NOT_RENDERED",
+      "reproducibility_classification": "NEEDS_DISPLAY_SPEC",
+      "required_display_controls": [
+        "LTV→USD capacity, LT→USDC-token unliquidated debt, bonus→WETH seized; retain scenario LT semantics.",
+        "Use separate facets with independent labelled axes; never combine USD, USDC token and WETH on one y-axis."
+      ],
+      "section": "5.6",
+      "source_locator_status": "PASS",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "deab1f45c56d8c836fead08190faffb1a5000fd2",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "deab1f45c56d8c836fead08190faffb1a5000fd2",
+          "git_blob_sha256": "1fb3321ac4df248102a54bbe5f1e1108a4f4d404cfab7e9e2a8948179c50f912",
+          "path": "data/processed/research_final/frozen_v3/tables/rq6_policy.csv",
+          "selector": "Locked rows/columns for F5.6; fields/axes: LTV→exantecapacityUSD; ScenarioLT→unliquidateddebtUSDC; Bonus→seizedWETH",
+          "status": "PASS"
+        }
+      ],
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "template_mapping_status": "PASS",
+      "validated_primary_template_ids": [
+        "P3X:RISK_PARAMETER_MECHANISMS"
+      ],
+      "work_id": "F5.6"
+    },
+    {
+      "chapter": 5,
+      "claim_status": "PASS",
+      "codex_template_ids": [
+        "P3X:SEVERE_POLICY_A_MONTE_CARLO"
+      ],
+      "mapping_status": "MATCHED",
+      "mapping_status_is_not_render_status": true,
+      "prior_validated_template_ids": [
+        "P3X:SEVERE_POLICY_A_MONTE_CARLO"
+      ],
+      "production_state": "SOURCE_MAPPING_VALIDATED_NOT_RENDERED",
+      "reproducibility_classification": "RENDERABLE_FROM_LOCKED_ARTIFACT",
+      "required_display_controls": [
+        "Prefixes are nested, Policy A only; no new interval; selected ten diagnostic paths stay off this frequency chart."
+      ],
+      "section": "5.7",
+      "source_locator_status": "PASS",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "ea71db6f633b7e5df1f12cd3d9f2533e5d5f9438",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "ea71db6f633b7e5df1f12cd3d9f2533e5d5f9438",
+          "git_blob_sha256": "e9f59d71d9ec053431a22a0dde8d577e575b4edc3e15774daee5541f9b8e8153",
+          "path": "data/processed/research_final/frozen_v3/tables/rq1_monte_carlo.csv",
+          "selector": "Locked rows/columns for F5.7; fields/axes: x:actual_runs200/1000/5000/10000; y:depth≥2frequency; Wilson bounds; lowliquidity0/1000 panel riêng nếu dùng",
+          "status": "PASS"
+        }
+      ],
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "template_mapping_status": "PASS",
+      "validated_primary_template_ids": [
+        "P3X:SEVERE_POLICY_A_MONTE_CARLO"
+      ],
+      "work_id": "F5.7"
+    },
+    {
+      "chapter": 6,
+      "claim_status": "PASS",
+      "codex_template_ids": [
+        "P3X:HISTORICAL_EVIDENCE_TIERS"
+      ],
+      "mapping_status": "MATCHED",
+      "mapping_status_is_not_render_status": true,
+      "prior_validated_template_ids": [
+        "P3X:HISTORICAL_EVIDENCE_TIERS"
+      ],
+      "production_state": "SOURCE_MAPPING_VALIDATED_NOT_RENDERED",
+      "reproducibility_classification": "RENDERABLE_FROM_LOCKED_ARTIFACT",
+      "required_display_controls": [
+        "28 Pool/27 Graph; tier denominator 27; association does not prove causal contagion."
+      ],
+      "section": "6.1",
+      "source_locator_status": "PASS",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "ea2d04143baee6a2d561b588bd8174b6dbfbc64b",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "ea2d04143baee6a2d561b588bd8174b6dbfbc64b",
+          "git_blob_sha256": "374dd47d8c10a74bd588059be2b019b4f9fc81dc64237dfd0e10ec2c6ebf5d1e",
+          "path": "data/processed/research_final/frozen_v3/tables/historical_evidence.csv",
+          "selector": "Locked rows/columns for T6.1; fields/axes: 28Pool/27Graph/1RPC-only; Tier1/2/23/1among27; Selection/window; Allowed evidence strength",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "e56da602592dd53fe52c830a3ca05537179a9b7a",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "e56da602592dd53fe52c830a3ca05537179a9b7a",
+          "git_blob_sha256": "2cfc1df7781a53ab4f2773ecef8b8165b444ac214bdda167baaf0926c965238b",
+          "path": "docs/research_final/LEVEL3_HISTORICAL_EVENT_STUDY.md",
+          "selector": "Declared locked artifact for T6.1; Codex must pin extraction selector before rendering; no new statistic.",
+          "status": "PASS"
+        }
+      ],
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "template_mapping_status": "PASS",
+      "validated_primary_template_ids": [
+        "P3X:HISTORICAL_EVIDENCE_TIERS"
+      ],
+      "work_id": "T6.1"
+    },
+    {
+      "chapter": 6,
+      "claim_status": "PASS",
+      "codex_template_ids": [
+        "P3X:TERRA_NEGATIVE_EARLY_WARNING"
+      ],
+      "mapping_status": "CODEX_SPEC_REQUIRED",
+      "mapping_status_is_not_render_status": true,
+      "prior_validated_template_ids": [
+        "P3X:TERRA_NEGATIVE_EARLY_WARNING"
+      ],
+      "production_state": "SPECIFICATION_PENDING_NOT_RENDERED",
+      "reproducibility_classification": "NEEDS_DISPLAY_SPEC",
+      "required_display_controls": [
+        "Preserve the negative cutoff-safe/OOS conclusion; do not turn later-threshold behavior into forecast success.",
+        "Use two panels: zero HIGH-alert hours and minus 45 hours lead; distinct labels and denominators, no shared interpretation as forecast success."
+      ],
+      "section": "6.2",
+      "source_locator_status": "PASS",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "264d5294bd8da978f8718c15b9ca7bcb221c704b",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "264d5294bd8da978f8718c15b9ca7bcb221c704b",
+          "git_blob_sha256": "a6aba884922a6c01ed271173fbb91480d7917c887d3f3ceee41ddd5b51e8d635",
+          "path": "data/processed/research_final/frozen_v3/tables/terra_limitations.csv",
+          "selector": "Locked rows/columns for F6.1; fields/axes: Panel1 zero HIGH pre-initial-depeg; Panel2 lead−45h relative toUST<0.995event; Cutoff/info boundary annotation",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "c57615dbfe686863b366db648234cf0af1d6b8ca",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "c57615dbfe686863b366db648234cf0af1d6b8ca",
+          "git_blob_sha256": "0d71ad963fe9263c8c943c594622e4cb67a38b1f168d1c7a217b1de3f5b19116",
+          "path": "data/processed/research_final/validation_audit/phase5_terra_early_warning_audit.json",
+          "selector": "Declared locked artifact for F6.1; Codex must pin extraction selector before rendering; no new statistic.",
+          "status": "PASS"
+        }
+      ],
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "template_mapping_status": "PASS",
+      "validated_primary_template_ids": [
+        "P3X:TERRA_NEGATIVE_EARLY_WARNING"
+      ],
+      "work_id": "F6.1"
+    },
+    {
+      "chapter": 6,
+      "claim_status": "PASS",
+      "codex_template_ids": [
+        "P3X:NETWORK_EXTENSION_BOUNDARY"
+      ],
+      "mapping_status": "CODEX_SPEC_REQUIRED",
+      "mapping_status_is_not_render_status": true,
+      "prior_validated_template_ids": [
+        "P3X:NETWORK_EXTENSION_BOUNDARY"
+      ],
+      "production_state": "SPECIFICATION_PENDING_NOT_RENDERED",
+      "reproducibility_classification": "SCHEMATIC_FROM_LOCKED_MODEL_SPEC",
+      "required_display_controls": [
+        "No invented edge, DebtRank label, empirical causal styling or all-DeFi ranking; centrality is within-model and dimensionless."
+      ],
+      "section": "6.3",
+      "source_locator_status": "PASS",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "b3608bd848b0594ec86a70fbe28d5b94d2358fa7",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "b3608bd848b0594ec86a70fbe28d5b94d2358fa7",
+          "git_blob_sha256": "c5297abc0fea5122287ba1e36558a9f883be51ea92851d130db36e814d81c2d1",
+          "path": "data/processed/research_final/network/structural_centrality.json",
+          "selector": "Declared locked artifact for F6.2; Codex must pin extraction selector before rendering; no new statistic.",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "8c980da9a10d1ef52f3b13cf8a14398b0e0cd75d",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "8c980da9a10d1ef52f3b13cf8a14398b0e0cd75d",
+          "git_blob_sha256": "0154bafb8ae8a2f4ae432fb1fa7a30c847a0de1fae6fce1bab26948ad51565ba",
+          "path": "data/processed/research_final/network/structural_graph.json",
+          "selector": "Declared locked artifact for F6.2; Codex must pin extraction selector before rendering; no new statistic.",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "db7aca57029e973637e4969d3a20d5c61e2e330d",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "db7aca57029e973637e4969d3a20d5c61e2e330d",
+          "git_blob_sha256": "a1c154205fe060814b6830bba26c3120f03a02ecfa2b5153d9e1c07e502f6830",
+          "path": "sim/network/metrics.py",
+          "selector": "Implementation definition only; inspect named gates/metrics used by F6.2; not an external protocol-validation claim.",
+          "status": "PASS"
+        }
+      ],
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "template_mapping_status": "PASS",
+      "validated_primary_template_ids": [
+        "P3X:NETWORK_EXTENSION_BOUNDARY"
+      ],
+      "work_id": "F6.2"
+    },
+    {
+      "chapter": 6,
+      "claim_status": "PASS",
+      "codex_template_ids": [],
+      "mapping_status": "DIRECT_LOCKED_SOURCE",
+      "mapping_status_is_not_render_status": true,
+      "prior_validated_template_ids": [],
+      "production_state": "SOURCE_MAPPING_VALIDATED_NOT_RENDERED",
+      "reproducibility_classification": "TEXTUAL_SYNTHESIS",
+      "required_display_controls": [
+        "Hash integrity and code observation must not be elevated to empirical validation."
+      ],
+      "section": "6.4",
+      "source_locator_status": "PASS",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "bac44e61633b5efdde3665731ea69fbf4ca345e6",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "bac44e61633b5efdde3665731ea69fbf4ca345e6",
+          "git_blob_sha256": "918226582bf2c748d7aea6efbc9ba74689900b34c02117d6e6e3aae8022f509d",
+          "path": "data/processed/research_final/final_accepted_claims_v1/accepted_claims_registry.json",
+          "selector": "records filtered by registry_id in P2:C17,P2:C30,P2:C33,INT:CL_INT_HISTORICAL_TIERS_PRESERVED",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "f3fd437b41d0feabacf01f6708ca65d3a738ef05",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "f3fd437b41d0feabacf01f6708ca65d3a738ef05",
+          "git_blob_sha256": "a8d508075a490113b870c92675838033722c3fd2f2bf8c8e1f35ec68906f2536",
+          "path": "docs/research_final/SCIENTIFIC_PREMERGE_AUDIT_v1.md",
+          "selector": "Declared locked artifact for T6.2; Codex must pin extraction selector before rendering; no new statistic.",
+          "status": "PASS"
+        }
+      ],
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "template_mapping_status": "PASS",
+      "validated_primary_template_ids": [],
+      "work_id": "T6.2"
+    },
+    {
+      "chapter": 7,
+      "claim_status": "PASS",
+      "codex_template_ids": [],
+      "mapping_status": "DIRECT_LOCKED_SOURCE",
+      "mapping_status_is_not_render_status": true,
+      "prior_validated_template_ids": [],
+      "production_state": "SOURCE_MAPPING_VALIDATED_NOT_RENDERED",
+      "reproducibility_classification": "TEXTUAL_SYNTHESIS",
+      "required_display_controls": [
+        "Exclude all four disallowed records and preserve each RQ limitation."
+      ],
+      "section": "7.1",
+      "source_locator_status": "PASS",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "fffe69d45f2c70e8f4cb781c8b521ef4cf6f1a45",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "fffe69d45f2c70e8f4cb781c8b521ef4cf6f1a45",
+          "git_blob_sha256": "428db5ef589bbd2e0e1c4273c36538f0abbe3c29b5601897bd787d78c1a4d080",
+          "path": "data/processed/research_final/final_accepted_claims_v1/six_rq_accepted_claims_matrix.json",
+          "selector": "research_questions[]; preserve full original questions and accepted-only claim sets",
+          "status": "PASS"
+        }
+      ],
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "template_mapping_status": "PASS",
+      "validated_primary_template_ids": [],
+      "work_id": "T7.1"
+    },
+    {
+      "chapter": 7,
+      "claim_status": "PASS",
+      "codex_template_ids": [],
+      "mapping_status": "DIRECT_LOCKED_SOURCE",
+      "mapping_status_is_not_render_status": true,
+      "prior_validated_template_ids": [],
+      "production_state": "SOURCE_MAPPING_VALIDATED_NOT_RENDERED",
+      "reproducibility_classification": "TEXTUAL_SYNTHESIS",
+      "required_display_controls": [
+        "No first-ever, calibrated live-risk advice or stronger external validity claim."
+      ],
+      "section": "7.2",
+      "source_locator_status": "PASS",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "bac44e61633b5efdde3665731ea69fbf4ca345e6",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "bac44e61633b5efdde3665731ea69fbf4ca345e6",
+          "git_blob_sha256": "918226582bf2c748d7aea6efbc9ba74689900b34c02117d6e6e3aae8022f509d",
+          "path": "data/processed/research_final/final_accepted_claims_v1/accepted_claims_registry.json",
+          "selector": "records filtered by registry_id in P2:C17,P2:C31,INT:CL_INT_ELIGIBLE_NOT_EXECUTED,INT:CL_INT_TERRA_NEGATIVE_PRESERVED",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "6ebe0a11e915e942a422d02a0cc5b1d53b51ff3e",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "6ebe0a11e915e942a422d02a0cc5b1d53b51ff3e",
+          "git_blob_sha256": "5ab1f4e53c19fe807a1e919a8e52cce59f6f963e491396f97259be3a176c8935",
+          "path": "docs/research_final/LITERATURE_VERIFIED.md",
+          "selector": "Declared locked artifact for T7.2; Codex must pin extraction selector before rendering; no new statistic.",
+          "status": "PASS"
+        }
+      ],
+      "technical_support_status": "SUPPORTED_BY_LOCKED_EVIDENCE",
+      "template_mapping_status": "PASS",
+      "validated_primary_template_ids": [],
+      "work_id": "T7.2"
+    }
+  ],
+  "formula_validation": [
+    {
+      "codex_formula_ids": [
+        "P3F01",
+        "P3F02"
+      ],
+      "formula_changed": false,
+      "formula_mapping_status": "PASS",
+      "semantic_relation": "Tương đương theo ký hiệu; giữ collateral-enabled, HF danh mục và debt0; không xác nhận actual oracle. P3F02 bổ sung cổng HF<1; không thay P3F01 và không coi eligibility là execution.",
+      "source_locator_status": "PASS",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "8d8cae6754e718856867ce3696498bd68134a294",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "8d8cae6754e718856867ce3696498bd68134a294",
+          "git_blob_sha256": "c8ed78fc4a4dc8e213b5cd145278211218514465d5e73aa998ec4977ca066670",
+          "path": "sim/lending/health_factor.py",
+          "selector": "`sim/lending/health_factor.py:5`; portfolio implementation `sim/schemas.py:29`; retain Work source scope.",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "9f95f18e8aa52f48facbebe1b3bdc8f88c0f162a",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "9f95f18e8aa52f48facbebe1b3bdc8f88c0f162a",
+          "git_blob_sha256": "fd3f4e5cd2f4a9564ca7b23625d693e0661a8162182699a0eb2940603158e96b",
+          "path": "sim/lending/liquidation.py",
+          "selector": "`sim/lending/health_factor.py:5`; portfolio implementation `sim/schemas.py:29`; retain Work source scope.",
+          "status": "PASS"
+        }
+      ],
+      "units_implementation_check": "Khớp cấu trúc tổng collateral/debt; dictionary đơn vị phải chỉ rõUSD/token.",
+      "validated_primary_formula_ids": [
+        "P3F01",
+        "P3F02"
+      ],
+      "work_equation_id": "E3.1"
+    },
+    {
+      "codex_formula_ids": [
+        "P3F05"
+      ],
+      "formula_changed": false,
+      "formula_mapping_status": "PASS",
+      "semantic_relation": "Work biểu diễn raw-price tới human-price và nghịch đảo; Codex biểu diễn chiều chuyển đổi ngược và tick. Chỉ tái dùng quan hệ chuyển đổi đã có, không thêm công thức tick riêng.",
+      "source_locator_status": "PASS",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "4172eae06907ae8bf95a10e7e50463111d0eec3d",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "4172eae06907ae8bf95a10e7e50463111d0eec3d",
+          "git_blob_sha256": "3fa671f616caee587735eef41073bc8db4a097e91711ef8c9d3511f4f7a0580a",
+          "path": "sim/dex/uniswap_v3.py",
+          "selector": "`sim/dex/uniswap_v3.py:26`, `:35`; retain Work source scope.",
+          "status": "PASS"
+        }
+      ],
+      "units_implementation_check": "Giữ token0 USDC/token1 WETH và decimals. USDC/WETH không tự tương đương USD/WETH khi giá USDC khác 1.",
+      "validated_primary_formula_ids": [
+        "P3F05"
+      ],
+      "work_equation_id": "E3.2"
+    },
+    {
+      "codex_formula_ids": [
+        "P3F06"
+      ],
+      "formula_changed": false,
+      "formula_mapping_status": "PASS",
+      "semantic_relation": "Cùng quan hệ lượng token trong một khoảng sqrt-price. Quy tắc phí và cập nhật liquidityNet giải thích theo code; biểu thức Work không thay đổi.",
+      "source_locator_status": "PASS",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "4172eae06907ae8bf95a10e7e50463111d0eec3d",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "4172eae06907ae8bf95a10e7e50463111d0eec3d",
+          "git_blob_sha256": "3fa671f616caee587735eef41073bc8db4a097e91711ef8c9d3511f4f7a0580a",
+          "path": "sim/dex/uniswap_v3.py",
+          "selector": "`sim/dex/uniswap_v3.py:77`; retain Work source scope.",
+          "status": "PASS"
+        }
+      ],
+      "units_implementation_check": "Dùng raw token1 đầu vào/token0 đầu ra và net input sau phí. Codex kiểm symbol/decimal convention trước production.",
+      "validated_primary_formula_ids": [
+        "P3F06"
+      ],
+      "work_equation_id": "E3.3"
+    },
+    {
+      "codex_formula_ids": [
+        "P3F08"
+      ],
+      "formula_changed": false,
+      "formula_mapping_status": "PASS",
+      "semantic_relation": "Work in rõ min-cap; Codex ghi capped adverse. Đều là valuation policy giả định, không phải feed Aave/Chainlink đã xác minh.",
+      "source_locator_status": "PASS",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "1bb5bdea8be74c1e62dc89badbcb8cbae67b7bd3",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "1bb5bdea8be74c1e62dc89badbcb8cbae67b7bd3",
+          "git_blob_sha256": "3eb4bd1c2404abfb1a4a2cd402d06d70a971e781b279c599be66438c5e5d253d",
+          "path": "data/processed/research_final/oracle_transmission_diagnostic_v1/selection_manifest.json",
+          "selector": "`sim/oracle.py:43`; retain Work source scope.",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "2ac37f923a4cc35bef95968d353f0724bfdbd3a5",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "2ac37f923a4cc35bef95968d353f0724bfdbd3a5",
+          "git_blob_sha256": "826bdab7242624352b5a87edbed4e801d28f6dc807e570c84f0a95c10b50cd42",
+          "path": "sim/oracle.py",
+          "selector": "`sim/oracle.py:43`; retain Work source scope.",
+          "status": "PASS"
+        }
+      ],
+      "units_implementation_check": "C chỉ dùng completed waves theo alpha, lag và window đã khóa. Dictionary đơn vị phải khớp các trường reference/valuation của oracle code.",
+      "validated_primary_formula_ids": [
+        "P3F08"
+      ],
+      "work_equation_id": "E3.4"
+    },
+    {
+      "codex_formula_ids": [
+        "P3F02",
+        "P3F13"
+      ],
+      "formula_changed": false,
+      "formula_mapping_status": "PASS",
+      "semantic_relation": "Work tách điều kiện HF, tuyến và positive-debt event; P3F02 là điều kiện route kết hợp, P3F13 cung cấp điều kiện đếm wave thực thi. Không đồng nhất ba trạng thái. Codex cross-verdict primary mapping là P3F02; P3F13 chỉ bổ sung ngữ nghĩa positive-debt event, không thêm equation.",
+      "source_locator_status": "PASS",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "2b23c9ee88ee4976755e5f4795026e381d5fe497",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "2b23c9ee88ee4976755e5f4795026e381d5fe497",
+          "git_blob_sha256": "93d18336d0b39f221d98765152f4a4716870b5c9b433f724b5a69e666c1ecb8c",
+          "path": "sim/engine/run.py",
+          "selector": "`sim/lending/liquidation.py:38`; `sim/engine/run.py:246`–`:287`; retain Work source scope.",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "9f95f18e8aa52f48facbebe1b3bdc8f88c0f162a",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "9f95f18e8aa52f48facbebe1b3bdc8f88c0f162a",
+          "git_blob_sha256": "fd3f4e5cd2f4a9564ca7b23625d693e0661a8162182699a0eb2940603158e96b",
+          "path": "sim/lending/liquidation.py",
+          "selector": "`sim/lending/liquidation.py:38`; `sim/engine/run.py:246`–`:287`; retain Work source scope.",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "0f9a93180ada5912c55d0d36d5c142d0e4a356a6",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "0f9a93180ada5912c55d0d36d5c142d0e4a356a6",
+          "git_blob_sha256": "6869ec619a5c91916d608b9a1297899664a8c0a1eca89c8718e42c0223b53689",
+          "path": "sim/schemas.py",
+          "selector": "`sim/lending/liquidation.py:38`; `sim/engine/run.py:246`–`:287`; retain Work source scope.",
+          "status": "PASS"
+        }
+      ],
+      "units_implementation_check": "Codex kiểm event predicates. Attempted là engine evaluation, không phải transaction broadcast; route availability chưa đủ khi còn các cổng capital/profit/capacity/delay.",
+      "validated_primary_formula_ids": [
+        "P3F02"
+      ],
+      "work_equation_id": "E3.5"
+    },
+    {
+      "codex_formula_ids": [
+        "P3F15"
+      ],
+      "formula_changed": false,
+      "formula_mapping_status": "PASS",
+      "semantic_relation": "Chỉ báo depth≥2 cho tần suất k/n. P3F15 quy định phạm vi display, không cho phép một ước lượng xác suất thị trường mới.",
+      "source_locator_status": "PASS",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "ea71db6f633b7e5df1f12cd3d9f2533e5d5f9438",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "ea71db6f633b7e5df1f12cd3d9f2533e5d5f9438",
+          "git_blob_sha256": "e9f59d71d9ec053431a22a0dde8d577e575b4edc3e15774daee5541f9b8e8153",
+          "path": "data/processed/research_final/frozen_v3/tables/rq1_monte_carlo.csv",
+          "selector": "P2:C23; `data/processed/research_final/level3_extension/deep_stress/monte_carlo_batches.json`; retain Work source scope.",
+          "status": "PASS"
+        }
+      ],
+      "units_implementation_check": "Chỉ dùng locked k/n, không cộng prefix và không dùng mười selected paths làm population denominator.",
+      "validated_primary_formula_ids": [
+        "P3F15"
+      ],
+      "work_equation_id": "E3.6"
+    },
+    {
+      "codex_formula_ids": [
+        "P3F15"
+      ],
+      "formula_changed": false,
+      "formula_mapping_status": "PASS",
+      "semantic_relation": "Giữ nguyên biểu thức Wilson Work; primary provenance là hai implementations _wilson và bảng locked k/n/bounds. S24/NIST chỉ là background, không xác nhận implementation Wilson.",
+      "source_locator_status": "PASS",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "ac82a2c5df8c0cc10d55712f3d9a0a4bf1110123",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "ac82a2c5df8c0cc10d55712f3d9a0a4bf1110123",
+          "git_blob_sha256": "4f443c17d77f6fa7d0ffcb9fcaec174b0c2c1ed49d6656511167a7d5b8a5b9e1",
+          "path": "sim/research/aave_suite.py",
+          "selector": "L211-L220: _wilson",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "90d248dbadf5e78df20d5eb8eb05a533245f55f7",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "90d248dbadf5e78df20d5eb8eb05a533245f55f7",
+          "git_blob_sha256": "d5c6993242e381b3ee8c3eb9506ad77adf0c4473a2ccf14d8b86dae601cac12c",
+          "path": "scripts/research/run_deep_cascade_study.py",
+          "selector": "L353-L364: _wilson",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "ea71db6f633b7e5df1f12cd3d9f2533e5d5f9438",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "ea71db6f633b7e5df1f12cd3d9f2533e5d5f9438",
+          "git_blob_sha256": "e9f59d71d9ec053431a22a0dde8d577e575b4edc3e15774daee5541f9b8e8153",
+          "path": "data/processed/research_final/frozen_v3/tables/rq1_monte_carlo.csv",
+          "selector": "locked k/n and depth_ge_2_wilson_lower/upper",
+          "status": "PASS"
+        }
+      ],
+      "units_implementation_check": "Work đã đọc trực tiếp hai implementations và locked table tại scientific lock; đối chiếu biểu thức bằng static inspection, không chạy/recompute CI. z trong code dùng NormalDist quantile; 1,96 là ký hiệu xấp xỉ, không thay locked bounds.",
+      "validated_primary_formula_ids": [
+        "P3F15"
+      ],
+      "work_equation_id": "E3.7"
+    },
+    {
+      "codex_formula_ids": [
+        "P3F09"
+      ],
+      "formula_changed": false,
+      "formula_mapping_status": "PASS",
+      "semantic_relation": "E3.8 biểu diễn riêng giá trị USD của phần nợ USDC. P3F09 là tổng nợ có thêm other_debt_usd; không dùng E3.8 thay tổng nợ danh mục.",
+      "source_locator_status": "PASS",
+      "source_locators": [
+        {
+          "actual_git_blob_id": "3f36a867c750f90d5a88ae5b1b00eae6be151b6e",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "3f36a867c750f90d5a88ae5b1b00eae6be151b6e",
+          "git_blob_sha256": "d6ec0ff75f076b3c4ba0344578fb1ff86c8819d14231d41d40024355f1a4f58a",
+          "path": "data/processed/research_final/frozen_v3/tables/rq5_usdc_valuation.csv",
+          "selector": "`sim/schemas.py:25`; retain Work source scope.",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "8d8cae6754e718856867ce3696498bd68134a294",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "8d8cae6754e718856867ce3696498bd68134a294",
+          "git_blob_sha256": "c8ed78fc4a4dc8e213b5cd145278211218514465d5e73aa998ec4977ca066670",
+          "path": "sim/lending/health_factor.py",
+          "selector": "`sim/schemas.py:25`; retain Work source scope.",
+          "status": "PASS"
+        },
+        {
+          "actual_git_blob_id": "0f9a93180ada5912c55d0d36d5c142d0e4a356a6",
+          "commit": "3f6e5302483681209e2408531eb5a15389f9fded",
+          "declared_git_blob_id": "0f9a93180ada5912c55d0d36d5c142d0e4a356a6",
+          "git_blob_sha256": "6869ec619a5c91916d608b9a1297899664a8c0a1eca89c8718e42c0223b53689",
+          "path": "sim/schemas.py",
+          "selector": "`sim/schemas.py:25`; retain Work source scope.",
+          "status": "PASS"
+        }
+      ],
+      "units_implementation_check": "Caption phải ghi “phần nợ USDC”; bỏ thành phần nợ khác chỉ khi nó bằng 0. Không tự repricing seize/quote/dust ngoài implementation đã khóa.",
+      "validated_primary_formula_ids": [
+        "P3F09"
+      ],
+      "work_equation_id": "E3.8"
+    }
+  ],
+  "output_provenance": {
+    "content_sha256": "17a2345f148633ac54bbee9cc366173fc2bb9d36c50114c4051c61c35563bc1b",
+    "content_sha256_domain": "UTF-8 canonical JSON with output_provenance.content_sha256 omitted"
+  },
+  "remaining_production_only_limitations": [
+    "The eight CODEX_SPEC_REQUIRED placements need chapter-stage rendition specifications and later technical review; none is a rendered exhibit yet.",
+    "The five retained display controls must be enforced during production.",
+    "School template verification remains pending and blocks final DOCX formatting, not content-only Blueprint approval.",
+    "Two large borrower CSV read-scope limitations remain disclosed; no new dependent inference was introduced."
+  ],
+  "resolution_status": {
+    "G0-REC-03": {
+      "evidence": "Network template now uses C25/C26/C27/C28; time-series CV claim C29 is not topology support and is not propagated to F6.2.",
+      "network_template_claim_ids": [
+        "P2:C25",
+        "P2:C26",
+        "P2:C27",
+        "P2:C28"
+      ],
+      "quarantined_claim_id": "P2:C29",
+      "status": "RESOLVED_CODEX_METADATA_CORRECTION"
+    },
+    "G0-REC-04": {
+      "formula_id": "P3F03",
+      "selected_by_work": false,
+      "status": "RESOLVED_SCOPED_PROSE_ONLY",
+      "unit_note_present": true
+    },
+    "G0-X01": {
+      "evidence": "25/25 Work IDs map to a matched template, a direct locked source, or a rendition requiring Codex specification; CODEX_SPEC_REQUIRED is not rendered output.",
+      "status": "RESOLVED"
+    },
+    "G0-X02": {
+      "evidence": "E3.7 pins both locked _wilson implementations and frozen rq1_monte_carlo.csv; no interval was recalculated.",
+      "status": "RESOLVED"
+    },
+    "G0-X03": {
+      "control_checks": {
+        "F5.2": true,
+        "F5.3": true,
+        "F5.6": true,
+        "F6.1": true,
+        "T4.1": true
+      },
+      "status": "RESOLVED"
+    }
+  },
+  "reviewed_heads": {
+    "codex_input_head": "f3ca9dcd3a8bc1c17ca336f880d5b0adf3b4866a",
+    "scientific_lock": "3f6e5302483681209e2408531eb5a15389f9fded",
+    "work_final_head": "638434a32656eb312f0cdaa9285c30ddf766df99",
+    "work_starting_head": "e26e2d5a21c6ac78bd4db7be345409b5c7690a80"
+  },
+  "schema_version": "p3-g0-final-delta-validation-v1",
+  "source_preservation": {
+    "blueprint_and_report_read": true,
+    "locked_frozen_oracle_integration_p2_registry_engine_or_rqs_modified": false,
+    "new_simulation_or_estimated_finding": false,
+    "scientific_lock_in_crosswalk": true,
+    "work_delta_is_exactly_four_owned_files": true,
+    "work_files_modified_by_codex": false,
+    "work_plan_record_count": 33,
+    "work_plan_scientific_lock": "3f6e5302483681209e2408531eb5a15389f9fded"
+  },
+  "stop_state": "AWAITING_COMMANDER_BLUEPRINT_LOCK",
+  "technical_blockers": [],
+  "template_dispositions": [
+    {
+      "assigned_work_displays": [
+        {
+          "chapter": 3,
+          "proposed_manuscript_id": "F3.1",
+          "section": "3.1",
+          "status": "MATCHED"
+        },
+        {
+          "chapter": 3,
+          "proposed_manuscript_id": "T3.1",
+          "section": "3.2",
+          "status": "CODEX_SPEC_REQUIRED"
+        },
+        {
+          "chapter": 5,
+          "proposed_manuscript_id": "F5.2",
+          "section": "5.3",
+          "status": "CODEX_SPEC_REQUIRED"
+        }
+      ],
+      "codex_exhibit_template_id": "P3X:SYSTEM_FEEDBACK_SCHEMATIC",
+      "codex_file_assignment_state": "Work-owned proposal; Codex catalog placeholders have not been edited.",
+      "codex_review_state": "PENDING"
+    },
+    {
+      "assigned_work_displays": [
+        {
+          "chapter": 3,
+          "proposed_manuscript_id": "T3.2",
+          "section": "3.5",
+          "status": "DIRECT_LOCKED_SOURCE"
+        },
+        {
+          "chapter": 5,
+          "proposed_manuscript_id": "F5.1",
+          "section": "5.1",
+          "status": "DIRECT_LOCKED_SOURCE"
+        },
+        {
+          "chapter": 5,
+          "proposed_manuscript_id": "T5.1",
+          "section": "5.2",
+          "status": "MATCHED"
+        },
+        {
+          "chapter": 5,
+          "proposed_manuscript_id": "F5.3",
+          "section": "5.2",
+          "status": "CODEX_SPEC_REQUIRED"
+        }
+      ],
+      "codex_exhibit_template_id": "P3X:ORACLE_POLICY_DEPTH2_COMPARISON",
+      "codex_file_assignment_state": "Work-owned proposal; Codex catalog placeholders have not been edited.",
+      "codex_review_state": "PENDING"
+    },
+    {
+      "assigned_work_displays": [
+        {
+          "chapter": 5,
+          "proposed_manuscript_id": "T5.2",
+          "section": "5.3",
+          "status": "MATCHED"
+        },
+        {
+          "chapter": 5,
+          "proposed_manuscript_id": "F5.2",
+          "section": "5.3",
+          "status": "CODEX_SPEC_REQUIRED"
+        }
+      ],
+      "codex_exhibit_template_id": "P3X:ELIGIBLE_VS_EXECUTED",
+      "codex_file_assignment_state": "Work-owned proposal; Codex catalog placeholders have not been edited.",
+      "codex_review_state": "PENDING"
+    },
+    {
+      "assigned_work_displays": [
+        {
+          "chapter": 5,
+          "proposed_manuscript_id": "F5.3",
+          "section": "5.2",
+          "status": "CODEX_SPEC_REQUIRED"
+        },
+        {
+          "chapter": 5,
+          "proposed_manuscript_id": "F5.5",
+          "section": "5.4",
+          "status": "MATCHED"
+        }
+      ],
+      "codex_exhibit_template_id": "P3X:LIQUIDITY_ABSORPTION_AND_PRICE_METRICS",
+      "codex_file_assignment_state": "Work-owned proposal; Codex catalog placeholders have not been edited.",
+      "codex_review_state": "PENDING"
+    },
+    {
+      "assigned_work_displays": [
+        {
+          "chapter": 3,
+          "proposed_manuscript_id": "T3.2",
+          "section": "3.5",
+          "status": "DIRECT_LOCKED_SOURCE"
+        },
+        {
+          "chapter": 5,
+          "proposed_manuscript_id": "F5.7",
+          "section": "5.7",
+          "status": "MATCHED"
+        }
+      ],
+      "codex_exhibit_template_id": "P3X:SEVERE_POLICY_A_MONTE_CARLO",
+      "codex_file_assignment_state": "Work-owned proposal; Codex catalog placeholders have not been edited.",
+      "codex_review_state": "PENDING"
+    },
+    {
+      "assigned_work_displays": [
+        {
+          "chapter": 6,
+          "proposed_manuscript_id": "T6.1",
+          "section": "6.1",
+          "status": "MATCHED"
+        }
+      ],
+      "codex_exhibit_template_id": "P3X:HISTORICAL_EVIDENCE_TIERS",
+      "codex_file_assignment_state": "Work-owned proposal; Codex catalog placeholders have not been edited.",
+      "codex_review_state": "PENDING"
+    },
+    {
+      "assigned_work_displays": [
+        {
+          "chapter": 6,
+          "proposed_manuscript_id": "F6.1",
+          "section": "6.2",
+          "status": "CODEX_SPEC_REQUIRED"
+        }
+      ],
+      "codex_exhibit_template_id": "P3X:TERRA_NEGATIVE_EARLY_WARNING",
+      "codex_file_assignment_state": "Work-owned proposal; Codex catalog placeholders have not been edited.",
+      "codex_review_state": "PENDING"
+    },
+    {
+      "assigned_work_displays": [
+        {
+          "chapter": 6,
+          "proposed_manuscript_id": "F6.2",
+          "section": "6.3",
+          "status": "CODEX_SPEC_REQUIRED"
+        }
+      ],
+      "codex_exhibit_template_id": "P3X:NETWORK_EXTENSION_BOUNDARY",
+      "codex_file_assignment_state": "Work-owned proposal; Codex catalog placeholders have not been edited.",
+      "codex_review_state": "PENDING"
+    },
+    {
+      "assigned_work_displays": [
+        {
+          "chapter": 5,
+          "proposed_manuscript_id": "F5.6",
+          "section": "5.6",
+          "status": "CODEX_SPEC_REQUIRED"
+        }
+      ],
+      "codex_exhibit_template_id": "P3X:RISK_PARAMETER_MECHANISMS",
+      "codex_file_assignment_state": "Work-owned proposal; Codex catalog placeholders have not been edited.",
+      "codex_review_state": "PENDING"
+    },
+    {
+      "assigned_work_displays": [
+        {
+          "chapter": 4,
+          "proposed_manuscript_id": "F4.1",
+          "section": "4.1",
+          "status": "CODEX_SPEC_REQUIRED"
+        },
+        {
+          "chapter": 4,
+          "proposed_manuscript_id": "T4.1",
+          "section": "4.2",
+          "status": "CODEX_SPEC_REQUIRED"
+        }
+      ],
+      "codex_exhibit_template_id": "P3X:CANONICAL_SCOPE_PROVENANCE",
+      "codex_file_assignment_state": "Work-owned proposal; Codex catalog placeholders have not been edited.",
+      "codex_review_state": "PENDING"
+    },
+    {
+      "assigned_work_displays": [
+        {
+          "chapter": 3,
+          "proposed_manuscript_id": "T3.1",
+          "section": "3.2",
+          "status": "CODEX_SPEC_REQUIRED"
+        },
+        {
+          "chapter": 3,
+          "proposed_manuscript_id": "T3.3",
+          "section": "3.3",
+          "status": "MATCHED"
+        },
+        {
+          "chapter": 4,
+          "proposed_manuscript_id": "T4.2",
+          "section": "4.3",
+          "status": "DIRECT_LOCKED_SOURCE"
+        }
+      ],
+      "codex_exhibit_template_id": "P3X:METRIC_SEMANTICS_GLOSSARY",
+      "codex_file_assignment_state": "Work-owned proposal; Codex catalog placeholders have not been edited.",
+      "codex_review_state": "PENDING"
+    }
+  ],
+  "transformation_version": "p3-g0-final-delta-review-v1",
+  "work_delta_paths": [
+    "docs/manuscript_p3/work/P3_G0_RECONCILIATION_REPORT.md",
+    "docs/manuscript_p3/work/P3_G0_WORK_CODEX_EXHIBIT_CROSSWALK.json",
+    "docs/manuscript_p3/work/P3_MANUSCRIPT_BLUEPRINT_v1.md",
+    "docs/manuscript_p3/work/P3_TABLE_FIGURE_EQUATION_PLAN.json"
+  ],
+  "work_file_integrity": [
+    {
+      "git_blob_id": "817f9ba66d079bd2d378614788f48ccd5ebb636f",
+      "git_blob_sha256": "fd4f4ac7e3eb497f6c65ef118001066c44a1af1068675c6b837c48ed7be4b1ff",
+      "path": "docs/manuscript_p3/work/P3_G0_RECONCILIATION_REPORT.md"
+    },
+    {
+      "git_blob_id": "27475694e8e94ae4f6dd16bfdb76a956ba080877",
+      "git_blob_sha256": "4c333b7e3a11a035aa0ca756e60110a39408110a71eeb70c4f5073055b191880",
+      "path": "docs/manuscript_p3/work/P3_G0_WORK_CODEX_EXHIBIT_CROSSWALK.json"
+    },
+    {
+      "git_blob_id": "10194e95b67a360cadd7ab2eb9550deac206e672",
+      "git_blob_sha256": "ed9f27137f0a6fd07d407f721066c87e2657c718df36b223ebae7966168c8806",
+      "path": "docs/manuscript_p3/work/P3_MANUSCRIPT_BLUEPRINT_v1.md"
+    },
+    {
+      "git_blob_id": "5d4897797915b9359d6e4e3defeedff770e6b875",
+      "git_blob_sha256": "525111803bf3f32fbb8f5f98ace4b1a38547750875efb840ba74620f9a8e8f90",
+      "path": "docs/manuscript_p3/work/P3_TABLE_FIGURE_EQUATION_PLAN.json"
+    }
+  ]
+}
