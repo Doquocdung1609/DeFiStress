@@ -40,8 +40,26 @@ jobs:
       - run: pnpm build
         working-directory: frontend
 
+  real-rpc-config:
+    runs-on: ubuntu-latest
+    outputs:
+      configured: ${{ steps.check.outputs.configured }}
+    steps:
+      - name: Check whether the Ethereum RPC secret is configured
+        id: check
+        env:
+          ETH_RPC_URL: ${{ secrets.ETH_RPC_URL }}
+        shell: bash
+        run: |
+          if [[ -n "$ETH_RPC_URL" ]]; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+          fi
+
   real-rpc-smoke:
-    if: ${{ secrets.ETH_RPC_URL != '' }}
+    needs: real-rpc-config
+    if: ${{ needs.real-rpc-config.outputs.configured == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
