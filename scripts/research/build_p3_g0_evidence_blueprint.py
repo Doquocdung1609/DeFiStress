@@ -622,7 +622,7 @@ def _catalog_specs() -> list[dict[str, Any]]:
             "type": "BOUNDARY_SCHEMATIC",
             "working_title": "Typed graph extension versus full multilayer contagion",
             "purpose": "Show what the structural graph represents and what it does not implement.",
-            "accepted_claim_ids": ["P2:C26", "P2:C27", "P2:C29"],
+            "accepted_claim_ids": ["P2:C25", "P2:C26", "P2:C27", "P2:C28"],
             "result_ids": [],
             "source_paths": [
                 "sim/network/metrics.py",
@@ -873,7 +873,7 @@ The classifications below prevent a project approximation from being presented a
 |---|---|---|---|---|---|---|
 | P3F01 | Protocol-shaped project implementation | `$HF_i(t)=\\frac{\\sum_j q^C_{ij}P^C_j(t)LT_j}{\\sum_k q^D_{ik}P^D_k(t)}$` | `q`: token quantity; `P`: USD/token; `LT`: ratio; HF dimensionless | `sim/lending/health_factor.py:5`; portfolio implementation `sim/schemas.py:29` | RQ1, RQ3, RQ5, RQ6 | Aave-style aggregate; project cohort has WETH/USDC route plus aggregate other collateral/debt. Oracle policy is separate. |
 | P3F02 | Project route eligibility rule | `$Eligible_i = [HF_i<1]\\land[D^{USDC}_i>0]\\land[C^{WETH}_i>0]$` | Boolean; modeled USDC debt and WETH collateral quantities | `sim/lending/liquidation.py:38` | RQ1, RQ3 | Portfolio HF eligibility is not route eligibility, attempted processing or positive-debt execution. |
-| P3F03 | Protocol-shaped project liquidation mapping | `$q_{repay}=CF(HF,D,C)D^{USDC};\\quad q_{seize}=q_{repay}\\,b/P_{WETH}$` | USDC token, WETH, USD/WETH; `b` is liquidation-bonus multiplier | `sim/lending/liquidation.py:26`, `:38` | RQ3, RQ6 | Close-factor and dust rules are the implemented approximation; not contract-fork execution evidence. |
+| P3F03 | Protocol-shaped project liquidation mapping | `$q_{repay}=CF(HF,D,C)D^{USDC};\\quad q_{seize}=q_{repay}\\,b/P_{WETH}$` | `q_repay`: USDC token; `q_seize`: WETH; `P_WETH`: USD/WETH; `b`: liquidation-bonus multiplier. Dimensional equality uses the baseline convention `1 USDC token = 1 USD`. | `sim/lending/liquidation.py:26`, `:38`; scoped limitation `P2:C35` | RQ3, RQ6 | Verbatim project approximation: close-factor and dust rules are implemented, but the seize mapping omits an explicit `P_USDC/USD` factor. It is not a general USDC-depeg execution identity or contract-fork evidence and is not selected among the eight Work manuscript equations. |
 | P3F04 | Project-specific liquidator decision | `$\\Pi=Q_{USDC}^{out}-q_{repay}-Gas-Funding-Risk$`; execute if eligible, within capital/capacity and `$\\Pi>\\Pi_{min}$` | USDC-equivalent modeled quantities | `sim/agents/liquidator.py:33` | RQ3 | One representative liquidator, fixed cost/risk rules, no capital recycling or competitive bot market. |
 | P3F05 | Uniswap V3 identity used by the project | `$\\sqrt{P}_{X96}=2^{96}\\sqrt{10^{d_1-d_0}/P_{WETH}}$`; `$tick=\\lfloor\\log_{1.0001}((\\sqrt{P}_{X96}/2^{96})^2)\\rfloor$` | `P`: USDC/WETH; token decimals; tick integer | `sim/dex/uniswap_v3.py:26`, `:35` | RQ2, RQ4 | Token ordering is USDC token0/WETH token1. Tick rounding is the project implementation. |
 | P3F06 | Project swap calculation across initialized ticks | `$\\Delta y=L(\\sqrt{P_b}-\\sqrt{P_a});\\quad \\Delta x=L(1/\\sqrt{P_a}-1/\\sqrt{P_b})$` | raw token1 in and token0 out; active liquidity `L` | `sim/dex/uniswap_v3.py:77` | RQ2, RQ4 | Applied piecewise with fee and liquidityNet tick crossing; quotes are model outputs, not funded Mainnet swaps. |

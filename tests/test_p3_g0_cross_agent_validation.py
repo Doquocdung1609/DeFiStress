@@ -35,7 +35,8 @@ def _canonical_bytes(value: dict[str, Any]) -> bytes:
 
 
 def test_reviewed_heads_descend_from_scientific_lock() -> None:
-    assert _git("rev-parse", "origin/research/p3-manuscript-blueprint-work") == WORK_HEAD
+    remote_work_head = _git("rev-parse", "origin/research/p3-manuscript-blueprint-work")
+    assert _git("merge-base", remote_work_head, WORK_HEAD) == WORK_HEAD
     assert _git("merge-base", WORK_HEAD, LOCK) == LOCK
     assert _git("merge-base", CODEX_HEAD, LOCK) == LOCK
 

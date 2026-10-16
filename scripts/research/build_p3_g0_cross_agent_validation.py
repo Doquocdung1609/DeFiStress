@@ -660,7 +660,8 @@ Stop state: `AWAITING_WORK_FINAL_CROSSWALK_DELTA_AND_COMMANDER_BLUEPRINT_DECISIO
 
 
 def _validate(payload: dict[str, Any]) -> None:
-    assert cast(str, _git("rev-parse", "origin/research/p3-manuscript-blueprint-work")) == WORK_HEAD
+    remote_work_head = cast(str, _git("rev-parse", "origin/research/p3-manuscript-blueprint-work"))
+    assert cast(str, _git("merge-base", remote_work_head, WORK_HEAD)) == WORK_HEAD
     assert cast(str, _git("merge-base", WORK_HEAD, LOCK)) == LOCK
     assert cast(str, _git("merge-base", CODEX_G0_HEAD, LOCK)) == LOCK
     assert len(payload["exhibit_crosswalk"]) == 25

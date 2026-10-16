@@ -5,7 +5,7 @@
     "Display transformations may not create a new estimated finding."
   ],
   "output_provenance": {
-    "content_sha256": "7964588b6c1a0df6184dfd7be684072d74ada58f302cd0ea9f884d6a6e355101",
+    "content_sha256": "6ef46d64bcf73678e41834caee97523202e96640aedd543766235555daab46f1",
     "content_sha256_domain": "UTF-8 canonical JSON with output_provenance.content_sha256 omitted"
   },
   "records": [
@@ -503,9 +503,10 @@
     },
     {
       "accepted_claim_ids": [
+        "P2:C25",
         "P2:C26",
         "P2:C27",
-        "P2:C29"
+        "P2:C28"
       ],
       "caption_requirement": "Do not label any metric as DebtRank or causal contagion.",
       "commander_approval_state": "PENDING",

@@ -86,6 +86,20 @@ def test_catalog_claims_results_and_sources_resolve_without_disallowed_claims() 
         assert exhibit["proposed_chapter"] == "WORK_TO_ASSIGN_AFTER_BLUEPRINT"
         assert exhibit["commander_approval_state"] == "PENDING"
 
+    network = next(row for row in catalog["records"] if row["exhibit_id"] == "P3X:NETWORK_EXTENSION_BOUNDARY")
+    assert network["accepted_claim_ids"] == ["P2:C25", "P2:C26", "P2:C27", "P2:C28"]
+    assert "P2:C29" not in network["accepted_claim_ids"]
+
+
+def test_p3f03_keeps_scoped_baseline_unit_limitation() -> None:
+    formula = (DOC_ROOT / "P3_FORMULA_AUDIT_PLAN.md").read_text(encoding="utf-8")
+    row = next(line for line in formula.splitlines() if line.startswith("| P3F03 |"))
+    assert "1 USDC token = 1 USD" in row
+    assert "omits an explicit `P_USDC/USD` factor" in row
+    assert "not a general USDC-depeg execution identity" in row
+    assert "not selected among the eight Work manuscript equations" in row
+    assert "P2:C35" in row
+
 
 def test_six_rq_order_and_limitations_are_locked() -> None:
     matrix = _load(REGISTRY_ROOT / "six_rq_accepted_claims_matrix.json")["research_questions"]
