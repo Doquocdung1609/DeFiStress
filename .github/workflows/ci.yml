@@ -19,7 +19,8 @@ jobs:
           cache: pip
       - run: python -m venv .venv
       - name: Install the hashed Windows target environment
-        run: .\.venv\Scripts\python.exe -m pip install --require-hashes --only-binary=:all: -r docs/research_v2/phase00/g1/requirements-windows-py312.lock.txt
+        run: |
+          .\.venv\Scripts\python.exe -m pip install --require-hashes --only-binary=:all: -r docs/research_v2/phase00/g1/requirements-windows-py312.lock.txt
       - name: Provision original per-path LF and CRLF checkout domains
         run: .\.venv\Scripts\python.exe docs/research_v2/phase00/g1/collect_evidence.py checkout --output "$env:RUNNER_TEMP/v1-g1-evidence"
       - name: Collect exact Git bytes and generator history
