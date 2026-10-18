@@ -1,0 +1,30 @@
+name: V1 scientific baseline release finalization
+on:
+  push:
+    branches: [release/v1-scientific-baseline-finalization]
+    paths:
+      - .github/workflows/v1-release-finalize.yml
+      - docs/research_v2/phase00/release/**
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: v1-scientific-baseline-release
+  cancel-in-progress: false
+jobs:
+  finalize-v1-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Verify exact approved source and publish immutable annotated tag
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python docs/research_v2/phase00/release/finalize_release.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v1-release-receipt
+          path: V1_RELEASE_RECEIPT.json
+          if-no-files-found: error
