@@ -24,15 +24,20 @@ jobs:
       - name: Provision original per-path LF and CRLF checkout domains
         run: .\.venv\Scripts\python.exe docs/research_v2/phase00/g1/collect_evidence.py checkout --output "$env:RUNNER_TEMP/v1-g1-evidence"
       - name: Collect exact Git bytes and generator history
+        if: always()
         run: .\.venv\Scripts\python.exe docs/research_v2/phase00/g1/collect_evidence.py collect --output "$env:RUNNER_TEMP/v1-g1-evidence"
       - name: Provision byte-exact historical DOCX inputs
+        if: always()
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Force C:/Users/Admin/Downloads | Out-Null
           Copy-Item docs/research_v2/phase00/g1/legacy_docx_inputs/*.docx C:/Users/Admin/Downloads/
-      - run: .\.venv\Scripts\ruff.exe check backend sim tests scripts
-      - run: .\.venv\Scripts\mypy.exe sim
-      - run: .\.venv\Scripts\python.exe -m pytest --junitxml="$env:RUNNER_TEMP/v1-g1-evidence/full-pytest.xml"
+      - if: always()
+        run: .\.venv\Scripts\ruff.exe check backend sim tests scripts
+      - if: always()
+        run: .\.venv\Scripts\mypy.exe sim
+      - if: always()
+        run: .\.venv\Scripts\python.exe -m pytest --junitxml="$env:RUNNER_TEMP/v1-g1-evidence/full-pytest.xml"
       - name: Resolve hashed environment and validate a fresh install
         if: always()
         run: .\.venv\Scripts\python.exe docs/research_v2/phase00/g1/collect_evidence.py environment --output "$env:RUNNER_TEMP/v1-g1-evidence"

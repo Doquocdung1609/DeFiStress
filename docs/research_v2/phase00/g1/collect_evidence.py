@@ -210,6 +210,13 @@ def checkout(out: Path) -> None:
     write(out / 'checkout-byte-verification.json', materialized)
     # Refresh stat metadata only; never stage, suppress or assume-unchanged a source file.
     index_before = git('write-tree').decode().strip()
+    if index_before != git('rev-parse', 'HEAD^{tree}').decode().strip():
+        raise ValueError('Refuse to refresh an index containing staged content changes')
+    # Re-read the SAME tree to invalidate stale stat/EOL extension metadata.
+    # No source object is added/replaced and no working file is hidden from Git.
+    run(['git', 'read-tree', 'HEAD'])
+    if git('write-tree').decode().strip() != index_before:
+        raise ValueError('Index tree changed during same-tree metadata reset')
     # Force an exact content comparison before trusting Windows cached stat/EOL status.
     run(['git', 'diff', '--exit-code', '--'])
     run(['git', 'diff', '--cached', '--exit-code', '--'])
