@@ -186,7 +186,7 @@ def checkout(out: Path) -> None:
     attr = ['* text=auto eol=crlf', '*.docx -text', '*.png -text', '*.gz -text', '*.zip -text']
     for path, values in sorted(constraints.items()):
         domain = next(iter(values))
-        attr.append(f'"{path}" -text' if domain == 'binary' else f'"{path}" text eol={domain}')
+        attr.append(f'"{path}" -text' if domain in ['binary', 'lf'] else f'"{path}" text eol=crlf')
     info = Path(git('rev-parse', '--git-path', 'info/attributes').decode().strip())
     info.parent.mkdir(parents=True, exist_ok=True)
     info.write_text('\n'.join(attr) + '\n', encoding='utf-8', newline='\n')
@@ -206,7 +206,17 @@ def checkout(out: Path) -> None:
         materialized.append({'path': path, 'domain': domain, 'checkout_sha256': digest(actual_bytes),
                              'git_bytes_sha256': digest(raw), 'size_bytes': len(actual_bytes)})
     write(out / 'checkout-byte-verification.json', materialized)
+    # Refresh stat metadata only; never stage, suppress or assume-unchanged a source file.
+    index_before = git('write-tree').decode().strip()
+    subprocess.run(['git', 'update-index', '--refresh'], check=False, capture_output=True)
+    if git('write-tree').decode().strip() != index_before:
+        raise ValueError('Index content changed during stat refresh')
     status = git('status', '--porcelain', '--untracked-files=no').decode().strip()
+    if status:
+        write(out / 'checkout-status-diagnostics.json', {
+            'status': status, 'index_tree': index_before,
+            'attributes': git('check-attr', '--all', '--', 'scripts/research/build_final_accepted_claims_v1.py').decode(),
+            'diff': git('diff', '--', 'scripts/research/build_final_accepted_claims_v1.py').decode(errors='replace')})
     if status:
         raise ValueError(f'Checkout normalization changed tracked source content: {status}')
     write(out / 'checkout-policy.json', {'head': head, 'method': 'untracked .git/info/attributes; Git checkout-index',
