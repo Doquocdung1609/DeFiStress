@@ -1,0 +1,92 @@
+{
+  "schema_version": "defistress-v2-phase01a-sample-v1",
+  "status": "NUMBER_SELECTION_LOCKED_HASH_BINDING_PENDING",
+  "v1_release_commit": "2b505813d35d3cf6f4414585f9dd50f3b4281ac2",
+  "chain_id": 1,
+  "selection_rule": "V1 canonical block and two preceding fixed offsets of 7200 blocks; USDC/WETH pools at fee tiers3000 and500, chosen before any V2 stress analysis.",
+  "blocks": [
+    {
+      "id": "B0",
+      "number": 26045352,
+      "expected_hash": "0x4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+      "reason": "V1 canonical baseline"
+    },
+    {
+      "id": "B1",
+      "number": 26038152,
+      "expected_hash": null,
+      "reason": "Fixed baseline minus7200 blocks"
+    },
+    {
+      "id": "B2",
+      "number": 26030952,
+      "expected_hash": null,
+      "reason": "Fixed baseline minus14400 blocks"
+    }
+  ],
+  "pools": [
+    {
+      "id": "P3000",
+      "chain_id": 1,
+      "address": "0x8ad599c3A0ff1De082011EFDDc58f1908eb6e6D8",
+      "fee": 3000,
+      "fee_unit": "millionths",
+      "reason": "V1 modeled venue retained"
+    },
+    {
+      "id": "P500",
+      "chain_id": 1,
+      "address": "0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+      "fee": 500,
+      "fee_unit": "millionths",
+      "reason": "Same pair, lower fee-tier contrast; not selected by stress outcome"
+    }
+  ],
+  "tokens": {
+    "USDC": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "decimals": 6
+    },
+    "WETH": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "decimals": 18
+    }
+  },
+  "factory": "0x1F98431c8aD98523631AE4a59f267346ea31F984",
+  "aave_pool": "0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2",
+  "borrowers": [
+    "0x000000000000bb1b11e5ac8099e92e366b64c133",
+    "0x00000015e180b01c40b881e10774bc784bb6f4eb",
+    "0x000000b9054e79892a1097f4e02e7aa42de22c0c"
+  ],
+  "borrower_rule": "First three distinct raw addresses sorted lexicographically from V1 verified-borrower snapshot; availability sentinels only, not a representative V2 cohort or new population discovery.",
+  "baseline_locator": "data/processed/mainnet/aave_uniswap_snapshot_26045352.json",
+  "baseline_git_blob": "18234390e54f353ab7fd7c85ad0a86b46c34937b",
+  "providers": [
+    {
+      "id": "publicnode",
+      "url": "https://ethereum-rpc.publicnode.com",
+      "documentation": "https://ethereum.publicnode.com/"
+    },
+    {
+      "id": "drpc",
+      "url": "https://eth.drpc.org",
+      "documentation": "https://drpc.org/docs/ethereum-api"
+    }
+  ],
+  "acceptance": [
+    "Chain ID1; finalized block identity equals registration",
+    "Factory, tokens, fee and decimals agree at the same historical block",
+    "Two independent fetch passes produce identical canonical deterministic content hash",
+    "Historical pool->addresses provider->oracle configuration and asset prices traced at pinned block",
+    "All missing fields quarantined as null/unavailable, never zero or forward-filled"
+  ],
+  "missing_data_rule": "Quarantine unavailable/mismatched data; retain successful independent components with component statuses; no latest/spot/forward-fill replacement.",
+  "tick_scope": {
+    "word_radius": 1,
+    "status": "BOUNDED_WINDOW_ONLY",
+    "not_full_pool_tick_reconstruction": true
+  },
+  "event_scope": "Exact registered blocks only; no assertion of exhaustive historical borrower/event census.",
+  "stress_analysis_performed": false
+}
