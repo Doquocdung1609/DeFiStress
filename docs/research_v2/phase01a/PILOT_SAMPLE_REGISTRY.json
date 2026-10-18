@@ -1,6 +1,6 @@
 {
   "schema_version": "defistress-v2-phase01a-sample-v1",
-  "status": "NUMBER_SELECTION_LOCKED_HASH_BINDING_PENDING",
+  "status": "REGISTERED_HASHES_LOCKED",
   "v1_release_commit": "2b505813d35d3cf6f4414585f9dd50f3b4281ac2",
   "chain_id": 1,
   "selection_rule": "V1 canonical block and two preceding fixed offsets of 7200 blocks; USDC/WETH pools at fee tiers3000 and500, chosen before any V2 stress analysis.",
@@ -9,19 +9,25 @@
       "id": "B0",
       "number": 26045352,
       "expected_hash": "0x4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
-      "reason": "V1 canonical baseline"
+      "reason": "V1 canonical baseline",
+      "timestamp_unix": 1790229035,
+      "identity_verification": "MATCHED_TWO_PUBLIC_RPC_ENDPOINTS"
     },
     {
       "id": "B1",
       "number": 26038152,
-      "expected_hash": null,
-      "reason": "Fixed baseline minus7200 blocks"
+      "expected_hash": "0xbb108203815f257e9f9b023f92a30e67d946799355ceffc4bef0e0e16a1e87bd",
+      "reason": "Fixed baseline minus7200 blocks",
+      "timestamp_unix": 1790141987,
+      "identity_verification": "MATCHED_TWO_PUBLIC_RPC_ENDPOINTS"
     },
     {
       "id": "B2",
       "number": 26030952,
-      "expected_hash": null,
-      "reason": "Fixed baseline minus14400 blocks"
+      "expected_hash": "0xeeb12db7f31e86507bb4be7a1a2953d19c11165c99a75ebc7aa589d65d0b9625",
+      "reason": "Fixed baseline minus14400 blocks",
+      "timestamp_unix": 1790055011,
+      "identity_verification": "MATCHED_TWO_PUBLIC_RPC_ENDPOINTS"
     }
   ],
   "pools": [
@@ -83,10 +89,20 @@
   ],
   "missing_data_rule": "Quarantine unavailable/mismatched data; retain successful independent components with component statuses; no latest/spot/forward-fill replacement.",
   "tick_scope": {
-    "word_radius": 1,
-    "status": "BOUNDED_WINDOW_ONLY",
+    "max_tick_reads": 8,
+    "bitmap_words": 1,
+    "selection": "Eight initialized ticks nearest current tick within current bitmap word; deterministic tie by tick number",
+    "status": "LOCAL_TICK_SAMPLE_ONLY",
     "not_full_pool_tick_reconstruction": true
   },
   "event_scope": "Exact registered blocks only; no assertion of exhaustive historical borrower/event census.",
-  "stress_analysis_performed": false
+  "stress_analysis_performed": false,
+  "initial_number_registration_commit": "79ca47ee5459bc602f24553d3eb519216bec10dd",
+  "header_discovery": {
+    "commit": "b678ed673316a0646d3e66cd3944b927cd48ffa3",
+    "run_id": "39148862610",
+    "artifact_id": 12144566750,
+    "artifact_zip_sha256": "6e8a164818c2328cfec1c0c49f9ed62bc5b9af333d9febb0c48914c31af5a151",
+    "source_scope": "Header agreement, not independent consensus proof"
+  }
 }

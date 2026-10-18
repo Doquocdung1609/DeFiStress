@@ -27,6 +27,8 @@ jobs:
           python -m pip install --require-hashes --only-binary=:all: -r docs/research_v2/phase00/g1/requirements-windows-py312.lock.txt
       - name: Execute preregistered read-only source feasibility
         run: python docs/research_v2/phase01a/pilot.py --registry docs/research_v2/phase01a/PILOT_SAMPLE_REGISTRY.json --output "$env:RUNNER_TEMP/phase01a"
+      - name: Validate ingestion integrity boundaries
+        run: python -m pytest tests/test_phase01a_pilot.py --junitxml="$env:RUNNER_TEMP/phase01a/pilot-tests.xml"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
