@@ -1,6 +1,6 @@
 {
   "schema_version": "defistress-v1-release-candidate-phase00-v1",
-  "status": "DRAFT_RELEASE_MANIFEST_NOT_FROZEN",
+  "status": "DRAFT_RELEASE_MANIFEST_G1_UPDATED_NOT_RELEASED",
   "candidate_commit": "ee9b372823e5c636238efe73a4268a5439cf1f80",
   "candidate_tree": "6f918df83cdf8ce6affc7fce9e44728feb8a67f6",
   "scientific_lock": "3f6e5302483681209e2408531eb5a15389f9fded",
@@ -10,7 +10,7 @@
   "release_created": false,
   "commander_freeze_approval": "PENDING",
   "g0_status": "COMPLETE_WITH_FINDINGS",
-  "g1_status": "PACKAGE_PREPARED_FREEZE_BLOCKED",
+  "g1_status": "EVIDENCE_PASS_AWAITING_COMMANDER",
   "scope": "Candidate tracked Git blobs. New Phase00 files excluded to avoid circular self-hashing.",
   "hash_semantics": {
     "git_blob_sha": "SHA1 of Git blob header plus exact bytes",
@@ -7449,6 +7449,13 @@
       "redis": "redis:8-alpine",
       "node": "node:24-alpine",
       "image_digests_verified": false
+    },
+    "g1_target_lock": {
+      "path": "docs/research_v2/phase00/g1/requirements-windows-py312.lock.txt",
+      "sha256": "edc53ad79a7b9924bd8a9c889e053547dc620a9b1482a3551b150fcd1e08f4ff",
+      "tested_new_target": true,
+      "historical_environment_recovered": false,
+      "container_used": false
     }
   },
   "tests_run_now": {
@@ -7562,34 +7569,42 @@
       "id": "REL-01",
       "severity": "RELEASE_GATE",
       "path": ".github/workflows/ci.yml:real-rpc-smoke.if",
-      "status": "FAIL_AT_CANDIDATE",
+      "status": "PASS_FULL_SUITE_NO_DESELECTION",
       "evidence": "https://github.com/Doquocdung1609/DeFiStress/actions/runs/38994362948",
       "finding": "Candidate workflow failure, zero jobs. Direct secrets reference in job if is consistent with known scheduling defect; PR19 repairs it but remains open.",
-      "repair_criterion": "Commander reviews CI-only PR19, validates intended baseline commit with required jobs running; if candidate changes, issue a new explicit anchor. Do not transfer branch-only PASS to ee9b372."
+      "repair_criterion": "Commander reviews CI-only PR19, validates intended baseline commit with required jobs running; if candidate changes, issue a new explicit anchor. Do not transfer branch-only PASS to ee9b372.",
+      "original_phase00_status": "FAIL_AT_CANDIDATE",
+      "closure_evidence": "docs/research_v2/phase00/g1/G1_FINAL_EVIDENCE_REPORT.md"
     },
     {
       "id": "REL-02",
       "severity": "REPRODUCTION_GATE",
       "path": "pyproject.toml; backend/Dockerfile; docker-compose.yml",
-      "status": "NOT_LOCKED",
+      "status": "PASS_NEW_WINDOWS_TARGET",
       "finding": "Python dependency ranges, no resolver lock/full original pip environment; container tags not immutable digests. Current audit environment lacks18 declared base/dev packages, including pytest.",
-      "repair_criterion": "Capture tested full resolved environment from the scientific run or validate a new pinned environment in an isolated output directory; retain original artifacts. Record package hashes, OS and image digests. No fabricated historical environment."
+      "repair_criterion": "Capture tested full resolved environment from the scientific run or validate a new pinned environment in an isolated output directory; retain original artifacts. Record package hashes, OS and image digests. No fabricated historical environment.",
+      "original_phase00_status": "NOT_LOCKED",
+      "closure_evidence": "docs/research_v2/phase00/g1/G1_FINAL_EVIDENCE_REPORT.md"
     },
     {
       "id": "REL-03",
       "severity": "PROVENANCE_GATE",
       "path": "data/processed/research_final/scientific_integration_v1/manifest.json:implementation_hashes.scripts/research/build_scientific_integration_v1.py",
-      "status": "DECLARED_HASH_MISMATCH",
+      "status": "RESOLVED_HISTORICAL_GENERATOR_IDENTIFIED",
       "finding": "Declared 5a1bbd87ccf065763c3f82d921b977dadb21c520d073e5a2f69498f42ed094a2 differs from current LF9e88de4f4d17dc43f9c09183e9c93bce639ebdde4ea059eaa7bbed81788d5159 and CRLF81e5d1dadaac1533b818409a0e0f0e13dc6c8b7ad9a3469033cf43243fa7e686. c113fc1 source builder also does not match.",
-      "repair_criterion": "Identify exact historical generator object matching the declaration or publish a Commander-reviewed non-destructive provenance erratum mapping actual builder/version/output. Do not rewrite Frozen/Addendum; no conclusion of numerical corruption from this finding alone."
+      "repair_criterion": "Identify exact historical generator object matching the declaration or publish a Commander-reviewed non-destructive provenance erratum mapping actual builder/version/output. Do not rewrite Frozen/Addendum; no conclusion of numerical corruption from this finding alone.",
+      "original_phase00_status": "DECLARED_HASH_MISMATCH",
+      "closure_evidence": "docs/research_v2/phase00/g1/G1_FINAL_EVIDENCE_REPORT.md"
     },
     {
       "id": "REL-04",
       "severity": "CHECKSUM_COVERAGE_GATE",
       "path": "Oracle borrower_level_evidence.csv; Integration eligible_vs_executed_audit.csv; Level3 severe10000/5000 checkpoints and raw swap archives",
-      "status": "GIT_OBJECT_IDENTITY_ONLY",
+      "status": "PASS_COMPLETE_BYTES_SCOPED",
       "finding": "Paths/blob IDs present; critical large file SHA256 not independently observed in this task. Raw records and full checkpoint recreation not audited.",
-      "repair_criterion": "Read critical blobs from an authorized complete clone/archive, record exact byte SHA256 and compare declared hash domains without simulation; preserve unverified row-level/replay limitations separately."
+      "repair_criterion": "Read critical blobs from an authorized complete clone/archive, record exact byte SHA256 and compare declared hash domains without simulation; preserve unverified row-level/replay limitations separately.",
+      "original_phase00_status": "GIT_OBJECT_IDENTITY_ONLY",
+      "closure_evidence": "docs/research_v2/phase00/g1/G1_FINAL_EVIDENCE_REPORT.md"
     }
   ],
   "scientific_limitations": [
@@ -7613,5 +7628,304 @@
     "new literature",
     "Phase01 implementation"
   ],
-  "audit_date_utc": "2026-10-18"
+  "audit_date_utc": "2026-10-18",
+  "g1_completion": {
+    "schema_version": "v1-g1-completion-v1",
+    "target_status": "V1_RELEASE_G1_FINAL_EVIDENCE_READY_FOR_COMMANDER_REVIEW",
+    "reviewed_run": {
+      "id": 39125232234,
+      "head_sha": "aaa010889e857c7042c3a209c88b8e8de1c8d6cc",
+      "conclusion": "success",
+      "status": "completed",
+      "url": "https://github.com/Doquocdung1609/DeFiStress/actions/runs/39125232234",
+      "artifact": {
+        "id": 12135882756,
+        "zip_sha256": "f7949f3281595afca5111a34ebd92bb991681246b1d495ad7078c9c600b526b4"
+      },
+      "frontend_tests": {
+        "passed": 21,
+        "failed": 0,
+        "skipped": 0,
+        "node": "v24.21.0",
+        "pnpm": "11.19.0"
+      },
+      "jobs": [
+        {
+          "id": 117668839152,
+          "name": "frontend",
+          "status": "completed",
+          "conclusion": "success",
+          "run_id": 39125232234,
+          "logs_url": null,
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2
+            },
+            {
+              "name": "Run pnpm/action-setup@v4",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3
+            },
+            {
+              "name": "Run actions/setup-node@v4",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4
+            },
+            {
+              "name": "Run pnpm install --frozen-lockfile",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 5
+            },
+            {
+              "name": "Run pnpm test",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 6
+            },
+            {
+              "name": "Run pnpm lint",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 7
+            },
+            {
+              "name": "Run pnpm build",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 8
+            },
+            {
+              "name": "Post Run actions/setup-node@v4",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 14
+            },
+            {
+              "name": "Post Run pnpm/action-setup@v4",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 15
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 16
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 17
+            }
+          ]
+        },
+        {
+          "id": 117668839361,
+          "name": "real-rpc-config",
+          "status": "completed",
+          "conclusion": "success",
+          "run_id": 39125232234,
+          "logs_url": null,
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1
+            },
+            {
+              "name": "Check RPC configuration without disclosing secret",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3
+            }
+          ]
+        },
+        {
+          "id": 117668839407,
+          "name": "backend-and-simulation",
+          "status": "completed",
+          "conclusion": "success",
+          "run_id": 39125232234,
+          "logs_url": null,
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3
+            },
+            {
+              "name": "Run python -m venv .venv",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4
+            },
+            {
+              "name": "Install the hashed Windows target environment",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 5
+            },
+            {
+              "name": "Provision original per-path LF and CRLF checkout domains",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 6
+            },
+            {
+              "name": "Collect exact Git bytes and generator history",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 7
+            },
+            {
+              "name": "Provision byte-exact historical DOCX inputs",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 8
+            },
+            {
+              "name": "Run .\\.venv\\Scripts\\ruff.exe check backend sim tests scripts",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 9
+            },
+            {
+              "name": "Run .\\.venv\\Scripts\\mypy.exe sim",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 10
+            },
+            {
+              "name": "Run .\\.venv\\Scripts\\python.exe -m pytest --junitxml=\"$env:RUNNER_TEMP/v1-g1-evidence/full-pytest.xml\"",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 11
+            },
+            {
+              "name": "Resolve hashed environment and validate a fresh install",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 12
+            },
+            {
+              "name": "Preserve scientific worktree guard",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 13
+            },
+            {
+              "name": "Upload release evidence even when a scientific test fails",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 14
+            },
+            {
+              "name": "Run .\\.venv\\Scripts\\python.exe scripts/run_demo.py",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 15
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 29
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 30
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 31
+            }
+          ]
+        },
+        {
+          "id": 117668862597,
+          "name": "real-rpc-smoke",
+          "status": "completed",
+          "conclusion": "skipped",
+          "run_id": 39125232234,
+          "logs_url": null,
+          "steps": null
+        }
+      ]
+    },
+    "pytest": {
+      "tests": 226,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 226
+    },
+    "verdicts": {
+      "REL-01": "PASS_FULL_SUITE_NO_DESELECTION",
+      "REL-02": "PASS_NEW_WINDOWS_TARGET",
+      "REL-03": "RESOLVED_HISTORICAL_GENERATOR_IDENTIFIED",
+      "REL-04": "PASS_COMPLETE_BYTES_SCOPED"
+    },
+    "all_release_evidence_gates_pass": true,
+    "original_run": {
+      "id": 39122762384,
+      "head": "e3f10b0466e131ca0bac0e9c13e0fd2e2305c76b",
+      "pytest": {
+        "passed": 217,
+        "failures": 9,
+        "skipped": 0,
+        "tests": 226
+      }
+    },
+    "pytest_deselected": 0,
+    "test_sources_modified": false,
+    "scientific_git_blobs_modified": false,
+    "tag_created": false,
+    "release_created": false,
+    "merge_performed": false,
+    "phase01_started": false,
+    "scope_notes": [
+      "New target runtime, not recovered historical environment",
+      "Native Windows VM; no Docker used/digest claimed",
+      "Full bytes read by authored collector in CI; not independent row-level scientific reconstruction",
+      "All original tests/assertions retained; fixture demo remains existing CI behavior, no new research MC"
+    ]
+  },
+  "counts_scope": "Original Phase00 snapshot at candidate_commit; see g1_completion for subsequent scoped evidence"
 }

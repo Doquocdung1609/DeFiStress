@@ -1,3 +1,5 @@
+> G1 follow-up: xem [G1 final evidence](g1/G1_FINAL_EVIDENCE_REPORT.md) và `g1/G1_FINAL_RESULT.json` tại PR26. Các status/coverage bên dưới là snapshot Phase00 trước follow-up, không phải verdict release hiện tại.
+
 # Phase 00 — Commander Handoff
 
 **Task status:** `PHASE00_READY_FOR_COMMANDER_REVIEW`.

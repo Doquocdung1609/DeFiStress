@@ -6,26 +6,58 @@ on:
 
 jobs:
   backend-and-simulation:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
+    env:
+      PYTHONPATH: ${{ github.workspace }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "3.12.10"
           cache: pip
-      - run: pip install -e '.[dev]'
-      - run: ruff check backend sim tests scripts
-      - run: mypy sim
-      - run: pytest
-      - run: python scripts/run_demo.py
+      - run: python -m venv .venv
+      - name: Install the hashed Windows target environment
+        run: |
+          .\.venv\Scripts\python.exe -m pip install --require-hashes --only-binary=:all: -r docs/research_v2/phase00/g1/requirements-windows-py312.lock.txt
+      - name: Provision original per-path LF and CRLF checkout domains
+        run: .\.venv\Scripts\python.exe docs/research_v2/phase00/g1/collect_evidence.py checkout --output "$env:RUNNER_TEMP/v1-g1-evidence"
+      - name: Collect exact Git bytes and generator history
+        if: always()
+        run: .\.venv\Scripts\python.exe docs/research_v2/phase00/g1/collect_evidence.py collect --output "$env:RUNNER_TEMP/v1-g1-evidence"
+      - name: Provision byte-exact historical DOCX inputs
+        if: always()
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force C:/Users/Admin/Downloads | Out-Null
+          Copy-Item docs/research_v2/phase00/g1/legacy_docx_inputs/*.docx C:/Users/Admin/Downloads/
+      - if: always()
+        run: .\.venv\Scripts\ruff.exe check backend sim tests scripts
+      - if: always()
+        run: .\.venv\Scripts\mypy.exe sim
+      - if: always()
+        run: .\.venv\Scripts\python.exe -m pytest --junitxml="$env:RUNNER_TEMP/v1-g1-evidence/full-pytest.xml"
+      - name: Resolve hashed environment and validate a fresh install
+        if: always()
+        run: .\.venv\Scripts\python.exe docs/research_v2/phase00/g1/collect_evidence.py environment --output "$env:RUNNER_TEMP/v1-g1-evidence"
+      - name: Preserve scientific worktree guard
+        if: always()
+        run: git diff --exit-code -- sim backend data/processed/research_final docs/research_final docs/manuscript_p3
+      - name: Upload release evidence even when a scientific test fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v1-g1-evidence-${{ github.run_id }}
+          path: ${{ runner.temp }}/v1-g1-evidence/
+          if-no-files-found: error
+      - run: .\.venv\Scripts\python.exe scripts/run_demo.py
 
   frontend:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
-        with:
-          version: 11
       - uses: actions/setup-node@v4
         with:
           node-version: "24"
@@ -40,8 +72,26 @@ jobs:
       - run: pnpm build
         working-directory: frontend
 
+  real-rpc-config:
+    runs-on: ubuntu-latest
+    outputs:
+      configured: ${{ steps.check.outputs.configured }}
+    steps:
+      - name: Check RPC configuration without disclosing secret
+        id: check
+        env:
+          ETH_RPC_URL: ${{ secrets.ETH_RPC_URL }}
+        shell: bash
+        run: |
+          if [[ -n "$ETH_RPC_URL" ]]; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+          fi
+
   real-rpc-smoke:
-    if: ${{ secrets.ETH_RPC_URL != '' }}
+    needs: real-rpc-config
+    if: ${{ needs.real-rpc-config.outputs.configured == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

@@ -1,0 +1,58 @@
+{
+  "declared_sha256": "5a1bbd87ccf065763c3f82d921b977dadb21c520d073e5a2f69498f42ed094a2",
+  "path": "scripts/research/build_scientific_integration_v1.py",
+  "source_commit": "aaa010889e857c7042c3a209c88b8e8de1c8d6cc",
+  "search_scope": "all fetched refs, unique blobs in git log --all -- path",
+  "records": [
+    {
+      "commit": "cebd23a4d1d245436a3520498059be86013da4cd",
+      "git_blob_sha": "cd0c251aacd42b26556a8ab45e0f881ec0f9c1c2",
+      "size_bytes": 72377,
+      "sha256_git_bytes": "9e88de4f4d17dc43f9c09183e9c93bce639ebdde4ea059eaa7bbed81788d5159",
+      "sha256_crlf_representation": "81e5d1dadaac1533b818409a0e0f0e13dc6c8b7ad9a3469033cf43243fa7e686",
+      "matches_declaration": false
+    },
+    {
+      "commit": "a39337780f0e8d3807138a6048aaa1e1d7d9c8c8",
+      "git_blob_sha": "ba55014f33a435b91fdd797eb08616e561b6cd02",
+      "size_bytes": 72333,
+      "sha256_git_bytes": "5a1bbd87ccf065763c3f82d921b977dadb21c520d073e5a2f69498f42ed094a2",
+      "sha256_crlf_representation": "dab41f22bc5b45d8f43db041289033479a44132d102233fa3c321fca7f74abe0",
+      "matches_declaration": true
+    },
+    {
+      "commit": "6c4c55df58aa4e584766f82fdff8e732d5a21cab",
+      "git_blob_sha": "b4a828e3ffcbdf18bfd085c89d3ea0235f752b37",
+      "size_bytes": 70358,
+      "sha256_git_bytes": "578210cade7e8cde5c26faf86c66b9c5c521f0bcbf6acd87476644b412027f05",
+      "sha256_crlf_representation": "e31abc1628f8629f021c4be7e5899d897f1d00786ebc53558f1731471646539d",
+      "matches_declaration": false
+    },
+    {
+      "commit": "b1786c0215444ae616b7b2a97a0aa31d5fdfe18b",
+      "git_blob_sha": "6ef03e7d815ecb353d75ea54e5611737d44e2047",
+      "size_bytes": 70358,
+      "sha256_git_bytes": "4b4758141b18aa12ca41b24d039013e257f7c0ae81dd2e3323e832e055ee7ecf",
+      "sha256_crlf_representation": "900724270b26b279059cd3f78fddc62cfe0cb7f4778ac4918cc629072ce82a5d",
+      "matches_declaration": false
+    },
+    {
+      "commit": "c113fc1ec6dd98ffcc31241c1dbd1a93b20aa193",
+      "git_blob_sha": "ee06689a114c4e07eead7a320cb71dd8cdbb6157",
+      "size_bytes": 68702,
+      "sha256_git_bytes": "3b5feaeb4d85ea2d493a4d3c7b06df139a79d7f52eae9ee23db1883e1d471a7f",
+      "sha256_crlf_representation": "1b4be15bfa5c135811ecdeb9390255264cc27f6003c4ea9377d069e0317f0930",
+      "matches_declaration": false
+    }
+  ],
+  "matching_objects": [
+    {
+      "commit": "a39337780f0e8d3807138a6048aaa1e1d7d9c8c8",
+      "git_blob_sha": "ba55014f33a435b91fdd797eb08616e561b6cd02",
+      "size_bytes": 72333,
+      "sha256_git_bytes": "5a1bbd87ccf065763c3f82d921b977dadb21c520d073e5a2f69498f42ed094a2",
+      "sha256_crlf_representation": "dab41f22bc5b45d8f43db041289033479a44132d102233fa3c321fca7f74abe0",
+      "matches_declaration": true
+    }
+  ]
+}
