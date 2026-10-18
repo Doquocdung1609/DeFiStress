@@ -140,6 +140,8 @@ def collect(out: Path) -> None:
 def checkout(out: Path) -> None:
     """Recreate declared checkout byte domains using Git attributes, never change Git blobs."""
     head = git('rev-parse', 'HEAD').decode().strip()
+    run(['git', 'config', '--local', 'core.autocrlf', 'false'])
+    run(['git', 'config', '--local', 'core.eol', 'lf'])
     constraints = {}
     unresolved = []
     for bundle in ['frozen_v3', 'level3_extension', 'level3_p1_targeted_repair',
@@ -208,7 +210,10 @@ def checkout(out: Path) -> None:
     write(out / 'checkout-byte-verification.json', materialized)
     # Refresh stat metadata only; never stage, suppress or assume-unchanged a source file.
     index_before = git('write-tree').decode().strip()
-    subprocess.run(['git', 'update-index', '--refresh'], check=False, capture_output=True)
+    # Force an exact content comparison before trusting Windows cached stat/EOL status.
+    run(['git', 'diff', '--exit-code', '--'])
+    run(['git', 'diff', '--cached', '--exit-code', '--'])
+    subprocess.run(['git', 'update-index', '--really-refresh'], check=False, capture_output=True)
     if git('write-tree').decode().strip() != index_before:
         raise ValueError('Index content changed during stat refresh')
     status = git('status', '--porcelain', '--untracked-files=no').decode().strip()
