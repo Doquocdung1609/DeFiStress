@@ -7,6 +7,8 @@ on:
 jobs:
   backend-and-simulation:
     runs-on: windows-latest
+    env:
+      PYTHONPATH: ${{ github.workspace }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -16,7 +18,10 @@ jobs:
           python-version: "3.12.10"
           cache: pip
       - run: python -m venv .venv
-      - run: .\.venv\Scripts\python.exe -m pip install -e '.[dev]'
+      - name: Install the hashed Windows target environment
+        run: .\.venv\Scripts\python.exe -m pip install --require-hashes --only-binary=:all: -r docs/research_v2/phase00/g1/requirements-windows-py312.lock.txt
+      - name: Provision original per-path LF and CRLF checkout domains
+        run: .\.venv\Scripts\python.exe docs/research_v2/phase00/g1/collect_evidence.py checkout --output "$env:RUNNER_TEMP/v1-g1-evidence"
       - name: Collect exact Git bytes and generator history
         run: .\.venv\Scripts\python.exe docs/research_v2/phase00/g1/collect_evidence.py collect --output "$env:RUNNER_TEMP/v1-g1-evidence"
       - name: Provision byte-exact historical DOCX inputs
@@ -26,7 +31,7 @@ jobs:
           Copy-Item docs/research_v2/phase00/g1/legacy_docx_inputs/*.docx C:/Users/Admin/Downloads/
       - run: .\.venv\Scripts\ruff.exe check backend sim tests scripts
       - run: .\.venv\Scripts\mypy.exe sim
-      - run: .\.venv\Scripts\pytest.exe --junitxml="$env:RUNNER_TEMP/v1-g1-evidence/full-pytest.xml"
+      - run: .\.venv\Scripts\python.exe -m pytest --junitxml="$env:RUNNER_TEMP/v1-g1-evidence/full-pytest.xml"
       - name: Resolve hashed environment and validate a fresh install
         if: always()
         run: .\.venv\Scripts\python.exe docs/research_v2/phase00/g1/collect_evidence.py environment --output "$env:RUNNER_TEMP/v1-g1-evidence"

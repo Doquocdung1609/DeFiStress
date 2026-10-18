@@ -47,6 +47,7 @@ def collect(out: Path) -> None:
     head = git('rev-parse', 'HEAD').decode().strip()
     # All large tracked files plus complete research bundle families; no row/statistic calculation.
     entries = []
+    current_blobs = {}
     all_entries = git('ls-tree', '-r', '-l', '-z', head).split(b'\0')
     for entry in all_entries:
         if not entry:
@@ -56,6 +57,7 @@ def collect(out: Path) -> None:
         if kind != 'blob':
             continue
         p = path_bytes.decode('utf-8')
+        current_blobs[p] = oid
         selected = int(size) >= 1000000 or p.startswith((
             'data/processed/research_final/frozen_v3/',
             'data/processed/research_final/oracle_transmission_diagnostic_v1/',
@@ -102,11 +104,7 @@ def collect(out: Path) -> None:
         expected = meta.decode().split()[2]
         path = p.decode()
         if path.startswith(('sim/', 'backend/', 'data/processed/research_final/', 'docs/research_final/', 'data/processed/mainnet/')):
-            try:
-                actual = git('rev-parse', f'{head}:{path}').decode().strip()
-                if actual != expected:
-                    changed.append(path)
-            except subprocess.CalledProcessError:
+            if current_blobs.get(path) != expected:
                 changed.append(path)
     write(out / 'source-preservation.json', {'scientific_lock': LOCK, 'head': head, 'changed_paths': changed})
     # Diagnose old manifest declarations without mutating original files.
@@ -133,6 +131,68 @@ def collect(out: Path) -> None:
     fixtures = Path('docs/research_v2/phase00/g1/legacy_docx_inputs')
     write(out / 'legacy-docx-inputs.json', [{'path': str(p), 'sha256': digest(p.read_bytes()),
           'size_bytes': p.stat().st_size} for p in sorted(fixtures.glob('*.docx'))])
+
+
+def checkout(out: Path) -> None:
+    """Recreate declared checkout byte domains using Git attributes, never change Git blobs."""
+    head = git('rev-parse', 'HEAD').decode().strip()
+    constraints = {}
+    unresolved = []
+    for bundle in ['frozen_v3', 'level3_extension', 'level3_p1_targeted_repair',
+                   'oracle_transmission_diagnostic_v1', 'scientific_integration_v1', 'final_accepted_claims_v1']:
+        root = f'data/processed/research_final/{bundle}'
+        m = json.loads(git('show', f'{head}:{root}/manifest.json'))
+        for field in ['artifact_hashes', 'report_hashes', 'implementation_hashes', 'code_hashes']:
+            for path, expected in m.get(field, {}).items():
+                if not isinstance(expected, str):
+                    continue
+                full = f'{root}/{path}' if field == 'artifact_hashes' else path
+                b = git('show', f'{head}:{full}')
+                text = Path(full).suffix.lower() in ['.json', '.csv', '.md', '.py', '.txt', '.jsonl']
+                if not text:
+                    domain = 'binary' if digest(b) == expected else None
+                else:
+                    lf = b.replace(b'\r\n', b'\n')
+                    domain = 'lf' if digest(lf) == expected else 'crlf' if digest(lf.replace(b'\n', b'\r\n')) == expected else None
+                if domain is None:
+                    unresolved.append({'path': full, 'expected': expected, 'reason': 'not LF/CRLF representation of current Git object'})
+                    continue
+                constraints.setdefault(full, set()).add(domain)
+    # G0 inventory records the original per-path checkout bytes as well as Git LF bytes.
+    inventory = json.loads(git('show', f'{head}:artifacts/manuscript_p3/P3_LOCKED_EVIDENCE_INVENTORY.json'))
+    for record in inventory['records']:
+        full = record['original_artifact_path']
+        expected = record.get('checksums', {}).get('checkout_sha256')
+        if not expected:
+            continue
+        b = git('show', f'{head}:{full}')
+        text = Path(full).suffix.lower() in ['.json', '.csv', '.md', '.py', '.txt', '.jsonl']
+        lf = b.replace(b'\r\n', b'\n')
+        if not text:
+            domain = 'binary' if digest(b) == expected else None
+        else:
+            domain = 'lf' if digest(lf) == expected else 'crlf' if digest(lf.replace(b'\n', b'\r\n')) == expected else None
+        if domain is None:
+            raise ValueError(f'Cannot restore G0 input checkout bytes: {full}')
+        constraints.setdefault(full, set()).add(domain)
+    conflicts = {p: sorted(v) for p, v in constraints.items() if len(v) > 1}
+    if conflicts:
+        write(out / 'checkout-policy-conflicts.json', conflicts)
+        raise ValueError('Contradictory byte declarations; cannot provision checkout honestly')
+    attr = ['* text=auto eol=crlf', '*.docx -text', '*.png -text', '*.gz -text', '*.zip -text']
+    for path, values in sorted(constraints.items()):
+        domain = next(iter(values))
+        attr.append(f'"{path}" -text' if domain == 'binary' else f'"{path}" text eol={domain}')
+    info = Path(git('rev-parse', '--git-path', 'info/attributes').decode().strip())
+    info.parent.mkdir(parents=True, exist_ok=True)
+    info.write_text('\n'.join(attr) + '\n', encoding='utf-8', newline='\n')
+    run(['git', 'checkout-index', '--force', '--all'])
+    status = git('status', '--porcelain', '--untracked-files=no').decode().strip()
+    if status:
+        raise ValueError(f'Checkout normalization changed tracked source content: {status}')
+    write(out / 'checkout-policy.json', {'head': head, 'method': 'untracked .git/info/attributes; Git checkout-index',
+        'tracked_source_diff': status, 'rules': attr, 'unresolved_declarations_not_overridden': unresolved,
+        'interpretation': 'Original declared LF and CRLF byte domains restored per path; assertions unchanged; Git blobs unchanged'})
 
 
 def environment(out: Path) -> None:
@@ -167,6 +227,9 @@ def environment(out: Path) -> None:
     run([str(python), '-m', 'pip', 'check'])
     run([str(python), '-m', 'pytest', '-q', 'sim/tests/test_health_factor.py',
          'sim/tests/test_liquidation.py', f'--junitxml={out / "environment-smoke.xml"}'])
+    committed = git('show', 'HEAD:docs/research_v2/phase00/g1/requirements-windows-py312.lock.txt')
+    if committed != lock.read_bytes():
+        raise ValueError('Installed environment does not reproduce committed lock exactly')
     write(out / 'environment-verified.json', {'python': sys.version, 'executable': sys.executable,
           'platform': platform.platform(), 'machine': platform.machine(), 'os': os.name,
           'runner_image': {k: os.environ.get(k) for k in ['ImageOS','ImageVersion','RUNNER_OS','RUNNER_ARCH']},
@@ -180,12 +243,14 @@ def environment(out: Path) -> None:
 
 def main() -> None:
     p = argparse.ArgumentParser()
-    p.add_argument('mode', choices=['collect', 'environment'])
+    p.add_argument('mode', choices=['collect', 'environment', 'checkout'])
     p.add_argument('--output', type=Path, required=True)
     args = p.parse_args()
     args.output.mkdir(parents=True, exist_ok=True)
     if args.mode == 'collect':
         collect(args.output)
+    elif args.mode == 'checkout':
+        checkout(args.output)
     else:
         environment(args.output)
 
