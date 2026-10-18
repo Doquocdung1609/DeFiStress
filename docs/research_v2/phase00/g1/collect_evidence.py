@@ -1,4 +1,4 @@
-"""Release evidence only: reads Git bytes/history, resolves an environment, never runs a simulation."""
+"""Release evidence and original checkout byte provisioning; never runs a research simulation."""
 from __future__ import annotations
 
 import argparse
@@ -39,8 +39,12 @@ def write(path: Path, value) -> None:
 
 def facts(b: bytes) -> dict:
     lf = b.replace(b'\r\n', b'\n')
+    try:
+        text = '\0' not in b.decode('utf-8')
+    except UnicodeDecodeError:
+        text = False
     return {'size_bytes': len(b), 'sha256_git_bytes': digest(b),
-            'sha256_crlf_representation': digest(lf.replace(b'\n', b'\r\n'))}
+            'sha256_crlf_representation': digest(lf.replace(b'\n', b'\r\n')) if text else None}
 
 
 def collect(out: Path) -> None:
@@ -187,6 +191,21 @@ def checkout(out: Path) -> None:
     info.parent.mkdir(parents=True, exist_ok=True)
     info.write_text('\n'.join(attr) + '\n', encoding='utf-8', newline='\n')
     run(['git', 'checkout-index', '--force', '--all'])
+    # checkout-index can retain stat-clean existing files despite new EOL attributes.
+    # Materialize only line-ending representations of the exact Git objects, then verify bytes.
+    materialized = []
+    for path, values in sorted(constraints.items()):
+        domain = next(iter(values))
+        raw = git('show', f'{head}:{path}')
+        lf = raw.replace(b'\r\n', b'\n')
+        expected_bytes = raw if domain == 'binary' else lf if domain == 'lf' else lf.replace(b'\n', b'\r\n')
+        Path(path).write_bytes(expected_bytes)
+        actual_bytes = Path(path).read_bytes()
+        if actual_bytes != expected_bytes:
+            raise ValueError(f'Checkout byte provisioning failed: {path}')
+        materialized.append({'path': path, 'domain': domain, 'checkout_sha256': digest(actual_bytes),
+                             'git_bytes_sha256': digest(raw), 'size_bytes': len(actual_bytes)})
+    write(out / 'checkout-byte-verification.json', materialized)
     status = git('status', '--porcelain', '--untracked-files=no').decode().strip()
     if status:
         raise ValueError(f'Checkout normalization changed tracked source content: {status}')
@@ -225,6 +244,9 @@ def environment(out: Path) -> None:
     run([str(python), '-m', 'pip', 'install', '--no-index', '--find-links', str(wheelhouse),
          '--require-hashes', '-r', str(lock)])
     run([str(python), '-m', 'pip', 'check'])
+    clean_packages = json.loads(run([str(python), '-m', 'pip', 'list', '--format=json'], capture_output=True).stdout)
+    if sorted((re.sub(r'[-_.]+', '-', p['name']).lower(), p['version']) for p in clean_packages) != packages:
+        raise ValueError('Fresh environment distribution set differs from lock')
     run([str(python), '-m', 'pytest', '-q', 'sim/tests/test_health_factor.py',
          'sim/tests/test_liquidation.py', f'--junitxml={out / "environment-smoke.xml"}'])
     committed = git('show', 'HEAD:docs/research_v2/phase00/g1/requirements-windows-py312.lock.txt')
@@ -234,7 +256,7 @@ def environment(out: Path) -> None:
           'platform': platform.platform(), 'machine': platform.machine(), 'os': os.name,
           'runner_image': {k: os.environ.get(k) for k in ['ImageOS','ImageVersion','RUNNER_OS','RUNNER_ARCH']},
           'packages': [{'name': n, 'version': v, **wheels[(n,v)]} for n,v in packages],
-          'lock_sha256': digest(lock.read_bytes()), 'clean_install': 'PASS', 'pip_check': 'PASS',
+          'lock_sha256': digest(lock.read_bytes()), 'clean_install': 'PASS', 'pip_check': 'PASS', 'clean_distribution_versions_match': True,
           'smoke': '5 existing tests PASS', 'container_used': False,
           'docker_digest': 'NOT_APPLICABLE_NO_CONTAINER_USED',
           'scope': 'New tested target environment, not a recovered historical environment',
