@@ -1,0 +1,478 @@
+{
+  "schema_version": "defistress-phase01a-provenance-v1",
+  "status": "V2_PHASE01A_READY_FOR_COMMANDER_REVIEW",
+  "v1_release": {
+    "status": "DEFISTRESS_V1_SCIENTIFIC_BASELINE_RELEASED",
+    "tag_name": "v1.0.0-scientific-baseline",
+    "tag_object": "cdd9c3a80f4df21e7e054045cb93fdc5a7f731c7",
+    "tag_type": "annotated",
+    "target_commit": "2b505813d35d3cf6f4414585f9dd50f3b4281ac2",
+    "release_id": 416585898,
+    "release_url": "https://github.com/Doquocdung1609/DeFiStress/releases/tag/v1.0.0-scientific-baseline",
+    "post_merge_ci_run": 39147469533,
+    "post_merge_ci_conclusion": "success",
+    "post_merge_ci_artifact_sha256": "9ea08fa155237bb460054bd28fc63ef0cca8a6bf1041fd3d0b19aba40cbade04",
+    "pytest": {
+      "passed": 226,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "frontend": {
+      "passed": 21
+    },
+    "release_execution_run": 39148422358,
+    "release_execution_commit": "fae48b1e01d4fd3910aaacff0edd59fba18d73f3",
+    "release_execution_branch": "release/v1-scientific-baseline-finalization",
+    "direct_connector_tag_release_mutation_available": false,
+    "method": "Authorized contents-write Actions workflow; source target remains original V1 commit; Git tag object and release independently read back via connector.",
+    "phase01a_initial_registration_commit": "79ca47ee5459bc602f24553d3eb519216bec10dd",
+    "limitations": [
+      "No live Mainnet RPC validation in V1 CI; RPC job skipped",
+      "New tested Windows environment; not recovered historical environment",
+      "No full scientific historical replay or Monte Carlo rerun",
+      "V1 scientific limitations and template gate remain"
+    ]
+  },
+  "registration_commits": {
+    "number_selection": "79ca47ee5459bc602f24553d3eb519216bec10dd",
+    "hash_binding_before_state_collection": "85d35785ce759598bff8282e9c3619c49d22d9f9"
+  },
+  "sample_registry_git_bytes_sha256": "1760f42f35114f4e3a527c539f13d796a72705d43ebb9b02d42a4953cd01536d",
+  "sample_registry_canonical_sha256": "a84e65181604c2d193a2c84fdf42800c99225d9a48bfb027c34e7890d23020b0",
+  "collection_commit": "85d35785ce759598bff8282e9c3619c49d22d9f9",
+  "collection_run_id": "39149158699",
+  "collection_run_url": "https://github.com/Doquocdung1609/DeFiStress/actions/runs/39149158699",
+  "collection_artifact": {
+    "id": 12144313692,
+    "name": "phase01a-pilot-39149158699",
+    "size_in_bytes": 253193,
+    "url": "https://api.github.com/repos/Doquocdung1609/DeFiStress/actions/artifacts/12144313692",
+    "archive_download_url": "https://api.github.com/repos/Doquocdung1609/DeFiStress/actions/artifacts/12144313692/zip",
+    "expired": false,
+    "created_at": "2026-10-18T17:26:54Z",
+    "expires_at": "2027-01-16T17:20:52Z",
+    "updated_at": "2026-10-18T17:26:54Z",
+    "digest": "sha256:cc3686a6380ee66b0e96d0f1ca8ca43852e5c51ea7e6b5b48c7fabb43e35f1ae",
+    "workflow_run": {
+      "id": 39149158699,
+      "repository_id": 1380983746,
+      "head_repository_id": 1380983746,
+      "head_branch": "research/v2-phase01a-historical-data",
+      "head_sha": "85d35785ce759598bff8282e9c3619c49d22d9f9"
+    }
+  },
+  "zip_digest_and_crc_verified_by_work": true,
+  "unit_tests": {
+    "tests": 21,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "catalog": [
+    {
+      "block_hash": "0x4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+      "block_number": 26045352,
+      "component_statuses": {
+        "P3000": "QUARANTINED",
+        "P500": "QUARANTINED",
+        "aave": "QUARANTINED",
+        "liquidation_logs": "AVAILABLE",
+        "swap_logs_P3000": "AVAILABLE",
+        "swap_logs_P500": "AVAILABLE"
+      },
+      "id": "publicnode-26045352",
+      "provider_id": "publicnode",
+      "registry_sha256": "a84e65181604c2d193a2c84fdf42800c99225d9a48bfb027c34e7890d23020b0",
+      "repeatability": {
+        "first_content_sha256": "d3303ff886c5b9b657b21c1f394e3df3c047d1405d5507bae68326ad3d16bfb5",
+        "identical": false,
+        "second_content_sha256": "a2366ce1be84b068fc29c1ffaa57cff7e34a462915af2a7c6ff3bfe3c5f25322",
+        "status": "NOT_EVALUABLE_INCOMPLETE"
+      }
+    },
+    {
+      "block_hash": "0xbb108203815f257e9f9b023f92a30e67d946799355ceffc4bef0e0e16a1e87bd",
+      "block_number": 26038152,
+      "component_statuses": {
+        "P3000": "QUARANTINED",
+        "P500": "QUARANTINED",
+        "aave": "QUARANTINED",
+        "liquidation_logs": "AVAILABLE",
+        "swap_logs_P3000": "AVAILABLE",
+        "swap_logs_P500": "AVAILABLE"
+      },
+      "id": "publicnode-26038152",
+      "provider_id": "publicnode",
+      "registry_sha256": "a84e65181604c2d193a2c84fdf42800c99225d9a48bfb027c34e7890d23020b0",
+      "repeatability": {
+        "first_content_sha256": "e0d9d1b5eb730c5cdf670420da954c028af09e99062b28f7cd22a1fbd7fa3138",
+        "identical": false,
+        "second_content_sha256": "ea2644b7b84b555fe6f8c9c76d35c81b3772edb7da33650ea55c3e9a5c395d10",
+        "status": "NOT_EVALUABLE_INCOMPLETE"
+      }
+    },
+    {
+      "block_hash": "0xeeb12db7f31e86507bb4be7a1a2953d19c11165c99a75ebc7aa589d65d0b9625",
+      "block_number": 26030952,
+      "component_statuses": {
+        "P3000": "QUARANTINED",
+        "P500": "QUARANTINED",
+        "aave": "QUARANTINED",
+        "liquidation_logs": "AVAILABLE",
+        "swap_logs_P3000": "AVAILABLE",
+        "swap_logs_P500": "AVAILABLE"
+      },
+      "id": "publicnode-26030952",
+      "provider_id": "publicnode",
+      "registry_sha256": "a84e65181604c2d193a2c84fdf42800c99225d9a48bfb027c34e7890d23020b0",
+      "repeatability": {
+        "first_content_sha256": "35d7d7496aeabd01fcc00005aeb0285032db9daa6c8ebfd6ef8fab09331aa666",
+        "identical": false,
+        "second_content_sha256": "a65e57d93d832f706fefe1e6d5aa4ce5d5862d7917bd0e705c732c77a8db216d",
+        "status": "NOT_EVALUABLE_INCOMPLETE"
+      }
+    },
+    {
+      "block_hash": "0x4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+      "block_number": 26045352,
+      "component_statuses": {
+        "P3000": "AVAILABLE",
+        "P500": "AVAILABLE",
+        "aave": "AVAILABLE",
+        "liquidation_logs": "AVAILABLE",
+        "swap_logs_P3000": "AVAILABLE",
+        "swap_logs_P500": "AVAILABLE"
+      },
+      "id": "drpc-26045352",
+      "provider_id": "drpc",
+      "registry_sha256": "a84e65181604c2d193a2c84fdf42800c99225d9a48bfb027c34e7890d23020b0",
+      "repeatability": {
+        "first_content_sha256": "14b5a39c97a454632402c128635bcf1a64949f6f8f181e58f17d07d8d93260b1",
+        "identical": true,
+        "second_content_sha256": "14b5a39c97a454632402c128635bcf1a64949f6f8f181e58f17d07d8d93260b1",
+        "status": "PASS"
+      }
+    },
+    {
+      "block_hash": "0xbb108203815f257e9f9b023f92a30e67d946799355ceffc4bef0e0e16a1e87bd",
+      "block_number": 26038152,
+      "component_statuses": {
+        "P3000": "AVAILABLE",
+        "P500": "AVAILABLE",
+        "aave": "AVAILABLE",
+        "liquidation_logs": "AVAILABLE",
+        "swap_logs_P3000": "AVAILABLE",
+        "swap_logs_P500": "AVAILABLE"
+      },
+      "id": "drpc-26038152",
+      "provider_id": "drpc",
+      "registry_sha256": "a84e65181604c2d193a2c84fdf42800c99225d9a48bfb027c34e7890d23020b0",
+      "repeatability": {
+        "first_content_sha256": "300461ce097912ac5a92036192bef81222c9275279e4c025ca53b6b02bcd515f",
+        "identical": true,
+        "second_content_sha256": "300461ce097912ac5a92036192bef81222c9275279e4c025ca53b6b02bcd515f",
+        "status": "PASS"
+      }
+    },
+    {
+      "block_hash": "0xeeb12db7f31e86507bb4be7a1a2953d19c11165c99a75ebc7aa589d65d0b9625",
+      "block_number": 26030952,
+      "component_statuses": {
+        "P3000": "AVAILABLE",
+        "P500": "AVAILABLE",
+        "aave": "AVAILABLE",
+        "liquidation_logs": "AVAILABLE",
+        "swap_logs_P3000": "AVAILABLE",
+        "swap_logs_P500": "AVAILABLE"
+      },
+      "id": "drpc-26030952",
+      "provider_id": "drpc",
+      "registry_sha256": "a84e65181604c2d193a2c84fdf42800c99225d9a48bfb027c34e7890d23020b0",
+      "repeatability": {
+        "first_content_sha256": "806bb47bdcd220ccc20ad97d51fdc78d6b57dd07a958982091f77d66b6ee05d9",
+        "identical": true,
+        "second_content_sha256": "806bb47bdcd220ccc20ad97d51fdc78d6b57dd07a958982091f77d66b6ee05d9",
+        "status": "PASS"
+      }
+    }
+  ],
+  "cross_endpoint_comparison": [
+    {
+      "block": 26045352,
+      "eligible_complete_provider_rows": 1,
+      "canonical_hashes": {
+        "publicnode": "d3303ff886c5b9b657b21c1f394e3df3c047d1405d5507bae68326ad3d16bfb5",
+        "drpc": "14b5a39c97a454632402c128635bcf1a64949f6f8f181e58f17d07d8d93260b1"
+      },
+      "comparison_status": "NOT_EVALUABLE_SECOND_STATE_SOURCE_UNAVAILABLE",
+      "equal_across_endpoints": null
+    },
+    {
+      "block": 26038152,
+      "eligible_complete_provider_rows": 1,
+      "canonical_hashes": {
+        "publicnode": "e0d9d1b5eb730c5cdf670420da954c028af09e99062b28f7cd22a1fbd7fa3138",
+        "drpc": "300461ce097912ac5a92036192bef81222c9275279e4c025ca53b6b02bcd515f"
+      },
+      "comparison_status": "NOT_EVALUABLE_SECOND_STATE_SOURCE_UNAVAILABLE",
+      "equal_across_endpoints": null
+    },
+    {
+      "block": 26030952,
+      "eligible_complete_provider_rows": 1,
+      "canonical_hashes": {
+        "publicnode": "35d7d7496aeabd01fcc00005aeb0285032db9daa6c8ebfd6ef8fab09331aa666",
+        "drpc": "806bb47bdcd220ccc20ad97d51fdc78d6b57dd07a958982091f77d66b6ee05d9"
+      },
+      "comparison_status": "NOT_EVALUABLE_SECOND_STATE_SOURCE_UNAVAILABLE",
+      "equal_across_endpoints": null
+    }
+  ],
+  "fully_available_sources": [
+    "drpc"
+  ],
+  "provider_block_rows": 6,
+  "complete_repeat_pass_rows": 3,
+  "quarantined_components": 18,
+  "artifact_files": [
+    {
+      "path": "evidence/collection/catalog.json",
+      "size_bytes": 4006,
+      "sha256": "ba00c6b41eccf4e0fc2a1bf01bfa22385cf6dcf4ffe92f5c2c701cf6f60bee2f",
+      "status": "FULL_BYTES_VERIFIED",
+      "hash_domain": "EXACT_GIT_UTF8_FILE_BYTES"
+    },
+    {
+      "path": "evidence/collection/collection_provenance.json",
+      "size_bytes": 5379,
+      "sha256": "a775a61d2679d664a60dfb3bd08d62e9759c8ed3854b588fc8754eec590e7e59",
+      "status": "FULL_BYTES_VERIFIED",
+      "hash_domain": "EXACT_GIT_UTF8_FILE_BYTES"
+    },
+    {
+      "path": "evidence/collection/pilot-tests.xml",
+      "size_bytes": 2910,
+      "sha256": "4eccf402527818d27b2c6254327e8cac2742377edc10ff2528024774bdace399",
+      "status": "FULL_BYTES_VERIFIED",
+      "hash_domain": "EXACT_GIT_UTF8_FILE_BYTES"
+    },
+    {
+      "path": "evidence/collection/quarantine.json",
+      "size_bytes": 3932,
+      "sha256": "aac679cb9ce99b848fec2cad57d6fe015d956aa95c8772009d9776cb30d20196",
+      "status": "FULL_BYTES_VERIFIED",
+      "hash_domain": "EXACT_GIT_UTF8_FILE_BYTES"
+    },
+    {
+      "path": "evidence/collection/raw/drpc-26030952-pass1.json",
+      "size_bytes": 71654,
+      "sha256": "0dc5e8b5ba70fdbafaeec6372839827ff5af67a453e4470465d56dbb4adc6272",
+      "status": "FULL_BYTES_VERIFIED",
+      "hash_domain": "EXACT_GIT_UTF8_FILE_BYTES"
+    },
+    {
+      "path": "evidence/collection/raw/drpc-26030952-pass2.json",
+      "size_bytes": 71654,
+      "sha256": "0dc5e8b5ba70fdbafaeec6372839827ff5af67a453e4470465d56dbb4adc6272",
+      "status": "FULL_BYTES_VERIFIED",
+      "hash_domain": "EXACT_GIT_UTF8_FILE_BYTES"
+    },
+    {
+      "path": "evidence/collection/raw/drpc-26038152-pass1.json",
+      "size_bytes": 80530,
+      "sha256": "16747c8cf81976c2674c16800a00b0854c5d2f1699a06113a47ef652d9e6494f",
+      "status": "FULL_BYTES_VERIFIED",
+      "hash_domain": "EXACT_GIT_UTF8_FILE_BYTES"
+    },
+    {
+      "path": "evidence/collection/raw/drpc-26038152-pass2.json",
+      "size_bytes": 80530,
+      "sha256": "16747c8cf81976c2674c16800a00b0854c5d2f1699a06113a47ef652d9e6494f",
+      "status": "FULL_BYTES_VERIFIED",
+      "hash_domain": "EXACT_GIT_UTF8_FILE_BYTES"
+    },
+    {
+      "path": "evidence/collection/raw/drpc-26045352-pass1.json",
+      "size_bytes": 82906,
+      "sha256": "031c2e5e28c3f99ad39a8d8cec8115f5bd9fabd155db18d25c1805575dc10f2c",
+      "status": "FULL_BYTES_VERIFIED",
+      "hash_domain": "EXACT_GIT_UTF8_FILE_BYTES"
+    },
+    {
+      "path": "evidence/collection/raw/drpc-26045352-pass2.json",
+      "size_bytes": 82906,
+      "sha256": "031c2e5e28c3f99ad39a8d8cec8115f5bd9fabd155db18d25c1805575dc10f2c",
+      "status": "FULL_BYTES_VERIFIED",
+      "hash_domain": "EXACT_GIT_UTF8_FILE_BYTES"
+    },
+    {
+      "path": "evidence/collection/raw/publicnode-26030952-pass1.json",
+      "size_bytes": 37793,
+      "sha256": "20168064c7ec93b8afb4f9913eff6804e42a523726a351e57281fc3c9f5b68bc",
+      "status": "FULL_BYTES_VERIFIED",
+      "hash_domain": "EXACT_GIT_UTF8_FILE_BYTES"
+    },
+    {
+      "path": "evidence/collection/raw/publicnode-26030952-pass2.json",
+      "size_bytes": 37793,
+      "sha256": "e296bd05e0a9225713eb79d28e0ea17a390e4d6b455a115265a2c1d83b0e9ab2",
+      "status": "FULL_BYTES_VERIFIED",
+      "hash_domain": "EXACT_GIT_UTF8_FILE_BYTES"
+    },
+    {
+      "path": "evidence/collection/raw/publicnode-26038152-pass1.json",
+      "size_bytes": 46669,
+      "sha256": "402f185193e18293f670be357b70e35858621f8e3d187efa12a84e08135ca8ae",
+      "status": "FULL_BYTES_VERIFIED",
+      "hash_domain": "EXACT_GIT_UTF8_FILE_BYTES"
+    },
+    {
+      "path": "evidence/collection/raw/publicnode-26038152-pass2.json",
+      "size_bytes": 46669,
+      "sha256": "68e6ba8004ebdd5020cbea5c1e97f0352b353ce09a75f6a3c066d1fd138a8050",
+      "status": "FULL_BYTES_VERIFIED",
+      "hash_domain": "EXACT_GIT_UTF8_FILE_BYTES"
+    },
+    {
+      "path": "evidence/collection/raw/publicnode-26045352-pass1.json",
+      "size_bytes": 49045,
+      "sha256": "e90cc93e84f7a0535192b4c87e956dd89a0968608f2218ad778b607f731512f7",
+      "status": "FULL_BYTES_VERIFIED",
+      "hash_domain": "EXACT_GIT_UTF8_FILE_BYTES"
+    },
+    {
+      "path": "evidence/collection/raw/publicnode-26045352-pass2.json",
+      "size_bytes": 49045,
+      "sha256": "0eea8867c86273b11987e40dc7a074c9e4258d4b4bfa3484ea71cb1a73548458",
+      "status": "FULL_BYTES_VERIFIED",
+      "hash_domain": "EXACT_GIT_UTF8_FILE_BYTES"
+    },
+    {
+      "path": "evidence/collection/snapshots/drpc-26030952-pass1.json",
+      "size_bytes": 12465,
+      "sha256": "806bb47bdcd220ccc20ad97d51fdc78d6b57dd07a958982091f77d66b6ee05d9",
+      "status": "FULL_BYTES_VERIFIED",
+      "hash_domain": "EXACT_GIT_UTF8_FILE_BYTES"
+    },
+    {
+      "path": "evidence/collection/snapshots/drpc-26030952-pass2.json",
+      "size_bytes": 12465,
+      "sha256": "806bb47bdcd220ccc20ad97d51fdc78d6b57dd07a958982091f77d66b6ee05d9",
+      "status": "FULL_BYTES_VERIFIED",
+      "hash_domain": "EXACT_GIT_UTF8_FILE_BYTES"
+    },
+    {
+      "path": "evidence/collection/snapshots/drpc-26038152-pass1.json",
+      "size_bytes": 11510,
+      "sha256": "300461ce097912ac5a92036192bef81222c9275279e4c025ca53b6b02bcd515f",
+      "status": "FULL_BYTES_VERIFIED",
+      "hash_domain": "EXACT_GIT_UTF8_FILE_BYTES"
+    },
+    {
+      "path": "evidence/collection/snapshots/drpc-26038152-pass2.json",
+      "size_bytes": 11510,
+      "sha256": "300461ce097912ac5a92036192bef81222c9275279e4c025ca53b6b02bcd515f",
+      "status": "FULL_BYTES_VERIFIED",
+      "hash_domain": "EXACT_GIT_UTF8_FILE_BYTES"
+    },
+    {
+      "path": "evidence/collection/snapshots/drpc-26045352-pass1.json",
+      "size_bytes": 14253,
+      "sha256": "14b5a39c97a454632402c128635bcf1a64949f6f8f181e58f17d07d8d93260b1",
+      "status": "FULL_BYTES_VERIFIED",
+      "hash_domain": "EXACT_GIT_UTF8_FILE_BYTES"
+    },
+    {
+      "path": "evidence/collection/snapshots/drpc-26045352-pass2.json",
+      "size_bytes": 14253,
+      "sha256": "14b5a39c97a454632402c128635bcf1a64949f6f8f181e58f17d07d8d93260b1",
+      "status": "FULL_BYTES_VERIFIED",
+      "hash_domain": "EXACT_GIT_UTF8_FILE_BYTES"
+    },
+    {
+      "path": "evidence/collection/snapshots/publicnode-26030952-pass1.json",
+      "size_bytes": 1792,
+      "sha256": "35d7d7496aeabd01fcc00005aeb0285032db9daa6c8ebfd6ef8fab09331aa666",
+      "status": "FULL_BYTES_VERIFIED",
+      "hash_domain": "EXACT_GIT_UTF8_FILE_BYTES"
+    },
+    {
+      "path": "evidence/collection/snapshots/publicnode-26030952-pass2.json",
+      "size_bytes": 1792,
+      "sha256": "a65e57d93d832f706fefe1e6d5aa4ce5d5862d7917bd0e705c732c77a8db216d",
+      "status": "FULL_BYTES_VERIFIED",
+      "hash_domain": "EXACT_GIT_UTF8_FILE_BYTES"
+    },
+    {
+      "path": "evidence/collection/snapshots/publicnode-26038152-pass1.json",
+      "size_bytes": 904,
+      "sha256": "e0d9d1b5eb730c5cdf670420da954c028af09e99062b28f7cd22a1fbd7fa3138",
+      "status": "FULL_BYTES_VERIFIED",
+      "hash_domain": "EXACT_GIT_UTF8_FILE_BYTES"
+    },
+    {
+      "path": "evidence/collection/snapshots/publicnode-26038152-pass2.json",
+      "size_bytes": 904,
+      "sha256": "ea2644b7b84b555fe6f8c9c76d35c81b3772edb7da33650ea55c3e9a5c395d10",
+      "status": "FULL_BYTES_VERIFIED",
+      "hash_domain": "EXACT_GIT_UTF8_FILE_BYTES"
+    },
+    {
+      "path": "evidence/collection/snapshots/publicnode-26045352-pass1.json",
+      "size_bytes": 3578,
+      "sha256": "d3303ff886c5b9b657b21c1f394e3df3c047d1405d5507bae68326ad3d16bfb5",
+      "status": "FULL_BYTES_VERIFIED",
+      "hash_domain": "EXACT_GIT_UTF8_FILE_BYTES"
+    },
+    {
+      "path": "evidence/collection/snapshots/publicnode-26045352-pass2.json",
+      "size_bytes": 3578,
+      "sha256": "a2366ce1be84b068fc29c1ffaa57cff7e34a462915af2a7c6ff3bfe3c5f25322",
+      "status": "FULL_BYTES_VERIFIED",
+      "hash_domain": "EXACT_GIT_UTF8_FILE_BYTES"
+    },
+    {
+      "path": "evidence/discovery/discovery.json",
+      "size_bytes": 1952,
+      "sha256": "f8b0ec025a06811891fcc1ddf862bd0ffceb9d6c10334f735096d7a72ad236b9",
+      "status": "FULL_BYTES_VERIFIED",
+      "hash_domain": "EXACT_GIT_UTF8_FILE_BYTES"
+    },
+    {
+      "path": "evidence/discovery/raw/discovery-drpc.json",
+      "size_bytes": 81174,
+      "sha256": "9bfa26b91671d2d9001787481efaea61691fb741c37b45b9a565e369c3dabac0",
+      "status": "FULL_BYTES_VERIFIED",
+      "hash_domain": "EXACT_GIT_UTF8_FILE_BYTES"
+    },
+    {
+      "path": "evidence/discovery/raw/discovery-publicnode.json",
+      "size_bytes": 81174,
+      "sha256": "9bfa26b91671d2d9001787481efaea61691fb741c37b45b9a565e369c3dabac0",
+      "status": "FULL_BYTES_VERIFIED",
+      "hash_domain": "EXACT_GIT_UTF8_FILE_BYTES"
+    },
+    {
+      "path": "evidence/v1_release_verification.json",
+      "size_bytes": 1484,
+      "sha256": "737b548c60ed0aef292a334d2a85be475f930b0eb67c008f63f7df7c2e99a5cd",
+      "status": "FULL_BYTES_VERIFIED",
+      "hash_domain": "EXACT_GIT_UTF8_FILE_BYTES"
+    }
+  ],
+  "new_simulation_or_monte_carlo": false,
+  "scientific_inference_from_pilot": false,
+  "hash_semantics": {
+    "registry_canonical_sha256": "Sorted compact JSON plus LF, not raw registry file bytes",
+    "artifact_sha256": "Actual saved file bytes; raw transcripts are canonical parsed JSON-RPC pairs, not HTTP wire bytes"
+  },
+  "remaining_limits": [
+    "Three close historical blocks, one token pair, two fee tiers; not broad cross-market validation",
+    "Three fixed borrower sentinels; no new borrower census or representative cohort",
+    "One bitmap word / eight sampled initialized ticks; not full pool depth reconstruction",
+    "Aave effective price and source address traced; underlying proxy/adapter/aggregator rounds not independently traced",
+    "Two public endpoints may share backend infrastructure; no consensus proof or service SLA",
+    "No receipts/transfer path audit, funded execution, stress, Monte Carlo or economic result validation"
+  ]
+}

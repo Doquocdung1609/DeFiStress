@@ -128,9 +128,11 @@ class HistoricalIntegrityTests(unittest.TestCase):
         self.assertTrue(all(call.args[4] == 100 for call in calls.call_args_list))
 
     def test_historical_pool_address_mismatch(self):
-        with patch.object(pilot, "read_contract", side_effect=[USDC, USDC]):
-            with self.assertRaisesRegex(ValueError, "HISTORICAL_AAVE_POOL_MISMATCH"):
-                pilot.historical_aave_config(None, {"aave_pool": WETH}, 100)
+        with (
+            patch.object(pilot, "read_contract", side_effect=[USDC, USDC]),
+            self.assertRaisesRegex(ValueError, "HISTORICAL_AAVE_POOL_MISMATCH"),
+        ):
+            pilot.historical_aave_config(None, {"aave_pool": WETH}, 100)
 
 
 if __name__ == "__main__":

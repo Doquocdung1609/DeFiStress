@@ -3,7 +3,8 @@ on:
   push:
     branches: [research/v2-phase01a-historical-data]
     paths:
-      - docs/research_v2/phase01a/**
+      - docs/research_v2/phase01a/pilot.py
+      - docs/research_v2/phase01a/PILOT_SAMPLE_REGISTRY.json
       - tests/test_phase01a_pilot.py
       - .github/workflows/v2-phase01a-pilot.yml
 permissions:
