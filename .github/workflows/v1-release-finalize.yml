@@ -8,6 +8,7 @@ on:
 permissions:
   contents: write
   actions: read
+  pull-requests: read
 concurrency:
   group: v1-scientific-baseline-release
   cancel-in-progress: false
