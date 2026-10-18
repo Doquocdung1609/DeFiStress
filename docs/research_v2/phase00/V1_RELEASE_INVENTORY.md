@@ -1,3 +1,5 @@
+> G1 follow-up: xem [G1 final evidence](g1/G1_FINAL_EVIDENCE_REPORT.md) và `g1/G1_FINAL_RESULT.json` tại PR26. Các status/coverage bên dưới là snapshot Phase00 trước follow-up, không phải verdict release hiện tại.
+
 # V1 Release Inventory — Phase 00
 
 **Candidate:** `ee9b372823e5c636238efe73a4268a5439cf1f80`
@@ -27,7 +29,7 @@ GitHub xác nhận integration `feat/terra-model-v2` đang ở candidate; PR24 �
 | Accepted Claims v1.1 | `data/processed/research_final/final_accepted_claims_v1/` | Scientific Lock |48records,44accepted/4disallowed;6RQ;29 provenance paths tồn tại |28/29 nguồn có SHA256 observed khớp | Một nguồn lớn chỉ tree identity; prior28gates không phải run mới |
 | Literature/citation | `docs/research_final/LITERATURE_VERIFIED.md`, `APA_REFERENCES_VERIFIED.md`, ma trận/crosswalk/terms | Scientific Lock; blobs giữ nguyên |30S/35C/12aliases/92terms giữ nguyên | Không mở lại research/P2 verification | Access levels và U01–U08 không nâng cấp |
 | Blueprint | `docs/manuscript_p3/work/P3_*` | Blueprint Lock; blobs giữ nguyên |7 ch/44 claim allocation/25 exhibits/8 equations | Cấu trúc đã được khóa | Source spec G0 khác chứng nhận render |
-| Bảy chương chính thức | `docs/manuscript_p3/work/chapter_01/` … `chapter_07/` | Candidate; toàn văn/audits/self-review có SHA256 | Đủ7 ch, không thay đổi | Phân biệt chapter sources với bản hợp nhất | Báo cáo5ch cũ chỉ lịch sử, không làm baseline |
+| Bảy chương chính thức | `docs/manuscript_p3/work/chapter_01/` … `chapter_07/` | Candidate; toàn văn/audits/self-review có SHA256 | Đủ7 ch, không thay đổi | Phân biệt chapter sources với bản hợp nhất | Báo cáo5 ch cũ chỉ lịch sử, không làm baseline |
 | Final manuscript | `docs/manuscript_p3/work/final_assembly/DeFiStress_FINAL_MANUSCRIPT.docx` | SHA256 `15e1ae5d04429bbcd456886f4002b4977738c38dad58a6856610a5b3209f4285` | ZIP CRC/XML đạt, byte khớp Git | Editable16tables/11images/8displayequations |126 trang visual QA là bằng chứng assembly trước; Phase00 không render lại |
 | Final MD/audit/figures | Cùng `final_assembly/`; `figures/RENDER_PROVENANCE.json` | Candidate;26file assembly có byte hashes | Đủ14approved tables,11PNG+11SVG,8 equations | RQ giữ nguyên; nguồn caption đã lưu | Chưa có renderer script/environment hoàn chỉnh trong repository |
 | Tests/CI | `tests/`, `sim/tests/`, `.github/workflows/ci.yml` | Candidate; test sources verified |178 Python AST PASS,5 pure tests PASS | Candidate CI failure/0 jobs | PR19 open có portable-suite PASS ở SHA khác |

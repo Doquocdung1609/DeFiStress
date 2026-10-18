@@ -1,0 +1,298 @@
+{
+  "schema_version": "v1-g1-completion-v1",
+  "target_status": "V1_RELEASE_G1_FINAL_EVIDENCE_READY_FOR_COMMANDER_REVIEW",
+  "reviewed_run": {
+    "id": 39125232234,
+    "head_sha": "aaa010889e857c7042c3a209c88b8e8de1c8d6cc",
+    "conclusion": "success",
+    "status": "completed",
+    "url": "https://github.com/Doquocdung1609/DeFiStress/actions/runs/39125232234",
+    "artifact": {
+      "id": 12135882756,
+      "zip_sha256": "f7949f3281595afca5111a34ebd92bb991681246b1d495ad7078c9c600b526b4"
+    },
+    "frontend_tests": {
+      "passed": 21,
+      "failed": 0,
+      "skipped": 0,
+      "node": "v24.21.0",
+      "pnpm": "11.19.0"
+    },
+    "jobs": [
+      {
+        "id": 117668839152,
+        "name": "frontend",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 39125232234,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run pnpm/action-setup@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run pnpm install --frozen-lockfile",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run pnpm test",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Run pnpm lint",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Run pnpm build",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Post Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14
+          },
+          {
+            "name": "Post Run pnpm/action-setup@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 16
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 17
+          }
+        ]
+      },
+      {
+        "id": 117668839361,
+        "name": "real-rpc-config",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 39125232234,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Check RPC configuration without disclosing secret",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          }
+        ]
+      },
+      {
+        "id": 117668839407,
+        "name": "backend-and-simulation",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 39125232234,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run python -m venv .venv",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Install the hashed Windows target environment",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Provision original per-path LF and CRLF checkout domains",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Collect exact Git bytes and generator history",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Provision byte-exact historical DOCX inputs",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Run .\\.venv\\Scripts\\ruff.exe check backend sim tests scripts",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "Run .\\.venv\\Scripts\\mypy.exe sim",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10
+          },
+          {
+            "name": "Run .\\.venv\\Scripts\\python.exe -m pytest --junitxml=\"$env:RUNNER_TEMP/v1-g1-evidence/full-pytest.xml\"",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Resolve hashed environment and validate a fresh install",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Preserve scientific worktree guard",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          },
+          {
+            "name": "Upload release evidence even when a scientific test fails",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14
+          },
+          {
+            "name": "Run .\\.venv\\Scripts\\python.exe scripts/run_demo.py",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          },
+          {
+            "name": "Post Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 29
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 30
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 31
+          }
+        ]
+      },
+      {
+        "id": 117668862597,
+        "name": "real-rpc-smoke",
+        "status": "completed",
+        "conclusion": "skipped",
+        "run_id": 39125232234,
+        "logs_url": null,
+        "steps": null
+      }
+    ]
+  },
+  "pytest": {
+    "tests": 226,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 226
+  },
+  "verdicts": {
+    "REL-01": "PASS_FULL_SUITE_NO_DESELECTION",
+    "REL-02": "PASS_NEW_WINDOWS_TARGET",
+    "REL-03": "RESOLVED_HISTORICAL_GENERATOR_IDENTIFIED",
+    "REL-04": "PASS_COMPLETE_BYTES_SCOPED"
+  },
+  "all_release_evidence_gates_pass": true,
+  "original_run": {
+    "id": 39122762384,
+    "head": "e3f10b0466e131ca0bac0e9c13e0fd2e2305c76b",
+    "pytest": {
+      "passed": 217,
+      "failures": 9,
+      "skipped": 0,
+      "tests": 226
+    }
+  },
+  "pytest_deselected": 0,
+  "test_sources_modified": false,
+  "scientific_git_blobs_modified": false,
+  "tag_created": false,
+  "release_created": false,
+  "merge_performed": false,
+  "phase01_started": false,
+  "scope_notes": [
+    "New target runtime, not recovered historical environment",
+    "Native Windows VM; no Docker used/digest claimed",
+    "Full bytes read by authored collector in CI; not independent row-level scientific reconstruction",
+    "All original tests/assertions retained; fixture demo remains existing CI behavior, no new research MC"
+  ]
+}

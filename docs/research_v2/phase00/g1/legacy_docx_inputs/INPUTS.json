@@ -1,12 +1,6 @@
 {
-  "source": "User-supplied exact originals; validated against DOCX_BASELINE in locked G0 builder",
+  "source": "Two user-supplied exact historical DOCX originals required by DOCX_BASELINE in the locked G0 builder. The unused specification attachment is excluded.",
   "files": [
-    {
-      "file": "DeFiStressLab_Spec_v1_2026.docx",
-      "size_bytes": 58364,
-      "sha256": "f1e42ad6a23246f65c3a921e2f7fd70a7c6bf9b9f62ff7ddbdc45b5061fca03a",
-      "role": "Historical five-chapter/report/spec reproducibility input; NOT current seven-chapter manuscript or school template"
-    },
     {
       "file": "DeFiStress_BAO_CAO_NCKH_HOAN_CHINH.docx",
       "size_bytes": 3820731,

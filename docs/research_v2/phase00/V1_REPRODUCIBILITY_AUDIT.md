@@ -1,3 +1,5 @@
+> G1 follow-up: xem [G1 final evidence](g1/G1_FINAL_EVIDENCE_REPORT.md) và `g1/G1_FINAL_RESULT.json` tại PR26. Các status/coverage bên dưới là snapshot Phase00 trước follow-up, không phải verdict release hiện tại.
+
 # V1 Reproducibility Audit — Phase 00
 
 **Verdict:** `PARTIAL_STATIC_REPRODUCIBILITY_VERIFIED — RELEASE_FREEZE_BLOCKED`.

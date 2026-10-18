@@ -1,7 +1,7 @@
 {
   "declared_sha256": "5a1bbd87ccf065763c3f82d921b977dadb21c520d073e5a2f69498f42ed094a2",
   "path": "scripts/research/build_scientific_integration_v1.py",
-  "source_commit": "0fdc7a786dfb0af7aa5ac9d86a67b183ae2fa8c9",
+  "source_commit": "aaa010889e857c7042c3a209c88b8e8de1c8d6cc",
   "search_scope": "all fetched refs, unique blobs in git log --all -- path",
   "records": [
     {

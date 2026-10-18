@@ -161,7 +161,7 @@
     "git_blob_sha": "b351e47c320823e2674d0de1b5c28984455d4f0d",
     "size_bytes": 36584,
     "sha256_git_bytes": "582995e0c57f936bc8c16e12131166a7aef90116ac4c7e0d7a91fcbf3128e850",
-    "sha256_crlf_representation": "501517d5335ecac4af2ecbacb98d0392b382dd32d5b5ee0262840ad1bfc4c00b",
+    "sha256_crlf_representation": null,
     "status": "EXACT"
   },
   {
@@ -172,7 +172,7 @@
     "git_blob_sha": "d2c81990a609b9e21d9f492e26799fd0027bddb9",
     "size_bytes": 49950,
     "sha256_git_bytes": "e4bffe41d55595a83500f9d0bacfd1f546a40173b384fd692fb996254aadf83c",
-    "sha256_crlf_representation": "e18e09826512bbd7ca432dd64297f99da4208fd29e98d893f9f6d3b00b19a922",
+    "sha256_crlf_representation": null,
     "status": "EXACT"
   },
   {
@@ -183,7 +183,7 @@
     "git_blob_sha": "e93885dd135eb0f676c29b95737bb54b39053bf3",
     "size_bytes": 68812,
     "sha256_git_bytes": "374f737a24c416c1d06362be48ab6cc717f6093a10bf3321f4af2d3d4a9a14c1",
-    "sha256_crlf_representation": "ab29b3eb6c506f17f0215ea8aa428c869e1e0291d8398b8131ca103d4539a81f",
+    "sha256_crlf_representation": null,
     "status": "EXACT"
   },
   {
@@ -194,7 +194,7 @@
     "git_blob_sha": "c72c64de5bdab88d7162898b1eba13831defafe9",
     "size_bytes": 57568,
     "sha256_git_bytes": "bcf7b34f4632d394465568a77159ff4cae41a6df79f096085f8622fbbbebd663",
-    "sha256_crlf_representation": "de74dc3cd877948818df42c5927cf548bb6b65ef03ab28258c8989a2633ce802",
+    "sha256_crlf_representation": null,
     "status": "EXACT"
   },
   {
@@ -205,7 +205,7 @@
     "git_blob_sha": "b3d35b519a5ced71e73f97d4179980370db2bb02",
     "size_bytes": 41542,
     "sha256_git_bytes": "b0034f88677eb761dfd23e0080395ee098ddd10755039431f0572e99d53744c5",
-    "sha256_crlf_representation": "f62890360f353b2183c21915b99bad69a85a7a5d310ead49ce14873581c97f51",
+    "sha256_crlf_representation": null,
     "status": "EXACT"
   },
   {
@@ -293,7 +293,7 @@
     "git_blob_sha": "a439b3a1276435482d926b2d760e2c91178aabfc",
     "size_bytes": 4172573,
     "sha256_git_bytes": "8cffbd32e3e3e09f70e3af0684f80149542520baf599e4ffc93ee58f95510757",
-    "sha256_crlf_representation": "c668d1b5147b795e69a95c847a5a8eda4181154581cb20bedede5bf32cbf5f43",
+    "sha256_crlf_representation": null,
     "status": "EXACT"
   },
   {
@@ -546,7 +546,7 @@
     "git_blob_sha": "108176139207cf6693c06c1a33ec321dbcc55e6c",
     "size_bytes": 28557,
     "sha256_git_bytes": "83afa879c7791903c1b7afa4d49a45ae749adf8fc86d0e995435a1c2bc12ebab",
-    "sha256_crlf_representation": "49729fe3792dc7d5e196a9151ff79087f50e21f05aed8b28df35a7eae3df5d60",
+    "sha256_crlf_representation": null,
     "status": "EXACT"
   },
   {
