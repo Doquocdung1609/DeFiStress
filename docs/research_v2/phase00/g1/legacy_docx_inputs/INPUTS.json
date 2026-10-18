@@ -1,0 +1,23 @@
+{
+  "source": "User-supplied exact originals; validated against DOCX_BASELINE in locked G0 builder",
+  "files": [
+    {
+      "file": "DeFiStressLab_Spec_v1_2026.docx",
+      "size_bytes": 58364,
+      "sha256": "f1e42ad6a23246f65c3a921e2f7fd70a7c6bf9b9f62ff7ddbdc45b5061fca03a",
+      "role": "Historical five-chapter/report/spec reproducibility input; NOT current seven-chapter manuscript or school template"
+    },
+    {
+      "file": "DeFiStress_BAO_CAO_NCKH_HOAN_CHINH.docx",
+      "size_bytes": 3820731,
+      "sha256": "9c8486027efcd35fe8fbcb8ba4c9fd6cfb714d2785f40ca6a64c247627dceb96",
+      "role": "Historical five-chapter/report/spec reproducibility input; NOT current seven-chapter manuscript or school template"
+    },
+    {
+      "file": "DeFi_Stress_Lab_Mo_Dau_Tong_Quan_Nghien_Cuu.docx",
+      "size_bytes": 52834,
+      "sha256": "582d489189a156f00a563d22b6db36caab8094d7a3581d220b96d8b3f1aebdd5",
+      "role": "Historical five-chapter/report/spec reproducibility input; NOT current seven-chapter manuscript or school template"
+    }
+  ]
+}
