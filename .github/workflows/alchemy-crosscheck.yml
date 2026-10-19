@@ -1,0 +1,44 @@
+name: V2 Phase01-B Alchemy historical cross-check
+on:
+  push:
+    branches: [research/v2-phase01b-alchemy-crosscheck]
+    paths:
+      - docs/research_v2/phase01b/alchemy_crosscheck/**
+      - .github/workflows/alchemy-crosscheck.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  alchemy-archive-readonly:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    env:
+      PYTHONPATH: ${{ github.workspace }}
+      ALCHEMY_ETH_RPC_URL: ${{ secrets.ALCHEMY_ETH_RPC_URL }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.10'
+      - name: Verify archive secret is configured (do not print)
+        shell: pwsh
+        run: |
+          if (-not $env:ALCHEMY_ETH_RPC_URL) { throw 'ALCHEMY_ETH_RPC_URL secret is missing' }
+          Write-Output 'Archive credential present; masked by GitHub Secrets'
+      - name: Install existing hashed Windows environment
+        shell: pwsh
+        run: |
+          python -m pip install --require-hashes --only-binary=:all: -r docs/research_v2/phase00/g1/requirements-windows-py312.lock.txt
+      - name: Compare registered historical state without logging credentials
+        shell: pwsh
+        run: |
+          python docs/research_v2/phase01b/alchemy_crosscheck/run.py --output "$env:RUNNER_TEMP/alchemy-crosscheck"
+      - name: Upload sanitized scientific comparison only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: alchemy-crosscheck-${{ github.run_id }}
+          path: ${{ runner.temp }}/alchemy-crosscheck/ALCHEMY_CROSSCHECK_RESULT.json
+          if-no-files-found: warn
