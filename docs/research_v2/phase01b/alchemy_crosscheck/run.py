@@ -11,6 +11,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+from urllib.parse import urlsplit
 
 from docs.research_v2.phase01b import collector as core
 
@@ -40,8 +41,8 @@ def main() -> int:
     parser.add_argument("--output", required=True, type=Path)
     args = parser.parse_args()
     url = os.environ.get("ALCHEMY_ETH_RPC_URL", "")
-    if not url.startswith("https://") or "alchemy.com" not in url.split("/")[2].lower():
-        print("BLOCKED: Alchemy HTTPS secret missing or endpoint hostname invalid", flush=True)
+    if not url or urlsplit(url).scheme.lower() != "https" or not urlsplit(url).hostname:
+        print("BLOCKED: RPC secret missing or HTTPS URL invalid (value not disclosed)", flush=True)
         return 2
     directory = Path(__file__).resolve().parents[1]
     registration = json.loads((directory / "SAMPLE_REGISTRATION.json").read_text(encoding="utf-8"))
