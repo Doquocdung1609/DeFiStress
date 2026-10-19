@@ -1,0 +1,50 @@
+{
+  "schema": "alchemy-vs-drpc-evidence-record-v1",
+  "origin": {
+    "run_id": 39223539524,
+    "run_url": "https://github.com/Doquocdung1609/DeFiStress/actions/runs/39223539524",
+    "source_commit": "f63cee66dce12ea432188b1bd65d934443afbdac",
+    "artifact_id": 12173300304,
+    "artifact_filename": "ALCHEMY_CROSSCHECK_RESULT.json",
+    "artifact_json_size_bytes": 4002,
+    "artifact_json_sha256": "8aa33a26b4d950ff92661f1fd794ee84211cb4a8668ad0514b050e1fa7267e43",
+    "downloaded_zip_sha256": "82a006751255af18b377312cb20a046a88e4b9adb11cd33fded086b41bab5c32"
+  },
+  "summary": {
+    "observations": 6,
+    "distinct_blocks": 3,
+    "fields_per_observation": 29,
+    "total_field_comparisons": 174,
+    "agreeing": 174,
+    "mismatch": 0,
+    "missing": 0,
+    "field_instances_unique_by_block": 87,
+    "repeatable_blocks": 3
+  },
+  "blocks": [
+    {
+      "number": 26045352,
+      "hash": "0x4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+      "field_hash": "58813551b9a374164bed552a826368e268fc711ac0fbaba69e378bb944c6a5ff"
+    },
+    {
+      "number": 26038152,
+      "hash": "0xbb108203815f257e9f9b023f92a30e67d946799355ceffc4bef0e0e16a1e87bd",
+      "field_hash": "9ad4c6d9fe862d3e96e68985848539ba2b78059f2a05dd861ee6b3a4bc0e177a"
+    },
+    {
+      "number": 26030952,
+      "hash": "0xeeb12db7f31e86507bb4be7a1a2953d19c11165c99a75ebc7aa589d65d0b9625",
+      "field_hash": "9584e6380a8fd814c411323623f7f84aead99874e91508873ec9e818c0ab5e7e"
+    }
+  ],
+  "verdicts": {
+    "alchemy_historical_state": "PASS",
+    "registered_field_agreement": "PASS",
+    "two_pass_repeatability": "PASS",
+    "independent_backend": "UNVERIFIED",
+    "independent_archive_gate": "BLOCKED",
+    "phase02_authorized": false
+  },
+  "limitations": "Historical comparisons against saved Phase01-B dRPC reference; not contemporaneous cross-provider state read or independent-backend attestation. Exact raw artifact accessible in cited workflow while retained. No credentials or raw HTTP payload stored."
+}
