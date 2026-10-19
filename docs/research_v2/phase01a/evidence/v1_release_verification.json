@@ -1,0 +1,33 @@
+{
+  "status": "DEFISTRESS_V1_SCIENTIFIC_BASELINE_RELEASED",
+  "tag_name": "v1.0.0-scientific-baseline",
+  "tag_object": "cdd9c3a80f4df21e7e054045cb93fdc5a7f731c7",
+  "tag_type": "annotated",
+  "target_commit": "2b505813d35d3cf6f4414585f9dd50f3b4281ac2",
+  "release_id": 416585898,
+  "release_url": "https://github.com/Doquocdung1609/DeFiStress/releases/tag/v1.0.0-scientific-baseline",
+  "post_merge_ci_run": 39147469533,
+  "post_merge_ci_conclusion": "success",
+  "post_merge_ci_artifact_sha256": "9ea08fa155237bb460054bd28fc63ef0cca8a6bf1041fd3d0b19aba40cbade04",
+  "pytest": {
+    "passed": 226,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "frontend": {
+    "passed": 21
+  },
+  "release_execution_run": 39148422358,
+  "release_execution_commit": "fae48b1e01d4fd3910aaacff0edd59fba18d73f3",
+  "release_execution_branch": "release/v1-scientific-baseline-finalization",
+  "direct_connector_tag_release_mutation_available": false,
+  "method": "Authorized contents-write Actions workflow; source target remains original V1 commit; Git tag object and release independently read back via connector.",
+  "phase01a_initial_registration_commit": "79ca47ee5459bc602f24553d3eb519216bec10dd",
+  "limitations": [
+    "No live Mainnet RPC validation in V1 CI; RPC job skipped",
+    "New tested Windows environment; not recovered historical environment",
+    "No full scientific historical replay or Monte Carlo rerun",
+    "V1 scientific limitations and template gate remain"
+  ]
+}
