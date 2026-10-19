@@ -1,0 +1,978 @@
+{
+  "schema_version": "defistress-gate-b-governance-v1",
+  "governance_record_ids_are_not_scientific_result_ids": true,
+  "pinned_start": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+  "mandatory_status": "GATE_A_BLOCKED — GATE_B_SCOPED_PASS — PHASE02_NOT_AUTHORIZED",
+  "gate_a": "INDEPENDENT_ARCHIVE_VALIDATION_BLOCKED",
+  "gate_b": "PASS_REGISTERED_CORE_SCOPE",
+  "phase02_authorized": false,
+  "anchors": {
+    "v1_tag": "v1.0.0-scientific-baseline",
+    "v1_tag_object": "cdd9c3a80f4df21e7e054045cb93fdc5a7f731c7",
+    "v1_target": "2b505813d35d3cf6f4414585f9dd50f3b4281ac2",
+    "scientific_lock": "3f6e5302483681209e2408531eb5a15389f9fded",
+    "blueprint_lock": "8de52bebabef376be700836e6f93a92d7394d2c3"
+  },
+  "original_collection": {
+    "drpc": {
+      "commit": "6e5285f04d1d5ab2900b51389cc3c025c9b64f42",
+      "run": 39212923329
+    },
+    "borrower_repair": {
+      "commit": "4e0c37ce060d34e6c767ac72c9454ccb48ea4606",
+      "run": 39213487324
+    },
+    "alchemy": {
+      "commit": "f63cee66dce12ea432188b1bd65d934443afbdac",
+      "run": 39223539524,
+      "artifact": 12173300304,
+      "artifact_url": "https://github.com/Doquocdung1609/DeFiStress/actions/runs/39223539524/artifacts/12173300304",
+      "file": "ALCHEMY_CROSSCHECK_RESULT.json",
+      "size_bytes": 4002,
+      "sha256": "8aa33a26b4d950ff92661f1fd794ee84211cb4a8668ad0514b050e1fa7267e43",
+      "zip_sha256": "82a006751255af18b377312cb20a046a88e4b9adb11cd33fded086b41bab5c32",
+      "hash_domain": "ACTUAL_DOWNLOADED_BYTES_CRLF_JSON",
+      "review_scope": "Downloaded, digest/CRC verified and read; original comparisons not recomputed"
+    }
+  },
+  "source_catalog": [
+    {
+      "id": "SRC-01",
+      "path": "docs/research_v2/backend_provenance/BACKEND_INDEPENDENCE_DECISION.md",
+      "commit": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+      "git_blob_sha1": "90c8f5a71780ee6b9456246ba2faa83fa63bc0f3",
+      "sha256": "fce372e7c00b35103d41221bddbd334046fe1b1a652550d2d5f91f953736989a",
+      "size_bytes": 3064,
+      "hash_domain": "ACTUAL_GIT_BLOB_BYTES",
+      "read_scope": "FULL_TEXT_READ; Git blob and SHA256 checked locally",
+      "permalink": "https://github.com/Doquocdung1609/DeFiStress/blob/cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815/docs/research_v2/backend_provenance/BACKEND_INDEPENDENCE_DECISION.md"
+    },
+    {
+      "id": "SRC-02",
+      "path": "docs/research_v2/backend_provenance/COMMANDER_HANDOFF.md",
+      "commit": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+      "git_blob_sha1": "5fb9593dac9ce25ce6075672e760b6971180ad8f",
+      "sha256": "885a0f7fc5726e59892a68c03e878d58639239959b732f91742d8a568fa6f02d",
+      "size_bytes": 2598,
+      "hash_domain": "ACTUAL_GIT_BLOB_BYTES",
+      "read_scope": "FULL_TEXT_READ; Git blob and SHA256 checked locally",
+      "permalink": "https://github.com/Doquocdung1609/DeFiStress/blob/cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815/docs/research_v2/backend_provenance/COMMANDER_HANDOFF.md"
+    },
+    {
+      "id": "SRC-03",
+      "path": "docs/research_v2/backend_provenance/GATE_ALTERNATIVES_ASSESSMENT.md",
+      "commit": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+      "git_blob_sha1": "df8fb9fd300fca1aa43c306b5cec83b30d6e2341",
+      "sha256": "dc7292146ef077c7e495dbaf0012b10bee07e34d93e5e425fc66dfdc5afba53f",
+      "size_bytes": 2767,
+      "hash_domain": "ACTUAL_GIT_BLOB_BYTES",
+      "read_scope": "FULL_TEXT_READ; Git blob and SHA256 checked locally",
+      "permalink": "https://github.com/Doquocdung1609/DeFiStress/blob/cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815/docs/research_v2/backend_provenance/GATE_ALTERNATIVES_ASSESSMENT.md"
+    },
+    {
+      "id": "SRC-04",
+      "path": "docs/research_v2/backend_provenance/PROVIDER_ARCHITECTURE_ASSESSMENT.md",
+      "commit": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+      "git_blob_sha1": "56168fa978e1b32bf48ce8adc0e7119ab5912dea",
+      "sha256": "0b6f1e68b8baedd55b0ec2f252dfcbbd61d1a168d6cb1c50a0aa0e8ad96b3f69",
+      "size_bytes": 4436,
+      "hash_domain": "ACTUAL_GIT_BLOB_BYTES",
+      "read_scope": "FULL_TEXT_READ; Git blob and SHA256 checked locally",
+      "permalink": "https://github.com/Doquocdung1609/DeFiStress/blob/cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815/docs/research_v2/backend_provenance/PROVIDER_ARCHITECTURE_ASSESSMENT.md"
+    },
+    {
+      "id": "SRC-05",
+      "path": "docs/research_v2/backend_provenance/REQUEST_PROVENANCE_EVIDENCE.json",
+      "commit": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+      "git_blob_sha1": "43e274b7937d7c7cdfc1c066ea10d55c7ea11a63",
+      "sha256": "470278b2a8a5898e35f6cde89a618506c7cb77799202997b9532c75709f4db19",
+      "size_bytes": 4342,
+      "hash_domain": "ACTUAL_GIT_BLOB_BYTES",
+      "read_scope": "FULL_BYTES_HASHED_AND_JSON_PARSED; relevant fields reviewed, no scientific recomputation",
+      "permalink": "https://github.com/Doquocdung1609/DeFiStress/blob/cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815/docs/research_v2/backend_provenance/REQUEST_PROVENANCE_EVIDENCE.json"
+    },
+    {
+      "id": "SRC-06",
+      "path": "docs/research_v2/phase01b/alchemy_crosscheck/VERIFIED_CI_EVIDENCE.json",
+      "commit": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+      "git_blob_sha1": "6b9059a5f2bb9ae9e3431ad5e62c5ac0ef671680",
+      "sha256": "206b8fee9601f023f21c9f4d16b1c75de1d830a256b26ea7fbf92248f5e6f9db",
+      "size_bytes": 2017,
+      "hash_domain": "ACTUAL_GIT_BLOB_BYTES",
+      "read_scope": "FULL_BYTES_HASHED_AND_JSON_PARSED; relevant fields reviewed, no scientific recomputation",
+      "permalink": "https://github.com/Doquocdung1609/DeFiStress/blob/cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815/docs/research_v2/phase01b/alchemy_crosscheck/VERIFIED_CI_EVIDENCE.json"
+    },
+    {
+      "id": "SRC-07",
+      "path": "docs/research_v2/phase01b/alchemy_crosscheck/ALCHEMY_EVIDENCE_REVIEW.md",
+      "commit": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+      "git_blob_sha1": "6a62d72ee49a295214c314a086cc6b09fb7b05c4",
+      "sha256": "91917c9708e282b21d4d7a9aaf82c4d99674910b97c3564481718dd94585fcd6",
+      "size_bytes": 3412,
+      "hash_domain": "ACTUAL_GIT_BLOB_BYTES",
+      "read_scope": "FULL_TEXT_READ; Git blob and SHA256 checked locally",
+      "permalink": "https://github.com/Doquocdung1609/DeFiStress/blob/cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815/docs/research_v2/phase01b/alchemy_crosscheck/ALCHEMY_EVIDENCE_REVIEW.md"
+    },
+    {
+      "id": "SRC-08",
+      "path": "docs/research_v2/phase00/V2_RESEARCH_UPGRADE_BLUEPRINT.md",
+      "commit": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+      "git_blob_sha1": "0763b85937f11ab13e36983bd825e968061c9562",
+      "sha256": "2c1e6b399beab73b16b26f8990aef768ae124b697c7d11723813744cc1cddd11",
+      "size_bytes": 21177,
+      "hash_domain": "ACTUAL_GIT_BLOB_BYTES",
+      "read_scope": "FULL_TEXT_READ; Git blob and SHA256 checked locally",
+      "permalink": "https://github.com/Doquocdung1609/DeFiStress/blob/cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815/docs/research_v2/phase00/V2_RESEARCH_UPGRADE_BLUEPRINT.md"
+    },
+    {
+      "id": "SRC-09",
+      "path": "docs/research_v2/phase01a/PILOT_SAMPLE_REGISTRY.json",
+      "commit": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+      "git_blob_sha1": "a41372353fe379d013209d325b91b2241260639a",
+      "sha256": "1760f42f35114f4e3a527c539f13d796a72705d43ebb9b02d42a4953cd01536d",
+      "size_bytes": 4377,
+      "hash_domain": "ACTUAL_GIT_BLOB_BYTES",
+      "read_scope": "FULL_BYTES_HASHED_AND_JSON_PARSED; relevant fields reviewed, no scientific recomputation",
+      "permalink": "https://github.com/Doquocdung1609/DeFiStress/blob/cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815/docs/research_v2/phase01a/PILOT_SAMPLE_REGISTRY.json"
+    },
+    {
+      "id": "SRC-10",
+      "path": "docs/research_v2/phase01a/PILOT_DATA_PROVENANCE.json",
+      "commit": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+      "git_blob_sha1": "3f35cdf4da46b1b0683db1892e12566a6363f0b8",
+      "sha256": "82388e62390c6c5d56e4db859f4ca70402c077449fe913e34497040cc1fb58f3",
+      "size_bytes": 19633,
+      "hash_domain": "ACTUAL_GIT_BLOB_BYTES",
+      "read_scope": "FULL_BYTES_HASHED_AND_JSON_PARSED; relevant fields reviewed, no scientific recomputation",
+      "permalink": "https://github.com/Doquocdung1609/DeFiStress/blob/cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815/docs/research_v2/phase01a/PILOT_DATA_PROVENANCE.json"
+    },
+    {
+      "id": "SRC-11",
+      "path": "docs/research_v2/phase01b/SAMPLE_REGISTRATION.json",
+      "commit": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+      "git_blob_sha1": "804b3561419e7d20adc8d401eea29a9cb5647a6c",
+      "sha256": "284634a47fa78fc9b3efae85bb40fa7114a34c273e01a0889ead5d2ff3380f68",
+      "size_bytes": 6836,
+      "hash_domain": "ACTUAL_GIT_BLOB_BYTES",
+      "read_scope": "FULL_BYTES_HASHED_AND_JSON_PARSED; relevant fields reviewed, no scientific recomputation",
+      "permalink": "https://github.com/Doquocdung1609/DeFiStress/blob/cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815/docs/research_v2/phase01b/SAMPLE_REGISTRATION.json"
+    },
+    {
+      "id": "SRC-12",
+      "path": "docs/research_v2/phase01b/VALIDATION_SUMMARY.json",
+      "commit": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+      "git_blob_sha1": "3effd85f1930c38fcbc5df569a2317f830a56a1a",
+      "sha256": "1612c26ee8bd44d9d426d65d46680f694f439f786ea95701a557b5ee01a3e266",
+      "size_bytes": 27296,
+      "hash_domain": "ACTUAL_GIT_BLOB_BYTES",
+      "read_scope": "FULL_BYTES_HASHED_AND_JSON_PARSED; relevant fields reviewed, no scientific recomputation",
+      "permalink": "https://github.com/Doquocdung1609/DeFiStress/blob/cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815/docs/research_v2/phase01b/VALIDATION_SUMMARY.json"
+    },
+    {
+      "id": "SRC-13",
+      "path": "data/processed/research_final/final_accepted_claims_v1/six_rq_accepted_claims_matrix.json",
+      "commit": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+      "git_blob_sha1": "fffe69d45f2c70e8f4cb781c8b521ef4cf6f1a45",
+      "sha256": "428db5ef589bbd2e0e1c4273c36538f0abbe3c29b5601897bd787d78c1a4d080",
+      "size_bytes": 15577,
+      "hash_domain": "ACTUAL_GIT_BLOB_BYTES",
+      "read_scope": "FULL_BYTES_HASHED_AND_JSON_PARSED; relevant fields reviewed, no scientific recomputation",
+      "permalink": "https://github.com/Doquocdung1609/DeFiStress/blob/cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815/data/processed/research_final/final_accepted_claims_v1/six_rq_accepted_claims_matrix.json"
+    },
+    {
+      "id": "SRC-14",
+      "path": "docs/research_v2/phase01b/alchemy_crosscheck/run.py",
+      "commit": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+      "git_blob_sha1": "400b7562ebd0d3cd9d39e2c6e6f7d0691a3ed7b8",
+      "sha256": "f1008553a2b5e57bd01c9314f59285e1f6470bfd6e918bddb2a66ff2251916eb",
+      "size_bytes": 5944,
+      "hash_domain": "ACTUAL_GIT_BLOB_BYTES",
+      "read_scope": "FULL_BYTES_HASHED; relevant implementation sections reviewed, not full code audit",
+      "permalink": "https://github.com/Doquocdung1609/DeFiStress/blob/cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815/docs/research_v2/phase01b/alchemy_crosscheck/run.py"
+    },
+    {
+      "id": "SRC-15",
+      "path": "docs/research_v2/phase01b/AAVE_HISTORICAL_ORACLE_TRACE.md",
+      "commit": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+      "git_blob_sha1": "180e0e4859a7de0dbec86edf46a0d316054449f0",
+      "sha256": "650ba6c7eec0fe0c210015537f8fd7f9caab60034b9b265d1bc051dfcfc0f8a8",
+      "size_bytes": 4637,
+      "hash_domain": "ACTUAL_GIT_BLOB_BYTES",
+      "read_scope": "FULL_TEXT_READ; Git blob and SHA256 checked locally",
+      "permalink": "https://github.com/Doquocdung1609/DeFiStress/blob/cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815/docs/research_v2/phase01b/AAVE_HISTORICAL_ORACLE_TRACE.md"
+    },
+    {
+      "id": "SRC-16",
+      "path": "docs/research_v2/phase01b/UNISWAP_TICK_COVERAGE_REPORT.md",
+      "commit": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+      "git_blob_sha1": "41859f20f46f093e45788479ea1eda32021c8b90",
+      "sha256": "d53807aafb94b78aeae3f3abd3915bec654d7d81a5db2c84366c0f4352c3675f",
+      "size_bytes": 3662,
+      "hash_domain": "ACTUAL_GIT_BLOB_BYTES",
+      "read_scope": "FULL_TEXT_READ; Git blob and SHA256 checked locally",
+      "permalink": "https://github.com/Doquocdung1609/DeFiStress/blob/cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815/docs/research_v2/phase01b/UNISWAP_TICK_COVERAGE_REPORT.md"
+    },
+    {
+      "id": "SRC-17",
+      "path": "docs/research_v2/phase01b/BORROWER_RECONSTRUCTION_AUDIT.md",
+      "commit": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+      "git_blob_sha1": "809cf726feb2ffb636524b0409fb198baa9891cd",
+      "sha256": "de7aacd7d749817d761ea1de0e136119e232a4bedc1839e98556f2880958464f",
+      "size_bytes": 5748,
+      "hash_domain": "ACTUAL_GIT_BLOB_BYTES",
+      "read_scope": "FULL_TEXT_READ; Git blob and SHA256 checked locally",
+      "permalink": "https://github.com/Doquocdung1609/DeFiStress/blob/cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815/docs/research_v2/phase01b/BORROWER_RECONSTRUCTION_AUDIT.md"
+    },
+    {
+      "id": "SRC-18",
+      "path": "docs/research_v2/phase01a/pilot.py",
+      "commit": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+      "git_blob_sha1": "62e2732fd4e8ac1928ee67f70816bc78a5e6b479",
+      "sha256": "1a8d847b9a0bcfdffca6958bb4ee42cf31a785a467a252294325c0ff1c7640f4",
+      "size_bytes": 21247,
+      "hash_domain": "ACTUAL_GIT_BLOB_BYTES",
+      "read_scope": "FULL_BYTES_HASHED; relevant implementation sections reviewed, not full code audit",
+      "permalink": "https://github.com/Doquocdung1609/DeFiStress/blob/cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815/docs/research_v2/phase01a/pilot.py"
+    },
+    {
+      "id": "SRC-19",
+      "path": "docs/research_v2/phase01a/PHASE01A_VALIDATION_REPORT.md",
+      "commit": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+      "git_blob_sha1": "4deb602b1786b330f25be58539aadf40150ca248",
+      "sha256": "f4cc7032e2dd9edca38dea60c0b2bc24c773ff0436638c330b70924031b60fa9",
+      "size_bytes": 6614,
+      "hash_domain": "ACTUAL_GIT_BLOB_BYTES",
+      "read_scope": "FULL_TEXT_READ; Git blob and SHA256 checked locally",
+      "permalink": "https://github.com/Doquocdung1609/DeFiStress/blob/cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815/docs/research_v2/phase01a/PHASE01A_VALIDATION_REPORT.md"
+    },
+    {
+      "id": "SRC-20",
+      "path": "docs/research_v2/phase01b/EVIDENCE_PROVENANCE.json",
+      "commit": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+      "git_blob_sha1": "376b9e4672745fddbfdd3445dc313df44950c7f7",
+      "sha256": "f2ae36d0952dec06fe73d43d95d3c2ef2bd96ee3fc71ba15c2db161a4e4b8a29",
+      "size_bytes": 75282,
+      "hash_domain": "ACTUAL_GIT_BLOB_BYTES",
+      "read_scope": "FULL_BYTES_HASHED; provenance entries or relevant implementation reviewed; no collector/validator rerun",
+      "permalink": "https://github.com/Doquocdung1609/DeFiStress/blob/cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815/docs/research_v2/phase01b/EVIDENCE_PROVENANCE.json"
+    },
+    {
+      "id": "SRC-21",
+      "path": "docs/research_v2/phase01b/collector.py",
+      "commit": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+      "git_blob_sha1": "eca5ad25848e009cbe14a4df3d9af148a6055549",
+      "sha256": "344e57008ee59e64ea15634330be8a35303e0e52c741f70954f506e1cc6e3cc4",
+      "size_bytes": 52858,
+      "hash_domain": "ACTUAL_GIT_BLOB_BYTES",
+      "read_scope": "FULL_BYTES_HASHED; provenance entries or relevant implementation reviewed; no collector/validator rerun",
+      "permalink": "https://github.com/Doquocdung1609/DeFiStress/blob/cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815/docs/research_v2/phase01b/collector.py"
+    },
+    {
+      "id": "SRC-22",
+      "path": "docs/research_v2/phase01b/verify_saved.py",
+      "commit": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+      "git_blob_sha1": "1a4d05e856f28dae19ea958b7052fcc72bca9b25",
+      "sha256": "552f32a68312c8032e2a41e32ad27de18e2655e60351ccfd4ff20a5b4bf98ac8",
+      "size_bytes": 7029,
+      "hash_domain": "ACTUAL_GIT_BLOB_BYTES",
+      "read_scope": "FULL_BYTES_HASHED; provenance entries or relevant implementation reviewed; no collector/validator rerun",
+      "permalink": "https://github.com/Doquocdung1609/DeFiStress/blob/cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815/docs/research_v2/phase01b/verify_saved.py"
+    },
+    {
+      "id": "SRC-23",
+      "path": "docs/research_v2/phase01a/evidence/collection/raw/drpc-26045352-pass1.json",
+      "commit": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+      "git_blob_sha1": "195ea6de97fce31101eb4cf20291090932b8fb86",
+      "sha256": "031c2e5e28c3f99ad39a8d8cec8115f5bd9fabd155db18d25c1805575dc10f2c",
+      "size_bytes": 82906,
+      "hash_domain": "ACTUAL_GIT_BLOB_BYTES",
+      "read_scope": "FULL_BYTES_HASHED_AND_JSON_PARSED; selected structures inspected; no historical field comparison rerun",
+      "permalink": "https://github.com/Doquocdung1609/DeFiStress/blob/cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815/docs/research_v2/phase01a/evidence/collection/raw/drpc-26045352-pass1.json"
+    },
+    {
+      "id": "SRC-24",
+      "path": "docs/research_v2/phase01b/evidence/borrower_repair/components/26045352-pass1-borrowers.json.gz",
+      "commit": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+      "git_blob_sha1": "37d396932fea77993e3166145f7801549a848f83",
+      "sha256": "dacb58b14ff7b2d1a59d43c9dcf811595a44da5b11e62aea38b59ceebfcde7f4",
+      "size_bytes": 76241,
+      "hash_domain": "ACTUAL_GIT_BLOB_BYTES",
+      "read_scope": "FULL_BYTES_HASHED_AND_JSON_PARSED; selected structures inspected; no historical field comparison rerun",
+      "permalink": "https://github.com/Doquocdung1609/DeFiStress/blob/cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815/docs/research_v2/phase01b/evidence/borrower_repair/components/26045352-pass1-borrowers.json.gz"
+    },
+    {
+      "id": "SRC-25",
+      "path": "docs/research_v2/phase01b/evidence/full/components/26045352-pass1-P3000.json.gz",
+      "commit": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+      "git_blob_sha1": "e93e35398baab7677c46cc875051f161e4ad7f6c",
+      "sha256": "83a06f4d2f53f8920cd43dc815557308edbf89c57bc471cca1d4c54621740f40",
+      "size_bytes": 24222,
+      "hash_domain": "ACTUAL_GIT_BLOB_BYTES",
+      "read_scope": "FULL_BYTES_HASHED_AND_JSON_PARSED; selected structures inspected; no historical field comparison rerun",
+      "permalink": "https://github.com/Doquocdung1609/DeFiStress/blob/cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815/docs/research_v2/phase01b/evidence/full/components/26045352-pass1-P3000.json.gz"
+    },
+    {
+      "id": "SRC-26",
+      "path": "docs/research_v2/phase01b/evidence/full/components/26045352-pass1-P500.json.gz",
+      "commit": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+      "git_blob_sha1": "13338d836a4b9fb5a2aa7cfb4a83a4c508278909",
+      "sha256": "f00eb6c444f818503f9be4c02f1cc510f44bfa4de8b0f1d4d5079ec29d294e6d",
+      "size_bytes": 110573,
+      "hash_domain": "ACTUAL_GIT_BLOB_BYTES",
+      "read_scope": "FULL_BYTES_HASHED_AND_JSON_PARSED; selected structures inspected; no historical field comparison rerun",
+      "permalink": "https://github.com/Doquocdung1609/DeFiStress/blob/cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815/docs/research_v2/phase01b/evidence/full/components/26045352-pass1-P500.json.gz"
+    },
+    {
+      "id": "SRC-27",
+      "path": "docs/research_v2/phase01b/evidence/full/components/26045352-pass1-borrowers.json.gz",
+      "commit": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+      "git_blob_sha1": "90f95da54c160dcec02f3330c6149db2c002e267",
+      "sha256": "1b4501a6e28b09613a99e199e0d2d27aff362ca2d213ae4a52283a32dbca7cd0",
+      "size_bytes": 201,
+      "hash_domain": "ACTUAL_GIT_BLOB_BYTES",
+      "read_scope": "FULL_BYTES_HASHED_AND_JSON_PARSED; selected structures inspected; no historical field comparison rerun",
+      "permalink": "https://github.com/Doquocdung1609/DeFiStress/blob/cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815/docs/research_v2/phase01b/evidence/full/components/26045352-pass1-borrowers.json.gz"
+    },
+    {
+      "id": "SRC-28",
+      "path": "docs/research_v2/phase01b/evidence/full/components/26045352-pass1-oracle.json.gz",
+      "commit": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+      "git_blob_sha1": "0f30a82d7242145f2bb3415d10e5d64b3701326c",
+      "sha256": "4905e22e6fdd0047476db8df3f7973ceb13b60b4e17fafa8ac523198f0e22f85",
+      "size_bytes": 1281,
+      "hash_domain": "ACTUAL_GIT_BLOB_BYTES",
+      "read_scope": "FULL_BYTES_HASHED_AND_JSON_PARSED; selected structures inspected; no historical field comparison rerun",
+      "permalink": "https://github.com/Doquocdung1609/DeFiStress/blob/cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815/docs/research_v2/phase01b/evidence/full/components/26045352-pass1-oracle.json.gz"
+    },
+    {
+      "id": "SRC-29",
+      "path": "docs/research_v2/phase01b/evidence/full/core/drpc-26030952-pass1.json.gz",
+      "commit": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+      "git_blob_sha1": "255d09bf15f5990290760048f17a1cb90a05e75d",
+      "sha256": "36faa2155d6ce195dd50b6f618d0fa416727541230c72c42d019f6d6204ce1cf",
+      "size_bytes": 711,
+      "hash_domain": "ACTUAL_GIT_BLOB_BYTES",
+      "read_scope": "FULL_BYTES_HASHED_AND_JSON_PARSED; selected structures inspected; no historical field comparison rerun",
+      "permalink": "https://github.com/Doquocdung1609/DeFiStress/blob/cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815/docs/research_v2/phase01b/evidence/full/core/drpc-26030952-pass1.json.gz"
+    },
+    {
+      "id": "SRC-30",
+      "path": "docs/research_v2/phase01b/evidence/full/core/drpc-26030952-pass2.json.gz",
+      "commit": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+      "git_blob_sha1": "255d09bf15f5990290760048f17a1cb90a05e75d",
+      "sha256": "36faa2155d6ce195dd50b6f618d0fa416727541230c72c42d019f6d6204ce1cf",
+      "size_bytes": 711,
+      "hash_domain": "ACTUAL_GIT_BLOB_BYTES",
+      "read_scope": "FULL_BYTES_HASHED_AND_JSON_PARSED; selected structures inspected; no historical field comparison rerun",
+      "permalink": "https://github.com/Doquocdung1609/DeFiStress/blob/cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815/docs/research_v2/phase01b/evidence/full/core/drpc-26030952-pass2.json.gz"
+    },
+    {
+      "id": "SRC-31",
+      "path": "docs/research_v2/phase01b/evidence/full/core/drpc-26038152-pass1.json.gz",
+      "commit": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+      "git_blob_sha1": "484a708c875b701a0896c8a37be13db4549cd221",
+      "sha256": "7cd9a3aedc47ceb5fd29b2e3cd8bac263350d916ff4680433b909ee2f38fd7fc",
+      "size_bytes": 712,
+      "hash_domain": "ACTUAL_GIT_BLOB_BYTES",
+      "read_scope": "FULL_BYTES_HASHED_AND_JSON_PARSED; selected structures inspected; no historical field comparison rerun",
+      "permalink": "https://github.com/Doquocdung1609/DeFiStress/blob/cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815/docs/research_v2/phase01b/evidence/full/core/drpc-26038152-pass1.json.gz"
+    },
+    {
+      "id": "SRC-32",
+      "path": "docs/research_v2/phase01b/evidence/full/core/drpc-26038152-pass2.json.gz",
+      "commit": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+      "git_blob_sha1": "484a708c875b701a0896c8a37be13db4549cd221",
+      "sha256": "7cd9a3aedc47ceb5fd29b2e3cd8bac263350d916ff4680433b909ee2f38fd7fc",
+      "size_bytes": 712,
+      "hash_domain": "ACTUAL_GIT_BLOB_BYTES",
+      "read_scope": "FULL_BYTES_HASHED_AND_JSON_PARSED; selected structures inspected; no historical field comparison rerun",
+      "permalink": "https://github.com/Doquocdung1609/DeFiStress/blob/cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815/docs/research_v2/phase01b/evidence/full/core/drpc-26038152-pass2.json.gz"
+    },
+    {
+      "id": "SRC-33",
+      "path": "docs/research_v2/phase01b/evidence/full/core/drpc-26045352-pass1.json.gz",
+      "commit": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+      "git_blob_sha1": "d738b6936bcdfa2756df9bf463b2f49ba2f3a455",
+      "sha256": "4afdab6135c92257c6559a7abd6be055beafdbea5c20097d0f26e41bd40d8f13",
+      "size_bytes": 710,
+      "hash_domain": "ACTUAL_GIT_BLOB_BYTES",
+      "read_scope": "FULL_BYTES_HASHED_AND_JSON_PARSED; selected structures inspected; no historical field comparison rerun",
+      "permalink": "https://github.com/Doquocdung1609/DeFiStress/blob/cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815/docs/research_v2/phase01b/evidence/full/core/drpc-26045352-pass1.json.gz"
+    },
+    {
+      "id": "SRC-34",
+      "path": "docs/research_v2/phase01b/evidence/full/core/drpc-26045352-pass2.json.gz",
+      "commit": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+      "git_blob_sha1": "d738b6936bcdfa2756df9bf463b2f49ba2f3a455",
+      "sha256": "4afdab6135c92257c6559a7abd6be055beafdbea5c20097d0f26e41bd40d8f13",
+      "size_bytes": 710,
+      "hash_domain": "ACTUAL_GIT_BLOB_BYTES",
+      "read_scope": "FULL_BYTES_HASHED_AND_JSON_PARSED; selected structures inspected; no historical field comparison rerun",
+      "permalink": "https://github.com/Doquocdung1609/DeFiStress/blob/cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815/docs/research_v2/phase01b/evidence/full/core/drpc-26045352-pass2.json.gz"
+    },
+    {
+      "id": "SRC-35",
+      "path": "docs/research_v2/phase01b/evidence/full/raw/primary-26045352-pass1-000.json.gz",
+      "commit": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815",
+      "git_blob_sha1": "1c0cb3ce76b5f8da80730a452c3c21899af6878c",
+      "sha256": "8d8a5040309437e903ddf688bdbc3c0a28875ca89129307e376a11cc273204e5",
+      "size_bytes": 39345,
+      "hash_domain": "ACTUAL_GIT_BLOB_BYTES",
+      "read_scope": "FULL_BYTES_HASHED_AND_JSON_PARSED; selected structures inspected; no historical field comparison rerun",
+      "permalink": "https://github.com/Doquocdung1609/DeFiStress/blob/cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815/docs/research_v2/phase01b/evidence/full/raw/primary-26045352-pass1-000.json.gz"
+    }
+  ],
+  "confidence_categories": {
+    "SCOPED_CI_OBSERVATION": "Observed in original CI artifact; limited to registered inputs, no infrastructure inference",
+    "REGISTERED_SINGLE_GATEWAY_RECONSTRUCTION": "Accepted component reconstruction via saved dRPC; not independently corroborated in full",
+    "SCOPED_STATIC_INTEGRITY": "Current byte/format checks only; no fresh collection or scientific rerun",
+    "DOCUMENTED_GAP": "Explicit boundary or missing prerequisite; not probability of correctness"
+  },
+  "evidence": [
+    {
+      "id": "GBE-01",
+      "claim": "Đồng thuận historical core giữa Alchemy và dRPC đã lưu",
+      "source_refs": [
+        "SRC-06",
+        "SRC-14",
+        "SRC-11"
+      ],
+      "artifact_locators": [
+        "VERIFIED_CI_EVIDENCE.json: root; origin artifact /results/*/repeats/*/comparison; collector.py:core_observation"
+      ],
+      "measured_coverage": {
+        "blocks": 3,
+        "fields_per_block": 29,
+        "alchemy_passes": 2,
+        "field_pass_agreements": 174,
+        "unique_block_field_pairs": 87,
+        "mismatch_fields": 0,
+        "missing_fields": 0,
+        "additional_fields": 0
+      },
+      "allowed_interpretation": "PASS_REGISTERED_CORE_SCOPE theo quyết định PR30; 4 nhãn identity và 25 nhãn state/config, slot0 tuple tính là một nhãn.",
+      "prohibited_interpretations": [
+        "174 mẫu độc lập",
+        "Đối chiếu toàn bộ ticks/rounds/borrowers giữa hai nguồn",
+        "Nguồn hạ tầng độc lập"
+      ],
+      "confidence_category": "SCOPED_CI_OBSERVATION",
+      "open_gate": "GATE_A; expansion beyond 29 core labels",
+      "json_pointers": [
+        {
+          "source_ref": "SRC-06",
+          "pointer": "/summary"
+        },
+        {
+          "source_ref": "SRC-06",
+          "pointer": "/blocks"
+        }
+      ]
+    },
+    {
+      "id": "GBE-02",
+      "claim": "Hai lượt đọc Alchemy có canonical content hash ổn định",
+      "source_refs": [
+        "SRC-06",
+        "SRC-14"
+      ],
+      "artifact_locators": [
+        "run.py:canonical_hash,compare,main; origin artifact /results/*/repeatability_pass"
+      ],
+      "measured_coverage": {
+        "blocks": 3,
+        "passes_per_block": 2
+      },
+      "allowed_interpretation": "Repeatability của nội dung 29 trường tại từng block trong run39223539524.",
+      "prohibited_interpretations": [
+        "Hai lần đọc là hai backend độc lập",
+        "Hash ổn định chứng minh tính đúng của mọi trường ngoài scope"
+      ],
+      "confidence_category": "SCOPED_CI_OBSERVATION",
+      "open_gate": "Backend attribution and retained field-value replay",
+      "json_pointers": [
+        {
+          "source_ref": "SRC-06",
+          "pointer": "/blocks"
+        }
+      ]
+    },
+    {
+      "id": "GBE-03",
+      "claim": "Tham chiếu dRPC là dữ liệu thu trước, không phải cặp đọc đồng thời",
+      "source_refs": [
+        "SRC-14",
+        "SRC-20",
+        "SRC-05",
+        "SRC-33",
+        "SRC-31",
+        "SRC-29"
+      ],
+      "artifact_locators": [
+        "run.py: expected_file=evidence/full/core/drpc-{block}-pass1.json.gz; EVIDENCE_PROVENANCE.json:/artifacts/0"
+      ],
+      "measured_coverage": {
+        "reference_run": 39212923329,
+        "comparison_run": 39223539524
+      },
+      "allowed_interpretation": "Cùng block hash bất biến cho phép so sánh trạng thái lịch sử dù thời điểm truy xuất khác nhau; giữ riêng block time và collection time.",
+      "prohibited_interpretations": [
+        "Paired contemporaneous provider experiment",
+        "Backend routing của lần đọc mới đại diện lần lưu cũ"
+      ],
+      "confidence_category": "SCOPED_CI_OBSERVATION",
+      "open_gate": "Request-linked serving provenance of original reference and comparison",
+      "json_pointers": [
+        {
+          "source_ref": "SRC-20",
+          "pointer": "/artifacts/0"
+        },
+        {
+          "source_ref": "SRC-33",
+          "pointer": "/data/fields"
+        },
+        {
+          "source_ref": "SRC-31",
+          "pointer": "/data/fields"
+        },
+        {
+          "source_ref": "SRC-29",
+          "pointer": "/data/fields"
+        }
+      ]
+    },
+    {
+      "id": "GBE-04",
+      "claim": "Nhận diện block/pool/token và đơn vị thuộc mẫu đăng ký",
+      "source_refs": [
+        "SRC-09",
+        "SRC-11",
+        "SRC-21"
+      ],
+      "artifact_locators": [
+        "SAMPLE_REGISTRATION.json:/blocks,/pools,/tokens; collector.py:identity,core_observation"
+      ],
+      "measured_coverage": {
+        "chain_id": 1,
+        "blocks": [
+          26045352,
+          26038152,
+          26030952
+        ],
+        "pools": 2,
+        "token_decimals": {
+          "USDC": 6,
+          "WETH": 18
+        },
+        "fee_millionths": [
+          3000,
+          500
+        ]
+      },
+      "allowed_interpretation": "Ba block cố định, hai fee tiers cùng cặp USDC/WETH; state eth_call gắn blockHash với requireCanonical.",
+      "prohibited_interpretations": [
+        "Mẫu đại diện cross-market",
+        "Hai pools là hai cặp tài sản độc lập",
+        "Protocol raw L hoặc sqrtPriceX96 là USD"
+      ],
+      "confidence_category": "REGISTERED_SINGLE_GATEWAY_RECONSTRUCTION",
+      "open_gate": "Broader sample registration; Gate A for independently corroborated historical inputs",
+      "json_pointers": [
+        {
+          "source_ref": "SRC-11",
+          "pointer": "/blocks"
+        },
+        {
+          "source_ref": "SRC-11",
+          "pointer": "/pools"
+        },
+        {
+          "source_ref": "SRC-11",
+          "pointer": "/tokens"
+        }
+      ]
+    },
+    {
+      "id": "GBE-05",
+      "claim": "Tick reconstruction đầy đủ trong dải đã đăng ký",
+      "source_refs": [
+        "SRC-16",
+        "SRC-11",
+        "SRC-25",
+        "SRC-26"
+      ],
+      "artifact_locators": [
+        "report six-row table; evidence/full/components/{block}-pass{1,2}-{P3000,P500}.json.gz indexed by EVIDENCE_PROVENANCE.json"
+      ],
+      "measured_coverage": {
+        "pool_block_cases": 6,
+        "bitmap_word_instances_per_pass": 24,
+        "initialized_tick_instances": 4169,
+        "band_delta_ticks": 6932
+      },
+      "allowed_interpretation": "Đầy đủ required words và initialized ticks trong dải; active L là thanh khoản tại current tick; outside-band không được tái dựng.",
+      "prohibited_interpretations": [
+        "Full legal pool domain",
+        "4169 ticks độc nhất toàn bộ mẫu",
+        "Lower boundary L là quan sát độc lập",
+        "Swap/funded execution đã kiểm chứng"
+      ],
+      "confidence_category": "REGISTERED_SINGLE_GATEWAY_RECONSTRUCTION",
+      "open_gate": "Out-of-band scenarios; cross-provider full tick validation; execution receipts",
+      "json_pointers": [
+        {
+          "source_ref": "SRC-25",
+          "pointer": "/data"
+        },
+        {
+          "source_ref": "SRC-26",
+          "pointer": "/data"
+        }
+      ]
+    },
+    {
+      "id": "GBE-06",
+      "claim": "Historical oracle configuration và effective prices",
+      "source_refs": [
+        "SRC-15",
+        "SRC-28"
+      ],
+      "artifact_locators": [
+        "evidence/full/components/{block}-pass{1,2}-oracle.json.gz:/data/assets; report historical configuration"
+      ],
+      "measured_coverage": {
+        "asset_block_deep_traces": 6,
+        "assets": [
+          "USDC",
+          "WETH"
+        ],
+        "aave_base_unit": 100000000
+      },
+      "allowed_interpretation": "Source/proxy/adapter được truy vết tại cùng block; USDC cap adapter dùng upstream round, không tự tạo adapter-native round.",
+      "prohibited_interpretations": [
+        "DEX spot là Aave oracle",
+        "6 traces bao phủ mọi reserve/round trong lịch sử",
+        "Quan sát actual oracle xác nhận chính sách A/B/C của V1"
+      ],
+      "confidence_category": "REGISTERED_SINGLE_GATEWAY_RECONSTRUCTION",
+      "open_gate": "Gate A; source-specific freshness protocol and expanded trace coverage",
+      "json_pointers": [
+        {
+          "source_ref": "SRC-28",
+          "pointer": "/data/assets"
+        }
+      ]
+    },
+    {
+      "id": "GBE-07",
+      "claim": "Oracle timestamp an toàn không đồng nghĩa heartbeat freshness",
+      "source_refs": [
+        "SRC-15",
+        "SRC-11"
+      ],
+      "artifact_locators": [
+        "report Time and verification boundary; SAMPLE_REGISTRATION.json:/gates/oracle_timestamp"
+      ],
+      "measured_coverage": {
+        "usdc_observed_age_seconds": [
+          55128,
+          54504,
+          49212
+        ],
+        "preregistered_heartbeat_threshold": null
+      },
+      "allowed_interpretation": "Giữ tuổi round và điều kiện timestamp không vượt block; freshness chưa được nghiệm thu.",
+      "prohibited_interpretations": [
+        "Nguồn được chứng nhận fresh/live",
+        "Tự chọn heartbeat để hợp thức hóa dữ liệu cũ"
+      ],
+      "confidence_category": "DOCUMENTED_GAP",
+      "open_gate": "Preregister source-specific heartbeat/adapter semantics before future execution use",
+      "json_pointers": [
+        {
+          "source_ref": "SRC-11",
+          "pointer": "/gates/oracle_timestamp"
+        }
+      ]
+    },
+    {
+      "id": "GBE-08",
+      "claim": "HF tái dựng khớp trên mẫu Borrow đã đăng ký",
+      "source_refs": [
+        "SRC-17",
+        "SRC-11",
+        "SRC-12",
+        "SRC-24"
+      ],
+      "artifact_locators": [
+        "VALIDATION_SUMMARY.json:/counts,/borrowers; evidence/borrower_repair/components/{block}-pass{1,2}-borrowers.json.gz"
+      ],
+      "measured_coverage": {
+        "borrower_block_cases": 24,
+        "distinct_addresses": 24,
+        "reserves_per_account": 67,
+        "window_blocks": 1024,
+        "selected_per_block": 8,
+        "borrow_events": 365,
+        "observed_hf_and_base_max_abs_diff": 0,
+        "zero_debt_accounts": 1
+      },
+      "allowed_interpretation": "Full-portfolio economic HF kiểm tra với getUserAccountData cùng block trên mẫu recent-Borrow-event; không thay account zero-debt.",
+      "prohibited_interpretations": [
+        "Census Aave/Ethereum",
+        "Formal historical bytecode proof",
+        "Liquidation route execution",
+        "Alchemy kiểm tra độc lập 24 portfolios"
+      ],
+      "confidence_category": "REGISTERED_SINGLE_GATEWAY_RECONSTRUCTION",
+      "open_gate": "Gate A; execution validation; broader cohort sampling",
+      "json_pointers": [
+        {
+          "source_ref": "SRC-12",
+          "pointer": "/counts"
+        },
+        {
+          "source_ref": "SRC-12",
+          "pointer": "/borrowers"
+        },
+        {
+          "source_ref": "SRC-24",
+          "pointer": "/data/portfolios"
+        }
+      ]
+    },
+    {
+      "id": "GBE-09",
+      "claim": "Provenance và bảo toàn bytes có thể kiểm tra",
+      "source_refs": [
+        "SRC-10",
+        "SRC-20",
+        "SRC-06"
+      ],
+      "artifact_locators": [
+        "EVIDENCE_PROVENANCE.json:/files,/raw_capture,/byte_domain_note; VERIFIED_CI_EVIDENCE.json:/origin"
+      ],
+      "measured_coverage": {
+        "phase01a_evidence_files_static_checked": 32,
+        "phase01b_evidence_files_static_checked": 197,
+        "alchemy_origin_artifact_bytes": 4002
+      },
+      "allowed_interpretation": "Phiên này hash/Git-blob-check và parse dữ liệu đã lưu; tải lại artifact Alchemy, kiểm ZIP digest/CRC và JSON digest. Không chạy lại comparator174 trường.",
+      "prohibited_interpretations": [
+        "Parsed RPC JSON là HTTP wire bytes",
+        "SHA của gzip bằng SHA decoded JSON",
+        "LF và CRLF là cùng SHA",
+        "Static audit là fresh RPC validation"
+      ],
+      "confidence_category": "SCOPED_STATIC_INTEGRITY",
+      "open_gate": "Long-term Alchemy field-value retention / replay gap",
+      "json_pointers": [
+        {
+          "source_ref": "SRC-20",
+          "pointer": "/files"
+        },
+        {
+          "source_ref": "SRC-20",
+          "pointer": "/raw_capture"
+        },
+        {
+          "source_ref": "SRC-20",
+          "pointer": "/byte_domain_note"
+        }
+      ]
+    },
+    {
+      "id": "GBE-10",
+      "claim": "Alchemy giữ summary và hashes, không giữ raw giá trị/transport",
+      "source_refs": [
+        "SRC-06",
+        "SRC-14",
+        "SRC-07"
+      ],
+      "artifact_locators": [
+        "origin artifact ALCHEMY_CROSSCHECK_RESULT.json root security/results; run.py:output serialization"
+      ],
+      "measured_coverage": {
+        "artifact_currently_accessible": true,
+        "raw_alchemy_transport_retained": false,
+        "full_alchemy_field_values_retained": false
+      },
+      "allowed_interpretation": "Đọc trực tiếp 6 observation summaries và digest; CI là nguồn phép so sánh gốc, không phải independent rerun hiện tại.",
+      "prohibited_interpretations": [
+        "Có thể tự tái tính comparator offline hoàn toàn từ summary",
+        "Artifact Actions có retention vĩnh viễn",
+        "Cần secret để review hồ sơ"
+      ],
+      "confidence_category": "DOCUMENTED_GAP",
+      "open_gate": "Future sanitized per-field retention plus retention policy; no retroactive demotion of accepted core finding",
+      "json_pointers": [
+        {
+          "source_ref": "SRC-06",
+          "pointer": "/origin"
+        }
+      ]
+    },
+    {
+      "id": "GBE-11",
+      "claim": "Độc lập backend phục vụ actual requests chưa xác minh",
+      "source_refs": [
+        "SRC-01",
+        "SRC-04",
+        "SRC-05"
+      ],
+      "artifact_locators": [
+        "decision:CASE2 PLAUSIBLE_BUT_UNPROVEN; request provenance dossier"
+      ],
+      "measured_coverage": {
+        "request_linked_distinct_backend_attestations": 0
+      },
+      "allowed_interpretation": "GATE_A_BLOCKED; kiến trúc cho phép common upstream nhưng chưa chứng minh overlap hay separation. drpc-core-free của lần bounded collection cũ không định danh baseline/Alchemy requests.",
+      "prohibited_interpretations": [
+        "Khác thương hiệu/URL là độc lập",
+        "Dữ liệu khớp là hai failure domains độc lập",
+        "Thiếu attestation chứng minh dùng chung backend"
+      ],
+      "confidence_category": "DOCUMENTED_GAP",
+      "open_gate": "GATE_A: verifiable serving identities and separation for both relevant request sets",
+      "json_pointers": [
+        {
+          "source_ref": "SRC-05",
+          "pointer": "/decision"
+        },
+        {
+          "source_ref": "SRC-05",
+          "pointer": "/evidence"
+        }
+      ]
+    },
+    {
+      "id": "GBE-12",
+      "claim": "Kiểm tra ingestion không kiểm chứng stress hoặc thực thi",
+      "source_refs": [
+        "SRC-08",
+        "SRC-12",
+        "SRC-01"
+      ],
+      "artifact_locators": [
+        "blueprint U03-U06 and Phase02; VALIDATION_SUMMARY.json:/phase02_ready"
+      ],
+      "measured_coverage": {
+        "v2_stress_runs_in_this_task": 0,
+        "new_rpc_calls_in_this_task": 0,
+        "executed_transaction_checks_in_this_task": 0
+      },
+      "allowed_interpretation": "Bằng chứng hiện tại hỗ trợ nghiên cứu thiết kế và đề xuất công việc giới hạn; engine/local-fork/funded arbitrage/dynamic contagion chưa được cấp quyền trong Issue33.",
+      "prohibited_interpretations": [
+        "Gate B cấp Phase02",
+        "Portfolio HF agreement là transaction execution",
+        "Mô hình đã xác lập causal Mainnet contagion hoặc dự báo"
+      ],
+      "confidence_category": "DOCUMENTED_GAP",
+      "open_gate": "Commander authorization; Gate A and task-specific execution/OOS/identification gates",
+      "json_pointers": [
+        {
+          "source_ref": "SRC-12",
+          "pointer": "/phase02_ready"
+        }
+      ]
+    }
+  ],
+  "validation_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "required": [
+      "pinned_start",
+      "mandatory_status",
+      "phase02_authorized",
+      "source_catalog",
+      "evidence"
+    ],
+    "properties": {
+      "pinned_start": {
+        "const": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815"
+      },
+      "mandatory_status": {
+        "const": "GATE_A_BLOCKED — GATE_B_SCOPED_PASS — PHASE02_NOT_AUTHORIZED"
+      },
+      "phase02_authorized": {
+        "const": false
+      },
+      "source_catalog": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "object",
+          "required": [
+            "id",
+            "path",
+            "commit",
+            "git_blob_sha1",
+            "sha256",
+            "size_bytes",
+            "hash_domain",
+            "read_scope",
+            "permalink"
+          ],
+          "properties": {
+            "commit": {
+              "const": "cbcf8c451c9f2c83a2f07ae483ba6c3a25ecd815"
+            },
+            "git_blob_sha1": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{40}$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        }
+      },
+      "evidence": {
+        "type": "array",
+        "minItems": 12,
+        "maxItems": 12,
+        "items": {
+          "type": "object",
+          "required": [
+            "id",
+            "claim",
+            "source_refs",
+            "artifact_locators",
+            "measured_coverage",
+            "allowed_interpretation",
+            "prohibited_interpretations",
+            "confidence_category",
+            "open_gate"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^GBE-[0-9]{2}$"
+            },
+            "source_refs": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "string"
+              }
+            },
+            "confidence_category": {
+              "enum": [
+                "SCOPED_CI_OBSERVATION",
+                "REGISTERED_SINGLE_GATEWAY_RECONSTRUCTION",
+                "SCOPED_STATIC_INTEGRITY",
+                "DOCUMENTED_GAP"
+              ]
+            },
+            "prohibited_interpretations": {
+              "type": "array",
+              "minItems": 1
+            }
+          }
+        }
+      }
+    }
+  }
+}
