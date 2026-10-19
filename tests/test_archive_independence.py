@@ -30,6 +30,7 @@ class ArchiveIndependenceTests(unittest.TestCase):
         expected = {'data': {'fields': {'slot0': [1, 2, True]}}}
         observed = {'data': {'fields': {'slot0': (1, 2, True)}, 'unavailable': {}}}
         self.assertEqual(module.field_comparison(expected, observed)[0]['status'], 'AGREES')
+        self.assertEqual(module.field_comparison(observed, expected)[0]['status'], 'AGREES')
 
     def test_empty_comparison_is_never_pass(self):
         self.assertEqual(module.gate([], True, True), 'BLOCKED')

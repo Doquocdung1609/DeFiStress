@@ -42,7 +42,7 @@ class CaptureClient:
 
 
 def field_comparison(expected, observed):
-    expected_fields = expected["data"]["fields"]
+    expected_fields = json.loads(b.a.canonical(expected["data"]["fields"]))
     actual = observed.get("data") or {"fields": {}, "unavailable": {}}
     actual = json.loads(b.a.canonical(actual))
     rows = []
