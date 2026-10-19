@@ -1,0 +1,25 @@
+name: V2 Phase01-B saved-evidence validation
+on:
+  push:
+    branches: [research/v2-phase01b-historical-validation]
+    paths: [docs/research_v2/phase01b/**, tests/test_phase01b_validation.py, .github/workflows/v2-phase01b-offline.yml]
+  pull_request:
+    branches: [feat/terra-model-v2]
+    paths: [docs/research_v2/phase01b/**, tests/test_phase01b_validation.py, .github/workflows/v2-phase01b-offline.yml]
+permissions:
+  contents: read
+jobs:
+  offline-historical-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.10'
+      - name: Validate preserved file bytes and historical boundaries without RPC
+        run: python docs/research_v2/phase01b/verify_saved.py
+      - name: Run scoped data-boundary tests without dependency installation
+        run: python -m unittest discover -s tests -p test_phase01b_validation.py -v

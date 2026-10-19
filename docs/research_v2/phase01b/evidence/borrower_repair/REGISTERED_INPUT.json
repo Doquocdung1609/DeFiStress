@@ -1,0 +1,154 @@
+{
+  "chain_id": 1,
+  "blocks": [
+    {
+      "id": "B0",
+      "number": 26045352,
+      "expected_hash": "0x4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+      "reason": "V1 canonical baseline",
+      "timestamp_unix": 1790229035,
+      "identity_verification": "MATCHED_TWO_PUBLIC_RPC_ENDPOINTS"
+    },
+    {
+      "id": "B1",
+      "number": 26038152,
+      "expected_hash": "0xbb108203815f257e9f9b023f92a30e67d946799355ceffc4bef0e0e16a1e87bd",
+      "reason": "Fixed baseline minus7200 blocks",
+      "timestamp_unix": 1790141987,
+      "identity_verification": "MATCHED_TWO_PUBLIC_RPC_ENDPOINTS"
+    },
+    {
+      "id": "B2",
+      "number": 26030952,
+      "expected_hash": "0xeeb12db7f31e86507bb4be7a1a2953d19c11165c99a75ebc7aa589d65d0b9625",
+      "reason": "Fixed baseline minus14400 blocks",
+      "timestamp_unix": 1790055011,
+      "identity_verification": "MATCHED_TWO_PUBLIC_RPC_ENDPOINTS"
+    }
+  ],
+  "pools": [
+    {
+      "id": "P3000",
+      "chain_id": 1,
+      "address": "0x8ad599c3A0ff1De082011EFDDc58f1908eb6e6D8",
+      "fee": 3000,
+      "fee_unit": "millionths",
+      "reason": "V1 modeled venue retained"
+    },
+    {
+      "id": "P500",
+      "chain_id": 1,
+      "address": "0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+      "fee": 500,
+      "fee_unit": "millionths",
+      "reason": "Same pair, lower fee-tier contrast; not selected by stress outcome"
+    }
+  ],
+  "tokens": {
+    "USDC": {
+      "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "decimals": 6
+    },
+    "WETH": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "decimals": 18
+    }
+  },
+  "factory": "0x1F98431c8aD98523631AE4a59f267346ea31F984",
+  "aave_pool": "0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2",
+  "schema_version": "defistress-phase01b-preregistration-v1",
+  "stage": "REGISTERED_COLLECTION",
+  "starting_commit": "3c3928a9b71348648980de92fa80b31b6d2a647d",
+  "v1_tag": "v1.0.0-scientific-baseline",
+  "primary_provider": "drpc",
+  "providers": [
+    {
+      "id": "drpc",
+      "url": "https://eth.drpc.org",
+      "operator": "dRPC gateway",
+      "documentation": "https://drpc.org/docs/howitworks/overview",
+      "request_backend_attested": false,
+      "max_batch": 3
+    },
+    {
+      "id": "llama",
+      "url": "https://eth.llamarpc.com",
+      "operator": "LlamaNodes",
+      "documentation": "https://github.com/llamanodes/web3-proxy",
+      "request_backend_attested": false,
+      "max_batch": 40
+    },
+    {
+      "id": "blockpi",
+      "url": "https://ethereum.public.blockpi.network/v1/rpc/public",
+      "operator": "BlockPI",
+      "documentation": "https://blockpi.io/chain/ethereum/",
+      "request_backend_attested": false,
+      "max_batch": 40
+    },
+    {
+      "id": "publicnode",
+      "url": "https://ethereum-rpc.publicnode.com",
+      "operator": "Allnodes/PublicNode",
+      "documentation": "https://ethereum.publicnode.com/",
+      "request_backend_attested": false,
+      "max_batch": 40
+    }
+  ],
+  "tick_scope": {
+    "criterion": "All initialized ticks within registered tick-space band around historical current tick, approximately half to twice price",
+    "delta_ticks": 6932,
+    "rounding": "ceil lower usable tick, floor upper usable tick; clamp legal [-887272,887272]",
+    "coverage": "Every bitmap word intersecting band and every initialized tick in band; no tick-count truncation",
+    "outside_range": "Explicit OUT_OF_SCOPE_NOT_RECONSTRUCTED, never full-pool depth",
+    "repeat_passes": 2
+  },
+  "borrower_sample": {
+    "event": "Borrow(address,address,address,uint256,uint8,uint256,uint16)",
+    "window_blocks": 1024,
+    "selection": "First8 distinct onBehalfOf addresses ranked by SHA256(chain_id:lowercase_address) from complete Borrow-log window ending at each registered block; keep zero-debt accounts, no replacement based on HF, eMode or stress",
+    "per_block_max": 8,
+    "portfolio_scope": "All historical Aave reserve assets; no WETH/USDC-only HF approximation",
+    "missing": "Any missing active-portfolio dependency blocks HF, never zero filled"
+  },
+  "gates": {
+    "hf_abs_tolerance_wad_raw": 10000000000,
+    "portfolio_base_tolerance": "max(1, participating reserve count) raw base units",
+    "oracle_timestamp": "0 < updatedAt <= registered block timestamp; no unstated heartbeat freshness threshold",
+    "round_lookup": "getRoundData(observed roundId) at same historical block when interface supported",
+    "independent_archive": "Require successful same-method historical reads AND request-level distinct-backend evidence; endpoint-name equality insufficient",
+    "tick_liquidity": "No duplicate ticks; gross >= abs(net); initialized bits match; contiguous required bitmap words; anchored liquidity nonnegative; external boundary not independently proven"
+  },
+  "limits": {
+    "max_rpc_calls_per_primary_block_pass": 30000,
+    "batch_size": 40,
+    "retries": 2,
+    "no_cloud_or_paid_service": true,
+    "max_parallel_batches": 4
+  },
+  "stress_or_monte_carlo_performed": false,
+  "initial_registration_commit": "c637ab579ff4075b84f2c9c5fed3637759c09632",
+  "provider_probe": {
+    "run_id": 39211695514,
+    "artifact_id": 12168101820,
+    "zip_sha256": "9dfd290024ce41ca765d03e6a50d2170fc03d2e7c28fc35f69b034016a3c202f",
+    "result": "dRPC batch>3 not allowed; Llama403; BlockPI/PublicNode historical state unavailable; no independent backend proof"
+  },
+  "transport_adaptation": "Reduce dRPC batch from max40 to observed limit3; no sample/range/HF-outcome selection change, no paid service",
+  "hf_reconstruction": {
+    "collateral_base": "floor(currentATokenBalance*historicalPrice /10**decimals) for enabled collateral",
+    "debt_base": "ceil((currentStableDebt+currentVariableDebt)*historicalPrice /10**decimals)",
+    "weighted_lt": "Per-asset LT, historical user eMode bitmap/config override when supported",
+    "hf_wad": "floor(sum(collateral_base_i*effective_LT_bps_i)*1e18 / (totalDebtBase*10000))",
+    "scope": "Independent full-portfolio economic reconstruction compared against contract; not a formal historical bytecode replica; differences retained and not retuned",
+    "zero_debt": "UINT256_MAX sentinel; not finite HF"
+  },
+  "execution_mode": "BORROWER_TARGETED_REPAIR",
+  "discovery_transport_amendment": {
+    "observed_failure": "dRPC returns code35/range limit even for registered1024-block historical range",
+    "repair": "Read all1024 registered block headers, validate parent continuity and timestamps, then request Borrow logs for every exact block hash; no partial-window sample",
+    "sample_window_or_ranking_changed": false,
+    "prior_full_collection_commit": "6e5285f04d1d5ab2900b51389cc3c025c9b64f42",
+    "full_reproduction": "Add --full to collector CLI; targeted mode only repairs workstream D, no A/B/C evidence overwritten"
+  }
+}
