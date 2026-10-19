@@ -1,0 +1,112 @@
+{
+  "schema": "defistress-backend-provenance-v1",
+  "review_date_utc": "2026-10-19",
+  "authorization": "V2_BACKEND_PROVENANCE_ASSESSMENT_AUTHORIZED",
+  "source_integration_commit": "b830d7d53ed9f2bbeac4e19e56afaf49ff8e4e29",
+  "source": {
+    "origin_run": 39223539524,
+    "origin_commit": "f63cee66dce12ea432188b1bd65d934443afbdac",
+    "artifact_id": 12173300304,
+    "artifact_json_sha256": "8aa33a26b4d950ff92661f1fd794ee84211cb4a8668ad0514b050e1fa7267e43",
+    "zip_sha256": "82a006751255af18b377312cb20a046a88e4b9adb11cd33fded086b41bab5c32",
+    "saved_evidence_path": "docs/research_v2/phase01b/alchemy_crosscheck/VERIFIED_CI_EVIDENCE.json"
+  },
+  "blocks": [
+    {
+      "number": 26045352,
+      "hash": "0x4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+      "field_hash": "58813551b9a374164bed552a826368e268fc711ac0fbaba69e378bb944c6a5ff"
+    },
+    {
+      "number": 26038152,
+      "hash": "0xbb108203815f257e9f9b023f92a30e67d946799355ceffc4bef0e0e16a1e87bd",
+      "field_hash": "9ad4c6d9fe862d3e96e68985848539ba2b78059f2a05dd861ee6b3a4bc0e177a"
+    },
+    {
+      "number": 26030952,
+      "hash": "0xeeb12db7f31e86507bb4be7a1a2953d19c11165c99a75ebc7aa589d65d0b9625",
+      "field_hash": "9584e6380a8fd814c411323623f7f84aead99874e91508873ec9e818c0ab5e7e"
+    }
+  ],
+  "observations": {
+    "alchemy_passes_per_block": 2,
+    "fields_per_block": 29,
+    "distinct_block_field_pairs": 87,
+    "compared_field_passes": 174,
+    "agreements": 174,
+    "mismatches": 0,
+    "missing": 0,
+    "reference_type": "previously saved dRPC Phase01-B state",
+    "same_run_dual_provider_read": false
+  },
+  "evidence": [
+    {
+      "id": "STATE-01",
+      "label": "INDIRECT_TECHNICAL_INDICATOR",
+      "status": "OBSERVED",
+      "what": "Alchemy core historical state agrees with saved dRPC data across 3 registered blocks; two-pass field repeatability",
+      "proves": "state agreement within registered core scope",
+      "does_not_prove": "independent request-serving backends",
+      "source": "docs/research_v2/phase01b/alchemy_crosscheck/VERIFIED_CI_EVIDENCE.json"
+    },
+    {
+      "id": "ROUTE-01",
+      "label": "REQUEST_LEVEL_ROUTING_METADATA",
+      "status": "PARTIAL_UNATTESTED",
+      "what": "Older dRPC bounded collection shows x-drpc-provider-id=drpc-core-free for 30 responses",
+      "proves": "an unverified routing label existed in that collection",
+      "does_not_prove": "PR30 dRPC upstream, specific physical operator or distinct archival node",
+      "source": "docs/research_v2/phase01b/ARCHIVE_PROVIDER_FEASIBILITY.md"
+    },
+    {
+      "id": "DRPC-DOC-01",
+      "label": "PROVIDER_DOCUMENTED_ARCHITECTURE",
+      "status": "DOCUMENTED",
+      "what": "dRPC gateway can route to third-party public/provider-operated nodes",
+      "source": "https://drpc.org/docs/howitworks/overview"
+    },
+    {
+      "id": "ALCH-DOC-01",
+      "label": "PROVIDER_DOCUMENTED_ARCHITECTURE",
+      "status": "DOCUMENTED",
+      "what": "Alchemy documents archived Ethereum state availability",
+      "source": "https://www.alchemy.com/docs/what-is-archive-data-on-ethereum"
+    },
+    {
+      "id": "DIRECT-01",
+      "label": "DIRECT_BACKEND_ATTESTATION",
+      "status": "EVIDENCE_UNAVAILABLE",
+      "what": "Request-tied signed attribution to both concrete serving backends absent"
+    },
+    {
+      "id": "ALCH-UPSTREAM-01",
+      "label": "EVIDENCE_UNAVAILABLE",
+      "status": "ABSENT",
+      "what": "Signed Alchemy serving instance/operator identity for each of six reads"
+    },
+    {
+      "id": "DRPC-UPSTREAM-01",
+      "label": "EVIDENCE_UNAVAILABLE",
+      "status": "ABSENT",
+      "what": "Conclusive dRPC request-specific upstream instance/operator identity for original saved baseline"
+    },
+    {
+      "id": "COMMON-BACKEND-01",
+      "label": "UNVERIFIED_ASSUMPTION",
+      "status": "UNTESTED",
+      "what": "Either overlapping or non-overlapping actual archive providers; neither is established"
+    }
+  ],
+  "decision": {
+    "strict_independence_gate": "BLOCKED",
+    "cross_provider_state_agreement_gate": "PASS_REGISTERED_CORE_SCOPE",
+    "backend_independence": "UNVERIFIED",
+    "shared_backend_confirmed": false,
+    "phase02_authorized": false
+  },
+  "privacy": {
+    "secrets_examined": false,
+    "raw_urls_captured": false,
+    "new_rpc_requests": false
+  }
+}
