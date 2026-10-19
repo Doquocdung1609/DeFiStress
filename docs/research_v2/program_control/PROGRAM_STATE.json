@@ -1,0 +1,355 @@
+{
+  "schema": "defistress-v2-program-control/1",
+  "status": "PROGRAM_BOOTSTRAPPED_WAITING_FOR_CODEX_EXECUTION",
+  "target": "DEFISTRESS_V2_TECHNICAL_RELEASE_CANDIDATE",
+  "target_reached": false,
+  "authority": "V2_AUTONOMOUS_RESEARCH_ENGINEERING_ORCHESTRATION_AUTHORIZED",
+  "observed_at_utc": "2026-10-19T17:28:00Z",
+  "scientific_status": "GATE_A_BLOCKED — GATE_B_SCOPED_PASS — PHASE02_HISTORICAL_EXECUTION_NOT_AUTHORIZED",
+  "gate_a": "BLOCKED",
+  "gate_b": "SCOPED_PASS",
+  "historical_execution_authorized": false,
+  "source_anchors": {
+    "starting_integration": "2e0ec142c475f8d1362f90c4ca8d2f0718e41f77",
+    "accepted_program_input": "4ef28e4589304f2f4f6dda3b39be55b4550e3a85",
+    "scientific_lock": "3f6e5302483681209e2408531eb5a15389f9fded",
+    "blueprint_lock": "8de52bebabef376be700836e6f93a92d7394d2c3",
+    "v1_tag": "v1.0.0-scientific-baseline",
+    "v1_tag_object": "cdd9c3a80f4df21e7e054045cb93fdc5a7f731c7",
+    "v1_target": "2b505813d35d3cf6f4414585f9dd50f3b4281ac2"
+  },
+  "issues": {
+    "program": 38,
+    "next_codex_package": 39,
+    "completed_offline_issue": 35
+  },
+  "tooling": {
+    "codex_dispatch_tool_available": false,
+    "codex_task_launched": false,
+    "status": "WAITING_FOR_CODEX_EXECUTION",
+    "scan_scope": "connected tool metadata; no callable coding-task dispatch endpoint found",
+    "subagents_spawned": 0
+  },
+  "preservation": {
+    "original_blobs": 1281,
+    "current_blobs": 1295,
+    "changed_or_deleted": 0,
+    "additions": 14
+  },
+  "merge_reviews": [
+    {
+      "pr": 36,
+      "head": "f05fe786428150975f3b7e6f49733422588b0b9b",
+      "merge": "50e60f4a600994ea998d7b78af3fded87466314c",
+      "scope": "offline L1/L2 guards; six additions",
+      "decision": "TECHNICAL_ACCEPTED_MERGED",
+      "ci_runs": [
+        39286623697,
+        39286623724,
+        39286631301
+      ],
+      "ci_status": "SUCCESS",
+      "tests": {
+        "local_scoped_pass": 80,
+        "local_fail": 0,
+        "local_skip": 0,
+        "L1_pass": 196,
+        "L1_fail": 0,
+        "L1_blocked": 0,
+        "ci_repository_pytest_pass": 365,
+        "ci_frontend_pass": 21
+      },
+      "lint": "local Ruff PASS; CI Ruff/mypy PASS",
+      "review_comment": 6273093087,
+      "regression": "no original source edits, scientific/native validation not asserted"
+    },
+    {
+      "pr": 37,
+      "head": "2501483c9f098e8694c218ae35f75bc2e2dc4dda",
+      "merge": "4ef28e4589304f2f4f6dda3b39be55b4550e3a85",
+      "scope": "eight architecture document additions",
+      "decision": "TECHNICAL_DESIGN_ACCEPTED_MERGED",
+      "ci_runs": [
+        39284774964,
+        39284769947
+      ],
+      "ci_status": "SUCCESS",
+      "tests": {
+        "static_groups_pass": 7,
+        "source_checks": 44,
+        "links": 67,
+        "future_test_specs_not_executed": 46,
+        "dag_count": 2,
+        "ci_repository_pytest_pass": 285,
+        "ci_frontend_pass": 21
+      },
+      "lint": "CI Ruff/mypy PASS; no new Python in design",
+      "review_comment": 6273100666,
+      "regression": "all 1281 original blobs preserved; no API coupling to PR36"
+    }
+  ],
+  "post_merge_ci": {
+    "head": "4ef28e4589304f2f4f6dda3b39be55b4550e3a85",
+    "run_id": 39293917577,
+    "url": "https://github.com/Doquocdung1609/DeFiStress/actions/runs/39293917577",
+    "status": "IN_PROGRESS",
+    "conclusion": null
+  },
+  "artifact_recheck": {
+    "artifact_id": 12203756156,
+    "run_id": 39286623697,
+    "head": "f05fe786428150975f3b7e6f49733422588b0b9b",
+    "zip_bytes": 4237,
+    "zip_sha256": "25cfd7198949f36166027c7263e106cc945f7700b449c5af19f7e6a5c43ee028",
+    "zip_crc": "PASS",
+    "full_bytes_downloaded_again": true,
+    "files": [
+      {
+        "path": "VALIDATION_GATES.json",
+        "bytes": 45992,
+        "sha256": "d2a03dc484cd0633a7ce9b74357138b910fb0de01934f43b7792c6a2e3cb0e7c"
+      },
+      {
+        "path": "l2-junit.xml",
+        "bytes": 11144,
+        "sha256": "df0b399a13a58d9349a0b01064904efeb9385e5ced7852d05ffbf3d65a3381b9"
+      }
+    ],
+    "readback": {
+      "L1_PASS": 196,
+      "L1_FAIL": 0,
+      "L1_BLOCKED": 0,
+      "L2_PASS": 80,
+      "L2_FAIL": 0,
+      "L2_ERROR": 0,
+      "L2_SKIP": 0,
+      "limitation_blocked": 2,
+      "report_errors": 0
+    }
+  },
+  "open_blockers": [
+    {
+      "id": "GATE-A",
+      "class": "SCIENTIFIC",
+      "reason": "NO_REQUEST_LEVEL_DISTINCT_BACKEND_ATTESTATION",
+      "resolution": "Commander-reviewed original Gate A evidence; no criterion relaxation",
+      "blocks": [
+        "historical-input campaign",
+        "scientific independence claim"
+      ]
+    },
+    {
+      "id": "ALCHEMY-REPLAY",
+      "class": "EVIDENCE",
+      "reason": "NOT_REPLAYABLE_FROM_PERSISTED_SUMMARY",
+      "resolution": "retain original metadata; prospective sanitized raw evidence only with acquisition authorization",
+      "blocks": [
+        "full value-level replay claim"
+      ]
+    },
+    {
+      "id": "CODEX-DISPATCH",
+      "class": "TOOLING",
+      "reason": "NO_CALLABLE_CODEX_TASK_TOOL",
+      "resolution": "actual executor accepts Issue39; Issue creation is not dispatch",
+      "blocks": [
+        "P02-01 coding execution"
+      ]
+    },
+    {
+      "id": "NATIVE-PROFILES",
+      "class": "SCIENTIFIC_TECHNICAL",
+      "reason": "Aave implementation/rounding/eMode and AMM integer/inventory/fees/freshness/funded receipt prerequisites unresolved",
+      "resolution": "versioned use-specific profiles and authorized independent/reference execution evidence",
+      "blocks": [
+        "P02-04",
+        "P02-05",
+        "historical native use"
+      ]
+    },
+    {
+      "id": "ENGINE-AUTHORIZATION",
+      "class": "AUTHORIZATION",
+      "reason": "execution engine and historical campaigns have no specific grant",
+      "resolution": "Commander scope decision plus satisfied prerequisites",
+      "blocks": [
+        "P02-04",
+        "P02-05",
+        "P02-06",
+        "P02-07 historical",
+        "Phase03 runtime",
+        "Phase04 predictor/run",
+        "Phase05 empirical campaign"
+      ]
+    }
+  ],
+  "work_packages": [
+    {
+      "id": "P02-01",
+      "owner": "Codex",
+      "dependencies": [],
+      "authorization": "BOUNDED_PURE_VALIDATION_ONLY",
+      "status": "WAITING_FOR_CODEX_EXECUTION",
+      "issue": 39,
+      "pr": null,
+      "commit": null,
+      "tests": "NOT_RUN_NEW_PACKAGE",
+      "next_action": "Execute CODEX_NEXT_WORK_PACKAGE.md using actual Codex executor; preserve no-engine boundary"
+    },
+    {
+      "id": "P02-02",
+      "owner": "Codex",
+      "dependencies": [
+        "P02-01"
+      ],
+      "authorization": "READ_ONLY_SAVED_ADAPTER_AFTER_SCOPE_REVIEW",
+      "status": "WAITING_DEPENDENCY",
+      "pr": null,
+      "commit": null,
+      "tests": "NOT_RUN",
+      "next_action": "Work prepares bounded saved-schema mapping task after01 acceptance; no RPC"
+    },
+    {
+      "id": "P02-03",
+      "owner": "Codex",
+      "dependencies": [
+        "P02-01",
+        "P02-02"
+      ],
+      "authorization": "SYNTHETIC_SCOPE_REVIEW_REQUIRED",
+      "status": "WAITING_DEPENDENCY",
+      "pr": null,
+      "commit": null,
+      "tests": "NOT_RUN",
+      "next_action": "Resolve synthetic/economic/native profile boundary; no historical-native claims"
+    },
+    {
+      "id": "P02-04",
+      "owner": "Codex",
+      "dependencies": [
+        "P02-01",
+        "P02-03"
+      ],
+      "authorization": "NOT_AUTHORIZED",
+      "status": "BLOCKED_AUTHORIZATION_AND_EVIDENCE",
+      "pr": null,
+      "commit": null,
+      "tests": "NOT_RUN",
+      "next_action": "Plan only; await explicit execution scope and profiles"
+    },
+    {
+      "id": "P02-05",
+      "owner": "Codex",
+      "dependencies": [
+        "P02-01",
+        "P02-02"
+      ],
+      "authorization": "NOT_AUTHORIZED",
+      "status": "BLOCKED_AUTHORIZATION_AND_EVIDENCE",
+      "pr": null,
+      "commit": null,
+      "tests": "NOT_RUN",
+      "next_action": "Plan only; await native math/inventory/coverage and execution scope"
+    },
+    {
+      "id": "P02-06",
+      "owner": "Codex",
+      "dependencies": [
+        "P02-03",
+        "P02-04",
+        "P02-05"
+      ],
+      "authorization": "NOT_AUTHORIZED",
+      "status": "BLOCKED_AUTHORIZATION_AND_DEPENDENCY",
+      "pr": null,
+      "commit": null,
+      "tests": "NOT_RUN",
+      "next_action": "No engine/scheduler implementation"
+    },
+    {
+      "id": "P02-07",
+      "owner": "Codex; Work evidence review",
+      "dependencies": [
+        "P02-01",
+        "P02-02",
+        "P02-03",
+        "P02-04",
+        "P02-05",
+        "P02-06"
+      ],
+      "authorization": "USE_CLASS_SPECIFIC_GRANT_REQUIRED",
+      "status": "BLOCKED_AUTHORIZATION_AND_DEPENDENCY",
+      "pr": null,
+      "commit": null,
+      "tests": "46_FUTURE_DESIGN_SPECS_NOT_RUN",
+      "next_action": "Prepare comparator/retention protocol only"
+    },
+    {
+      "id": "P03",
+      "owner": "Work design; Codex future implementation",
+      "dependencies": [
+        "P02-07"
+      ],
+      "authorization": "DESIGN_PREREGISTRATION_ONLY",
+      "status": "PLANNED_RUNTIME_NOT_AUTHORIZED",
+      "pr": null,
+      "commit": null,
+      "tests": "NOT_RUN",
+      "next_action": "Typed layers/loss/control protocol; no propagation run"
+    },
+    {
+      "id": "TERRA-DATA",
+      "owner": "Work",
+      "dependencies": [],
+      "authorization": "DESIGN_SOURCE_AUDIT_ONLY",
+      "status": "PLANNED_NO_NEW_ACQUISITION",
+      "pr": null,
+      "commit": null,
+      "tests": "NOT_RUN",
+      "next_action": "Separate point-in-time Terra vintage/holdout availability protocol"
+    },
+    {
+      "id": "P04",
+      "owner": "Work evaluation protocol; Codex future implementation",
+      "dependencies": [
+        "TERRA-DATA"
+      ],
+      "authorization": "DESIGN_PREREGISTRATION_ONLY",
+      "status": "PLANNED_PREDICTOR_RUN_NOT_AUTHORIZED",
+      "pr": null,
+      "commit": null,
+      "tests": "NOT_RUN",
+      "next_action": "Seal proposed split/benchmark rules before any future model/run"
+    },
+    {
+      "id": "P05",
+      "owner": "Work; future independent comparator/reviewer",
+      "dependencies": [
+        "P02-07",
+        "P03",
+        "P04"
+      ],
+      "authorization": "DESIGN_PREREGISTRATION_ONLY",
+      "status": "PLANNED_EMPIRICAL_CAMPAIGN_NOT_AUTHORIZED",
+      "pr": null,
+      "commit": null,
+      "tests": "NOT_RUN",
+      "next_action": "Independent reference/reproducibility/reviewer protocol; no scientific final"
+    }
+  ],
+  "rollback": "reviewed revert PR only; no reset/force-push/tag movement",
+  "qa": {
+    "review_kind": "MAINTAINER_SELF_REVIEW_NOT_EXTERNAL_PEER_REVIEW",
+    "branch_protected": false,
+    "ruleset_read": "403_FEATURE_UNAVAILABLE_NOT_POLICY_PASS",
+    "override_used": false,
+    "optional_live_rpc_jobs": "SKIPPED",
+    "local_initial_wrong_cwd_pytest_exit": 4,
+    "local_corrected_pytest_exit": 0,
+    "new_research_simulations": 0
+  },
+  "related_files": [
+    "PROGRAM_CONTROL.md",
+    "CODEX_NEXT_WORK_PACKAGE.md"
+  ]
+}
