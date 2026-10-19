@@ -1,0 +1,68 @@
+{
+  "schema": "defistress-prephase02-evidence-links-v1",
+  "starting_commit": "2e0ec142c475f8d1362f90c4ca8d2f0718e41f77",
+  "v1": {
+    "tag": "v1.0.0-scientific-baseline",
+    "annotated_tag_object": "cdd9c3a80f4df21e7e054045cb93fdc5a7f731c7",
+    "target_commit": "2b505813d35d3cf6f4414585f9dd50f3b4281ac2",
+    "verification_mode": "pinned source provenance; offline runner does not dereference tag object without Git metadata"
+  },
+  "sources": [
+    {
+      "path": "docs/research_v2/phase01b/SAMPLE_REGISTRATION.json",
+      "git_blob_sha1": "804b3561419e7d20adc8d401eea29a9cb5647a6c",
+      "role": "registered identity/scope"
+    },
+    {
+      "path": "docs/research_v2/phase01b/EVIDENCE_PROVENANCE.json",
+      "git_blob_sha1": "376b9e4672745fddbfdd3445dc313df44950c7f7",
+      "role": "full and borrower repair SHA256 manifest"
+    },
+    {
+      "path": "docs/research_v2/phase01b/evidence/full/collection_manifest.json",
+      "git_blob_sha1": "dbcfbd7fc7c8812b7b96ff7cba477eb01de69a4e",
+      "role": "per-file bytes and gzip digest"
+    },
+    {
+      "path": "docs/research_v2/phase01b/evidence/borrower_repair/collection_manifest.json",
+      "git_blob_sha1": "8650f8c3171d75bbe4221e4787a41ebc45b8d6fd",
+      "role": "borrower repair digests"
+    },
+    {
+      "path": "docs/research_v2/phase01b/alchemy_crosscheck/VERIFIED_CI_EVIDENCE.json",
+      "role": "sanitized state agreement metadata only",
+      "origin_run_id": 39223539524,
+      "original_artifact_sha256": "8aa33a26b4d950ff92661f1fd794ee84211cb4a8668ad0514b050e1fa7267e43"
+    }
+  ],
+  "registration": {
+    "chain_id": 1,
+    "blocks": [
+      26045352,
+      26038152,
+      26030952
+    ],
+    "pool_ids": [
+      "P3000",
+      "P500"
+    ],
+    "fee_millionths": [
+      3000,
+      500
+    ],
+    "tokens_decimals": {
+      "USDC": 6,
+      "WETH": 18
+    }
+  },
+  "declared_not_extrapolated_coverage": {
+    "borrower_block_pairs": 24,
+    "reserves_per_borrower": 67,
+    "pool_block_bands": 6,
+    "oracle_traces": 6
+  },
+  "alchemy_limit": "NOT_REPLAYABLE_FROM_PERSISTED_SUMMARY",
+  "gate_a": "BLOCKED_BACKEND_INDEPENDENCE",
+  "gate_b": "PASS_REGISTERED_CORE_SCOPE",
+  "phase02_authorized": false
+}
