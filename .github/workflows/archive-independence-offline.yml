@@ -1,0 +1,25 @@
+name: Archive repair saved evidence
+on:
+  push:
+    branches: [research/v2-phase01b-archive-independence]
+    paths: [docs/research_v2/phase01b/**, tests/test_archive_independence.py, .github/workflows/archive-independence-offline.yml]
+  pull_request:
+    branches: [feat/terra-model-v2]
+    paths: [docs/research_v2/phase01b/**, tests/test_archive_independence.py, .github/workflows/archive-independence-offline.yml]
+permissions:
+  contents: read
+jobs:
+  offline-archive-dossier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.10'
+      - name: Check actual preserved bytes and blocked-gate disposition
+        run: python docs/research_v2/phase01b/archive_independence/verify_saved.py
+      - name: Test decision boundaries without network or dependency installation
+        run: python -m unittest discover -s tests -p test_archive_independence.py -v
