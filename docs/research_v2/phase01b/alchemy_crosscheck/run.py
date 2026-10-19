@@ -24,7 +24,9 @@ def compare(expected: dict, observed: dict) -> dict:
     previous = expected.get("data") or {}
     current = observed.get("data") or {}
     old_fields = previous.get("fields") or {}
-    new_fields = current.get("fields") or {}
+    # Web3 ABI decoding returns tuples for multi-output slot0(); saved JSON uses lists.
+    # Canonicalize both sides identically before strict value equality checks.
+    new_fields = json.loads(core.a.canonical(current.get("fields") or {}))
     matches = sum(key in new_fields and new_fields[key] == value for key, value in old_fields.items())
     mismatches = sorted(key for key, value in old_fields.items()
                         if key in new_fields and new_fields[key] != value)
