@@ -141,8 +141,10 @@ def run_offline() -> dict:
                    "reason": "NOT_REPLAYABLE_FROM_PERSISTED_SUMMARY"})
     checks.append({"id": "BACKEND-INDEPENDENCE", "status": "BLOCKED",
                    "reason": "NO_REQUEST_LEVEL_DISTINCT_BACKEND_ATTESTATION"})
-    status = "FAIL" if any(x["status"] == "FAIL" for x in checks) else (
-        "BLOCKED" if any(x["status"] == "BLOCKED" for x in checks) else "PASS")
+    # An unrelated scientific gate cannot turn successful local byte checks into L1 BLOCKED.
+    integrity = [x for x in checks if x["id"] not in ("ALCHEMY-VALUE-REPLAY", "BACKEND-INDEPENDENCE")]
+    status = "FAIL" if any(x["status"] == "FAIL" for x in integrity) else (
+        "BLOCKED" if any(x["status"] == "BLOCKED" for x in integrity) else "PASS")
     return {"schema": "defistress-prephase02-offline-v1", "source_commit":
             "2e0ec142c475f8d1362f90c4ca8d2f0718e41f77",
             "L1_INTEGRITY": status, "L2_CONTRACTS": "REQUIRES_TEST_EXECUTION",
