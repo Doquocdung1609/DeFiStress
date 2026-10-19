@@ -1,0 +1,52 @@
+{
+  "schema_version": "archive-independence-targeted-repair-v1",
+  "starting_commit": "2f850411613ddb6607ea3232f5637fd798156f6f",
+  "scope": "Reuse registered core_observation only; no tick/oracle-round/borrower reconstruction rerun",
+  "providers": [
+    {
+      "id": "drpc",
+      "url": "https://eth.drpc.org",
+      "operator": "dRPC gateway, contemporaneous registered reference",
+      "max_batch": 3
+    },
+    {
+      "id": "subquery",
+      "url": "https://ethereum.rpc.subquery.network/public",
+      "operator": "SubQuery decentralized RPC network; exact serving operator not attested",
+      "max_batch": 3,
+      "official_access_source": "https://subquery.network/projects/ethereum-rpc---archive-node"
+    },
+    {
+      "id": "blockreq",
+      "url": "https://ethereum-rpc.blockreq.com/v1/rpc/public",
+      "operator": "BlockReq public archive gateway; concrete upstream not attested",
+      "max_batch": 3,
+      "official_access_source": "https://blockreq.com/chains/ethereum"
+    }
+  ],
+  "selection_before_collection": "Only two new publicly documented archive candidates; do not re-probe prior failed Llama/BlockPI/PublicNode",
+  "repeats": 2,
+  "blocks": [
+    26045352,
+    26038152,
+    26030952
+  ],
+  "method_contract_abi_units": "Unchanged Phase01-B core_observation imported from pinned starting commit",
+  "limits": {
+    "logical_requests_per_provider_block_pass": 150,
+    "known_batch_limit": 3,
+    "max_parallel_batches": 4,
+    "bounded_transport_retries": 2,
+    "no_paid_services": true,
+    "no_credential_guessing": true
+  },
+  "backend_independence": "UNVERIFIED; cannot promote by endpoint/clientVersion/content agreement",
+  "source_feasibility_only": [
+    {
+      "provider": "Tenderly",
+      "reason": "Official source describes authenticated project endpoint; no authorized project key provisioned. Older free-tier statements not treated as current access entitlement. No request sent.",
+      "source": "https://tenderly.co/pricing"
+    }
+  ],
+  "original_sampling_or_evidence_changed": false
+}

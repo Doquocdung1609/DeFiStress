@@ -1,0 +1,36 @@
+name: Phase01-B archive independence targeted repair
+on:
+  push:
+    branches: [research/v2-phase01b-archive-independence]
+    paths:
+      - docs/research_v2/phase01b/archive_independence/collect.py
+      - docs/research_v2/phase01b/archive_independence/REQUEST_PLAN.json
+      - .github/workflows/archive-independence-repair.yml
+permissions:
+  contents: read
+jobs:
+  bounded-historical-comparison:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    env:
+      PYTHONPATH: ${{ github.workspace }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.10'
+          cache: pip
+      - name: Install existing hashed environment
+        run: python -m pip install --require-hashes --only-binary=:all: -r docs/research_v2/phase00/g1/requirements-windows-py312.lock.txt
+      - name: Registered core historical calls only
+        run: python docs/research_v2/phase01b/archive_independence/collect.py --output "$env:RUNNER_TEMP/archive-repair"
+      - name: Targeted decision tests
+        run: python -m pytest tests/test_archive_independence.py --junitxml="$env:RUNNER_TEMP/archive-repair/targeted-tests.xml"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: archive-independence-${{ github.run_id }}
+          path: ${{ runner.temp }}/archive-repair/
+          if-no-files-found: error
