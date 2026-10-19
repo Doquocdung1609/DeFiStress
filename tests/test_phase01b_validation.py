@@ -137,6 +137,30 @@ class Phase01BValidationTests(unittest.TestCase):
             self.assertNotEqual(metadata["sha256_gzip_bytes"], metadata["sha256_canonical_json_bytes"])
             self.assertEqual(json.loads(gzip.decompress(path.read_bytes())), {"x": 123})
 
+    def test_exact_log_fallback_requires_the_whole_registered_window(self):
+        with self.assertRaises(b.DataIssue):
+            b.validate_discovery_headers([], {"number": 1024})
+
+    def test_discovery_headers_must_be_contiguous(self):
+        def h(n):
+            return "0x" + f"{n:064x}"
+        rows = [{"number": hex(n), "hash": h(n), "parentHash": h(n - 1), "timestamp": hex(n)}
+                for n in range(1, 1025)]
+        block = {"number": 1024, "expected_hash": h(1024), "timestamp_unix": 1024}
+        self.assertEqual(len(b.validate_discovery_headers(rows, block)), 1024)
+        rows[100]["parentHash"] = h(9999)
+        with self.assertRaisesRegex(ValueError, "DISCONTINUOUS"):
+            b.validate_discovery_headers(rows, block)
+
+    def test_discovery_header_timestamp_cannot_exceed_snapshot(self):
+        def h(n):
+            return "0x" + f"{n:064x}"
+        rows = [{"number": hex(n), "hash": h(n), "parentHash": h(n - 1), "timestamp": hex(n)}
+                for n in range(1, 1025)]
+        rows[-1]["timestamp"] = hex(1025)
+        with self.assertRaisesRegex(ValueError, "TIMESTAMP_LEAKAGE"):
+            b.validate_discovery_headers(rows, {"number": 1024, "expected_hash": h(1024), "timestamp_unix": 1024})
+
 
 if __name__ == "__main__":
     unittest.main()

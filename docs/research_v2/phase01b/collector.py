@@ -47,6 +47,7 @@ class Rpc:
         self.next_id = 0
         self.lock = Lock()
         self.records = []
+        self.allowed_log_hashes = {block["expected_hash"]}
 
     def check(self, method: str, params: list) -> None:
         if method not in {"eth_chainId", "web3_clientVersion", "eth_getBlockByNumber", "eth_call", "eth_getLogs"}:
@@ -54,11 +55,16 @@ class Rpc:
         if method == "eth_call" and (len(params) != 2 or params[1] != {
                 "blockHash": self.block["expected_hash"], "requireCanonical": True}):
             raise DataIssue("SOFTWARE_ERROR", "UNPINNED_STATE_CALL")
-        if method == "eth_getBlockByNumber" and params != [hex(self.block["number"]), False]:
-            raise DataIssue("SOFTWARE_ERROR", "UNPINNED_HEADER")
+        if method == "eth_getBlockByNumber":
+            try:
+                number = int(params[0], 16)
+            except (ValueError, TypeError, IndexError):
+                raise DataIssue("SOFTWARE_ERROR", "UNPINNED_HEADER") from None
+            if len(params) != 2 or params[1] is not False or not self.block["number"] - 1023 <= number <= self.block["number"]:
+                raise DataIssue("SOFTWARE_ERROR", "UNPINNED_HEADER")
         if method == "eth_getLogs":
             f = params[0]
-            same_hash = f.get("blockHash") == self.block["expected_hash"]
+            same_hash = f.get("blockHash") in self.allowed_log_hashes
             bounded = ("blockHash" not in f and int(f.get("toBlock", "0x0"), 16) == self.block["number"]
                        and self.block["number"] - 1023 <= int(f.get("fromBlock", "0x0"), 16) <= self.block["number"])
             if not same_hash and not bounded:
@@ -102,7 +108,17 @@ class Rpc:
                         result = {"status": "BLOCKED", "kind": issue_kind(message), "error": message}
                     else:
                         result = {"status": "AVAILABLE", "result": raw["result"]}
-                    self.records.append({"request": req, "response": raw, "http_status": response.status_code,
+                    recorded = raw
+                    projection = None
+                    if req["method"] == "eth_getBlockByNumber" and isinstance(raw.get("result"), dict):
+                        full = raw["result"]
+                        projected = {k: full[k] for k in ["number", "hash", "parentHash", "timestamp", "stateRoot",
+                                                         "transactionsRoot", "receiptsRoot"] if k in full}
+                        recorded = {**raw, "result": projected}
+                        projection = {"omitted": "transaction hash list and other unused header fields",
+                                      "original_parsed_result_canonical_sha256": a.digest(full)}
+                    self.records.append({"request": req, "response": recorded, "http_status": response.status_code,
+                                         "response_projection": projection,
                                          "routing_headers": {k: v for k, v in response.headers.items()
                                                               if k.lower().startswith(("qr", "x-drpc", "x-provider"))}})
                     results.append(result)
@@ -454,6 +470,56 @@ def choose_borrowers(logs: list, block: dict, pool: str, signature: str, limit: 
     return sorted(users, key=lambda address: (hashlib.sha256(("1:" + address).encode()).hexdigest(), address))[:limit]
 
 
+def validate_discovery_headers(raw_headers: list, block: dict) -> list:
+    if len(raw_headers) != 1024:
+        raise DataIssue("DATA_COVERAGE_LIMIT", "INCOMPLETE_DISCOVERY_HEADER_WINDOW")
+    headers = [a.validate_header(raw, block["number"] - 1023 + i) for i, raw in enumerate(raw_headers)]
+    for index, header in enumerate(headers):
+        if header["timestamp"] > block["timestamp_unix"]:
+            raise ValueError("DISCOVERY_TIMESTAMP_LEAKAGE")
+        if index and (header["parent_hash"] != headers[index - 1]["hash"]
+                      or header["timestamp"] <= headers[index - 1]["timestamp"]):
+            raise ValueError("DISCONTINUOUS_DISCOVERY_HEADERS")
+    if headers[-1]["hash"] != block["expected_hash"]:
+        raise ValueError("DISCOVERY_TARGET_HASH_MISMATCH")
+    return headers
+
+
+def discovery_events(rpc: Rpc, pool: str, signature: str) -> tuple[list, dict]:
+    params = [{"address": pool, "topics": [signature], "fromBlock": hex(rpc.block["number"] - 1023),
+               "toBlock": hex(rpc.block["number"])}]
+    try:
+        logs = rpc.call("eth_getLogs", params)
+        return logs, {"method": "REGISTERED_RANGE_QUERY", "coverage_status": "PASS", "window_blocks": 1024}
+    except DataIssue as exc:
+        range_failure = {"kind": exc.kind, "reason": str(exc)}
+    numbers = list(range(rpc.block["number"] - 1023, rpc.block["number"] + 1))
+    header_batches = [[("eth_getBlockByNumber", [hex(n), False]) for n in numbers[start:start + 3]]
+                      for start in range(0, 1024, 3)]
+    with ThreadPoolExecutor(max_workers=4) as executor:
+        header_rows = [row for batch in executor.map(rpc.request, header_batches) for row in batch]
+    if any(r["status"] != "AVAILABLE" for r in header_rows):
+        raise DataIssue("DATA_COVERAGE_LIMIT", "MISSING_HEADER_IN_EXACT_HASH_DISCOVERY_FALLBACK")
+    headers = validate_discovery_headers([r["result"] for r in header_rows], rpc.block)
+    rpc.allowed_log_hashes.update(h["hash"] for h in headers)
+    requests = [("eth_getLogs", [{"address": pool, "topics": [signature], "blockHash": h["hash"]}]) for h in headers]
+    batches = [requests[i:i + 3] for i in range(0, len(requests), 3)]
+    with ThreadPoolExecutor(max_workers=4) as executor:
+        rows = [row for batch in executor.map(rpc.request, batches) for row in batch]
+    missing = [h["number"] for h, r in zip(headers, rows, strict=True) if r["status"] != "AVAILABLE"]
+    if missing:
+        raise DataIssue("DATA_COVERAGE_LIMIT", "INCOMPLETE_EXACT_BLOCK_LOG_WINDOW: " + str(missing))
+    logs = []
+    for header, row in zip(headers, rows, strict=True):
+        for log in row["result"]:
+            if log["blockHash"].lower() != header["hash"] or int(log["blockNumber"], 16) != header["number"]:
+                raise ValueError("EXACT_HASH_LOG_RESPONSE_LEAKAGE")
+            logs.append(log)
+    return logs, {"method": "ALL_1024_EXACT_BLOCK_HASHES", "range_query_failure": range_failure,
+                  "coverage_status": "PASS", "window_blocks": 1024, "missing_blocks": [],
+                  "contiguous_headers": headers, "header_projection_status": "DOCUMENTED_IN_RAW_TRANSCRIPTS"}
+
+
 def reconstruct_account(reserves: list, account: list, mode: dict | None, tolerance: int) -> dict:
     if any(r["status"] != "AVAILABLE" for r in reserves):
         return {"status": "BLOCKED", "reason": "MISSING_USER_RESERVE_STATE", "hf_raw": None}
@@ -502,8 +568,7 @@ def borrowers(rpc: Rpc, registry: dict) -> dict:
     config = oracle_config(rpc, registry)
     pool, provider, oracle = config["pool"], config["data_provider"], config["oracle"]
     signature = "0x" + bytes(Web3.keccak(text=registry["borrower_sample"]["event"])).hex()
-    logs = rpc.call("eth_getLogs", [{"address": pool, "topics": [signature],
-                    "fromBlock": hex(rpc.block["number"] - 1023), "toBlock": hex(rpc.block["number"])}])
+    logs, discovery_coverage = discovery_events(rpc, pool, signature)
     logs = sorted(logs, key=lambda r: (int(r["blockNumber"], 16), int(r["transactionIndex"], 16), int(r["logIndex"], 16)))
     locators = [(r["blockHash"], r["transactionHash"], r["logIndex"]) for r in logs]
     if len(locators) != len(set(locators)):
@@ -582,7 +647,8 @@ def borrowers(rpc: Rpc, registry: dict) -> dict:
                            "hf_reconstruction": reconstruction,
                            "missing_data_flags": [r["asset"] for r in observations if r["status"] != "AVAILABLE"]})
     return {"configuration": config, "event_window": [rpc.block["number"] - 1023, rpc.block["number"]],
-            "discovery_logs": logs, "selected_users": users, "reserves_count": len(assets),
+            "discovery_logs": logs, "discovery_coverage": discovery_coverage,
+            "selected_users": users, "reserves_count": len(assets),
             "reserve_id_coverage": {"available_ids": len(ids), "missing_assets": sorted(set(assets) - set(ids))},
             "emode_configurations": e_modes, "portfolios": portfolios,
             "sample_scope": "RECENT_BORROW_EVENT_SAMPLE_NOT_MARKET_CENSUS; NO_STRESS_SELECTION"}
@@ -739,6 +805,10 @@ def run_validation(registry: dict, output: Path) -> None:
                 statuses[name] = "BLOCKED_OR_FAILED_COMPONENT"
         catalog.append({"block": block, "provider": primary["id"], "passes": passes, "repeatability": statuses})
         a.write_json(output / "validation_catalog.json", catalog)
+    manifest(output, registry)
+
+
+def manifest(output: Path, registry: dict) -> None:
     files = []
     for path in sorted(output.rglob("*")):
         if not path.is_file():
@@ -753,19 +823,50 @@ def run_validation(registry: dict, output: Path) -> None:
     a.write_json(output / "collection_manifest.json", {"source_commit": os.getenv("GITHUB_SHA"),
                  "run_id": os.getenv("GITHUB_RUN_ID"), "registration_canonical_sha256": a.digest(registry),
                  "collected_at_utc": datetime.now(UTC).isoformat(), "files": files,
-                 "raw_capture": "Canonical parsed JSON-RPC requests/results; not original HTTP wire bytes",
+                 "raw_capture": "Canonical parsed JSON-RPC requests/results; block-header results project required fields and retain full parsed-result digest; not HTTP wire bytes",
                  "new_stress_or_monte_carlo": False, "V2_scientifically_validated": False})
+
+
+def run_borrower_repair(registry: dict, output: Path) -> None:
+    """Only recollect D after provider range limits; prior A/B/C evidence stays immutable."""
+    source = next(p for p in registry["providers"] if p["id"] == registry["primary_provider"])
+    catalog = []
+    for block in registry["blocks"]:
+        passes = []
+        for repeat in [1, 2]:
+            rpc = Rpc(source, block, registry["limits"]["max_rpc_calls_per_primary_block_pass"])
+            before = safe(lambda: identity(rpc))
+            result = safe(lambda: borrowers(rpc, registry)) if before["status"] == "PASS" else before
+            after = safe(lambda: identity(rpc))
+            if before != after:
+                result = {"status": "FAIL", "kind": "DATA_IDENTITY_FAILURE", "reason": "HEADER_CHANGED", "data": None}
+            filename = f"components/{block['number']}-pass{repeat}-borrowers.json.gz"
+            dump_gzip(output / filename, result)
+            save_journal(output, f"borrower-repair-{block['number']}-pass{repeat}", rpc.records)
+            passes.append({"status": result["status"], "file": filename, "kind": result.get("kind"),
+                           "content_sha256": a.digest(result["data"]) if result["status"] == "PASS" else None})
+            rpc.client.close()
+            print("BORROWER_TARGETED_REPAIR", block["number"], repeat, result["status"], result.get("reason"), flush=True)
+        complete = all(p["status"] == "PASS" for p in passes)
+        repeat_status = ("PASS" if passes[0]["content_sha256"] == passes[1]["content_sha256"] else "FAIL_CONTENT_MISMATCH") if complete else "BLOCKED_OR_FAILED"
+        catalog.append({"block": block, "provider": source["id"], "passes": passes, "repeatability": repeat_status})
+        a.write_json(output / "borrower_repair_catalog.json", catalog)
+    manifest(output, registry)
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--registry", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--full", action="store_true", help="Reproduce every registered workstream from scratch")
     args = parser.parse_args()
     registry = json.loads(args.registry.read_text())
     args.output.mkdir(parents=True, exist_ok=True)
     if registry["stage"] == "REGISTERED_COLLECTION":
-        run_validation(registry, args.output)
+        if registry.get("execution_mode") == "BORROWER_TARGETED_REPAIR" and not args.full:
+            run_borrower_repair(registry, args.output)
+        else:
+            run_validation(registry, args.output)
     else:
         probe(registry, args.output)
 

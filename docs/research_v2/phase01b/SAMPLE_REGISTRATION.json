@@ -142,5 +142,13 @@
     "hf_wad": "floor(sum(collateral_base_i*effective_LT_bps_i)*1e18 / (totalDebtBase*10000))",
     "scope": "Independent full-portfolio economic reconstruction compared against contract; not a formal historical bytecode replica; differences retained and not retuned",
     "zero_debt": "UINT256_MAX sentinel; not finite HF"
+  },
+  "execution_mode": "BORROWER_TARGETED_REPAIR",
+  "discovery_transport_amendment": {
+    "observed_failure": "dRPC returns code35/range limit even for registered1024-block historical range",
+    "repair": "Read all1024 registered block headers, validate parent continuity and timestamps, then request Borrow logs for every exact block hash; no partial-window sample",
+    "sample_window_or_ranking_changed": false,
+    "prior_full_collection_commit": "6e5285f04d1d5ab2900b51389cc3c025c9b64f42",
+    "full_reproduction": "Add --full to collector CLI; targeted mode only repairs workstream D, no A/B/C evidence overwritten"
   }
 }
