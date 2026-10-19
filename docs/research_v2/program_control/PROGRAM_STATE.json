@@ -4,7 +4,7 @@
   "target": "DEFISTRESS_V2_TECHNICAL_RELEASE_CANDIDATE",
   "target_reached": false,
   "authority": "V2_AUTONOMOUS_RESEARCH_ENGINEERING_ORCHESTRATION_AUTHORIZED",
-  "observed_at_utc": "2026-10-19T17:28:00Z",
+  "observed_at_utc": "2026-10-19T17:32:13.690Z",
   "scientific_status": "GATE_A_BLOCKED — GATE_B_SCOPED_PASS — PHASE02_HISTORICAL_EXECUTION_NOT_AUTHORIZED",
   "gate_a": "BLOCKED",
   "gate_b": "SCOPED_PASS",
@@ -92,8 +92,14 @@
     "head": "4ef28e4589304f2f4f6dda3b39be55b4550e3a85",
     "run_id": 39293917577,
     "url": "https://github.com/Doquocdung1609/DeFiStress/actions/runs/39293917577",
-    "status": "IN_PROGRESS",
-    "conclusion": null
+    "status": "COMPLETED",
+    "conclusion": "SUCCESS",
+    "repository_pytest_pass": 365,
+    "frontend_tests_pass": 21,
+    "ruff": "PASS",
+    "mypy_sim_49_source_files": "PASS",
+    "optional_real_rpc": "SKIPPED",
+    "artifact_scope": "repository CI logs read; not an independent replay"
   },
   "artifact_recheck": {
     "artifact_id": 12203756156,
