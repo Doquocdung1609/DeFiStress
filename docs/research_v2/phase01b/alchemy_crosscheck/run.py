@@ -71,6 +71,14 @@ def main() -> int:
                       "repeats": repeats, "repeatability_pass": stable})
         print(f"BLOCK {block['number']}: complete={all(p['complete'] for p in repeats)} repeatable={stable}; "
               f"matching-fields={repeats[0]['comparison']['agreeing_fields'] if repeats[0]['comparison'] else 0}", flush=True)
+        # Only public ABI field names and counts; never expose endpoint or raw values.
+        for item in repeats:
+            c = item.get("comparison")
+            if c:
+                print(f"CHECK block={block['number']} pass={item['pass']} "
+                      f"reference={c['reference_field_count']} observed={c['observed_field_count']} "
+                      f"mismatch_fields={c['mismatch_fields']} missing_fields={c['missing_fields']} "
+                      f"additional_fields={c['additional_fields']}", flush=True)
     complete = all(x["repeatability_pass"] and all(p["complete"] for p in x["repeats"]) for x in items)
     mismatch = any(p["comparison"] and p["comparison"]["mismatch_fields"] for x in items for p in x["repeats"])
     missing = any(p["comparison"] and p["comparison"]["missing_fields"] for x in items for p in x["repeats"])
