@@ -1,7 +1,7 @@
 """Archive gate fixtures are synthetic, not independent historical observations."""
 import importlib.util
-from pathlib import Path
 import unittest
+from pathlib import Path
 
 spec = importlib.util.spec_from_file_location('archive_repair', Path(__file__).resolve().parents[1] /
        'docs/research_v2/phase01b/archive_independence/collect.py')
