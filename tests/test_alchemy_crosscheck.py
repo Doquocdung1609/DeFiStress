@@ -45,7 +45,8 @@ def test_repeatability_hash_detects_different_values():
 
 
 def test_persisted_evidence_is_limited_and_consistent():
-    path = Path(__file__).resolve().parents[1] / "docs/research_v2/phase01b/alchemy_crosscheck/VERIFIED_CI_EVIDENCE.json"
+    path = (Path(__file__).resolve().parents[1] / "docs/research_v2/phase01b/alchemy_crosscheck"
+            / "VERIFIED_CI_EVIDENCE.json")
     evidence = json.loads(path.read_text(encoding="utf-8"))
     assert evidence["summary"]["total_field_comparisons"] == 174
     assert evidence["summary"]["agreeing"] == 174
