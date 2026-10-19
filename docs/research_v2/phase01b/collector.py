@@ -354,6 +354,14 @@ def validate_round(round_data, block_timestamp: int) -> dict:
             "freshness_heartbeat_status": "NOT_EVALUATED_NO_REGISTERED_HEARTBEAT"}
 
 
+def compare_proxy_round(proxy_round, aggregator_round) -> None:
+    mask = (1 << 64) - 1
+    if (int(aggregator_round[0]) != (int(proxy_round[0]) & mask)
+            or tuple(aggregator_round[1:4]) != tuple(proxy_round[1:4])
+            or int(aggregator_round[4]) != (int(proxy_round[4]) & mask)):
+        raise ValueError("PROXY_AND_AGGREGATOR_ROUND_MISMATCH")
+
+
 def trace_feed(rpc: Rpc, address: str) -> dict:
     signatures = [("decimals()", ["uint8"]), ("description()", ["string"]), ("latestAnswer()", ["int256"]),
                   ("latestRoundData()", ["uint80", "int256", "uint256", "uint256", "uint80"]),
@@ -386,8 +394,7 @@ def trace_feed(rpc: Rpc, address: str) -> dict:
             if underlying[1]["status"] == "AVAILABLE":
                 low_round = underlying[1]["value"]
                 validate_round(low_round, rpc.block["timestamp_unix"])
-                if int(low_round[0]) != int(observed[0]) & ((1 << 64) - 1) or tuple(low_round[1:]) != tuple(observed[1:]):
-                    raise ValueError("PROXY_AND_AGGREGATOR_ROUND_MISMATCH")
+                compare_proxy_round(observed, low_round)
     return result
 
 

@@ -60,6 +60,12 @@ class Phase01BValidationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "INVALID_ROUND"):
             b.validate_round([3, 100, 90, 95, 2], 100)
 
+    def test_proxy_phase_bits_are_not_raw_aggregator_round_ids(self):
+        wrapped = (7 << 64) | 42
+        b.compare_proxy_round([wrapped, 100, 90, 95, wrapped], [42, 100, 90, 95, 42])
+        with self.assertRaisesRegex(ValueError, "ROUND_MISMATCH"):
+            b.compare_proxy_round([wrapped, 100, 90, 95, wrapped], [42, 101, 90, 95, 42])
+
     def test_agreement_is_not_independence(self):
         state = {"fields": {"x": 1}, "unavailable": {}}
         result = b.compare_fields(state, state)
