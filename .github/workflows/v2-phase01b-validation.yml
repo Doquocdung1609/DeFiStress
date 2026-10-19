@@ -1,0 +1,35 @@
+name: V2 Phase01-B historical validation
+on:
+  push:
+    branches: [research/v2-phase01b-historical-validation]
+    paths:
+      - docs/research_v2/phase01b/collector.py
+      - docs/research_v2/phase01b/SAMPLE_REGISTRATION.json
+      - .github/workflows/v2-phase01b-validation.yml
+permissions:
+  contents: read
+jobs:
+  historical-validation:
+    runs-on: windows-latest
+    timeout-minutes: 50
+    env:
+      PYTHONPATH: ${{ github.workspace }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.10'
+          cache: pip
+      - name: Install existing tested native Windows lock
+        run: |
+          python -m pip install --require-hashes --only-binary=:all: -r docs/research_v2/phase00/g1/requirements-windows-py312.lock.txt
+      - name: Execute registered historical validation only
+        run: python docs/research_v2/phase01b/collector.py --registry docs/research_v2/phase01b/SAMPLE_REGISTRATION.json --output "$env:RUNNER_TEMP/phase01b"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: phase01b-validation-${{ github.run_id }}
+          path: ${{ runner.temp }}/phase01b/
+          if-no-files-found: error
