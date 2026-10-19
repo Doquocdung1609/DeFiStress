@@ -27,13 +27,23 @@ jobs:
       - name: Execute L1 full preserved-file verification
         run: |
           mkdir -p "$RUNNER_TEMP/prephase02"
-          python docs/research_v2/prephase02_offline/validate_offline.py --output "$RUNNER_TEMP/prephase02/VALIDATION_GATES.json"
+          python docs/research_v2/prephase02_offline/validate_offline.py --validator-commit "$GITHUB_SHA" --output "$RUNNER_TEMP/prephase02/VALIDATION_GATES.json"
       - name: Execute L2 pure synthetic controls
+        id: l2
+        if: always()
         run: |
           python -m pytest -q tests/test_prephase02_offline.py --junitxml="$RUNNER_TEMP/prephase02/l2-junit.xml"
+      - name: Finalize machine report from actual JUnit
+        if: always()
+        run: |
+          python docs/research_v2/prephase02_offline/validate_offline.py \
+            --validator-commit "$GITHUB_SHA" \
+            --output "$RUNNER_TEMP/prephase02/VALIDATION_GATES.json" \
+            --l2-junit "$RUNNER_TEMP/prephase02/l2-junit.xml" \
+            --l2-exit-code "${{ steps.l2.outcome == 'success' && '0' || '1' }}"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: prephase02-offline-${{ github.run_id }}
           path: ${{ runner.temp }}/prephase02/
-          if-no-files-found: warn
+          if-no-files-found: error
