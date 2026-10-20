@@ -1,0 +1,302 @@
+{
+  "adapter_scope": "READ_ONLY_REGISTERED_SAVED_HISTORICAL_STATE",
+  "artifact_git_ref": "817b0f85547963939841e8bc7181e55b2b84d86f",
+  "coverage": {
+    "blocks": 3,
+    "component_views": 24,
+    "read_passes_per_block": 2,
+    "snapshot_views": 6
+  },
+  "input_hashes": {
+    "borrower_repair_catalog_sha256_checkout_bytes": "418225c577bef5ba466122acd577b6fef3e54937d7d676fdf650186a2ba27188",
+    "evidence_provenance_sha256_checkout_bytes": "4a293629cfb73a8b9b651b7beaa663e9943e176c4783d693de39359ac9ef9197",
+    "full_catalog_sha256_checkout_bytes": "dd1f1361c96da79c5ce092682b1ee53c7a93db7f9cbb1f493752398a25dde092"
+  },
+  "limitations": [
+    "REGISTERED_THREE_BLOCK_TWO_PASS_SAMPLE_ONLY",
+    "POOL_TICKS_REGISTERED_BAND_ONLY",
+    "BORROWERS_SELECTED_REPAIR_SAMPLE_NOT_MARKET_COVERAGE",
+    "SOURCE_HEALTH_FACTOR_RETAINED_NOT_RECOMPUTED",
+    "NO_EXECUTION_OR_SIMULATION_AUTHORIZED"
+  ],
+  "network_calls": 0,
+  "origin_classes": [
+    "OBSERVED",
+    "RECONSTRUCTED",
+    "SYNTHETIC",
+    "COUNTERFACTUAL"
+  ],
+  "scientific_status": "GATE_A_BLOCKED \u2014 GATE_B_SCOPED_PASS \u2014 PHASE02_HISTORICAL_EXECUTION_NOT_AUTHORIZED",
+  "snapshots": [
+    {
+      "block_hash": "0x4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+      "block_number": 26045352,
+      "component_count": 4,
+      "component_ids": [
+        "P3000",
+        "P500",
+        "borrowers",
+        "oracle"
+      ],
+      "content_sha256": "ef8e7cea884897e780ebf528ab4d41d9ef05ed026078dc10c56d5a6915535092",
+      "read_pass": 1,
+      "status": "PASS"
+    },
+    {
+      "block_hash": "0x4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+      "block_number": 26045352,
+      "component_count": 4,
+      "component_ids": [
+        "P3000",
+        "P500",
+        "borrowers",
+        "oracle"
+      ],
+      "content_sha256": "f9ec0aaebdd153ba023baafb097e8dd2a55b80e9b9a2e4f4a430df5389ab9321",
+      "read_pass": 2,
+      "status": "PASS"
+    },
+    {
+      "block_hash": "0xbb108203815f257e9f9b023f92a30e67d946799355ceffc4bef0e0e16a1e87bd",
+      "block_number": 26038152,
+      "component_count": 4,
+      "component_ids": [
+        "P3000",
+        "P500",
+        "borrowers",
+        "oracle"
+      ],
+      "content_sha256": "207d86ab551a7e472786e05cf36f11751b8ca3310e71a43c182f43c483cd2fbc",
+      "read_pass": 1,
+      "status": "PASS"
+    },
+    {
+      "block_hash": "0xbb108203815f257e9f9b023f92a30e67d946799355ceffc4bef0e0e16a1e87bd",
+      "block_number": 26038152,
+      "component_count": 4,
+      "component_ids": [
+        "P3000",
+        "P500",
+        "borrowers",
+        "oracle"
+      ],
+      "content_sha256": "b251e7884dcf40e7e4f3bfdb23305a48187f8dc4c2c212fa36065f589867d618",
+      "read_pass": 2,
+      "status": "PASS"
+    },
+    {
+      "block_hash": "0xeeb12db7f31e86507bb4be7a1a2953d19c11165c99a75ebc7aa589d65d0b9625",
+      "block_number": 26030952,
+      "component_count": 4,
+      "component_ids": [
+        "P3000",
+        "P500",
+        "borrowers",
+        "oracle"
+      ],
+      "content_sha256": "449355369d404d79f9ce0a11d6a4579da5bdec0f735a7e58b69d7236c87464e9",
+      "read_pass": 1,
+      "status": "PASS"
+    },
+    {
+      "block_hash": "0xeeb12db7f31e86507bb4be7a1a2953d19c11165c99a75ebc7aa589d65d0b9625",
+      "block_number": 26030952,
+      "component_count": 4,
+      "component_ids": [
+        "P3000",
+        "P500",
+        "borrowers",
+        "oracle"
+      ],
+      "content_sha256": "6441f8c2e770b5aecdb381ce767f2a81bcdd34b8a78eb637169b5993478be19b",
+      "read_pass": 2,
+      "status": "PASS"
+    }
+  ],
+  "test_spec_dispositions": [
+    {
+      "disposition": "IMPLEMENTED_ADAPTER_POSITIVE_AND_BOUNDARY",
+      "test_id": "P02-T01-01"
+    },
+    {
+      "disposition": "IMPLEMENTED_INTEGRATION_IDENTITY_GUARDS",
+      "test_id": "P02-T01-02"
+    },
+    {
+      "disposition": "IMPLEMENTED_INTEGRATION_NUMERIC_SCHEMA_GUARDS",
+      "test_id": "P02-T01-03"
+    },
+    {
+      "disposition": "IMPLEMENTED_INTEGRATION_NO_FILL_SEMANTICS",
+      "test_id": "P02-T01-04"
+    },
+    {
+      "disposition": "IMPLEMENTED_INTEGRATION_RAW_DECODED_GIT_HASH_DOMAINS",
+      "test_id": "P02-T01-05"
+    },
+    {
+      "disposition": "IMPLEMENTED_INTEGRATION_SAME_BLOCK_NO_LOOKAHEAD_GUARDS",
+      "test_id": "P02-T01-06"
+    },
+    {
+      "disposition": "IMPLEMENTED_ADAPTER_COVERAGE_AND_CAPABILITY",
+      "test_id": "P02-T01-07"
+    },
+    {
+      "disposition": "IMPLEMENTED_INTEGRATION_ORIGIN_AND_NOT_REPLAYABLE_GUARDS",
+      "test_id": "P02-T01-08"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T02-01"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T02-02"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T02-03"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T02-04"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T02-05"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T02-06"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T02-07"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T02-08"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T02-09"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T03-01"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T03-02"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T03-03"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T03-04"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T03-05"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T03-06"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T03-07"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T03-08"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T03-09"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T03-10"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T04-01"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T04-02"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T04-03"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T04-04"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T04-05"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T04-06"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T04-07"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T04-08"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T04-09"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T04-10"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T05-01"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T05-02"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T05-03"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T05-04"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T05-05"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T05-06"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T05-07"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T05-08"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "test_id": "P02-T05-09"
+    }
+  ]
+}
