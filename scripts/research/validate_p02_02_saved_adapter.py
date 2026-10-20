@@ -28,15 +28,17 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repository-root", type=Path, default=Path.cwd())
     parser.add_argument("--source-commit", required=True)
+    parser.add_argument("--adapter-source-commit")
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
+    adapter_source_commit = args.adapter_source_commit or args.source_commit
     rows: list[dict[str, object]] = []
     for block in BLOCKS:
         for read_pass in (1, 2):
             result = load_registered_snapshot(
                 args.repository_root,
                 SnapshotSelection(block, read_pass),
-                args.source_commit,
+                adapter_source_commit,
                 args.source_commit,
             )
             if not isinstance(result, Ok):
@@ -73,6 +75,7 @@ def main() -> int:
     root = args.repository_root
     report = {
         "adapter_scope": "READ_ONLY_REGISTERED_SAVED_HISTORICAL_STATE",
+        "adapter_source_commit": adapter_source_commit,
         "artifact_git_ref": args.source_commit,
         "coverage": {
             "blocks": len(BLOCKS),

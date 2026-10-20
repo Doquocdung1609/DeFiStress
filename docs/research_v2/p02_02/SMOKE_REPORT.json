@@ -1,5 +1,6 @@
 {
   "adapter_scope": "READ_ONLY_REGISTERED_SAVED_HISTORICAL_STATE",
+  "adapter_source_commit": "28348ff363cb46737ce161dd1be0eaa4acf1fd13",
   "artifact_git_ref": "817b0f85547963939841e8bc7181e55b2b84d86f",
   "coverage": {
     "blocks": 3,
