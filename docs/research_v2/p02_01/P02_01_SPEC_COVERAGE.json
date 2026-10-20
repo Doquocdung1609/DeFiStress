@@ -1,0 +1,55 @@
+{
+  "authorization": "V2_P02_01_OFFLINE_CORE_CONTRACTS_AUTHORIZED",
+  "evidence_origin": "SYNTHETIC",
+  "gate_a": "BLOCKED_BACKEND_INDEPENDENCE",
+  "gate_b": "PASS_REGISTERED_CORE_SCOPE",
+  "historical_execution": "NOT_AUTHORIZED",
+  "implemented_contract_portions": {
+    "P02-T01-02": [
+      "strict chain/block/hash/address identity",
+      "bool-is-not-int rejection",
+      "asset identity remains chain/address bound"
+    ],
+    "P02-T01-03": [
+      "decimal uint8 boundaries",
+      "uint256 unsigned quantities",
+      "int256 explicitly signed deltas",
+      "canonical integer strings and unit-bound amounts"
+    ],
+    "P02-T01-04": [
+      "AVAILABLE zero remains distinct from MISSING",
+      "AVAILABLE/MISSING/UNSUPPORTED/QUARANTINED tagged values",
+      "OK/BLOCKED/REJECTED tagged results"
+    ],
+    "P02-T01-05": [
+      "raw/decoded/content/Git digest domains",
+      "raw byte verification without line-ending normalization",
+      "schema-versioned canonical JSON",
+      "duplicate-key, numeric-literal, float, binary and unordered-container rejection",
+      "deterministic map/vector and Unicode-preserving round trip"
+    ],
+    "P02-T01-06": [
+      "same chain/number/hash guard",
+      "effective-time and available-time no-lookahead guard",
+      "canonicality evidence identity/time/block binding"
+    ],
+    "P02-T01-08": [
+      "origin and parent-lineage contracts",
+      "synthetic fixture visibility",
+      "derived-to-observed promotion rejection",
+      "DEX/oracle source-kind confusion guard",
+      "immutable future-state reference only"
+    ]
+  },
+  "not_implemented": {
+    "P02-T01-01": "HistoricalStatePort saved-pack adapter is reserved for P02-02.",
+    "P02-T01-07": "Coverage/capability adapter evaluation is reserved for P02-02.",
+    "P02-T02-01..09": "Oracle and valuation math is not authorized in P02-01.",
+    "P02-T03-01..10": "Liquidation assessment/execution is not authorized.",
+    "P02-T04-01..10": "AMM quote/swap implementation is not authorized.",
+    "P02-T05-01..09": "Agents and orchestration are not authorized."
+  },
+  "schema_version": "defistress-v2-p02-01-coverage/1",
+  "specification_total": 46,
+  "statement": "This mapping covers bounded contract portions only and is not a claim that all 46 design specifications passed."
+}

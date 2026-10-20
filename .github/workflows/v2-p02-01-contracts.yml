@@ -1,0 +1,107 @@
+name: V2 P02-01 pure offline contracts
+
+on:
+  push:
+    branches: [research/v2-p02-01-core-contracts]
+    paths:
+      - defistress_v2/**
+      - tests/v2/test_contracts.py
+      - docs/research_v2/p02_01/**
+      - pyproject.toml
+      - .github/workflows/v2-p02-01-contracts.yml
+  pull_request:
+    paths:
+      - defistress_v2/**
+      - tests/v2/test_contracts.py
+      - docs/research_v2/p02_01/**
+      - pyproject.toml
+      - .github/workflows/v2-p02-01-contracts.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline-core-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PYTHONPATH: ${{ github.workspace }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12.10"
+      - name: Install scoped quality tools
+        run: python -m pip install pytest==8.4.2 ruff==0.17.1 mypy==1.20.2
+      - name: Prepare evidence directory
+        run: mkdir -p "$RUNNER_TEMP/p02-01"
+      - name: Ruff scoped source and tests
+        run: ruff check defistress_v2 tests/v2/test_contracts.py
+      - name: Strict type check for the new package
+        if: always()
+        run: mypy --strict defistress_v2
+      - name: Execute P02-01 synthetic contract tests
+        id: p02
+        if: always()
+        run: >-
+          python -m pytest -q tests/v2/test_contracts.py
+          --junitxml="$RUNNER_TEMP/p02-01/p02-01-junit.xml"
+      - name: Execute existing 80-test offline regression suite
+        id: legacy
+        if: always()
+        run: >-
+          python -m pytest -q tests/test_prephase02_offline.py
+          --junitxml="$RUNNER_TEMP/p02-01/legacy-offline-junit.xml"
+      - name: Execute L1 source preservation report and attach legacy JUnit
+        if: always()
+        run: |
+          python docs/research_v2/prephase02_offline/validate_offline.py \
+            --validator-commit "${{ github.event.pull_request.head.sha || github.sha }}" \
+            --output "$RUNNER_TEMP/p02-01/VALIDATION_GATES.json" \
+            --l2-junit "$RUNNER_TEMP/p02-01/legacy-offline-junit.xml" \
+            --l2-exit-code "${{ steps.legacy.outcome == 'success' && '0' || '1' }}"
+      - name: Record checkout, workflow-head, tree and runtime provenance
+        if: always()
+        shell: bash
+        run: |
+          checkout_commit="$(git rev-parse HEAD)"
+          checkout_tree="$(git rev-parse HEAD^{tree})"
+          workflow_head="${{ github.event.pull_request.head.sha || github.sha }}"
+          {
+            echo "event_name=${GITHUB_EVENT_NAME}"
+            echo "workflow_head_sha=${workflow_head}"
+            echo "checkout_commit=${checkout_commit}"
+            echo "checkout_tree=${checkout_tree}"
+            if git cat-file -e "${workflow_head}^{commit}" 2>/dev/null; then
+              echo "workflow_head_tree=$(git rev-parse "${workflow_head}^{tree}")"
+            else
+              echo "workflow_head_tree=NOT_AVAILABLE"
+            fi
+            python -VV
+            ruff --version
+            mypy --version
+            pytest --version
+          } > "$RUNNER_TEMP/p02-01/execution-metadata.txt"
+      - name: Verify locked and V1 source trees were not mutated by execution
+        if: always()
+        run: >-
+          git diff --exit-code --
+          sim backend data/processed/research_final docs/research_final docs/manuscript_p3
+          docs/research_v2/phase01a docs/research_v2/phase01b docs/research_v2/prephase02_offline
+      - name: Hash generated evidence artifacts
+        if: always()
+        shell: bash
+        run: |
+          find "$RUNNER_TEMP/p02-01" -maxdepth 1 -type f ! -name SHA256SUMS -print0 \
+            | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/p02-01/SHA256SUMS"
+      - name: Upload exact P02-01 execution evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v2-p02-01-contracts-${{ github.run_id }}
+          path: ${{ runner.temp }}/p02-01/
+          if-no-files-found: error
