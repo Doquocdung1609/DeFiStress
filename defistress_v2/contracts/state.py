@@ -18,6 +18,8 @@ def _reason(value: object, field: str = "reason") -> str:
 
 
 def _refs(value: tuple[EvidenceRef, ...]) -> tuple[EvidenceRef, ...]:
+    if type(value) not in (tuple, list):
+        raise TypeContractError("evidence references must be an explicit tuple or list")
     refs = tuple(value)
     if not refs:
         raise TypeContractError("at least one evidence reference is required")
@@ -95,6 +97,8 @@ class Ok[T]:
 
     def __post_init__(self) -> None:
         object.__setattr__(self, "payload", deep_freeze(self.payload))
+        if type(self.warnings) not in (tuple, list):
+            raise TypeContractError("warnings must be an explicit tuple or list")
         object.__setattr__(self, "warnings", tuple(_reason(item, "warning") for item in self.warnings))
 
 
@@ -164,17 +168,41 @@ class ObservationContext:
 
 def guard_same_block_and_time(
     as_of: AsOfContext, observations: tuple[ObservationContext, ...]
-) -> Ok[tuple[ObservationContext, ...]] | Rejected:
+) -> Ok[tuple[ObservationContext, ...]] | Blocked | Rejected:
     """Reject cross-block or look-ahead joins without mutating inputs."""
 
     for observation in observations:
-        if observation.block_ref.identity_key != as_of.block_ref.identity_key:
+        if (
+            observation.block_ref.identity_key != as_of.block_ref.identity_key
+            or observation.block_ref.timestamp_s != as_of.block_ref.timestamp_s
+        ):
             return Rejected(
                 code="TIMESTAMP_OR_BLOCK_LEAKAGE",
                 reason="observation block identity differs from the as-of block",
                 affected_refs=(observation.evidence_ref,),
             )
-        if observation.effective_at_s > as_of.available_at_s or observation.available_at_s > as_of.available_at_s:
+        source_block = observation.evidence_ref.block_ref
+        if source_block is None:
+            return Blocked(
+                code="MISSING_BLOCK_REFERENCE",
+                reason="observation evidence has no block-bound source reference",
+                affected_refs=(observation.evidence_ref,),
+            )
+        if (
+            source_block.identity_key != observation.block_ref.identity_key
+            or source_block.timestamp_s != observation.block_ref.timestamp_s
+        ):
+            return Rejected(
+                code="TIMESTAMP_OR_BLOCK_LEAKAGE",
+                reason="source evidence differs from the observation block identity or timestamp",
+                affected_refs=(observation.evidence_ref,),
+            )
+        if (
+            observation.effective_at_s > observation.block_ref.timestamp_s
+            or observation.available_at_s < observation.effective_at_s
+            or observation.effective_at_s > as_of.available_at_s
+            or observation.available_at_s > as_of.available_at_s
+        ):
             return Rejected(
                 code="TIMESTAMP_OR_BLOCK_LEAKAGE",
                 reason="observation was not effective and available by the as-of timestamp",
@@ -208,7 +236,11 @@ def guard_canonicality_evidence(block_ref: BlockRef, evidence: EvidenceRef) -> O
             reason="canonicality evidence observation time does not match the block reference",
             affected_refs=(evidence,),
         )
-    if evidence.block_ref is None or evidence.block_ref.identity_key != block_ref.identity_key:
+    if (
+        evidence.block_ref is None
+        or evidence.block_ref.identity_key != block_ref.identity_key
+        or evidence.block_ref.timestamp_s != block_ref.timestamp_s
+    ):
         return Rejected(
             code="INPUT_IDENTITY_MISMATCH",
             reason="canonicality evidence does not bind the same block identity",

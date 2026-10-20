@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 import re
 from collections.abc import Iterator, Mapping, Sequence
-from dataclasses import dataclass
+from dataclasses import dataclass, fields, is_dataclass
 from enum import Enum
 from typing import Protocol, runtime_checkable
 
@@ -72,6 +72,34 @@ class FrozenMap(Mapping[str, object]):
         return len(self._items)
 
 
+def _assert_deeply_immutable(value: object) -> None:
+    """Do not retain caller-owned mutable serializer state inside frozen values."""
+
+    if type(value) in (str, bytes, int, type(None), ExplicitBool):
+        return
+    if isinstance(value, Enum) and type(value.value) is str:
+        return
+    if type(value) is FrozenMap:
+        for _, item in value._items:
+            _assert_deeply_immutable(item)
+        return
+    if type(value) is tuple:
+        for item in value:
+            _assert_deeply_immutable(item)
+        return
+    if (
+        isinstance(value, CanonicalSerializable)
+        and is_dataclass(value)
+        and not isinstance(value, type)
+        and getattr(getattr(type(value), "__dataclass_params__", None), "frozen", False)
+        and not hasattr(value, "__dict__")
+    ):
+        for member in fields(value):
+            _assert_deeply_immutable(getattr(value, member.name))
+        return
+    raise TypeContractError("serializer payload must be a deeply immutable slotted frozen value object")
+
+
 def deep_freeze(value: object) -> object:
     """Freeze nested payload data without coercing scalar types."""
 
@@ -83,9 +111,12 @@ def deep_freeze(value: object) -> object:
         return tuple(deep_freeze(item) for item in value)
     if type(value) is bool or type(value) is float:
         raise TypeContractError(f"{type(value).__name__} requires an explicit typed contract")
-    if isinstance(value, (str, bytes, int, type(None), Enum, ExplicitBool)):
+    if type(value) in (str, bytes, int, type(None), ExplicitBool):
+        return value
+    if isinstance(value, Enum) and type(value.value) is str:
         return value
     if isinstance(value, CanonicalSerializable):
+        _assert_deeply_immutable(value)
         return value
     raise TypeContractError(f"unsupported immutable payload type: {type(value).__name__}")
 

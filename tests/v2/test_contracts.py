@@ -442,7 +442,8 @@ def test_derived_envelope_requires_derivation_and_parents(block: BlockRef, obser
         parent_content_hashes=(parent_hash,),
         parent_origins=(OriginKind.OBSERVED,),
     )
-    assert reconstructed.content_sha256 == DeterministicContentSha256.from_payload(reconstructed.to_canonical())
+    # Full provenance includes acquisition time; stable state content deliberately does not.
+    assert reconstructed.content_sha256 != DeterministicContentSha256.from_payload(reconstructed.to_canonical())
     with pytest.raises(LineageContractError):
         dataclasses.replace(reconstructed, parent_origins=())
 
@@ -569,3 +570,178 @@ def test_spec_coverage_declares_bounded_implemented_and_future_scope() -> None:
     assert {"P02-T01-01", "P02-T01-07"}.issubset(coverage["not_implemented"])
     assert coverage["specification_total"] == 46
     assert coverage["historical_execution"] == "NOT_AUTHORIZED"
+
+
+def test_review_mutable_serializer_cannot_escape_deep_freeze(observed_ref: EvidenceRef) -> None:
+    class MutableSerializer:
+        def __init__(self) -> None:
+            self.values = ["SYNTHETIC"]
+
+        def to_canonical(self) -> object:
+            return {"values": self.values}
+
+    with pytest.raises(TypeContractError):
+        Available(MutableSerializer(), (observed_ref,))
+    with pytest.raises(TypeContractError):
+        FrozenMap.from_mapping({"nested": MutableSerializer()})
+
+
+def test_review_frozen_shell_with_mutable_field_is_rejected(observed_ref: EvidenceRef) -> None:
+    @dataclasses.dataclass(frozen=True, slots=True)
+    class MutableChild:
+        values: list[str]
+
+        def to_canonical(self) -> object:
+            return {"values": self.values}
+
+    with pytest.raises(TypeContractError):
+        Available(MutableChild(["SYNTHETIC"]), (observed_ref,))
+
+
+def test_review_native_immutable_contract_keeps_nominal_type(block: BlockRef, observed_ref: EvidenceRef) -> None:
+    value = Available(block, (observed_ref,))
+    assert value.value is block
+    assert isinstance(value.value, BlockRef)
+
+
+def test_review_same_block_guard_checks_source_identity(block: BlockRef, observed_ref: EvidenceRef) -> None:
+    wrong = dataclasses.replace(block, number=101, hash=OTHER_BLOCK_HASH)
+    reference = dataclasses.replace(observed_ref, block_ref=wrong)
+    result = guard_same_block_and_time(AsOfContext(block, 1000), (ObservationContext(block, 900, 990, reference),))
+    assert isinstance(result, Rejected) and result.code == "TIMESTAMP_OR_BLOCK_LEAKAGE"
+
+
+def test_review_missing_source_block_is_blocked(block: BlockRef, observed_ref: EvidenceRef) -> None:
+    reference = dataclasses.replace(observed_ref, block_ref=None)
+    result = guard_same_block_and_time(AsOfContext(block, 1000), (ObservationContext(block, 900, 990, reference),))
+    assert isinstance(result, Blocked) and result.code == "MISSING_BLOCK_REFERENCE"
+
+
+@pytest.mark.parametrize("source_block", [None, OTHER_BLOCK_HASH])
+def test_review_observed_envelope_requires_matching_source_block(
+    block: BlockRef, observed_ref: EvidenceRef, source_block: str | None
+) -> None:
+    reference = dataclasses.replace(
+        observed_ref, block_ref=None if source_block is None else dataclasses.replace(block, hash=source_block)
+    )
+    with pytest.raises(LineageContractError):
+        EvidenceEnvelope({"fixture": "SYNTHETIC"}, block, OriginKind.OBSERVED, (reference,))
+
+
+@pytest.mark.parametrize("mutate_source", [False, True])
+def test_review_same_hash_cannot_hide_timestamp_mismatch(
+    block: BlockRef, observed_ref: EvidenceRef, mutate_source: bool
+) -> None:
+    inconsistent = dataclasses.replace(block, timestamp_s=901)
+    observation = ObservationContext(
+        block if mutate_source else inconsistent,
+        900,
+        990,
+        dataclasses.replace(observed_ref, block_ref=inconsistent) if mutate_source else observed_ref,
+    )
+    result = guard_same_block_and_time(AsOfContext(block, 1000), (observation,))
+    assert isinstance(result, Rejected)
+
+
+@pytest.mark.parametrize(("effective", "available"), [(950, 990), (900, 899)])
+def test_review_observation_clock_is_valid_for_its_block(
+    block: BlockRef, observed_ref: EvidenceRef, effective: int, available: int
+) -> None:
+    result = guard_same_block_and_time(
+        AsOfContext(block, 1000), (ObservationContext(block, effective, available, observed_ref),)
+    )
+    assert isinstance(result, Rejected) and result.code == "TIMESTAMP_OR_BLOCK_LEAKAGE"
+
+
+def test_review_retrieval_time_is_provenance_not_content(block: BlockRef, observed_ref: EvidenceRef) -> None:
+    original = EvidenceEnvelope({"raw_balance": "0"}, block, OriginKind.OBSERVED, (observed_ref,))
+    fetched_again = dataclasses.replace(
+        original, sources=(dataclasses.replace(observed_ref, retrieved_at_s=1001),)
+    )
+    assert canonical_json_bytes(original) != canonical_json_bytes(fetched_again)
+    assert original.content_sha256 == fetched_again.content_sha256
+    assert original.content_sha256 != dataclasses.replace(original, payload={"raw_balance": "1"}).content_sha256
+
+
+def test_review_nested_reference_also_uses_content_projection(block: BlockRef, observed_ref: EvidenceRef) -> None:
+    first = EvidenceEnvelope({"reference": observed_ref}, block, OriginKind.OBSERVED, (observed_ref,))
+    later = dataclasses.replace(observed_ref, retrieved_at_s=1001)
+    second = dataclasses.replace(first, payload={"reference": later}, sources=(later,))
+    assert first.content_sha256 == second.content_sha256
+
+
+def test_review_projection_keeps_payload_and_economic_clocks(block: BlockRef, observed_ref: EvidenceRef) -> None:
+    first = EvidenceEnvelope({"retrieved_at_s": "1000"}, block, OriginKind.OBSERVED, (observed_ref,))
+    assert first.content_sha256 != dataclasses.replace(first, payload={"retrieved_at_s": "1001"}).content_sha256
+    observation = ObservationContext(block, 900, 990, observed_ref)
+    with_clock = dataclasses.replace(first, payload={"observation": observation})
+    assert with_clock.content_sha256 != dataclasses.replace(
+        with_clock, payload={"observation": dataclasses.replace(observation, available_at_s=991)}
+    ).content_sha256
+
+
+def test_review_iterator_cannot_bypass_nonempty_source_validation(block: BlockRef, observed_ref: EvidenceRef) -> None:
+    with pytest.raises(TypeContractError):
+        EvidenceEnvelope({"fixture": "SYNTHETIC"}, block, OriginKind.OBSERVED, iter([observed_ref]))  # type: ignore[arg-type]
+
+
+@pytest.mark.parametrize("field", ["parent_content_hashes", "parent_origins"])
+def test_review_parent_vectors_reject_single_use_iterators(
+    block: BlockRef, observed_ref: EvidenceRef, field: str
+) -> None:
+    values = {
+        "parent_content_hashes": (DeterministicContentSha256.from_payload({"parent": "SYNTHETIC"}),),
+        "parent_origins": (OriginKind.OBSERVED,),
+    }
+    values[field] = iter(values[field])  # type: ignore[assignment]
+    with pytest.raises(TypeContractError):
+        EvidenceEnvelope(
+            {"fixture": "SYNTHETIC"}, block, OriginKind.RECONSTRUCTED, (observed_ref,),
+            derivation_id="synthetic:method", **values,  # type: ignore[arg-type]
+        )
+
+
+@pytest.mark.parametrize("field", ["refs", "warnings"])
+def test_review_reference_and_warning_containers_are_explicit(field: str, observed_ref: EvidenceRef) -> None:
+    with pytest.raises(TypeContractError):
+        if field == "refs":
+            Available(0, iter([observed_ref]))  # type: ignore[arg-type]
+        else:
+            Ok("SYNTHETIC", warnings="warning")  # type: ignore[arg-type]
+
+
+@pytest.mark.parametrize("signed", [False, True])
+def test_review_oversized_decimal_strings_raise_typed_error(usdc: AssetId, signed: bool) -> None:
+    with pytest.raises(TypeContractError):
+        if signed:
+            SignedDelta(usdc, "-" + "9" * 5000, QuantityKind.DELTA)
+        else:
+            UnsignedAmount(usdc, "9" * 5000, QuantityKind.DEBT)
+
+
+@pytest.mark.parametrize("signed", [False, True])
+def test_review_oversized_integer_convenience_is_range_checked(usdc: AssetId, signed: bool) -> None:
+    with pytest.raises(TypeContractError):
+        if signed:
+            SignedDelta.from_int(usdc, -(10**5000), QuantityKind.DELTA)
+        else:
+            UnsignedAmount.from_int(usdc, 10**5000, QuantityKind.DEBT)
+
+
+@pytest.mark.parametrize("raw", [1, True])
+def test_review_raw_quantity_constructor_does_not_coerce_non_string(usdc: AssetId, raw: object) -> None:
+    with pytest.raises(TypeContractError):
+        UnsignedAmount(usdc, raw, QuantityKind.DEBT)  # type: ignore[arg-type]
+    with pytest.raises(TypeContractError):
+        SignedDelta(usdc, raw, QuantityKind.DELTA)  # type: ignore[arg-type]
+
+
+def test_review_pool_liquidity_is_not_an_asset_token_delta(usdc: AssetId) -> None:
+    with pytest.raises(TypeContractError):
+        SignedDelta.from_int(usdc, 1, QuantityKind.NET_LIQUIDITY)
+
+
+def test_review_canonicality_guard_rejects_inconsistent_header_time(block: BlockRef, observed_ref: EvidenceRef) -> None:
+    reference = dataclasses.replace(observed_ref, block_ref=dataclasses.replace(block, timestamp_s=901))
+    result = guard_canonicality_evidence(block, reference)
+    assert isinstance(result, Rejected) and result.code == "INPUT_IDENTITY_MISMATCH"

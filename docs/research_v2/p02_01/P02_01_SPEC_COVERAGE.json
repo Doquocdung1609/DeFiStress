@@ -49,6 +49,16 @@
     "P02-T04-01..10": "AMM quote/swap implementation is not authorized.",
     "P02-T05-01..09": "Agents and orchestration are not authorized."
   },
+  "remaining_clauses_in_partial_specs": {
+    "P02-T01-02": "Pool identity/token-order comparison needs P02-02 registered-schema loading; syntax checks are not source verification.",
+    "P02-T01-03": "Metadata-to-asset decimal agreement and native profiles are not established by uint8/range checks. Pool liquidity is not token-denominated SignedDelta; NET_LIQUIDITY is reserved/unsupported here.",
+    "P02-T01-04": "Availability tags do not implement debt-free or native execution decisions.",
+    "P02-T01-05": "Decoded-byte verification consumes supplied decoded bytes; bounded gzip decoding and saved-pack assembly belong to P02-02.",
+    "P02-T01-06": "Guards bind supplied identities and historical effective/available times; no live canonicality proof or native oracle freshness is established.",
+    "P02-T01-08": "Alchemy summary parsing/coverage capability evaluation belongs to P02-02; no full value replay or independent-backend proof is fabricated."
+  },
+  "work_review_repairs": ["WR-01", "WR-02", "WR-03", "WR-04", "WR-05", "WR-06"],
+  "content_hash_contract": "EvidenceEnvelope.content_sha256 uses a typed stable projection excluding EvidenceRef.retrieved_at_s, including nested references. Full to_canonical serialization retains acquisition provenance. Block/effective/available/canonicality assertion timestamps remain in content; arbitrary payload keys are not stripped.",
   "schema_version": "defistress-v2-p02-01-coverage/1",
   "specification_total": 46,
   "statement": "This mapping covers bounded contract portions only and is not a claim that all 46 design specifications passed."

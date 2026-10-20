@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import re
+from collections.abc import Mapping
 from dataclasses import dataclass
 from enum import StrEnum
 from pathlib import PurePosixPath
@@ -11,6 +12,7 @@ from typing import ClassVar
 
 from defistress_v2.contracts.canonical import (
     CONTRACT_SCHEMA_VERSION,
+    CanonicalSerializable,
     canonical_json_bytes,
     deep_freeze,
     normalize_integer_string,
@@ -217,6 +219,27 @@ class EvidenceRef:
             "verification_scope": self.verification_scope,
         }
 
+    def to_content_canonical(self) -> object:
+        """Project stable content; full acquisition metadata remains serialized above."""
+
+        document = self.to_canonical()
+        assert isinstance(document, dict)
+        return {key: value for key, value in document.items() if key != "retrieved_at_s"}
+
+
+def _content_projection(value: object) -> object:
+    """Exclude only typed acquisition timestamps, never similarly named payload keys."""
+
+    if isinstance(value, (EvidenceRef, EvidenceEnvelope)):
+        return _content_projection(value.to_content_canonical())
+    if isinstance(value, CanonicalSerializable):
+        return _content_projection(value.to_canonical())
+    if isinstance(value, Mapping):
+        return {key: _content_projection(item) for key, item in value.items()}
+    if isinstance(value, (tuple, list)):
+        return tuple(_content_projection(item) for item in value)
+    return value
+
 
 @dataclass(frozen=True, slots=True)
 class EvidenceEnvelope:
@@ -234,6 +257,11 @@ class EvidenceEnvelope:
             raise TypeContractError("block_ref must be a BlockRef")
         if type(self.origin) is not OriginKind:
             raise TypeContractError("origin must be an OriginKind")
+        for field in ("sources", "parent_content_hashes", "parent_origins"):
+            values = getattr(self, field)
+            if type(values) not in (tuple, list):
+                raise TypeContractError(f"{field} must be an explicit tuple or list, not a single-use iterator")
+            object.__setattr__(self, field, tuple(values))
         if any(type(source) is not EvidenceRef for source in self.sources):
             raise TypeContractError("sources must contain only EvidenceRef values")
         if any(type(value) is not DeterministicContentSha256 for value in self.parent_content_hashes):
@@ -244,9 +272,6 @@ class EvidenceEnvelope:
             raise LineageContractError("unsupported evidence-envelope schema version")
         if not self.sources:
             raise LineageContractError("evidence envelope requires at least one source")
-        object.__setattr__(self, "sources", tuple(self.sources))
-        object.__setattr__(self, "parent_content_hashes", tuple(self.parent_content_hashes))
-        object.__setattr__(self, "parent_origins", tuple(self.parent_origins))
         if len(self.parent_content_hashes) != len(self.parent_origins):
             raise LineageContractError("parent hashes and parent origins must align")
         if self.origin is OriginKind.OBSERVED:
@@ -254,6 +279,13 @@ class EvidenceEnvelope:
                 raise LineageContractError("derived evidence cannot be promoted to OBSERVED")
             if any(source.origin is not OriginKind.OBSERVED for source in self.sources):
                 raise LineageContractError("OBSERVED envelope requires observed source evidence")
+            if any(
+                source.block_ref is None
+                or source.block_ref.identity_key != self.block_ref.identity_key
+                or source.block_ref.timestamp_s != self.block_ref.timestamp_s
+                for source in self.sources
+            ):
+                raise LineageContractError("OBSERVED sources must bind the envelope block identity and timestamp")
         elif self.origin in (OriginKind.RECONSTRUCTED, OriginKind.COUNTERFACTUAL):
             if self.derivation_id is None or not self.parent_content_hashes:
                 raise LineageContractError("derived evidence requires derivation and parent content hashes")
@@ -265,7 +297,12 @@ class EvidenceEnvelope:
 
     @property
     def content_sha256(self) -> DeterministicContentSha256:
-        return DeterministicContentSha256.from_payload(self.to_canonical())
+        return DeterministicContentSha256.from_payload(self.to_content_canonical())
+
+    def to_content_canonical(self) -> object:
+        """Hash stable state/lineage, retaining economic and canonicality timestamps."""
+
+        return _content_projection(self.to_canonical())
 
     def to_canonical(self) -> object:
         return {
