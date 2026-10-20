@@ -227,11 +227,9 @@ def test_adapter_has_no_network_or_collector_dependency() -> None:
     source = (ROOT / "defistress_v2" / "state" / "saved_adapter.py").read_text(encoding="utf-8")
     tree = ast.parse(source)
     imported = {
-        alias.name
-        for node in ast.walk(tree)
-        if isinstance(node, (ast.Import, ast.ImportFrom))
-        for alias in node.names
+        alias.name for node in ast.walk(tree) if isinstance(node, (ast.Import, ast.ImportFrom)) for alias in node.names
     }
+    imported.update(node.module for node in ast.walk(tree) if isinstance(node, ast.ImportFrom) and node.module)
     assert not imported.intersection({"requests", "httpx", "web3", "socket", "collector", "verify_saved"})
     assert "ETH_RPC_URL" not in source
     assert "os.environ" not in source
@@ -244,9 +242,13 @@ def test_adapter_does_not_recompute_hf_or_execute_models() -> None:
 
 
 def test_protected_phase01b_tree_remains_clean() -> None:
-    # This test's source tree is intentionally read-only; production workflow also uses git diff.
-    assert (ROOT / "docs/research_v2/phase01b/EVIDENCE_PROVENANCE.json").is_file()
-    assert (ROOT / "docs/research_v2/program_control/CODEX_NEXT_WORK_PACKAGE.md").is_file()
+    phase = ROOT / "docs/research_v2/phase01b"
+    inputs = [path for path in phase.rglob("*") if path.is_file() and "__pycache__" not in path.parts]
+    before = {str(path.relative_to(phase)): hashlib.sha256(path.read_bytes()).hexdigest() for path in inputs}
+    result = load_registered_snapshot(ROOT, SnapshotSelection(BLOCKS[0], 1), SOURCE_COMMIT, SOURCE_COMMIT)
+    assert isinstance(result, Ok)
+    after = {str(path.relative_to(phase)): hashlib.sha256(path.read_bytes()).hexdigest() for path in inputs}
+    assert before == after
 
 
 def test_source_health_factor_and_liquidity_units_are_retained(manifest: SavedPackManifest) -> None:

@@ -8,4 +8,8 @@ Validation order is bounded path resolution; raw byte size and SHA-256; single-m
 
 `SMOKE_REPORT.json` records all six registered block/read-pass views and dispositions all 46 Phase 02 test IDs. T02–T05 remain explicitly outside this work package.
 
+Work repair adds pinned registration/provenance LF Git-blob anchors, actual identity/pass linkage, immutable typed DTOs, measured bitmap/portfolio/reserve coverage, explicit unsupported-round/freshness fields and structural source-schema guards. Composite views and normalized source-derived fields are RECONSTRUCTED; raw observation fields retain explicit OBSERVED pointers. Imported economic PASS is SOURCE_DECLARED, never a freshly executed HF/native check. Eight T01 specifications remain PARTIAL_SAVED_ADAPTER_SCOPE; partial-view loading and native execution are not implemented. Missing required components block even when a partial response would otherwise be acceptable; no fallback to the old blocked borrower component.
+
+The committed smoke is STATIC_WORKTREE_EVIDENCE with exact code-byte hashes and no circular final adapter-commit assertion. Final-head CI smoke plus execution metadata/actual Git tree is acceptance evidence. Runtime artifact_git_ref is explicitly caller-declared; source content is independently anchored to the accepted Phase01B control blobs. Raw CRLF/LF/gzip/decoded/content hash domains remain distinct. See WORK_TECHNICAL_REVIEW.md for actual findings, tests and scientific boundaries.
+
 Scientific status: `GATE_A_BLOCKED — GATE_B_SCOPED_PASS — PHASE02_HISTORICAL_EXECUTION_NOT_AUTHORIZED`.

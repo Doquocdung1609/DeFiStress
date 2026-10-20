@@ -49,7 +49,7 @@ jobs:
       - name: P02-02 targeted tests
         id: p0202
         if: always()
-        run: python -m pytest -q tests/v2/test_saved_adapter.py --junitxml="$RUNNER_TEMP/p02-02/p02-02-junit.xml"
+        run: python -m pytest -q tests/v2/test_saved_adapter.py tests/v2/test_saved_adapter_review.py --junitxml="$RUNNER_TEMP/p02-02/p02-02-junit.xml"
       - name: Accepted P02-01 contracts
         id: p0201
         if: always()
@@ -78,13 +78,21 @@ jobs:
         run: |
           python -m build --wheel --outdir "$RUNNER_TEMP/p02-02/dist"
           python -m zipfile -l "$RUNNER_TEMP/p02-02/dist/"*.whl > "$RUNNER_TEMP/p02-02/wheel-contents.txt"
-          grep -q 'defistress_v2/state/saved_adapter.py' "$RUNNER_TEMP/p02-02/wheel-contents.txt"
+          python - <<'PYCODE'
+          import os, pathlib, zipfile
+          wheel = next((pathlib.Path(os.environ["RUNNER_TEMP"]) / "p02-02/dist").glob("*.whl"))
+          sources = list(pathlib.Path("defistress_v2").rglob("*.py")) + [pathlib.Path("defistress_v2/py.typed")]
+          with zipfile.ZipFile(wheel) as archive:
+              for path in sources:
+                  assert archive.read(path.as_posix()) == path.read_bytes(), path
+          print(f"Verified {len(sources)} exact V2 wheel entries")
+          PYCODE
       - name: Protected-tree preservation
         if: always()
         shell: bash
         run: |
           git diff --exit-code "${{ github.event.pull_request.base.sha || '817b0f85547963939841e8bc7181e55b2b84d86f' }}" -- \
-            docs/research_v2/phase01b data/processed/research_final sim backend
+            docs/research_v2/phase01a docs/research_v2/phase01b data docs/research_final docs/manuscript_p3 sim backend
       - name: Runtime provenance
         if: always()
         shell: bash
@@ -98,6 +106,13 @@ jobs:
             ruff --version
             mypy --version
           } > "$RUNNER_TEMP/p02-02/execution-metadata.txt"
+      - name: Artifact byte checksums
+        if: always()
+        shell: bash
+        run: |
+          cd "$RUNNER_TEMP/p02-02"
+          find . -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS
+          sha256sum --check SHA256SUMS
       - uses: actions/upload-artifact@v4
         if: always()
         with:

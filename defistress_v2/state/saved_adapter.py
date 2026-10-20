@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+import stat
 import zlib
 from dataclasses import dataclass
 from datetime import datetime
@@ -31,7 +32,16 @@ from defistress_v2.contracts.snapshot import (
     SnapshotProvenance,
     TimePrecision,
 )
-from defistress_v2.contracts.state import Blocked, Ok, Rejected
+from defistress_v2.contracts.state import (
+    AsOfContext,
+    Blocked,
+    ObservationContext,
+    Ok,
+    Rejected,
+    guard_canonicality_evidence,
+    guard_same_block_and_time,
+)
+from defistress_v2.state.source_validation import borrower_fields, oracle_fields, pool_fields
 
 _COMMIT = re.compile(r"[0-9a-f]{40}")
 _SHA256 = re.compile(r"[0-9a-f]{64}")
@@ -43,6 +53,18 @@ _POOLS = {
 _USDC = "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
 _WETH = "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
 _AAVE_POOL = "0x87870bca3f3fd6335c3f4ce8392d69350b4fa4e2"
+# Immutable content anchors read from accepted integration 817b0f8… . These are
+# LF Git blob identities, not checkout-byte hashes or a claim of backend independence.
+_CONTROL_ANCHORS = {
+    "SAMPLE_REGISTRATION.json": (
+        "284634a47fa78fc9b3efae85bb40fa7114a34c273e01a0889ead5d2ff3380f68",
+        "804b3561419e7d20adc8d401eea29a9cb5647a6c",
+    ),
+    "EVIDENCE_PROVENANCE.json": (
+        "f2ae36d0952dec06fe73d43d95d3c2ef2bd96ee3fc71ba15c2db161a4e4b8a29",
+        "376b9e4672745fddbfdd3445dc313df44950c7f7",
+    ),
+}
 
 
 @dataclass(frozen=True, slots=True)
@@ -56,6 +78,13 @@ class ResourceLimits:
     max_portfolios: int = 64
     max_reserves_per_portfolio: int = 128
     max_discovery_headers: int = 2_048
+
+    def __post_init__(self) -> None:
+        ceilings = (8 * 1024 * 1024, 64 * 1024 * 1024, 256 * 1024 * 1024, 128, 512, 10_000, 64, 128, 2_048)
+        for name, ceiling in zip(self.__dataclass_fields__, ceilings, strict=True):
+            value = getattr(self, name)
+            if type(value) is not int or not 0 < value <= ceiling:
+                raise TypeContractError(f"{name} must be a positive exact integer within its registered ceiling")
 
 
 DEFAULT_LIMITS = ResourceLimits()
@@ -71,7 +100,7 @@ class SnapshotSelection:
     def __post_init__(self) -> None:
         if type(self.block_number) is not int or self.block_number < 0:
             raise TypeContractError("block_number must be a nonnegative exact integer")
-        if self.read_pass not in (1, 2):
+        if type(self.read_pass) is not int or self.read_pass not in (1, 2):
             raise TypeContractError("read_pass must be 1 or 2")
         if type(self.pool_ids) is not tuple or not self.pool_ids or len(set(self.pool_ids)) != len(self.pool_ids):
             raise TypeContractError("pool_ids must be a nonempty unique tuple")
@@ -97,6 +126,16 @@ class ManifestEntry:
     decoded_sha256: str
     decoded_size: int
 
+    def __post_init__(self) -> None:
+        if type(self.path) is not str or not self.path:
+            raise TypeContractError("manifest path must be a nonempty string")
+        for digest in (self.raw_sha256, self.decoded_sha256):
+            if type(digest) is not str or _SHA256.fullmatch(digest) is None:
+                raise TypeContractError("manifest hashes must be SHA256 strings")
+        for size in (self.raw_size, self.decoded_size):
+            if type(size) is not int or size < 0:
+                raise TypeContractError("manifest byte sizes must be nonnegative exact integers")
+
     def to_canonical(self) -> object:
         return {
             "decoded_sha256": self.decoded_sha256,
@@ -116,6 +155,18 @@ class SavedPack:
     entries: tuple[ManifestEntry, ...]
     catalog: FrozenMap
 
+    def __post_init__(self) -> None:
+        if type(self.name) is not str or type(self.root) is not str or not self.root:
+            raise TypeContractError("pack identity/root must be explicit strings")
+        if type(self.source_commit) is not str or _COMMIT.fullmatch(self.source_commit) is None:
+            raise TypeContractError("producer commit must be a full Git SHA")
+        if type(self.collected_at_s) is not int or self.collected_at_s < 0:
+            raise TypeContractError("collection bound must be an exact nonnegative timestamp")
+        if type(self.entries) is not tuple or any(type(x) is not ManifestEntry for x in self.entries):
+            raise TypeContractError("manifest entries must be an immutable typed tuple")
+        if type(self.catalog) is not FrozenMap:
+            raise TypeContractError("pack catalog must be an immutable map")
+
     def to_canonical(self) -> object:
         return {
             "catalog": self.catalog,
@@ -134,6 +185,14 @@ class SavedPackManifest:
     full: SavedPack
     borrower_repair: SavedPack
 
+    def __post_init__(self) -> None:
+        if type(self.repository_root) is not str or not self.repository_root:
+            raise TypeContractError("repository root must be an explicit path string")
+        if type(self.artifact_git_ref) is not str or _COMMIT.fullmatch(self.artifact_git_ref) is None:
+            raise TypeContractError("artifact ref must be a full declared Git SHA")
+        if type(self.full) is not SavedPack or type(self.borrower_repair) is not SavedPack:
+            raise TypeContractError("saved manifest requires the two typed packs")
+
     def to_canonical(self) -> object:
         return {
             "artifact_git_ref": self.artifact_git_ref,
@@ -144,6 +203,26 @@ class SavedPackManifest:
 
 
 def _strict_json(raw: bytes, limits: ResourceLimits) -> object:
+    # Bound nesting before the recursive standard-library decoder allocates the tree.
+    depth = 0
+    quoted = escaped = False
+    for byte in raw:
+        if quoted:
+            if escaped:
+                escaped = False
+            elif byte == 92:
+                escaped = True
+            elif byte == 34:
+                quoted = False
+        elif byte == 34:
+            quoted = True
+        elif byte in (91, 123):
+            depth += 1
+            if depth > limits.max_json_depth:
+                raise TypeContractError("saved JSON exceeds the depth limit")
+        elif byte in (93, 125):
+            depth -= 1
+
     def pairs(pairs_value: list[tuple[str, object]]) -> dict[str, object]:
         result: dict[str, object] = {}
         for key, value in pairs_value:
@@ -155,14 +234,20 @@ def _strict_json(raw: bytes, limits: ResourceLimits) -> object:
     def reject_float(value: str) -> object:
         raise TypeContractError(f"floating/non-finite JSON number is forbidden: {value}")
 
+    def bounded_integer(value: str) -> int:
+        if len(value.lstrip("-")) > 256:
+            raise TypeContractError("JSON integer exceeds the saved-schema resource bound")
+        return int(value)
+
     try:
         value = json.loads(
             raw.decode("utf-8", errors="strict"),
             object_pairs_hook=pairs,
             parse_float=reject_float,
             parse_constant=reject_float,
+            parse_int=bounded_integer,
         )
-    except (UnicodeError, json.JSONDecodeError) as exc:
+    except (UnicodeError, json.JSONDecodeError, RecursionError) as exc:
         raise TypeContractError("saved input is not strict UTF-8 JSON") from exc
 
     stack: list[tuple[object, int]] = [(value, 1)]
@@ -178,8 +263,16 @@ def _strict_json(raw: bytes, limits: ResourceLimits) -> object:
 
 
 def _safe_path(root: Path, relative: str) -> Path:
+    if type(relative) is not str or not relative or "\x00" in relative or ":" in relative:
+        raise TypeContractError("saved-artifact path must be a nonempty relative POSIX path")
     logical = PurePosixPath(relative)
-    if logical.is_absolute() or ".." in logical.parts or "\\" in relative:
+    if (
+        logical.is_absolute()
+        or ".." in logical.parts
+        or "\\" in relative
+        or logical.as_posix() != relative
+        or relative == "."
+    ):
         raise TypeContractError("unsafe saved-artifact path")
     resolved_root = root.resolve(strict=True)
     candidate = root.joinpath(*logical.parts)
@@ -195,7 +288,10 @@ def _safe_path(root: Path, relative: str) -> Path:
 
 
 def _bounded_read(path: Path, maximum: int) -> bytes:
-    size = path.stat().st_size
+    metadata = path.stat()
+    if not stat.S_ISREG(metadata.st_mode):
+        raise TypeContractError("saved input must be a regular file")
+    size = metadata.st_size
     if size > maximum:
         raise TypeContractError("saved artifact exceeds the compressed/input size limit")
     with path.open("rb") as handle:
@@ -206,6 +302,13 @@ def _bounded_read(path: Path, maximum: int) -> bytes:
 
 
 def _bounded_gzip(raw: bytes, maximum: int) -> bytes:
+    try:
+        return _decode_gzip(raw, maximum)
+    except zlib.error as exc:
+        raise TypeContractError("malformed gzip member") from exc
+
+
+def _decode_gzip(raw: bytes, maximum: int) -> bytes:
     decoder = zlib.decompressobj(16 + zlib.MAX_WBITS)
     output = bytearray()
     for offset in range(0, len(raw), 64 * 1024):
@@ -266,7 +369,7 @@ def _parse_time(text: object) -> int:
 
 def _manifest_entries(document: dict[str, Any], limits: ResourceLimits) -> tuple[ManifestEntry, ...]:
     rows = _list(document.get("files"), "manifest files")
-    if len(rows) > limits.max_manifest_entries:
+    if not rows or len(rows) > limits.max_manifest_entries:
         raise TypeContractError("manifest exceeds its entry limit")
     entries: list[ManifestEntry] = []
     for row_value in rows:
@@ -306,11 +409,19 @@ def _verify_registered_bytes(provenance: dict[str, Any], relative: str, raw: byt
     normalized = raw.replace(b"\r\n", b"\n")
     raw_matches = row.get("size_bytes") == len(raw) and row.get("sha256") == hashlib.sha256(raw).hexdigest()
     lf_matches = (
-        row.get("size_bytes") == len(normalized)
-        and row.get("sha256") == hashlib.sha256(normalized).hexdigest()
+        row.get("size_bytes") == len(normalized) and row.get("sha256") == hashlib.sha256(normalized).hexdigest()
     )
     if not raw_matches and not lf_matches:
         raise DigestMismatchError("control file bytes differ from EVIDENCE_PROVENANCE")
+
+
+def _anchored_control(root: Path, name: str, limits: ResourceLimits) -> tuple[bytes, dict[str, Any]]:
+    raw, value = _load_json_file(root, "docs/research_v2/phase01b/" + name, limits)
+    normalized = raw.replace(b"\r\n", b"\n")
+    sha, blob = _CONTROL_ANCHORS[name]
+    if hashlib.sha256(normalized).hexdigest() != sha or GitBlobSha1.from_bytes(normalized).value != blob:
+        raise DigestMismatchError(f"{name} differs from the accepted LF Git blob anchor")
+    return raw, _dict(value, name)
 
 
 def _load_pack(
@@ -330,6 +441,10 @@ def _load_pack(
     _verify_registered_bytes(provenance, f"{provenance_prefix}/collection_manifest.json", manifest_raw)
     _verify_registered_bytes(provenance, f"{provenance_prefix}/{catalog_name}", catalog_raw)
     manifest = _dict(manifest_value, "collection manifest")
+    registration_raw, registration_value = _load_json_file(pack_root, "REGISTERED_INPUT.json", limits)
+    _verify_registered_bytes(provenance, f"{provenance_prefix}/REGISTERED_INPUT.json", registration_raw)
+    if _dict(registration_value, "registered input").get("schema_version") != "defistress-phase01b-preregistration-v1":
+        raise TypeContractError("unsupported saved registration schema")
     commit = manifest.get("source_commit")
     if type(commit) is not str or _COMMIT.fullmatch(commit) is None:
         raise TypeContractError("pack source_commit must be a full Git SHA")
@@ -353,15 +468,24 @@ def load_registered_manifest(
 
     synthetic = EvidenceRef.synthetic("p02-02-manifest-loader", b"registered pack manifest")
     try:
-        if _COMMIT.fullmatch(artifact_git_ref) is None:
+        if not isinstance(repository_root, Path) or type(limits) is not ResourceLimits:
+            raise TypeContractError("manifest loader requires a Path and typed resource limits")
+        if type(artifact_git_ref) is not str or _COMMIT.fullmatch(artifact_git_ref) is None:
             raise TypeContractError("artifact_git_ref must be a full Git commit")
         root = repository_root.resolve(strict=True)
-        provenance_raw, provenance_value = _load_json_file(
-            root, "docs/research_v2/phase01b/EVIDENCE_PROVENANCE.json", limits
-        )
+        provenance_raw, provenance_value = _anchored_control(root, "EVIDENCE_PROVENANCE.json", limits)
+        _, registration = _anchored_control(root, "SAMPLE_REGISTRATION.json", limits)
+        if (
+            registration.get("schema_version") != "defistress-phase01b-preregistration-v1"
+            or type(registration.get("chain_id")) is not int
+            or registration["chain_id"] != 1
+        ):
+            raise TypeContractError("unsupported registration schema or chain")
         if not provenance_raw:
             raise TypeContractError("evidence provenance file is empty")
         provenance = _dict(provenance_value, "evidence provenance")
+        if provenance.get("schema_version") != "defistress-phase01b-evidence-provenance-v1":
+            raise TypeContractError("unsupported provenance schema")
         full = _load_pack(
             root,
             "docs/research_v2/phase01b/evidence/full",
@@ -391,8 +515,6 @@ def _thaw_catalog(pack: SavedPack) -> list[dict[str, Any]]:
             return [thaw(item) for item in value]
         if isinstance(value, ExplicitBool):
             return value.value
-        if type(value) is str and re.fullmatch(r"0|[1-9][0-9]*", value):
-            return int(value)
         return value
 
     result = thaw(pack.catalog["records"])
@@ -401,14 +523,21 @@ def _thaw_catalog(pack: SavedPack) -> list[dict[str, Any]]:
 
 
 def _select_catalog(pack: SavedPack, block_number: int, read_pass: int) -> tuple[dict[str, Any], dict[str, Any]]:
-    matches = [row for row in _thaw_catalog(pack) if row.get("block", {}).get("number") == block_number]
+    matches = [row for row in _thaw_catalog(pack) if row.get("block", {}).get("number") == str(block_number)]
     if len(matches) != 1:
         raise TypeContractError(f"{pack.name} catalog does not contain exactly one selected block")
     block = _dict(matches[0].get("block"), "catalog block")
     passes = _list(matches[0].get("passes"), "catalog passes")
     if len(passes) != 2:
         raise TypeContractError("catalog must contain exactly two read passes")
-    return block, _dict(passes[read_pass - 1], "catalog pass")
+    # Frozen catalogs retain integer strings without global string→number guessing.
+    for key in ("number", "timestamp_unix"):
+        text = block.get(key)
+        if type(text) is not str or not text.isdecimal() or len(text) > 78:
+            raise TypeContractError("catalog block integer is malformed")
+        block[key] = int(text)
+    selected = _dict(passes[read_pass - 1], "catalog pass")
+    return block, selected
 
 
 def _entry(pack: SavedPack, relative: str) -> ManifestEntry:
@@ -439,10 +568,23 @@ def _load_component(
 
 
 def _validate_pool(data: dict[str, Any], pool_id: str, limits: ResourceLimits) -> CoverageStatus:
+    pool_fields(data, pool_id, limits.max_ticks_per_pool)
     required = {
-        "pool", "token0", "token1", "decimals", "fee_millionths", "spacing", "sqrt_price_x96",
-        "current_tick", "active_liquidity_raw", "ticks", "coverage_status", "required_lower_tick",
-        "required_upper_tick", "full_legal_pool_tick_coverage", "outside_status",
+        "pool",
+        "token0",
+        "token1",
+        "decimals",
+        "fee_millionths",
+        "spacing",
+        "sqrt_price_x96",
+        "current_tick",
+        "active_liquidity_raw",
+        "ticks",
+        "coverage_status",
+        "required_lower_tick",
+        "required_upper_tick",
+        "full_legal_pool_tick_coverage",
+        "outside_status",
     }
     if not required.issubset(data):
         raise TypeContractError("pool component is missing required state fields")
@@ -471,7 +613,8 @@ def _validate_pool(data: dict[str, Any], pool_id: str, limits: ResourceLimits) -
     return CoverageStatus.COMPLETE_REGISTERED_SCOPE
 
 
-def _validate_oracle(data: dict[str, Any]) -> CoverageStatus:
+def _validate_oracle(data: dict[str, Any], block: BlockRef | None = None) -> CoverageStatus:
+    oracle_fields(data, block)
     if data.get("observation_type") != "HISTORICAL_AAVE_ORACLE_OBSERVATION_NOT_DEX_OR_COUNTERFACTUAL_POLICY":
         raise TypeContractError("oracle observation is not explicitly historical block-bound")
     assets = _list(data.get("assets"), "oracle assets")
@@ -489,6 +632,7 @@ def _validate_oracle(data: dict[str, Any]) -> CoverageStatus:
 
 
 def _validate_borrowers(data: dict[str, Any], block: BlockRef, limits: ResourceLimits) -> CoverageStatus:
+    borrower_fields(data, block, limits.max_discovery_headers)
     configuration = _dict(data.get("configuration"), "borrower configuration")
     if str(configuration.get("pool", "")).lower() != _AAVE_POOL:
         raise TypeContractError("borrower source Aave Pool identity mismatch")
@@ -530,13 +674,13 @@ def _evidence(
     _safe_path(repo_root, artifact_path)
     return EvidenceRef(
         evidence_id=f"phase01b:{pack.name}:{block.number}:{relative}",
-        origin=OriginKind.OBSERVED,
+        origin=OriginKind.RECONSTRUCTED,
         source_kind=SourceKind.SAVED_ARTIFACT,
         source_commit=pack.source_commit,
         artifact_path=artifact_path,
         locator="/data",
         source_schema="defistress-phase01b-saved-component/1",
-        verification_scope="V2_ADAPTER_NATIVE_RAW_DECODED_IDENTITY_AND_SCHEMA_VALIDATION",
+        verification_scope="SAVED_BYTES_IDENTITY_SCHEMA_ONLY;ECONOMIC_CHECKS_SOURCE_DECLARED;NOT_NATIVE_VALIDATION",
         retrieved_at_s=pack.collected_at_s,
         raw_sha256=ArtifactBytesSha256.from_bytes(raw),
         decoded_sha256=DecodedBytesSha256.from_bytes(decoded),
@@ -555,8 +699,17 @@ def load_snapshot(
     """Build one immutable same-block view from explicit full + repaired-borrower sources."""
 
     fallback_ref = EvidenceRef.synthetic("p02-02-selection", b"saved snapshot selection")
+    affected_ref = fallback_ref
+    affected_path = "manifest/selection"
+    parent_hash = "UNAVAILABLE"
     try:
-        if _COMMIT.fullmatch(adapter_source_commit) is None:
+        if (
+            type(selection) is not SnapshotSelection
+            or type(manifest) is not SavedPackManifest
+            or type(limits) is not ResourceLimits
+        ):
+            raise TypeContractError("snapshot loader requires typed selection, manifest and limits")
+        if type(adapter_source_commit) is not str or _COMMIT.fullmatch(adapter_source_commit) is None:
             raise TypeContractError("adapter_source_commit must be a full Git SHA")
         repo_root = Path(manifest.repository_root)
         full_block, full_pass = _select_catalog(manifest.full, selection.block_number, selection.read_pass)
@@ -576,8 +729,8 @@ def load_snapshot(
             number=_exact_int(full_block.get("number"), "block number"),
             hash=str(full_block.get("expected_hash", "")),
             timestamp_s=_exact_int(full_block.get("timestamp_unix"), "block timestamp"),
-            canonicality_evidence_id=f"phase01b:catalog:block:{selection.block_number}",
-            canonicality_observed_at_s=available_at,
+            canonicality_evidence_id=f"phase01b:catalog:block:{selection.block_number}:pass{selection.read_pass}",
+            canonicality_observed_at_s=manifest.full.collected_at_s,
         )
         component_rows = _dict(full_pass.get("components"), "full pass components")
         requested: list[tuple[str, ComponentKind, SavedPack, dict[str, Any]]] = []
@@ -585,6 +738,53 @@ def load_snapshot(
             requested.append((pool_id, ComponentKind.POOL, manifest.full, _dict(component_rows.get(pool_id), pool_id)))
         requested.append(("oracle", ComponentKind.ORACLE, manifest.full, _dict(component_rows.get("oracle"), "oracle")))
         requested.append(("borrowers", ComponentKind.BORROWERS, manifest.borrower_repair, repair_pass))
+        # Re-read pinned controls before trusting a manually constructed/replaced
+        # manifest. A source-declared unavailable result can only BLOCK, never PASS.
+        if all(row.get("status") == "PASS" for _, _, _, row in requested):
+            verified = load_registered_manifest(repo_root, manifest.artifact_git_ref, limits)
+            if not isinstance(verified, Ok) or verified.payload != manifest:
+                raise TypeContractError("supplied manifest differs from pinned on-disk control evidence")
+        registration = _anchored_control(repo_root, "SAMPLE_REGISTRATION.json", limits)[1]
+        registered = [b for b in registration["blocks"] if b["number"] == block.number]
+        if (
+            len(registered) != 1
+            or registered[0]["expected_hash"] != block.hash
+            or registered[0]["timestamp_unix"] != block.timestamp_s
+        ):
+            raise TypeContractError("catalog block differs from registered block identity")
+        identity = _dict(_dict(full_pass.get("identity"), "saved identity").get("data"), "saved identity data")
+        expected_identity = {
+            "chain_id": str(block.chain_id),
+            "number": str(block.number),
+            "hash": block.hash,
+            "timestamp": str(block.timestamp_s),
+        }
+        if _dict(full_pass["identity"], "identity").get("status") != "PASS" or any(
+            type(identity.get(k)) is not str or identity[k].lower() != v for k, v in expected_identity.items()
+        ):
+            raise TypeContractError("actual saved identity observation differs from registered block")
+        catalog_path = f"{manifest.full.root}/validation_catalog.json"
+        catalog_raw = _bounded_read(_safe_path(repo_root, catalog_path), limits.max_input_bytes)
+        row_index = next(
+            i for i, row in enumerate(_thaw_catalog(manifest.full)) if row["block"]["number"] == str(block.number)
+        )
+        canonicality_ref = EvidenceRef(
+            evidence_id=block.canonicality_evidence_id,
+            origin=OriginKind.OBSERVED,
+            source_kind=SourceKind.SAVED_ARTIFACT,
+            source_commit=manifest.full.source_commit,
+            artifact_path=catalog_path,
+            locator=f"/{row_index}/passes/{selection.read_pass - 1}/identity/data",
+            source_schema="defistress-phase01b-validation-catalog/1",
+            verification_scope="SAVED_IDENTITY_LINKAGE_ONLY;COLLECTION_END_UPPER_BOUND;NOT_FRESH_CANONICALITY",
+            retrieved_at_s=manifest.full.collected_at_s,
+            raw_sha256=ArtifactBytesSha256.from_bytes(catalog_raw),
+            git_blob_sha1=GitBlobSha1.from_bytes(catalog_raw),
+            block_ref=block,
+        )
+        canonicality_result = guard_canonicality_evidence(block, canonicality_ref)
+        if not isinstance(canonicality_result, Ok):
+            return canonicality_result
         components: list[ComponentSnapshot] = []
         decoded_total = 0
         for component_id, kind, pack, row in requested:
@@ -599,7 +799,13 @@ def load_snapshot(
             relative = row.get("file")
             if type(relative) is not str:
                 raise TypeContractError("catalog component file must be a string")
+            expected_path = f"components/{block.number}-pass{selection.read_pass}-{component_id}.json.gz"
+            if relative != expected_path:
+                raise TypeContractError("component path does not bind exact block/read-pass/kind")
+            affected_path = f"{pack.root}/{relative}"
             raw, decoded, document, entry, _ = _load_component(repo_root, pack, relative, limits)
+            parent_hash = hashlib.sha256(raw).hexdigest()
+            affected_ref = _evidence(pack, relative, entry, raw, decoded, block, repo_root)
             decoded_total += len(decoded)
             if decoded_total > limits.max_decoded_pack_bytes:
                 raise TypeContractError("selected decoded pack exceeds aggregate resource limit")
@@ -614,15 +820,29 @@ def load_snapshot(
                         "/active_liquidity_raw": OriginKind.OBSERVED,
                         "/liquidity_audit": OriginKind.RECONSTRUCTED,
                         "/ticks": OriginKind.OBSERVED,
+                        "/bitmaps": OriginKind.OBSERVED,
+                        "/current_tick": OriginKind.OBSERVED,
+                        "/sqrt_price_x96": OriginKind.OBSERVED,
+                        "/token0": OriginKind.OBSERVED,
+                        "/token1": OriginKind.OBSERVED,
+                        "/decimals": OriginKind.OBSERVED,
+                        "/fee_millionths": OriginKind.OBSERVED,
+                        "/spacing": OriginKind.OBSERVED,
                     }
                 )
                 capabilities = ("ACTIVE_LIQUIDITY_READ", "POOL_SLOT0_READ", "REGISTERED_TICK_BAND_READ")
             elif kind is ComponentKind.ORACLE:
-                coverage = _validate_oracle(data)
+                coverage = _validate_oracle(data, block)
                 field_origins = FrozenMap.from_mapping(
                     {
                         "/assets/*/aave_price_raw": OriginKind.OBSERVED,
-                        "/assets/*/trace": OriginKind.OBSERVED,
+                        "/configuration": OriginKind.OBSERVED,
+                        "/assets/*/source_answer_raw": OriginKind.OBSERVED,
+                        "/assets/*/source_decimals": OriginKind.OBSERVED,
+                        "/assets/*/trace/interfaces": OriginKind.OBSERVED,
+                        "/assets/*/trace/round": OriginKind.RECONSTRUCTED,
+                        "/assets/*/trace/asset_to_usd_upstream/round": OriginKind.RECONSTRUCTED,
+                        "/assets/*/cap_adapter_check": OriginKind.RECONSTRUCTED,
                     }
                 )
                 capabilities = ("AAVE_ORACLE_PRICE_READ", "SOURCE_TRACE_READ")
@@ -633,6 +853,9 @@ def load_snapshot(
                         "/portfolios/*/account_raw": OriginKind.OBSERVED,
                         "/portfolios/*/hf_reconstruction": OriginKind.RECONSTRUCTED,
                         "/portfolios/*/reserves": OriginKind.OBSERVED,
+                        "/portfolios/*/user_configuration_raw": OriginKind.OBSERVED,
+                        "/portfolios/*/user_emode": OriginKind.OBSERVED,
+                        "/discovery_coverage/contiguous_headers": OriginKind.OBSERVED,
                     }
                 )
                 capabilities = (
@@ -644,13 +867,40 @@ def load_snapshot(
             if type(source_hash) is not str or _SHA256.fullmatch(source_hash) is None:
                 raise TypeContractError("source-declared legacy content hash is invalid")
             evidence = _evidence(pack, relative, entry, raw, decoded, block, repo_root)
+            guarded = guard_same_block_and_time(
+                AsOfContext(block, available_at),
+                (ObservationContext(block, block.timestamp_s, pack.collected_at_s, evidence),),
+            )
+            if not isinstance(guarded, Ok):
+                return guarded
             frozen = _freeze_source(data)
             assert isinstance(frozen, FrozenMap)
+            availability: dict[str, object] = {
+                "/": {
+                    "status": "AVAILABLE",
+                    "evidence_id": evidence.evidence_id,
+                    "validation": "SAVED_BYTES_AND_SCHEMA_ONLY",
+                },
+                "/source_economic_checks": {"status": "SOURCE_DECLARED_NOT_RERUN", "evidence_id": evidence.evidence_id},
+            }
+            if kind is ComponentKind.ORACLE:
+                for index, asset in enumerate(data["assets"]):
+                    trace = asset["trace"]
+                    availability[f"/assets/{index}/trace/round"] = {
+                        "status": "AVAILABLE" if trace["round"] is not None else "UNSUPPORTED",
+                        "source_status": trace["round_status"],
+                        "evidence_id": evidence.evidence_id,
+                    }
+                    availability[f"/assets/{index}/freshness"] = {
+                        "status": "MISSING",
+                        "reason": "NO_REGISTERED_HEARTBEAT",
+                        "evidence_id": evidence.evidence_id,
+                    }
             components.append(
                 ComponentSnapshot(
                     component_id,
                     kind,
-                    OriginKind.OBSERVED,
+                    OriginKind.RECONSTRUCTED,
                     coverage,
                     str(status),
                     source_hash,
@@ -661,9 +911,19 @@ def load_snapshot(
                     field_origins,
                     capabilities,
                     evidence,
+                    field_availability=FrozenMap.from_mapping(
+                        {key: _freeze_source(value) for key, value in availability.items()}
+                    ),
                 )
             )
         components.sort(key=lambda item: item.component_id)
+        configurations = [
+            item.payload["configuration"]
+            for item in components
+            if item.kind in (ComponentKind.ORACLE, ComponentKind.BORROWERS)
+        ]
+        if len(configurations) == 2 and configurations[0] != configurations[1]:
+            raise TypeContractError("oracle/borrower same-block source configurations disagree")
         complete = all(item.coverage is CoverageStatus.COMPLETE_REGISTERED_SCOPE for item in components)
         if selection.require_complete and not complete:
             return Blocked("INCOMPLETE_REQUIRED_VIEW", "required registered scope is incomplete", (fallback_ref,))
@@ -686,11 +946,19 @@ def load_snapshot(
                 "SOURCE_HEALTH_FACTOR_RETAINED_NOT_RECOMPUTED",
                 "SOURCE_DECLARED_CONTENT_HASH_IS_LEGACY_PRODUCER_METADATA",
                 "NO_LIQUIDATION_AMM_OR_ORACLE_POLICY_EXECUTION",
+                "ALCHEMY_METADATA_NOT_REPLAYABLE_FROM_PERSISTED_SUMMARY",
+                "ARTIFACT_GIT_REF_IS_CALLER_DECLARED_CONTENT_ANCHORS_ARE_VERIFIED",
+                "PARTIAL_VIEW_LOADING_NOT_IMPLEMENTED_MISSING_REQUIRED_COMPONENT_BLOCKS",
             ),
+            canonicality_evidence=canonicality_ref,
         )
         return Ok(snapshot)
     except (OSError, ContractError) as exc:
-        return Rejected("QUARANTINED_SAVED_STATE", str(exc), (fallback_ref,))
+        return Rejected(
+            "QUARANTINED_SAVED_STATE",
+            f"artifact_path={affected_path}; json_pointer=/data; parent_raw_sha256={parent_hash}; {exc}",
+            (affected_ref,),
+        )
 
 
 def load_registered_snapshot(

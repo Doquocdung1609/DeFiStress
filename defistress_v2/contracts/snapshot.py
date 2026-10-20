@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+import re
+from dataclasses import dataclass, field
 from enum import StrEnum
 
 from defistress_v2.contracts.canonical import ExplicitBool, FrozenMap, normalize_integer_string
@@ -38,6 +39,13 @@ class QuarantineRecord:
     reason: str
     parent_raw_sha256: str
 
+    def __post_init__(self) -> None:
+        for value in (self.artifact_path, self.json_pointer, self.reason_code, self.reason):
+            if type(value) is not str or not value.strip():
+                raise TypeContractError("quarantine fields must be nonempty strings")
+        if type(self.parent_raw_sha256) is not str or re.fullmatch(r"[0-9a-f]{64}", self.parent_raw_sha256) is None:
+            raise TypeContractError("quarantine parent must be a SHA256")
+
     def to_canonical(self) -> object:
         return {
             "artifact_path": self.artifact_path,
@@ -64,15 +72,51 @@ class ComponentSnapshot:
     capabilities: tuple[str, ...]
     evidence: EvidenceRef
     quarantines: tuple[QuarantineRecord, ...] = ()
+    field_availability: FrozenMap = field(default_factory=lambda: FrozenMap.from_mapping({}))
 
     def __post_init__(self) -> None:
         if (
-            not self.component_id
+            type(self.component_id) is not str
+            or not self.component_id
             or type(self.payload) is not FrozenMap
             or type(self.field_origins) is not FrozenMap
             or type(self.evidence) is not EvidenceRef
         ):
             raise TypeContractError("component snapshot identity, payload and evidence must be typed")
+        if (
+            type(self.kind) is not ComponentKind
+            or type(self.origin) is not OriginKind
+            or type(self.coverage) is not CoverageStatus
+        ):
+            raise TypeContractError("component kind/origin/coverage must be typed enums")
+        if type(self.available_time_precision) is not TimePrecision or type(self.field_availability) is not FrozenMap:
+            raise TypeContractError("component availability metadata must be immutable and typed")
+        for timestamp in (self.effective_at_s, self.available_at_s):
+            if type(timestamp) is not int or timestamp < 0:
+                raise TypeContractError("component timestamps must be exact nonnegative integers")
+        if type(self.source_declared_status) is not str or not self.source_declared_status:
+            raise TypeContractError("source status must be explicit")
+        if self.source_declared_content_sha256 is not None and (
+            type(self.source_declared_content_sha256) is not str
+            or re.fullmatch(r"[0-9a-f]{64}", self.source_declared_content_sha256) is None
+        ):
+            raise TypeContractError("source content hash must be a SHA256 or explicitly absent")
+        allowed = {
+            "ACTIVE_LIQUIDITY_READ",
+            "POOL_SLOT0_READ",
+            "REGISTERED_TICK_BAND_READ",
+            "AAVE_ORACLE_PRICE_READ",
+            "SOURCE_TRACE_READ",
+            "HF_RECONSTRUCTION_TRACE_READ",
+            "SELECTED_PORTFOLIO_READ",
+            "SOURCE_HEALTH_FACTOR_READ",
+        }
+        if type(self.capabilities) is not tuple or any(
+            type(x) is not str or x not in allowed for x in self.capabilities
+        ):
+            raise TypeContractError("saved snapshots support only explicit immutable read capabilities")
+        if type(self.quarantines) is not tuple or any(type(x) is not QuarantineRecord for x in self.quarantines):
+            raise TypeContractError("quarantine records must be an immutable typed tuple")
         if not self.capabilities or len(set(self.capabilities)) != len(self.capabilities):
             raise TypeContractError("component capabilities must be nonempty and unique")
         if self.effective_at_s > self.available_at_s:
@@ -89,6 +133,7 @@ class ComponentSnapshot:
             "evidence": self.evidence,
             "kind": self.kind,
             "field_origins": self.field_origins,
+            "field_availability": self.field_availability,
             "origin": self.origin,
             "payload": self.payload,
             "quarantines": self.quarantines,
@@ -105,6 +150,18 @@ class SnapshotProvenance:
     borrower_pack_source_commit: str
     selection_manifest_hash: DeterministicContentSha256
 
+    def __post_init__(self) -> None:
+        for value in (
+            self.artifact_git_ref,
+            self.adapter_source_commit,
+            self.full_pack_source_commit,
+            self.borrower_pack_source_commit,
+        ):
+            if type(value) is not str or re.fullmatch(r"[0-9a-f]{40}", value) is None:
+                raise TypeContractError("provenance commits must be full Git SHAs")
+        if type(self.selection_manifest_hash) is not DeterministicContentSha256:
+            raise TypeContractError("selection hash must use its typed content domain")
+
     def to_canonical(self) -> object:
         return {
             "adapter_source_commit": self.adapter_source_commit,
@@ -112,6 +169,7 @@ class SnapshotProvenance:
             "borrower_pack_source_commit": self.borrower_pack_source_commit,
             "full_pack_source_commit": self.full_pack_source_commit,
             "selection_manifest_hash": self.selection_manifest_hash,
+            "artifact_ref_verification": "CALLER_DECLARED_REF;CONTENT_ANCHORED_TO_ACCEPTED_PHASE01B_BLOBS",
         }
 
 
@@ -123,21 +181,43 @@ class HistoricalSnapshot:
     complete: ExplicitBool
     provenance: SnapshotProvenance
     limitations: tuple[str, ...]
+    canonicality_evidence: EvidenceRef | None = None
 
     def __post_init__(self) -> None:
-        if self.read_pass not in (1, 2):
+        if type(self.read_pass) is not int or self.read_pass not in (1, 2):
             raise TypeContractError("read_pass must be 1 or 2")
-        if not self.components:
+        if (
+            type(self.block_ref) is not BlockRef
+            or type(self.provenance) is not SnapshotProvenance
+            or type(self.complete) is not ExplicitBool
+        ):
+            raise TypeContractError("snapshot block/completeness/provenance must be typed")
+        if (
+            type(self.components) is not tuple
+            or not self.components
+            or any(type(x) is not ComponentSnapshot for x in self.components)
+        ):
             raise TypeContractError("snapshot must contain components")
         ids = [item.component_id for item in self.components]
         if ids != sorted(ids) or len(ids) != len(set(ids)):
             raise TypeContractError("components must be unique and sorted")
         if any(item.evidence.block_ref != self.block_ref for item in self.components):
             raise TypeContractError("every component must bind the snapshot block")
+        if type(self.limitations) is not tuple or any(type(x) is not str or not x for x in self.limitations):
+            raise TypeContractError("snapshot limitations must be immutable strings")
+        if self.complete.value != all(x.coverage is CoverageStatus.COMPLETE_REGISTERED_SCOPE for x in self.components):
+            raise TypeContractError("snapshot completeness contradicts component coverage")
+        if (
+            type(self.canonicality_evidence) is not EvidenceRef
+            or self.canonicality_evidence.block_ref != self.block_ref
+        ):
+            raise TypeContractError("snapshot canonicality must retain its block-bound source evidence")
 
     def to_canonical(self) -> object:
         return {
+            "schema_version": "defistress-v2-saved-snapshot/1",
             "block_ref": self.block_ref,
+            "canonicality_evidence": self.canonicality_evidence,
             "complete": self.complete,
             "components": self.components,
             "limitations": self.limitations,
@@ -160,6 +240,8 @@ class HistoricalSnapshot:
             component["evidence"] = item.evidence.to_content_canonical()
             projected_components.append(component)
         document["components"] = tuple(projected_components)
+        assert self.canonicality_evidence is not None
+        document["canonicality_evidence"] = self.canonicality_evidence.to_content_canonical()
         return document
 
     @property
