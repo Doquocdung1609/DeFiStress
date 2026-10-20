@@ -22,6 +22,15 @@ from defistress_v2.contracts.evidence import (
 )
 from defistress_v2.contracts.execution import FutureStateRef
 from defistress_v2.contracts.identity import AssetId, BlockRef
+from defistress_v2.contracts.snapshot import (
+    ComponentKind,
+    ComponentSnapshot,
+    CoverageStatus,
+    HistoricalSnapshot,
+    QuarantineRecord,
+    SnapshotProvenance,
+    TimePrecision,
+)
 from defistress_v2.contracts.state import (
     AsOfContext,
     Available,
@@ -46,6 +55,9 @@ __all__ = [
     "Available",
     "BlockRef",
     "Blocked",
+    "ComponentKind",
+    "ComponentSnapshot",
+    "CoverageStatus",
     "DecodedBytesSha256",
     "DeterministicContentSha256",
     "EvidenceEnvelope",
@@ -54,17 +66,21 @@ __all__ = [
     "FrozenMap",
     "FutureStateRef",
     "GitBlobSha1",
+    "HistoricalSnapshot",
     "Missing",
     "ObservationContext",
     "Ok",
     "OriginKind",
     "QuantityKind",
+    "QuarantineRecord",
     "Quarantined",
     "Rejected",
     "SignedDelta",
     "SourceKind",
+    "SnapshotProvenance",
     "UnsignedAmount",
     "Unsupported",
+    "TimePrecision",
     "canonical_json_bytes",
     "guard_canonicality_evidence",
     "guard_same_block_and_time",

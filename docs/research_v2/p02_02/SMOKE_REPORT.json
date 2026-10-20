@@ -1,0 +1,1352 @@
+{
+  "adapter_code_sha256": {
+    "defistress_v2/contracts/snapshot.py": "6ba95092d8774af2cc7e15a5efce152c15bf76717339aa6f119f0380a677ccb3",
+    "defistress_v2/state/saved_adapter.py": "aae6aa71f653820132106cf57288be458ac35ec6971a923020846a0ff4e213ef",
+    "defistress_v2/state/source_validation.py": "22911bab1e90aa0b3aecb46a774a462042e2ceec2df5ba7a9f5b782ec9343149",
+    "scripts/research/validate_p02_02_saved_adapter.py": "fbbc1ff973c21079ee6c2f38505c278b06cddcecfd4a0c80a5c68c173d706f11"
+  },
+  "adapter_scope": "READ_ONLY_REGISTERED_SAVED_HISTORICAL_STATE",
+  "adapter_source_commit": null,
+  "artifact_git_ref": "817b0f85547963939841e8bc7181e55b2b84d86f",
+  "commit_identity_verification": "CALLER_DECLARED;PAIR_WITH_CI_CHECKOUT_TREE_AND_CODE_BYTE_HASHES",
+  "coverage": {
+    "blocks": 3,
+    "component_views": 24,
+    "read_passes_per_block": 2,
+    "snapshot_views": 6
+  },
+  "failed_or_blocked_snapshot_views": 0,
+  "input_hashes": {
+    "borrower_repair_catalog_sha256_checkout_bytes": "a488a739bce1180748d6e2e8a85d8be70697d7ced1dccf9e85ec32f5eba306ce",
+    "evidence_provenance_sha256_checkout_bytes": "f2ae36d0952dec06fe73d43d95d3c2ef2bd96ee3fc71ba15c2db161a4e4b8a29",
+    "full_catalog_sha256_checkout_bytes": "71afe816b37011ea20b6eaf38a6d1fa0dd2c926360a13f092c18ab699679f125"
+  },
+  "limitations": [
+    "REGISTERED_THREE_BLOCK_TWO_PASS_SAMPLE_ONLY",
+    "POOL_TICKS_REGISTERED_BAND_ONLY",
+    "BORROWERS_SELECTED_REPAIR_SAMPLE_NOT_MARKET_COVERAGE",
+    "SOURCE_HEALTH_FACTOR_RETAINED_NOT_RECOMPUTED",
+    "NO_EXECUTION_OR_SIMULATION_AUTHORIZED"
+  ],
+  "network_calls": 0,
+  "origin_classes_used_in_successful_snapshots": [
+    "OBSERVED_IDENTITY_AND_RAW_FIELDS",
+    "RECONSTRUCTED_ASSEMBLED_VIEW_AND_SOURCE_DERIVATIONS"
+  ],
+  "overall_status": "PASS",
+  "report_evidence_status": "STATIC_WORKTREE_EVIDENCE;EXACT_SOURCE_BYTES_IN_adapter_code_sha256;SEE_FINAL_HEAD_CI_ARTIFACT",
+  "review_base_commit": "4b931e6425fd491f45af3d62532e7847ae5d05ee",
+  "scientific_status": "GATE_A_BLOCKED \u2014 GATE_B_SCOPED_PASS \u2014 PHASE02_HISTORICAL_EXECUTION_NOT_AUTHORIZED",
+  "snapshots": [
+    {
+      "block_hash": "0x4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+      "block_number": 26045352,
+      "component_count": 4,
+      "component_ids": [
+        "P3000",
+        "P500",
+        "borrowers",
+        "oracle"
+      ],
+      "components": [
+        {
+          "available_time_precision": "COLLECTION_END_UPPER_BOUND",
+          "capabilities": [
+            "ACTIVE_LIQUIDITY_READ",
+            "POOL_SLOT0_READ",
+            "REGISTERED_TICK_BAND_READ"
+          ],
+          "coverage": "COMPLETE_REGISTERED_SCOPE",
+          "decoded_sha256": "7441ad1cc99f93919f33cd130cb1b05121dd357d4e4bfbb617329b6be29adb76",
+          "field_availability": {
+            "payload": {
+              "/": {
+                "evidence_id": "phase01b:full:26045352:components/26045352-pass1-P3000.json.gz",
+                "status": "AVAILABLE",
+                "validation": "SAVED_BYTES_AND_SCHEMA_ONLY"
+              },
+              "/source_economic_checks": {
+                "evidence_id": "phase01b:full:26045352:components/26045352-pass1-P3000.json.gz",
+                "status": "SOURCE_DECLARED_NOT_RERUN"
+              }
+            },
+            "schema_version": "defistress-v2-contracts/0.1"
+          },
+          "git_blob_sha1": "e93e35398baab7677c46cc875051f161e4ad7f6c",
+          "id": "P3000",
+          "measurement": {
+            "lower_tick": "190440",
+            "tick_records": 231,
+            "upper_tick": "204240"
+          },
+          "origin": "RECONSTRUCTED",
+          "quarantines": 0,
+          "raw_sha256": "83a06f4d2f53f8920cd43dc815557308edbf89c57bc471cca1d4c54621740f40",
+          "source_status": "PASS"
+        },
+        {
+          "available_time_precision": "COLLECTION_END_UPPER_BOUND",
+          "capabilities": [
+            "ACTIVE_LIQUIDITY_READ",
+            "POOL_SLOT0_READ",
+            "REGISTERED_TICK_BAND_READ"
+          ],
+          "coverage": "COMPLETE_REGISTERED_SCOPE",
+          "decoded_sha256": "4be69ed6f09519abec18851704d0da8df2a11a49916a95d371132f4c57a5bbad",
+          "field_availability": {
+            "payload": {
+              "/": {
+                "evidence_id": "phase01b:full:26045352:components/26045352-pass1-P500.json.gz",
+                "status": "AVAILABLE",
+                "validation": "SAVED_BYTES_AND_SCHEMA_ONLY"
+              },
+              "/source_economic_checks": {
+                "evidence_id": "phase01b:full:26045352:components/26045352-pass1-P500.json.gz",
+                "status": "SOURCE_DECLARED_NOT_RERUN"
+              }
+            },
+            "schema_version": "defistress-v2-contracts/0.1"
+          },
+          "git_blob_sha1": "13338d836a4b9fb5a2aa7cfb4a83a4c508278909",
+          "id": "P500",
+          "measurement": {
+            "lower_tick": "190420",
+            "tick_records": 1164,
+            "upper_tick": "204280"
+          },
+          "origin": "RECONSTRUCTED",
+          "quarantines": 0,
+          "raw_sha256": "f00eb6c444f818503f9be4c02f1cc510f44bfa4de8b0f1d4d5079ec29d294e6d",
+          "source_status": "PASS"
+        },
+        {
+          "available_time_precision": "COLLECTION_END_UPPER_BOUND",
+          "capabilities": [
+            "HF_RECONSTRUCTION_TRACE_READ",
+            "SELECTED_PORTFOLIO_READ",
+            "SOURCE_HEALTH_FACTOR_READ"
+          ],
+          "coverage": "COMPLETE_REGISTERED_SCOPE",
+          "decoded_sha256": "590b997b62ca7147ca2166190a6f5e41acb41037b5e910afb2dcb3b981f15927",
+          "field_availability": {
+            "payload": {
+              "/": {
+                "evidence_id": "phase01b:borrower_repair:26045352:components/26045352-pass1-borrowers.json.gz",
+                "status": "AVAILABLE",
+                "validation": "SAVED_BYTES_AND_SCHEMA_ONLY"
+              },
+              "/source_economic_checks": {
+                "evidence_id": "phase01b:borrower_repair:26045352:components/26045352-pass1-borrowers.json.gz",
+                "status": "SOURCE_DECLARED_NOT_RERUN"
+              }
+            },
+            "schema_version": "defistress-v2-contracts/0.1"
+          },
+          "git_blob_sha1": "37d396932fea77993e3166145f7801549a848f83",
+          "id": "borrowers",
+          "measurement": {
+            "selected_portfolios": 8,
+            "source_declared_reserves_count": "67"
+          },
+          "origin": "RECONSTRUCTED",
+          "quarantines": 0,
+          "raw_sha256": "dacb58b14ff7b2d1a59d43c9dcf811595a44da5b11e62aea38b59ceebfcde7f4",
+          "source_status": "PASS"
+        },
+        {
+          "available_time_precision": "COLLECTION_END_UPPER_BOUND",
+          "capabilities": [
+            "AAVE_ORACLE_PRICE_READ",
+            "SOURCE_TRACE_READ"
+          ],
+          "coverage": "COMPLETE_REGISTERED_SCOPE",
+          "decoded_sha256": "0b0737aced6c722a3a557555da793ed729ba3c31632aaec41d230a5ead38843a",
+          "field_availability": {
+            "payload": {
+              "/": {
+                "evidence_id": "phase01b:full:26045352:components/26045352-pass1-oracle.json.gz",
+                "status": "AVAILABLE",
+                "validation": "SAVED_BYTES_AND_SCHEMA_ONLY"
+              },
+              "/assets/0/freshness": {
+                "evidence_id": "phase01b:full:26045352:components/26045352-pass1-oracle.json.gz",
+                "reason": "NO_REGISTERED_HEARTBEAT",
+                "status": "MISSING"
+              },
+              "/assets/0/trace/round": {
+                "evidence_id": "phase01b:full:26045352:components/26045352-pass1-oracle.json.gz",
+                "source_status": "UNSUPPORTED_OR_UNAVAILABLE",
+                "status": "UNSUPPORTED"
+              },
+              "/assets/1/freshness": {
+                "evidence_id": "phase01b:full:26045352:components/26045352-pass1-oracle.json.gz",
+                "reason": "NO_REGISTERED_HEARTBEAT",
+                "status": "MISSING"
+              },
+              "/assets/1/trace/round": {
+                "evidence_id": "phase01b:full:26045352:components/26045352-pass1-oracle.json.gz",
+                "source_status": "PASS",
+                "status": "AVAILABLE"
+              },
+              "/source_economic_checks": {
+                "evidence_id": "phase01b:full:26045352:components/26045352-pass1-oracle.json.gz",
+                "status": "SOURCE_DECLARED_NOT_RERUN"
+              }
+            },
+            "schema_version": "defistress-v2-contracts/0.1"
+          },
+          "git_blob_sha1": "0f30a82d7242145f2bb3415d10e5d64b3701326c",
+          "id": "oracle",
+          "measurement": {
+            "assets": 2
+          },
+          "origin": "RECONSTRUCTED",
+          "quarantines": 0,
+          "raw_sha256": "4905e22e6fdd0047476db8df3f7973ceb13b60b4e17fafa8ac523198f0e22f85",
+          "source_status": "PASS"
+        }
+      ],
+      "content_sha256": "f0749eb966c00d27694f36af99f6d3ee81ef7fdca603aaad079c9c7ba5ff44c4",
+      "read_pass": 1,
+      "status": "PASS"
+    },
+    {
+      "block_hash": "0x4dffe3bdf7bbaf24fd1e3b6c3f4795687dccfd3189cbfb61f4dbaf926722220a",
+      "block_number": 26045352,
+      "component_count": 4,
+      "component_ids": [
+        "P3000",
+        "P500",
+        "borrowers",
+        "oracle"
+      ],
+      "components": [
+        {
+          "available_time_precision": "COLLECTION_END_UPPER_BOUND",
+          "capabilities": [
+            "ACTIVE_LIQUIDITY_READ",
+            "POOL_SLOT0_READ",
+            "REGISTERED_TICK_BAND_READ"
+          ],
+          "coverage": "COMPLETE_REGISTERED_SCOPE",
+          "decoded_sha256": "7441ad1cc99f93919f33cd130cb1b05121dd357d4e4bfbb617329b6be29adb76",
+          "field_availability": {
+            "payload": {
+              "/": {
+                "evidence_id": "phase01b:full:26045352:components/26045352-pass2-P3000.json.gz",
+                "status": "AVAILABLE",
+                "validation": "SAVED_BYTES_AND_SCHEMA_ONLY"
+              },
+              "/source_economic_checks": {
+                "evidence_id": "phase01b:full:26045352:components/26045352-pass2-P3000.json.gz",
+                "status": "SOURCE_DECLARED_NOT_RERUN"
+              }
+            },
+            "schema_version": "defistress-v2-contracts/0.1"
+          },
+          "git_blob_sha1": "e93e35398baab7677c46cc875051f161e4ad7f6c",
+          "id": "P3000",
+          "measurement": {
+            "lower_tick": "190440",
+            "tick_records": 231,
+            "upper_tick": "204240"
+          },
+          "origin": "RECONSTRUCTED",
+          "quarantines": 0,
+          "raw_sha256": "83a06f4d2f53f8920cd43dc815557308edbf89c57bc471cca1d4c54621740f40",
+          "source_status": "PASS"
+        },
+        {
+          "available_time_precision": "COLLECTION_END_UPPER_BOUND",
+          "capabilities": [
+            "ACTIVE_LIQUIDITY_READ",
+            "POOL_SLOT0_READ",
+            "REGISTERED_TICK_BAND_READ"
+          ],
+          "coverage": "COMPLETE_REGISTERED_SCOPE",
+          "decoded_sha256": "4be69ed6f09519abec18851704d0da8df2a11a49916a95d371132f4c57a5bbad",
+          "field_availability": {
+            "payload": {
+              "/": {
+                "evidence_id": "phase01b:full:26045352:components/26045352-pass2-P500.json.gz",
+                "status": "AVAILABLE",
+                "validation": "SAVED_BYTES_AND_SCHEMA_ONLY"
+              },
+              "/source_economic_checks": {
+                "evidence_id": "phase01b:full:26045352:components/26045352-pass2-P500.json.gz",
+                "status": "SOURCE_DECLARED_NOT_RERUN"
+              }
+            },
+            "schema_version": "defistress-v2-contracts/0.1"
+          },
+          "git_blob_sha1": "13338d836a4b9fb5a2aa7cfb4a83a4c508278909",
+          "id": "P500",
+          "measurement": {
+            "lower_tick": "190420",
+            "tick_records": 1164,
+            "upper_tick": "204280"
+          },
+          "origin": "RECONSTRUCTED",
+          "quarantines": 0,
+          "raw_sha256": "f00eb6c444f818503f9be4c02f1cc510f44bfa4de8b0f1d4d5079ec29d294e6d",
+          "source_status": "PASS"
+        },
+        {
+          "available_time_precision": "COLLECTION_END_UPPER_BOUND",
+          "capabilities": [
+            "HF_RECONSTRUCTION_TRACE_READ",
+            "SELECTED_PORTFOLIO_READ",
+            "SOURCE_HEALTH_FACTOR_READ"
+          ],
+          "coverage": "COMPLETE_REGISTERED_SCOPE",
+          "decoded_sha256": "590b997b62ca7147ca2166190a6f5e41acb41037b5e910afb2dcb3b981f15927",
+          "field_availability": {
+            "payload": {
+              "/": {
+                "evidence_id": "phase01b:borrower_repair:26045352:components/26045352-pass2-borrowers.json.gz",
+                "status": "AVAILABLE",
+                "validation": "SAVED_BYTES_AND_SCHEMA_ONLY"
+              },
+              "/source_economic_checks": {
+                "evidence_id": "phase01b:borrower_repair:26045352:components/26045352-pass2-borrowers.json.gz",
+                "status": "SOURCE_DECLARED_NOT_RERUN"
+              }
+            },
+            "schema_version": "defistress-v2-contracts/0.1"
+          },
+          "git_blob_sha1": "37d396932fea77993e3166145f7801549a848f83",
+          "id": "borrowers",
+          "measurement": {
+            "selected_portfolios": 8,
+            "source_declared_reserves_count": "67"
+          },
+          "origin": "RECONSTRUCTED",
+          "quarantines": 0,
+          "raw_sha256": "dacb58b14ff7b2d1a59d43c9dcf811595a44da5b11e62aea38b59ceebfcde7f4",
+          "source_status": "PASS"
+        },
+        {
+          "available_time_precision": "COLLECTION_END_UPPER_BOUND",
+          "capabilities": [
+            "AAVE_ORACLE_PRICE_READ",
+            "SOURCE_TRACE_READ"
+          ],
+          "coverage": "COMPLETE_REGISTERED_SCOPE",
+          "decoded_sha256": "0b0737aced6c722a3a557555da793ed729ba3c31632aaec41d230a5ead38843a",
+          "field_availability": {
+            "payload": {
+              "/": {
+                "evidence_id": "phase01b:full:26045352:components/26045352-pass2-oracle.json.gz",
+                "status": "AVAILABLE",
+                "validation": "SAVED_BYTES_AND_SCHEMA_ONLY"
+              },
+              "/assets/0/freshness": {
+                "evidence_id": "phase01b:full:26045352:components/26045352-pass2-oracle.json.gz",
+                "reason": "NO_REGISTERED_HEARTBEAT",
+                "status": "MISSING"
+              },
+              "/assets/0/trace/round": {
+                "evidence_id": "phase01b:full:26045352:components/26045352-pass2-oracle.json.gz",
+                "source_status": "UNSUPPORTED_OR_UNAVAILABLE",
+                "status": "UNSUPPORTED"
+              },
+              "/assets/1/freshness": {
+                "evidence_id": "phase01b:full:26045352:components/26045352-pass2-oracle.json.gz",
+                "reason": "NO_REGISTERED_HEARTBEAT",
+                "status": "MISSING"
+              },
+              "/assets/1/trace/round": {
+                "evidence_id": "phase01b:full:26045352:components/26045352-pass2-oracle.json.gz",
+                "source_status": "PASS",
+                "status": "AVAILABLE"
+              },
+              "/source_economic_checks": {
+                "evidence_id": "phase01b:full:26045352:components/26045352-pass2-oracle.json.gz",
+                "status": "SOURCE_DECLARED_NOT_RERUN"
+              }
+            },
+            "schema_version": "defistress-v2-contracts/0.1"
+          },
+          "git_blob_sha1": "0f30a82d7242145f2bb3415d10e5d64b3701326c",
+          "id": "oracle",
+          "measurement": {
+            "assets": 2
+          },
+          "origin": "RECONSTRUCTED",
+          "quarantines": 0,
+          "raw_sha256": "4905e22e6fdd0047476db8df3f7973ceb13b60b4e17fafa8ac523198f0e22f85",
+          "source_status": "PASS"
+        }
+      ],
+      "content_sha256": "b3be270fca39eebec99e52a2fa0e8c3ef1bdd0c4bab699db8035b93ed44eb56c",
+      "read_pass": 2,
+      "status": "PASS"
+    },
+    {
+      "block_hash": "0xbb108203815f257e9f9b023f92a30e67d946799355ceffc4bef0e0e16a1e87bd",
+      "block_number": 26038152,
+      "component_count": 4,
+      "component_ids": [
+        "P3000",
+        "P500",
+        "borrowers",
+        "oracle"
+      ],
+      "components": [
+        {
+          "available_time_precision": "COLLECTION_END_UPPER_BOUND",
+          "capabilities": [
+            "ACTIVE_LIQUIDITY_READ",
+            "POOL_SLOT0_READ",
+            "REGISTERED_TICK_BAND_READ"
+          ],
+          "coverage": "COMPLETE_REGISTERED_SCOPE",
+          "decoded_sha256": "c89116f52db4f0305e20efa1875eea72d18be5e8ecbeeddba6a3d48c1cc060a5",
+          "field_availability": {
+            "payload": {
+              "/": {
+                "evidence_id": "phase01b:full:26038152:components/26038152-pass1-P3000.json.gz",
+                "status": "AVAILABLE",
+                "validation": "SAVED_BYTES_AND_SCHEMA_ONLY"
+              },
+              "/source_economic_checks": {
+                "evidence_id": "phase01b:full:26038152:components/26038152-pass1-P3000.json.gz",
+                "status": "SOURCE_DECLARED_NOT_RERUN"
+              }
+            },
+            "schema_version": "defistress-v2-contracts/0.1"
+          },
+          "git_blob_sha1": "f65b63b89237a6a57a5b846dd2af4d32b7b1ad64",
+          "id": "P3000",
+          "measurement": {
+            "lower_tick": "190140",
+            "tick_records": 231,
+            "upper_tick": "203940"
+          },
+          "origin": "RECONSTRUCTED",
+          "quarantines": 0,
+          "raw_sha256": "0fb4f6318cadab14a1b373a7727f371c758c03232f03f98168fdfebf9b67f5c0",
+          "source_status": "PASS"
+        },
+        {
+          "available_time_precision": "COLLECTION_END_UPPER_BOUND",
+          "capabilities": [
+            "ACTIVE_LIQUIDITY_READ",
+            "POOL_SLOT0_READ",
+            "REGISTERED_TICK_BAND_READ"
+          ],
+          "coverage": "COMPLETE_REGISTERED_SCOPE",
+          "decoded_sha256": "e166a67ec2b58c488effd3d1d7ebc3e56e0fe2435eb730b468c1fa11c3d4eb4c",
+          "field_availability": {
+            "payload": {
+              "/": {
+                "evidence_id": "phase01b:full:26038152:components/26038152-pass1-P500.json.gz",
+                "status": "AVAILABLE",
+                "validation": "SAVED_BYTES_AND_SCHEMA_ONLY"
+              },
+              "/source_economic_checks": {
+                "evidence_id": "phase01b:full:26038152:components/26038152-pass1-P500.json.gz",
+                "status": "SOURCE_DECLARED_NOT_RERUN"
+              }
+            },
+            "schema_version": "defistress-v2-contracts/0.1"
+          },
+          "git_blob_sha1": "366ca985d2213d5ec87cc2d61721a5549c69b037",
+          "id": "P500",
+          "measurement": {
+            "lower_tick": "190140",
+            "tick_records": 1153,
+            "upper_tick": "203990"
+          },
+          "origin": "RECONSTRUCTED",
+          "quarantines": 0,
+          "raw_sha256": "9a38e3abd132a543d4cf083a0e0cde77d11511be52eed86cb2e381e35083cedf",
+          "source_status": "PASS"
+        },
+        {
+          "available_time_precision": "COLLECTION_END_UPPER_BOUND",
+          "capabilities": [
+            "HF_RECONSTRUCTION_TRACE_READ",
+            "SELECTED_PORTFOLIO_READ",
+            "SOURCE_HEALTH_FACTOR_READ"
+          ],
+          "coverage": "COMPLETE_REGISTERED_SCOPE",
+          "decoded_sha256": "bf7426f6e058aa72fd7b591a5877d0df1e3b0adb91fdbb8e54f98eb8c90fff6c",
+          "field_availability": {
+            "payload": {
+              "/": {
+                "evidence_id": "phase01b:borrower_repair:26038152:components/26038152-pass1-borrowers.json.gz",
+                "status": "AVAILABLE",
+                "validation": "SAVED_BYTES_AND_SCHEMA_ONLY"
+              },
+              "/source_economic_checks": {
+                "evidence_id": "phase01b:borrower_repair:26038152:components/26038152-pass1-borrowers.json.gz",
+                "status": "SOURCE_DECLARED_NOT_RERUN"
+              }
+            },
+            "schema_version": "defistress-v2-contracts/0.1"
+          },
+          "git_blob_sha1": "532115da000ee074ff48c8345933ba577925cf7e",
+          "id": "borrowers",
+          "measurement": {
+            "selected_portfolios": 8,
+            "source_declared_reserves_count": "67"
+          },
+          "origin": "RECONSTRUCTED",
+          "quarantines": 0,
+          "raw_sha256": "24766fcc1f79da5cb56c0a2da67edee640f3d979055367d4b31e8fb6897a73d1",
+          "source_status": "PASS"
+        },
+        {
+          "available_time_precision": "COLLECTION_END_UPPER_BOUND",
+          "capabilities": [
+            "AAVE_ORACLE_PRICE_READ",
+            "SOURCE_TRACE_READ"
+          ],
+          "coverage": "COMPLETE_REGISTERED_SCOPE",
+          "decoded_sha256": "38622d7edc616ff8e194df43179780270c3ba73584dfb22285eca71a701e6994",
+          "field_availability": {
+            "payload": {
+              "/": {
+                "evidence_id": "phase01b:full:26038152:components/26038152-pass1-oracle.json.gz",
+                "status": "AVAILABLE",
+                "validation": "SAVED_BYTES_AND_SCHEMA_ONLY"
+              },
+              "/assets/0/freshness": {
+                "evidence_id": "phase01b:full:26038152:components/26038152-pass1-oracle.json.gz",
+                "reason": "NO_REGISTERED_HEARTBEAT",
+                "status": "MISSING"
+              },
+              "/assets/0/trace/round": {
+                "evidence_id": "phase01b:full:26038152:components/26038152-pass1-oracle.json.gz",
+                "source_status": "UNSUPPORTED_OR_UNAVAILABLE",
+                "status": "UNSUPPORTED"
+              },
+              "/assets/1/freshness": {
+                "evidence_id": "phase01b:full:26038152:components/26038152-pass1-oracle.json.gz",
+                "reason": "NO_REGISTERED_HEARTBEAT",
+                "status": "MISSING"
+              },
+              "/assets/1/trace/round": {
+                "evidence_id": "phase01b:full:26038152:components/26038152-pass1-oracle.json.gz",
+                "source_status": "PASS",
+                "status": "AVAILABLE"
+              },
+              "/source_economic_checks": {
+                "evidence_id": "phase01b:full:26038152:components/26038152-pass1-oracle.json.gz",
+                "status": "SOURCE_DECLARED_NOT_RERUN"
+              }
+            },
+            "schema_version": "defistress-v2-contracts/0.1"
+          },
+          "git_blob_sha1": "95bdd8f2ce04c238fbfbdb03aea6b5ae2a42319b",
+          "id": "oracle",
+          "measurement": {
+            "assets": 2
+          },
+          "origin": "RECONSTRUCTED",
+          "quarantines": 0,
+          "raw_sha256": "162927f9b43875d04dbf4253753cd21f641773da931c41160f1676204d1dd768",
+          "source_status": "PASS"
+        }
+      ],
+      "content_sha256": "e8a5cb99c345cae48ee879511a02c8a9426de93df1764b70aaa93a44c488c8ec",
+      "read_pass": 1,
+      "status": "PASS"
+    },
+    {
+      "block_hash": "0xbb108203815f257e9f9b023f92a30e67d946799355ceffc4bef0e0e16a1e87bd",
+      "block_number": 26038152,
+      "component_count": 4,
+      "component_ids": [
+        "P3000",
+        "P500",
+        "borrowers",
+        "oracle"
+      ],
+      "components": [
+        {
+          "available_time_precision": "COLLECTION_END_UPPER_BOUND",
+          "capabilities": [
+            "ACTIVE_LIQUIDITY_READ",
+            "POOL_SLOT0_READ",
+            "REGISTERED_TICK_BAND_READ"
+          ],
+          "coverage": "COMPLETE_REGISTERED_SCOPE",
+          "decoded_sha256": "c89116f52db4f0305e20efa1875eea72d18be5e8ecbeeddba6a3d48c1cc060a5",
+          "field_availability": {
+            "payload": {
+              "/": {
+                "evidence_id": "phase01b:full:26038152:components/26038152-pass2-P3000.json.gz",
+                "status": "AVAILABLE",
+                "validation": "SAVED_BYTES_AND_SCHEMA_ONLY"
+              },
+              "/source_economic_checks": {
+                "evidence_id": "phase01b:full:26038152:components/26038152-pass2-P3000.json.gz",
+                "status": "SOURCE_DECLARED_NOT_RERUN"
+              }
+            },
+            "schema_version": "defistress-v2-contracts/0.1"
+          },
+          "git_blob_sha1": "f65b63b89237a6a57a5b846dd2af4d32b7b1ad64",
+          "id": "P3000",
+          "measurement": {
+            "lower_tick": "190140",
+            "tick_records": 231,
+            "upper_tick": "203940"
+          },
+          "origin": "RECONSTRUCTED",
+          "quarantines": 0,
+          "raw_sha256": "0fb4f6318cadab14a1b373a7727f371c758c03232f03f98168fdfebf9b67f5c0",
+          "source_status": "PASS"
+        },
+        {
+          "available_time_precision": "COLLECTION_END_UPPER_BOUND",
+          "capabilities": [
+            "ACTIVE_LIQUIDITY_READ",
+            "POOL_SLOT0_READ",
+            "REGISTERED_TICK_BAND_READ"
+          ],
+          "coverage": "COMPLETE_REGISTERED_SCOPE",
+          "decoded_sha256": "e166a67ec2b58c488effd3d1d7ebc3e56e0fe2435eb730b468c1fa11c3d4eb4c",
+          "field_availability": {
+            "payload": {
+              "/": {
+                "evidence_id": "phase01b:full:26038152:components/26038152-pass2-P500.json.gz",
+                "status": "AVAILABLE",
+                "validation": "SAVED_BYTES_AND_SCHEMA_ONLY"
+              },
+              "/source_economic_checks": {
+                "evidence_id": "phase01b:full:26038152:components/26038152-pass2-P500.json.gz",
+                "status": "SOURCE_DECLARED_NOT_RERUN"
+              }
+            },
+            "schema_version": "defistress-v2-contracts/0.1"
+          },
+          "git_blob_sha1": "366ca985d2213d5ec87cc2d61721a5549c69b037",
+          "id": "P500",
+          "measurement": {
+            "lower_tick": "190140",
+            "tick_records": 1153,
+            "upper_tick": "203990"
+          },
+          "origin": "RECONSTRUCTED",
+          "quarantines": 0,
+          "raw_sha256": "9a38e3abd132a543d4cf083a0e0cde77d11511be52eed86cb2e381e35083cedf",
+          "source_status": "PASS"
+        },
+        {
+          "available_time_precision": "COLLECTION_END_UPPER_BOUND",
+          "capabilities": [
+            "HF_RECONSTRUCTION_TRACE_READ",
+            "SELECTED_PORTFOLIO_READ",
+            "SOURCE_HEALTH_FACTOR_READ"
+          ],
+          "coverage": "COMPLETE_REGISTERED_SCOPE",
+          "decoded_sha256": "bf7426f6e058aa72fd7b591a5877d0df1e3b0adb91fdbb8e54f98eb8c90fff6c",
+          "field_availability": {
+            "payload": {
+              "/": {
+                "evidence_id": "phase01b:borrower_repair:26038152:components/26038152-pass2-borrowers.json.gz",
+                "status": "AVAILABLE",
+                "validation": "SAVED_BYTES_AND_SCHEMA_ONLY"
+              },
+              "/source_economic_checks": {
+                "evidence_id": "phase01b:borrower_repair:26038152:components/26038152-pass2-borrowers.json.gz",
+                "status": "SOURCE_DECLARED_NOT_RERUN"
+              }
+            },
+            "schema_version": "defistress-v2-contracts/0.1"
+          },
+          "git_blob_sha1": "532115da000ee074ff48c8345933ba577925cf7e",
+          "id": "borrowers",
+          "measurement": {
+            "selected_portfolios": 8,
+            "source_declared_reserves_count": "67"
+          },
+          "origin": "RECONSTRUCTED",
+          "quarantines": 0,
+          "raw_sha256": "24766fcc1f79da5cb56c0a2da67edee640f3d979055367d4b31e8fb6897a73d1",
+          "source_status": "PASS"
+        },
+        {
+          "available_time_precision": "COLLECTION_END_UPPER_BOUND",
+          "capabilities": [
+            "AAVE_ORACLE_PRICE_READ",
+            "SOURCE_TRACE_READ"
+          ],
+          "coverage": "COMPLETE_REGISTERED_SCOPE",
+          "decoded_sha256": "38622d7edc616ff8e194df43179780270c3ba73584dfb22285eca71a701e6994",
+          "field_availability": {
+            "payload": {
+              "/": {
+                "evidence_id": "phase01b:full:26038152:components/26038152-pass2-oracle.json.gz",
+                "status": "AVAILABLE",
+                "validation": "SAVED_BYTES_AND_SCHEMA_ONLY"
+              },
+              "/assets/0/freshness": {
+                "evidence_id": "phase01b:full:26038152:components/26038152-pass2-oracle.json.gz",
+                "reason": "NO_REGISTERED_HEARTBEAT",
+                "status": "MISSING"
+              },
+              "/assets/0/trace/round": {
+                "evidence_id": "phase01b:full:26038152:components/26038152-pass2-oracle.json.gz",
+                "source_status": "UNSUPPORTED_OR_UNAVAILABLE",
+                "status": "UNSUPPORTED"
+              },
+              "/assets/1/freshness": {
+                "evidence_id": "phase01b:full:26038152:components/26038152-pass2-oracle.json.gz",
+                "reason": "NO_REGISTERED_HEARTBEAT",
+                "status": "MISSING"
+              },
+              "/assets/1/trace/round": {
+                "evidence_id": "phase01b:full:26038152:components/26038152-pass2-oracle.json.gz",
+                "source_status": "PASS",
+                "status": "AVAILABLE"
+              },
+              "/source_economic_checks": {
+                "evidence_id": "phase01b:full:26038152:components/26038152-pass2-oracle.json.gz",
+                "status": "SOURCE_DECLARED_NOT_RERUN"
+              }
+            },
+            "schema_version": "defistress-v2-contracts/0.1"
+          },
+          "git_blob_sha1": "95bdd8f2ce04c238fbfbdb03aea6b5ae2a42319b",
+          "id": "oracle",
+          "measurement": {
+            "assets": 2
+          },
+          "origin": "RECONSTRUCTED",
+          "quarantines": 0,
+          "raw_sha256": "162927f9b43875d04dbf4253753cd21f641773da931c41160f1676204d1dd768",
+          "source_status": "PASS"
+        }
+      ],
+      "content_sha256": "b772dc2f68c741da4108036323ca28960d626696f3fda741beb0ef5748ef0b5c",
+      "read_pass": 2,
+      "status": "PASS"
+    },
+    {
+      "block_hash": "0xeeb12db7f31e86507bb4be7a1a2953d19c11165c99a75ebc7aa589d65d0b9625",
+      "block_number": 26030952,
+      "component_count": 4,
+      "component_ids": [
+        "P3000",
+        "P500",
+        "borrowers",
+        "oracle"
+      ],
+      "components": [
+        {
+          "available_time_precision": "COLLECTION_END_UPPER_BOUND",
+          "capabilities": [
+            "ACTIVE_LIQUIDITY_READ",
+            "POOL_SLOT0_READ",
+            "REGISTERED_TICK_BAND_READ"
+          ],
+          "coverage": "COMPLETE_REGISTERED_SCOPE",
+          "decoded_sha256": "4307569a17c40abd72598ca931b228f028c72baa4eccc6d5b4c41b1913b85c58",
+          "field_availability": {
+            "payload": {
+              "/": {
+                "evidence_id": "phase01b:full:26030952:components/26030952-pass1-P3000.json.gz",
+                "status": "AVAILABLE",
+                "validation": "SAVED_BYTES_AND_SCHEMA_ONLY"
+              },
+              "/source_economic_checks": {
+                "evidence_id": "phase01b:full:26030952:components/26030952-pass1-P3000.json.gz",
+                "status": "SOURCE_DECLARED_NOT_RERUN"
+              }
+            },
+            "schema_version": "defistress-v2-contracts/0.1"
+          },
+          "git_blob_sha1": "26559de88bcc0def703b5cd6fa279834d7102998",
+          "id": "P3000",
+          "measurement": {
+            "lower_tick": "190320",
+            "tick_records": 231,
+            "upper_tick": "204120"
+          },
+          "origin": "RECONSTRUCTED",
+          "quarantines": 0,
+          "raw_sha256": "b51dc441cae2c3e81690dd1384042abe132ef401cdf38bb8570260fba249b75a",
+          "source_status": "PASS"
+        },
+        {
+          "available_time_precision": "COLLECTION_END_UPPER_BOUND",
+          "capabilities": [
+            "ACTIVE_LIQUIDITY_READ",
+            "POOL_SLOT0_READ",
+            "REGISTERED_TICK_BAND_READ"
+          ],
+          "coverage": "COMPLETE_REGISTERED_SCOPE",
+          "decoded_sha256": "937e230e894fd80f8b02e1ae32a0abd3d2d5925467837b5c035f92b5bc65ebd7",
+          "field_availability": {
+            "payload": {
+              "/": {
+                "evidence_id": "phase01b:full:26030952:components/26030952-pass1-P500.json.gz",
+                "status": "AVAILABLE",
+                "validation": "SAVED_BYTES_AND_SCHEMA_ONLY"
+              },
+              "/source_economic_checks": {
+                "evidence_id": "phase01b:full:26030952:components/26030952-pass1-P500.json.gz",
+                "status": "SOURCE_DECLARED_NOT_RERUN"
+              }
+            },
+            "schema_version": "defistress-v2-contracts/0.1"
+          },
+          "git_blob_sha1": "d0a95807d61a4ecbc2fd1e0617e830b50e4f5311",
+          "id": "P500",
+          "measurement": {
+            "lower_tick": "190310",
+            "tick_records": 1159,
+            "upper_tick": "204160"
+          },
+          "origin": "RECONSTRUCTED",
+          "quarantines": 0,
+          "raw_sha256": "8c4902c661f4872c47dda1320b6bf73f140911560ea6284d09d549483f4624af",
+          "source_status": "PASS"
+        },
+        {
+          "available_time_precision": "COLLECTION_END_UPPER_BOUND",
+          "capabilities": [
+            "HF_RECONSTRUCTION_TRACE_READ",
+            "SELECTED_PORTFOLIO_READ",
+            "SOURCE_HEALTH_FACTOR_READ"
+          ],
+          "coverage": "COMPLETE_REGISTERED_SCOPE",
+          "decoded_sha256": "f5e1ce0f3c7b570198520400a35d4a690af340529b241c816aa521a75307015f",
+          "field_availability": {
+            "payload": {
+              "/": {
+                "evidence_id": "phase01b:borrower_repair:26030952:components/26030952-pass1-borrowers.json.gz",
+                "status": "AVAILABLE",
+                "validation": "SAVED_BYTES_AND_SCHEMA_ONLY"
+              },
+              "/source_economic_checks": {
+                "evidence_id": "phase01b:borrower_repair:26030952:components/26030952-pass1-borrowers.json.gz",
+                "status": "SOURCE_DECLARED_NOT_RERUN"
+              }
+            },
+            "schema_version": "defistress-v2-contracts/0.1"
+          },
+          "git_blob_sha1": "4f45a6b829b580f56136f468caf7c1593dc75bb0",
+          "id": "borrowers",
+          "measurement": {
+            "selected_portfolios": 8,
+            "source_declared_reserves_count": "67"
+          },
+          "origin": "RECONSTRUCTED",
+          "quarantines": 0,
+          "raw_sha256": "8e3f4386ffe7bd51b2a20353eed39792be0f3ed0d8619d264dde6fb0aa8ea88d",
+          "source_status": "PASS"
+        },
+        {
+          "available_time_precision": "COLLECTION_END_UPPER_BOUND",
+          "capabilities": [
+            "AAVE_ORACLE_PRICE_READ",
+            "SOURCE_TRACE_READ"
+          ],
+          "coverage": "COMPLETE_REGISTERED_SCOPE",
+          "decoded_sha256": "01bc1dbef43636764e81e956f3db66122faf2f810955a380224ab306b941eaa2",
+          "field_availability": {
+            "payload": {
+              "/": {
+                "evidence_id": "phase01b:full:26030952:components/26030952-pass1-oracle.json.gz",
+                "status": "AVAILABLE",
+                "validation": "SAVED_BYTES_AND_SCHEMA_ONLY"
+              },
+              "/assets/0/freshness": {
+                "evidence_id": "phase01b:full:26030952:components/26030952-pass1-oracle.json.gz",
+                "reason": "NO_REGISTERED_HEARTBEAT",
+                "status": "MISSING"
+              },
+              "/assets/0/trace/round": {
+                "evidence_id": "phase01b:full:26030952:components/26030952-pass1-oracle.json.gz",
+                "source_status": "UNSUPPORTED_OR_UNAVAILABLE",
+                "status": "UNSUPPORTED"
+              },
+              "/assets/1/freshness": {
+                "evidence_id": "phase01b:full:26030952:components/26030952-pass1-oracle.json.gz",
+                "reason": "NO_REGISTERED_HEARTBEAT",
+                "status": "MISSING"
+              },
+              "/assets/1/trace/round": {
+                "evidence_id": "phase01b:full:26030952:components/26030952-pass1-oracle.json.gz",
+                "source_status": "PASS",
+                "status": "AVAILABLE"
+              },
+              "/source_economic_checks": {
+                "evidence_id": "phase01b:full:26030952:components/26030952-pass1-oracle.json.gz",
+                "status": "SOURCE_DECLARED_NOT_RERUN"
+              }
+            },
+            "schema_version": "defistress-v2-contracts/0.1"
+          },
+          "git_blob_sha1": "9b0083dfd78758661a167e03778f1923b31e3657",
+          "id": "oracle",
+          "measurement": {
+            "assets": 2
+          },
+          "origin": "RECONSTRUCTED",
+          "quarantines": 0,
+          "raw_sha256": "f1c11ba91815e4d531e862d455528767f9c31eac58ba634690daaf83144ccaae",
+          "source_status": "PASS"
+        }
+      ],
+      "content_sha256": "1364eeaed4759c1352a7150cf237b560ebc8563ea8dd7a5fc14f8ec477ac53c0",
+      "read_pass": 1,
+      "status": "PASS"
+    },
+    {
+      "block_hash": "0xeeb12db7f31e86507bb4be7a1a2953d19c11165c99a75ebc7aa589d65d0b9625",
+      "block_number": 26030952,
+      "component_count": 4,
+      "component_ids": [
+        "P3000",
+        "P500",
+        "borrowers",
+        "oracle"
+      ],
+      "components": [
+        {
+          "available_time_precision": "COLLECTION_END_UPPER_BOUND",
+          "capabilities": [
+            "ACTIVE_LIQUIDITY_READ",
+            "POOL_SLOT0_READ",
+            "REGISTERED_TICK_BAND_READ"
+          ],
+          "coverage": "COMPLETE_REGISTERED_SCOPE",
+          "decoded_sha256": "4307569a17c40abd72598ca931b228f028c72baa4eccc6d5b4c41b1913b85c58",
+          "field_availability": {
+            "payload": {
+              "/": {
+                "evidence_id": "phase01b:full:26030952:components/26030952-pass2-P3000.json.gz",
+                "status": "AVAILABLE",
+                "validation": "SAVED_BYTES_AND_SCHEMA_ONLY"
+              },
+              "/source_economic_checks": {
+                "evidence_id": "phase01b:full:26030952:components/26030952-pass2-P3000.json.gz",
+                "status": "SOURCE_DECLARED_NOT_RERUN"
+              }
+            },
+            "schema_version": "defistress-v2-contracts/0.1"
+          },
+          "git_blob_sha1": "26559de88bcc0def703b5cd6fa279834d7102998",
+          "id": "P3000",
+          "measurement": {
+            "lower_tick": "190320",
+            "tick_records": 231,
+            "upper_tick": "204120"
+          },
+          "origin": "RECONSTRUCTED",
+          "quarantines": 0,
+          "raw_sha256": "b51dc441cae2c3e81690dd1384042abe132ef401cdf38bb8570260fba249b75a",
+          "source_status": "PASS"
+        },
+        {
+          "available_time_precision": "COLLECTION_END_UPPER_BOUND",
+          "capabilities": [
+            "ACTIVE_LIQUIDITY_READ",
+            "POOL_SLOT0_READ",
+            "REGISTERED_TICK_BAND_READ"
+          ],
+          "coverage": "COMPLETE_REGISTERED_SCOPE",
+          "decoded_sha256": "937e230e894fd80f8b02e1ae32a0abd3d2d5925467837b5c035f92b5bc65ebd7",
+          "field_availability": {
+            "payload": {
+              "/": {
+                "evidence_id": "phase01b:full:26030952:components/26030952-pass2-P500.json.gz",
+                "status": "AVAILABLE",
+                "validation": "SAVED_BYTES_AND_SCHEMA_ONLY"
+              },
+              "/source_economic_checks": {
+                "evidence_id": "phase01b:full:26030952:components/26030952-pass2-P500.json.gz",
+                "status": "SOURCE_DECLARED_NOT_RERUN"
+              }
+            },
+            "schema_version": "defistress-v2-contracts/0.1"
+          },
+          "git_blob_sha1": "d0a95807d61a4ecbc2fd1e0617e830b50e4f5311",
+          "id": "P500",
+          "measurement": {
+            "lower_tick": "190310",
+            "tick_records": 1159,
+            "upper_tick": "204160"
+          },
+          "origin": "RECONSTRUCTED",
+          "quarantines": 0,
+          "raw_sha256": "8c4902c661f4872c47dda1320b6bf73f140911560ea6284d09d549483f4624af",
+          "source_status": "PASS"
+        },
+        {
+          "available_time_precision": "COLLECTION_END_UPPER_BOUND",
+          "capabilities": [
+            "HF_RECONSTRUCTION_TRACE_READ",
+            "SELECTED_PORTFOLIO_READ",
+            "SOURCE_HEALTH_FACTOR_READ"
+          ],
+          "coverage": "COMPLETE_REGISTERED_SCOPE",
+          "decoded_sha256": "f5e1ce0f3c7b570198520400a35d4a690af340529b241c816aa521a75307015f",
+          "field_availability": {
+            "payload": {
+              "/": {
+                "evidence_id": "phase01b:borrower_repair:26030952:components/26030952-pass2-borrowers.json.gz",
+                "status": "AVAILABLE",
+                "validation": "SAVED_BYTES_AND_SCHEMA_ONLY"
+              },
+              "/source_economic_checks": {
+                "evidence_id": "phase01b:borrower_repair:26030952:components/26030952-pass2-borrowers.json.gz",
+                "status": "SOURCE_DECLARED_NOT_RERUN"
+              }
+            },
+            "schema_version": "defistress-v2-contracts/0.1"
+          },
+          "git_blob_sha1": "4f45a6b829b580f56136f468caf7c1593dc75bb0",
+          "id": "borrowers",
+          "measurement": {
+            "selected_portfolios": 8,
+            "source_declared_reserves_count": "67"
+          },
+          "origin": "RECONSTRUCTED",
+          "quarantines": 0,
+          "raw_sha256": "8e3f4386ffe7bd51b2a20353eed39792be0f3ed0d8619d264dde6fb0aa8ea88d",
+          "source_status": "PASS"
+        },
+        {
+          "available_time_precision": "COLLECTION_END_UPPER_BOUND",
+          "capabilities": [
+            "AAVE_ORACLE_PRICE_READ",
+            "SOURCE_TRACE_READ"
+          ],
+          "coverage": "COMPLETE_REGISTERED_SCOPE",
+          "decoded_sha256": "01bc1dbef43636764e81e956f3db66122faf2f810955a380224ab306b941eaa2",
+          "field_availability": {
+            "payload": {
+              "/": {
+                "evidence_id": "phase01b:full:26030952:components/26030952-pass2-oracle.json.gz",
+                "status": "AVAILABLE",
+                "validation": "SAVED_BYTES_AND_SCHEMA_ONLY"
+              },
+              "/assets/0/freshness": {
+                "evidence_id": "phase01b:full:26030952:components/26030952-pass2-oracle.json.gz",
+                "reason": "NO_REGISTERED_HEARTBEAT",
+                "status": "MISSING"
+              },
+              "/assets/0/trace/round": {
+                "evidence_id": "phase01b:full:26030952:components/26030952-pass2-oracle.json.gz",
+                "source_status": "UNSUPPORTED_OR_UNAVAILABLE",
+                "status": "UNSUPPORTED"
+              },
+              "/assets/1/freshness": {
+                "evidence_id": "phase01b:full:26030952:components/26030952-pass2-oracle.json.gz",
+                "reason": "NO_REGISTERED_HEARTBEAT",
+                "status": "MISSING"
+              },
+              "/assets/1/trace/round": {
+                "evidence_id": "phase01b:full:26030952:components/26030952-pass2-oracle.json.gz",
+                "source_status": "PASS",
+                "status": "AVAILABLE"
+              },
+              "/source_economic_checks": {
+                "evidence_id": "phase01b:full:26030952:components/26030952-pass2-oracle.json.gz",
+                "status": "SOURCE_DECLARED_NOT_RERUN"
+              }
+            },
+            "schema_version": "defistress-v2-contracts/0.1"
+          },
+          "git_blob_sha1": "9b0083dfd78758661a167e03778f1923b31e3657",
+          "id": "oracle",
+          "measurement": {
+            "assets": 2
+          },
+          "origin": "RECONSTRUCTED",
+          "quarantines": 0,
+          "raw_sha256": "f1c11ba91815e4d531e862d455528767f9c31eac58ba634690daaf83144ccaae",
+          "source_status": "PASS"
+        }
+      ],
+      "content_sha256": "e2312ab435a0fc45d63f0dc6619d017ba933fecfdf9411cb8900a5b1cf68cc56",
+      "read_pass": 2,
+      "status": "PASS"
+    }
+  ],
+  "test_spec_dispositions": [
+    {
+      "disposition": "PARTIAL_SAVED_ADAPTER_SCOPE",
+      "implemented_facets": "IMPLEMENTED_ADAPTER_POSITIVE_AND_BOUNDARY",
+      "remaining": "Registered saved schema only; no generic acquisition/partial loader/native profile or execution validation",
+      "test_id": "P02-T01-01"
+    },
+    {
+      "disposition": "PARTIAL_SAVED_ADAPTER_SCOPE",
+      "implemented_facets": "IMPLEMENTED_INTEGRATION_IDENTITY_GUARDS",
+      "remaining": "Registered saved schema only; no generic acquisition/partial loader/native profile or execution validation",
+      "test_id": "P02-T01-02"
+    },
+    {
+      "disposition": "PARTIAL_SAVED_ADAPTER_SCOPE",
+      "implemented_facets": "IMPLEMENTED_INTEGRATION_NUMERIC_SCHEMA_GUARDS",
+      "remaining": "Registered saved schema only; no generic acquisition/partial loader/native profile or execution validation",
+      "test_id": "P02-T01-03"
+    },
+    {
+      "disposition": "PARTIAL_SAVED_ADAPTER_SCOPE",
+      "implemented_facets": "IMPLEMENTED_INTEGRATION_NO_FILL_SEMANTICS",
+      "remaining": "Registered saved schema only; no generic acquisition/partial loader/native profile or execution validation",
+      "test_id": "P02-T01-04"
+    },
+    {
+      "disposition": "PARTIAL_SAVED_ADAPTER_SCOPE",
+      "implemented_facets": "IMPLEMENTED_INTEGRATION_RAW_DECODED_GIT_HASH_DOMAINS",
+      "remaining": "Registered saved schema only; no generic acquisition/partial loader/native profile or execution validation",
+      "test_id": "P02-T01-05"
+    },
+    {
+      "disposition": "PARTIAL_SAVED_ADAPTER_SCOPE",
+      "implemented_facets": "IMPLEMENTED_INTEGRATION_SAME_BLOCK_NO_LOOKAHEAD_GUARDS",
+      "remaining": "Registered saved schema only; no generic acquisition/partial loader/native profile or execution validation",
+      "test_id": "P02-T01-06"
+    },
+    {
+      "disposition": "PARTIAL_SAVED_ADAPTER_SCOPE",
+      "implemented_facets": "IMPLEMENTED_ADAPTER_COVERAGE_AND_CAPABILITY",
+      "remaining": "Registered saved schema only; no generic acquisition/partial loader/native profile or execution validation",
+      "test_id": "P02-T01-07"
+    },
+    {
+      "disposition": "PARTIAL_SAVED_ADAPTER_SCOPE",
+      "implemented_facets": "IMPLEMENTED_INTEGRATION_ORIGIN_AND_NOT_REPLAYABLE_GUARDS",
+      "remaining": "Registered saved schema only; no generic acquisition/partial loader/native profile or execution validation",
+      "test_id": "P02-T01-08"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T02-01"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T02-02"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T02-03"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T02-04"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T02-05"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T02-06"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T02-07"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T02-08"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T02-09"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T03-01"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T03-02"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T03-03"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T03-04"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T03-05"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T03-06"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T03-07"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T03-08"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T03-09"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T03-10"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T04-01"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T04-02"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T04-03"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T04-04"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T04-05"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T04-06"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T04-07"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T04-08"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T04-09"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T04-10"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T05-01"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T05-02"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T05-03"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T05-04"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T05-05"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T05-06"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T05-07"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T05-08"
+    },
+    {
+      "disposition": "NOT_IMPLEMENTED_OUTSIDE_P02_02_AUTHORIZATION",
+      "implemented_facets": "NONE",
+      "remaining": "Future module outside P02-02",
+      "test_id": "P02-T05-09"
+    }
+  ]
+}
