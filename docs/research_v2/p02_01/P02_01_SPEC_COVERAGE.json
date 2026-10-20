@@ -1,0 +1,65 @@
+{
+  "authorization": "V2_P02_01_OFFLINE_CORE_CONTRACTS_AUTHORIZED",
+  "evidence_origin": "SYNTHETIC",
+  "gate_a": "BLOCKED_BACKEND_INDEPENDENCE",
+  "gate_b": "PASS_REGISTERED_CORE_SCOPE",
+  "historical_execution": "NOT_AUTHORIZED",
+  "implemented_contract_portions": {
+    "P02-T01-02": [
+      "strict chain/block/hash/address identity",
+      "bool-is-not-int rejection",
+      "asset identity remains chain/address bound"
+    ],
+    "P02-T01-03": [
+      "decimal uint8 boundaries",
+      "uint256 unsigned quantities",
+      "int256 explicitly signed deltas",
+      "canonical integer strings and unit-bound amounts"
+    ],
+    "P02-T01-04": [
+      "AVAILABLE zero remains distinct from MISSING",
+      "AVAILABLE/MISSING/UNSUPPORTED/QUARANTINED tagged values",
+      "OK/BLOCKED/REJECTED tagged results"
+    ],
+    "P02-T01-05": [
+      "raw/decoded/content/Git digest domains",
+      "raw byte verification without line-ending normalization",
+      "schema-versioned canonical JSON",
+      "duplicate-key, numeric-literal, float, binary and unordered-container rejection",
+      "deterministic map/vector and Unicode-preserving round trip"
+    ],
+    "P02-T01-06": [
+      "same chain/number/hash guard",
+      "effective-time and available-time no-lookahead guard",
+      "canonicality evidence identity/time/block binding"
+    ],
+    "P02-T01-08": [
+      "origin and parent-lineage contracts",
+      "synthetic fixture visibility",
+      "derived-to-observed promotion rejection",
+      "DEX/oracle source-kind confusion guard",
+      "immutable future-state reference only"
+    ]
+  },
+  "not_implemented": {
+    "P02-T01-01": "HistoricalStatePort saved-pack adapter is reserved for P02-02.",
+    "P02-T01-07": "Coverage/capability adapter evaluation is reserved for P02-02.",
+    "P02-T02-01..09": "Oracle and valuation math is not authorized in P02-01.",
+    "P02-T03-01..10": "Liquidation assessment/execution is not authorized.",
+    "P02-T04-01..10": "AMM quote/swap implementation is not authorized.",
+    "P02-T05-01..09": "Agents and orchestration are not authorized."
+  },
+  "remaining_clauses_in_partial_specs": {
+    "P02-T01-02": "Pool identity/token-order comparison needs P02-02 registered-schema loading; syntax checks are not source verification.",
+    "P02-T01-03": "Metadata-to-asset decimal agreement and native profiles are not established by uint8/range checks. Pool liquidity is not token-denominated SignedDelta; NET_LIQUIDITY is reserved/unsupported here.",
+    "P02-T01-04": "Availability tags do not implement debt-free or native execution decisions.",
+    "P02-T01-05": "Decoded-byte verification consumes supplied decoded bytes; bounded gzip decoding and saved-pack assembly belong to P02-02.",
+    "P02-T01-06": "Guards bind supplied identities and historical effective/available times; no live canonicality proof or native oracle freshness is established.",
+    "P02-T01-08": "Alchemy summary parsing/coverage capability evaluation belongs to P02-02; no full value replay or independent-backend proof is fabricated."
+  },
+  "work_review_repairs": ["WR-01", "WR-02", "WR-03", "WR-04", "WR-05", "WR-06"],
+  "content_hash_contract": "EvidenceEnvelope.content_sha256 uses a typed stable projection excluding EvidenceRef.retrieved_at_s, including nested references. Full to_canonical serialization retains acquisition provenance. Block/effective/available/canonicality assertion timestamps remain in content; arbitrary payload keys are not stripped.",
+  "schema_version": "defistress-v2-p02-01-coverage/1",
+  "specification_total": 46,
+  "statement": "This mapping covers bounded contract portions only and is not a claim that all 46 design specifications passed."
+}
