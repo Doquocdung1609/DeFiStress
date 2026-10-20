@@ -1,10 +1,10 @@
 {
   "schema": "defistress-v2-program-control/1",
-  "status": "PROGRAM_BOOTSTRAPPED_WAITING_FOR_CODEX_EXECUTION",
+  "status": "P02_01_TECHNICAL_ACCEPTED_P02_02_READY_FOR_CODEX_EXECUTION",
   "target": "DEFISTRESS_V2_TECHNICAL_RELEASE_CANDIDATE",
   "target_reached": false,
   "authority": "V2_AUTONOMOUS_RESEARCH_ENGINEERING_ORCHESTRATION_AUTHORIZED",
-  "observed_at_utc": "2026-10-19T17:32:13.690Z",
+  "observed_at_utc": "2026-10-20T03:04:48.060898+00:00",
   "scientific_status": "GATE_A_BLOCKED — GATE_B_SCOPED_PASS — PHASE02_HISTORICAL_EXECUTION_NOT_AUTHORIZED",
   "gate_a": "BLOCKED",
   "gate_b": "SCOPED_PASS",
@@ -16,25 +16,43 @@
     "blueprint_lock": "8de52bebabef376be700836e6f93a92d7394d2c3",
     "v1_tag": "v1.0.0-scientific-baseline",
     "v1_tag_object": "cdd9c3a80f4df21e7e054045cb93fdc5a7f731c7",
-    "v1_target": "2b505813d35d3cf6f4414585f9dd50f3b4281ac2"
+    "v1_target": "2b505813d35d3cf6f4414585f9dd50f3b4281ac2",
+    "p02_01_base": "0ea1c878a6e0f0d62fe01bedc37f619602b9d35f",
+    "p02_01_original_codex_head": "c67129877f97be204e5623954dd3057166fb7531",
+    "p02_01_accepted_head": "59193efc6d4e8ae1ad3233187d8c0e6b8fd9bd43",
+    "p02_01_integration": "92112799bad6bb6fa26b5540e833d80a8fc669c2"
   },
   "issues": {
     "program": 38,
-    "next_codex_package": 39,
-    "completed_offline_issue": 35
+    "next_codex_package": 42,
+    "completed_offline_issue": 35,
+    "completed_p02_01": 39
   },
   "tooling": {
     "codex_dispatch_tool_available": false,
     "codex_task_launched": false,
-    "status": "WAITING_FOR_CODEX_EXECUTION",
+    "status": "NO_DIRECT_DISPATCH_TOOL",
     "scan_scope": "connected tool metadata; no callable coding-task dispatch endpoint found",
-    "subagents_spawned": 0
+    "subagents_spawned": 0,
+    "external_codex_completion_observed": {
+      "pr": 41,
+      "original_head": "c67129877f97be204e5623954dd3057166fb7531"
+    },
+    "next_package_dispatched": false
   },
   "preservation": {
-    "original_blobs": 1281,
-    "current_blobs": 1295,
-    "changed_or_deleted": 0,
-    "additions": 14
+    "base": "0ea1c878a6e0f0d62fe01bedc37f619602b9d35f",
+    "head": "92112799bad6bb6fa26b5540e833d80a8fc669c2",
+    "original_blobs": 1298,
+    "current_blobs": 1312,
+    "unchanged": 1297,
+    "modified_existing": [
+      "pyproject.toml"
+    ],
+    "approved_modification": "wheel packages list adds defistress_v2 only",
+    "additions": 14,
+    "deleted": 0,
+    "protected_scientific_inputs_changed": 0
   },
   "merge_reviews": [
     {
@@ -86,20 +104,69 @@
       "lint": "CI Ruff/mypy PASS; no new Python in design",
       "review_comment": 6273100666,
       "regression": "all 1281 original blobs preserved; no API coupling to PR36"
+    },
+    {
+      "pr": 41,
+      "original_head": "c67129877f97be204e5623954dd3057166fb7531",
+      "head": "59193efc6d4e8ae1ad3233187d8c0e6b8fd9bd43",
+      "merge": "92112799bad6bb6fa26b5540e833d80a8fc669c2",
+      "decision": "TECHNICAL_ACCEPTED_MERGED",
+      "review_comment": 6282270949,
+      "findings": {
+        "P0": 0,
+        "P1_resolved": 4,
+        "P2_resolved": 2,
+        "unresolved_scoped_blockers": 0
+      },
+      "tests": {
+        "contract_pass": 97,
+        "legacy_pass": 80,
+        "L1_pass": 196,
+        "L1_fail": 0,
+        "L1_blocked": 0,
+        "repository_pytest_pass": 462,
+        "frontend_pass": 21,
+        "original_contract_cases_retained": 70,
+        "review_controls_added": 27
+      },
+      "ci_runs": [
+        39360953923,
+        39360957405,
+        39360953910,
+        39360957530
+      ],
+      "ci_status": "SUCCESS",
+      "integration_ci_run": 39361686871,
+      "spec_coverage": {
+        "total": 46,
+        "partially_implemented_contract_specs": 6,
+        "not_implemented": 40
+      },
+      "local_tools": "Python3.12.14 Linux;pytest8.4.2;Ruff0.17.1;mypy1.20.2 strict9 source files;wheel10 V2 entries",
+      "rollback": "reviewed revert; no tag movement"
     }
   ],
   "post_merge_ci": {
-    "head": "4ef28e4589304f2f4f6dda3b39be55b4550e3a85",
-    "run_id": 39293917577,
-    "url": "https://github.com/Doquocdung1609/DeFiStress/actions/runs/39293917577",
-    "status": "COMPLETED",
-    "conclusion": "SUCCESS",
-    "repository_pytest_pass": 365,
-    "frontend_tests_pass": 21,
+    "head": "92112799bad6bb6fa26b5540e833d80a8fc669c2",
+    "run_id": 39361686871,
+    "url": "https://github.com/Doquocdung1609/DeFiStress/actions/runs/39361686871",
+    "status": "completed",
+    "conclusion": "success",
+    "artifact_id": 12238165096,
+    "zip_sha256": "0509429b8c060faa4797ed7c7f9f3303c8abbb85a869233d2eda680113541d97",
+    "junit": {
+      "tests": 462,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "f5fd361349140e1650447449a9ebed6eb70ec595b2680195e8e11db0a4c2a3fc",
+      "bytes": 61650
+    },
     "ruff": "PASS",
-    "mypy_sim_49_source_files": "PASS",
+    "mypy_sim": "PASS",
     "optional_real_rpc": "SKIPPED",
-    "artifact_scope": "repository CI logs read; not an independent replay"
+    "changed_scientific_paths": [],
+    "frontend_tests_pass": 21
   },
   "artifact_recheck": {
     "artifact_id": 12203756156,
@@ -157,9 +224,9 @@
       "id": "CODEX-DISPATCH",
       "class": "TOOLING",
       "reason": "NO_CALLABLE_CODEX_TASK_TOOL",
-      "resolution": "actual executor accepts Issue39; Issue creation is not dispatch",
+      "resolution": "Actual executor can accept Issue42; external P02-01 completion observed, no Work dispatch tool",
       "blocks": [
-        "P02-01 coding execution"
+        "P02-02 automatic task launch"
       ]
     },
     {
@@ -192,15 +259,16 @@
   "work_packages": [
     {
       "id": "P02-01",
-      "owner": "Codex",
+      "owner": "Codex original implementation; Work review/repair",
       "dependencies": [],
       "authorization": "BOUNDED_PURE_VALIDATION_ONLY",
-      "status": "WAITING_FOR_CODEX_EXECUTION",
+      "status": "TECHNICAL_ACCEPTED",
       "issue": 39,
-      "pr": null,
-      "commit": null,
-      "tests": "NOT_RUN_NEW_PACKAGE",
-      "next_action": "Execute CODEX_NEXT_WORK_PACKAGE.md using actual Codex executor; preserve no-engine boundary"
+      "pr": 41,
+      "commit": "59193efc6d4e8ae1ad3233187d8c0e6b8fd9bd43",
+      "tests": "97 core+80 legacy PASS;L1=196PASS;repo462PASS/frontend21PASS",
+      "next_action": "Preserve accepted interface; consume it in bounded P02-02 only",
+      "integration_commit": "92112799bad6bb6fa26b5540e833d80a8fc669c2"
     },
     {
       "id": "P02-02",
@@ -208,12 +276,15 @@
       "dependencies": [
         "P02-01"
       ],
-      "authorization": "READ_ONLY_SAVED_ADAPTER_AFTER_SCOPE_REVIEW",
-      "status": "WAITING_DEPENDENCY",
+      "authorization": "BOUNDED_READ_ONLY_SAVED_ARTIFACT_LOADING",
+      "status": "READY_FOR_CODEX_EXECUTION",
       "pr": null,
       "commit": null,
       "tests": "NOT_RUN",
-      "next_action": "Work prepares bounded saved-schema mapping task after01 acceptance; no RPC"
+      "next_action": "Actual Codex executor accepts Issue42 and pinned CODEX_NEXT_WORK_PACKAGE.md; no RPC/engine",
+      "issue": 42,
+      "base_commit": "92112799bad6bb6fa26b5540e833d80a8fc669c2",
+      "execution_status": "NOT_DISPATCHED_NO_DIRECT_TOOL"
     },
     {
       "id": "P02-03",
@@ -345,7 +416,7 @@
   ],
   "rollback": "reviewed revert PR only; no reset/force-push/tag movement",
   "qa": {
-    "review_kind": "MAINTAINER_SELF_REVIEW_NOT_EXTERNAL_PEER_REVIEW",
+    "review_kind": "WORK_REVIEW_SEPARATE_FROM_CODEX_AUTHORSHIP;POST_REPAIR_WORK_SELF_RECHECK;NOT_EXTERNAL_PEER_REVIEW",
     "branch_protected": false,
     "ruleset_read": "403_FEATURE_UNAVAILABLE_NOT_POLICY_PASS",
     "override_used": false,
@@ -357,5 +428,153 @@
   "related_files": [
     "PROGRAM_CONTROL.md",
     "CODEX_NEXT_WORK_PACKAGE.md"
+  ],
+  "current_authority": "V2_P02_01_TECHNICAL_REVIEW_AND_GOVERNED_INTEGRATION",
+  "preservation_at_bootstrap": {
+    "original_blobs": 1281,
+    "current_blobs": 1295,
+    "changed_or_deleted": 0,
+    "additions": 14
+  },
+  "ci_history": [
+    {
+      "head": "4ef28e4589304f2f4f6dda3b39be55b4550e3a85",
+      "run_id": 39293917577,
+      "url": "https://github.com/Doquocdung1609/DeFiStress/actions/runs/39293917577",
+      "status": "COMPLETED",
+      "conclusion": "SUCCESS",
+      "repository_pytest_pass": 365,
+      "frontend_tests_pass": 21,
+      "ruff": "PASS",
+      "mypy_sim_49_source_files": "PASS",
+      "optional_real_rpc": "SKIPPED",
+      "artifact_scope": "repository CI logs read; not an independent replay"
+    }
+  ],
+  "p02_01_artifacts": [
+    {
+      "id": 12237425968,
+      "run": 39360953923,
+      "zip_sha256": "61494ac2faba88ab472f10676bf8b2d186dc7c61b9abd8936041a1dc1adf9630",
+      "checksum_entries_verified": 4,
+      "files": {
+        "SHA256SUMS": {
+          "bytes": 475,
+          "sha256": "38e608e522eb20c923abf0faf8cf3e1d9f285140ab24e41d8a97bc49c39aa68a"
+        },
+        "VALIDATION_GATES.json": {
+          "bytes": 46000,
+          "sha256": "b7134dfccd3af622834bac67d9df9733f9d887885f7d15535926b5e3cc06df77"
+        },
+        "execution-metadata.txt": {
+          "bytes": 358,
+          "sha256": "921e773bb678a89467ebab37f37c4ebd56498da67caf73cdbb7874fe8a340fcb"
+        },
+        "legacy-offline-junit.xml": {
+          "bytes": 11144,
+          "sha256": "b63b0101ac50f989daac82f8707de2294845edc70722dd3dfd55ae0d83d16cd8",
+          "tests": 80,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "p02-01-junit.xml": {
+          "bytes": 13422,
+          "sha256": "0c2de56aae356cf96e7629190dba122c6b59badcc9320f40aa8370278e745b2a",
+          "tests": 97,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "checkout_commit": "59193efc6d4e8ae1ad3233187d8c0e6b8fd9bd43"
+    },
+    {
+      "id": 12237526118,
+      "run": 39360957405,
+      "zip_sha256": "e44ab5239f4581cac36e08da6590e2b32cf5878636c6c8d43a2dad49ef6d1b1c",
+      "checksum_entries_verified": 4,
+      "files": {
+        "SHA256SUMS": {
+          "bytes": 475,
+          "sha256": "4145cf65323352e964a8f390653640e8ca4825c8252272e8cd5ef6929230742d"
+        },
+        "VALIDATION_GATES.json": {
+          "bytes": 46000,
+          "sha256": "74dbe20fec3de214a79e974e8c9638fd75159df6b40e8178d549b45fa117d30b"
+        },
+        "execution-metadata.txt": {
+          "bytes": 366,
+          "sha256": "0047bbc618884f59c520d49e2f8efd3ff47b3ccc78e3f0bf9bc1516054d94c09"
+        },
+        "legacy-offline-junit.xml": {
+          "bytes": 11144,
+          "sha256": "9cdce31b7df4da97a798d8e8091b8b00204ed906c201365ea2b44d70a59daf3f",
+          "tests": 80,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "p02-01-junit.xml": {
+          "bytes": 13422,
+          "sha256": "58d10401f52a14e3d7a540bf59ca2651f685913b14b510c5da64b40942c9ca01",
+          "tests": 97,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "checkout_commit": "8738ce151fb817a941c50282265fe46ca48fd259"
+    },
+    {
+      "id": 12236943516,
+      "run": 39360953910,
+      "zip_sha256": "e0460da7ba2b34ae72333fd0e962613c78255e4a7d9fa314327f2083d9122cec",
+      "checkout": "59193efc6d4e8ae1ad3233187d8c0e6b8fd9bd43",
+      "files": {
+        "full-pytest.xml": {
+          "sha256": "55eafa79589c8ae8e0e36ec6dd6755a1790b8ea535dbce71fa097a5410f3b678",
+          "bytes": 61655,
+          "tests": 462,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "environment-smoke.xml": {
+          "sha256": "6f83f9144458ddd4c04f573107579b3d478e419e495f6e75d1ce03d56c909f67",
+          "bytes": 810,
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      }
+    }
+  ],
+  "parallel_design_queue": [
+    {
+      "id": "P03-D01",
+      "owner": "Work design",
+      "status": "READY_FOR_DESIGN_ONLY",
+      "deliverable": "Layer/edge/unit and loss-ledger contract; predefined no-shock/no-sale/no-valuation-transmission controls",
+      "acceptance": "Every proposed propagation link has state/time/mechanism/unit/evidence and no double-counting; no new experiment",
+      "runtime": "NOT_AUTHORIZED"
+    },
+    {
+      "id": "P04-D01",
+      "owner": "Work protocol",
+      "status": "READY_FOR_DESIGN_ONLY",
+      "deliverable": "Separate Terra vintage/availability and sealed holdout/baseline evaluation protocol",
+      "acceptance": "Prediction-time availability, signed lead-time/miss/false-alarm denominators preregistered; negative outcomes admissible; no predictor/tuning",
+      "runtime": "NOT_AUTHORIZED"
+    },
+    {
+      "id": "P05-D01",
+      "owner": "Work validation protocol",
+      "status": "READY_FOR_DESIGN_ONLY",
+      "deliverable": "Independent comparator/retention/reproduction and reviewer protocol",
+      "acceptance": "Code independence distinct from external reviewer independence; tolerances/holdouts sealed before comparison; no empirical campaign",
+      "runtime": "NOT_AUTHORIZED"
+    }
   ]
 }
