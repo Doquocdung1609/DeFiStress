@@ -149,7 +149,7 @@
       "does_not_establish": "No new primary-source verification. Search snippets/reprints not admitted as primary evidence.",
       "historical_dataset_publication_at": null,
       "bytes": null,
-      "bytes_status": "WEB_TOOL_CONTENT_READ_NOT_WIRE_BYTES_VERIFIED"
+      "bytes_status": "ACCESS_FAILED_NO_SOURCE_BODY_VERIFIED"
     },
     {
       "id": "PIT-R10",
@@ -163,7 +163,7 @@
       "does_not_establish": "No receipt/header/state readback performed; transaction times/blocks remain source-reported.",
       "historical_dataset_publication_at": null,
       "bytes": null,
-      "bytes_status": "WEB_TOOL_CONTENT_READ_NOT_WIRE_BYTES_VERIFIED"
+      "bytes_status": "ACCESS_FAILED_NO_SOURCE_BODY_VERIFIED"
     },
     {
       "id": "PIT-R11",
@@ -177,7 +177,7 @@
       "does_not_establish": "No claim of verified symbol/window/object availability; documentation alone does not prove coverage.",
       "historical_dataset_publication_at": null,
       "bytes": null,
-      "bytes_status": "WEB_TOOL_CONTENT_READ_NOT_WIRE_BYTES_VERIFIED"
+      "bytes_status": "ACCESS_FAILED_NO_SOURCE_BODY_VERIFIED"
     }
   ],
   "additional_repository_sources_read": [
