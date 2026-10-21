@@ -1,0 +1,3275 @@
+{
+  "schema": "defistress-terra-p04-01-source-audit/1",
+  "source_commit": "9207ead7db3acf1332b34cebcd19981c2f7bd9cc",
+  "authority": "V2_TERRA_EARLY_WARNING_HISTORICAL_VALIDATION_PROGRAM_AUTHORIZED",
+  "scope": "EXISTING_SAVED_ARTIFACT_BYTE_SCHEMA_CLOCK_AUDIT_NO_FEATURE_OR_BACKTEST",
+  "inventory_selection": "tracked blob paths matching terra|early.warning|cutoff|forecast, case-insensitive; not an independent-source count",
+  "inventory_counts": {
+    "paths": 304,
+    "unique_git_blobs": 272,
+    "full_bytes": 35,
+    "metadata_only": 269
+  },
+  "verified_inputs": [
+    {
+      "path": "terra_may2022_v1_pack/terra_may2022_v1_pack/source_contract.json",
+      "git_blob_sha1": "81bfd5125792b270b7c1584c95015ac329add04d",
+      "sha256_git_bytes": "20ccc07387c57ced45d4100c8ad5ba8bbb7eb2d3c5a4c4343ba0db5dfed97b3a",
+      "size_bytes": 1562,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "scripts/terra/complete_historical_data.py",
+      "git_blob_sha1": "43acc8139e93f4da600ca0bf83c3e8c26abf0241",
+      "sha256_git_bytes": "a9ec67b8f847ce8fabe57c0b379611566e741f5eeeea3fdb2358a244594418f2",
+      "size_bytes": 72267,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "sim/terra/schemas.py",
+      "git_blob_sha1": "f651b33f5b58c56752b0596fb925a43c4e70a8e9",
+      "sha256_git_bytes": "11fc92523d2d74ec60caca226c679e8d085928fd3d290caf7052545367147f15",
+      "size_bytes": 9140,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "sim/terra/datasets.py",
+      "git_blob_sha1": "2a67fbb5ddcf2a49dcd549373ef331e08fe99b79",
+      "sha256_git_bytes": "011e2f2335a4df3ef8410e7a4022800abdc2dabf20d197b84e22e517399e0b98",
+      "size_bytes": 5024,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "sim/terra/leakage.py",
+      "git_blob_sha1": "82ff4239dd1ebe33b2885fc592982d36a893574e",
+      "sha256_git_bytes": "6c5af779d66d4bc737ffa8d74508f0203edfac84ad57e3326cb166694a384a3e",
+      "size_bytes": 1274,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "sim/terra/ground_truth.py",
+      "git_blob_sha1": "b2337a959b83069b732ae596bf5ef2548d3a6a6a",
+      "sha256_git_bytes": "87eaf9a1cdcea5eb2b3ccad253138625c9663548936e523387e8b492e30ae740",
+      "size_bytes": 470,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "sim/terra/early_warning_v2.py",
+      "git_blob_sha1": "386614c75714c1ff97362c242ad8e47e28c3686b",
+      "sha256_git_bytes": "8948ced68354a2dd2fdc40600040c94af445b83f1ccbcc3fb61c0ebe4180a83c",
+      "size_bytes": 11241,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/processed/terra_may2022_v1.csv",
+      "git_blob_sha1": "6ddd0d91d6481f688edd4291c4871386e8e290ca",
+      "sha256_git_bytes": "dd3c8293b2a698be161d7eb7b33c361d4d1bc57b9472603960b57efedf93898d",
+      "size_bytes": 141510,
+      "status": "FULL_BYTES_VERIFIED",
+      "csv_profile": {
+        "rows": 312,
+        "fields": [
+          "timestamp",
+          "block_height",
+          "ust_price",
+          "luna_price",
+          "ust_supply",
+          "luna_supply",
+          "anchor_total_deposits",
+          "anchor_deposit_flow",
+          "anchor_withdrawal_flow",
+          "ust_native_redemption_volume",
+          "luna_minted_from_redemption",
+          "luna_burned",
+          "ust_dex_sell_volume",
+          "terra_dex_liquidity",
+          "terra_dex_depth",
+          "top10_anchor_share",
+          "top100_anchor_share",
+          "curve_ust_liquidity",
+          "curve_pool_imbalance",
+          "curve_ust_price",
+          "bridge_outflow_terra_to_ethereum",
+          "bridge_inflow_ethereum_to_terra",
+          "btc_reserve_value",
+          "reserve_intervention_volume",
+          "source_name",
+          "source_type",
+          "chain_id",
+          "raw_reference",
+          "quality_flag"
+        ],
+        "missing": {
+          "timestamp": 0,
+          "block_height": 0,
+          "ust_price": 0,
+          "luna_price": 0,
+          "ust_supply": 0,
+          "luna_supply": 0,
+          "anchor_total_deposits": 0,
+          "anchor_deposit_flow": 0,
+          "anchor_withdrawal_flow": 0,
+          "ust_native_redemption_volume": 0,
+          "luna_minted_from_redemption": 0,
+          "luna_burned": 0,
+          "ust_dex_sell_volume": 0,
+          "terra_dex_liquidity": 0,
+          "terra_dex_depth": 0,
+          "top10_anchor_share": 0,
+          "top100_anchor_share": 0,
+          "curve_ust_liquidity": 312,
+          "curve_pool_imbalance": 312,
+          "curve_ust_price": 0,
+          "bridge_outflow_terra_to_ethereum": 0,
+          "bridge_inflow_ethereum_to_terra": 0,
+          "btc_reserve_value": 312,
+          "reserve_intervention_volume": 0,
+          "source_name": 0,
+          "source_type": 0,
+          "chain_id": 0,
+          "raw_reference": 0,
+          "quality_flag": 0
+        },
+        "first": "2022-05-01T00:00:00+00:00",
+        "last": "2022-05-13T23:00:00+00:00"
+      }
+    },
+    {
+      "path": "data/processed/terra_may2022_v1_import_manifest.json",
+      "git_blob_sha1": "e4abe29ecc3d4c97083e070233cf507015335998",
+      "sha256_git_bytes": "e42db6a2e1fed8c35d76b5885a16020d6f0713c9772efc4495e6dcfc5f656670",
+      "size_bytes": 849,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/processed/terra_extended/data_dictionary.md",
+      "git_blob_sha1": "1a7dd7e96b8488126d71018bd95b41b46d504f57",
+      "sha256_git_bytes": "e0893a28b84a7c372a293d3918b1e895bd55fa8ff91dbda7851d8b2c8dd12e9c",
+      "size_bytes": 4669,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.parquet",
+      "git_blob_sha1": "38b2cfe84380e4ef6131151018c008cddec92b56",
+      "sha256_git_bytes": "0e338c3d096600d93bf29884370e46cb5e260820e910b483a7f19048521dcac1",
+      "size_bytes": 65818,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/processed/terra_extended/data_completion_report.md",
+      "git_blob_sha1": "7fbf545132655888594fbcd3e5b7eb10ba60aade",
+      "sha256_git_bytes": "99b90012f6b1e7ad2be8171bc243259d237fbea8efe455ac4d93fb14acd2b4f9",
+      "size_bytes": 8199,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "git_blob_sha1": "57aa3c12652e457c31fe0e2d31cbaa8c58e58d96",
+      "sha256_git_bytes": "a79582c60d6850314c10ae8da25c4894bc618c600c762203a07e3a57949bc740",
+      "size_bytes": 287456,
+      "status": "FULL_BYTES_VERIFIED",
+      "csv_profile": {
+        "rows": 1776,
+        "fields": [
+          "timestamp",
+          "block_height",
+          "ust_price",
+          "luna_price",
+          "ust_supply",
+          "luna_supply",
+          "anchor_total_deposits",
+          "anchor_deposit_flow",
+          "anchor_withdrawal_flow",
+          "ust_native_redemption_volume",
+          "gross_luna_issuance_from_native_swaps",
+          "backing_ratio",
+          "top10_anchor_share",
+          "top100_anchor_share"
+        ],
+        "missing": {
+          "timestamp": 0,
+          "block_height": 0,
+          "ust_price": 0,
+          "luna_price": 0,
+          "ust_supply": 0,
+          "luna_supply": 1464,
+          "anchor_total_deposits": 0,
+          "anchor_deposit_flow": 1584,
+          "anchor_withdrawal_flow": 1584,
+          "ust_native_redemption_volume": 1608,
+          "gross_luna_issuance_from_native_swaps": 1608,
+          "backing_ratio": 1464,
+          "top10_anchor_share": 168,
+          "top100_anchor_share": 168
+        },
+        "first": "2022-03-01T00:00:00+00:00",
+        "last": "2022-05-13T23:00:00+00:00"
+      }
+    },
+    {
+      "path": "data/processed/terra_extended/provenance_manifest.json",
+      "git_blob_sha1": "f55a4543161fd15a5f1492cc2b70de941144c146",
+      "sha256_git_bytes": "40cc8d0265372b171cda122e63b956e5dbeca67ea8ee680c78adbd3fd0748ce2",
+      "size_bytes": 30505,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/processed/terra_final/final_report.md",
+      "git_blob_sha1": "fefa18e758e0d9829a9df27ee1c69960360fe006",
+      "sha256_git_bytes": "02d78b27d51aad4d7da71c51f03c721f2f530d296cc9c969ebb27ed03a224325",
+      "size_bytes": 7807,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/processed/terra_final/data_quality.json",
+      "git_blob_sha1": "a7b2e2a9d783156d7ba777c0fde96cd83aabb63c",
+      "sha256_git_bytes": "839ea5290214470559fef1a630ee327d8db5507b5bb7060c499f287909327506",
+      "size_bytes": 5658,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/processed/terra_final/final_metrics.json",
+      "git_blob_sha1": "662fcad4c302ee95d1b2e9e46a9f4d85fb9a1934",
+      "sha256_git_bytes": "f69252a7e3fd9dc37fa822ec923d6f1494ce7af6a241a0540bef8fae4d565a65",
+      "size_bytes": 1506,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/processed/terra_data_completion/source_lineage.json",
+      "git_blob_sha1": "1856cdd3f9603072730973745384528f9d1abe64",
+      "sha256_git_bytes": "168fa8709ceca54b3212e953b9966f3378e062b96be17e2bc1a529f1f0df6a95",
+      "size_bytes": 10216,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/processed/terra_data_completion/temporal_quality_report.json",
+      "git_blob_sha1": "5b6761a17fea4d37a2cc2a781e458450d6534bcc",
+      "sha256_git_bytes": "253b3acac234a8367b1528308e48210f1aff47c7f9fa22408bad55242675e7d7",
+      "size_bytes": 10148,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/processed/research_final/validation_audit/phase5_terra_early_warning_audit.json",
+      "git_blob_sha1": "c57615dbfe686863b366db648234cf0af1d6b8ca",
+      "sha256_git_bytes": "0d71ad963fe9263c8c943c594622e4cb67a38b1f168d1c7a217b1de3f5b19116",
+      "size_bytes": 11897,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/terra_may2022_v1_evidence.csv",
+      "git_blob_sha1": "24e13dfa5f7c9d3acbaab7ec40ebfad4e0433d89",
+      "sha256_git_bytes": "9727946c2087afa34dfeb0ac11c4d1e9376cd8c82e6bc5557cf9be83ef838c0a",
+      "size_bytes": 96522,
+      "status": "FULL_BYTES_VERIFIED",
+      "csv_profile": {
+        "rows": 312,
+        "fields": [
+          "timestamp",
+          "block_height",
+          "ust_price",
+          "luna_price",
+          "ust_supply",
+          "luna_supply",
+          "anchor_total_deposits",
+          "anchor_deposit_flow",
+          "anchor_withdrawal_flow",
+          "ust_native_redemption_volume",
+          "luna_minted_from_redemption",
+          "luna_burned",
+          "ust_dex_sell_volume",
+          "terra_dex_liquidity",
+          "terra_dex_depth",
+          "top10_anchor_share",
+          "top100_anchor_share",
+          "curve_ust_liquidity",
+          "curve_pool_imbalance",
+          "curve_ust_price",
+          "bridge_outflow_terra_to_ethereum",
+          "bridge_inflow_ethereum_to_terra",
+          "btc_reserve_value",
+          "reserve_intervention_volume"
+        ],
+        "missing": {
+          "timestamp": 0,
+          "block_height": 0,
+          "ust_price": 0,
+          "luna_price": 0,
+          "ust_supply": 0,
+          "luna_supply": 0,
+          "anchor_total_deposits": 0,
+          "anchor_deposit_flow": 0,
+          "anchor_withdrawal_flow": 0,
+          "ust_native_redemption_volume": 0,
+          "luna_minted_from_redemption": 0,
+          "luna_burned": 0,
+          "ust_dex_sell_volume": 0,
+          "terra_dex_liquidity": 0,
+          "terra_dex_depth": 0,
+          "top10_anchor_share": 0,
+          "top100_anchor_share": 0,
+          "curve_ust_liquidity": 312,
+          "curve_pool_imbalance": 312,
+          "curve_ust_price": 0,
+          "bridge_outflow_terra_to_ethereum": 0,
+          "bridge_inflow_ethereum_to_terra": 0,
+          "btc_reserve_value": 312,
+          "reserve_intervention_volume": 0
+        },
+        "first": "2022-05-01T00:00:00+00:00",
+        "last": "2022-05-13T23:00:00+00:00"
+      }
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/source_inventory.csv",
+      "git_blob_sha1": "10f6db40e318d57b9dfd453fb4f816c1a3acf0f7",
+      "sha256_git_bytes": "e83310f9c7909b0bee8f67099432e8887045f2caa5ed043a80899a4494bc8112",
+      "size_bytes": 5154,
+      "status": "FULL_BYTES_VERIFIED",
+      "csv_profile": {
+        "rows": 38,
+        "fields": [
+          "path",
+          "size_bytes",
+          "readable",
+          "columns",
+          "sample_rows"
+        ],
+        "missing": {
+          "path": 0,
+          "size_bytes": 0,
+          "readable": 0,
+          "columns": 0,
+          "sample_rows": 0
+        }
+      }
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/evidence_map.json",
+      "git_blob_sha1": "ac70cc9a1697d5a51b8909e9feca0fb5373f934b",
+      "sha256_git_bytes": "ca146e47b8597cd315da4947d5643ca691b58a218393e1164952752d346fa470",
+      "size_bytes": 7344,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/provenance_manifest.json",
+      "git_blob_sha1": "68035e4aad8f4d2902b5fdbc4173e488113ccfa1",
+      "sha256_git_bytes": "9e6718150f8ca7f836a722e5bd9eedb1c8b1eaff47944147178671fc43a22581",
+      "size_bytes": 8509,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/Datasets.md",
+      "git_blob_sha1": "b13060af3ed4520c71ce0a1364700f2d0bf6a781",
+      "sha256_git_bytes": "31a99697172dafc85f7c9ddb8eb2720ca4124c917ec6a579358051b125325b2d",
+      "size_bytes": 27807,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/README.md",
+      "git_blob_sha1": "d1b02eceb663bfb3db5bdf2a71e7e1a077bd959b",
+      "sha256_git_bytes": "4469d8445403c5094ac6e8041036280027b7371905f98ece5d91ff85900eb028",
+      "size_bytes": 12095,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/prices/ust_price_may2022.parquet",
+      "git_blob_sha1": "4177abf7e63be7daaed9864711a6784b64b4521c",
+      "sha256_git_bytes": "043c03404a9e53c352df645e192a360b30ce6f853d2006fdec298e950ecdd869",
+      "size_bytes": 383037,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/prices/luna_price_may2022.parquet",
+      "git_blob_sha1": "925817f34b45dc84d4bfec594975557c5c026d14",
+      "sha256_git_bytes": "2007339f3436f3b4690a6cfd3fa9bf324d2586eca081cdacaea5a42244027465",
+      "size_bytes": 385826,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor/anchor_deposit_concentration.parquet",
+      "git_blob_sha1": "2a7a1470db821dd78fd0654490df0bffe1fe9578",
+      "sha256_git_bytes": "8717912cb4800b2aa471474bd9d4cefa405b7827914331c0037cc31f29068651",
+      "size_bytes": 18121,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/curve/curve_ust_3pool_may7.parquet",
+      "git_blob_sha1": "2f9850f94d495b58e715930842b1b20a80fa7c2b",
+      "sha256_git_bytes": "40adfe729e1cb039aab46798ebd95a9338be215e9f8f5ac330aec7e3a0ae26bf",
+      "size_bytes": 24074,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/curve/curve_ust_may2021.parquet",
+      "git_blob_sha1": "9a97ea20b55a4a45a8626b2a2037722113e33cca",
+      "sha256_git_bytes": "6ddd99260568095be7dfbcdd7544c430a9c49a6cba5a6c27144d55d9fc096f50",
+      "size_bytes": 76002,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/native_swaps/luna_total_supply_run.parquet",
+      "git_blob_sha1": "f51904cbfad0bdca5b2ffa6cea9e7e750fc17afd",
+      "sha256_git_bytes": "db340cb1cbdc8fb94d232fe114c990b11a047488ac6d4a61ba622edf99a173a1",
+      "size_bytes": 7864,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/external/lunc-usd-max.csv",
+      "git_blob_sha1": "1c2c895d0db22c7ea7d490959606018f3adc09fd",
+      "sha256_git_bytes": "06b114d0f8cde94b990585ad529ea945dccfdfe5bef393edd74bbad522766ac9",
+      "size_bytes": 96949,
+      "status": "FULL_BYTES_VERIFIED",
+      "csv_profile": {
+        "rows": 1252,
+        "fields": [
+          "snapped_at",
+          "price",
+          "market_cap",
+          "total_volume"
+        ],
+        "missing": {
+          "snapped_at": 0,
+          "price": 0,
+          "market_cap": 0,
+          "total_volume": 0
+        }
+      }
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/external/ustc-usd-max.csv",
+      "git_blob_sha1": "ef1341e76c59aeb90b6a8d84af42f068458478fe",
+      "sha256_git_bytes": "a9f2d11e4c06f01952f17439ac0433d527f7d5516c0a4c5685f71aedd6db2dad",
+      "size_bytes": 58303,
+      "status": "FULL_BYTES_VERIFIED",
+      "csv_profile": {
+        "rows": 739,
+        "fields": [
+          "snapped_at",
+          "price",
+          "market_cap",
+          "total_volume"
+        ],
+        "missing": {
+          "snapped_at": 0,
+          "price": 0,
+          "market_cap": 0,
+          "total_volume": 0
+        }
+      }
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor_run/epoch_state_fig10.parquet",
+      "git_blob_sha1": "cc6cd5991fb8e7293d2f6589ca2eda6b57e28635",
+      "sha256_git_bytes": "29e6cb98fe7a3631e67f6e7e42289c1b11a1fc63a54255242e83367711774074",
+      "size_bytes": 40160,
+      "status": "FULL_BYTES_VERIFIED"
+    }
+  ],
+  "candidate_inventory": [
+    {
+      "path": "audit_terra_may2022_v1.py",
+      "git_blob_sha1": "a70cb5ba96419ce0aee145cd459044e60a9f947e",
+      "size_bytes": 8740,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "backend/alembic/versions/0002_terra_research.py",
+      "git_blob_sha1": "b9600fbc88a725459266c5b1217543e2f230e027",
+      "size_bytes": 642,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "backend/app/adapters/terra/__init__.py",
+      "git_blob_sha1": "62e7065739733cf1dadc2dc5bd8d1dd5ef24b1e9",
+      "size_bytes": 227,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "backend/app/adapters/terra/history.py",
+      "git_blob_sha1": "37b98390b5a5e6c103a2093cd0f68da457e0192e",
+      "size_bytes": 1558,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "backend/app/services/terra_datasets.py",
+      "git_blob_sha1": "556990e2738d519bde6e8992274185ead49e21f7",
+      "size_bytes": 4547,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "backend/app/services/terra_export.py",
+      "git_blob_sha1": "2296ffc69b320ca99e235892d2d8226571f5115f",
+      "size_bytes": 3930,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "backend/app/terra_api.py",
+      "git_blob_sha1": "4f30ce0bec7313fd81c17c3081f801cf76bddd53",
+      "size_bytes": 20515,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/model_v2/terra_abm_v2_strict_oos.json",
+      "git_blob_sha1": "51e518c4df02c935def0affbd8eb422ad0d3847e",
+      "size_bytes": 644967,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/research_final/figures/T01_terra_prices.png",
+      "git_blob_sha1": "13bd2d9b3ee10c14c2a3f0b0a802afe0c67a5526",
+      "size_bytes": 58859,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/research_final/figures/T02_terra_supply.png",
+      "git_blob_sha1": "72e247c5ffa37b120e3a61e2c814a0a26c18d46f",
+      "size_bytes": 41076,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/research_final/figures/T08_early_warning.png",
+      "git_blob_sha1": "d75e844fb91486d19d6e4e603a48630a2b08395d",
+      "size_bytes": 63679,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/research_final/frozen_v3/tables/terra_limitations.csv",
+      "git_blob_sha1": "264d5294bd8da978f8718c15b9ca7bcb221c704b",
+      "size_bytes": 270,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/research_final/tables/Table_10_terra_fit.csv",
+      "git_blob_sha1": "93f4336db0665bc6361a58b10687fd77c6d45e1f",
+      "size_bytes": 435,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/research_final/tables/Table_10_terra_fit.md",
+      "git_blob_sha1": "81fde4d6bbbd2e1acbc9826cb112c1d132201ec9",
+      "size_bytes": 581,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/research_final/tables/Table_11_terra_early_warning.csv",
+      "git_blob_sha1": "dda111e762ca2883152aa3c6cdcfba16a0613756",
+      "size_bytes": 1361,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/research_final/tables/Table_11_terra_early_warning.md",
+      "git_blob_sha1": "63c844b0de0aff082df57cc4e69a3701760e37ac",
+      "size_bytes": 1680,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/research_final/tables/Table_12_terra_mechanism.csv",
+      "git_blob_sha1": "9b4c0a5acc75c25c74ede57dc14f6372e4375495",
+      "size_bytes": 310,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/research_final/tables/Table_12_terra_mechanism.md",
+      "git_blob_sha1": "cfa1637a46e52d986bdfcf4e8f18e19aa919c2f3",
+      "size_bytes": 427,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/research_final/tables/Table_13_terra_stress.csv",
+      "git_blob_sha1": "307106ecb35fb015d920ed60ef281b38753d619d",
+      "size_bytes": 287,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/research_final/tables/Table_13_terra_stress.md",
+      "git_blob_sha1": "286e673cde422e58b5aa653718fcd85417ba9b3f",
+      "size_bytes": 417,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/research_final/tables/Table_14_terra_robustness.csv",
+      "git_blob_sha1": "e326c11cfed136d35c31a388b7718251494bf1d5",
+      "size_bytes": 405,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/research_final/tables/Table_14_terra_robustness.md",
+      "git_blob_sha1": "55e63bbe59deea93e9f11ae186faaf15e2839290",
+      "size_bytes": 531,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/research_final/terra/audit/ablation.json",
+      "git_blob_sha1": "ab571fe316d358d818ab0f64209fbb2628308bfb",
+      "size_bytes": 2025,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/research_final/terra/audit/conditional_abm_final.json",
+      "git_blob_sha1": "a5412d875e6bc6a44efe4787519307b17484e2e1",
+      "size_bytes": 276064,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/research_final/terra/audit/conditional_benchmark.json",
+      "git_blob_sha1": "0779e47571d5a2fc7d671c9f264526f85dc3786d",
+      "size_bytes": 8507,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/research_final/terra/audit/data_quality.json",
+      "git_blob_sha1": "70f157d9eaa957ac80acd1b3e00aa54bb71d2540",
+      "size_bytes": 5658,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/research_final/terra/audit/final_metrics.json",
+      "git_blob_sha1": "662fcad4c302ee95d1b2e9e46a9f4d85fb9a1934",
+      "size_bytes": 1506,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/research_final/terra/audit/final_report.md",
+      "git_blob_sha1": "c51c4c2dc620dbc140efd6360577fbf62d34fe74",
+      "size_bytes": 7245,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/research_final/terra/audit/model_diagnostics.json",
+      "git_blob_sha1": "79a973b6f4c81cf9c8f0d09e43cdb4ae7828e094",
+      "size_bytes": 2026,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/research_final/terra/audit/monte_carlo.json",
+      "git_blob_sha1": "424bd68addb208a7e7ec1cdd69674933151eeca3",
+      "size_bytes": 148660,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/research_final/terra/audit/parameter_uncertainty_ensemble.json",
+      "git_blob_sha1": "8d430808f11e0d9554840030ab1c6bdfdc0037f4",
+      "size_bytes": 187663,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/research_final/terra/audit/protocol_mechanism_validation.json",
+      "git_blob_sha1": "f25d51dc5160d856fd69286c1ddad2f11298f1af",
+      "size_bytes": 6887,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/research_final/terra/audit/reproducibility_manifest.json",
+      "git_blob_sha1": "531598eb588afbe3abbd4b6163877ce6191d6aa9",
+      "size_bytes": 10914,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/research_final/terra/audit/rolling_origin.json",
+      "git_blob_sha1": "49d745eee4ed15c9b4ca1e1e2eae9d4c19dc80a3",
+      "size_bytes": 1330,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/research_final/terra/audit/sensitivity.json",
+      "git_blob_sha1": "2a86f81a821774f89929bf7a47cd4fc2739ede87",
+      "size_bytes": 6290,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/research_final/terra/audit/strict_oos_v2.json",
+      "git_blob_sha1": "51e518c4df02c935def0affbd8eb422ad0d3847e",
+      "size_bytes": 644967,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/research_final/terra/demo/early_warning_timeline.json",
+      "git_blob_sha1": "371daf3bf8d7f9dcf25d47964eebc7b48ae9f82f",
+      "size_bytes": 4159282,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/research_final/terra/demo/historical_fit.json",
+      "git_blob_sha1": "d9d64dfe18745c6c3f98a0652f5a97c3b535c606",
+      "size_bytes": 342629,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/research_final/terra/demo/mechanism_check.json",
+      "git_blob_sha1": "3fb910b28bc69d3f36ffbe23084269440e0faa52",
+      "size_bytes": 1635,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/research_final/terra/demo/presentation_summary.json",
+      "git_blob_sha1": "81c97e6d85810b86e1dbf5744e5d669adc8aaf6c",
+      "size_bytes": 12974,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/research_final/terra/demo/reproducibility_manifest.json",
+      "git_blob_sha1": "db79f515e20b87f01c39fe7f9a6ae3848e60f00c",
+      "size_bytes": 1697,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/research_final/terra/demo/stress_test.json",
+      "git_blob_sha1": "475f9369e363081d543da2d18519a506e7c5bfa2",
+      "size_bytes": 244474,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/research_final/validation_audit/phase5_terra_early_warning_audit.json",
+      "git_blob_sha1": "c57615dbfe686863b366db648234cf0af1d6b8ca",
+      "size_bytes": 11897,
+      "verification": "FULL_BYTES_VERIFIED",
+      "sha256_git_bytes": "0d71ad963fe9263c8c943c594622e4cb67a38b1f168d1c7a217b1de3f5b19116"
+    },
+    {
+      "path": "data/processed/terra_data_completion/block_height_coverage.json",
+      "git_blob_sha1": "7fb66e22b45d630278d856eb19a92caff81b31aa",
+      "size_bytes": 306,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/terra_data_completion/raw_inventory.csv",
+      "git_blob_sha1": "a2696bf0e99b3f3b6512f9d0ebfd159b365799a6",
+      "size_bytes": 89352,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/terra_data_completion/raw_inventory.json",
+      "git_blob_sha1": "db3c9598a3cd4197b942594d7ac76e4e1fc25004",
+      "size_bytes": 189438,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/terra_data_completion/raw_inventory.md",
+      "git_blob_sha1": "bae8310555334f2e8f0308d48e33d68a638d3ef6",
+      "size_bytes": 55763,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/terra_data_completion/source_lineage.json",
+      "git_blob_sha1": "1856cdd3f9603072730973745384528f9d1abe64",
+      "size_bytes": 10216,
+      "verification": "FULL_BYTES_VERIFIED",
+      "sha256_git_bytes": "168fa8709ceca54b3212e953b9966f3378e062b96be17e2bc1a529f1f0df6a95"
+    },
+    {
+      "path": "data/processed/terra_data_completion/temporal_quality_report.json",
+      "git_blob_sha1": "5b6761a17fea4d37a2cc2a781e458450d6534bcc",
+      "size_bytes": 10148,
+      "verification": "FULL_BYTES_VERIFIED",
+      "sha256_git_bytes": "253b3acac234a8367b1528308e48210f1aff47c7f9fa22408bad55242675e7d7"
+    },
+    {
+      "path": "data/processed/terra_demo/early_warning_timeline.json",
+      "git_blob_sha1": "371daf3bf8d7f9dcf25d47964eebc7b48ae9f82f",
+      "size_bytes": 4159282,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/terra_demo/historical_fit.json",
+      "git_blob_sha1": "d9d64dfe18745c6c3f98a0652f5a97c3b535c606",
+      "size_bytes": 342629,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/terra_demo/mechanism_check.json",
+      "git_blob_sha1": "3fb910b28bc69d3f36ffbe23084269440e0faa52",
+      "size_bytes": 1635,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/terra_demo/presentation_summary.json",
+      "git_blob_sha1": "81c97e6d85810b86e1dbf5744e5d669adc8aaf6c",
+      "size_bytes": 12974,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/terra_demo/reproducibility_manifest.json",
+      "git_blob_sha1": "8b534d8e26d386db5dd629618b592e04ea6f1404",
+      "size_bytes": 1697,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/terra_demo/stress_test.json",
+      "git_blob_sha1": "475f9369e363081d543da2d18519a506e7c5bfa2",
+      "size_bytes": 244474,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/terra_extended/anchor_wallet_events.parquet",
+      "git_blob_sha1": "54414e161d0ceb0947537ae022d0ae42ccceb70a",
+      "size_bytes": 19848386,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/terra_extended/data_completion_report.md",
+      "git_blob_sha1": "7fbf545132655888594fbcd3e5b7eb10ba60aade",
+      "size_bytes": 8199,
+      "verification": "FULL_BYTES_VERIFIED",
+      "sha256_git_bytes": "99b90012f6b1e7ad2be8171bc243259d237fbea8efe455ac4d93fb14acd2b4f9"
+    },
+    {
+      "path": "data/processed/terra_extended/data_dictionary.csv",
+      "git_blob_sha1": "5823a6384a5eb1b94fe6d6b1680c0f21a3cb5936",
+      "size_bytes": 4215,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/terra_extended/data_dictionary.md",
+      "git_blob_sha1": "1a7dd7e96b8488126d71018bd95b41b46d504f57",
+      "size_bytes": 4669,
+      "verification": "FULL_BYTES_VERIFIED",
+      "sha256_git_bytes": "e0893a28b84a7c372a293d3918b1e895bd55fa8ff91dbda7851d8b2c8dd12e9c"
+    },
+    {
+      "path": "data/processed/terra_extended/lfg_reserve_events.parquet",
+      "git_blob_sha1": "8288e322168f479ada8231f01976300438a792ff",
+      "size_bytes": 7911,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/terra_extended/provenance_manifest.json",
+      "git_blob_sha1": "f55a4543161fd15a5f1492cc2b70de941144c146",
+      "size_bytes": 30505,
+      "verification": "FULL_BYTES_VERIFIED",
+      "sha256_git_bytes": "40cc8d0265372b171cda122e63b956e5dbeca67ea8ee680c78adbd3fd0748ce2"
+    },
+    {
+      "path": "data/processed/terra_extended/terra_native_swaps.parquet",
+      "git_blob_sha1": "4b281769857354a7647c446535c4518200869fde",
+      "size_bytes": 9743660,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "git_blob_sha1": "57aa3c12652e457c31fe0e2d31cbaa8c58e58d96",
+      "size_bytes": 287456,
+      "verification": "FULL_BYTES_VERIFIED",
+      "sha256_git_bytes": "a79582c60d6850314c10ae8da25c4894bc618c600c762203a07e3a57949bc740"
+    },
+    {
+      "path": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.parquet",
+      "git_blob_sha1": "38b2cfe84380e4ef6131151018c008cddec92b56",
+      "size_bytes": 65818,
+      "verification": "FULL_BYTES_VERIFIED",
+      "sha256_git_bytes": "0e338c3d096600d93bf29884370e46cb5e260820e910b483a7f19048521dcac1"
+    },
+    {
+      "path": "data/processed/terra_final/ablation.json",
+      "git_blob_sha1": "ab571fe316d358d818ab0f64209fbb2628308bfb",
+      "size_bytes": 2025,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/terra_final/conditional_abm_final.json",
+      "git_blob_sha1": "a5412d875e6bc6a44efe4787519307b17484e2e1",
+      "size_bytes": 276064,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/terra_final/conditional_benchmark.json",
+      "git_blob_sha1": "0779e47571d5a2fc7d671c9f264526f85dc3786d",
+      "size_bytes": 8507,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/terra_final/data_quality.json",
+      "git_blob_sha1": "a7b2e2a9d783156d7ba777c0fde96cd83aabb63c",
+      "size_bytes": 5658,
+      "verification": "FULL_BYTES_VERIFIED",
+      "sha256_git_bytes": "839ea5290214470559fef1a630ee327d8db5507b5bb7060c499f287909327506"
+    },
+    {
+      "path": "data/processed/terra_final/final_metrics.json",
+      "git_blob_sha1": "662fcad4c302ee95d1b2e9e46a9f4d85fb9a1934",
+      "size_bytes": 1506,
+      "verification": "FULL_BYTES_VERIFIED",
+      "sha256_git_bytes": "f69252a7e3fd9dc37fa822ec923d6f1494ce7af6a241a0540bef8fae4d565a65"
+    },
+    {
+      "path": "data/processed/terra_final/final_report.md",
+      "git_blob_sha1": "fefa18e758e0d9829a9df27ee1c69960360fe006",
+      "size_bytes": 7807,
+      "verification": "FULL_BYTES_VERIFIED",
+      "sha256_git_bytes": "02d78b27d51aad4d7da71c51f03c721f2f530d296cc9c969ebb27ed03a224325"
+    },
+    {
+      "path": "data/processed/terra_final/model_diagnostics.json",
+      "git_blob_sha1": "79a973b6f4c81cf9c8f0d09e43cdb4ae7828e094",
+      "size_bytes": 2026,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/terra_final/monte_carlo.json",
+      "git_blob_sha1": "424bd68addb208a7e7ec1cdd69674933151eeca3",
+      "size_bytes": 148660,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/terra_final/parameter_uncertainty_ensemble.json",
+      "git_blob_sha1": "8d430808f11e0d9554840030ab1c6bdfdc0037f4",
+      "size_bytes": 187663,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/terra_final/protocol_mechanism_validation.json",
+      "git_blob_sha1": "f25d51dc5160d856fd69286c1ddad2f11298f1af",
+      "size_bytes": 6887,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/terra_final/reproducibility_manifest.json",
+      "git_blob_sha1": "0d33a38fcd7fb8a7b998192be7724195c876c5cf",
+      "size_bytes": 10992,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/terra_final/rolling_origin.json",
+      "git_blob_sha1": "49d745eee4ed15c9b4ca1e1e2eae9d4c19dc80a3",
+      "size_bytes": 1330,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/terra_final/sensitivity.json",
+      "git_blob_sha1": "2a86f81a821774f89929bf7a47cd4fc2739ede87",
+      "size_bytes": 6290,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/terra_final/strict_oos_v2.json",
+      "git_blob_sha1": "51e518c4df02c935def0affbd8eb422ad0d3847e",
+      "size_bytes": 644967,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/terra_final/test_evidence.json",
+      "git_blob_sha1": "9ed0822098c4f4192275f9a80cb56983eb6829be",
+      "size_bytes": 5009,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/terra_may2022_v1.csv",
+      "git_blob_sha1": "6ddd0d91d6481f688edd4291c4871386e8e290ca",
+      "size_bytes": 141510,
+      "verification": "FULL_BYTES_VERIFIED",
+      "sha256_git_bytes": "dd3c8293b2a698be161d7eb7b33c361d4d1bc57b9472603960b57efedf93898d"
+    },
+    {
+      "path": "data/processed/terra_may2022_v1_audit.json",
+      "git_blob_sha1": "13da2c98a71f75cf684fe0cff3d50b321fddf361",
+      "size_bytes": 8858,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/terra_may2022_v1_import_manifest.json",
+      "git_blob_sha1": "e4abe29ecc3d4c97083e070233cf507015335998",
+      "size_bytes": 849,
+      "verification": "FULL_BYTES_VERIFIED",
+      "sha256_git_bytes": "e42db6a2e1fed8c35d76b5885a16020d6f0713c9772efc4495e6dcfc5f656670"
+    },
+    {
+      "path": "data/processed/terra_may2022_v1_validation.json",
+      "git_blob_sha1": "bf8b62a3d88aaf9f93d74550578b317c945c30b6",
+      "size_bytes": 1141,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/processed/terra_model_benchmark_v1.json",
+      "git_blob_sha1": "40bc35161e540864a0644aed0b5ce355c8f5bb2a",
+      "size_bytes": 1864732,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/evidence_map.json",
+      "git_blob_sha1": "ac70cc9a1697d5a51b8909e9feca0fb5373f934b",
+      "size_bytes": 7344,
+      "verification": "FULL_BYTES_VERIFIED",
+      "sha256_git_bytes": "ca146e47b8597cd315da4947d5643ca691b58a218393e1164952752d346fa470"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/mapping_report.json",
+      "git_blob_sha1": "8814385e2c7a7cbe1de42581bb2d356ba2f9e81d",
+      "size_bytes": 24329,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/missing_fields.json",
+      "git_blob_sha1": "82397449e77546b33c0e82c5cc48e4f76e20fe93",
+      "size_bytes": 109,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/missing_source_detail.json",
+      "git_blob_sha1": "22b4eb9bd2c67fb2cd11ad19378724c14fa67081",
+      "size_bytes": 57997,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/provenance_manifest.json",
+      "git_blob_sha1": "68035e4aad8f4d2902b5fdbc4173e488113ccfa1",
+      "size_bytes": 8509,
+      "verification": "FULL_BYTES_VERIFIED",
+      "sha256_git_bytes": "9e6718150f8ca7f836a722e5bd9eedb1c8b1eaff47944147178671fc43a22581"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/.extracted",
+      "git_blob_sha1": "be2339998716b3861b3f7c952c10c3dacdd48e3c",
+      "size_bytes": 32,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/.gitignore",
+      "git_blob_sha1": "310c917de7aa6ddf959fa779ba43a976992c0601",
+      "size_bytes": 195,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/Datasets.md",
+      "git_blob_sha1": "b13060af3ed4520c71ce0a1364700f2d0bf6a781",
+      "size_bytes": 27807,
+      "verification": "FULL_BYTES_VERIFIED",
+      "sha256_git_bytes": "31a99697172dafc85f7c9ddb8eb2720ca4124c917ec6a579358051b125325b2d"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/LICENSE",
+      "git_blob_sha1": "4511f70056e0846daa93050fb5452aab4623f67c",
+      "size_bytes": 3189,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/README.md",
+      "git_blob_sha1": "d1b02eceb663bfb3db5bdf2a71e7e1a077bd959b",
+      "size_bytes": 12095,
+      "verification": "FULL_BYTES_VERIFIED",
+      "sha256_git_bytes": "4469d8445403c5094ac6e8041036280027b7371905f98ece5d91ff85900eb028"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/code/config.py",
+      "git_blob_sha1": "fe25504a617d584c5e01f6dff6d1767b6ac0697e",
+      "size_bytes": 1171,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/code/figures/fig01_anchor_net_rates.py",
+      "git_blob_sha1": "6a92cdcee8380a419cdb9cceae408e631dfd65b4",
+      "size_bytes": 3085,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/code/figures/fig02_ust_supply_by_entity.py",
+      "git_blob_sha1": "59da7ad0de2385544315609084257772ca3f9d61",
+      "size_bytes": 3544,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/code/figures/fig03_anchor_cashflow.py",
+      "git_blob_sha1": "ad43feab9de7d01daddd266c521a306426941ace",
+      "size_bytes": 7228,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/code/figures/fig04_network_volume.py",
+      "git_blob_sha1": "a326d309f8f824f1172a6851c096016eed74cbf3",
+      "size_bytes": 8442,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/code/figures/fig05_market_cap.py",
+      "git_blob_sha1": "f461b2ce11280f029a6b16276630a131c0bb97a6",
+      "size_bytes": 2566,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/code/figures/fig06_anchor_concentration.py",
+      "git_blob_sha1": "a9d663ef1a2910832f719ec033f66b427650708f",
+      "size_bytes": 4248,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/code/figures/fig07_wallet_A_B.py",
+      "git_blob_sha1": "4d706f093d0ceeae686b995eae788d6204ddac6b",
+      "size_bytes": 4433,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/code/figures/fig08_curve_swaps.py",
+      "git_blob_sha1": "ea32ab0d4a7c2cf7e7f8333efceccc6745f3521a",
+      "size_bytes": 5826,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/code/figures/fig09_binance_ustusdt.py",
+      "git_blob_sha1": "ec2f3f39e3407d486c12b874e0730ec19a15716e",
+      "size_bytes": 3966,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/code/figures/fig10_run_outflows.py",
+      "git_blob_sha1": "6f03a6745c2af593e9b5f658b1a169f09edc948c",
+      "size_bytes": 4674,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/code/figures/fig11_swap_arbitrage.py",
+      "git_blob_sha1": "7bcb44701c4ef07e3f512de3b5b4a690423d5b15",
+      "size_bytes": 4656,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/code/figures/fig12_death_spiral.py",
+      "git_blob_sha1": "b56623ed5a26c5c7d86ca1a88450ecaa5c1ea33a",
+      "size_bytes": 3533,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/code/figures/fig13_outflow_by_size.py",
+      "git_blob_sha1": "df15eaf80c3f9783929db909a3440b5425b9546b",
+      "size_bytes": 5932,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/code/figures/fig14_cox_hazard.py",
+      "git_blob_sha1": "8ddb80c7b7ed324decf4844a06b603788310b3a1",
+      "size_bytes": 7231,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/code/figures/figIA1_staking_yield.py",
+      "git_blob_sha1": "8c67481549f4820d5f84d37ea8e9dd1db4f8dc9c",
+      "size_bytes": 3803,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/code/figures/figIA2_curve_swaps_2021.py",
+      "git_blob_sha1": "f2380eceb8ed1ae145389cb8025415f54463697f",
+      "size_bytes": 1116,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/code/figures/figIA3_may2021_dynamics.py",
+      "git_blob_sha1": "a40bb62e8950aef6a692e69ce18cc14c1f82e5ee",
+      "size_bytes": 2106,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/code/figures/figIA4_may2021_by_size.py",
+      "git_blob_sha1": "dc4312c30b68b05197dcb93009b8e05423579668",
+      "size_bytes": 3146,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/code/figures/figIA5_swap_arbitrage_2021.py",
+      "git_blob_sha1": "55a1673d311f99568aa9c428cbfd65717265cff6",
+      "size_bytes": 566,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/code/figures/fit_timecox.R",
+      "git_blob_sha1": "8c5b9a07d01688f0a80d3a79e37c3012ee1347d5",
+      "size_bytes": 3120,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/code/lib/figstyle.py",
+      "git_blob_sha1": "0413c9a2384286818889a481d1d7068231e34a44",
+      "size_bytes": 4709,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/code/lib/terra_lib.py",
+      "git_blob_sha1": "c1a873fb6d8eb132c2af58f97ee98cecce935296",
+      "size_bytes": 2689,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/code/prep/build_fig13_inputs.py",
+      "git_blob_sha1": "59a442f7536ba5ebd97b4af9eb7546c1a9978f79",
+      "size_bytes": 5190,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/code/prep/build_swap_arb_price.py",
+      "git_blob_sha1": "02a31667990f036c02994f12f147ab3189c936e0",
+      "size_bytes": 5277,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/code/prep/prep_fig06_concentration.py",
+      "git_blob_sha1": "cd1b896e46a03cab0c342fbcee64f7a03df0754d",
+      "size_bytes": 2449,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/code/prep/prep_loss_panel.py",
+      "git_blob_sha1": "ad53c5cb8f0fa15f51a719021388395d462256d0",
+      "size_bytes": 13217,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/code/run_all.py",
+      "git_blob_sha1": "99b088d6267e5af020243c481bbddff9d51df948",
+      "size_bytes": 2732,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/code/tables/fmt_table1_token_volume.py",
+      "git_blob_sha1": "b850dce479b014631cd37fd440eccc931e887859",
+      "size_bytes": 1926,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/code/tables/fmt_table2_loss_summary.py",
+      "git_blob_sha1": "377669b964a9c90c0425f8a26bd32682656983fb",
+      "size_bytes": 3667,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/code/tables/fmt_table3_loss_regression.py",
+      "git_blob_sha1": "c013c53a09879f1de9d87ad5196498ae3378884c",
+      "size_bytes": 3892,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/code/tables/fmt_tableIA1_native_swap_run.py",
+      "git_blob_sha1": "a212fc8f513eb55004a9bff009de8c4e6cce9bee",
+      "size_bytes": 3769,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/code/tables/fmt_tableIA2_native_swap_run_2021.py",
+      "git_blob_sha1": "3b7e0a545b109eb3b7e9f79dd9595372f08a09db",
+      "size_bytes": 3433,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor/Anchor_daily_stats.parquet",
+      "git_blob_sha1": "3ec394fac83dfc057870bf833497928291bd7d95",
+      "size_bytes": 92516,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor/Anchor_global_stats_fullnode.parquet",
+      "git_blob_sha1": "3bc841e489a0b7b36ff039a9a3b3e9a0749b31b1",
+      "size_bytes": 2653157,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor/anchor_cashflow_transfers.parquet",
+      "git_blob_sha1": "8c345abfcab7fd6a742fa41201f3f08721b7091f",
+      "size_bytes": 2168177,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor/anchor_deposit_concentration.parquet",
+      "git_blob_sha1": "2a7a1470db821dd78fd0654490df0bffe1fe9578",
+      "size_bytes": 18121,
+      "verification": "FULL_BYTES_VERIFIED",
+      "sha256_git_bytes": "8717912cb4800b2aa471474bd9d4cefa405b7827914331c0037cc31f29068651"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor/aust_rnk_col5.parquet",
+      "git_blob_sha1": "6d5dc8931beb330dcc37abfd6ff2c5fec2d04eeb",
+      "size_bytes": 1431209,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor/aust_supply_col5.parquet",
+      "git_blob_sha1": "8bd9bbd7ea77e8a57da87d61a09a45e380c5edce",
+      "size_bytes": 5875,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor/aust_topk_col4.parquet",
+      "git_blob_sha1": "27f48a0acea9dc51b8a4e9cf34463c74a080db7f",
+      "size_bytes": 12391,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor/luna_staking_stats.parquet",
+      "git_blob_sha1": "ff082c5f6345254101382999ce973f19f97eaaa3",
+      "size_bytes": 66790,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor/prerun_deposits.parquet",
+      "git_blob_sha1": "403c57ec80c74df7f79f8f14e9a309546d8f3547",
+      "size_bytes": 14346198,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor_run/anchor_run_tx_cleaned.parquet",
+      "git_blob_sha1": "f0a790d2fc7d703c7338b6a4eb96f5a0ad74e3cf",
+      "size_bytes": 15297286,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor_run/epoch_state_fig10.parquet",
+      "git_blob_sha1": "cc6cd5991fb8e7293d2f6589ca2eda6b57e28635",
+      "size_bytes": 40160,
+      "verification": "FULL_BYTES_VERIFIED",
+      "sha256_git_bytes": "29e6cb98fe7a3631e67f6e7e42289c1b11a1fc63a54255242e83367711774074"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor_run/may2021_aust_run_balances.parquet",
+      "git_blob_sha1": "be268b2ffa43cbf794323f1e2a65e251d31ec0f3",
+      "size_bytes": 6743496,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor_run/may21_anchor_run_prices.parquet",
+      "git_blob_sha1": "74c7c31b2355288bdf9de0c3d04c4ef903ba698b",
+      "size_bytes": 101870,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor_run/run_aust_flow_by_depositor.parquet",
+      "git_blob_sha1": "2cfdc2a399d08fa7649ab0369a0d290dbf1527f3",
+      "size_bytes": 11918512,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/curve/curve_ust_3pool_may7.parquet",
+      "git_blob_sha1": "2f9850f94d495b58e715930842b1b20a80fa7c2b",
+      "size_bytes": 24074,
+      "verification": "FULL_BYTES_VERIFIED",
+      "sha256_git_bytes": "40adfe729e1cb039aab46798ebd95a9338be215e9f8f5ac330aec7e3a0ae26bf"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/curve/curve_ust_may2021.parquet",
+      "git_blob_sha1": "9a97ea20b55a4a45a8626b2a2037722113e33cca",
+      "size_bytes": 76002,
+      "verification": "FULL_BYTES_VERIFIED",
+      "sha256_git_bytes": "6ddd99260568095be7dfbcdd7544c430a9c49a6cba5a6c27144d55d9fc096f50"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/daily_balances/columbus-4-lunaust-supply-breakdown-fullnode.parquet",
+      "git_blob_sha1": "2305b8ff060e3ba7733c2fe47f6fa5cc79fb1c41",
+      "size_bytes": 12617337,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/daily_balances/columbus-5-lunaust-supply-breakdown-fullnode.parquet",
+      "git_blob_sha1": "9913e9cf015d53bead9bc6d0b8bbad47c9f4e09d",
+      "size_bytes": 940698,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/exchange/binance_ustusdt_may7.parquet",
+      "git_blob_sha1": "69dd99ca7b4c916ab8aed4e274e86490087585df",
+      "size_bytes": 441035,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/external/lunc-usd-max.csv",
+      "git_blob_sha1": "1c2c895d0db22c7ea7d490959606018f3adc09fd",
+      "size_bytes": 96949,
+      "verification": "FULL_BYTES_VERIFIED",
+      "sha256_git_bytes": "06b114d0f8cde94b990585ad529ea945dccfdfe5bef393edd74bbad522766ac9"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/external/ustc-usd-max.csv",
+      "git_blob_sha1": "ef1341e76c59aeb90b6a8d84af42f068458478fe",
+      "size_bytes": 58303,
+      "verification": "FULL_BYTES_VERIFIED",
+      "sha256_git_bytes": "a9f2d11e4c06f01952f17439ac0433d527f7d5516c0a4c5685f71aedd6db2dad"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/hazard/survival_may6_12.parquet",
+      "git_blob_sha1": "b42f829f32f0cc261c03b5dc506b85538f53a210",
+      "size_bytes": 6236334,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/hazard/timecox_cum_may6_12.parquet",
+      "git_blob_sha1": "6a7e96ea318871d37115a2afd8b2d65ab4d00a12",
+      "size_bytes": 2642260,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/hazard/ust_discount_may6_12.parquet",
+      "git_blob_sha1": "be13d8c8a201018dbff49f7906a57399215123d5",
+      "size_bytes": 4567,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/labels/anchor_contracts.csv",
+      "git_blob_sha1": "be9abd5f21246a4cfab61525224a1aaa0684b222",
+      "size_bytes": 695,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/labels/interdm_addresses.parquet",
+      "git_blob_sha1": "2d988e3c050c459f9a4d8b2ecae752b456170135",
+      "size_bytes": 18216,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/labels/terra_labels_4vol.parquet",
+      "git_blob_sha1": "a7e7f4a51d30130597d241390f6390d13006e6c3",
+      "size_bytes": 12095,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/loss/anchor_loss_panel.parquet",
+      "git_blob_sha1": "87e7cdef9899eeda0d3020e258fb3ed59ac6b7b7",
+      "size_bytes": 14515626,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/loss/depositor_prerun_size.parquet",
+      "git_blob_sha1": "3dd8a2db99e56761de57fc4c2cf70851d0bce4c6",
+      "size_bytes": 15665917,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/native_swaps/luna_total_supply_run.parquet",
+      "git_blob_sha1": "f51904cbfad0bdca5b2ffa6cea9e7e750fc17afd",
+      "size_bytes": 7864,
+      "verification": "FULL_BYTES_VERIFIED",
+      "sha256_git_bytes": "db340cb1cbdc8fb94d232fe114c990b11a047488ac6d4a61ba622edf99a173a1"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/native_swaps/ust_luna_swaps_run.parquet",
+      "git_blob_sha1": "2d206dede72e3705e5b785804b96c4050b2a5844",
+      "size_bytes": 7307232,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/network/volume_by_group_token.csv",
+      "git_blob_sha1": "8ae9c67bccf8ab8ff8b0b958cc92e0d3bdb43c0d",
+      "size_bytes": 25487,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/prices/luna_price_may2022.parquet",
+      "git_blob_sha1": "925817f34b45dc84d4bfec594975557c5c026d14",
+      "size_bytes": 385826,
+      "verification": "FULL_BYTES_VERIFIED",
+      "sha256_git_bytes": "2007339f3436f3b4690a6cfd3fa9bf324d2586eca081cdacaea5a42244027465"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/prices/ust_luna_minute_price_run.parquet",
+      "git_blob_sha1": "ef40a2f394ddffa7132e9acf1db6e26bacdd9b60",
+      "size_bytes": 606351,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/prices/ust_price_may2022.parquet",
+      "git_blob_sha1": "4177abf7e63be7daaed9864711a6784b64b4521c",
+      "size_bytes": 383037,
+      "verification": "FULL_BYTES_VERIFIED",
+      "sha256_git_bytes": "043c03404a9e53c352df645e192a360b30ce6f853d2006fdec298e950ecdd869"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/tables/table1_token_volume.csv",
+      "git_blob_sha1": "16657c5a2fca127a5dbd74a3435957a2fdae6757",
+      "size_bytes": 655,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/tables/tableIA1_native_swap_users_run.csv",
+      "git_blob_sha1": "f3d5ee0be02aa1e4e1ba59a4ccbf199bbda394e1",
+      "size_bytes": 1700,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/tables/tableIA2_native_swap_users_run_2021.csv",
+      "git_blob_sha1": "c245f2150b1c96c269af9edf5d51845c9bd81f03",
+      "size_bytes": 1516,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/output/figures/Anchor_ANC_subsidy_rate.png",
+      "git_blob_sha1": "a0d525f25286a06d0b3de15b7b0939008bcf2ea4",
+      "size_bytes": 83162,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/output/figures/Anchor_amount_histogram.png",
+      "git_blob_sha1": "2900931ff05286570536b0aeb790b40c0f58ae27",
+      "size_bytes": 65236,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/output/figures/Anchor_deposit_conc.png",
+      "git_blob_sha1": "defe1118a4c6767ae9398e5825d449b5937ff4c0",
+      "size_bytes": 148232,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/output/figures/Anchor_net_rates_recursive_loans.png",
+      "git_blob_sha1": "1866a424406c8e488bf82d43a0b534a38a7380bf",
+      "size_bytes": 148794,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/output/figures/LUNA_staking_decomposition.png",
+      "git_blob_sha1": "3a708dbc8846a578f4a197e477dcfcff094cca19",
+      "size_bytes": 128830,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/output/figures/Luna_new.png",
+      "git_blob_sha1": "2ec2d25b0d03118e8bf08b8b09262cab63700e72",
+      "size_bytes": 164512,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/output/figures/May2021-run-dynamics.png",
+      "git_blob_sha1": "54c8d371314a9f266baaf65dc2a1d5b3c661d1c0",
+      "size_bytes": 155754,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/output/figures/May2021_run_by_size.png",
+      "git_blob_sha1": "1e36110adcb943e144217efcaaf822e7f5f0701c",
+      "size_bytes": 157709,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/output/figures/Run22-Cox-hazard.png",
+      "git_blob_sha1": "b8f1a8a081d8bb2d6d31596912d5cd8b83cdd809",
+      "size_bytes": 256511,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/output/figures/Run_LUNA_supply_price.png",
+      "git_blob_sha1": "05e5bd5da0b03e37dd6c27ea7fc491d47ac40d03",
+      "size_bytes": 125725,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/output/figures/Run_deposit_outflow3.png",
+      "git_blob_sha1": "ca6f336b6227b453f5bb08391a0d1185c15d5081",
+      "size_bytes": 151281,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/output/figures/Run_outflow_by_size_combined_240518.png",
+      "git_blob_sha1": "ec1639863819c14525921fa14841c883a558ec67",
+      "size_bytes": 335148,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/output/figures/UST_new.png",
+      "git_blob_sha1": "9d3bab725835fb9935ad98e389283e34b9ea7b12",
+      "size_bytes": 212152,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/output/figures/anchor_cash_flow.png",
+      "git_blob_sha1": "2686d09fa106e13af50263be0ea19bf048e74cd4",
+      "size_bytes": 166516,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/output/figures/anchor_reserve_injection.png",
+      "git_blob_sha1": "224e420bbabdca5ce2c390d8bd909e7ecf9dce78",
+      "size_bytes": 100311,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/output/figures/binance_May7.png",
+      "git_blob_sha1": "acb57c8abdf6111181edf73fbf2e9404d1ee2c81",
+      "size_bytes": 486979,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/output/figures/curve_swap_May7.png",
+      "git_blob_sha1": "72f55370df161e6e82268eabae8893138952f0d0",
+      "size_bytes": 287984,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/output/figures/curve_swap_may2021.png",
+      "git_blob_sha1": "4de6d135c9c48f4b07cc81e4cda17bac58a855e0",
+      "size_bytes": 641608,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/output/figures/mkt_cap2.png",
+      "git_blob_sha1": "59c2e62f6f3e33224fc3c45a0ab5545d50c1668d",
+      "size_bytes": 145170,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/output/figures/swap_arb.png",
+      "git_blob_sha1": "35f31995f41e3cd39c2248d8f80476bf27bf0d41",
+      "size_bytes": 315958,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/output/figures/swap_arb_may2021.png",
+      "git_blob_sha1": "c256d74794d5f93b698f6fb13103839251ef1104",
+      "size_bytes": 273143,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/output/figures/ust_supply_by_entity.png",
+      "git_blob_sha1": "474f29aafa074498609cd4c121e60dfe15dc8648",
+      "size_bytes": 141698,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/output/figures/wallet_A_B.png",
+      "git_blob_sha1": "306f387176a81adb950aadc8885593a3c05e6d06",
+      "size_bytes": 183332,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/output/tables/anchor_loss_regression.tex",
+      "git_blob_sha1": "cfbd8ac0a7c4c0fd6c166c122db3e572de002ec3",
+      "size_bytes": 2310,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/output/tables/anchor_loss_summary.tex",
+      "git_blob_sha1": "6c0decd53c868e52115d89f8f8865586e7c59ce7",
+      "size_bytes": 870,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/output/tables/native_swap_users_run.tex",
+      "git_blob_sha1": "58de5d1396083bcd3ab5e50c76e5e2ce6907d7cd",
+      "size_bytes": 3187,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/output/tables/native_swap_users_run_2021.tex",
+      "git_blob_sha1": "170dec87db09fdfcbe916f9332ed0283b321caa5",
+      "size_bytes": 2779,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/output/tables/network_entity_classification.tex",
+      "git_blob_sha1": "687c480462425ad995368760036e84280d171b16",
+      "size_bytes": 4579,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/output/tables/network_volume_by_token.tex",
+      "git_blob_sha1": "a793ebbf38d27dc9c397842fd67f7047888b80d7",
+      "size_bytes": 1405,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/requirements.txt",
+      "git_blob_sha1": "093ab211480c38cf6573048c9a936a249918db09",
+      "size_bytes": 815,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/source_inventory.csv",
+      "git_blob_sha1": "10f6db40e318d57b9dfd453fb4f816c1a3acf0f7",
+      "size_bytes": 5154,
+      "verification": "FULL_BYTES_VERIFIED",
+      "sha256_git_bytes": "e83310f9c7909b0bee8f67099432e8887045f2caa5ed043a80899a4494bc8112"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/terra-luna-run-replication.zip",
+      "git_blob_sha1": "09ed7e83d4c4e02fc679a8dead3859548dc17116",
+      "size_bytes": 97835184,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/terra_may2022_v1_evidence.csv",
+      "git_blob_sha1": "24e13dfa5f7c9d3acbaab7ec40ebfad4e0433d89",
+      "size_bytes": 96522,
+      "verification": "FULL_BYTES_VERIFIED",
+      "sha256_git_bytes": "9727946c2087afa34dfeb0ac11c4d1e9376cd8c82e6bc5557cf9be83ef838c0a"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/v4_remaining_diagnostics.json",
+      "git_blob_sha1": "81c3d727e57dd9575b726f275bf206db682f51de",
+      "size_bytes": 16332,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "diagnose_terra_v4_remaining.py",
+      "git_blob_sha1": "7c9c3df0f408266f0e145793fc790a4ba6eb991f",
+      "size_bytes": 9491,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "diagnose_terra_v4_remaining_v2.py",
+      "git_blob_sha1": "f23c489f4ac886c5261772446f250f497ed5cd1b",
+      "size_bytes": 9964,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "docs/TERRA_ABM.md",
+      "git_blob_sha1": "02b3e0661b8da61e3c387ba8c032a0805f623f15",
+      "size_bytes": 1061,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "docs/TERRA_CASE_STUDY.md",
+      "git_blob_sha1": "4c8897ca964869321b439308182d5c7c9ea23ba0",
+      "size_bytes": 1079,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "docs/TERRA_DATA_DICTIONARY.md",
+      "git_blob_sha1": "79799e5434225aca7f7463b3204f807f2a25cb85",
+      "size_bytes": 1313,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "docs/TERRA_DATA_PROVENANCE.md",
+      "git_blob_sha1": "06507d2712084f6b502a9de05fc2a3bc4af941a1",
+      "size_bytes": 1015,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "docs/TERRA_HAZARD_MODEL.md",
+      "git_blob_sha1": "00709f35608109d3c14000d9f4d86da115b10688",
+      "size_bytes": 754,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "docs/TERRA_RESEARCH_BACKGROUND.md",
+      "git_blob_sha1": "14e111a24b441c29c34d85b8878c3e208c03ab91",
+      "size_bytes": 902,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "docs/TERRA_SYSTEM_DYNAMICS.md",
+      "git_blob_sha1": "e1ad1297be32dc860bb12bc057d976bbcbd4482e",
+      "size_bytes": 625,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "docs/data/terra_hourly_state.csv",
+      "git_blob_sha1": "6e4b41c4a12a8fef0742d32ca53d7c189ec6113a",
+      "size_bytes": 834,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "frontend/app/components/terra/TerraCharts.tsx",
+      "git_blob_sha1": "333d0e4b11df531203063d974900e9aa02095262",
+      "size_bytes": 8596,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "frontend/app/components/terra/TerraDashboard.tsx",
+      "git_blob_sha1": "c48459bd8d7815e31845c1d124edd617b63924ad",
+      "size_bytes": 43237,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "frontend/app/terra/[section]/page.tsx",
+      "git_blob_sha1": "813757d7af1a04aa99f9259af6f2ead5a7120639",
+      "size_bytes": 595,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "frontend/lib/terra-demo.test.ts",
+      "git_blob_sha1": "430d71ccda088250c25d1315a86ec900d545dafa",
+      "size_bytes": 1036,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "frontend/lib/terra.test.ts",
+      "git_blob_sha1": "9f4352fb795bec031b33bcbdd8d2695669e8bd5e",
+      "size_bytes": 555,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "frontend/lib/terra.ts",
+      "git_blob_sha1": "c632d733f5ae18d1a74fc7fb6eb463174a80c5de",
+      "size_bytes": 451,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "inspect_terra_missing.py",
+      "git_blob_sha1": "b07109a561681e03d453ae7bcb84d4d2d14eb1ef",
+      "size_bytes": 5636,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "scripts/terra/_cli.py",
+      "git_blob_sha1": "e8e5b4a09b2c6309c78263aa0aae0fab71dfeb75",
+      "size_bytes": 3117,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "scripts/terra/_fetch_normalized.py",
+      "git_blob_sha1": "a7db9871670cb069c76bae7d5cedcac8735b8751",
+      "size_bytes": 4148,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "scripts/terra/_fetch_unavailable.py",
+      "git_blob_sha1": "1d106f0515dfc7e857d8595eaa810163b9be54cd",
+      "size_bytes": 1706,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "scripts/terra/benchmark_abm.py",
+      "git_blob_sha1": "c0379f52bc942b797b15414efe8cde427f3779fd",
+      "size_bytes": 1733,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "scripts/terra/build_hourly_dataset.py",
+      "git_blob_sha1": "2db5a584a669bb393cfc17aa31c377147d1d9f37",
+      "size_bytes": 1532,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "scripts/terra/complete_historical_data.py",
+      "git_blob_sha1": "43acc8139e93f4da600ca0bf83c3e8c26abf0241",
+      "size_bytes": 72267,
+      "verification": "FULL_BYTES_VERIFIED",
+      "sha256_git_bytes": "a9ec67b8f847ce8fabe57c0b379611566e741f5eeeea3fdb2358a244594418f2"
+    },
+    {
+      "path": "scripts/terra/fetch_anchor_history.py",
+      "git_blob_sha1": "9fc51c450a4c086a11cb87e5a4d3f8c7b6b020a6",
+      "size_bytes": 152,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "scripts/terra/fetch_bridge_flows.py",
+      "git_blob_sha1": "557fbc45de6ca4970b7ffc5251bcad299a334397",
+      "size_bytes": 231,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "scripts/terra/fetch_curve_ethereum.py",
+      "git_blob_sha1": "fb4535e7d6d076339f0a94ad9e461a45ace6dc5a",
+      "size_bytes": 259,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "scripts/terra/fetch_terra_dex.py",
+      "git_blob_sha1": "7d993dbbf2efb03ee03ef3cbb2cb9c62a7c3e743",
+      "size_bytes": 151,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "scripts/terra/fetch_terra_history.py",
+      "git_blob_sha1": "3b03cb239275ecd4977ef71b686722ccd0e536c3",
+      "size_bytes": 258,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "scripts/terra/import_dataset.ps1",
+      "git_blob_sha1": "fac74cf812d90bdff86a81d17907714ebd331ef0",
+      "size_bytes": 169,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "scripts/terra/import_dataset.py",
+      "git_blob_sha1": "97f21c1a9e9bd8a55e6af8db10a7d95d6648d369",
+      "size_bytes": 1086,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "scripts/terra/run_ablation.ps1",
+      "git_blob_sha1": "4018b384f26424ad54e9c3f66cf17b16aa8ee5ec",
+      "size_bytes": 167,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "scripts/terra/run_ablation.py",
+      "git_blob_sha1": "27d573dc07a14f2bcd668cbf286551def7fb91fd",
+      "size_bytes": 425,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "scripts/terra/run_audit_checks.py",
+      "git_blob_sha1": "72a1ceef7eb53e981f4c6a7fbc8ce2bf3d659008",
+      "size_bytes": 3325,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "scripts/terra/run_benchmark.ps1",
+      "git_blob_sha1": "50846601228e4871e57c66a990391ceb09a11b78",
+      "size_bytes": 174,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "scripts/terra/run_benchmark.sh",
+      "git_blob_sha1": "5e26e4a689715561a5f87f44c59bedf6f3ff9fd1",
+      "size_bytes": 157,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "scripts/terra/run_counterfactual.ps1",
+      "git_blob_sha1": "3a69cd5a71a75ebf96827419f5fb8382d77e0d9d",
+      "size_bytes": 173,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "scripts/terra/run_counterfactual.py",
+      "git_blob_sha1": "d578a9245e97c3df67a6da0c0be7dfa875f5e4df",
+      "size_bytes": 886,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "scripts/terra/run_demo_pipeline.py",
+      "git_blob_sha1": "807f1546372f2e25b9eee3d6c25bb67837bcf741",
+      "size_bytes": 9259,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "scripts/terra/run_early_warning.py",
+      "git_blob_sha1": "581287a47367f6500e0317bc853be6ac6796ab4c",
+      "size_bytes": 870,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "scripts/terra/run_final_pipeline.py",
+      "git_blob_sha1": "f9963d359c48fc75be792ca417391697aa99669e",
+      "size_bytes": 1317,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "scripts/terra/run_historical_fit.py",
+      "git_blob_sha1": "b9e26388e102a278ae95deb9dd27b0eb07308b66",
+      "size_bytes": 822,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "scripts/terra/run_historical_replay.py",
+      "git_blob_sha1": "87e7d582879e2c7228acac88deef1929973c5fda",
+      "size_bytes": 587,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "scripts/terra/run_model_benchmark.py",
+      "git_blob_sha1": "1e491fe6281f3845905374cf674bd6680f22f15a",
+      "size_bytes": 452,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "scripts/terra/run_replay.ps1",
+      "git_blob_sha1": "c4efafcb7df3b2113a416f3b8d1861ee24d03e4f",
+      "size_bytes": 176,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "scripts/terra/run_replay.sh",
+      "git_blob_sha1": "6c63b3660ff8985eabb38cc65533b99bade36a99",
+      "size_bytes": 159,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "scripts/terra/run_stress_test.py",
+      "git_blob_sha1": "333c3e827a4228aa7cb2117200b5ccc178901b4e",
+      "size_bytes": 1002,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "scripts/terra/validate_dataset.py",
+      "git_blob_sha1": "e8860eda67283f56bc60fb31d102fdab5dca17da",
+      "size_bytes": 1301,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "sim/terra/__init__.py",
+      "git_blob_sha1": "e43ebc6cbb494755c8407bb0efa5786137cae28e",
+      "size_bytes": 633,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "sim/terra/agents.py",
+      "git_blob_sha1": "a9b37907237b3c2f855bfb1bde9d9cc5626d1ab2",
+      "size_bytes": 2815,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "sim/terra/calibration_v2.py",
+      "git_blob_sha1": "3423e8ba25aad4cbd6b82088437041732b2d70a2",
+      "size_bytes": 4140,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "sim/terra/conditional.py",
+      "git_blob_sha1": "965cef78838a9c39af24c228402fb4f844783c09",
+      "size_bytes": 28908,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "sim/terra/datasets.py",
+      "git_blob_sha1": "2a67fbb5ddcf2a49dcd549373ef331e08fe99b79",
+      "size_bytes": 5024,
+      "verification": "FULL_BYTES_VERIFIED",
+      "sha256_git_bytes": "011e2f2335a4df3ef8410e7a4022800abdc2dabf20d197b84e22e517399e0b98"
+    },
+    {
+      "path": "sim/terra/demo_data.py",
+      "git_blob_sha1": "9d444fc18da5d8e30c346f39360ed49bae776c9e",
+      "size_bytes": 4013,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "sim/terra/early_warning.py",
+      "git_blob_sha1": "68191cb6692a262cba95f49ae38b249530093133",
+      "size_bytes": 2315,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "sim/terra/early_warning_v2.py",
+      "git_blob_sha1": "386614c75714c1ff97362c242ad8e47e28c3686b",
+      "size_bytes": 11241,
+      "verification": "FULL_BYTES_VERIFIED",
+      "sha256_git_bytes": "8948ced68354a2dd2fdc40600040c94af445b83f1ccbcc3fb61c0ebe4180a83c"
+    },
+    {
+      "path": "sim/terra/experiments.py",
+      "git_blob_sha1": "26180a74f7368748e92f1c24edf38118b70cac96",
+      "size_bytes": 3631,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "sim/terra/fixtures.py",
+      "git_blob_sha1": "bc5321103596e115a17a27187ca95f196887202c",
+      "size_bytes": 4468,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "sim/terra/ground_truth.py",
+      "git_blob_sha1": "b2337a959b83069b732ae596bf5ef2548d3a6a6a",
+      "size_bytes": 470,
+      "verification": "FULL_BYTES_VERIFIED",
+      "sha256_git_bytes": "87eaf9a1cdcea5eb2b3ccad253138625c9663548936e523387e8b492e30ae740"
+    },
+    {
+      "path": "sim/terra/historical_fit.py",
+      "git_blob_sha1": "0dd63340dd2a313e00856f22b0bb851fa42c2952",
+      "size_bytes": 17252,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "sim/terra/leakage.py",
+      "git_blob_sha1": "82ff4239dd1ebe33b2885fc592982d36a893574e",
+      "size_bytes": 1274,
+      "verification": "FULL_BYTES_VERIFIED",
+      "sha256_git_bytes": "6c5af779d66d4bc737ffa8d74508f0203edfac84ad57e3326cb166694a384a3e"
+    },
+    {
+      "path": "sim/terra/mechanism_validation.py",
+      "git_blob_sha1": "380f7461da1e51dc2355046458275f147826f6c4",
+      "size_bytes": 3434,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "sim/terra/models.py",
+      "git_blob_sha1": "7df70e66998b12a11763880a7a2b2f2248a825ea",
+      "size_bytes": 23020,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "sim/terra/monte_carlo.py",
+      "git_blob_sha1": "52f53a604dccd2a2ea1bdccbc2fef9df77f575d6",
+      "size_bytes": 3333,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "sim/terra/replay.py",
+      "git_blob_sha1": "a04ab53fadc1bd537e9ef7eee3ed19df8a33e547",
+      "size_bytes": 5661,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "sim/terra/research_pipeline.py",
+      "git_blob_sha1": "5ce171983e9f95ce17ca92b1cc9dfe58b0199cf8",
+      "size_bytes": 49604,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "sim/terra/schemas.py",
+      "git_blob_sha1": "f651b33f5b58c56752b0596fb925a43c4e70a8e9",
+      "size_bytes": 9140,
+      "verification": "FULL_BYTES_VERIFIED",
+      "sha256_git_bytes": "11fc92523d2d74ec60caca226c679e8d085928fd3d290caf7052545367147f15"
+    },
+    {
+      "path": "sim/terra/stress_test.py",
+      "git_blob_sha1": "c28ae941d0d0c056a6161d0deade453d7494435c",
+      "size_bytes": 18540,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "sim/terra/validation.py",
+      "git_blob_sha1": "583f7e9d9895d5967d35ae7f5427b426eb0d1467",
+      "size_bytes": 8656,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "terra_mapping_diagnostics.zip",
+      "git_blob_sha1": "e7c91759881db940a7177352646f27ae5b26f698",
+      "size_bytes": 4160,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "terra_may2022_v1_pack/terra_may2022_v1_pack/README_VI.md",
+      "git_blob_sha1": "542369f537f3275a9d00da0f6f633bd889f138d1",
+      "size_bytes": 4280,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "terra_may2022_v1_pack/terra_may2022_v1_pack/build_terra_may2022_v1.py",
+      "git_blob_sha1": "4c2ed59c3c6650b3cc0baf21c57ece5a1c7bb34e",
+      "size_bytes": 51134,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "terra_may2022_v1_pack/terra_may2022_v1_pack/expected_hourly_index.csv",
+      "git_blob_sha1": "f96a3f9a09e573d3187e34d5aa8128e6b1225607",
+      "size_bytes": 12328,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "terra_may2022_v1_pack/terra_may2022_v1_pack/field_mapping.csv",
+      "git_blob_sha1": "ce1d2cc75d6b302b8969a535568847c02ad3fec6",
+      "size_bytes": 2692,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "terra_may2022_v1_pack/terra_may2022_v1_pack/run_build_and_import.ps1",
+      "git_blob_sha1": "aba7caa12fb1a134589a34eade8437e8010da279",
+      "size_bytes": 2300,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "terra_may2022_v1_pack/terra_may2022_v1_pack/source_contract.json",
+      "git_blob_sha1": "81bfd5125792b270b7c1584c95015ac329add04d",
+      "size_bytes": 1562,
+      "verification": "FULL_BYTES_VERIFIED",
+      "sha256_git_bytes": "20ccc07387c57ced45d4100c8ad5ba8bbb7eb2d3c5a4c4343ba0db5dfed97b3a"
+    },
+    {
+      "path": "terra_pack_v2/terra_may2022_v1_pack/README_VI.md",
+      "git_blob_sha1": "542369f537f3275a9d00da0f6f633bd889f138d1",
+      "size_bytes": 4280,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "terra_pack_v2/terra_may2022_v1_pack/build_terra_may2022_v1.py",
+      "git_blob_sha1": "6f28c3b4a7b852d7e6b559fdbc2c5a0f4ce17bfb",
+      "size_bytes": 31168,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "terra_pack_v2/terra_may2022_v1_pack/expected_hourly_index.csv",
+      "git_blob_sha1": "f96a3f9a09e573d3187e34d5aa8128e6b1225607",
+      "size_bytes": 12328,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "terra_pack_v2/terra_may2022_v1_pack/field_mapping.csv",
+      "git_blob_sha1": "ce1d2cc75d6b302b8969a535568847c02ad3fec6",
+      "size_bytes": 2692,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "terra_pack_v2/terra_may2022_v1_pack/run_build_and_import.ps1",
+      "git_blob_sha1": "d799a2ac60e36241f2035a259d6c4553fb3b9606",
+      "size_bytes": 2209,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "terra_pack_v2/terra_may2022_v1_pack/source_contract.json",
+      "git_blob_sha1": "81bfd5125792b270b7c1584c95015ac329add04d",
+      "size_bytes": 1562,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "terra_pack_v3/terra_may2022_v1_pack_v3/terra_may2022_v1_pack/README_V3.md",
+      "git_blob_sha1": "a1ed8c10b784ee1f6b56aacd61ac9519f6a6118b",
+      "size_bytes": 2619,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "terra_pack_v3/terra_may2022_v1_pack_v3/terra_may2022_v1_pack/build_terra_may2022_v1.py",
+      "git_blob_sha1": "f8e762944b48a477e70b451d0eb08d6b7cc3b676",
+      "size_bytes": 43408,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "terra_pack_v3/terra_may2022_v1_pack_v3/terra_may2022_v1_pack/run_build_and_import.ps1",
+      "git_blob_sha1": "aba7caa12fb1a134589a34eade8437e8010da279",
+      "size_bytes": 2300,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "terra_pack_v4/terra_may2022_v1_pack_v4/terra_may2022_v1_pack/README_V3.md",
+      "git_blob_sha1": "a1ed8c10b784ee1f6b56aacd61ac9519f6a6118b",
+      "size_bytes": 2619,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "terra_pack_v4/terra_may2022_v1_pack_v4/terra_may2022_v1_pack/README_V4.md",
+      "git_blob_sha1": "0ecbe093f3ce03d0a2a24830211e2e863aa88e9a",
+      "size_bytes": 939,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "terra_pack_v4/terra_may2022_v1_pack_v4/terra_may2022_v1_pack/build_terra_may2022_v1.py",
+      "git_blob_sha1": "08f68dd5e00038ac8a61c960337fe13e58727488",
+      "size_bytes": 43713,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "terra_pack_v4/terra_may2022_v1_pack_v4/terra_may2022_v1_pack/run_build_and_import.ps1",
+      "git_blob_sha1": "aba7caa12fb1a134589a34eade8437e8010da279",
+      "size_bytes": 2300,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "terra_pack_v5/terra_may2022_v1_pack_v5/terra_may2022_v1_pack/README_V3.md",
+      "git_blob_sha1": "a1ed8c10b784ee1f6b56aacd61ac9519f6a6118b",
+      "size_bytes": 2619,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "terra_pack_v5/terra_may2022_v1_pack_v5/terra_may2022_v1_pack/README_V4.md",
+      "git_blob_sha1": "0ecbe093f3ce03d0a2a24830211e2e863aa88e9a",
+      "size_bytes": 939,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "terra_pack_v5/terra_may2022_v1_pack_v5/terra_may2022_v1_pack/README_V5.md",
+      "git_blob_sha1": "07d4db768eb957006037d33913394f812289207d",
+      "size_bytes": 1843,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "terra_pack_v5/terra_may2022_v1_pack_v5/terra_may2022_v1_pack/build_terra_may2022_v1.py",
+      "git_blob_sha1": "0f02741be5bfdea9b64cc1bd5ae7c1c3b237415f",
+      "size_bytes": 45658,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "terra_pack_v5/terra_may2022_v1_pack_v5/terra_may2022_v1_pack/run_build_and_import.ps1",
+      "git_blob_sha1": "aba7caa12fb1a134589a34eade8437e8010da279",
+      "size_bytes": 2300,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "terra_pack_v6/terra_may2022_v1_pack_v6/terra_may2022_v1_pack/README_V3.md",
+      "git_blob_sha1": "a1ed8c10b784ee1f6b56aacd61ac9519f6a6118b",
+      "size_bytes": 2619,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "terra_pack_v6/terra_may2022_v1_pack_v6/terra_may2022_v1_pack/README_V4.md",
+      "git_blob_sha1": "0ecbe093f3ce03d0a2a24830211e2e863aa88e9a",
+      "size_bytes": 939,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "terra_pack_v6/terra_may2022_v1_pack_v6/terra_may2022_v1_pack/README_V5.md",
+      "git_blob_sha1": "07d4db768eb957006037d33913394f812289207d",
+      "size_bytes": 1843,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "terra_pack_v6/terra_may2022_v1_pack_v6/terra_may2022_v1_pack/README_V6.md",
+      "git_blob_sha1": "e13ce368bcecae560dbefc78f47f37029e82af85",
+      "size_bytes": 1846,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "terra_pack_v6/terra_may2022_v1_pack_v6/terra_may2022_v1_pack/build_terra_may2022_v1.py",
+      "git_blob_sha1": "4c2ed59c3c6650b3cc0baf21c57ece5a1c7bb34e",
+      "size_bytes": 51134,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "terra_pack_v6/terra_may2022_v1_pack_v6/terra_may2022_v1_pack/run_build_and_import.ps1",
+      "git_blob_sha1": "aba7caa12fb1a134589a34eade8437e8010da279",
+      "size_bytes": 2300,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "tests/test_terra_api.py",
+      "git_blob_sha1": "42322a2f66e2d2346330277d7f02b7713d0671bd",
+      "size_bytes": 4511,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "tests/test_terra_data_and_leakage.py",
+      "git_blob_sha1": "37e08e3c2681c4d5b6159b69c01426b91d2336c4",
+      "size_bytes": 3775,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "tests/test_terra_data_completion.py",
+      "git_blob_sha1": "0bf3ea1eaa5e4425d4d9a6e11a3fb76b75b843fd",
+      "size_bytes": 5403,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "tests/test_terra_demo_pipeline.py",
+      "git_blob_sha1": "5d75c14380efb9ac495c99c16bdf0bfd2af0a3b4",
+      "size_bytes": 11792,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "tests/test_terra_final_pipeline.py",
+      "git_blob_sha1": "72e9af2ab29be0b5f3e78edef2200f1ae267038c",
+      "size_bytes": 10171,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    },
+    {
+      "path": "tests/test_terra_models.py",
+      "git_blob_sha1": "140616bf8ad4550d0e231d7e021f6405e0c3b68c",
+      "size_bytes": 4111,
+      "verification": "GIT_TREE_METADATA_ONLY_BYTES_UNVERIFIED",
+      "sha256_git_bytes": null
+    }
+  ],
+  "core_fields": [
+    {
+      "field": "timestamp",
+      "artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "unit": "UTC hour label",
+      "grid_frequency": "1h",
+      "source_frequency": "constructed hourly grid",
+      "aggregation_declared": "constructed grid",
+      "source_file_declared": null,
+      "source_columns_declared": null,
+      "transformation_declared": null,
+      "source_quality_declared": "CONSTRUCTED_COORDINATE",
+      "source_lineage_locator": null,
+      "rows": 1776,
+      "nonnull": 1776,
+      "missing": 0,
+      "first_nonmissing": "2022-03-01 00:00:00+00:00",
+      "last_nonmissing": "2022-05-13 23:00:00+00:00",
+      "availability_time": null,
+      "publication_time": null,
+      "vintage_proof": "NOT_PRESENT_IN_SELECTED_FIELD_RECORDS",
+      "point_in_time_status": "BLOCKED_AVAILABILITY_AND_VINTAGE",
+      "interval_rule": "As-of observation timestamp alone does not prove historical availability",
+      "approved_forecast_use": false,
+      "acquisition": "Pinned existing Git bytes retrieved 2026-10-21; original historic release evidence unresolved"
+    },
+    {
+      "field": "block_height",
+      "artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "unit": "Terra block height",
+      "grid_frequency": "1h",
+      "source_frequency": "approximately15-minute sampled state",
+      "aggregation_declared": "latest source record at or before timestamp",
+      "source_file_declared": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor/Anchor_global_stats_fullnode.parquet",
+      "source_columns_declared": [
+        "minute index",
+        "height"
+      ],
+      "transformation_declared": "backward as-of at each UTC hour; no linear interpolation",
+      "source_quality_declared": "HISTORICAL_DIRECT",
+      "source_lineage_locator": {
+        "path": "data/processed/terra_data_completion/source_lineage.json",
+        "json_pointer": "/0"
+      },
+      "rows": 1776,
+      "nonnull": 1776,
+      "missing": 0,
+      "first_nonmissing": "2022-03-01 00:00:00+00:00",
+      "last_nonmissing": "2022-05-13 23:00:00+00:00",
+      "availability_time": null,
+      "publication_time": null,
+      "vintage_proof": "NOT_PRESENT_IN_SELECTED_FIELD_RECORDS",
+      "point_in_time_status": "BLOCKED_AVAILABILITY_AND_VINTAGE",
+      "interval_rule": "As-of observation timestamp alone does not prove historical availability",
+      "approved_forecast_use": false,
+      "acquisition": "Pinned existing Git bytes retrieved 2026-10-21; original historic release evidence unresolved"
+    },
+    {
+      "field": "ust_price",
+      "artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "unit": "USD/UST",
+      "grid_frequency": "1h",
+      "source_frequency": "daily throughApril;minute aggregate fromMay1",
+      "aggregation_declared": "latest observation at or before each UTC hour",
+      "source_file_declared": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/external/ustc-usd-max.csv; data/prices/ust_price_may2022.parquet",
+      "source_columns_declared": [
+        "snapped_at",
+        "price",
+        "time",
+        "ust_price"
+      ],
+      "transformation_declared": "CoinGecko daily point carried backward-as-of through April; Kaiko minute point as-of from May 1",
+      "source_quality_declared": "HISTORICAL_STATE_CARRIED_FORWARD",
+      "source_lineage_locator": {
+        "path": "data/processed/terra_data_completion/source_lineage.json",
+        "json_pointer": "/1"
+      },
+      "rows": 1776,
+      "nonnull": 1776,
+      "missing": 0,
+      "first_nonmissing": "2022-03-01 00:00:00+00:00",
+      "last_nonmissing": "2022-05-13 23:00:00+00:00",
+      "availability_time": null,
+      "publication_time": null,
+      "vintage_proof": "NOT_PRESENT_IN_SELECTED_FIELD_RECORDS",
+      "point_in_time_status": "BLOCKED_AVAILABILITY_AND_VINTAGE",
+      "interval_rule": "As-of observation timestamp alone does not prove historical availability",
+      "approved_forecast_use": false,
+      "acquisition": "Pinned existing Git bytes retrieved 2026-10-21; original historic release evidence unresolved"
+    },
+    {
+      "field": "luna_price",
+      "artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "unit": "USD/LUNA",
+      "grid_frequency": "1h",
+      "source_frequency": "daily throughApril;minute aggregate fromMay1",
+      "aggregation_declared": "latest observation at or before each UTC hour",
+      "source_file_declared": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/external/lunc-usd-max.csv; data/prices/luna_price_may2022.parquet",
+      "source_columns_declared": [
+        "snapped_at",
+        "price",
+        "time",
+        "luna_price"
+      ],
+      "transformation_declared": "CoinGecko daily point carried backward-as-of through April; Kaiko minute point as-of from May 1",
+      "source_quality_declared": "HISTORICAL_STATE_CARRIED_FORWARD",
+      "source_lineage_locator": {
+        "path": "data/processed/terra_data_completion/source_lineage.json",
+        "json_pointer": "/2"
+      },
+      "rows": 1776,
+      "nonnull": 1776,
+      "missing": 0,
+      "first_nonmissing": "2022-03-01 00:00:00+00:00",
+      "last_nonmissing": "2022-05-13 23:00:00+00:00",
+      "availability_time": null,
+      "publication_time": null,
+      "vintage_proof": "NOT_PRESENT_IN_SELECTED_FIELD_RECORDS",
+      "point_in_time_status": "BLOCKED_AVAILABILITY_AND_VINTAGE",
+      "interval_rule": "As-of observation timestamp alone does not prove historical availability",
+      "approved_forecast_use": false,
+      "acquisition": "Pinned existing Git bytes retrieved 2026-10-21; original historic release evidence unresolved"
+    },
+    {
+      "field": "ust_supply",
+      "artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "unit": "UST",
+      "grid_frequency": "1h",
+      "source_frequency": "daily holder-balance snapshot",
+      "aggregation_declared": "daily state carried forward within its day",
+      "source_file_declared": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/daily_balances/columbus-5-lunaust-supply-breakdown-fullnode.parquet",
+      "source_columns_declared": [
+        "date",
+        "denom",
+        "balance",
+        "address"
+      ],
+      "transformation_declared": "filter denom=UST and sum per-address balances by date; no 1e6 rescaling",
+      "source_quality_declared": "HISTORICAL_STATE_CARRIED_FORWARD",
+      "source_lineage_locator": {
+        "path": "data/processed/terra_data_completion/source_lineage.json",
+        "json_pointer": "/3"
+      },
+      "rows": 1776,
+      "nonnull": 1776,
+      "missing": 0,
+      "first_nonmissing": "2022-03-01 00:00:00+00:00",
+      "last_nonmissing": "2022-05-13 23:00:00+00:00",
+      "availability_time": null,
+      "publication_time": null,
+      "vintage_proof": "NOT_PRESENT_IN_SELECTED_FIELD_RECORDS",
+      "point_in_time_status": "BLOCKED_AVAILABILITY_AND_VINTAGE",
+      "interval_rule": "As-of observation timestamp alone does not prove historical availability",
+      "approved_forecast_use": false,
+      "acquisition": "Pinned existing Git bytes retrieved 2026-10-21; original historic release evidence unresolved"
+    },
+    {
+      "field": "luna_supply",
+      "artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "unit": "LUNA",
+      "grid_frequency": "1h",
+      "source_frequency": "hourly source state",
+      "aggregation_declared": "none",
+      "source_file_declared": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/native_swaps/luna_total_supply_run.parquet",
+      "source_columns_declared": [
+        "time index",
+        "luna_supply"
+      ],
+      "transformation_declared": "direct hourly series; no pre-May backfill",
+      "source_quality_declared": "PARTIAL_HISTORICAL",
+      "source_lineage_locator": {
+        "path": "data/processed/terra_data_completion/source_lineage.json",
+        "json_pointer": "/4"
+      },
+      "rows": 1776,
+      "nonnull": 312,
+      "missing": 1464,
+      "first_nonmissing": "2022-05-01 00:00:00+00:00",
+      "last_nonmissing": "2022-05-13 23:00:00+00:00",
+      "availability_time": null,
+      "publication_time": null,
+      "vintage_proof": "NOT_PRESENT_IN_SELECTED_FIELD_RECORDS",
+      "point_in_time_status": "BLOCKED_AVAILABILITY_AND_VINTAGE",
+      "interval_rule": "As-of observation timestamp alone does not prove historical availability",
+      "approved_forecast_use": false,
+      "acquisition": "Pinned existing Git bytes retrieved 2026-10-21; original historic release evidence unresolved"
+    },
+    {
+      "field": "anchor_total_deposits",
+      "artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "unit": "UST",
+      "grid_frequency": "1h",
+      "source_frequency": "approximately15-minute sampled/derived state",
+      "aggregation_declared": "backward as-of state",
+      "source_file_declared": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor/Anchor_global_stats_fullnode.parquet; data/anchor_run/epoch_state_fig10.parquet",
+      "source_columns_declared": [
+        "prev_aterra_supply",
+        "prev_exchange_rate",
+        "deposit_b_ust"
+      ],
+      "transformation_declared": "prev_aterra_supply × prev_exchange_rate / 1e6 through May 6 00:00; deposit_b_ust × 1e9 thereafter",
+      "source_quality_declared": "HISTORICAL_DERIVED",
+      "source_lineage_locator": {
+        "path": "data/processed/terra_data_completion/source_lineage.json",
+        "json_pointer": "/5"
+      },
+      "rows": 1776,
+      "nonnull": 1776,
+      "missing": 0,
+      "first_nonmissing": "2022-03-01 00:00:00+00:00",
+      "last_nonmissing": "2022-05-13 23:00:00+00:00",
+      "availability_time": null,
+      "publication_time": null,
+      "vintage_proof": "NOT_PRESENT_IN_SELECTED_FIELD_RECORDS",
+      "point_in_time_status": "BLOCKED_AVAILABILITY_AND_VINTAGE",
+      "interval_rule": "As-of observation timestamp alone does not prove historical availability",
+      "approved_forecast_use": false,
+      "acquisition": "Pinned existing Git bytes retrieved 2026-10-21; original historic release evidence unresolved"
+    },
+    {
+      "field": "anchor_deposit_flow",
+      "artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "unit": "UST/hour",
+      "grid_frequency": "1h",
+      "source_frequency": "event-level aggregated hourly",
+      "aggregation_declared": "event-to-UTC-hour sum",
+      "source_file_declared": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor_run/anchor_run_tx_cleaned.parquet",
+      "source_columns_declared": [
+        "time",
+        "action",
+        "ust_vol"
+      ],
+      "transformation_declared": "filter explicit deposit/withdraw actions and sum ust_vol",
+      "source_quality_declared": "PARTIAL_HISTORICAL",
+      "source_lineage_locator": {
+        "path": "data/processed/terra_data_completion/source_lineage.json",
+        "json_pointer": "/6"
+      },
+      "rows": 1776,
+      "nonnull": 192,
+      "missing": 1584,
+      "first_nonmissing": "2022-05-06 00:00:00+00:00",
+      "last_nonmissing": "2022-05-13 23:00:00+00:00",
+      "availability_time": null,
+      "publication_time": null,
+      "vintage_proof": "NOT_PRESENT_IN_SELECTED_FIELD_RECORDS",
+      "point_in_time_status": "BLOCKED_AVAILABILITY_AND_INTERVAL_TIMING",
+      "interval_rule": "Must be available only after entire [hour,hour+1h) bucket and publication/processing delay",
+      "approved_forecast_use": false,
+      "acquisition": "Pinned existing Git bytes retrieved 2026-10-21; original historic release evidence unresolved"
+    },
+    {
+      "field": "anchor_withdrawal_flow",
+      "artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "unit": "UST/hour",
+      "grid_frequency": "1h",
+      "source_frequency": "event-level aggregated hourly",
+      "aggregation_declared": "event-to-UTC-hour sum",
+      "source_file_declared": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor_run/anchor_run_tx_cleaned.parquet",
+      "source_columns_declared": [
+        "time",
+        "action",
+        "ust_vol"
+      ],
+      "transformation_declared": "filter explicit deposit/withdraw actions and sum ust_vol",
+      "source_quality_declared": "PARTIAL_HISTORICAL",
+      "source_lineage_locator": {
+        "path": "data/processed/terra_data_completion/source_lineage.json",
+        "json_pointer": "/6"
+      },
+      "rows": 1776,
+      "nonnull": 192,
+      "missing": 1584,
+      "first_nonmissing": "2022-05-06 00:00:00+00:00",
+      "last_nonmissing": "2022-05-13 23:00:00+00:00",
+      "availability_time": null,
+      "publication_time": null,
+      "vintage_proof": "NOT_PRESENT_IN_SELECTED_FIELD_RECORDS",
+      "point_in_time_status": "BLOCKED_AVAILABILITY_AND_INTERVAL_TIMING",
+      "interval_rule": "Must be available only after entire [hour,hour+1h) bucket and publication/processing delay",
+      "approved_forecast_use": false,
+      "acquisition": "Pinned existing Git bytes retrieved 2026-10-21; original historic release evidence unresolved"
+    },
+    {
+      "field": "ust_native_redemption_volume",
+      "artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "unit": "UST/hour",
+      "grid_frequency": "1h",
+      "source_frequency": "event-level aggregated hourly",
+      "aggregation_declared": "event-to-UTC-hour sum",
+      "source_file_declared": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/native_swaps/ust_luna_swaps_run.parquet",
+      "source_columns_declared": [
+        "time",
+        "offer_amount"
+      ],
+      "transformation_declared": "sum UST offered into the native market module",
+      "source_quality_declared": "PARTIAL_HISTORICAL",
+      "source_lineage_locator": {
+        "path": "data/processed/terra_data_completion/source_lineage.json",
+        "json_pointer": "/7"
+      },
+      "rows": 1776,
+      "nonnull": 168,
+      "missing": 1608,
+      "first_nonmissing": "2022-05-07 00:00:00+00:00",
+      "last_nonmissing": "2022-05-13 23:00:00+00:00",
+      "availability_time": null,
+      "publication_time": null,
+      "vintage_proof": "NOT_PRESENT_IN_SELECTED_FIELD_RECORDS",
+      "point_in_time_status": "BLOCKED_AVAILABILITY_AND_INTERVAL_TIMING",
+      "interval_rule": "Must be available only after entire [hour,hour+1h) bucket and publication/processing delay",
+      "approved_forecast_use": false,
+      "acquisition": "Pinned existing Git bytes retrieved 2026-10-21; original historic release evidence unresolved"
+    },
+    {
+      "field": "gross_luna_issuance_from_native_swaps",
+      "artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "unit": "LUNA/hour",
+      "grid_frequency": "1h",
+      "source_frequency": "event-level aggregated hourly",
+      "aggregation_declared": "event-to-UTC-hour sum",
+      "source_file_declared": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/native_swaps/ust_luna_swaps_run.parquet",
+      "source_columns_declared": [
+        "time",
+        "swap_amount",
+        "fee_amount"
+      ],
+      "transformation_declared": "sum(swap_amount + fee_amount)",
+      "source_quality_declared": "HISTORICAL_DERIVED",
+      "source_lineage_locator": {
+        "path": "data/processed/terra_data_completion/source_lineage.json",
+        "json_pointer": "/8"
+      },
+      "rows": 1776,
+      "nonnull": 168,
+      "missing": 1608,
+      "first_nonmissing": "2022-05-07 00:00:00+00:00",
+      "last_nonmissing": "2022-05-13 23:00:00+00:00",
+      "availability_time": null,
+      "publication_time": null,
+      "vintage_proof": "NOT_PRESENT_IN_SELECTED_FIELD_RECORDS",
+      "point_in_time_status": "BLOCKED_AVAILABILITY_AND_INTERVAL_TIMING",
+      "interval_rule": "Must be available only after entire [hour,hour+1h) bucket and publication/processing delay",
+      "approved_forecast_use": false,
+      "acquisition": "Pinned existing Git bytes retrieved 2026-10-21; original historic release evidence unresolved"
+    },
+    {
+      "field": "backing_ratio",
+      "artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "unit": "ratio",
+      "grid_frequency": "1h",
+      "source_frequency": "derived from mixed-frequency dependencies",
+      "aggregation_declared": "hourly aligned inputs",
+      "source_file_declared": "derived from luna_price, luna_supply, ust_price, ust_supply",
+      "source_columns_declared": [
+        "luna_price",
+        "luna_supply",
+        "ust_price",
+        "ust_supply"
+      ],
+      "transformation_declared": "(luna_price × luna_supply) / (ust_price × ust_supply)",
+      "source_quality_declared": "PARTIAL_HISTORICAL",
+      "source_lineage_locator": {
+        "path": "data/processed/terra_data_completion/source_lineage.json",
+        "json_pointer": "/10"
+      },
+      "rows": 1776,
+      "nonnull": 312,
+      "missing": 1464,
+      "first_nonmissing": "2022-05-01 00:00:00+00:00",
+      "last_nonmissing": "2022-05-13 23:00:00+00:00",
+      "availability_time": null,
+      "publication_time": null,
+      "vintage_proof": "NOT_PRESENT_IN_SELECTED_FIELD_RECORDS",
+      "point_in_time_status": "BLOCKED_AVAILABILITY_AND_VINTAGE",
+      "interval_rule": "As-of observation timestamp alone does not prove historical availability",
+      "approved_forecast_use": false,
+      "acquisition": "Pinned existing Git bytes retrieved 2026-10-21; original historic release evidence unresolved"
+    },
+    {
+      "field": "top10_anchor_share",
+      "artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "unit": "fraction",
+      "grid_frequency": "1h",
+      "source_frequency": "daily",
+      "aggregation_declared": "daily state carried forward; stops after May 6",
+      "source_file_declared": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor/anchor_deposit_concentration.parquet",
+      "source_columns_declared": [
+        "date index",
+        "Top 10",
+        "Top 100"
+      ],
+      "transformation_declared": "divide by 100",
+      "source_quality_declared": "HISTORICAL_STATE_CARRIED_FORWARD",
+      "source_lineage_locator": {
+        "path": "data/processed/terra_data_completion/source_lineage.json",
+        "json_pointer": "/9"
+      },
+      "rows": 1776,
+      "nonnull": 1608,
+      "missing": 168,
+      "first_nonmissing": "2022-03-01 00:00:00+00:00",
+      "last_nonmissing": "2022-05-06 23:00:00+00:00",
+      "availability_time": null,
+      "publication_time": null,
+      "vintage_proof": "NOT_PRESENT_IN_SELECTED_FIELD_RECORDS",
+      "point_in_time_status": "BLOCKED_AVAILABILITY_AND_VINTAGE",
+      "interval_rule": "As-of observation timestamp alone does not prove historical availability",
+      "approved_forecast_use": false,
+      "acquisition": "Pinned existing Git bytes retrieved 2026-10-21; original historic release evidence unresolved"
+    },
+    {
+      "field": "top100_anchor_share",
+      "artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "unit": "fraction",
+      "grid_frequency": "1h",
+      "source_frequency": "daily",
+      "aggregation_declared": "daily state carried forward; stops after May 6",
+      "source_file_declared": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor/anchor_deposit_concentration.parquet",
+      "source_columns_declared": [
+        "date index",
+        "Top 10",
+        "Top 100"
+      ],
+      "transformation_declared": "divide by 100",
+      "source_quality_declared": "HISTORICAL_STATE_CARRIED_FORWARD",
+      "source_lineage_locator": {
+        "path": "data/processed/terra_data_completion/source_lineage.json",
+        "json_pointer": "/9"
+      },
+      "rows": 1776,
+      "nonnull": 1608,
+      "missing": 168,
+      "first_nonmissing": "2022-03-01 00:00:00+00:00",
+      "last_nonmissing": "2022-05-06 23:00:00+00:00",
+      "availability_time": null,
+      "publication_time": null,
+      "vintage_proof": "NOT_PRESENT_IN_SELECTED_FIELD_RECORDS",
+      "point_in_time_status": "BLOCKED_AVAILABILITY_AND_VINTAGE",
+      "interval_rule": "As-of observation timestamp alone does not prove historical availability",
+      "approved_forecast_use": false,
+      "acquisition": "Pinned existing Git bytes retrieved 2026-10-21; original historic release evidence unresolved"
+    }
+  ],
+  "data_groups": [
+    {
+      "group": 1,
+      "name": "UST peg deviation / prices",
+      "status": "PRESENT_RETROSPECTIVE",
+      "evidence": "ust_price; raw daily CSV and May minute Parquet; peg deviation not recomputed",
+      "limitation": "Availability/vintage and minute interval closure unknown"
+    },
+    {
+      "group": 2,
+      "name": "LUNA price / returns / volatility",
+      "status": "PRICE_PRESENT_FEATURES_NOT_RUN",
+      "evidence": "luna_price raw daily/minute",
+      "limitation": "Daily/hourly mixing; trailing feature design only"
+    },
+    {
+      "group": 3,
+      "name": "Trading volume / order book / liquidity",
+      "status": "PARTIAL_VOLUME_NO_DEPTH",
+      "evidence": "CoinGecko total_volume raw CSV; not executed depth",
+      "limitation": "No spread/book/inventory or causal access proof"
+    },
+    {
+      "group": 4,
+      "name": "Curve/DEX liquidity and imbalance",
+      "status": "PARTIAL_TRADES_NO_POOL_STATE",
+      "evidence": "Two Curve Parquet extracts inspected: May2022 405 rows, May2021 1733",
+      "limitation": "Trades are not pool reserve/depth snapshots; quote_asset conversion required"
+    },
+    {
+      "group": 5,
+      "name": "Terra/Anchor deposits / withdrawals / TVL",
+      "status": "PRESENT_PARTIAL_DERIVED",
+      "evidence": "Core deposit stock; flows start May6; epoch source schema read",
+      "limitation": "Flow labels are start-of-hour; stock not complete Terra TVL; big raw event pack bytes unverified"
+    },
+    {
+      "group": 6,
+      "name": "UST/LUNA supply / mint-burn",
+      "status": "PRESENT_PARTIAL_DERIVED",
+      "evidence": "UST holder-balance sum; LUNA supply starts May1; native gross mint declared swap+fee",
+      "limitation": "Direct extraction identity and daily boundary proof needed; no burn volume inferred from missing/duplicate columns"
+    },
+    {
+      "group": 7,
+      "name": "Stablecoin contagion/context",
+      "status": "MISSING_IN_AUDITED_FORECAST_PACK",
+      "evidence": "No matched PIT cross-stablecoin context panel",
+      "limitation": "No borrowing Aave cohort or synthetic context as observed Terra data"
+    },
+    {
+      "group": 8,
+      "name": "BTC/ETH/general crypto market",
+      "status": "MISSING_MATCHED_PIT_PANEL",
+      "evidence": "No audited aligned 2022 BTC/ETH/context panel",
+      "limitation": "Unrelated 2026 snapshots do not fill 2022 gaps"
+    },
+    {
+      "group": 9,
+      "name": "Relevant chain transactions/events",
+      "status": "SAVED_EXTRACTS_PARTIALLY_INSPECTED",
+      "evidence": "Block/supply/epoch source; native/Anchor large packs declared, not all read",
+      "limitation": "No fresh archive requery; minimal extracts lack full request/receipt identity"
+    },
+    {
+      "group": 10,
+      "name": "Availability / acquisition / provenance",
+      "status": "INTEGRITY_SCOPED_PASS_PIT_BLOCKED",
+      "evidence": "35 exact byte/hash checks; 304 candidate Git paths; publisher metadata verified",
+      "limitation": "Acquisition in2026 is not proof of availability in2022; no feature cleared automatically"
+    }
+  ],
+  "parquet_schema_audit": [
+    {
+      "path": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.parquet",
+      "rows": 1776,
+      "schema": "timestamp: timestamp[ns, tz=UTC]\nblock_height: int64\nust_price: double\nluna_price: double\nust_supply: double\nluna_supply: double\nanchor_total_deposits: double\nanchor_deposit_flow: double\nanchor_withdrawal_flow: double\nust_native_redemption_volume: double\ngross_luna_issuance_from_native_swaps: double\nbacking_ratio: double\ntop10_anchor_share: double\ntop100_anchor_share: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 2004",
+      "columns": [
+        "timestamp",
+        "block_height",
+        "ust_price",
+        "luna_price",
+        "ust_supply",
+        "luna_supply",
+        "anchor_total_deposits",
+        "anchor_deposit_flow",
+        "anchor_withdrawal_flow",
+        "ust_native_redemption_volume",
+        "gross_luna_issuance_from_native_swaps",
+        "backing_ratio",
+        "top10_anchor_share",
+        "top100_anchor_share"
+      ],
+      "index": [
+        null
+      ]
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor/anchor_deposit_concentration.parquet",
+      "rows": 416,
+      "schema": "Top 10: double\nTop 100: double\nTop 1000: double\ndate: timestamp[ns]\n-- schema metadata --\npandas: '{\"index_columns\": [\"date\"], \"column_indexes\": [{\"name\": null, \"f' + 680",
+      "columns": [
+        "Top 10",
+        "Top 100",
+        "Top 1000"
+      ],
+      "index": [
+        "date"
+      ]
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor_run/epoch_state_fig10.parquet",
+      "rows": 917,
+      "schema": "time_utc: string\nheight: int64\naterra_supply: double\nexchange_rate: double\ndeposit_b_ust: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 680",
+      "columns": [
+        "time_utc",
+        "height",
+        "aterra_supply",
+        "exchange_rate",
+        "deposit_b_ust"
+      ],
+      "index": [
+        null
+      ]
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/curve/curve_ust_3pool_may7.parquet",
+      "rows": 405,
+      "schema": "time: timestamp[us]\nsell_amount: double\ntaker_side_sell: bool\ntrader: string\nprice_native: double\nquote_asset: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 817",
+      "columns": [
+        "time",
+        "sell_amount",
+        "taker_side_sell",
+        "trader",
+        "price_native",
+        "quote_asset"
+      ],
+      "index": [
+        null
+      ]
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/curve/curve_ust_may2021.parquet",
+      "rows": 1733,
+      "schema": "time: timestamp[us]\nsell_amount: double\ntaker_side_sell: bool\ntrader: string\nprice_native: double\nquote_asset: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 817",
+      "columns": [
+        "time",
+        "sell_amount",
+        "taker_side_sell",
+        "trader",
+        "price_native",
+        "quote_asset"
+      ],
+      "index": [
+        null
+      ]
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/native_swaps/luna_total_supply_run.parquet",
+      "rows": 337,
+      "schema": "luna_supply: double\ntime: timestamp[ns]\n-- schema metadata --\npandas: '{\"index_columns\": [\"time\"], \"column_indexes\": [{\"name\": null, \"f' + 458",
+      "columns": [
+        "luna_supply"
+      ],
+      "index": [
+        "time"
+      ]
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/prices/luna_price_may2022.parquet",
+      "rows": 21600,
+      "schema": "time: timestamp[us]\nluna_price: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 331",
+      "columns": [
+        "time",
+        "luna_price"
+      ],
+      "index": [
+        null
+      ]
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/prices/ust_price_may2022.parquet",
+      "rows": 21600,
+      "schema": "time: timestamp[us]\nust_price: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 329",
+      "columns": [
+        "time",
+        "ust_price"
+      ],
+      "index": [
+        null
+      ]
+    }
+  ],
+  "external_source_verification": [
+    {
+      "id": "P04-SRC-MENDELEY-V4",
+      "url": "https://data.mendeley.com/datasets/j5d8n7hzdy/4",
+      "accessed": "2026-10-21",
+      "status": "PUBLISHER_METADATA_VERIFIED",
+      "observed": "DOI10.17632/j5d8n7hzdy.4; version4; published2026-08-03; authorsLiu/Makarov/Schoar; data/exhibitsCC-BY4.0/codeMIT",
+      "limit": "Metadata/license only; no new full ZIP download or proof that each local file equals publisher ZIP; not2022availability"
+    },
+    {
+      "id": "P04-SRC-KAIKO",
+      "url": "https://docs.kaiko.com/rest-api/general/getting-started/data-versioning",
+      "accessed": "2026-10-21",
+      "status": "OFFICIAL_DOCUMENTATION_VERIFIED",
+      "observed": "Dataset versions differ from API versions; latest can change",
+      "limit": "Current documentation does not certify2022release/latency of the shipped cross-exchange minute aggregates"
+    },
+    {
+      "id": "P04-SRC-CG",
+      "url": "https://docs.coingecko.com/reference/coins-id-market-chart-range",
+      "accessed": "2026-10-21",
+      "status": "OFFICIAL_DOCUMENTATION_VERIFIED",
+      "observed": "Current historical API returns timestamp/value price, cap and24hvolume; range controls granularity, long ranges dailyUTC",
+      "limit": "Current resolution/access documentation is not a historic vintage/publication certificate"
+    },
+    {
+      "id": "P04-SRC-BINANCE",
+      "url": "https://github.com/binance/binance-public-data",
+      "accessed": "2026-10-21",
+      "status": "OFFICIAL_DOCUMENTATION_VERIFIED_CANDIDATE_ONLY",
+      "observed": "Trade/event and kline open/close fields documented; downloadable daily archive available following day",
+      "limit": "No new UST/LUNA/BTC/ETH file downloaded or symbol/history/execution access verified; archive availability distinct from live trades"
+    }
+  ],
+  "reproduction_environment": {
+    "python": "3.12.14/Linux",
+    "audit_dependencies": "stdlib only",
+    "inspection_only": "pandas existing environment and pyarrow19.0.1 installed in scratch; no repository dependency change"
+  },
+  "no_empirical_execution": true
+}

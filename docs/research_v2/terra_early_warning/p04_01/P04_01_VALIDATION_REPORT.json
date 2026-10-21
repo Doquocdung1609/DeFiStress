@@ -1,0 +1,468 @@
+{
+  "scope": "READ_ONLY_BYTES_AND_CSV_COUNTS_NOT_FORECAST_VALIDATION",
+  "source_commit": "9207ead7db3acf1332b34cebcd19981c2f7bd9cc",
+  "checks": [
+    {
+      "path": "terra_may2022_v1_pack/terra_may2022_v1_pack/source_contract.json",
+      "size_bytes": 1562,
+      "sha256_git_bytes": "20ccc07387c57ced45d4100c8ad5ba8bbb7eb2d3c5a4c4343ba0db5dfed97b3a",
+      "git_blob_sha1": "81bfd5125792b270b7c1584c95015ac329add04d",
+      "status": "PASS"
+    },
+    {
+      "path": "scripts/terra/complete_historical_data.py",
+      "size_bytes": 72267,
+      "sha256_git_bytes": "a9ec67b8f847ce8fabe57c0b379611566e741f5eeeea3fdb2358a244594418f2",
+      "git_blob_sha1": "43acc8139e93f4da600ca0bf83c3e8c26abf0241",
+      "status": "PASS"
+    },
+    {
+      "path": "sim/terra/schemas.py",
+      "size_bytes": 9140,
+      "sha256_git_bytes": "11fc92523d2d74ec60caca226c679e8d085928fd3d290caf7052545367147f15",
+      "git_blob_sha1": "f651b33f5b58c56752b0596fb925a43c4e70a8e9",
+      "status": "PASS"
+    },
+    {
+      "path": "sim/terra/datasets.py",
+      "size_bytes": 5024,
+      "sha256_git_bytes": "011e2f2335a4df3ef8410e7a4022800abdc2dabf20d197b84e22e517399e0b98",
+      "git_blob_sha1": "2a67fbb5ddcf2a49dcd549373ef331e08fe99b79",
+      "status": "PASS"
+    },
+    {
+      "path": "sim/terra/leakage.py",
+      "size_bytes": 1274,
+      "sha256_git_bytes": "6c5af779d66d4bc737ffa8d74508f0203edfac84ad57e3326cb166694a384a3e",
+      "git_blob_sha1": "82ff4239dd1ebe33b2885fc592982d36a893574e",
+      "status": "PASS"
+    },
+    {
+      "path": "sim/terra/ground_truth.py",
+      "size_bytes": 470,
+      "sha256_git_bytes": "87eaf9a1cdcea5eb2b3ccad253138625c9663548936e523387e8b492e30ae740",
+      "git_blob_sha1": "b2337a959b83069b732ae596bf5ef2548d3a6a6a",
+      "status": "PASS"
+    },
+    {
+      "path": "sim/terra/early_warning_v2.py",
+      "size_bytes": 11241,
+      "sha256_git_bytes": "8948ced68354a2dd2fdc40600040c94af445b83f1ccbcc3fb61c0ebe4180a83c",
+      "git_blob_sha1": "386614c75714c1ff97362c242ad8e47e28c3686b",
+      "status": "PASS"
+    },
+    {
+      "path": "data/processed/terra_may2022_v1.csv",
+      "size_bytes": 141510,
+      "sha256_git_bytes": "dd3c8293b2a698be161d7eb7b33c361d4d1bc57b9472603960b57efedf93898d",
+      "git_blob_sha1": "6ddd0d91d6481f688edd4291c4871386e8e290ca",
+      "csv_profile": {
+        "rows": 312,
+        "fields": [
+          "timestamp",
+          "block_height",
+          "ust_price",
+          "luna_price",
+          "ust_supply",
+          "luna_supply",
+          "anchor_total_deposits",
+          "anchor_deposit_flow",
+          "anchor_withdrawal_flow",
+          "ust_native_redemption_volume",
+          "luna_minted_from_redemption",
+          "luna_burned",
+          "ust_dex_sell_volume",
+          "terra_dex_liquidity",
+          "terra_dex_depth",
+          "top10_anchor_share",
+          "top100_anchor_share",
+          "curve_ust_liquidity",
+          "curve_pool_imbalance",
+          "curve_ust_price",
+          "bridge_outflow_terra_to_ethereum",
+          "bridge_inflow_ethereum_to_terra",
+          "btc_reserve_value",
+          "reserve_intervention_volume",
+          "source_name",
+          "source_type",
+          "chain_id",
+          "raw_reference",
+          "quality_flag"
+        ],
+        "missing": {
+          "timestamp": 0,
+          "block_height": 0,
+          "ust_price": 0,
+          "luna_price": 0,
+          "ust_supply": 0,
+          "luna_supply": 0,
+          "anchor_total_deposits": 0,
+          "anchor_deposit_flow": 0,
+          "anchor_withdrawal_flow": 0,
+          "ust_native_redemption_volume": 0,
+          "luna_minted_from_redemption": 0,
+          "luna_burned": 0,
+          "ust_dex_sell_volume": 0,
+          "terra_dex_liquidity": 0,
+          "terra_dex_depth": 0,
+          "top10_anchor_share": 0,
+          "top100_anchor_share": 0,
+          "curve_ust_liquidity": 312,
+          "curve_pool_imbalance": 312,
+          "curve_ust_price": 0,
+          "bridge_outflow_terra_to_ethereum": 0,
+          "bridge_inflow_ethereum_to_terra": 0,
+          "btc_reserve_value": 312,
+          "reserve_intervention_volume": 0,
+          "source_name": 0,
+          "source_type": 0,
+          "chain_id": 0,
+          "raw_reference": 0,
+          "quality_flag": 0
+        },
+        "first": "2022-05-01T00:00:00+00:00",
+        "last": "2022-05-13T23:00:00+00:00"
+      },
+      "status": "PASS"
+    },
+    {
+      "path": "data/processed/terra_may2022_v1_import_manifest.json",
+      "size_bytes": 849,
+      "sha256_git_bytes": "e42db6a2e1fed8c35d76b5885a16020d6f0713c9772efc4495e6dcfc5f656670",
+      "git_blob_sha1": "e4abe29ecc3d4c97083e070233cf507015335998",
+      "status": "PASS"
+    },
+    {
+      "path": "data/processed/terra_extended/data_dictionary.md",
+      "size_bytes": 4669,
+      "sha256_git_bytes": "e0893a28b84a7c372a293d3918b1e895bd55fa8ff91dbda7851d8b2c8dd12e9c",
+      "git_blob_sha1": "1a7dd7e96b8488126d71018bd95b41b46d504f57",
+      "status": "PASS"
+    },
+    {
+      "path": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.parquet",
+      "size_bytes": 65818,
+      "sha256_git_bytes": "0e338c3d096600d93bf29884370e46cb5e260820e910b483a7f19048521dcac1",
+      "git_blob_sha1": "38b2cfe84380e4ef6131151018c008cddec92b56",
+      "status": "PASS"
+    },
+    {
+      "path": "data/processed/terra_extended/data_completion_report.md",
+      "size_bytes": 8199,
+      "sha256_git_bytes": "99b90012f6b1e7ad2be8171bc243259d237fbea8efe455ac4d93fb14acd2b4f9",
+      "git_blob_sha1": "7fbf545132655888594fbcd3e5b7eb10ba60aade",
+      "status": "PASS"
+    },
+    {
+      "path": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "size_bytes": 287456,
+      "sha256_git_bytes": "a79582c60d6850314c10ae8da25c4894bc618c600c762203a07e3a57949bc740",
+      "git_blob_sha1": "57aa3c12652e457c31fe0e2d31cbaa8c58e58d96",
+      "csv_profile": {
+        "rows": 1776,
+        "fields": [
+          "timestamp",
+          "block_height",
+          "ust_price",
+          "luna_price",
+          "ust_supply",
+          "luna_supply",
+          "anchor_total_deposits",
+          "anchor_deposit_flow",
+          "anchor_withdrawal_flow",
+          "ust_native_redemption_volume",
+          "gross_luna_issuance_from_native_swaps",
+          "backing_ratio",
+          "top10_anchor_share",
+          "top100_anchor_share"
+        ],
+        "missing": {
+          "timestamp": 0,
+          "block_height": 0,
+          "ust_price": 0,
+          "luna_price": 0,
+          "ust_supply": 0,
+          "luna_supply": 1464,
+          "anchor_total_deposits": 0,
+          "anchor_deposit_flow": 1584,
+          "anchor_withdrawal_flow": 1584,
+          "ust_native_redemption_volume": 1608,
+          "gross_luna_issuance_from_native_swaps": 1608,
+          "backing_ratio": 1464,
+          "top10_anchor_share": 168,
+          "top100_anchor_share": 168
+        },
+        "first": "2022-03-01T00:00:00+00:00",
+        "last": "2022-05-13T23:00:00+00:00"
+      },
+      "status": "PASS"
+    },
+    {
+      "path": "data/processed/terra_extended/provenance_manifest.json",
+      "size_bytes": 30505,
+      "sha256_git_bytes": "40cc8d0265372b171cda122e63b956e5dbeca67ea8ee680c78adbd3fd0748ce2",
+      "git_blob_sha1": "f55a4543161fd15a5f1492cc2b70de941144c146",
+      "status": "PASS"
+    },
+    {
+      "path": "data/processed/terra_final/final_report.md",
+      "size_bytes": 7807,
+      "sha256_git_bytes": "02d78b27d51aad4d7da71c51f03c721f2f530d296cc9c969ebb27ed03a224325",
+      "git_blob_sha1": "fefa18e758e0d9829a9df27ee1c69960360fe006",
+      "status": "PASS"
+    },
+    {
+      "path": "data/processed/terra_final/data_quality.json",
+      "size_bytes": 5658,
+      "sha256_git_bytes": "839ea5290214470559fef1a630ee327d8db5507b5bb7060c499f287909327506",
+      "git_blob_sha1": "a7b2e2a9d783156d7ba777c0fde96cd83aabb63c",
+      "status": "PASS"
+    },
+    {
+      "path": "data/processed/terra_final/final_metrics.json",
+      "size_bytes": 1506,
+      "sha256_git_bytes": "f69252a7e3fd9dc37fa822ec923d6f1494ce7af6a241a0540bef8fae4d565a65",
+      "git_blob_sha1": "662fcad4c302ee95d1b2e9e46a9f4d85fb9a1934",
+      "status": "PASS"
+    },
+    {
+      "path": "data/processed/terra_data_completion/source_lineage.json",
+      "size_bytes": 10216,
+      "sha256_git_bytes": "168fa8709ceca54b3212e953b9966f3378e062b96be17e2bc1a529f1f0df6a95",
+      "git_blob_sha1": "1856cdd3f9603072730973745384528f9d1abe64",
+      "status": "PASS"
+    },
+    {
+      "path": "data/processed/terra_data_completion/temporal_quality_report.json",
+      "size_bytes": 10148,
+      "sha256_git_bytes": "253b3acac234a8367b1528308e48210f1aff47c7f9fa22408bad55242675e7d7",
+      "git_blob_sha1": "5b6761a17fea4d37a2cc2a781e458450d6534bcc",
+      "status": "PASS"
+    },
+    {
+      "path": "data/processed/research_final/validation_audit/phase5_terra_early_warning_audit.json",
+      "size_bytes": 11897,
+      "sha256_git_bytes": "0d71ad963fe9263c8c943c594622e4cb67a38b1f168d1c7a217b1de3f5b19116",
+      "git_blob_sha1": "c57615dbfe686863b366db648234cf0af1d6b8ca",
+      "status": "PASS"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/terra_may2022_v1_evidence.csv",
+      "size_bytes": 96522,
+      "sha256_git_bytes": "9727946c2087afa34dfeb0ac11c4d1e9376cd8c82e6bc5557cf9be83ef838c0a",
+      "git_blob_sha1": "24e13dfa5f7c9d3acbaab7ec40ebfad4e0433d89",
+      "csv_profile": {
+        "rows": 312,
+        "fields": [
+          "timestamp",
+          "block_height",
+          "ust_price",
+          "luna_price",
+          "ust_supply",
+          "luna_supply",
+          "anchor_total_deposits",
+          "anchor_deposit_flow",
+          "anchor_withdrawal_flow",
+          "ust_native_redemption_volume",
+          "luna_minted_from_redemption",
+          "luna_burned",
+          "ust_dex_sell_volume",
+          "terra_dex_liquidity",
+          "terra_dex_depth",
+          "top10_anchor_share",
+          "top100_anchor_share",
+          "curve_ust_liquidity",
+          "curve_pool_imbalance",
+          "curve_ust_price",
+          "bridge_outflow_terra_to_ethereum",
+          "bridge_inflow_ethereum_to_terra",
+          "btc_reserve_value",
+          "reserve_intervention_volume"
+        ],
+        "missing": {
+          "timestamp": 0,
+          "block_height": 0,
+          "ust_price": 0,
+          "luna_price": 0,
+          "ust_supply": 0,
+          "luna_supply": 0,
+          "anchor_total_deposits": 0,
+          "anchor_deposit_flow": 0,
+          "anchor_withdrawal_flow": 0,
+          "ust_native_redemption_volume": 0,
+          "luna_minted_from_redemption": 0,
+          "luna_burned": 0,
+          "ust_dex_sell_volume": 0,
+          "terra_dex_liquidity": 0,
+          "terra_dex_depth": 0,
+          "top10_anchor_share": 0,
+          "top100_anchor_share": 0,
+          "curve_ust_liquidity": 312,
+          "curve_pool_imbalance": 312,
+          "curve_ust_price": 0,
+          "bridge_outflow_terra_to_ethereum": 0,
+          "bridge_inflow_ethereum_to_terra": 0,
+          "btc_reserve_value": 312,
+          "reserve_intervention_volume": 0
+        },
+        "first": "2022-05-01T00:00:00+00:00",
+        "last": "2022-05-13T23:00:00+00:00"
+      },
+      "status": "PASS"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/source_inventory.csv",
+      "size_bytes": 5154,
+      "sha256_git_bytes": "e83310f9c7909b0bee8f67099432e8887045f2caa5ed043a80899a4494bc8112",
+      "git_blob_sha1": "10f6db40e318d57b9dfd453fb4f816c1a3acf0f7",
+      "csv_profile": {
+        "rows": 38,
+        "fields": [
+          "path",
+          "size_bytes",
+          "readable",
+          "columns",
+          "sample_rows"
+        ],
+        "missing": {
+          "path": 0,
+          "size_bytes": 0,
+          "readable": 0,
+          "columns": 0,
+          "sample_rows": 0
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/evidence_map.json",
+      "size_bytes": 7344,
+      "sha256_git_bytes": "ca146e47b8597cd315da4947d5643ca691b58a218393e1164952752d346fa470",
+      "git_blob_sha1": "ac70cc9a1697d5a51b8909e9feca0fb5373f934b",
+      "status": "PASS"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/provenance_manifest.json",
+      "size_bytes": 8509,
+      "sha256_git_bytes": "9e6718150f8ca7f836a722e5bd9eedb1c8b1eaff47944147178671fc43a22581",
+      "git_blob_sha1": "68035e4aad8f4d2902b5fdbc4173e488113ccfa1",
+      "status": "PASS"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/Datasets.md",
+      "size_bytes": 27807,
+      "sha256_git_bytes": "31a99697172dafc85f7c9ddb8eb2720ca4124c917ec6a579358051b125325b2d",
+      "git_blob_sha1": "b13060af3ed4520c71ce0a1364700f2d0bf6a781",
+      "status": "PASS"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/README.md",
+      "size_bytes": 12095,
+      "sha256_git_bytes": "4469d8445403c5094ac6e8041036280027b7371905f98ece5d91ff85900eb028",
+      "git_blob_sha1": "d1b02eceb663bfb3db5bdf2a71e7e1a077bd959b",
+      "status": "PASS"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/prices/ust_price_may2022.parquet",
+      "size_bytes": 383037,
+      "sha256_git_bytes": "043c03404a9e53c352df645e192a360b30ce6f853d2006fdec298e950ecdd869",
+      "git_blob_sha1": "4177abf7e63be7daaed9864711a6784b64b4521c",
+      "status": "PASS"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/prices/luna_price_may2022.parquet",
+      "size_bytes": 385826,
+      "sha256_git_bytes": "2007339f3436f3b4690a6cfd3fa9bf324d2586eca081cdacaea5a42244027465",
+      "git_blob_sha1": "925817f34b45dc84d4bfec594975557c5c026d14",
+      "status": "PASS"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor/anchor_deposit_concentration.parquet",
+      "size_bytes": 18121,
+      "sha256_git_bytes": "8717912cb4800b2aa471474bd9d4cefa405b7827914331c0037cc31f29068651",
+      "git_blob_sha1": "2a7a1470db821dd78fd0654490df0bffe1fe9578",
+      "status": "PASS"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/curve/curve_ust_3pool_may7.parquet",
+      "size_bytes": 24074,
+      "sha256_git_bytes": "40adfe729e1cb039aab46798ebd95a9338be215e9f8f5ac330aec7e3a0ae26bf",
+      "git_blob_sha1": "2f9850f94d495b58e715930842b1b20a80fa7c2b",
+      "status": "PASS"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/curve/curve_ust_may2021.parquet",
+      "size_bytes": 76002,
+      "sha256_git_bytes": "6ddd99260568095be7dfbcdd7544c430a9c49a6cba5a6c27144d55d9fc096f50",
+      "git_blob_sha1": "9a97ea20b55a4a45a8626b2a2037722113e33cca",
+      "status": "PASS"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/native_swaps/luna_total_supply_run.parquet",
+      "size_bytes": 7864,
+      "sha256_git_bytes": "db340cb1cbdc8fb94d232fe114c990b11a047488ac6d4a61ba622edf99a173a1",
+      "git_blob_sha1": "f51904cbfad0bdca5b2ffa6cea9e7e750fc17afd",
+      "status": "PASS"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/external/lunc-usd-max.csv",
+      "size_bytes": 96949,
+      "sha256_git_bytes": "06b114d0f8cde94b990585ad529ea945dccfdfe5bef393edd74bbad522766ac9",
+      "git_blob_sha1": "1c2c895d0db22c7ea7d490959606018f3adc09fd",
+      "csv_profile": {
+        "rows": 1252,
+        "fields": [
+          "snapped_at",
+          "price",
+          "market_cap",
+          "total_volume"
+        ],
+        "missing": {
+          "snapped_at": 0,
+          "price": 0,
+          "market_cap": 0,
+          "total_volume": 0
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/external/ustc-usd-max.csv",
+      "size_bytes": 58303,
+      "sha256_git_bytes": "a9f2d11e4c06f01952f17439ac0433d527f7d5516c0a4c5685f71aedd6db2dad",
+      "git_blob_sha1": "ef1341e76c59aeb90b6a8d84af42f068458478fe",
+      "csv_profile": {
+        "rows": 739,
+        "fields": [
+          "snapped_at",
+          "price",
+          "market_cap",
+          "total_volume"
+        ],
+        "missing": {
+          "snapped_at": 0,
+          "price": 0,
+          "market_cap": 0,
+          "total_volume": 0
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor_run/epoch_state_fig10.parquet",
+      "size_bytes": 40160,
+      "sha256_git_bytes": "29e6cb98fe7a3631e67f6e7e42289c1b11a1fc63a54255242e83367711774074",
+      "git_blob_sha1": "cc6cd5991fb8e7293d2f6589ca2eda6b57e28635",
+      "status": "PASS"
+    }
+  ],
+  "counts": {
+    "PASS": 35,
+    "FAIL": 0
+  },
+  "status": "PASS",
+  "point_in_time_eligible": "BLOCKED",
+  "point_in_time_eligible_fields": 0,
+  "historical_backtest_executed": false,
+  "exit_simulation_executed": false
+}

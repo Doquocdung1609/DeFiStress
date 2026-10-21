@@ -1,0 +1,73 @@
+name: Terra V2 P04-01 saved-source audit
+on:
+  pull_request:
+    branches: [feat/terra-model-v2]
+    paths:
+      - docs/research_v2/terra_early_warning/p04_01/**
+      - scripts/research/terra_v2/audit_p04_01.py
+      - tests/research_v2/test_terra_p04_01_audit.py
+      - .github/workflows/terra-v2-p04-01-audit.yml
+  push:
+    branches: [research/terra-v2-p04-01-data-audit]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  saved-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PYTHONPATH: ${{ github.workspace }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.10'
+      - run: python -m pip install pytest==8.4.2 ruff==0.17.1 mypy==1.20.2
+      - run: mkdir -p "$RUNNER_TEMP/p04-01"
+      - name: Repository lint policy
+        run: ruff check scripts/research/terra_v2/audit_p04_01.py tests/research_v2/test_terra_p04_01_audit.py
+      - name: Strict type check
+        if: always()
+        run: mypy --strict scripts/research/terra_v2/audit_p04_01.py
+      - name: Synthetic negative and boundary tests
+        if: always()
+        run: python -m pytest -q tests/research_v2/test_terra_p04_01_audit.py --junitxml="$RUNNER_TEMP/p04-01/audit-junit.xml"
+      - name: Pinned saved-byte and CSV audit only
+        if: always()
+        run: >-
+          python scripts/research/terra_v2/audit_p04_01.py --repo-root .
+          --registry docs/research_v2/terra_early_warning/p04_01/P04_01_DATASET_REGISTRY.json
+          --output "$RUNNER_TEMP/p04-01/SOURCE_AUDIT.json"
+      - name: Scientific and ownership preservation
+        if: always()
+        run: >-
+          git diff --exit-code 9207ead7db3acf1332b34cebcd19981c2f7bd9cc --
+          data sim backend defistress_v2 docs/research_final docs/manuscript_p3
+          docs/research_v2/phase01a docs/research_v2/phase01b docs/research_v2/program_control
+      - name: Runtime provenance and checksums
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "workflow_head=${{ github.event.pull_request.head.sha || github.sha }}"
+            echo "checkout_commit=$(git rev-parse HEAD)"
+            echo "checkout_tree=$(git rev-parse HEAD^{tree})"
+            python -VV
+            pytest --version
+            ruff --version
+            mypy --version
+          } > "$RUNNER_TEMP/p04-01/runtime.txt"
+          cd "$RUNNER_TEMP/p04-01"
+          find . -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS
+          sha256sum --check SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: terra-p04-01-evidence-${{ github.event.pull_request.head.sha || github.sha }}
+          path: ${{ runner.temp }}/p04-01
+          if-no-files-found: error
+          retention-days: 90
