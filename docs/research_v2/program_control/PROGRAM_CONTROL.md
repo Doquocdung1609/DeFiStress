@@ -4,7 +4,19 @@
 
 Authority: `V2_AUTONOMOUS_RESEARCH_ENGINEERING_ORCHESTRATION_AUTHORIZED`, user/Commander handoff of 2026-10-19 UTC. Program tracker [#38](https://github.com/Doquocdung1609/DeFiStress/issues/38). This grants ordinary technical review/merge and bounded offline/synthetic safeguards; it does not grant engine implementation, historical stress, Monte Carlo, independent-backend relabeling or scientific publication. Prior task-specific no-merge instructions are superseded for technically eligible PRs36/37. Original architecture files retain their dated design-only/PENDING text; current disposition is recorded here rather than rewriting their history.
 
-## P02-02 acceptance / P02-03 prepared — 2026-10-21 UTC
+## Current checkpoint — P02-03-S authorized, 2026-10-21 UTC
+
+Commander grant **`V2_P02_03_SYNTHETIC_OFFLINE_VALUATION_AUTHORIZED`**, [recorded with exact scope](https://github.com/Doquocdung1609/DeFiStress/issues/45#issuecomment-6307535866), activates **P02-03-S ONLY**. PR46 merged at **`38e4b7b2081c9056e98319194898535a3f9cfe8c`**; [exact post-merge CI39539861182](https://github.com/Doquocdung1609/DeFiStress/actions/runs/39539861182) SUCCESS with actual artifact/JUnit readback: 532 pytest / 21 frontend / 5 environment-smoke PASS, optional RPC SKIPPED. Canonical handoff exists in the integrated tree. Gate A/B and V1 remain unchanged.
+
+**Issue45 is READY_FOR_CODEX_EXECUTION / AUTHORIZED_FOR_CODEX_EXECUTION for S only; NOT_DISPATCHED.** Work has no callable Codex task launcher. The current CODEX_NEXT_WORK_PACKAGE.md pins the accepted base, explicit scope, proposed branch/ownership, ten synthetic reference vectors, nine T02 requirements, local-first QA, exact-head CI/artifacts and STOP conditions. Historical observations may be represented by schemas/synthetic metadata controls; numerical inputs to S remain explicitly SYNTHETIC/COUNTERFACTUAL. No saved historical portfolio HF calculation or bit-exact Aave claim is authorized.
+
+D design is prepared; H historical and N native slices remain BLOCKED. P02-04–07 runtime, Phase03 propagation, Terra predictor/evaluation and Phase05 empirical campaigns are not authorized. Unknown heartbeat/profile/coverage is not repaired by a synthetic PASS.
+
+Parallel Work designs are prepared in Draft PR47, branch `research/v2-parallel-phase03-05-design`, commit `4035c0a659d4ca6a87b933112f5006fb51a4e142`: P03-D01 network/loss ledger (8 future controls), P04-D01 Terra vintage/split/leakage (9), P05-D01 comparator/reproducibility (8). All25 specifications NOT_RUN; source/path/UTF8/spec-count review is static self-review, not empirical testing. Work owns `docs/research_v2/parallel_design/`; Codex owns proposed valuation implementation paths. No shared writer or runtime dispatch.
+
+Authorization/ledger activation is a docs-only checkpoint; its own CI is recorded in its PR rather than falsely assigning PR46's CI to a later commit. Later governance-only integration movement must be inspected by Codex; the approved source/input base remains pinned and immutable. Runtime/empirical permissions do not expand with branch movement.
+
+## Prior checkpoint — P02-02 accepted / P02-03 awaiting scope (superseded by authorization above)
 
 Current authority: `V2_P02_02_INDEPENDENT_TECHNICAL_REVIEW_AND_GOVERNED_INTEGRATION`. PR44 original 4b931e6… was independently reviewed by Work, repaired at `62105de4fd498164c50ce9c7f3df48f068fa9f53` and merged at **`f06d19aa36e1b89d5714064d6262045eaf440062`**. [Technical verdict](https://github.com/Doquocdung1609/DeFiStress/pull/44#issuecomment-6286943366): six P1/two P2 groups resolved, no observed P0 or unresolved scoped blocker. Post-repair checks are Work self-review, not external peer review.
 
@@ -59,7 +71,7 @@ Arrows below are prerequisite deliveries, not causal claims or execution permiss
 ```mermaid
 flowchart TD
   P1["P02-01 · Accepted contracts"] --> P2["P02-02 · Accepted saved adapter"]
-  P1 --> P3["P02-03 · Scope grant pending"]
+  P1 --> P3["P02-03 · S only authorized"]
   P2 --> P3
   P2 --> P5["P02-05 · AMM execution"]
   P3 --> P4["P02-04 · Liquidation"]
@@ -80,7 +92,7 @@ Phase04's separate data audit depends on its own source/vintage availability; Ph
 |---|---|---|
 | P02-01 / Codex; Work review/repair | Accepted bounded offline contracts; PR41 merge/CI at `92112799bad6bb6fa26b5540e833d80a8fc669c2` | TECHNICAL_ACCEPTED; 97 + 80 scoped PASS, 196 L1 PASS; use approved guards/projection, no native inference |
 | P02-02 / Codex; Work review/repair | Accepted bounded saved adapter; PR44 merge/CI `f06d19aa36e1b89d5714064d6262045eaf440062` | TECHNICAL_ACCEPTED; 70/97/80 scoped PASS, 196 L1; retain limited read capabilities |
-| P02-03 / Work design; Codex after grant | P02-01/02 accepted; exact base pinned; implementation not granted | HANDOFF_PREPARED; Issue45; S-only proposal awaits scope decision; H/N remain blocked |
+| P02-03 / Codex S; Work review | Accepted01/02; base `38e4b7b2081c9056e98319194898535a3f9cfe8c`; explicit synthetic S grant | READY_FOR_CODEX_EXECUTION; NOT_DISPATCHED; H/N remain blocked |
 | P02-04 / Codex | Accepted01/03 plus native Aave rules/funding/receipt scope and specific execution authorization | BLOCKED_AUTHORIZATION_AND_EVIDENCE; no liquidation transition implementation |
 | P02-05 / Codex | Accepted01/02 plus integer profile/band/inventory/fee completeness and execution grant | BLOCKED_AUTHORIZATION_AND_EVIDENCE; no quote/execution engine |
 | P02-06 / Codex | Accepted03/04/05, agent/order/budget/accrual contracts and engine grant | BLOCKED_AUTHORIZATION_AND_DEPENDENCY; no scheduler/simulation |
@@ -107,4 +119,4 @@ Merge only a qualified technical PR within current scope, with exact-head lease,
 
 P03-D01 (Work): layer/edge/unit/loss-ledger and no-shock/no-sale/transmission controls; no propagation run. P04-D01 (Work): separate Terra vintage/availability, sealed splits/thresholds/baselines and miss/false-alarm/lead-time protocol; no predictor or tuning. P05-D01 (Work): independent-reference, retention/reproduction and reviewer protocol; no empirical campaign. These L0 design tasks can be planned independently; they do not depend on a positive Aave outcome or transfer validation across markets. Runtime prerequisites/authorization remain unchanged in the DAG and ledger.
 
-External Codex completion of P02-01/02 is evidenced by PR41/44 and accepted after Work review/repair. Work has no callable coding-task dispatch tool. Issue45/CODEX_NEXT_WORK_PACKAGE.md is a prepared future task, not a running task or implementation grant. P02-03-S awaits Commander scope authorization; H/N, engine/execution, propagation, Terra predictor and empirical campaigns remain NO-GO. `DEFISTRESS_V2_TECHNICAL_RELEASE_CANDIDATE=NOT_REACHED`; no V2_SCIENTIFIC_FINAL.
+External Codex completion of P02-01/02 is evidenced by PR41/44. Issue45 and the canonical handoff now carry the explicit S-only grant: READY_FOR_CODEX_EXECUTION, NOT_DISPATCHED. Work has no callable task-launch endpoint; an actual Codex executor must start the bounded task. H/N, execution engines, propagation, Terra predictor and empirical campaigns remain NO-GO. `DEFISTRESS_V2_TECHNICAL_RELEASE_CANDIDATE=NOT_REACHED`; no V2_SCIENTIFIC_FINAL.
