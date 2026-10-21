@@ -46,14 +46,14 @@ Source ledger có 11 hồ sơ; 14 core records vẫn `BLOCKED_INSUFFICIENT_AVAIL
 
 ## Giao tiếp với Codex và readiness
 
-[Issue #50](https://github.com/Doquocdung1609/DeFiStress/issues/50) đã nhận accepted integration pin **053e94cb…**, canonical handoff đã nằm trong integration. Nếu Codex đã bắt đầu từ8ec1eb2… thì tree dependency giữ nguyên; không reset/ghi đè công việc. Work chỉ thêm `docs/research_v2/terra_early_warning/pit_recovery/`; không sửa `defistress_v2/terra_pit/` hay tests Codex. Work không có callable Codex launcher, không tự nhận đã dispatch. Trạng thái implementation phải theo PR/CI thực tế Codex bàn giao; chưa có artifact triển khai mới trong lần kiểm tra này.
+[Issue #50](https://github.com/Doquocdung1609/DeFiStress/issues/50) đã nhận accepted integration pin **053e94cb…**, canonical handoff đã nằm trong integration. Nếu Codex đã bắt đầu từ8ec1eb2… thì tree dependency giữ nguyên; không reset/ghi đè công việc. Work chỉ thêm `docs/research_v2/terra_early_warning/pit_recovery/`; không sửa `defistress_v2/terra_pit/` hay tests Codex. Work không có callable Codex launcher và không tự nhận đã dispatch. Trong lúc thực thi, Codex đã mở Draft PR #52 tại `fa77aac27a5239c98769663ba85dc6d24977e4a2`; đã đọc sự hiện diện, diff paths và contract surface, chưa nghiệm thu implementation/CI hoặc tái lập các test Codex tự báo cáo. Đây là implementation bàn giao bên ngoài, không phải kết quả Work đã khởi chạy. Các claim về số test/coverage của Codex giữ source-declared cho đến actual code/artifact review.
 
-P04-03 chưa đủ historical readiness. Hợp đồng review P04-02 → P04-03 và comparison design ở amendment; gói acquisition riêng đang **PROPOSED**, không tự mở quyền chạy predictor. P02-03-S Issue #45 tiếp tục synthetic/offline độc lập, không đổi code/gates hoặc quyền H/N.
+P04-03 chưa đủ historical readiness. Hợp đồng review P04-02 → P04-03 và comparison design ở amendment; gói acquisition riêng ở Issue #54 đang **PROPOSED**, không tự mở quyền chạy predictor. P02-03-S Issue #45 tiếp tục synthetic/offline độc lập, không đổi code/gates hoặc quyền H/N.
 
 | Required progress gate | Trạng thái có căn cứ |
 |---|---|
 | `P04_01_TECHNICALLY_ACCEPTED` | **PASS_SCOPED_AUDIT**, merge + exact integration CI và artifact |
-| `P04_02_SYNTHETIC_CONTRACTS_READY` | **HANDOFF_READY; IMPLEMENTATION_NOT_VERIFIED**, không đồng nhất ready order với code hoàn thành |
+| `P04_02_SYNTHETIC_CONTRACTS_READY` | **CODEX_PR_52_PRESENT; TECHNICAL_REVIEW_PENDING**, không đồng nhất PR bàn giao với code đã nghiệm thu |
 | `POINT_IN_TIME_DATA_ELIGIBLE` | BLOCKED, 0 core fields admitted |
 | `EARLY_WARNING_PROTOCOL_APPROVED` | NOT_APPROVED; proposal + amendment reviewable |
 | `HISTORICAL_BACKTEST_AUTHORIZED` | NOT_AUTHORIZED |

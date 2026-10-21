@@ -27,7 +27,7 @@ Tháng 4 đang được dùng để calibration nên thống kê false alarms tr
 
 ## Hợp đồng P04-02 → P04-03
 
-Interface sau đây là **PROPOSED**, không phải API đang tồn tại. P04-02-S hiện chỉ có handoff; Work chưa nhận implementation để đánh giá.
+Interface sau đây là **PROPOSED**, không phải API đang tồn tại. P04-02-S đã có Draft PR #52, HEAD `fa77aac27a5239c98769663ba85dc6d24977e4a2`, trong lúc chuẩn bị hồ sơ này. Implementation và CI chưa được Work nghiệm thu; references đến API mới vẫn PENDING, không coi là dependency đã accepted.
 
 | Đầu ra cần review từ Codex P04-02-S | Tiêu chí Work kiểm tra | Dùng ở P04-03 |
 |---|---|---|
@@ -39,6 +39,8 @@ Interface sau đây là **PROPOSED**, không phải API đang tồn tại. P04-0
 | Actual code/JUnit/CI/checksums | Đọc artifacts, đúng final HEAD, có preservation và coverage disposition | Chỉ nghiệm thu kỹ thuật; không thay protocol/run grant. |
 
 Đối với hai giá legacy, yêu cầu admission không cho phép hourly-last của `[22:00,23:00)` được xem là dữ liệu đã có lúc 22:00. Với bảng mở rộng, backward-as-of không tự chứng minh raw minute aggregate đã hoàn chỉnh. Đây là yêu cầu khoa học chuyển cho Codex, không yêu cầu sửa implementation đang có bằng Work.
+
+Surface đang đề xuất trong PR #52 phân biệt `AdmissionStatus.ELIGIBLE/BLOCKED/REJECTED/ABSTAIN` với `ValueStatus.AVAILABLE/MISSING/UNSUPPORTED/QUARANTINED`. Khi review cần ánh xạ enum admission sang nhãn nghiên cứu ở ledger, giữ reason code; `AVAILABLE` của giá trị không tự nghĩa là PIT-eligible. Các record `DatasetVintage`, `TimeInterval`, `SourceProvenance` và `RiskOutputPlaceholder.NOT_IMPLEMENTED` đã được đọc ở cấp contract surface, chưa kiểm tra toàn bộ implementation, tests hoặc artifacts. Không dùng references PENDING này để tuyên bố API được nghiệm thu; partial review không thay full technical review.
 
 ## P04-03 readiness
 

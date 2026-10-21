@@ -626,7 +626,7 @@
   },
   "gates": {
     "P04_01_TECHNICALLY_ACCEPTED": "PASS_SCOPED_AUDIT",
-    "P04_02_SYNTHETIC_CONTRACTS_READY": "NOT_IMPLEMENTED_BY_WORK_READY_HANDOFF_NOT_DISPATCHED",
+    "P04_02_SYNTHETIC_CONTRACTS_READY": "CODEX_PR_52_PRESENT_TECHNICAL_REVIEW_PENDING",
     "POINT_IN_TIME_DATA_ELIGIBLE": "BLOCKED_0_FIELDS",
     "EARLY_WARNING_PROTOCOL_APPROVED": "NOT_APPROVED",
     "HISTORICAL_BACKTEST_AUTHORIZED": "NOT_AUTHORIZED",
@@ -636,5 +636,12 @@
   },
   "no_historical_feature_backtest_or_exit_execution": true,
   "independent_review_status": "Work fresh tool-based second pass of own authored audit; not external independent peer review",
-  "scientific_status": "GATE_A_BLOCKED — GATE_B_SCOPED_PASS — PHASE02_HISTORICAL_EXECUTION_NOT_AUTHORIZED"
+  "scientific_status": "GATE_A_BLOCKED — GATE_B_SCOPED_PASS — PHASE02_HISTORICAL_EXECUTION_NOT_AUTHORIZED",
+  "codex_interface_reference": {
+    "pr": 52,
+    "head": "fa77aac27a5239c98769663ba85dc6d24977e4a2",
+    "status": "PENDING_REVIEW_NOT_ACCEPTED",
+    "counts": "Codex self-reported; not independently reproduced by this Work research package",
+    "work_did_not_edit_codex_paths": true
+  }
 }
