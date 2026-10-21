@@ -1,10 +1,10 @@
 {
   "schema": "defistress-v2-program-control/1",
-  "status": "P02_02_TECHNICAL_ACCEPTED_P02_03_HANDOFF_PREPARED_AWAITING_SCOPED_AUTHORIZATION",
+  "status": "P02_03_S_AUTHORIZED_AND_READY_FOR_CODEX",
   "target": "DEFISTRESS_V2_TECHNICAL_RELEASE_CANDIDATE",
   "target_reached": false,
   "authority": "V2_AUTONOMOUS_RESEARCH_ENGINEERING_ORCHESTRATION_AUTHORIZED",
-  "observed_at_utc": "2026-10-21T03:23:32.871628+00:00",
+  "observed_at_utc": "2026-10-21T03:48:13.588384+00:00",
   "scientific_status": "GATE_A_BLOCKED — GATE_B_SCOPED_PASS — PHASE02_HISTORICAL_EXECUTION_NOT_AUTHORIZED",
   "gate_a": "BLOCKED",
   "gate_b": "SCOPED_PASS",
@@ -23,7 +23,9 @@
     "p02_01_integration": "92112799bad6bb6fa26b5540e833d80a8fc669c2",
     "p02_02_original_codex_head": "4b931e6425fd491f45af3d62532e7847ae5d05ee",
     "p02_02_accepted_head": "62105de4fd498164c50ce9c7f3df48f068fa9f53",
-    "p02_02_integration": "f06d19aa36e1b89d5714064d6262045eaf440062"
+    "p02_02_integration": "f06d19aa36e1b89d5714064d6262045eaf440062",
+    "p02_03_approved_base": "38e4b7b2081c9056e98319194898535a3f9cfe8c",
+    "pr46_integration": "38e4b7b2081c9056e98319194898535a3f9cfe8c"
   },
   "issues": {
     "program": 38,
@@ -218,30 +220,26 @@
     }
   ],
   "post_merge_ci": {
-    "head": "f06d19aa36e1b89d5714064d6262045eaf440062",
-    "run_id": 39394749742,
-    "url": "https://github.com/Doquocdung1609/DeFiStress/actions/runs/39394749742",
+    "head": "38e4b7b2081c9056e98319194898535a3f9cfe8c",
+    "run_id": 39539861182,
+    "url": "https://github.com/Doquocdung1609/DeFiStress/actions/runs/39539861182",
     "status": "completed",
     "conclusion": "success",
-    "artifact_id": 12251935232,
-    "zip_sha256": "26e0fcb3e43c896df38bb21013fd976885e7909fe5b8c203c23df288a43e60b9",
+    "artifact_id": 12319621089,
+    "zip_sha256": "2ec2fc2715c4657b915f272c7829d5146ecaedcb03c9a72969e043f2d2de8880",
     "junit": {
+      "bytes": 79678,
+      "sha256": "7fa6ad4b48b93a1e172c0c9a326b0523667e73c7de08dfdc983e837aaafa42c0",
       "tests": 532,
       "failures": 0,
       "errors": 0,
-      "skipped": 0,
-      "sha256": "56d836d1165d0502f8bb45f478452aca7cf328a70907e154735e44f0fdee9bc6",
-      "bytes": 79674
+      "skipped": 0
     },
     "frontend_tests_pass": 21,
     "environment_smoke_pass": 5,
-    "ruff": "PASS",
-    "mypy_sim": "PASS",
     "optional_real_rpc": "SKIPPED",
-    "changed_scientific_paths": [],
-    "zip_crc": "PASS",
-    "evidence_scope": "Entire ZIP downloaded and all JSON/XML files parsed; CI-produced large/source byte records read, not independent historical replay",
-    "scope": "P02_02_CODE_INTEGRATION_NOT_LATEST_GOVERNANCE_COMMIT"
+    "scientific_changed_paths": [],
+    "scope": "PR46_GOVERNANCE_INTEGRATION_NOT_LATER_ACTIVATION_COMMIT"
   },
   "artifact_recheck": {
     "artifact_id": 12203756156,
@@ -299,7 +297,7 @@
       "id": "CODEX-DISPATCH",
       "class": "TOOLING",
       "reason": "NO_CALLABLE_CODEX_TASK_TOOL",
-      "resolution": "Actual executor can accept Issue45 only after explicit implementation grant; external P02-01/02 completion observed",
+      "resolution": "Issue45 S scope is now authorized and executable; an actual Codex executor must start it. Work has no callable task-launch endpoint.",
       "blocks": [
         "automatic coding-task launch"
       ]
@@ -328,16 +326,6 @@
         "Phase03 runtime",
         "Phase04 predictor/run",
         "Phase05 empirical campaign"
-      ]
-    },
-    {
-      "id": "P02-03-SCOPE",
-      "class": "AUTHORIZATION",
-      "reason": "Current task prepares design/tests/Issue/prompt but explicitly does not grant implementation",
-      "resolution": "Concrete proposed pure synthetic/offline S slice in Issue45; Commander scope decision required",
-      "blocks": [
-        "P02-03-S implementation",
-        "P02-03 READY_FOR_CODEX_EXECUTION"
       ]
     }
   ],
@@ -374,23 +362,23 @@
     },
     {
       "id": "P02-03",
-      "owner": "Codex",
+      "owner": "Codex S implementation; Work independent review",
       "dependencies": [
         "P02-01",
         "P02-02"
       ],
-      "authorization": "DESIGN_HANDOFF_ONLY_NO_IMPLEMENTATION_GRANT",
-      "status": "HANDOFF_PREPARED_AWAITING_SCOPED_AUTHORIZATION",
+      "authorization": "V2_P02_03_SYNTHETIC_OFFLINE_VALUATION_AUTHORIZED",
+      "status": "READY_FOR_CODEX_EXECUTION",
       "pr": null,
       "commit": null,
       "tests": "NOT_RUN",
-      "next_action": "Commander may explicitly authorize proposed S-only pure synthetic scope; historical/native slices remain separately blocked",
+      "next_action": "Execute pinned S-only handoff in one bounded Draft PR; no historical/native valuation or engine",
       "issue": 45,
-      "base_commit": "f06d19aa36e1b89d5714064d6262045eaf440062",
-      "execution_status": "WAITING_FOR_AUTHORIZATION_AND_CODEX_EXECUTION_NOT_DISPATCHED",
+      "base_commit": "38e4b7b2081c9056e98319194898535a3f9cfe8c",
+      "execution_status": "AUTHORIZED_NOT_DISPATCHED_WAITING_FOR_CODEX_EXECUTION",
       "slices": {
         "D": "DESIGN_PREPARED",
-        "S": "PROPOSED_NOT_AUTHORIZED",
+        "S": "AUTHORIZED_FOR_CODEX_EXECUTION",
         "H": "BLOCKED_AUTHORIZATION_AND_EVIDENCE",
         "N": "BLOCKED_AUTHORIZATION_AND_NATIVE_PROFILE"
       }
@@ -519,13 +507,14 @@
     "local_initial_wrong_cwd_pytest_exit": 4,
     "local_corrected_pytest_exit": 0,
     "new_research_simulations": 0,
-    "p02_02_initial_local_missing_coverage_fixture": "Corrected pinned source provisioning; no test/code change"
+    "p02_02_initial_local_missing_coverage_fixture": "Corrected pinned source provisioning; no test/code change",
+    "activation_docs_checks": "JSON/gates/DAG/10vectors/9T02/source pins/UTF8/LF/no placeholders; Work static self-review only"
   },
   "related_files": [
     "PROGRAM_CONTROL.md",
     "CODEX_NEXT_WORK_PACKAGE.md"
   ],
-  "current_authority": "V2_P02_02_INDEPENDENT_TECHNICAL_REVIEW_AND_GOVERNED_INTEGRATION",
+  "current_authority": "V2_P02_03_SYNTHETIC_OFFLINE_VALUATION_AUTHORIZED",
   "preservation_at_bootstrap": {
     "original_blobs": 1281,
     "current_blobs": 1295,
@@ -567,6 +556,32 @@
       "optional_real_rpc": "SKIPPED",
       "changed_scientific_paths": [],
       "frontend_tests_pass": 21
+    },
+    {
+      "head": "f06d19aa36e1b89d5714064d6262045eaf440062",
+      "run_id": 39394749742,
+      "url": "https://github.com/Doquocdung1609/DeFiStress/actions/runs/39394749742",
+      "status": "completed",
+      "conclusion": "success",
+      "artifact_id": 12251935232,
+      "zip_sha256": "26e0fcb3e43c896df38bb21013fd976885e7909fe5b8c203c23df288a43e60b9",
+      "junit": {
+        "tests": 532,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "sha256": "56d836d1165d0502f8bb45f478452aca7cf328a70907e154735e44f0fdee9bc6",
+        "bytes": 79674
+      },
+      "frontend_tests_pass": 21,
+      "environment_smoke_pass": 5,
+      "ruff": "PASS",
+      "mypy_sim": "PASS",
+      "optional_real_rpc": "SKIPPED",
+      "changed_scientific_paths": [],
+      "zip_crc": "PASS",
+      "evidence_scope": "Entire ZIP downloaded and all JSON/XML files parsed; CI-produced large/source byte records read, not independent historical replay",
+      "scope": "P02_02_CODE_INTEGRATION_NOT_LATEST_GOVERNANCE_COMMIT"
     }
   ],
   "p02_01_artifacts": [
@@ -673,26 +688,35 @@
     {
       "id": "P03-D01",
       "owner": "Work design",
-      "status": "READY_FOR_DESIGN_ONLY",
+      "status": "DESIGN_DRAFT_PREPARED_FOR_REVIEW",
       "deliverable": "Layer/edge/unit and loss-ledger contract; predefined no-shock/no-sale/no-valuation-transmission controls",
       "acceptance": "Every proposed propagation link has state/time/mechanism/unit/evidence and no double-counting; no new experiment",
-      "runtime": "NOT_AUTHORIZED"
+      "runtime": "NOT_AUTHORIZED",
+      "pr": 47,
+      "commit": "4035c0a659d4ca6a87b933112f5006fb51a4e142",
+      "test_specifications_run": false
     },
     {
       "id": "P04-D01",
       "owner": "Work protocol",
-      "status": "READY_FOR_DESIGN_ONLY",
+      "status": "DESIGN_DRAFT_PREPARED_FOR_REVIEW",
       "deliverable": "Separate Terra vintage/availability and sealed holdout/baseline evaluation protocol",
       "acceptance": "Prediction-time availability, signed lead-time/miss/false-alarm denominators preregistered; negative outcomes admissible; no predictor/tuning",
-      "runtime": "NOT_AUTHORIZED"
+      "runtime": "NOT_AUTHORIZED",
+      "pr": 47,
+      "commit": "4035c0a659d4ca6a87b933112f5006fb51a4e142",
+      "test_specifications_run": false
     },
     {
       "id": "P05-D01",
       "owner": "Work validation protocol",
-      "status": "READY_FOR_DESIGN_ONLY",
+      "status": "DESIGN_DRAFT_PREPARED_FOR_REVIEW",
       "deliverable": "Independent comparator/retention/reproduction and reviewer protocol",
       "acceptance": "Code independence distinct from external reviewer independence; tolerances/holdouts sealed before comparison; no empirical campaign",
-      "runtime": "NOT_AUTHORIZED"
+      "runtime": "NOT_AUTHORIZED",
+      "pr": 47,
+      "commit": "4035c0a659d4ca6a87b933112f5006fb51a4e142",
+      "test_specifications_run": false
     }
   ],
   "preservation_p02_01": {
@@ -945,5 +969,59 @@
         }
       }
     }
-  ]
+  ],
+  "p02_03_scope_authorization": {
+    "id": "V2_P02_03_SYNTHETIC_OFFLINE_VALUATION_AUTHORIZED",
+    "source": "https://github.com/Doquocdung1609/DeFiStress/issues/45#issuecomment-6307535866",
+    "authorized_slices": [
+      "P02-03-S"
+    ],
+    "design_slices": [
+      "P02-03-D",
+      "P03-D01",
+      "P04-D01",
+      "P05-D01"
+    ],
+    "blocked_slices": [
+      "P02-03-H",
+      "P02-03-N",
+      "P02-04",
+      "P02-05",
+      "P02-06",
+      "P02-07 runtime",
+      "Phase03 runtime",
+      "Phase04 predictor/evaluation",
+      "Phase05 empirical campaign"
+    ],
+    "synthetic_inputs_only": true,
+    "historical_execution_authorized": false,
+    "native_validation_authorized": false,
+    "dispatch": "NOT_DISPATCHED",
+    "trigger_pr46_post_merge_ci": 39539861182
+  },
+  "resolved_blockers": [
+    {
+      "id": "P02-03-SCOPE",
+      "class": "AUTHORIZATION",
+      "reason": "Current task prepares design/tests/Issue/prompt but explicitly does not grant implementation",
+      "resolution": "Concrete proposed pure synthetic/offline S slice in Issue45; Commander scope decision required",
+      "blocks": [
+        "P02-03-S implementation",
+        "P02-03 READY_FOR_CODEX_EXECUTION"
+      ],
+      "disposition": "RESOLVED_S_ONLY",
+      "authorization": "V2_P02_03_SYNTHETIC_OFFLINE_VALUATION_AUTHORIZED",
+      "evidence": "https://github.com/Doquocdung1609/DeFiStress/issues/45#issuecomment-6307535866"
+    }
+  ],
+  "parallel_design_ownership": {
+    "branch": "research/v2-parallel-phase03-05-design",
+    "paths": [
+      "docs/research_v2/parallel_design/"
+    ],
+    "owner": "Work",
+    "overlap_with_codex_valuation_paths": false,
+    "future_specs": 25,
+    "specs_not_run": true
+  }
 }
