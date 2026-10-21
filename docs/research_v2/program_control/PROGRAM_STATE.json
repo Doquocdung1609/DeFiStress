@@ -1,10 +1,10 @@
 {
   "schema": "defistress-v2-program-control/1",
-  "status": "P02_01_TECHNICAL_ACCEPTED_P02_02_READY_FOR_CODEX_EXECUTION",
+  "status": "P02_02_TECHNICAL_ACCEPTED_P02_03_HANDOFF_PREPARED_AWAITING_SCOPED_AUTHORIZATION",
   "target": "DEFISTRESS_V2_TECHNICAL_RELEASE_CANDIDATE",
   "target_reached": false,
   "authority": "V2_AUTONOMOUS_RESEARCH_ENGINEERING_ORCHESTRATION_AUTHORIZED",
-  "observed_at_utc": "2026-10-20T03:04:48.060898+00:00",
+  "observed_at_utc": "2026-10-21T03:23:32.871628+00:00",
   "scientific_status": "GATE_A_BLOCKED — GATE_B_SCOPED_PASS — PHASE02_HISTORICAL_EXECUTION_NOT_AUTHORIZED",
   "gate_a": "BLOCKED",
   "gate_b": "SCOPED_PASS",
@@ -20,13 +20,17 @@
     "p02_01_base": "0ea1c878a6e0f0d62fe01bedc37f619602b9d35f",
     "p02_01_original_codex_head": "c67129877f97be204e5623954dd3057166fb7531",
     "p02_01_accepted_head": "59193efc6d4e8ae1ad3233187d8c0e6b8fd9bd43",
-    "p02_01_integration": "92112799bad6bb6fa26b5540e833d80a8fc669c2"
+    "p02_01_integration": "92112799bad6bb6fa26b5540e833d80a8fc669c2",
+    "p02_02_original_codex_head": "4b931e6425fd491f45af3d62532e7847ae5d05ee",
+    "p02_02_accepted_head": "62105de4fd498164c50ce9c7f3df48f068fa9f53",
+    "p02_02_integration": "f06d19aa36e1b89d5714064d6262045eaf440062"
   },
   "issues": {
     "program": 38,
-    "next_codex_package": 42,
+    "next_codex_package": 45,
     "completed_offline_issue": 35,
-    "completed_p02_01": 39
+    "completed_p02_01": 39,
+    "completed_p02_02": 42
   },
   "tooling": {
     "codex_dispatch_tool_available": false,
@@ -38,19 +42,30 @@
       "pr": 41,
       "original_head": "c67129877f97be204e5623954dd3057166fb7531"
     },
-    "next_package_dispatched": false
+    "next_package_dispatched": false,
+    "external_codex_completions_observed": [
+      {
+        "pr": 41,
+        "original_head": "c67129877f97be204e5623954dd3057166fb7531"
+      },
+      {
+        "pr": 44,
+        "original_head": "4b931e6425fd491f45af3d62532e7847ae5d05ee"
+      }
+    ]
   },
   "preservation": {
-    "base": "0ea1c878a6e0f0d62fe01bedc37f619602b9d35f",
-    "head": "92112799bad6bb6fa26b5540e833d80a8fc669c2",
-    "original_blobs": 1298,
-    "current_blobs": 1312,
-    "unchanged": 1297,
+    "scope": "P02_02_CODE_INTEGRATION",
+    "base": "817b0f85547963939841e8bc7181e55b2b84d86f",
+    "head": "f06d19aa36e1b89d5714064d6262045eaf440062",
+    "original_blobs": 1312,
+    "current_blobs": 1323,
+    "unchanged": 1311,
     "modified_existing": [
-      "pyproject.toml"
+      "defistress_v2/contracts/__init__.py"
     ],
-    "approved_modification": "wheel packages list adds defistress_v2 only",
-    "additions": 14,
+    "approved_modification": "exports of new snapshot types only",
+    "additions": 11,
     "deleted": 0,
     "protected_scientific_inputs_changed": 0
   },
@@ -144,29 +159,89 @@
       },
       "local_tools": "Python3.12.14 Linux;pytest8.4.2;Ruff0.17.1;mypy1.20.2 strict9 source files;wheel10 V2 entries",
       "rollback": "reviewed revert; no tag movement"
+    },
+    {
+      "pr": 44,
+      "issue": 42,
+      "original_head": "4b931e6425fd491f45af3d62532e7847ae5d05ee",
+      "head": "62105de4fd498164c50ce9c7f3df48f068fa9f53",
+      "merge": "f06d19aa36e1b89d5714064d6262045eaf440062",
+      "decision": "TECHNICAL_ACCEPTED_MERGED",
+      "review_comment": 6286943366,
+      "findings": {
+        "P0_observed": 0,
+        "P1_resolved": 6,
+        "P2_resolved": 2,
+        "unresolved_scoped_blockers": 0
+      },
+      "tests": {
+        "adapter_pass": 70,
+        "original_adapter_cases_retained": 28,
+        "review_controls_added": 42,
+        "p02_01_pass": 97,
+        "legacy_pass": 80,
+        "local_combined_pass": 247,
+        "L1_pass": 196,
+        "L1_fail": 0,
+        "L1_blocked": 0,
+        "scientific_limitations_blocked": 2,
+        "repository_pytest_pass": 532,
+        "frontend_pass": 21,
+        "counts_overlap_by_suite": true
+      },
+      "ci_runs": [
+        39393766307,
+        39393774449,
+        39393774479,
+        39393766193,
+        39393774463
+      ],
+      "ci_status": "SUCCESS",
+      "integration_ci_run": 39394749742,
+      "spec_coverage": {
+        "total": 46,
+        "partial_T01": 8,
+        "not_implemented_T02_T05": 38
+      },
+      "coverage": {
+        "registered_blocks": 3,
+        "read_passes": 2,
+        "pools": 2,
+        "snapshot_views": 6,
+        "component_views": 24,
+        "selected_borrower_block_cases_source_declared": 24,
+        "reserves_per_portfolio_source_declared": 67
+      },
+      "local_tools": "Python 3.12.14/Linux; pytest 8.4.2; Ruff 0.17.1; mypy 1.20.2 strict 13 V2 files; hatchling 1.27.0; 14 exact wheel entries",
+      "limits": "read-only registered saved schema; source economic checks not rerun; no partial-view loader or native execution",
+      "rollback": "reviewed revert only"
     }
   ],
   "post_merge_ci": {
-    "head": "92112799bad6bb6fa26b5540e833d80a8fc669c2",
-    "run_id": 39361686871,
-    "url": "https://github.com/Doquocdung1609/DeFiStress/actions/runs/39361686871",
+    "head": "f06d19aa36e1b89d5714064d6262045eaf440062",
+    "run_id": 39394749742,
+    "url": "https://github.com/Doquocdung1609/DeFiStress/actions/runs/39394749742",
     "status": "completed",
     "conclusion": "success",
-    "artifact_id": 12238165096,
-    "zip_sha256": "0509429b8c060faa4797ed7c7f9f3303c8abbb85a869233d2eda680113541d97",
+    "artifact_id": 12251935232,
+    "zip_sha256": "26e0fcb3e43c896df38bb21013fd976885e7909fe5b8c203c23df288a43e60b9",
     "junit": {
-      "tests": 462,
+      "tests": 532,
       "failures": 0,
       "errors": 0,
       "skipped": 0,
-      "sha256": "f5fd361349140e1650447449a9ebed6eb70ec595b2680195e8e11db0a4c2a3fc",
-      "bytes": 61650
+      "sha256": "56d836d1165d0502f8bb45f478452aca7cf328a70907e154735e44f0fdee9bc6",
+      "bytes": 79674
     },
+    "frontend_tests_pass": 21,
+    "environment_smoke_pass": 5,
     "ruff": "PASS",
     "mypy_sim": "PASS",
     "optional_real_rpc": "SKIPPED",
     "changed_scientific_paths": [],
-    "frontend_tests_pass": 21
+    "zip_crc": "PASS",
+    "evidence_scope": "Entire ZIP downloaded and all JSON/XML files parsed; CI-produced large/source byte records read, not independent historical replay",
+    "scope": "P02_02_CODE_INTEGRATION_NOT_LATEST_GOVERNANCE_COMMIT"
   },
   "artifact_recheck": {
     "artifact_id": 12203756156,
@@ -224,9 +299,9 @@
       "id": "CODEX-DISPATCH",
       "class": "TOOLING",
       "reason": "NO_CALLABLE_CODEX_TASK_TOOL",
-      "resolution": "Actual executor can accept Issue42; external P02-01 completion observed, no Work dispatch tool",
+      "resolution": "Actual executor can accept Issue45 only after explicit implementation grant; external P02-01/02 completion observed",
       "blocks": [
-        "P02-02 automatic task launch"
+        "automatic coding-task launch"
       ]
     },
     {
@@ -254,6 +329,16 @@
         "Phase04 predictor/run",
         "Phase05 empirical campaign"
       ]
+    },
+    {
+      "id": "P02-03-SCOPE",
+      "class": "AUTHORIZATION",
+      "reason": "Current task prepares design/tests/Issue/prompt but explicitly does not grant implementation",
+      "resolution": "Concrete proposed pure synthetic/offline S slice in Issue45; Commander scope decision required",
+      "blocks": [
+        "P02-03-S implementation",
+        "P02-03 READY_FOR_CODEX_EXECUTION"
+      ]
     }
   ],
   "work_packages": [
@@ -267,24 +352,25 @@
       "pr": 41,
       "commit": "59193efc6d4e8ae1ad3233187d8c0e6b8fd9bd43",
       "tests": "97 core+80 legacy PASS;L1=196PASS;repo462PASS/frontend21PASS",
-      "next_action": "Preserve accepted interface; consume it in bounded P02-02 only",
+      "next_action": "Preserve accepted contracts; P02-03 design may consume them; implementation awaits scoped grant",
       "integration_commit": "92112799bad6bb6fa26b5540e833d80a8fc669c2"
     },
     {
       "id": "P02-02",
-      "owner": "Codex",
+      "owner": "Codex original implementation; Work review/repair",
       "dependencies": [
         "P02-01"
       ],
       "authorization": "BOUNDED_READ_ONLY_SAVED_ARTIFACT_LOADING",
-      "status": "READY_FOR_CODEX_EXECUTION",
-      "pr": null,
-      "commit": null,
-      "tests": "NOT_RUN",
-      "next_action": "Actual Codex executor accepts Issue42 and pinned CODEX_NEXT_WORK_PACKAGE.md; no RPC/engine",
+      "status": "TECHNICAL_ACCEPTED",
+      "pr": 44,
+      "commit": "62105de4fd498164c50ce9c7f3df48f068fa9f53",
+      "tests": "70 adapter + 97 contracts + 80 legacy PASS; L1 196 PASS; repo 532 / frontend 21 PASS",
+      "next_action": "Preserve accepted loader; do not promote read capabilities to native execution",
       "issue": 42,
-      "base_commit": "92112799bad6bb6fa26b5540e833d80a8fc669c2",
-      "execution_status": "NOT_DISPATCHED_NO_DIRECT_TOOL"
+      "base_commit": "817b0f85547963939841e8bc7181e55b2b84d86f",
+      "execution_status": "EXTERNAL_CODEX_COMPLETED_WORK_REVIEWED_REPAIRED_AND_MERGED",
+      "integration_commit": "f06d19aa36e1b89d5714064d6262045eaf440062"
     },
     {
       "id": "P02-03",
@@ -293,12 +379,21 @@
         "P02-01",
         "P02-02"
       ],
-      "authorization": "SYNTHETIC_SCOPE_REVIEW_REQUIRED",
-      "status": "WAITING_DEPENDENCY",
+      "authorization": "DESIGN_HANDOFF_ONLY_NO_IMPLEMENTATION_GRANT",
+      "status": "HANDOFF_PREPARED_AWAITING_SCOPED_AUTHORIZATION",
       "pr": null,
       "commit": null,
       "tests": "NOT_RUN",
-      "next_action": "Resolve synthetic/economic/native profile boundary; no historical-native claims"
+      "next_action": "Commander may explicitly authorize proposed S-only pure synthetic scope; historical/native slices remain separately blocked",
+      "issue": 45,
+      "base_commit": "f06d19aa36e1b89d5714064d6262045eaf440062",
+      "execution_status": "WAITING_FOR_AUTHORIZATION_AND_CODEX_EXECUTION_NOT_DISPATCHED",
+      "slices": {
+        "D": "DESIGN_PREPARED",
+        "S": "PROPOSED_NOT_AUTHORIZED",
+        "H": "BLOCKED_AUTHORIZATION_AND_EVIDENCE",
+        "N": "BLOCKED_AUTHORIZATION_AND_NATIVE_PROFILE"
+      }
     },
     {
       "id": "P02-04",
@@ -423,13 +518,14 @@
     "optional_live_rpc_jobs": "SKIPPED",
     "local_initial_wrong_cwd_pytest_exit": 4,
     "local_corrected_pytest_exit": 0,
-    "new_research_simulations": 0
+    "new_research_simulations": 0,
+    "p02_02_initial_local_missing_coverage_fixture": "Corrected pinned source provisioning; no test/code change"
   },
   "related_files": [
     "PROGRAM_CONTROL.md",
     "CODEX_NEXT_WORK_PACKAGE.md"
   ],
-  "current_authority": "V2_P02_01_TECHNICAL_REVIEW_AND_GOVERNED_INTEGRATION",
+  "current_authority": "V2_P02_02_INDEPENDENT_TECHNICAL_REVIEW_AND_GOVERNED_INTEGRATION",
   "preservation_at_bootstrap": {
     "original_blobs": 1281,
     "current_blobs": 1295,
@@ -449,6 +545,28 @@
       "mypy_sim_49_source_files": "PASS",
       "optional_real_rpc": "SKIPPED",
       "artifact_scope": "repository CI logs read; not an independent replay"
+    },
+    {
+      "head": "92112799bad6bb6fa26b5540e833d80a8fc669c2",
+      "run_id": 39361686871,
+      "url": "https://github.com/Doquocdung1609/DeFiStress/actions/runs/39361686871",
+      "status": "completed",
+      "conclusion": "success",
+      "artifact_id": 12238165096,
+      "zip_sha256": "0509429b8c060faa4797ed7c7f9f3303c8abbb85a869233d2eda680113541d97",
+      "junit": {
+        "tests": 462,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "sha256": "f5fd361349140e1650447449a9ebed6eb70ec595b2680195e8e11db0a4c2a3fc",
+        "bytes": 61650
+      },
+      "ruff": "PASS",
+      "mypy_sim": "PASS",
+      "optional_real_rpc": "SKIPPED",
+      "changed_scientific_paths": [],
+      "frontend_tests_pass": 21
     }
   ],
   "p02_01_artifacts": [
@@ -575,6 +693,257 @@
       "deliverable": "Independent comparator/retention/reproduction and reviewer protocol",
       "acceptance": "Code independence distinct from external reviewer independence; tolerances/holdouts sealed before comparison; no empirical campaign",
       "runtime": "NOT_AUTHORIZED"
+    }
+  ],
+  "preservation_p02_01": {
+    "base": "0ea1c878a6e0f0d62fe01bedc37f619602b9d35f",
+    "head": "92112799bad6bb6fa26b5540e833d80a8fc669c2",
+    "original_blobs": 1298,
+    "current_blobs": 1312,
+    "unchanged": 1297,
+    "modified_existing": [
+      "pyproject.toml"
+    ],
+    "approved_modification": "wheel packages list adds defistress_v2 only",
+    "additions": 14,
+    "deleted": 0,
+    "protected_scientific_inputs_changed": 0
+  },
+  "p02_02_artifacts": [
+    {
+      "id": 12251155780,
+      "run": 39393774449,
+      "head": "62105de4fd498164c50ce9c7f3df48f068fa9f53",
+      "zip_sha256": "f4a01c49d8b15fc38150ebcf5a1e435c8a2647f88f75f8c7d4dbb05edcbfac04",
+      "files": {
+        "SHA256SUMS": {
+          "sha256": "1a721913286aeb6848c7257f9f78fe73491d30852d98ff127a7aca5ecbf0a3c3",
+          "bytes": 725
+        },
+        "SMOKE_REPORT.json": {
+          "sha256": "4f4e4017c6347f91857e0743c2824d68c53f33a413bc29fc7e2362e1409b7807",
+          "bytes": 53724
+        },
+        "VALIDATION_GATES.json": {
+          "sha256": "2c2706c0daeda4c11e98c0c613d62bb301484f631981cc06d746e17ce96176b2",
+          "bytes": 45996
+        },
+        "dist/defi_stress_lab-0.2.0-py3-none-any.whl": {
+          "sha256": "953a1c839808671d4498d8e66291724b6884ce12d4a83fa3babcf24588a9eb9b",
+          "bytes": 205033
+        },
+        "execution-metadata.txt": {
+          "sha256": "0606ccb19077a090fd05b27e0c707528a2f5611dd4c6e01f4ad4873720bb1397",
+          "bytes": 278
+        },
+        "p02-01-junit.xml": {
+          "sha256": "fdf63f5e390a0b1c578a59072f0130bc808cceca05f77b6eb1183f6b5e0ecf35",
+          "bytes": 13422,
+          "tests": 97,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "p02-02-junit.xml": {
+          "sha256": "ea260acaf224476521f735f2f4150c4ff084e77f7ba34e597b18f07bffdf9cdd",
+          "bytes": 18274,
+          "tests": 70,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "prephase02-junit.xml": {
+          "sha256": "78a00564a4ffc755ea0a93e9c8c6d305af6ce568b76465248129a126e396243d",
+          "bytes": 11144,
+          "tests": 80,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "wheel-contents.txt": {
+          "sha256": "83b9943f541ecadb2e9a9269b9dcd9fcd305f17bdad1461a202c0f4ac57839ad",
+          "bytes": 9601
+        }
+      },
+      "checksums_verified": 8,
+      "smoke_coverage": {
+        "blocks": 3,
+        "component_views": 24,
+        "read_passes_per_block": 2,
+        "snapshot_views": 6
+      },
+      "adapter_code_files_verified": 4,
+      "wheel_entries_verified": 14
+    },
+    {
+      "id": 12251340138,
+      "run": 39393774479,
+      "head": "62105de4fd498164c50ce9c7f3df48f068fa9f53",
+      "zip_sha256": "d430ef95c4a4f2bb27feb0ddaa0c206480ae39b1d88577261d1c908adcd4f5a4",
+      "files": {
+        "SHA256SUMS": {
+          "sha256": "5cb26f2968b2dc3fae0b1e46a2b5db40966fe0b8322a0d1f05462df8bc92454f",
+          "bytes": 475
+        },
+        "VALIDATION_GATES.json": {
+          "sha256": "173e059a06ebe2467c8af27d28ad5caacdffbb3a71895558a479287e469af682",
+          "bytes": 46000
+        },
+        "execution-metadata.txt": {
+          "sha256": "b3a8c2517b7dda45ff01bb0a8e42b8a802113d10d26b79ac5707773440f03d83",
+          "bytes": 366
+        },
+        "legacy-offline-junit.xml": {
+          "sha256": "d28bd083771866aa7365b0b73679fb24077a599ed3f3118c63273bec5291e18e",
+          "bytes": 11144,
+          "tests": 80,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "p02-01-junit.xml": {
+          "sha256": "14c4e4501af8b8eacc8f352623760f12f4abe7f3f96d73235319172f584a7404",
+          "bytes": 13422,
+          "tests": 97,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "checksums_verified": 4
+    },
+    {
+      "id": 12250328073,
+      "run": 39393766307,
+      "head": "62105de4fd498164c50ce9c7f3df48f068fa9f53",
+      "zip_sha256": "22603ad38565a4098468e74dcbe6cf9ebd55ec66236c73e78cd3978182950f39",
+      "files": {
+        "SHA256SUMS": {
+          "sha256": "a8861cc937703fc0bcb682894007ce095cfd3c90b879f27fb317fb215187edd3",
+          "bytes": 725
+        },
+        "SMOKE_REPORT.json": {
+          "sha256": "4f4e4017c6347f91857e0743c2824d68c53f33a413bc29fc7e2362e1409b7807",
+          "bytes": 53724
+        },
+        "VALIDATION_GATES.json": {
+          "sha256": "7392a90cd4f9eeb5e411d134e21a1e969d25cfda486e693f66accdf18b921703",
+          "bytes": 45996
+        },
+        "dist/defi_stress_lab-0.2.0-py3-none-any.whl": {
+          "sha256": "953a1c839808671d4498d8e66291724b6884ce12d4a83fa3babcf24588a9eb9b",
+          "bytes": 205033
+        },
+        "execution-metadata.txt": {
+          "sha256": "704d48fdb0acf95c014938978b42db97b16e98d0e8c49c02294e78a59a2578ae",
+          "bytes": 278
+        },
+        "p02-01-junit.xml": {
+          "sha256": "260d2531ae9a2cc5782a25c9ecb47d49a26e33ebfd5bb84b8a3c883b4c48b0f8",
+          "bytes": 13422,
+          "tests": 97,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "p02-02-junit.xml": {
+          "sha256": "1b43f70fd555964b45e561c9bb4fa747001cb4fd5cfb3d870866e49ebc3bba2e",
+          "bytes": 18273,
+          "tests": 70,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "prephase02-junit.xml": {
+          "sha256": "9d1b1b6584a6af3ffcbcebf3c6617452666c346ea6a2e32b3c8de32174bcd1e2",
+          "bytes": 11144,
+          "tests": 80,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "wheel-contents.txt": {
+          "sha256": "83b9943f541ecadb2e9a9269b9dcd9fcd305f17bdad1461a202c0f4ac57839ad",
+          "bytes": 9601
+        }
+      },
+      "checksums_verified": 8,
+      "smoke_coverage": {
+        "blocks": 3,
+        "component_views": 24,
+        "read_passes_per_block": 2,
+        "snapshot_views": 6
+      },
+      "adapter_code_files_verified": 4,
+      "wheel_entries_verified": 14
+    },
+    {
+      "id": 12251406000,
+      "run": 39393766193,
+      "zip_sha256": "2d0b6607ef75e61c6a481668ab519a3fd74d555e8999f8a17274038ea3efeee6",
+      "files": {
+        "checkout-policy.json": {
+          "sha256": "440d3bbbd5bdb9789eabc96ca2dda624dcad6c9b0810d0c2ef934d1bc3715c33",
+          "bytes": 16287
+        },
+        "environment-smoke.xml": {
+          "sha256": "03b7144c4e49c8c79bd52d2e4934a3e68c8c326ab420f6851d8ad5abe71d4e1a",
+          "bytes": 810,
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "environment-verified.json": {
+          "sha256": "4ec08a4ea8ec1cbc018792ddbbb48c20ba8d782cb1426e23ed9504825dfa35de",
+          "bytes": 25084
+        },
+        "checkout-byte-verification.json": {
+          "sha256": "505192a5543b36561ac3efcd213282c4df9ea4d8998be5031d3973033af92fed",
+          "bytes": 52008
+        },
+        "full-pytest.xml": {
+          "sha256": "e07ba330a6c4969d2038c1c13edb05859b4eae18ac7e9ed96d8488cec6a3e7e2",
+          "bytes": 79678,
+          "tests": 532,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "generator-history.json": {
+          "sha256": "86eb40afd52ed17ec76cb948577f47a77ea09aa503060f195f7b4751e5a12e5f",
+          "bytes": 2736
+        },
+        "large-artifacts.json": {
+          "sha256": "0257b4af1b3cc4872756ea60a9c844eeb7712c6e9d179a0f96c420f794b8e9a6",
+          "bytes": 38976
+        },
+        "legacy-docx-inputs.json": {
+          "sha256": "da08e34a761f5bd524689bc96110f153aa9d34e76a6689501a2a669438c17864",
+          "bytes": 458
+        },
+        "legacy-manifest-checks.json": {
+          "sha256": "ae293a91d2929bc894d6d35a27e9b48e132f2a857b2cbf2570d4996254338110",
+          "bytes": 60619
+        },
+        "requirements-windows-py312.lock.txt": {
+          "sha256": "edc53ad79a7b9924bd8a9c889e053547dc620a9b1482a3551b150fcd1e08f4ff",
+          "bytes": 10212
+        },
+        "requirements.resolved.txt": {
+          "sha256": "837ab7017f3e8335ee5698691bae2fa3d140bafa89945a665b2dd860aa01e5b1",
+          "bytes": 1818
+        },
+        "source-preservation.json": {
+          "sha256": "efd72f11efee94345dc905c508073c4d8be2233f49dfc146eebe876c17d4bfd5",
+          "bytes": 145,
+          "source_preservation": {
+            "scientific_lock": "3f6e5302483681209e2408531eb5a15389f9fded",
+            "head": "62105de4fd498164c50ce9c7f3df48f068fa9f53",
+            "changed_paths": []
+          }
+        }
+      }
     }
   ]
 }

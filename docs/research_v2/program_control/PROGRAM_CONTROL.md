@@ -4,7 +4,19 @@
 
 Authority: `V2_AUTONOMOUS_RESEARCH_ENGINEERING_ORCHESTRATION_AUTHORIZED`, user/Commander handoff of 2026-10-19 UTC. Program tracker [#38](https://github.com/Doquocdung1609/DeFiStress/issues/38). This grants ordinary technical review/merge and bounded offline/synthetic safeguards; it does not grant engine implementation, historical stress, Monte Carlo, independent-backend relabeling or scientific publication. Prior task-specific no-merge instructions are superseded for technically eligible PRs36/37. Original architecture files retain their dated design-only/PENDING text; current disposition is recorded here rather than rewriting their history.
 
-## P02-01 acceptance and next package — 2026-10-20 UTC
+## P02-02 acceptance / P02-03 prepared — 2026-10-21 UTC
+
+Current authority: `V2_P02_02_INDEPENDENT_TECHNICAL_REVIEW_AND_GOVERNED_INTEGRATION`. PR44 original 4b931e6… was independently reviewed by Work, repaired at `62105de4fd498164c50ce9c7f3df48f068fa9f53` and merged at **`f06d19aa36e1b89d5714064d6262045eaf440062`**. [Technical verdict](https://github.com/Doquocdung1609/DeFiStress/pull/44#issuecomment-6286943366): six P1/two P2 groups resolved, no observed P0 or unresolved scoped blocker. Post-repair checks are Work self-review, not external peer review.
+
+Local 70 adapter + 97 contracts + 80 legacy tests PASS (247 scoped, overlapping repository suite); L1 196 PASS / 0 FAIL / 0 L1 BLOCKED; two separate scientific limitations unchanged. Ruff, strict mypy 13 V2 files, 14-entry exact wheel checks PASS. All five final-head runs SUCCESS; actual artifacts/JUnit/checksum lists/code hashes/wheel bytes read. [Actual code-integration CI 39394749742](https://github.com/Doquocdung1609/DeFiStress/actions/runs/39394749742) SUCCESS on exact merge, 532 pytest / 21 frontend / 5 environment-smoke PASS. Optional RPC job SKIPPED. Exact checksums and checkout identities are in PROGRAM_STATE.json.
+
+Read-only coverage is three blocks × two passes, two pools, six snapshots / 24 component views. Bitmap/identity/schema consistency is not a new historical reconstruction/native validation. Composite/derived fields, unsupported native USDC round, unknown heartbeat freshness, collection-end availability bounds, caller-declared Git refs and verified content anchors are separate. Registered tick band and selected portfolios are not full-market/execution coverage. Eight T01 specs PARTIAL, 38 T02–T05 NOT_IMPLEMENTED; partial-view loading unsupported, missing required data blocks. V1/Phase01/scientific artifacts and tag unchanged; only pre-existing package exports extended.
+
+Issue42 is TECHNICAL_ACCEPTED. **[P02-03 Issue45](https://github.com/Doquocdung1609/DeFiStress/issues/45) is HANDOFF_PREPARED_AWAITING_SCOPED_AUTHORIZATION**. CODEX_NEXT_WORK_PACKAGE.md pins accepted source/interface dependencies, three price classes, units/economic HF, counterfactual A/B/C controls, manual synthetic reference vectors and nine T02 specifications. Preparing this work does not grant implementation. D design is GO; S pure synthetic implementation is proposed, not authorized; H historical and N native slices need separate evidence/use-class grants. No slice is falsely marked READY_FOR_CODEX_EXECUTION. No task was dispatched.
+
+Current code-integration base is `f06d19aa36e1b89d5714064d6262045eaf440062`; later governance-only commits do not change accepted code/data. Final governance CI is recorded in its PR to avoid circular self-commit assertions in this ledger. Gate A remains BLOCKED; no permission to run historical stress/Monte Carlo, liquidation, AMM, agents, dynamic propagation, Terra predictor or empirical campaigns.
+
+## Prior P02-01 checkpoint — next-package status superseded by the current checkpoint above
 
 Current authority: V2_P02_01_TECHNICAL_REVIEW_AND_GOVERNED_INTEGRATION. Codex original c67129877f97be204e5623954dd3057166fb7531 was reviewed and repaired by Work at `59193efc6d4e8ae1ad3233187d8c0e6b8fd9bd43`; PR #41 merged at `92112799bad6bb6fa26b5540e833d80a8fc669c2`. [Actual-code verdict](https://github.com/Doquocdung1609/DeFiStress/pull/41#issuecomment-6282270949) records 4 P1 and 2 P2 resolved; no P0/unresolved scoped blocker. Post-repair verification is Work self-recheck, not external peer review.
 
@@ -38,7 +50,7 @@ Technical acceptance comments: [PR36](https://github.com/Doquocdung1609/DeFiStre
 
 Gate B retains the previously accepted29 core labels ×3 blocks ×2 passes =174 field-pass agreements/87 unique block-field pairs against saved dRPC. Raw Alchemy field values were not retained, so this work did not replay those174 comparisons. Gate A remains blocked by absent request-linked distinct-serving-backend attestation. Two LIMITATION records remain BLOCKED: `ALCHEMY-VALUE-REPLAY=NOT_REPLAYABLE_FROM_PERSISTED_SUMMARY` and `BACKEND-INDEPENDENCE=NO_REQUEST_LEVEL_DISTINCT_BACKEND_ATTESTATION`. L1 byte integrity and L2 synthetic guards do not close either limitation.
 
-PR36 is accepted only as bounded offline guard software. Its Python equality can equate bool/int; `active<=total` lacks a general liquidity-unit contract; its round check assumes a supported round-bearing source; integer HF alone does not verify scale/profile. Native V2 code must use typed/source-aware contracts, not inherit these helpers as protocol truth. The repaired report handles L1 missing/failure with nonzero exits; consumers must still inspect both scoped statuses and limitations. UQ08 CI/acceptance is resolved; typed adaptation remains pending. UQ01–07/09 remain as described in the accepted architecture.
+PR36 is accepted only as bounded offline guard software. Its Python equality can equate bool/int; `active<=total` lacks a general liquidity-unit contract; its round check assumes a supported round-bearing source; integer HF alone does not verify scale/profile. Native V2 code must use typed/source-aware contracts, not inherit these helpers as protocol truth. The repaired report handles L1 missing/failure with nonzero exits; consumers must still inspect both scoped statuses and limitations. UQ08 CI/acceptance is resolved; typed adaptation now covers the registered saved pack only, not native execution. UQ01–07/09 remain as described in the accepted architecture.
 
 ## Dependency and authorization plan
 
@@ -46,8 +58,8 @@ Arrows below are prerequisite deliveries, not causal claims or execution permiss
 
 ```mermaid
 flowchart TD
-  P1["P02-01 · Pure contracts"] --> P2["P02-02 · Saved adapter"]
-  P1 --> P3["P02-03 · Valuation"]
+  P1["P02-01 · Accepted contracts"] --> P2["P02-02 · Accepted saved adapter"]
+  P1 --> P3["P02-03 · Scope grant pending"]
   P2 --> P3
   P2 --> P5["P02-05 · AMM execution"]
   P3 --> P4["P02-04 · Liquidation"]
@@ -67,8 +79,8 @@ Phase04's separate data audit depends on its own source/vintage availability; Ph
 | Package / owner | Prerequisite / current authorization | Current disposition / next action |
 |---|---|---|
 | P02-01 / Codex; Work review/repair | Accepted bounded offline contracts; PR41 merge/CI at `92112799bad6bb6fa26b5540e833d80a8fc669c2` | TECHNICAL_ACCEPTED; 97 + 80 scoped PASS, 196 L1 PASS; use approved guards/projection, no native inference |
-| P02-02 / Codex | P02-01 accepted; saved schema/source mapping and resource bounds pinned | READY_FOR_CODEX_EXECUTION; Issue42; NOT_DISPATCHED, no RPC/acquisition/engine |
-| P02-03 / Codex | P02-01/02; explicit economic/native profile separation | WAITING_DEPENDENCY; only propose synthetic/value-contract scope after prior acceptance; no faithful historical valuation while profile/freshness unresolved |
+| P02-02 / Codex; Work review/repair | Accepted bounded saved adapter; PR44 merge/CI `f06d19aa36e1b89d5714064d6262045eaf440062` | TECHNICAL_ACCEPTED; 70/97/80 scoped PASS, 196 L1; retain limited read capabilities |
+| P02-03 / Work design; Codex after grant | P02-01/02 accepted; exact base pinned; implementation not granted | HANDOFF_PREPARED; Issue45; S-only proposal awaits scope decision; H/N remain blocked |
 | P02-04 / Codex | Accepted01/03 plus native Aave rules/funding/receipt scope and specific execution authorization | BLOCKED_AUTHORIZATION_AND_EVIDENCE; no liquidation transition implementation |
 | P02-05 / Codex | Accepted01/02 plus integer profile/band/inventory/fee completeness and execution grant | BLOCKED_AUTHORIZATION_AND_EVIDENCE; no quote/execution engine |
 | P02-06 / Codex | Accepted03/04/05, agent/order/budget/accrual contracts and engine grant | BLOCKED_AUTHORIZATION_AND_DEPENDENCY; no scheduler/simulation |
@@ -95,4 +107,4 @@ Merge only a qualified technical PR within current scope, with exact-head lease,
 
 P03-D01 (Work): layer/edge/unit/loss-ledger and no-shock/no-sale/transmission controls; no propagation run. P04-D01 (Work): separate Terra vintage/availability, sealed splits/thresholds/baselines and miss/false-alarm/lead-time protocol; no predictor or tuning. P05-D01 (Work): independent-reference, retention/reproduction and reviewer protocol; no empirical campaign. These L0 design tasks can be planned independently; they do not depend on a positive Aave outcome or transfer validation across markets. Runtime prerequisites/authorization remain unchanged in the DAG and ledger.
 
-External Codex execution of P02-01 is evidenced by PR41 and is now accepted. Work has no callable coding-task dispatch tool. Issue42/CODEX_NEXT_WORK_PACKAGE.md is ready for an actual P02-02 executor; no background execution is claimed. P02-03 awaits the adapter and scoped profile review; engine/execution, dynamic contagion, Terra predictor and empirical campaigns remain NO-GO. `DEFISTRESS_V2_TECHNICAL_RELEASE_CANDIDATE=NOT_REACHED`; no V2_SCIENTIFIC_FINAL.
+External Codex completion of P02-01/02 is evidenced by PR41/44 and accepted after Work review/repair. Work has no callable coding-task dispatch tool. Issue45/CODEX_NEXT_WORK_PACKAGE.md is a prepared future task, not a running task or implementation grant. P02-03-S awaits Commander scope authorization; H/N, engine/execution, propagation, Terra predictor and empirical campaigns remain NO-GO. `DEFISTRESS_V2_TECHNICAL_RELEASE_CANDIDATE=NOT_REACHED`; no V2_SCIENTIFIC_FINAL.
