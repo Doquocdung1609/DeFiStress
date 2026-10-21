@@ -1,0 +1,63 @@
+# Terra Early Warning — proposed temporal and exit protocol
+
+**PROPOSED_PROTOCOL_v1 — NOT_APPROVED — NO_BACKTEST_OR_EXIT_RUN_AUTHORIZED.** Authority permits design, dataset audit and bounded offline/synthetic engineering. It does not itself approve this protocol. Parent Issue #49; source anchor9207ead7db3acf1332b34cebcd19981c2f7bd9cc. Dependencies: P04-01 registry/admission findings; P04-D01 proposal in PR47 is reference material, not an approved or implemented protocol.
+
+## Research questions (separate from immutable V1 six-RQ registry)
+
+- **RQ-T1:** Những tín hiệu bất ổn nào có thể quan sát được trước sự mất ổn định nghiêm trọng của UST?
+- **RQ-T2:** Có thể kết hợp nhiều chỉ báo để cảnh báo sớm hơn so với từng chỉ báo riêng lẻ không?
+- **RQ-T3:** Mô hình có thể phát cảnh báo trước các mốc khủng hoảng được xác định độc lập bao lâu?
+- **RQ-T4:** Tỷ lệ cảnh báo sai và bỏ sót là bao nhiêu khi kiểm thử trên các thời kỳ bình thường và các sự kiện đối chứng?
+- **RQ-T5:** Tại thời điểm cảnh báo, liệu có đủ thanh khoản và thời gian để thực hiện giả định thoát vị thế sau khi tính phí, trượt giá, độ trễ và hạn chế thị trường?
+- **RQ-T6:** Khả năng cảnh báo có duy trì khi thay đổi nguồn dữ liệu, thời gian quan sát, tham số và phương pháp không?
+
+RQ-T1/2 require eligible features and matched-information comparisons; T3 needs separately curated labels and clocks; T4 needs event and non-event exposure denominators; T5 needs execution evidence; T6 needs sealed vintages/configuration variants. The mandatory investigation remains valid if it concludes that no defensible early alert or feasible exit can be demonstrated.
+
+## Information contract and output
+
+Every observation has asset/chain/venue/base-unit identity, source/version, event/effective time, interval start/end/label semantics, first-publication/available time with evidence class, acquisition time, revision/vintage, origin and complete hash/lineage. `columbus-5` is not an Ethereum numeric chain ID. On-chain inclusion, provider delivery, derived aggregate completion and local retrieval are different times. Availability of a derived feature is at least the latest availability of every dependency plus declared processing latency. Acquisition after2022 does not forbid retrospective reconstruction, but cannot backdate access by itself.
+
+Future admission is per field/vintage/decision time and use class, not a permanent boolean on an entire wide CSV. Incomplete bars cannot enter forecasts at bar open; whole-hour event sums become available after the hour ends. Daily data do not become hourly observations when carried. Unknown availability, wrong units/source/identity, future revision and missing required data cause abstention or reasoned quarantine; observed zero remains distinct. Any staleness/carry/imputation policy is sealed by field and fits only on train data. A synthetic availability fixture never supplies historical publication evidence.
+
+Output contract: observation signals and derived alert are separate records. Alert records include `risk_score`, `risk_level`, triggered signals and contributions, as-of/issue timestamp, information cutoff, earliest permitted availability, eligible/missing features, source/profile/model/threshold hashes and validation status. A display risk level alone is not a calibrated probability. Missing-data abstention is visible rather than NORMAL/score0.
+
+## Preregistration proposal — choices fixed before future evaluation
+
+This is a concrete proposal to review and seal, not a claim these choices have been approved or run. Prior public knowledge and inspection of V1 outcomes mean May2022 is an **outcome-known retrospective temporal case**, never a newly blind prospective event. A later algorithm seal can prevent additional tuning; it cannot erase prior event knowledge. Model fitting can still be chronological, with interpretation limited accordingly. Independent curator/reviewer is **NOT_ASSIGNED**.
+
+| Component | Proposed rule | Readiness / constraint |
+|---|---|---|
+| Event definitions | Label all four downside levels .995/.99/.95/.90, retained from V1 context, with first completed60-minute sustained breach on a verified minute label series; retain first-single-breach separately | Do not select the level with best lead. Label curator pins source, venue/base, interval convention, recovery/episodes/censoring before any score evaluation; current22/23h source discrepancy unresolved |
+| Primary timing endpoints | Initial sustained loss of peg and severe .90 endpoint reported separately; lead=event onset−valid alert issue time | An alert after initial depeg cannot be described as predicting it, even if earlier than severe escalation |
+| Daily price-only track | Candidate train2020-10-02≤t<2022-04-01, calibrationApr1≤t<May1, case evaluationMay1≤t<May14 UTC; use overlapping UST/LUNA daily raw support only | Availability/vintage admission still blocked. Daily horizons1and3days; no hourly precision or synthetic daily-to-hourly sample inflation |
+| Intraday/multi-signal track | Hourly decision clock with completed source bars; horizons1/6/24hours. Train/calibration must precedeMay1; May1–13 is the declared case evaluation window | Existing minute panel startsMay1 and flowsMay6/7: supervised/composite training on required intraday features is currently BLOCKED_PRE_EVENT_TRAINING_COVERAGE. Obtain eligible earlier sources or keep analysis explicitly rule/scenario-based |
+| Normal/control periods | Register Apr2022 and source-supported earlier periods as candidates, independently label normal/adverse/censored windows; May2021 depeg is an adverse-event comparison candidate | Do not assume every pre-May day is normal. Source availability and full event labels required; no generalization from one Terra crisis |
+| Baseline ladder | B0 no-alert; B1 transparent peg-deviation/persistence; B2 trailing LUNA return/volatility; then predeclared composite if common eligible support exists | No algorithm fit/run now. Equal horizons, eligibility masks and release clocks for paired comparison. Change-point/anomaly models only after stationarity/missingness/support audit; supervised models need valid labels and independent training events |
+| Threshold rule | B1 reports all registered peg levels, never a post-hoc winner. Any learned-score watch/high thresholds are calibration95th/99th percentiles, with tie/missing rules frozen before case evaluation | These are proposed rule settings, not promised accuracy or optimized May thresholds; no fitting currently authorized. Calibrated probabilities require a separate model/calibration specification |
+| Feature transforms | Trailing-only returns/volatility/flows; fit scales/imputers on train only; no full-period min/max; minimum warm-up and feature participation sealed per model | Missingness mask and renormalization affect comparability; publish ablation/abstention rules, not an opportunistically changing feature set |
+| Split guards | No random split. Purge label-horizon overlap at split boundaries, embargo full declared dependence span, enforce vintage/availability≤decision time | Exact feature windows determine purge/embargo before sealing; incomplete dependence specification blocks a run |
+| Holdout policy | Hash data IDs/vintages, event/non-event labels, model/threshold/config, split/availability rules, transforms, horizons, metrics and comparison set; retain signed access/change record | May case remains outcome-known. New confirmatory cross-event claim requires independently curated, genuinely untouched future/held-out event set and its own grant |
+
+No main onset timestamp is computed or selected here. Eligibility gating precedes parameter fitting, model comparison and evaluation. If new sources force a material frequency/label change, publish a protocol amendment with reason and approval before running; do not silently adapt the holdout to a desired result.
+
+## Metrics and robust interpretation
+
+Every result must report the registered candidate universe, eligible observations/events, unavailable/abstained/censored records and exclusions with reasons. First valid alert means a complete admitted record issued before its target with frozen model/threshold. Match alerts only to events within the declared forecast horizon; an arbitrarily early permanent alarm is not a successful forecast. Merge repeated alarms into episodes using a cooldown rule sealed with the hourly or daily track, and report both raw alert observations and alarm episodes.
+
+Report signed lead in hours or days consistent with the clock, including source/processing/inclusion-delay bounds. Late warnings are negative lead; misses have no lead and remain in the event denominator. Observation-level precision/recall and event-level missed-event rate use different explicitly named denominators. Undefined ratios remain UNDEFINED, not zero or perfect. False positives are reported per eligible non-event day/hour and per registered non-event exposure including abstentions separately; do not add correlated carried observations as independent evidence.
+
+Report threshold/risk-level stability over the predeclared calibration/configuration grid and vintage/missingness variants, without selecting a winning May threshold. Calibration applies only to probability outputs and uses sealed reliability/Brier-style methodology if separately specified; an arbitrary0–100stress score is not a probability. Compare simple versus composite methods on common eligible masks, plus separate full-coverage reports, so improved coverage and improved discrimination are not conflated. No new significance test or confidence interval is specified/run by this audit; uncertainty from intervals, missingness and source variants is explicit and non-probabilistic unless a sampling model is later approved.
+
+## Exit feasibility — separate protocol, not yet executable
+
+RQ-T5 is conditional on a valid alarm and is not financial advice or an order-routing feature. Proposed illustrative long-UST position sizes are1,000/10,000/100,000UST, declared independently of outcomes. Register account/venue/access assumptions, allowed routes, base currency and settlement asset; no universal investor access. Earliest action time is issue time plus data-processing/decision/transaction or order-inclusion latency; event time alone cannot set execution time.
+
+For an order book require timestamped bids/asks, depth levels, spread, fees, executable venue permissions, quote age, trade/withdrawal restrictions and fill/cancel/partial-fill semantics. For Curve/DEX require correct historical pool balances/amplification/fee/routing/state, block identity and finality, gas/congestion, transaction order, slippage limits and receipt/reference validation under separately authorized simulation. Include USDT/USDC-to-USD conversion rather than assuming quote tokens equal dollars. A price/VWAP panel, exchange volume or isolated swap does not establish any of these capacities.
+
+Per size/route report executable input, partial/unfilled remainder, output net of fees/gas/spread/slippage, effective time and data/assumption uncertainty. Halt/market closure/capital/access restriction is a possible infeasible outcome. Missing critical depth/execution data gives **NOT_VERIFIABLE**, not guaranteed exit and not an invented slippage point estimate. A scenario-only liquidity bound is clearly COUNTERFACTUAL and cannot be reported as historical achievable proceeds. Current status is NOT_EXECUTED/NOT_VERIFIABLE; no liquidity model is run here.
+
+## Minimum future evidence and STOP
+
+The eventual demonstrator must contain at least one provenance/temporal-audited Terra case, eligible non-event/adverse controls when available, all negative outcomes, reproducible warning pipeline, independently curated event timeline, baseline/false-alert/leakage/robustness reports, exit results or NOT_VERIFIABLE and a professor-facing demo. Demo stages must visibly distinguish observed signals, model inference, historical case evaluation and executable-liquidity assumptions.
+
+P04-02-S may implement only saved-audit and synthetic temporal primitives. P04-03 model fitting, P04-04 historical backtest and P04-05 exit simulations need a reviewed/approved protocol, admitted inputs and explicit applicable run scope. P04-06 independent validation requires an actual assigned comparator/reviewer and separate evidence. STOP on missing availability/profile/units, label conflict, unsealed choices, holdout inspection/tuning, unavailable native liquidity or scope escalation. No source, V1 negative finding, Aave Gate A/B or accepted claim is changed to make this study pass.
