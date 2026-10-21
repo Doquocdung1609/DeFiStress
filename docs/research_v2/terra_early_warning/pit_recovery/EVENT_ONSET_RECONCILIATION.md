@@ -22,6 +22,8 @@
 
 Locators: `data/processed/terra_may2022_v1.csv`; `data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv`; `data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/prices/{ust,luna}_price_may2022.parquet`.
 
+Hai Parquet raw dùng `timestamp[us]` không kèm timezone. Các giờ trên đối chiếu theo nhãn và convention chuyển sang UTC của hai bảng processed; việc khớp giá không tự xác minh timezone ban đầu hay thời điểm phát hành của vendor. Trước admission phải xác nhận cả timezone lẫn bar closure với nguồn. Kết luận chắc chắn ở đây là ánh xạ giữa các nhãn/giá trong các artifact hiện có, không phải chứng nhận clock phát hành ngoài thị trường.
+
 Manifest legacy `data/raw/terra_may2022_v1/provenance_manifest.json#/evidence_map` khai báo `hourly last` cho hai giá. Mã `terra_may2022_v1_pack/terra_may2022_v1_pack/build_terra_may2022_v1.py`, `hourly_series` dòng 354–372, dùng `resample("1h").last()`; các dòng 909–910 yêu cầu `last` cho giá. Trong khi đó `scripts/terra/complete_historical_data.py::_composite_price`/`_minute_price` dùng backward-as-of tại giờ đích. Các giá trị cụ thể xác nhận ánh xạ khác nhau ở hai giờ này, phù hợp với mã và manifest. Không có bằng chứng đây đơn thuần là chênh múi giờ.
 
 **Kết luận về TERRA-A06:** đã giải thích được sự khác nhau về điểm lấy mẫu, nhưng chưa chọn onset chuẩn cho nghiên cứu V2. Không dịch mọi dòng một giờ một cách cơ học: minute nguồn có thể là bar chưa rõ closure, dữ liệu có khoảng thiếu, và các trường khác có phép tổng hợp riêng. Cần contract về interval label/end/availability trước khi quyết định thông tin nào hợp lệ tại một giờ phát cảnh báo. Không sửa bảng V1 và không tính lại các lead time đã lưu.

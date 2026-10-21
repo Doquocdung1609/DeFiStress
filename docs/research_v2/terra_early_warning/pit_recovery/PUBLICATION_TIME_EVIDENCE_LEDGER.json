@@ -292,7 +292,8 @@
         "PIT-R07"
       ],
       "original_registry_field_pointer": "docs/research_v2/terra_early_warning/p04_01/P04_01_DATASET_REGISTRY.json#/core_fields/2",
-      "source_ledger_relationship": "Supplementary semantic evidence only; underlying per-field data lineage remains the pinned original registry, not inferred from these generic documents."
+      "source_ledger_relationship": "Supplementary semantic evidence only; underlying per-field data lineage remains the pinned original registry, not inferred from these generic documents.",
+      "raw_timestamp_timezone": "Raw minute Parquet timestamp[us] has no timezone; UTC is processed-loader convention, not newly verified original vendor publication timezone."
     },
     {
       "field": "luna_price",
@@ -319,7 +320,8 @@
         "PIT-R07"
       ],
       "original_registry_field_pointer": "docs/research_v2/terra_early_warning/p04_01/P04_01_DATASET_REGISTRY.json#/core_fields/3",
-      "source_ledger_relationship": "Supplementary semantic evidence only; underlying per-field data lineage remains the pinned original registry, not inferred from these generic documents."
+      "source_ledger_relationship": "Supplementary semantic evidence only; underlying per-field data lineage remains the pinned original registry, not inferred from these generic documents.",
+      "raw_timestamp_timezone": "Raw minute Parquet timestamp[us] has no timezone; UTC is processed-loader convention, not newly verified original vendor publication timezone."
     },
     {
       "field": "ust_supply",
