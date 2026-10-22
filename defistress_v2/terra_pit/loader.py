@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import re
 from dataclasses import dataclass
 from pathlib import Path, PurePosixPath
 from typing import Any
@@ -18,12 +19,48 @@ MAX_METADATA_FILE_BYTES = 2_000_000
 MAX_METADATA_PACK_BYTES = 4_000_000
 MAX_JSON_DEPTH = 64
 MAX_JSON_ITEMS = 20_000
+EXPECTED_FIELD_NAMES = (
+    "timestamp",
+    "block_height",
+    "ust_price",
+    "luna_price",
+    "ust_supply",
+    "luna_supply",
+    "anchor_total_deposits",
+    "anchor_deposit_flow",
+    "anchor_withdrawal_flow",
+    "ust_native_redemption_volume",
+    "gross_luna_issuance_from_native_swaps",
+    "backing_ratio",
+    "top10_anchor_share",
+    "top100_anchor_share",
+)
+EXPECTED_GATE_STATUSES = {
+    "BACKTEST_PROTOCOL_APPROVED": "NOT_APPROVED_PROPOSAL_ONLY",
+    "DATA_AUDITED": "SCOPED_PASS_35_BYTES_304_PATHS",
+    "EXIT_FEASIBILITY_EVALUATED": "NOT_EXECUTED_NOT_VERIFIABLE_CURRENT_DEPTH_INPUTS",
+    "FALSE_ALARM_RISK_EVALUATED": "NOT_EVALUATED_IN_NEW_PROGRAM",
+    "HISTORICAL_BACKTEST_EXECUTED": "NOT_EXECUTED",
+    "INDEPENDENTLY_REVIEWED": "NOT_REVIEWED_WORK_SELF_AUDIT_ONLY",
+    "MODEL_IMPLEMENTED": "V2_NOT_IMPLEMENTED_V1_CODE_EXISTS",
+    "POINT_IN_TIME_ELIGIBLE": "BLOCKED_AVAILABILITY_AND_INTERVAL_TIMING",
+    "PRE_EVENT_ALERT_DEMONSTRATED": "NOT_DEMONSTRATED_IN_NEW_PROGRAM",
+}
+EXPECTED_GATE_STATUSES_TUPLE = tuple(sorted(EXPECTED_GATE_STATUSES.items()))
+_SHA256 = re.compile(r"[0-9a-f]{64}")
+_SHA1 = re.compile(r"[0-9a-f]{40}")
 
 
 @dataclass(frozen=True, slots=True)
 class MetadataPin:
     relative_path: str
     sha256_git_bytes: str
+
+    def __post_init__(self) -> None:
+        if type(self.relative_path) is not str or not self.relative_path:
+            raise TypeContractError("metadata pin path must be nonempty")
+        if type(self.sha256_git_bytes) is not str or _SHA256.fullmatch(self.sha256_git_bytes) is None:
+            raise TypeContractError("metadata pin SHA-256 must be lowercase hexadecimal")
 
 
 @dataclass(frozen=True, slots=True)
@@ -44,8 +81,10 @@ class SavedTerraAuditMetadata:
             raise TypeContractError("P04-01 metadata must retain exactly 35 verified inputs")
         if self.cleared_predictive_fields != 0 or self.point_in_time_status != "BLOCKED_NOT_CLEARED_FOR_FORECAST":
             raise TypeContractError("saved historical fields must remain blocked")
-        if len(self.gate_statuses) != 9 or len({key for key, _ in self.gate_statuses}) != 9:
-            raise TypeContractError("all nine Terra acceptance statuses must remain distinct")
+        if self.field_count != len(EXPECTED_FIELD_NAMES):
+            raise TypeContractError("P04-01 metadata field inventory changed")
+        if self.gate_statuses != EXPECTED_GATE_STATUSES_TUPLE:
+            raise TypeContractError("Terra acceptance gate identities or statuses changed")
 
 
 def _safe_path(root: Path, relative: str) -> Path:
@@ -73,10 +112,21 @@ def _safe_path(root: Path, relative: str) -> Path:
 
 
 def _bounded_bytes(path: Path, maximum: int = MAX_METADATA_FILE_BYTES) -> bytes:
-    size = path.stat().st_size
+    if type(maximum) is not int or maximum < 0:
+        raise TypeContractError("metadata byte bound must be a nonnegative integer")
+    before = path.stat()
+    size = before.st_size
     if type(size) is not int or size < 0 or size > maximum:
         raise TypeContractError("metadata file exceeds its byte bound")
-    data = path.read_bytes()
+    with path.open("rb") as stream:
+        data = stream.read(maximum + 1)
+    after = path.stat()
+    identity_before = (before.st_dev, before.st_ino, before.st_size, before.st_mtime_ns)
+    identity_after = (after.st_dev, after.st_ino, after.st_size, after.st_mtime_ns)
+    if identity_before != identity_after:
+        raise TypeContractError("metadata file changed during bounded read")
+    if len(data) > maximum:
+        raise TypeContractError("metadata file exceeds its byte bound")
     if len(data) != size:
         raise TypeContractError("metadata file changed during bounded read")
     return data
@@ -154,32 +204,55 @@ def load_saved_terra_audit_metadata(
     fields = pit.get("field_admission")
     if not isinstance(verified, list) or not isinstance(fields, list):
         raise TypeContractError("P04-01 metadata lists are missing")
-    paths = [row.get("path") for row in verified if isinstance(row, dict)]
-    if len(paths) != len(verified) or len(paths) != len(set(paths)):
+    paths: list[str] = []
+    for row in verified:
+        if not isinstance(row, dict):
+            raise TypeContractError("P04-01 verified input record is malformed")
+        path = row.get("path")
+        size_bytes = row.get("size_bytes")
+        sha256 = row.get("sha256_git_bytes")
+        blob_sha1 = row.get("git_blob_sha1")
+        if (
+            type(path) is not str
+            or not path
+            or type(size_bytes) is not int
+            or size_bytes < 0
+            or type(sha256) is not str
+            or _SHA256.fullmatch(sha256) is None
+            or type(blob_sha1) is not str
+            or _SHA1.fullmatch(blob_sha1) is None
+            or row.get("status") != "FULL_BYTES_VERIFIED"
+        ):
+            raise TypeContractError("P04-01 verified input identity or integrity metadata is malformed")
+        paths.append(path)
+    if len(paths) != len(set(paths)):
         raise TypeContractError("P04-01 verified input paths are malformed or duplicated")
+    field_names: list[str] = []
     for row in fields:
-        if not isinstance(row, dict) or row.get("approved_forecast_use") is not False:
+        if not isinstance(row, dict) or type(row.get("field")) is not str:
+            raise TypeContractError("P04-01 field admission record is malformed")
+        field_names.append(row["field"])
+        if row.get("approved_forecast_use") is not False:
             raise TypeContractError("historical field was unexpectedly promoted")
         if not str(row.get("point_in_time_status", "")).startswith("BLOCKED_"):
             raise TypeContractError("historical field lacks a blocked PIT status")
+    if tuple(field_names) != EXPECTED_FIELD_NAMES:
+        raise TypeContractError("P04-01 field admission identities or order changed")
     cleared = pit.get("cleared_predictive_fields")
     status = pit.get("status")
     gates = pit.get("gates")
     if type(cleared) is not int or type(status) is not str or not isinstance(gates, dict):
         raise TypeContractError("P04-01 PIT summary fields have invalid types")
-    gate_statuses: list[tuple[str, str]] = []
-    for key in sorted(gates):
-        value = gates[key]
-        if type(key) is not str or type(value) is not str:
-            raise TypeContractError("P04-01 gate statuses must be string pairs")
-        gate_statuses.append((key, value))
+    gate_statuses = tuple(sorted(gates.items()))
+    if gate_statuses != EXPECTED_GATE_STATUSES_TUPLE:
+        raise TypeContractError("P04-01 gate identities or statuses changed")
     return SavedTerraAuditMetadata(
         source_commit=P04_01_SOURCE_COMMIT,
         verified_input_count=len(verified),
         field_count=len(fields),
         cleared_predictive_fields=cleared,
         point_in_time_status=status,
-        gate_statuses=tuple(gate_statuses),
+        gate_statuses=gate_statuses,
         registry_raw_sha256=registry_hash,
         pit_manifest_raw_sha256=pit_hash,
     )

@@ -21,6 +21,7 @@ from defistress_v2.terra_pit import (
     MetadataPin,
     RiskOutputPlaceholder,
     RiskOutputStatus,
+    SourceFrequency,
     SourceProvenance,
     TemporalObservation,
     TemporalSplit,
@@ -39,7 +40,13 @@ from defistress_v2.terra_pit import (
     trailing_mean,
     validate_observation_order,
 )
-from defistress_v2.terra_pit.loader import P04_01_PIT_MANIFEST, P04_01_REGISTRY, _strict_json
+from defistress_v2.terra_pit.loader import (
+    EXPECTED_FIELD_NAMES,
+    EXPECTED_GATE_STATUSES,
+    P04_01_PIT_MANIFEST,
+    P04_01_REGISTRY,
+    _strict_json,
+)
 from scripts.research.terra_v2.audit_p04_01 import csv_profile
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -75,7 +82,7 @@ def observation(
     interval: TimeInterval | None = None,
     vintage_id: str | None = None,
     revision_of: str | None = None,
-    source_frequency: str = "hourly",
+    source_frequency: SourceFrequency = SourceFrequency.HOURLY_AGGREGATE,
     ingestion: UtcInstant | None = None,
     unit: AssetUnit = UNIT,
 ) -> TemporalObservation:
@@ -131,8 +138,8 @@ def test_p04_s02_future_interval_closure() -> None:
 
 
 def test_p04_s03_revised_vintage_does_not_rewrite_past() -> None:
-    first = observation("s03-v1", "1", at(9), at(10), vintage_id="v1")
-    revised = observation("s03-v2", "9", at(9), at(12), vintage_id="v2", revision_of="v1")
+    first = observation("s03", "1", at(9), at(10), vintage_id="v1")
+    revised = observation("s03", "9", at(9), at(12), vintage_id="v2", revision_of="v1")
     chosen = latest_eligible_vintage((first, revised), at(11), AdmissionPolicy(ZERO, timedelta(days=1)))
     assert chosen is first
     assert chosen.measurement.value == "1"
@@ -198,7 +205,7 @@ def test_p04_s09_quote_pair_cannot_be_promoted_without_conversion() -> None:
 
 
 def test_p04_s10_daily_carry_requires_staleness_policy_and_warmup() -> None:
-    item = observation("s10", "1", at(9), at(9), source_frequency="daily-carried-hourly")
+    item = observation("s10", "1", at(9), at(9), source_frequency=SourceFrequency.DAILY_CARRIED_FORWARD)
     unresolved = AdmissionPolicy(ZERO, None)
     decision = admissible_at(item, at(10), unresolved)
     assert decision.status is AdmissionStatus.ABSTAIN
@@ -233,7 +240,16 @@ def _minimal_metadata(root: Path) -> tuple[MetadataPin, MetadataPin]:
     registry = {
         "schema": "defistress-terra-p04-01-source-audit/1",
         "source_commit": COMMIT,
-        "verified_inputs": [{"path": f"p{i}"} for i in range(35)],
+        "verified_inputs": [
+            {
+                "path": f"p{i}",
+                "size_bytes": 0,
+                "sha256_git_bytes": "0" * 64,
+                "git_blob_sha1": "0" * 40,
+                "status": "FULL_BYTES_VERIFIED",
+            }
+            for i in range(35)
+        ],
     }
     pit = {
         "schema": "defistress-terra-pit-admission/1",
@@ -241,9 +257,14 @@ def _minimal_metadata(root: Path) -> tuple[MetadataPin, MetadataPin]:
         "status": "BLOCKED_NOT_CLEARED_FOR_FORECAST",
         "cleared_predictive_fields": 0,
         "field_admission": [
-            {"field": "x", "approved_forecast_use": False, "point_in_time_status": "BLOCKED_AVAILABILITY"}
+            {
+                "field": field,
+                "approved_forecast_use": False,
+                "point_in_time_status": "BLOCKED_AVAILABILITY",
+            }
+            for field in EXPECTED_FIELD_NAMES
         ],
-        "gates": {f"GATE_{i}": "BLOCKED" for i in range(9)},
+        "gates": EXPECTED_GATE_STATUSES,
     }
     pins = []
     for name, document in (("registry.json", registry), ("pit.json", pit)):
@@ -310,6 +331,124 @@ def test_registered_metadata_is_audit_only_and_remains_blocked() -> None:
     assert result.cleared_predictive_fields == 0
     assert len(result.gate_statuses) == 9
     assert result.point_in_time_status == "BLOCKED_NOT_CLEARED_FOR_FORECAST"
+
+
+@pytest.mark.parametrize("value", ["1.0", "1.00", "-0", "0.0", "00", "1e2", "1" * 79])
+def test_measurement_rejects_noncanonical_or_unbounded_decimal(value: str) -> None:
+    with pytest.raises(TypeContractError, match="canonical|bound"):
+        Measurement(ValueStatus.AVAILABLE, value, UNIT, "complete")
+
+
+def test_source_frequency_requires_typed_closed_vocabulary() -> None:
+    item = observation("typed-frequency", "1", at(9), at(9))
+    with pytest.raises(TypeContractError, match="SourceFrequency"):
+        dataclasses.replace(item, source_frequency="daily-carried-hourly")  # type: ignore[arg-type]
+
+
+def test_latest_vintage_rejects_cross_series_or_invalid_revision_chain() -> None:
+    first = observation("series", "1", at(9), at(10), vintage_id="v1")
+    cross_series = observation("other", "2", at(9), at(11), vintage_id="v2", revision_of="v1")
+    with pytest.raises(TypeContractError, match="VINTAGE_IDENTITY_MISMATCH"):
+        latest_eligible_vintage((first, cross_series), at(12), AdmissionPolicy(ZERO, timedelta(days=1)))
+
+    unknown_parent = observation("series", "2", at(9), at(11), vintage_id="v2", revision_of="missing")
+    with pytest.raises(TypeContractError, match="REVISION_CHAIN_INVALID"):
+        latest_eligible_vintage((first, unknown_parent), at(12), AdmissionPolicy(ZERO, timedelta(days=1)))
+
+    later_first = observation("series", "1", at(9), at(12), vintage_id="v1")
+    earlier_revision = observation("series", "2", at(9), at(11), vintage_id="v2", revision_of="v1")
+    with pytest.raises(TypeContractError, match="VINTAGE_AVAILABILITY_OUT_OF_ORDER"):
+        latest_eligible_vintage((later_first, earlier_revision), at(13), AdmissionPolicy(ZERO, timedelta(days=1)))
+
+
+def test_trailing_hash_commits_to_full_selected_input_lineage() -> None:
+    original = (
+        observation("lineage-1", "1", at(8), at(8)),
+        observation("lineage-2", "3", at(9), at(9)),
+    )
+    changed = (
+        dataclasses.replace(original[0], measurement=Measurement(ValueStatus.AVAILABLE, "0", UNIT, "complete")),
+        dataclasses.replace(original[1], measurement=Measurement(ValueStatus.AVAILABLE, "4", UNIT, "complete")),
+    )
+    policy = AdmissionPolicy(ZERO, timedelta(days=1))
+    before = trailing_mean(original, at(10), 2, policy)
+    after = trailing_mean(changed, at(10), 2, policy)
+    assert before.value == after.value == "2"
+    assert before.content_hash != after.content_hash
+
+
+def test_trailing_mean_rejects_nonterminating_decimal_result() -> None:
+    values = (
+        observation("nonterm-1", "1", at(7), at(7)),
+        observation("nonterm-2", "1", at(8), at(8)),
+        observation("nonterm-3", "2", at(9), at(9)),
+    )
+    with pytest.raises(TypeContractError, match="NON_TERMINATING_MEAN_UNSUPPORTED"):
+        trailing_mean(values, at(10), 3, AdmissionPolicy(ZERO, timedelta(days=1)))
+
+
+def test_trailing_window_counts_distinct_observation_times_and_selects_latest_vintage() -> None:
+    first = observation("distinct-1", "1", at(8), at(8), vintage_id="v1")
+    revised = observation("distinct-1", "3", at(8), at(9), vintage_id="v2", revision_of="v1")
+    second = observation("distinct-2", "5", at(9), at(9), vintage_id="v3")
+    values = (first, revised, second)
+    policy = AdmissionPolicy(ZERO, timedelta(days=1))
+
+    result = trailing_mean(values, at(10), 2, policy)
+
+    assert result.value == "4"
+    assert result.observation_ids == ("distinct-1", "distinct-2")
+    with pytest.raises(TypeContractError, match="WARMUP_NOT_SATISFIED"):
+        trailing_mean(values, at(10), 3, policy)
+
+
+def test_trailing_window_rejects_mixed_source_identity() -> None:
+    first = observation("source-1", "1", at(8), at(8))
+    second = observation("source-2", "3", at(9), at(9))
+    second = dataclasses.replace(
+        second,
+        provenance=SourceProvenance(
+            "other-source",
+            COMMIT,
+            "2" * 64,
+            VerificationLevel.FULL_BYTES_VERIFIED,
+            EvidenceOrigin.SYNTHETIC,
+        ),
+    )
+
+    with pytest.raises(TypeContractError, match="TRAILING_SERIES_IDENTITY_MISMATCH"):
+        trailing_mean((first, second), at(10), 2, AdmissionPolicy(ZERO, timedelta(days=1)))
+
+
+@pytest.mark.parametrize("mutation", ["field_identity", "gate_identity", "gate_status", "input_integrity"])
+def test_loader_rejects_metadata_identity_or_status_drift(tmp_path: Path, mutation: str) -> None:
+    registry_pin, pit_pin = _minimal_metadata(tmp_path)
+    registry = json.loads((tmp_path / "registry.json").read_bytes())
+    pit = json.loads((tmp_path / "pit.json").read_bytes())
+    if mutation == "field_identity":
+        pit["field_admission"][0]["field"] = "substituted"
+    elif mutation == "gate_identity":
+        pit["gates"]["SUBSTITUTED"] = pit["gates"].pop("DATA_AUDITED")
+    elif mutation == "gate_status":
+        pit["gates"]["DATA_AUDITED"] = "PASS"
+    else:
+        registry["verified_inputs"][0]["sha256_git_bytes"] = "A" * 64
+    for name, document in (("registry.json", registry), ("pit.json", pit)):
+        raw = json.dumps(document, separators=(",", ":")).encode()
+        (tmp_path / name).write_bytes(raw)
+        pin = MetadataPin(name, hashlib.sha256(raw).hexdigest())
+        if name == "registry.json":
+            registry_pin = pin
+        else:
+            pit_pin = pin
+    with pytest.raises(TypeContractError):
+        load_saved_terra_audit_metadata(tmp_path, registry_pin, pit_pin)
+
+
+@pytest.mark.parametrize("path,digest", [("", "0" * 64), ("registry.json", "A" * 64), ("registry.json", "0" * 63)])
+def test_metadata_pin_rejects_malformed_identity(path: str, digest: str) -> None:
+    with pytest.raises(TypeContractError):
+        MetadataPin(path, digest)
 
 
 def test_contracts_are_frozen_and_terra_chain_is_not_evm_identity() -> None:

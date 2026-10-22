@@ -23,6 +23,7 @@ def test_validation_cli_writes_failure_evidence_before_nonzero_exit(tmp_path: Pa
     assert exit_code == 1
     report = json.loads(output.read_bytes())
     assert report["status"] == "FAIL"
+    assert report["failure_classification"] == "QUARANTINED"
     assert report["point_in_time_eligibility"] == "BLOCKED_NOT_CLEARED_FOR_FORECAST"
     assert report["historical_backtest_executed"] is False
 

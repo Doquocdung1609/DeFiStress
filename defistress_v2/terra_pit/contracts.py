@@ -12,6 +12,7 @@ from defistress_v2.contracts.errors import IdentityContractError, TypeContractEr
 
 _ID = re.compile(r"[A-Za-z0-9][A-Za-z0-9._:/-]{0,127}")
 _DECIMAL = re.compile(r"-?(?:0|[1-9][0-9]*)(?:\.[0-9]+)?")
+MAX_DECIMAL_DIGITS = 78
 
 
 def _identifier(value: object, field: str) -> str:
@@ -54,6 +55,12 @@ class IntervalClosure(StrEnum):
 
 class RiskOutputStatus(StrEnum):
     NOT_IMPLEMENTED = "NOT_IMPLEMENTED"
+
+
+class SourceFrequency(StrEnum):
+    EVENT = "EVENT"
+    HOURLY_AGGREGATE = "HOURLY_AGGREGATE"
+    DAILY_CARRIED_FORWARD = "DAILY_CARRIED_FORWARD"
 
 
 @dataclass(frozen=True, slots=True, order=True)
@@ -153,6 +160,15 @@ class Measurement:
         if self.status is ValueStatus.AVAILABLE:
             if type(self.value) is not str or _DECIMAL.fullmatch(self.value) is None:
                 raise TypeContractError("available measurement requires a canonical decimal string")
+            digits = self.value.removeprefix("-").replace(".", "")
+            if len(digits) > MAX_DECIMAL_DIGITS:
+                raise TypeContractError("measurement exceeds the declared decimal digit bound")
+            integer, separator, fraction = self.value.partition(".")
+            normalized = integer if not separator else f"{integer}.{fraction.rstrip('0')}".rstrip(".")
+            if normalized in {"-0", ""}:
+                normalized = "0"
+            if self.value != normalized:
+                raise TypeContractError("measurement decimal string is not canonical")
             if self.completeness_evidence_id is None:
                 raise TypeContractError("available measurement requires completeness evidence")
             _identifier(self.completeness_evidence_id, "completeness_evidence_id")
@@ -254,7 +270,7 @@ class TemporalObservation:
     vintage: DatasetVintage
     measurement: Measurement
     provenance: SourceProvenance
-    source_frequency: str
+    source_frequency: SourceFrequency
 
     def __post_init__(self) -> None:
         _identifier(self.observation_id, "observation_id")
@@ -266,7 +282,8 @@ class TemporalObservation:
             raise TypeContractError("vintage and measurement must be typed")
         if type(self.provenance) is not SourceProvenance:
             raise TypeContractError("provenance must be typed")
-        _identifier(self.source_frequency, "source_frequency")
+        if type(self.source_frequency) is not SourceFrequency:
+            raise TypeContractError("source_frequency must be a typed SourceFrequency")
         if self.interval is not None and not (self.interval.start <= self.observed_at < self.interval.end):
             raise TypeContractError("observation time must lie in its [start,end) interval")
 

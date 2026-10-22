@@ -85,6 +85,7 @@ def main(argv: list[str] | None = None) -> int:
             "p04_01_source_commit": P04_01_SOURCE_COMMIT,
             "scope": "SAVED_METADATA_AUDIT_AND_SYNTHETIC_PIT_CONTRACTS_ONLY",
             "status": "FAIL",
+            "failure_classification": "QUARANTINED",
             "failure_type": type(exc).__name__,
             "failure_reason": str(exc),
             "point_in_time_eligibility": "BLOCKED_NOT_CLEARED_FOR_FORECAST",
