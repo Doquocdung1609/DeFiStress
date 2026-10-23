@@ -374,7 +374,11 @@ class QualityReport:
             raise TypeContractError("quality status counts must equal total")
         if self.historical_pit_status != "BLOCKED_NOT_CLEARED_FOR_FORECAST":
             raise TypeContractError("P04-02 cannot promote historical PIT status")
-        if self.historical_predictive_fields != 0 or self.backtest_executed is not False:
+        if (
+            type(self.historical_predictive_fields) is not int
+            or self.historical_predictive_fields != 0
+            or self.backtest_executed is not False
+        ):
             raise TypeContractError("P04-02 historical predictive use and backtest must remain disabled")
 
     def to_canonical(self) -> object:

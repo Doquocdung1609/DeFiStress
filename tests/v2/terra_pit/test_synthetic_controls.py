@@ -237,20 +237,7 @@ def test_p04_s12_csv_width_failure_remains_a_quarantine_condition() -> None:
 
 
 def _minimal_metadata(root: Path) -> tuple[MetadataPin, MetadataPin]:
-    registry = {
-        "schema": "defistress-terra-p04-01-source-audit/1",
-        "source_commit": COMMIT,
-        "verified_inputs": [
-            {
-                "path": f"p{i}",
-                "size_bytes": 0,
-                "sha256_git_bytes": "0" * 64,
-                "git_blob_sha1": "0" * 40,
-                "status": "FULL_BYTES_VERIFIED",
-            }
-            for i in range(35)
-        ],
-    }
+    registry = json.loads((ROOT / P04_01_REGISTRY).read_bytes())
     pit = {
         "schema": "defistress-terra-pit-admission/1",
         "source_commit": COMMIT,

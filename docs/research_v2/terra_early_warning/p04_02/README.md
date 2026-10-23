@@ -33,3 +33,15 @@ Required status remains:
 `TERRA_POINT_IN_TIME_ELIGIBILITY_BLOCKED — HISTORICAL_BACKTEST_NOT_AUTHORIZED`
 
 `GATE_A_BLOCKED — GATE_B_SCOPED_PASS — PHASE02_HISTORICAL_EXECUTION_NOT_AUTHORIZED`
+
+## Independent final-review repair profile
+
+The repair is based on PR HEAD `c74c307e155af2baa96168e76224c46641f83c04`; commit and CI provenance belong in the delivery evidence rather than this semantic contract. The selected-input hash domain is now `defistress-terra-pit-contracts/0.2`, binding admission policy, explicit zero interval delay, selected revision ancestry, units/window and selection/arithmetic profiles. Old content hashes must not be reused for this profile. Unused future descendants do not enter the selected lineage.
+
+Revision inputs represent one stable logical observation ID/source/chain/unit/interval/frequency and a linear, parent-before-child chain. Multiple roots, forks, cycles/unknown parents, and decreasing availability fail closed. Proven descendant order resolves equal availability without lexical names. A published missing/quarantined revision does not resurrect an older value. Unknown publication/availability still provides no new admission proof.
+
+Arithmetic retains the Codex exact-terminating-decimal profile: rational computation is exact; a nonterminating result raises NON_TERMINATING_MEAN_UNSUPPORTED. It is not rounded using Work decimal34, and no general rolling-feature model is claimed. Unsupported averages require a separately reviewed representation extension.
+
+A domain-separated semantic identity digest binds the exact35 registered source paths, sizes, raw Git SHA256, Git blob SHA1 and verification labels from the pinned P04-01 registry. It is independent of JSON whitespace/checkout line endings; caller-supplied raw-byte pins remain checked separately. This verifies saved metadata identities, not a fresh read of all35 source files. The14field and9gate guards retain their existing source-boundary behavior.
+
+The loader caps reads before allocation and compares the opened descriptor with the pre-read path identity, descriptor after read, and path after read. These controls detect tested swap/growth cases in a trusted offline checkout. They do not claim comprehensive protection against every hostile filesystem race, FIFO replacement or adversarial concurrent directory writer; such environments remain unsupported. Deep parser failures become typed integrity errors and the CLI retains failure-report behavior. Historical fields/backtests/exit permissions remain blocked.

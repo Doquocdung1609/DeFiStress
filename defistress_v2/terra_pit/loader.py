@@ -47,6 +47,9 @@ EXPECTED_GATE_STATUSES = {
     "PRE_EVENT_ALERT_DEMONSTRATED": "NOT_DEMONSTRATED_IN_NEW_PROGRAM",
 }
 EXPECTED_GATE_STATUSES_TUPLE = tuple(sorted(EXPECTED_GATE_STATUSES.items()))
+REGISTERED_SOURCE_IDENTITIES_SHA256 = "274f378d72c27510aa0de1e3b4a9be3537dc6e65e12496aaa3a9bcdd6ff2bb9b"
+_SOURCE_IDENTITY_DOMAIN = b"defistress-p04-01-source-identities/1\0"
+
 _SHA256 = re.compile(r"[0-9a-f]{64}")
 _SHA1 = re.compile(r"[0-9a-f]{40}")
 
@@ -75,14 +78,21 @@ class SavedTerraAuditMetadata:
     pit_manifest_raw_sha256: str
 
     def __post_init__(self) -> None:
-        if self.source_commit != P04_01_SOURCE_COMMIT:
+        if type(self.source_commit) is not str or self.source_commit != P04_01_SOURCE_COMMIT:
             raise TypeContractError("saved metadata source commit is not the registered P04-01 anchor")
-        if self.verified_input_count != 35:
+        if type(self.verified_input_count) is not int or self.verified_input_count != 35:
             raise TypeContractError("P04-01 metadata must retain exactly 35 verified inputs")
-        if self.cleared_predictive_fields != 0 or self.point_in_time_status != "BLOCKED_NOT_CLEARED_FOR_FORECAST":
+        if (
+            type(self.cleared_predictive_fields) is not int
+            or self.cleared_predictive_fields != 0
+            or self.point_in_time_status != "BLOCKED_NOT_CLEARED_FOR_FORECAST"
+        ):
             raise TypeContractError("saved historical fields must remain blocked")
-        if self.field_count != len(EXPECTED_FIELD_NAMES):
+        if type(self.field_count) is not int or self.field_count != len(EXPECTED_FIELD_NAMES):
             raise TypeContractError("P04-01 metadata field inventory changed")
+        for digest in (self.registry_raw_sha256, self.pit_manifest_raw_sha256):
+            if type(digest) is not str or _SHA256.fullmatch(digest) is None:
+                raise TypeContractError("metadata digests must be lowercase SHA-256")
         if self.gate_statuses != EXPECTED_GATE_STATUSES_TUPLE:
             raise TypeContractError("Terra acceptance gate identities or statuses changed")
 
@@ -119,7 +129,23 @@ def _bounded_bytes(path: Path, maximum: int = MAX_METADATA_FILE_BYTES) -> bytes:
     if type(size) is not int or size < 0 or size > maximum:
         raise TypeContractError("metadata file exceeds its byte bound")
     with path.open("rb") as stream:
+        opened = os.fstat(stream.fileno())
+        if (opened.st_dev, opened.st_ino, opened.st_size, opened.st_mtime_ns) != (
+            before.st_dev,
+            before.st_ino,
+            before.st_size,
+            before.st_mtime_ns,
+        ):
+            raise TypeContractError("metadata descriptor identity changed before read")
         data = stream.read(maximum + 1)
+        finished = os.fstat(stream.fileno())
+        if (opened.st_dev, opened.st_ino, opened.st_size, opened.st_mtime_ns) != (
+            finished.st_dev,
+            finished.st_ino,
+            finished.st_size,
+            finished.st_mtime_ns,
+        ):
+            raise TypeContractError("metadata changed while descriptor was open")
     after = path.stat()
     identity_before = (before.st_dev, before.st_ino, before.st_size, before.st_mtime_ns)
     identity_after = (after.st_dev, after.st_ino, after.st_size, after.st_mtime_ns)
@@ -148,7 +174,7 @@ def _strict_json(raw: bytes) -> object:
         result = json.loads(raw.decode("utf-8", errors="strict"), object_pairs_hook=pairs, parse_constant=reject)
     except TypeContractError:
         raise
-    except (UnicodeError, json.JSONDecodeError) as exc:
+    except (UnicodeError, json.JSONDecodeError, RecursionError) as exc:
         raise TypeContractError("metadata is not strict UTF-8 JSON") from exc
     count = 0
 
@@ -204,6 +230,7 @@ def load_saved_terra_audit_metadata(
     fields = pit.get("field_admission")
     if not isinstance(verified, list) or not isinstance(fields, list):
         raise TypeContractError("P04-01 metadata lists are missing")
+    source_identities: list[tuple[str, int, str, str, str]] = []
     paths: list[str] = []
     for row in verified:
         if not isinstance(row, dict):
@@ -225,8 +252,14 @@ def load_saved_terra_audit_metadata(
         ):
             raise TypeContractError("P04-01 verified input identity or integrity metadata is malformed")
         paths.append(path)
+        source_identities.append((path, size_bytes, sha256, blob_sha1, "FULL_BYTES_VERIFIED"))
     if len(paths) != len(set(paths)):
         raise TypeContractError("P04-01 verified input paths are malformed or duplicated")
+    encoded_identities = json.dumps(sorted(source_identities), ensure_ascii=False, separators=(",", ":")).encode(
+        "utf-8"
+    )
+    if hashlib.sha256(_SOURCE_IDENTITY_DOMAIN + encoded_identities).hexdigest() != REGISTERED_SOURCE_IDENTITIES_SHA256:
+        raise TypeContractError("REGISTERED_SOURCE_IDENTITIES_MISMATCH")
     field_names: list[str] = []
     for row in fields:
         if not isinstance(row, dict) or type(row.get("field")) is not str:

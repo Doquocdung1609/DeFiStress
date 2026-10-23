@@ -22,7 +22,7 @@ from defistress_v2.terra_pit.contracts import (
     ValueStatus,
 )
 
-TERRA_PIT_SCHEMA_VERSION = "defistress-terra-pit-contracts/0.1"
+TERRA_PIT_SCHEMA_VERSION = "defistress-terra-pit-contracts/0.2"
 
 
 def content_sha256(payload: object) -> str:
@@ -32,6 +32,8 @@ def content_sha256(payload: object) -> str:
 def completed_interval_time(observation: TemporalObservation, processing_delay: timedelta) -> UtcInstant:
     if type(processing_delay) is not timedelta or processing_delay < timedelta(0):
         raise TypeContractError("processing_delay must be nonnegative")
+    if type(observation) is not TemporalObservation:
+        raise TypeContractError("observation must be TemporalObservation")
     base = observation.interval.end if observation.interval is not None else observation.observed_at
     return base.add(processing_delay)
 
@@ -93,11 +95,13 @@ def admissible_at(
 def latest_eligible_vintage(
     observations: tuple[TemporalObservation, ...], decision_time: UtcInstant, policy: AdmissionPolicy
 ) -> TemporalObservation | None:
+    if type(decision_time) is not UtcInstant or type(policy) is not AdmissionPolicy:
+        raise TypeContractError("vintage selection inputs must be typed")
     validate_observation_order(observations)
     if not observations:
         return None
     first = observations[0]
-    known_vintages: set[str] = set()
+    previous_vintage: str | None = None
     prior_availability: UtcInstant | None = None
     for item in observations:
         if (
@@ -106,22 +110,36 @@ def latest_eligible_vintage(
             or item.interval != first.interval
             or item.measurement.unit != first.measurement.unit
             or item.provenance.source_id != first.provenance.source_id
+            or item.chain != first.chain
+            or item.provenance.origin is not first.provenance.origin
+            or item.source_frequency is not first.source_frequency
         ):
             raise TypeContractError("VINTAGE_IDENTITY_MISMATCH")
-        if item.vintage.revision_of is not None and item.vintage.revision_of not in known_vintages:
+        if item.vintage.revision_of != previous_vintage:
             raise TypeContractError("REVISION_CHAIN_INVALID")
         availability = item.vintage.availability_time
         if availability is not None and prior_availability is not None and availability < prior_availability:
             raise TypeContractError("VINTAGE_AVAILABILITY_OUT_OF_ORDER")
-        known_vintages.add(item.vintage.vintage_id)
+        previous_vintage = item.vintage.vintage_id
         if availability is not None:
             prior_availability = availability
-    eligible = [
-        item for item in observations if admissible_at(item, decision_time, policy).status is AdmissionStatus.ELIGIBLE
-    ]
-    if not eligible:
+    published: list[TemporalObservation] = []
+    for item in observations:
+        publication = item.vintage.publication_time
+        availability = item.vintage.availability_time
+        if publication is None or availability is None:
+            continue
+        ready = max(publication, availability, completed_interval_time(item, timedelta(0)))
+        if ready.add(policy.additional_delay) <= decision_time:
+            published.append(item)
+    if not published:
         return None
-    return max(eligible, key=lambda item: (item.vintage.availability_time, item.vintage.vintage_id))
+    # Input is a verified linear chain; names never determine revision order.
+    latest = published[-1]
+    # A published withdrawal/quarantine cannot silently restore an older value.
+    if admissible_at(latest, decision_time, policy).status is not AdmissionStatus.ELIGIBLE:
+        return None
+    return latest
 
 
 def derived_availability(dependencies: tuple[UtcInstant, ...], processing_delay: timedelta) -> UtcInstant:
@@ -159,6 +177,24 @@ class TrailingWindowResult:
     unit: AssetUnit
     content_hash: str
 
+    def __post_init__(self) -> None:
+        if type(self.decision_time) is not UtcInstant or type(self.unit) is not AssetUnit:
+            raise TypeContractError("trailing result clocks and unit must be typed")
+        if (
+            type(self.observation_ids) is not tuple
+            or not self.observation_ids
+            or any(type(identifier) is not str or not identifier for identifier in self.observation_ids)
+        ):
+            raise TypeContractError("trailing result identities must be an immutable string tuple")
+        if type(self.value) is not str or not self.value:
+            raise TypeContractError("trailing result value must be a decimal string")
+        if (
+            type(self.content_hash) is not str
+            or len(self.content_hash) != 64
+            or any(character not in "0123456789abcdef" for character in self.content_hash)
+        ):
+            raise TypeContractError("trailing result hash must be lowercase SHA-256")
+
     def to_canonical(self) -> object:
         return {
             "decision_time": self.decision_time,
@@ -176,6 +212,8 @@ def trailing_mean(
 ) -> TrailingWindowResult:
     if type(window) is not int or window <= 0:
         raise TypeContractError("window must be a positive exact integer")
+    if type(decision_time) is not UtcInstant or type(policy) is not AdmissionPolicy:
+        raise TypeContractError("trailing inputs must be typed")
     validate_observation_order(observations)
     if observations:
         first = observations[0]
@@ -188,6 +226,7 @@ def trailing_mean(
                 or item.source_frequency is not first.source_frequency
             ):
                 raise TypeContractError("TRAILING_SERIES_IDENTITY_MISMATCH")
+    revision_lineages: dict[UtcInstant, tuple[TemporalObservation, ...]] = {}
     eligible_by_time: list[TemporalObservation] = []
     vintage_group: list[TemporalObservation] = []
     for item in observations:
@@ -197,12 +236,14 @@ def trailing_mean(
             chosen = latest_eligible_vintage(tuple(vintage_group), decision_time, policy)
             if chosen is not None:
                 eligible_by_time.append(chosen)
+                revision_lineages[chosen.observed_at] = tuple(vintage_group[: vintage_group.index(chosen) + 1])
             vintage_group = []
         vintage_group.append(item)
     if vintage_group:
         chosen = latest_eligible_vintage(tuple(vintage_group), decision_time, policy)
         if chosen is not None:
             eligible_by_time.append(chosen)
+            revision_lineages[chosen.observed_at] = tuple(vintage_group[: vintage_group.index(chosen) + 1])
     if len(eligible_by_time) < window:
         raise TypeContractError("WARMUP_NOT_SATISFIED")
     selected = tuple(eligible_by_time[-window:])
@@ -216,6 +257,11 @@ def trailing_mean(
     payload = {
         "decision_time": decision_time,
         "inputs": selected,
+        "selection_lineage": tuple(revision_lineages[item.observed_at] for item in selected),
+        "admission_policy": policy,
+        "interval_delay_us": "0",
+        "selection_profile": "linear-revisions-no-published-retraction-fallback/1",
+        "arithmetic_profile": "exact-terminating-decimal/1",
         "observation_ids": observation_ids,
         "unit": unit,
         "value": normalized,
@@ -242,11 +288,7 @@ def _exact_decimal(value: Fraction) -> str:
     scaled = value.numerator * (10**scale) // value.denominator
     sign = "-" if scaled < 0 else ""
     digits = str(abs(scaled)).zfill(scale + 1)
-    rendered = (
-        f"{sign}{digits[:-scale]}.{digits[-scale:]}".rstrip("0").rstrip(".")
-        if scale
-        else f"{sign}{digits}"
-    )
+    rendered = f"{sign}{digits[:-scale]}.{digits[-scale:]}".rstrip("0").rstrip(".") if scale else f"{sign}{digits}"
     return "0" if rendered == "-0" else rendered
 
 
@@ -283,12 +325,14 @@ class TransformFitLineage:
     def __post_init__(self) -> None:
         if type(self.transform_id) is not str or not self.transform_id:
             raise TypeContractError("transform_id must be nonempty")
-        if self.partition not in {"TRAIN", "HOLDOUT"}:
+        if type(self.partition) is not str or self.partition not in {"TRAIN", "HOLDOUT"}:
             raise TypeContractError("partition must be TRAIN or HOLDOUT")
         if type(self.fitted_through) is not UtcInstant:
             raise TypeContractError("fitted_through must be UtcInstant")
 
 
 def assert_fit_is_train_only(lineage: TransformFitLineage, split: TemporalSplit) -> None:
-    if lineage.partition != "TRAIN" or lineage.fitted_through > split.train_end:
+    if type(lineage) is not TransformFitLineage or type(split) is not TemporalSplit:
+        raise TypeContractError("fit lineage and split must be typed")
+    if lineage.partition != "TRAIN" or not (split.train_start <= lineage.fitted_through <= split.train_end):
         raise TypeContractError("FIT_LINEAGE_LEAK")
