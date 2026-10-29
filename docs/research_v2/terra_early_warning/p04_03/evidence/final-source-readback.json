@@ -1,0 +1,9 @@
+{
+  "tested_linux_source_equals_final_worktree": true,
+  "verified_files": {
+    "defistress_v2/terra_warning/contracts.py": "6dfb644406af5ddd8c931b0f957c973cef6b919b1b550de91da50496ab5f5fa9",
+    "defistress_v2/terra_warning/engine.py": "72e296903889f408713a4591102838b724e5446875244c7ae639bc5b52457f21",
+    "defistress_v2/terra_warning/__init__.py": "03ff36ba6efd7265800822219a9bddbd87f9640531b359324eb3195648544fbb",
+    "tests/v2/terra_warning/test_warning.py": "bc48245a8ad48c73969bdafc86ff0f621bb15ebcc952fab96ccca7b321009a36"
+  }
+}
