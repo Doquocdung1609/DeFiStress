@@ -1,0 +1,20 @@
+{
+  "schema": "defistress-terra-p04-02-controls/1",
+  "source_baseline": "8ec1eb2c49c1d4c3088b2bb0550b38fb6a05bde5",
+  "historical_inputs_promoted": 0,
+  "historical_backtest_authorized": false,
+  "controls": [
+    {"id": "P04-S01", "test": "test_p04_s01_publication_after_forecast_cutoff", "requirement": "publication/availability cutoff"},
+    {"id": "P04-S02", "test": "test_p04_s02_future_interval_closure", "requirement": "completed interval plus delay"},
+    {"id": "P04-S03", "test": "test_p04_s03_revised_vintage_does_not_rewrite_past", "requirement": "as-of vintage selection"},
+    {"id": "P04-S04", "test": "test_p04_s04_acquisition_does_not_backdate_unknown_source_clock", "requirement": "unknown historical availability remains blocked"},
+    {"id": "P04-S05", "test": "test_p04_s05_observed_zero_is_not_missing", "requirement": "observed zero distinct from missing"},
+    {"id": "P04-S06", "test": "test_p04_s06_derived_availability_uses_latest_dependency_plus_delay", "requirement": "dependency availability bound"},
+    {"id": "P04-S07", "test": "test_p04_s07_trailing_window_is_future_perturbation_invariant", "requirement": "causal trailing window"},
+    {"id": "P04-S08", "test": "test_p04_s08_duplicate_out_of_order_and_ambiguous_clocks_rejected", "requirement": "clock/order integrity"},
+    {"id": "P04-S09", "test": "test_p04_s09_quote_pair_cannot_be_promoted_without_conversion", "requirement": "unit and quote binding"},
+    {"id": "P04-S10", "test": "test_p04_s10_daily_carry_requires_staleness_policy_and_warmup", "requirement": "staleness abstention and warm-up"},
+    {"id": "P04-S11", "test": "test_p04_s11_split_purge_and_fit_lineage_leak", "requirement": "fit/holdout leakage guard"},
+    {"id": "P04-S12", "test": "test_p04_s12_*", "requirement": "bounded source/schema/integrity failures"}
+  ]
+}
