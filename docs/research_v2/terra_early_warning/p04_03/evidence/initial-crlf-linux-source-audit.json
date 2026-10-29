@@ -1,0 +1,206 @@
+{
+  "scope": "READ_ONLY_BYTES_AND_CSV_COUNTS_NOT_FORECAST_VALIDATION",
+  "source_commit": "9207ead7db3acf1332b34cebcd19981c2f7bd9cc",
+  "checks": [
+    {
+      "path": "terra_may2022_v1_pack/terra_may2022_v1_pack/source_contract.json",
+      "status": "FAIL",
+      "reason": "BYTE_DOMAIN_MISMATCH"
+    },
+    {
+      "path": "scripts/terra/complete_historical_data.py",
+      "status": "FAIL",
+      "reason": "BYTE_DOMAIN_MISMATCH"
+    },
+    {
+      "path": "sim/terra/schemas.py",
+      "status": "FAIL",
+      "reason": "BYTE_DOMAIN_MISMATCH"
+    },
+    {
+      "path": "sim/terra/datasets.py",
+      "status": "FAIL",
+      "reason": "BYTE_DOMAIN_MISMATCH"
+    },
+    {
+      "path": "sim/terra/leakage.py",
+      "status": "FAIL",
+      "reason": "BYTE_DOMAIN_MISMATCH"
+    },
+    {
+      "path": "sim/terra/ground_truth.py",
+      "status": "FAIL",
+      "reason": "BYTE_DOMAIN_MISMATCH"
+    },
+    {
+      "path": "sim/terra/early_warning_v2.py",
+      "status": "FAIL",
+      "reason": "BYTE_DOMAIN_MISMATCH"
+    },
+    {
+      "path": "data/processed/terra_may2022_v1.csv",
+      "status": "FAIL",
+      "reason": "BYTE_DOMAIN_MISMATCH"
+    },
+    {
+      "path": "data/processed/terra_may2022_v1_import_manifest.json",
+      "status": "FAIL",
+      "reason": "BYTE_DOMAIN_MISMATCH"
+    },
+    {
+      "path": "data/processed/terra_extended/data_dictionary.md",
+      "status": "FAIL",
+      "reason": "BYTE_DOMAIN_MISMATCH"
+    },
+    {
+      "path": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.parquet",
+      "size_bytes": 65818,
+      "sha256_git_bytes": "0e338c3d096600d93bf29884370e46cb5e260820e910b483a7f19048521dcac1",
+      "git_blob_sha1": "38b2cfe84380e4ef6131151018c008cddec92b56",
+      "status": "PASS"
+    },
+    {
+      "path": "data/processed/terra_extended/data_completion_report.md",
+      "status": "FAIL",
+      "reason": "BYTE_DOMAIN_MISMATCH"
+    },
+    {
+      "path": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "status": "FAIL",
+      "reason": "BYTE_DOMAIN_MISMATCH"
+    },
+    {
+      "path": "data/processed/terra_extended/provenance_manifest.json",
+      "status": "FAIL",
+      "reason": "BYTE_DOMAIN_MISMATCH"
+    },
+    {
+      "path": "data/processed/terra_final/final_report.md",
+      "status": "FAIL",
+      "reason": "BYTE_DOMAIN_MISMATCH"
+    },
+    {
+      "path": "data/processed/terra_final/data_quality.json",
+      "status": "FAIL",
+      "reason": "BYTE_DOMAIN_MISMATCH"
+    },
+    {
+      "path": "data/processed/terra_final/final_metrics.json",
+      "status": "FAIL",
+      "reason": "BYTE_DOMAIN_MISMATCH"
+    },
+    {
+      "path": "data/processed/terra_data_completion/source_lineage.json",
+      "status": "FAIL",
+      "reason": "BYTE_DOMAIN_MISMATCH"
+    },
+    {
+      "path": "data/processed/terra_data_completion/temporal_quality_report.json",
+      "status": "FAIL",
+      "reason": "BYTE_DOMAIN_MISMATCH"
+    },
+    {
+      "path": "data/processed/research_final/validation_audit/phase5_terra_early_warning_audit.json",
+      "status": "FAIL",
+      "reason": "BYTE_DOMAIN_MISMATCH"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/terra_may2022_v1_evidence.csv",
+      "status": "FAIL",
+      "reason": "BYTE_DOMAIN_MISMATCH"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/source_inventory.csv",
+      "status": "FAIL",
+      "reason": "BYTE_DOMAIN_MISMATCH"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/evidence_map.json",
+      "status": "FAIL",
+      "reason": "BYTE_DOMAIN_MISMATCH"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/provenance_manifest.json",
+      "status": "FAIL",
+      "reason": "BYTE_DOMAIN_MISMATCH"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/Datasets.md",
+      "status": "FAIL",
+      "reason": "BYTE_DOMAIN_MISMATCH"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/README.md",
+      "status": "FAIL",
+      "reason": "BYTE_DOMAIN_MISMATCH"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/prices/ust_price_may2022.parquet",
+      "size_bytes": 383037,
+      "sha256_git_bytes": "043c03404a9e53c352df645e192a360b30ce6f853d2006fdec298e950ecdd869",
+      "git_blob_sha1": "4177abf7e63be7daaed9864711a6784b64b4521c",
+      "status": "PASS"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/prices/luna_price_may2022.parquet",
+      "size_bytes": 385826,
+      "sha256_git_bytes": "2007339f3436f3b4690a6cfd3fa9bf324d2586eca081cdacaea5a42244027465",
+      "git_blob_sha1": "925817f34b45dc84d4bfec594975557c5c026d14",
+      "status": "PASS"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor/anchor_deposit_concentration.parquet",
+      "size_bytes": 18121,
+      "sha256_git_bytes": "8717912cb4800b2aa471474bd9d4cefa405b7827914331c0037cc31f29068651",
+      "git_blob_sha1": "2a7a1470db821dd78fd0654490df0bffe1fe9578",
+      "status": "PASS"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/curve/curve_ust_3pool_may7.parquet",
+      "size_bytes": 24074,
+      "sha256_git_bytes": "40adfe729e1cb039aab46798ebd95a9338be215e9f8f5ac330aec7e3a0ae26bf",
+      "git_blob_sha1": "2f9850f94d495b58e715930842b1b20a80fa7c2b",
+      "status": "PASS"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/curve/curve_ust_may2021.parquet",
+      "size_bytes": 76002,
+      "sha256_git_bytes": "6ddd99260568095be7dfbcdd7544c430a9c49a6cba5a6c27144d55d9fc096f50",
+      "git_blob_sha1": "9a97ea20b55a4a45a8626b2a2037722113e33cca",
+      "status": "PASS"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/native_swaps/luna_total_supply_run.parquet",
+      "size_bytes": 7864,
+      "sha256_git_bytes": "db340cb1cbdc8fb94d232fe114c990b11a047488ac6d4a61ba622edf99a173a1",
+      "git_blob_sha1": "f51904cbfad0bdca5b2ffa6cea9e7e750fc17afd",
+      "status": "PASS"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/external/lunc-usd-max.csv",
+      "status": "FAIL",
+      "reason": "BYTE_DOMAIN_MISMATCH"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/external/ustc-usd-max.csv",
+      "status": "FAIL",
+      "reason": "BYTE_DOMAIN_MISMATCH"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor_run/epoch_state_fig10.parquet",
+      "size_bytes": 40160,
+      "sha256_git_bytes": "29e6cb98fe7a3631e67f6e7e42289c1b11a1fc63a54255242e83367711774074",
+      "git_blob_sha1": "cc6cd5991fb8e7293d2f6589ca2eda6b57e28635",
+      "status": "PASS"
+    }
+  ],
+  "counts": {
+    "PASS": 8,
+    "FAIL": 27
+  },
+  "status": "FAIL",
+  "point_in_time_eligible": "BLOCKED",
+  "point_in_time_eligible_fields": 0,
+  "historical_backtest_executed": false,
+  "exit_simulation_executed": false
+}

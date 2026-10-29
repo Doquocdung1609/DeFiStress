@@ -1,0 +1,7 @@
+{
+  "base": "c51d4d06d8b560a149e32ade922f8ed62da1a589",
+  "original_blob_count": 1346,
+  "changed_original_paths": [],
+  "original_blob_manifest_sha256": "1c5c678cb74ee9fe0b7c883cf398e9730d78407440f07696382410100e77889d",
+  "claim": "Every baseline path verified from exact Git blob bytes, including frozen evidence"
+}
