@@ -347,6 +347,48 @@ def test_v03_09_reporting_price_preserves_frozen_eligibility_context(config: Pol
     assert result.eligibility_context_hash == before == state.eligibility_context_hash
 
 
+def test_policy_hash_excludes_lagged_observation_not_selected_at_checkpoint() -> None:
+    config = PolicyConfig("C_LAGGED", PolicyKind.C_LAGGED_SMOOTHED_PROXY, Rational("1", "2"), 2, 1)
+    state = policy_state(config)
+    selected = dex(0, 80)
+    unused = dex(1, 60)
+    changed_unused = dataclasses.replace(
+        unused,
+        evidence=dataclasses.replace(unused.evidence, locator="/unused-lagged-input-changed"),
+    )
+
+    first = unwrap(
+        advance_policy(state, rational_price(100), (selected, unused), checkpoint_id="checkpoint-1", decision_at_s=20)
+    )
+    second = unwrap(
+        advance_policy(
+            state,
+            rational_price(100),
+            (selected, changed_unused),
+            checkpoint_id="checkpoint-1",
+            decision_at_s=20,
+        )
+    )
+
+    assert first.valuation_price == second.valuation_price
+    assert first.state.eligibility_context_hash == second.state.eligibility_context_hash
+    assert first.state.content_hash != second.state.content_hash
+
+
+def test_policy_b_reporting_hash_excludes_unused_dex_input() -> None:
+    state = policy_state(policy_b())
+    unused = dex(0, 70)
+    changed_unused = dataclasses.replace(
+        unused,
+        evidence=dataclasses.replace(unused.evidence, locator="/unused-policy-b-dex-changed"),
+    )
+
+    first = unwrap(reporting_price(state, rational_price(100), unused, reporting_at_s=20))
+    second = unwrap(reporting_price(state, rational_price(100), changed_unused, reporting_at_s=20))
+
+    assert first.to_canonical() == second.to_canonical()
+
+
 def test_v03_10_dex_evidence_cannot_masquerade_as_aave_oracle() -> None:
     observed_dex = EvidenceRef(
         "dex:evidence",

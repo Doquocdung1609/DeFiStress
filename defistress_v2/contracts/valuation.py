@@ -15,6 +15,12 @@ from defistress_v2.contracts.units import UINT256_MAX, QuantityKind, UnsignedAmo
 WAD = 10**18
 
 
+def _asset_unit_key(asset: AssetId) -> tuple[int, str, int]:
+    """Economic asset identity used where raw token quantities are interpreted."""
+
+    return (*asset.identity_key, asset.decimals)
+
+
 def _identifier(value: object, field: str) -> str:
     if type(value) is not str or not value.strip():
         raise TypeContractError(f"{field} must be a nonempty string")
@@ -230,7 +236,9 @@ class PriceSlot:
             raise TypeContractError("price slot asset must be AssetId")
         if not isinstance(self.state, (PriceObservation, Missing, Unsupported, Quarantined)):
             raise TypeContractError("price slot state must be a typed price or absence state")
-        if isinstance(self.state, PriceObservation) and self.state.asset.identity_key != self.asset.identity_key:
+        if isinstance(self.state, PriceObservation) and _asset_unit_key(self.state.asset) != _asset_unit_key(
+            self.asset
+        ):
             raise IdentityContractError("price slot and observation assets differ")
 
     def to_canonical(self) -> object:
@@ -269,6 +277,9 @@ class PriceSet:
         block_keys = {item.block_ref.identity_key for item in available if item.block_ref is not None}
         if len(block_keys) > 1:
             raise IdentityContractError("price set cannot join different block identities")
+        block_timestamps = {item.block_ref.timestamp_s for item in available if item.block_ref is not None}
+        if len(block_timestamps) > 1:
+            raise IdentityContractError("price set cannot join conflicting timestamps for one block identity")
         if block_keys and any(item.block_ref is None for item in available):
             raise IdentityContractError("price set cannot mix block-bound and unbound observations")
 
@@ -304,7 +315,7 @@ class ReservePosition:
         amounts = (self.supplied, self.stable_debt, self.variable_debt)
         if any(type(amount) is not UnsignedAmount for amount in amounts):
             raise TypeContractError("reserve quantities must be UnsignedAmount values")
-        if any(amount.asset.identity_key != self.asset.identity_key for amount in amounts):
+        if any(_asset_unit_key(amount.asset) != _asset_unit_key(self.asset) for amount in amounts):
             raise IdentityContractError("reserve quantity asset mismatch")
         if self.supplied.kind not in (QuantityKind.BALANCE, QuantityKind.COLLATERAL):
             raise TypeContractError("supplied quantity has the wrong semantic kind")
@@ -481,7 +492,10 @@ class ValuationResult:
             if self.total_debt_base_raw == "0":
                 raise TypeContractError("finite health factor requires positive debt")
         _identifier(self.rounding_profile, "rounding_profile")
-        if self.origin not in (OriginKind.SYNTHETIC, OriginKind.COUNTERFACTUAL):
+        if type(self.origin) is not OriginKind or self.origin not in (
+            OriginKind.SYNTHETIC,
+            OriginKind.COUNTERFACTUAL,
+        ):
             raise TypeContractError("P02-03-S valuation origin must remain SYNTHETIC or COUNTERFACTUAL")
 
     def to_canonical(self) -> object:

@@ -14,6 +14,9 @@ from defistress_v2.contracts.identity import AssetId
 from defistress_v2.contracts.units import UINT256_MAX
 from defistress_v2.contracts.valuation import BaseUnit
 
+ELIGIBILITY_CONTEXT_PROFILE = "P02_03_ELIGIBILITY_CONTEXT_V2"
+REPORTING_CONTEXT_PROFILE = "P02_03_REPORTING_CONTEXT_V1"
+
 
 def _identifier(value: object, field: str) -> str:
     if type(value) is not str or not value.strip():
@@ -236,6 +239,7 @@ class ReportingPrice:
     price: RationalPrice
     policy_id: str
     eligibility_context_hash: DeterministicContentSha256
+    reporting_context_hash: DeterministicContentSha256
     reporting_at_s: int
 
     def __post_init__(self) -> None:
@@ -244,6 +248,8 @@ class ReportingPrice:
         _identifier(self.policy_id, "policy_id")
         if type(self.eligibility_context_hash) is not DeterministicContentSha256:
             raise TypeContractError("reporting result must retain typed eligibility hash")
+        if type(self.reporting_context_hash) is not DeterministicContentSha256:
+            raise TypeContractError("reporting result must retain typed selected-input lineage")
         _uint(self.reporting_at_s, "reporting_at_s")
 
     def to_canonical(self) -> object:
@@ -251,12 +257,15 @@ class ReportingPrice:
             "eligibility_context_hash": self.eligibility_context_hash,
             "policy_id": self.policy_id,
             "price": self.price,
+            "reporting_context_hash": self.reporting_context_hash,
             "reporting_at_s": normalize_integer_string(self.reporting_at_s, signed=False),
         }
 
 
 def _assert_compatible_price(left: RationalPrice, right: RationalPrice) -> None:
-    if left.asset.identity_key != right.asset.identity_key or left.base_unit != right.base_unit:
+    left_asset = (*left.asset.identity_key, left.asset.decimals)
+    right_asset = (*right.asset.identity_key, right.asset.decimals)
+    if left_asset != right_asset or left.base_unit != right.base_unit:
         raise IdentityContractError("policy prices must share asset and explicit base unit")
 
 
@@ -307,15 +316,21 @@ def advance_policy(
         raise TypeContractError("completed observations must be an immutable typed tuple")
     _identifier(checkpoint_id, "checkpoint_id")
     _uint(decision_at_s, "decision_at_s")
+    if decision_at_s < state.eligibility_as_of_s:
+        return Rejected(
+            "TIMESTAMP_LEAKAGE",
+            "policy decision cannot precede its parent eligibility checkpoint",
+            (state.fixture_evidence,),
+        )
     try:
         _assert_compatible_price(state.reference_price, reference_price)
         combined = state.history + completed
         _validate_history(combined, reference_price)
     except (IdentityContractError, TypeContractError) as exc:
-        refs = tuple(item.evidence for item in completed) or (state.history[-1].evidence if state.history else None,)
+        refs = tuple(item.evidence for item in completed) or (
+            state.history[-1].evidence if state.history else state.fixture_evidence,
+        )
         affected = tuple(item for item in refs if item is not None)
-        if not affected:
-            raise
         return Rejected("POLICY_INPUT_INVALID", str(exc), affected)
     future = tuple(
         item for item in combined if item.completed_at_s > decision_at_s or item.available_at_s > decision_at_s
@@ -328,6 +343,7 @@ def advance_policy(
         )
     kind = state.config.kind
     initialization = InitializationLabel.COMPLETED_HISTORY
+    selected_observations: tuple[CompletedDexObservation, ...] = ()
     if kind is PolicyKind.A_ADVERSE_PASS_THROUGH:
         if not combined:
             return Blocked(
@@ -335,7 +351,8 @@ def advance_policy(
                 "Policy A requires a seeded or completed DEX observation",
                 (state.fixture_evidence,),
             )
-        result_value = min(reference_price.value.fraction, combined[-1].price.value.fraction)
+        selected_observations = (combined[-1],)
+        result_value = min(reference_price.value.fraction, selected_observations[0].price.value.fraction)
     elif kind is PolicyKind.B_REFERENCE_ONLY:
         result_value = reference_price.value.fraction
     else:
@@ -345,7 +362,8 @@ def advance_policy(
             initialization = InitializationLabel.MODEL_DEFINED_INITIALIZATION
         else:
             start = max(0, end - state.config.smoothing_window)
-            values = tuple(item.price.value.fraction for item in combined[start:end])
+            selected_observations = combined[start:end]
+            values = tuple(item.price.value.fraction for item in selected_observations)
             mean = sum(values, Fraction(0, 1)) / len(values)
             reference_value = reference_price.value.fraction
             proxy = reference_value + state.config.alpha.fraction * (mean - reference_value)
@@ -365,9 +383,14 @@ def advance_policy(
         frozen_eligibility_price=valuation_price,
         eligibility_context_hash=DeterministicContentSha256.from_payload(
             {
+                "context_profile": ELIGIBILITY_CONTEXT_PROFILE,
                 "checkpoint_id": checkpoint_id,
-                "parent": parent_hash,
+                "decision_at_s": normalize_integer_string(decision_at_s, signed=False),
+                "initialization": initialization,
+                "parent_eligibility_context_hash": state.eligibility_context_hash,
                 "policy": state.config,
+                "reference_price": reference_price,
+                "selected_observations": selected_observations,
                 "price": valuation_price,
             }
         ),
@@ -409,8 +432,28 @@ def reporting_price(
     if state.config.kind is PolicyKind.A_ADVERSE_PASS_THROUGH:
         value = min(reference_price.value.fraction, current_dex.price.value.fraction)
         selected = RationalPrice(reference_price.asset, reference_price.base_unit, Rational.from_fraction(value))
+        selected_inputs: tuple[object, ...] = (reference_price, current_dex)
     elif state.config.kind is PolicyKind.B_REFERENCE_ONLY:
         selected = reference_price
+        selected_inputs = (reference_price,)
     else:
         selected = state.frozen_eligibility_price
-    return Ok(ReportingPrice(selected, state.config.policy_id, state.eligibility_context_hash, reporting_at_s))
+        selected_inputs = (state.frozen_eligibility_price,)
+    reporting_context_hash = DeterministicContentSha256.from_payload(
+        {
+            "context_profile": REPORTING_CONTEXT_PROFILE,
+            "eligibility_context_hash": state.eligibility_context_hash,
+            "policy": state.config,
+            "reporting_at_s": normalize_integer_string(reporting_at_s, signed=False),
+            "selected_inputs": selected_inputs,
+        }
+    )
+    return Ok(
+        ReportingPrice(
+            selected,
+            state.config.policy_id,
+            state.eligibility_context_hash,
+            reporting_context_hash,
+            reporting_at_s,
+        )
+    )

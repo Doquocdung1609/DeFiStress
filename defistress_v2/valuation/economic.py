@@ -37,6 +37,8 @@ def validate_price_observation(
 
     if type(observation) is not PriceObservation or type(decision_at_s) is not int or decision_at_s < 0:
         raise TypeContractError("price validation requires typed observation and nonnegative exact decision time")
+    if type(require_native_freshness) is not bool:
+        raise TypeContractError("require_native_freshness must be an exact bool")
     source_kind = observation.evidence.source_kind
     permitted = {
         EconomicPriceClass.HISTORICAL_AAVE_ORACLE_OBSERVATION: {
@@ -59,6 +61,15 @@ def validate_price_observation(
             (observation.evidence,),
         )
     if observation.block_ref is not None:
+        if (
+            observation.block_ref.timestamp_s > decision_at_s
+            or observation.block_ref.canonicality_observed_at_s > decision_at_s
+        ):
+            return Rejected(
+                "TIMESTAMP_LEAKAGE",
+                "bound block or its canonicality was not observed by the valuation decision",
+                (observation.evidence,),
+            )
         source_block = observation.evidence.block_ref
         if source_block is not None and (
             source_block.identity_key != observation.block_ref.identity_key
@@ -148,6 +159,14 @@ def value_portfolio(
             "full portfolio participation requires one price slot for every reserve and no route-only subset",
             (portfolio.fixture_evidence,),
         )
+    for identity, position in positions.items():
+        slot_asset = slots[identity].asset
+        if position.asset.decimals != slot_asset.decimals:
+            return Rejected(
+                "INPUT_IDENTITY_MISMATCH",
+                "portfolio and price slot disagree on token decimals",
+                (portfolio.fixture_evidence,),
+            )
     reserve_values: list[ReserveValuation] = []
     total_collateral = 0
     total_debt = 0
