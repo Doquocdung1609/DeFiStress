@@ -1,0 +1,15 @@
+# Step 8A — targeted WarningResult repair
+
+Authorization: `V2_STEP8A_P04_03_WARNING_RESULT_REPAIR_AUTHORIZED`. Source commit `17a3e0265ed951b69789a9cd08f50745b3dae2b8` repairs the P2 group R58-01 reported in the separate local Step 7 review commit `be1aeab1ca95b5a1d118932ed478670737de92d9`. The four failing review functions are copied into `tests/v2/terra_warning/test_step7_regressions.py`; their ASTs, including assertions, match that review exactly. The full 30-case Step 7 suite is now an ordinary regression suite with no `xfail` or deselection.
+
+The public `WarningResult` constructor now recomputes required hourly slots, PIT selection, synthetic origin/source/unit guards, model signals, exact score, level and reason set from its retained ancestry. This also applies to `dataclasses.replace`. The same pure field computation is used by `evaluate`; direct construction cannot claim B0 HIGH, omit required B3 support, select an unavailable future vintage, or label a zero score HIGH. An unpublished future bar is deliberately omitted from causal ancestry, so an empty unavailable slot's `NOT_YET_AVAILABLE` reason is compared as the equivalent safe missing-support abstention. Neither case receives a score. Output metadata and hashes continue to derive from the validated immutable result, not caller-supplied metadata fields.
+
+## Fresh QA
+
+Exact raw Git archive of source commit, Linux Python 3.12.10: **459 PASS, 0 FAIL, 0 ERROR, 0 SKIP**, comprising 114 warning cases (84 original + 30 Step 7), 78 PIT, 97 P02-01, 70 P02-02, 80 legacy and 20 audit cases. The separate 80-case L2 invocation also passed. L1: **196 PASS, 0 FAIL, 2 BLOCKED** scientific limitations; Gate A remains blocked, Gate B scoped pass. Scoped Ruff and strict mypy over all 22 V2 source files passed. Repeated independent processes produced the same synthetic output hash. Built wheel: **23/23** V2 source entries match the Git archive bytes. All **1,346** integration-base Git blobs are preserved.
+
+The initial Windows aggregate run had one `WinError 1314` symlink-privilege failure and two platform skips in PIT tests; no test was edited or deselected. The unmodified Linux run above resolved that environment-specific failure. The first Linux build attempt lacked `hatchling`; installing that declared backend completed the wheel check. See `QA.json` and gzip-preserved JUnit/L1 reports for exact hashes and counts. These are local checks; a skipped or billing-blocked hosted job is **not** a CI pass.
+
+This repair does not change accepted PIT contracts or B0–B3 thresholds, load historical market data, fit a warning, approve any of the 14 historical fields, or establish a pre-collapse alert or feasible investor exit. The target is `P04_03_S_REPAIRED_READY_FOR_INDEPENDENT_WORK_REVIEW`. The author and the agent preparing this repair cannot provide an independent Work acceptance of their own PR. Keep PR #58 Draft until a separate reviewer checks the final exact HEAD.
+
+Scientific state: `TERRA_POINT_IN_TIME_ELIGIBILITY_BLOCKED`; `HISTORICAL_BACKTEST_NOT_AUTHORIZED`; `GATE_A_BLOCKED — GATE_B_SCOPED_PASS`.

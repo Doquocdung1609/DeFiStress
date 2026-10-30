@@ -1,0 +1,55 @@
+{
+  "schema": "step8a-repair-evidence/1",
+  "review_commit": "be1aeab1ca95b5a1d118932ed478670737de92d9",
+  "source_commit": "17a3e0265ed951b69789a9cd08f50745b3dae2b8",
+  "integration_base": "c51d4d06d8b560a149e32ade922f8ed62da1a589",
+  "protected_base_blobs": 1346,
+  "protected_changed": [],
+  "step7_negative_witnesses_ast_identical": [
+    "test_r58_01_result_constructor_should_reject_b0_high_score",
+    "test_r58_01_result_constructor_should_reject_future_selected_slot",
+    "test_r58_01_result_constructor_should_reject_level_score_mismatch",
+    "test_r58_01_result_constructor_should_reject_partial_composite_support"
+  ],
+  "linux_python": "3.12.10",
+  "linux_image": "python:3.12.10-slim",
+  "linux_junit": {
+    "repair-linux.xml": {
+      "tests": 459,
+      "passed": 459,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "a80a50881cce913b2cb82978cfb9d17356d3d86b7f4dc50ca566bb1f988c42f8"
+    },
+    "repair-l2.xml": {
+      "tests": 80,
+      "passed": 80,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "96be27fe7c7540843d35a3b8d5298b24609d88a65f37fa12e3628335eec041e0"
+    }
+  },
+  "l1_l2": {
+    "counts": {
+      "BLOCKED": 2,
+      "FAIL": 0,
+      "PASS": 196
+    },
+    "gate_a": "BLOCKED_BACKEND_INDEPENDENCE",
+    "gate_b": "PASS_REGISTERED_CORE_SCOPE",
+    "sha256": "b673aafab921b8ba1867ddfda98314f2853bd34bb9c99a6108daf3f16c328b67"
+  },
+  "source_archive_sha256": "7e1bc6f6a3bc957f9627b7d92cc10632faa36808fa89dc2e54182a823c3ad9e2",
+  "wheel": {
+    "name": "defi_stress_lab-0.2.0-py3-none-any.whl",
+    "sha256": "4c4108d855413d5b2184d8a9465a740c6b5e926e39a3c8bae575a61844477ff9",
+    "v2_entries_verified_exact": 23,
+    "mismatches": []
+  },
+  "ruff": "PASS",
+  "strict_mypy": "PASS_22_SOURCE_FILES",
+  "deterministic_repeat_hash": "49db0a441097f04bfa7080654939a22039160c327ab5e21495118de7e503a1f0",
+  "windows_test_limit": "1 PIT symlink privilege failure WinError1314; 2 skips; unmodified Linux suite 459 PASS"
+}
