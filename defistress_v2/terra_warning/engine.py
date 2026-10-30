@@ -114,10 +114,10 @@ def _level(score: Fraction, watch: Fraction, high: Fraction) -> RiskLevel:
     return RiskLevel.HIGH if score >= high else RiskLevel.WATCH if score >= watch else RiskLevel.NORMAL
 
 
-def evaluate(
+def _compute_result_fields(
     model_id: ModelId, inputs: WarningInputs, context: DecisionContext, config: WarningConfig,
-) -> WarningResult:
-    """Evaluate one frozen synthetic decision; every invocation rechecks admission."""
+) -> tuple[tuple[InputSlot, ...], tuple[SignalContribution, ...], ExactRatio | None, RiskLevel, tuple[str, ...]]:
+    """Compute fields without constructing a result, so the public contract can recheck them."""
     if type(model_id) is not ModelId or type(inputs) is not WarningInputs:
         raise TypeContractError("model and inputs must be typed immutable contracts")
     if type(context) is not DecisionContext or type(config) is not WarningConfig:
@@ -133,9 +133,9 @@ def evaluate(
     slots = ust + luna
     reasons = tuple(sorted({f"{slot.component}:{reason}" for slot in slots for reason in slot.reasons}))
     if reasons:
-        return WarningResult(model_id, context, config, slots, (), None, RiskLevel.ABSTAIN, reasons)
+        return slots, (), None, RiskLevel.ABSTAIN, reasons
     if model_id is ModelId.B0:
-        return WarningResult(model_id, context, config, slots, (), ExactRatio(0), RiskLevel.NORMAL, ())
+        return slots, (), ExactRatio(0), RiskLevel.NORMAL, ()
     signals: list[SignalContribution] = []
 
     def signal(name: str, value: Fraction, role: str = "DERIVED_FEATURE") -> None:
@@ -176,4 +176,12 @@ def evaluate(
         signal("luna_score_contribution", luna_part, "SCORE_CONTRIBUTION")
         score = peg_part + luna_part
         level = _level(score, Fraction(1, 2), Fraction(3, 4))
-    return WarningResult(model_id, context, config, slots, tuple(signals), ExactRatio.from_fraction(score), level, ())
+    return slots, tuple(signals), ExactRatio.from_fraction(score), level, ()
+
+
+def evaluate(
+    model_id: ModelId, inputs: WarningInputs, context: DecisionContext, config: WarningConfig,
+) -> WarningResult:
+    """Evaluate one frozen synthetic decision; every invocation rechecks admission."""
+    slots, signals, score, level, reasons = _compute_result_fields(model_id, inputs, context, config)
+    return WarningResult(model_id, context, config, slots, signals, score, level, reasons)

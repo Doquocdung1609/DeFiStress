@@ -273,6 +273,30 @@ class WarningResult:
             raise TypeContractError("scored decision requires nonnegative exact score, no abstention reasons")
         if self.level is not RiskLevel.ABSTAIN and (not self.slots or any(s.selected is None for s in self.slots)):
             raise TypeContractError("scored output requires complete admitted support")
+        # Public dataclass construction and dataclasses.replace must obey the same
+        # synthetic admission and model rules as evaluate().  Recompute from the
+        # retained causal ancestry, without consulting any future or external data.
+        from defistress_v2.terra_warning.engine import _compute_result_fields
+
+        inputs = WarningInputs(
+            tuple(item for slot in self.slots if slot.component == "UST" for item in slot.ancestry),
+            tuple(item for slot in self.slots if slot.component == "LUNA" for item in slot.ancestry),
+        )
+        recomputed = _compute_result_fields(self.model_id, inputs, self.context, self.config)
+        # A future-only bar is deliberately absent from causal ancestry.  Once
+        # omitted, recomputation cannot distinguish it from an absent bar;
+        # both reasons are safe abstentions with identical empty support.
+        comparable_slots = tuple(
+            InputSlot(slot.component, slot.expected_at, (), None, ("REQUIRED_OBSERVATION_MISSING",))
+            if not slot.ancestry and slot.selected is None and slot.reasons == ("NOT_YET_AVAILABLE",)
+            else slot
+            for slot in self.slots
+        )
+        comparable_reasons = tuple(sorted({
+            f"{slot.component}:{reason}" for slot in comparable_slots for reason in slot.reasons
+        })) if self.level is RiskLevel.ABSTAIN else self.reasons
+        if (comparable_slots, self.signals, self.score, self.level, comparable_reasons) != recomputed:
+            raise TypeContractError("WARNING_RESULT_SEMANTIC_MISMATCH")
 
     @property
     def input_lineage_hash(self) -> str:
