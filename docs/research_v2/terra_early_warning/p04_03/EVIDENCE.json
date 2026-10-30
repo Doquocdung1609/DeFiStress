@@ -1,0 +1,341 @@
+{
+  "integration_base": "c51d4d06d8b560a149e32ade922f8ed62da1a589",
+  "validated_source_commit": "2acb3b8e8cd18fbb570da81094fa0250b69299c0",
+  "validated_source_tree": "7dcd3e3663451e8d56c10e4344dd4162db64d20f",
+  "delivery_head_location": "Exact final delivery HEAD is in the Draft PR description (no self-reference)",
+  "source_hashes": {
+    "defistress_v2/terra_warning/contracts.py": "6dfb644406af5ddd8c931b0f957c973cef6b919b1b550de91da50496ab5f5fa9",
+    "defistress_v2/terra_warning/engine.py": "72e296903889f408713a4591102838b724e5446875244c7ae639bc5b52457f21",
+    "defistress_v2/terra_warning/__init__.py": "03ff36ba6efd7265800822219a9bddbd87f9640531b359324eb3195648544fbb",
+    "tests/v2/terra_warning/test_warning.py": "bc48245a8ad48c73969bdafc86ff0f621bb15ebcc952fab96ccca7b321009a36"
+  },
+  "authorization_inputs": [
+    {
+      "filename": "# DEFISTRESS V2 - COMMANDER PRIORIT.txt",
+      "sha256": "749b93c4708120fc3b932b38d2401b0587d14d598750857a39827cc85ac28d15",
+      "size": 12354
+    },
+    {
+      "filename": "# DEFISTRESS V2 - COLLABORATOR CODE.txt",
+      "sha256": "1544eaa19c2ba9df28735cd8919f8b315ee33173835e50909d98fffd43329b60",
+      "size": 8833
+    }
+  ],
+  "issue56_snapshot_sha256": "6485e0824c330c0bcce51f64f56a811f51a249d5022b8891009d34d276a5ebf7",
+  "profiles": [
+    "reduced-rational-no-rounding/1",
+    "completed-hour-grid-linear-revisions-no-fallback/1",
+    "consecutive-peg-minimum/1",
+    "signed-simple-return-population-variance/1",
+    "defistress-terra-pit-contracts/0.2"
+  ],
+  "configuration_hash": "ff50659a9b86bd2eed80e88e1468fe90405440d8ceef6ec6088499cac3acede8",
+  "profile_hash": "cd500fde61f6b90819efb6d2ecfb440a596c50f4235cd9093efcb57059eb216b",
+  "model_output_example_hash": "5b960bc5ecd148e9dc6a7e5bcc2bc931b5b0dfd9c2608405bcfc696b5e156fc4",
+  "windows_environment": {
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "os": "Windows-11-10.0.26200-SP0"
+  },
+  "tool_versions": {
+    "pytest": "8.4.2",
+    "ruff": "0.17.3",
+    "mypy": "1.20.2",
+    "build": "1.6.1",
+    "pyarrow": "23.0.1",
+    "pytest-cov": "7.1.0"
+  },
+  "linux_environment_and_commands": {
+    "python": "3.12.10 (main, May 21 2025, 23:34:56) [GCC 12.2.0]",
+    "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.36",
+    "results": [
+      {
+        "name": "linux-install",
+        "command": [
+          "/usr/local/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "pytest==8.4.2",
+          "pyarrow==23.0.1",
+          "pytest-cov==7.1.0"
+        ],
+        "cwd": "None",
+        "exit_code": 0
+      },
+      {
+        "name": "linux-warning",
+        "command": [
+          "/usr/local/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "tests/v2/terra_warning",
+          "--junitxml=/evidence/linux-warning.xml"
+        ],
+        "cwd": "/tmp/warning",
+        "exit_code": 0
+      },
+      {
+        "name": "linux-accepted-regressions",
+        "command": [
+          "/usr/local/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "tests/v2/terra_pit",
+          "tests/v2/test_contracts.py",
+          "tests/v2/test_saved_adapter.py",
+          "tests/v2/test_saved_adapter_review.py",
+          "tests/test_prephase02_offline.py",
+          "tests/research_v2/test_terra_p04_01_audit.py",
+          "--junitxml=/evidence/linux-accepted-regressions.xml"
+        ],
+        "cwd": "/tmp/warning",
+        "exit_code": 0
+      },
+      {
+        "name": "linux-prephase",
+        "command": [
+          "/usr/local/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "tests/test_prephase02_offline.py",
+          "--junitxml=/evidence/linux-prephase.xml"
+        ],
+        "cwd": "/tmp/warning",
+        "exit_code": 0
+      },
+      {
+        "name": "linux-L1-L2",
+        "command": [
+          "/usr/local/bin/python",
+          "docs/research_v2/prephase02_offline/validate_offline.py",
+          "--validator-commit",
+          "LOCAL_P04_03_SOURCE_MANIFEST",
+          "--output",
+          "/evidence/linux-L1-L2.json",
+          "--l2-junit",
+          "/evidence/linux-prephase.xml",
+          "--l2-exit-code",
+          "0"
+        ],
+        "cwd": "/tmp/warning",
+        "exit_code": 0
+      },
+      {
+        "name": "linux-pit-smoke",
+        "command": [
+          "/usr/local/bin/python",
+          "-m",
+          "defistress_v2.terra_pit.validate",
+          "--implementation-commit",
+          "LOCAL_P04_03_SOURCE_MANIFEST",
+          "--output",
+          "/evidence/linux-pit-smoke.json"
+        ],
+        "cwd": "/tmp/warning",
+        "exit_code": 0
+      },
+      {
+        "name": "linux-source-audit",
+        "command": [
+          "/usr/local/bin/python",
+          "scripts/research/terra_v2/audit_p04_01.py",
+          "--repo-root",
+          ".",
+          "--registry",
+          "docs/research_v2/terra_early_warning/p04_01/P04_01_DATASET_REGISTRY.json",
+          "--output",
+          "/evidence/linux-source-audit.json"
+        ],
+        "cwd": "/tmp/warning",
+        "exit_code": 0
+      },
+      {
+        "name": "linux-pr55",
+        "command": [
+          "/usr/local/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "tests/v2",
+          "tests/test_prephase02_offline.py",
+          "--junitxml=/evidence/linux-pr55.xml"
+        ],
+        "cwd": "/tmp/pr55",
+        "exit_code": 0
+      }
+    ],
+    "input_sha256": {
+      "warning-input.tar": "db0335b042951ca9acd30f04977996cedea382d44028e1d5b23eae35aa1b930d",
+      "pr55.tar": "7f6abf6956dfb9f78a271c6c4b4c1b0adc185dfd4a7b201b3295214995aa2774"
+    }
+  },
+  "junit": {
+    "accepted-regressions.xml": {
+      "tests": 345,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 2,
+      "passed": 342,
+      "sha256": "80ddf587eab0e6ed2a85be66cc457d52278baa37e8de58a30e180ce83ca776e5"
+    },
+    "linux-accepted-regressions.xml": {
+      "tests": 345,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 345,
+      "sha256": "2bdf5e717116c9a85e10e349b3be024b3cc6b57020fefcad6ae7e3efbc4b5add"
+    },
+    "linux-pr55.xml": {
+      "tests": 396,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 396,
+      "sha256": "cb401a43360326dbe0b0e80e0027284cd094244d50448e7991c6d80ab57f4657"
+    },
+    "linux-prephase.xml": {
+      "tests": 80,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 80,
+      "sha256": "30812b06124599d9beaf7c27331cd51200dd0f372a87d4bd347a5ecaf29c8361"
+    },
+    "linux-warning.xml": {
+      "tests": 84,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 84,
+      "sha256": "e03dedcc6469da16dd3ee7af220984cda3c0d66e562f270e2b060441cefc2122"
+    },
+    "pr55-regressions.xml": {
+      "tests": 325,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 2,
+      "passed": 322,
+      "sha256": "3c8cb846fd68362bed90474422c8d1b3a878a50866f3a668bc862d71deeff52c"
+    },
+    "pr55-valuation.xml": {
+      "tests": 71,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 71,
+      "sha256": "49c39c72a4c48df815fdf3f8ce2fda3d34973da2a300abfe1590e1b15dbd447f"
+    },
+    "warning-first.xml": {
+      "tests": 84,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 84,
+      "sha256": "9f686f3fd6703907d2ef442d4e1befc4c9fcf21e3befb6876b530c53eaf18c8f"
+    },
+    "warning.xml": {
+      "tests": 84,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 84,
+      "sha256": "139317abd537f55d55048f890782098b6e87f4ed21cfbf24d30be978941164af"
+    }
+  },
+  "coverage": {
+    "covered_lines": 290,
+    "num_statements": 315,
+    "percent_covered": 92.06349206349206,
+    "percent_covered_display": "92",
+    "missing_lines": 25,
+    "excluded_lines": 0,
+    "percent_statements_covered": 92.06349206349206,
+    "percent_statements_covered_display": "92"
+  },
+  "wheel": {
+    "filename": "defi_stress_lab-0.2.0-py3-none-any.whl",
+    "sha256": "5e80fba10132e7f8073c8b7bb2bdc482597f4599debb71baf6450c9bf39c3382",
+    "exact_v2_entries": 23
+  },
+  "source_preservation": {
+    "base": "c51d4d06d8b560a149e32ade922f8ed62da1a589",
+    "original_blobs": 1346,
+    "changed_paths": []
+  },
+  "local_evidence_directory": "C:\\Users\\Admin\\Documents\\DeFiStress-v2-evidence\\20261029",
+  "external_evidence_sha256": {
+    "accepted-regressions.xml": "80ddf587eab0e6ed2a85be66cc457d52278baa37e8de58a30e180ce83ca776e5",
+    "check_reviews.py": "5cdd3bfaf880f19a0c12a458f5e3bed162f86b83d3fedcc6ffe214b3247bff1d",
+    "linux-accepted-regressions.log": "33a931991ff387e460d43f0e9eddfccc106f47d0eb360ffd7a42fe262fa32726",
+    "linux-accepted-regressions.xml": "2bdf5e717116c9a85e10e349b3be024b3cc6b57020fefcad6ae7e3efbc4b5add",
+    "linux-execution.json": "19862a234c40d8b1d4a5a135e1cfe4fc8ddbcf38618d63ed834e8c1d961610c4",
+    "linux-install.log": "178f47525e2167b746662c3cfff8ea8789397fa01e52a940e4a328cb9f1867bd",
+    "linux-L1-L2.json": "14bf4d470c67a7bec7907955df2632b323abc69e4690714fe44f53c584d9f133",
+    "linux-L1-L2.log": "4b047b1c53f726a30943b5469cb1abc331513ce5bf88acdf992476298ab6d1c6",
+    "linux-pit-smoke.json": "1f8d92df309411d68c3f53a6fcfba8366744313eb1da48dcddb08dde6e97f04a",
+    "linux-pit-smoke.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "linux-pr55.log": "bf6e67b2af270229ade1eeb2a85a8b69802cfb885c97d225d995e90794932570",
+    "linux-pr55.xml": "cb401a43360326dbe0b0e80e0027284cd094244d50448e7991c6d80ab57f4657",
+    "linux-prephase.log": "7fabc32f89028d9158cca83d92e0b61a15323416f5c063ea5ae86c7089c3ddb5",
+    "linux-prephase.xml": "30812b06124599d9beaf7c27331cd51200dd0f372a87d4bd347a5ecaf29c8361",
+    "linux-source-audit.json": "34dc47bc0e4a0a49cad5c6ab1c8c0d17ae36283a8d6dcd9e73559fa99fafc228",
+    "linux-source-audit.log": "f2d11d4459210e166de10c777b3b237ee62f7e6f529d528400780b6ee0607189",
+    "linux-warning.log": "328f6db7670d690e4ab11d6c3b4b4ba02803a76fe8deb785486bb3983facfebe",
+    "linux-warning.xml": "e03dedcc6469da16dd3ee7af220984cda3c0d66e562f270e2b060441cefc2122",
+    "pr55-independent-recalculation.json": "ed5b453440da69e064e4caad54e4976e458b3fc4cef29511cd872da662fc1e69",
+    "pr55-published-independent-controls.py": "acfd514d3e17328975f651fff3a158de7ce573ec45c394c7575e36b0596a0b0c",
+    "pr55-regressions.xml": "3c8cb846fd68362bed90474422c8d1b3a878a50866f3a668bc862d71deeff52c",
+    "pr55-valuation.xml": "49c39c72a4c48df815fdf3f8ce2fda3d34973da2a300abfe1590e1b15dbd447f",
+    "pr55-wheel-verification.json": "68f285e8f36e64a77135d36728669f203551ff8f8f102e815a7c5380c0ad6c93",
+    "pr55.tar": "7f6abf6956dfb9f78a271c6c4b4c1b0adc185dfd4a7b201b3295214995aa2774",
+    "recalculate_pr55.py": "43965751d9d7ef9cec29b64d3203153621433880fbb22c8bd9565fa3b9169176",
+    "run_linux.py": "973b918df3445b380f18b0e3913c62d9af1f06acba476845e7a9b1b3efd5f959",
+    "static-reviews.json": "c526fe63287f8b8f1f96d327dd77b2d85b8d98d004143afd6129d8edc121774a",
+    "warning-coverage.json": "12f5f8a13935290a779d1bb3272aa5c73874736c8e067d99ab7628b0c6527151",
+    "warning-first.xml": "9f686f3fd6703907d2ef442d4e1befc4c9fcf21e3befb6876b530c53eaf18c8f",
+    "warning-input.tar": "db0335b042951ca9acd30f04977996cedea382d44028e1d5b23eae35aa1b930d",
+    "warning.xml": "139317abd537f55d55048f890782098b6e87f4ed21cfbf24d30be978941164af"
+  },
+  "portable_evidence_sha256": {
+    "evidence/accepted-regressions.xml.gz": "0d87a137aa3f9b5071368e0069a1bcebc1c239e3d0cf4f9823a97201efefbbba",
+    "evidence/final-source-readback.json": "d0d79a40fd609d6e33c85760f5e8f4e212b9ca6ba5dd58f4cd1188dc4fd6712f",
+    "evidence/initial-crlf-linux-L1-L2.json": "ded133c4606688b61d1e86cfda460ac9ad007655ffad20e05ae572b2cbe12d56",
+    "evidence/initial-crlf-linux-pit-smoke.json": "305d4bfc622c5dba71d0a11b08e50a9537efd7be73cc12362294de2a4e80198f",
+    "evidence/initial-crlf-linux-source-audit.json": "01eb2fd40fa7eaca397f88579b411de0e77dc223ade53c7c329c88f61315d4c4",
+    "evidence/linux-accepted-regressions.xml": "2bdf5e717116c9a85e10e349b3be024b3cc6b57020fefcad6ae7e3efbc4b5add",
+    "evidence/linux-execution.json": "19862a234c40d8b1d4a5a135e1cfe4fc8ddbcf38618d63ed834e8c1d961610c4",
+    "evidence/linux-L1-L2.json": "14bf4d470c67a7bec7907955df2632b323abc69e4690714fe44f53c584d9f133",
+    "evidence/linux-pit-smoke.json": "1f8d92df309411d68c3f53a6fcfba8366744313eb1da48dcddb08dde6e97f04a",
+    "evidence/linux-pr55.xml": "cb401a43360326dbe0b0e80e0027284cd094244d50448e7991c6d80ab57f4657",
+    "evidence/linux-prephase.xml": "30812b06124599d9beaf7c27331cd51200dd0f372a87d4bd347a5ecaf29c8361",
+    "evidence/linux-source-audit.json": "34dc47bc0e4a0a49cad5c6ab1c8c0d17ae36283a8d6dcd9e73559fa99fafc228",
+    "evidence/linux-warning.xml": "e03dedcc6469da16dd3ee7af220984cda3c0d66e562f270e2b060441cefc2122",
+    "evidence/pr55-independent-recalculation.json.gz": "42612c1eb9d79a9fe96a8d2c03d9ce73bd9aaf992c31131b80682f343d795e4c",
+    "evidence/pr55-wheel-verification.json": "68f285e8f36e64a77135d36728669f203551ff8f8f102e815a7c5380c0ad6c93",
+    "evidence/run_linux.py": "973b918df3445b380f18b0e3913c62d9af1f06acba476845e7a9b1b3efd5f959",
+    "evidence/static-reviews.json.gz": "9d908411ab32f4302f1c3cad9e893bea83197d215e85463c26f7edc476fe7b44",
+    "evidence/warning-coverage.json": "12f5f8a13935290a779d1bb3272aa5c73874736c8e067d99ab7628b0c6527151",
+    "evidence/warning.xml": "139317abd537f55d55048f890782098b6e87f4ed21cfbf24d30be978941164af"
+  },
+  "known_initial_failures": [
+    "Windows PIT regression: symlink WinError1314, one failure/two skips; unmodified tests pass in Linux",
+    "First git archive inherited core.autocrlf=true: L1 3 hash failures and P04-01 27 failures; raw Git-LF resolved all; original reports retained under crlf-attempt",
+    "First warning lint: one unused import and one 121-character line; corrected before final QA"
+  ],
+  "scientific_status": [
+    "GATE_A_BLOCKED",
+    "GATE_B_SCOPED_PASS",
+    "PHASE02_HISTORICAL_EXECUTION_NOT_AUTHORIZED",
+    "TERRA_POINT_IN_TIME_ELIGIBILITY_BLOCKED",
+    "HISTORICAL_BACKTEST_NOT_AUTHORIZED"
+  ],
+  "historical_approved_fields": 0,
+  "historical_backtest_executed": false,
+  "exit_experiment_executed": false,
+  "hosted_ci": "CI_BLOCKED_BY_FREE_TIER_LIMIT_OR_BILLING_NO_RERUN_REQUESTED",
+  "implementation_disposition": "P04_03_SYNTHETIC_WARNING_READY_FOR_INDEPENDENT_REVIEW"
+}

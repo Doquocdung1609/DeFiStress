@@ -1,0 +1,128 @@
+{
+  "python": "3.12.10 (main, May 21 2025, 23:34:56) [GCC 12.2.0]",
+  "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.36",
+  "results": [
+    {
+      "name": "linux-install",
+      "command": [
+        "/usr/local/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "pytest==8.4.2",
+        "pyarrow==23.0.1",
+        "pytest-cov==7.1.0"
+      ],
+      "cwd": "None",
+      "exit_code": 0
+    },
+    {
+      "name": "linux-warning",
+      "command": [
+        "/usr/local/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/v2/terra_warning",
+        "--junitxml=/evidence/linux-warning.xml"
+      ],
+      "cwd": "/tmp/warning",
+      "exit_code": 0
+    },
+    {
+      "name": "linux-accepted-regressions",
+      "command": [
+        "/usr/local/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/v2/terra_pit",
+        "tests/v2/test_contracts.py",
+        "tests/v2/test_saved_adapter.py",
+        "tests/v2/test_saved_adapter_review.py",
+        "tests/test_prephase02_offline.py",
+        "tests/research_v2/test_terra_p04_01_audit.py",
+        "--junitxml=/evidence/linux-accepted-regressions.xml"
+      ],
+      "cwd": "/tmp/warning",
+      "exit_code": 0
+    },
+    {
+      "name": "linux-prephase",
+      "command": [
+        "/usr/local/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/test_prephase02_offline.py",
+        "--junitxml=/evidence/linux-prephase.xml"
+      ],
+      "cwd": "/tmp/warning",
+      "exit_code": 0
+    },
+    {
+      "name": "linux-L1-L2",
+      "command": [
+        "/usr/local/bin/python",
+        "docs/research_v2/prephase02_offline/validate_offline.py",
+        "--validator-commit",
+        "LOCAL_P04_03_SOURCE_MANIFEST",
+        "--output",
+        "/evidence/linux-L1-L2.json",
+        "--l2-junit",
+        "/evidence/linux-prephase.xml",
+        "--l2-exit-code",
+        "0"
+      ],
+      "cwd": "/tmp/warning",
+      "exit_code": 0
+    },
+    {
+      "name": "linux-pit-smoke",
+      "command": [
+        "/usr/local/bin/python",
+        "-m",
+        "defistress_v2.terra_pit.validate",
+        "--implementation-commit",
+        "LOCAL_P04_03_SOURCE_MANIFEST",
+        "--output",
+        "/evidence/linux-pit-smoke.json"
+      ],
+      "cwd": "/tmp/warning",
+      "exit_code": 0
+    },
+    {
+      "name": "linux-source-audit",
+      "command": [
+        "/usr/local/bin/python",
+        "scripts/research/terra_v2/audit_p04_01.py",
+        "--repo-root",
+        ".",
+        "--registry",
+        "docs/research_v2/terra_early_warning/p04_01/P04_01_DATASET_REGISTRY.json",
+        "--output",
+        "/evidence/linux-source-audit.json"
+      ],
+      "cwd": "/tmp/warning",
+      "exit_code": 0
+    },
+    {
+      "name": "linux-pr55",
+      "command": [
+        "/usr/local/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/v2",
+        "tests/test_prephase02_offline.py",
+        "--junitxml=/evidence/linux-pr55.xml"
+      ],
+      "cwd": "/tmp/pr55",
+      "exit_code": 0
+    }
+  ],
+  "input_sha256": {
+    "warning-input.tar": "db0335b042951ca9acd30f04977996cedea382d44028e1d5b23eae35aa1b930d",
+    "pr55.tar": "7f6abf6956dfb9f78a271c6c4b4c1b0adc185dfd4a7b201b3295214995aa2774"
+  }
+}

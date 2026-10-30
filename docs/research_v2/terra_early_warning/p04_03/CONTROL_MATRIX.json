@@ -1,0 +1,98 @@
+[
+  {
+    "id": "P04-M01",
+    "disposition": "IMPLEMENTED_SYNTHETIC_CONTROLS",
+    "test_file": "tests/v2/terra_warning/test_warning.py",
+    "test_name_contains": "m01_to_m05",
+    "historical_evaluation_executed": false,
+    "note": "Independent synthetic expectations; not a historical capability claim"
+  },
+  {
+    "id": "P04-M02",
+    "disposition": "IMPLEMENTED_SYNTHETIC_CONTROLS",
+    "test_file": "tests/v2/terra_warning/test_warning.py",
+    "test_name_contains": "m01_to_m05",
+    "historical_evaluation_executed": false,
+    "note": "Independent synthetic expectations; not a historical capability claim"
+  },
+  {
+    "id": "P04-M03",
+    "disposition": "IMPLEMENTED_SYNTHETIC_CONTROLS",
+    "test_file": "tests/v2/terra_warning/test_warning.py",
+    "test_name_contains": "m01_to_m05",
+    "historical_evaluation_executed": false,
+    "note": "Independent synthetic expectations; not a historical capability claim"
+  },
+  {
+    "id": "P04-M04",
+    "disposition": "IMPLEMENTED_SYNTHETIC_CONTROLS",
+    "test_file": "tests/v2/terra_warning/test_warning.py",
+    "test_name_contains": "m01_to_m05",
+    "historical_evaluation_executed": false,
+    "note": "Independent synthetic expectations; not a historical capability claim"
+  },
+  {
+    "id": "P04-M05",
+    "disposition": "IMPLEMENTED_SYNTHETIC_CONTROLS",
+    "test_file": "tests/v2/terra_warning/test_warning.py",
+    "test_name_contains": "m01_to_m05",
+    "historical_evaluation_executed": false,
+    "note": "Independent synthetic expectations; not a historical capability claim"
+  },
+  {
+    "id": "P04-M06",
+    "disposition": "IMPLEMENTED_SYNTHETIC_CONTROLS",
+    "test_file": "tests/v2/terra_warning/test_warning.py",
+    "test_name_contains": "m06",
+    "historical_evaluation_executed": false,
+    "note": "Independent synthetic expectations; not a historical capability claim"
+  },
+  {
+    "id": "P04-M07",
+    "disposition": "IMPLEMENTED_SYNTHETIC_CONTROLS",
+    "test_file": "tests/v2/terra_warning/test_warning.py",
+    "test_name_contains": "m07",
+    "historical_evaluation_executed": false,
+    "note": "Independent synthetic expectations; not a historical capability claim"
+  },
+  {
+    "id": "P04-M08",
+    "disposition": "IMPLEMENTED_SYNTHETIC_CONTROLS",
+    "test_file": "tests/v2/terra_warning/test_warning.py",
+    "test_name_contains": "m08",
+    "historical_evaluation_executed": false,
+    "note": "Independent synthetic expectations; not a historical capability claim"
+  },
+  {
+    "id": "P04-M09",
+    "disposition": "EVALUATION_SEMANTICS_DEFERRED_P04_04",
+    "test_file": "tests/v2/terra_warning/test_warning.py",
+    "test_name_contains": "m09",
+    "historical_evaluation_executed": false,
+    "note": "Quiet model behavior tested; metrics/episodes are design-only"
+  },
+  {
+    "id": "P04-M10",
+    "disposition": "EVALUATION_SEMANTICS_DEFERRED_P04_04",
+    "test_file": "tests/v2/terra_warning/test_warning.py",
+    "test_name_contains": "m10",
+    "historical_evaluation_executed": false,
+    "note": "Quiet model behavior tested; metrics/episodes are design-only"
+  },
+  {
+    "id": "P04-M11",
+    "disposition": "IMPLEMENTED_SYNTHETIC_CONTROLS",
+    "test_file": "tests/v2/terra_warning/test_warning.py",
+    "test_name_contains": "m11",
+    "historical_evaluation_executed": false,
+    "note": "Independent synthetic expectations; not a historical capability claim"
+  },
+  {
+    "id": "P04-M12",
+    "disposition": "IMPLEMENTED_SYNTHETIC_CONTROLS",
+    "test_file": "tests/v2/terra_warning/test_warning.py",
+    "test_name_contains": "m12",
+    "historical_evaluation_executed": false,
+    "note": "Independent synthetic expectations; not a historical capability claim"
+  }
+]
