@@ -1,0 +1,34 @@
+{
+  "id": "554f4185-2278-40e4-9550-21dfb4ff1b4a",
+  "status": "COMPLETE",
+  "mode": "ILLUSTRATIVE_EXIT",
+  "origin": "SYNTHETIC",
+  "execution_status": "CAPACITY_ASSUMED_PARTIAL",
+  "source": "USER_DECLARED_ASSUMPTIONS",
+  "assumptions": {
+    "quantity_ust": "1000",
+    "warning_timestamp": "2030-01-01T03:00:00Z",
+    "warning_price_usd": "1",
+    "price_usd": "0.8",
+    "capacity_ust": "600",
+    "fee_percent": "1",
+    "slippage_percent": "2",
+    "latency_minutes": 15
+  },
+  "calculation": {
+    "requested_ust": "1000",
+    "filled_ust": "600",
+    "unfilled_ust": "400",
+    "gross_usd": "480",
+    "fee_usd": "4.8",
+    "slippage_usd": "9.6",
+    "net_usd": "465.6",
+    "latency_minutes": 15,
+    "warning_timestamp": "2030-01-01T03:00:00Z",
+    "estimated_execution_time": "2030-01-01T03:15:00Z",
+    "warning_price_usd": "1",
+    "price_move_percent": "-20",
+    "modeled_loss_usd": "134.4"
+  },
+  "scientific_status": "ILLUSTRATIVE_ONLY_NO_MARKET_DEPTH_OR_FILL_GUARANTEE"
+}

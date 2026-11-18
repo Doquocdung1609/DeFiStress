@@ -379,9 +379,25 @@ export async function api<T>(path: string, init?: RequestInit): Promise<T> {
   }
   if (!response.ok) {
     const payload = await response.json().catch(() => ({}));
-    throw new Error(payload.detail ?? `Request failed with status ${response.status}`);
+    throw new Error(apiErrorMessage(payload, response.status));
   }
   return response.json() as Promise<T>;
+}
+
+export function apiErrorMessage(payload: unknown, status: number): string {
+  if (payload && typeof payload === "object" && "detail" in payload) {
+    const detail = payload.detail;
+    if (typeof detail === "string") return detail;
+    if (Array.isArray(detail)) {
+      return detail.map((entry: unknown) => {
+        if (!entry || typeof entry !== "object") return "Invalid input";
+        const item = entry as { loc?: unknown; msg?: unknown };
+        const location = Array.isArray(item.loc) ? item.loc.slice(1).join(".") : "Input";
+        return `${location}: ${typeof item.msg === "string" ? item.msg : "Invalid value"}`;
+      }).join("; ");
+    }
+  }
+  return `Request failed with status ${status}`;
 }
 
 export function money(value: number | null | undefined): string {

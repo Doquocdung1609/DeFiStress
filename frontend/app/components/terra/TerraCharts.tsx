@@ -51,8 +51,9 @@ export function HistoricalChart({ rows, field, title, source }: { rows: TerraObs
 type ExtendedField = "ust_price" | "luna_price" | "ust_supply" | "luna_supply" | "anchor_total_deposits" | "anchor_withdrawal_flow" | "backing_ratio";
 
 export function ExtendedHistoricalChart({ rows, field, title, quality }: { rows: TerraExtendedObservation[]; field: ExtendedField; title: string; quality: string }) {
-  const data = rows.flatMap((row) => row[field] == null ? [] : [{ value: Number(row[field]), timestamp: row.timestamp.slice(5, 13) }]);
-  return <section className="panel terraChartPanel" title={`Quality: ${quality}`}><header><div><p className="eyebrow">{quality}</p><h3>{title}</h3></div></header><div className="chart"><ResponsiveContainer width="100%" height="100%"><AreaChart data={data}><defs><linearGradient id={`extended-${field}`} x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor="#31d4e8" stopOpacity={0.34} /><stop offset="95%" stopColor="#31d4e8" stopOpacity={0.02} /></linearGradient></defs><CartesianGrid stroke="#16344c" strokeDasharray="3 3" /><XAxis dataKey="timestamp" minTickGap={44} stroke="#7892aa" /><YAxis stroke="#7892aa" tickFormatter={compact} width={72} /><Tooltip contentStyle={chartTooltip} /><Area type="monotone" dataKey="value" stroke="#31d4e8" fill={`url(#extended-${field})`} isAnimationActive={false} /></AreaChart></ResponsiveContainer></div></section>;
+  const data = rows.map((row) => ({ value: row[field] == null ? null : Number(row[field]), timestamp: row.timestamp.slice(5, 13) }));
+  const missing = data.filter((point) => point.value === null).length;
+  return <section className="panel terraChartPanel" title={`Quality: ${quality}`}><header><div><p className="eyebrow">{quality}</p><h3>{title}</h3></div><small>{missing} missing hours shown as gaps</small></header><div className="chart"><ResponsiveContainer width="100%" height="100%"><AreaChart data={data}><defs><linearGradient id={`extended-${field}`} x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor="#31d4e8" stopOpacity={0.34} /><stop offset="95%" stopColor="#31d4e8" stopOpacity={0.02} /></linearGradient></defs><CartesianGrid stroke="#16344c" strokeDasharray="3 3" /><XAxis dataKey="timestamp" minTickGap={44} stroke="#7892aa" /><YAxis stroke="#7892aa" tickFormatter={compact} width={72} /><Tooltip contentStyle={chartTooltip} /><Area type="monotone" dataKey="value" stroke="#31d4e8" fill={`url(#extended-${field})`} isAnimationActive={false} connectNulls={false} /></AreaChart></ResponsiveContainer></div></section>;
 }
 
 export function ReplayChart({ replay, field, title }: { replay: TerraReplay; field: "ust_price" | "luna_price" | "luna_supply" | "anchor_withdrawal_flow" | "backing_ratio"; title: string }) {
@@ -61,7 +62,7 @@ export function ReplayChart({ replay, field, title }: { replay: TerraReplay; fie
     index,
     timestamp: String(row.timestamp).slice(5, 13),
     simulated: Number(row[field]),
-    actual: Number(actual.get(String(row.timestamp))?.[field] ?? 0),
+    actual: actual.get(String(row.timestamp))?.[field] == null ? null : Number(actual.get(String(row.timestamp))?.[field]),
   }));
   return (
     <section className="panel terraChartPanel">

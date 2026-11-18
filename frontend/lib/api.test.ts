@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { money, percent } from "./api";
+import { apiErrorMessage, money, percent } from "./api";
 
 describe("formatters", () => {
   it("formats finite metrics", () => {
@@ -10,6 +10,13 @@ describe("formatters", () => {
   it("does not render NaN", () => {
     expect(money(Number.NaN)).toBe("—");
     expect(percent(null)).toBe("—");
+  });
+});
+
+describe("API validation errors", () => {
+  it("names the invalid field and explains the problem", () => {
+    expect(apiErrorMessage({ detail: [{ loc: ["body", "ust_price"], msg: "Value error, price must be positive" }] }, 422))
+      .toContain("ust_price: Value error, price must be positive");
   });
 });
 
