@@ -6,6 +6,12 @@
 **Scientific acceptance:** **No.** This preview neither merges the Draft PRs nor
 admits the 14 historical Terra fields to V2. No P04-04 historical backtest was run.
 
+**GitHub:** [Draft demo PR #59](https://github.com/Doquocdung1609/DeFiStress/pull/59)
+compares `demo/e2e-preview` with the pinned candidate base
+`demo/e2e-candidates` (`e4dc052127e83e26de088ab7c029037b422137c6`).
+The tested application implementation commit is
+`875d5feb295ded52eacec0d08eb1d53d9fe73642`.
+
 ## Functionality: existing → gap → delivered
 
 | Area | Existing/reused | Gap handled in this preview | Observed result |
@@ -88,6 +94,7 @@ not reinterpret that evidence as an approved historical validation.
 | Terra counterfactual stress | Working; browser and API exercised | User assumptions, collapse count not probability. |
 | Exit planner, saved run, ZIP | Working; browser and API exercised | Assumed capacity only; unknown depth remains NOT_VERIFIABLE. |
 | Celery/PostgreSQL Compose mode | Configuration validated, runtime unverified | Docker daemon unavailable on the test host. Local deterministic path uses no worker. |
+| POSIX start/stop script | Supplied, not runtime-tested | The test host was Windows; validate on Linux/macOS before relying on this path. |
 | Whole-project strict mypy | Existing failures remain | 21 errors in old typing/stubs; explicit backend check reported 28. New services pass focused check. |
 | Formal PR integration/CI | Blocked by Draft review/checks/billing | Keep #53/#55/#57/#58 separate. Preview is not the governed merge. |
 | Historical V2/P04-04/P04-05 empirical proof | Not authorized | No promotion of 14 fields, no investor-exit effectiveness claim. |
