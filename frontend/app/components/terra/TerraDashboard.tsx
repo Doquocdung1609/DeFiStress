@@ -16,6 +16,7 @@ import type {
 } from "@/lib/api";
 import { API_URL, api, money } from "@/lib/api";
 import { terraStatusLabel } from "@/lib/terra";
+import { DemoRunHistory, IllustrativeExitDemo, SyntheticWarningDemo } from "./DemoControls";
 import {
   EarlyWarningTimeline,
   ExtendedHistoricalChart,
@@ -30,6 +31,9 @@ const nav = [
   ["historical-data", "Historical Data"],
   ["historical-fit", "Historical Fit"],
   ["early-warning", "Early Warning"],
+  ["warning-lab", "Synthetic B0–B3"],
+  ["exit-planner", "Exit Calculator"],
+  ["demo-runs", "Saved Demo Runs"],
   ["stress-test", "Stress Test"],
   ["model-comparison", "Model Comparison"],
   ["mechanism-check", "Mechanism Check"],
@@ -214,17 +218,14 @@ export function TerraDashboard({ section }: { section: string }) {
       </aside>
       <main>
         <header className="topbar terraTopbar">
-          <div><p className="eyebrow">TERRA CLASSIC · MAY 2022</p><h1>{title(section)}</h1></div>
-          <div className="headerMeta"><span className="modeBadge partial">READY WITH LIMITATIONS</span><span className="safety">Historical reconstruction and counterfactual stress — not a forecast</span></div>
+          <div><p className="eyebrow">{["warning-lab", "exit-planner", "demo-runs"].includes(section) ? "TERRA · DEMO CONTROLS" : "TERRA CLASSIC · MAY 2022"}</p><h1>{title(section)}</h1></div>
+          <div className="headerMeta"><span className="modeBadge partial">READY WITH LIMITATIONS</span><span className="safety">{["warning-lab", "exit-planner", "demo-runs"].includes(section) ? "Synthetic controls · illustrative calculations · no execution guarantee" : "Historical reconstruction and counterfactual stress — not a forecast"}</span></div>
         </header>
         {error ? <div className="errorBanner"><strong>Research API error.</strong> {error}<button onClick={() => void load()}>Retry</button></div> : null}
         {busy && !status ? <div className="loading"><span />Loading cutoff-safe research state…</div> : null}
         {status && manifest ? (
           <section className="content">
-            <div className="dataBanner partial">
-              <strong>HISTORICAL DATA · READY WITH LIMITATIONS</strong>
-              1,776 hourly rows are available. Missing DEX depth and LFG peg-defense remain explicitly unavailable.
-            </div>
+            {["warning-lab", "exit-planner", "demo-runs"].includes(section) ? <div className="dataBanner fixture"><strong>SYNTHETIC / ILLUSTRATIVE DEMO</strong>Values entered here are user assumptions, not Terra 2022 observations.</div> : <div className="dataBanner partial"><strong>HISTORICAL DATA · READY WITH LIMITATIONS</strong>1,776 hourly rows are available. Missing DEX depth and LFG peg-defense remain explicitly unavailable.</div>}
             {section === "model-lab" || section === "replay" || section === "ablation" ? <div className="datasetToolbar">
               <label>
                 Advanced legacy dataset
@@ -251,6 +252,9 @@ export function TerraDashboard({ section }: { section: string }) {
             {section === "historical-data" && demoData ? <DemoHistoricalData data={demoData} /> : null}
             {section === "historical-fit" ? <HistoricalFitScreen fit={historicalFit} busy={busy} onRun={runHistoricalFit} /> : null}
             {section === "early-warning" ? <EarlyWarningScreen warning={earlyWarning} mode={earlyWarningMode} busy={busy} onMode={changeEarlyWarningMode} /> : null}
+            {section === "warning-lab" ? <SyntheticWarningDemo /> : null}
+            {section === "exit-planner" ? <IllustrativeExitDemo /> : null}
+            {section === "demo-runs" ? <DemoRunHistory /> : null}
             {section === "stress-test" ? <StressTestScreen result={stress} form={stressForm} setForm={setStressForm} busy={busy} onRun={runStress} /> : null}
             {section === "model-comparison" ? <ModelComparisonScreen fit={historicalFit} /> : null}
             {section === "mechanism-check" ? <MechanismCheckScreen result={mechanism} /> : null}
@@ -276,7 +280,17 @@ function DemoOverview({ data, fit, warning, stress }: { data: DemoData; fit: Ter
 
 function DemoHistoricalData({ data }: { data: DemoData }) {
   const rows = data.observations;
-  return <><SectionLead title="What actually happened?" text="Observed state and event-flow series are shown with their quality class. Missing history stays missing; fixture cohorts never appear here." /><div className="eventStrip"><span>May 7 · UST &lt; $0.995</span><span>May 9 · UST &lt; $0.95</span><span>May 11–13 · supply explosion</span></div><div className="twoCol"><ExtendedHistoricalChart rows={rows} field="ust_price" title="UST / USD" quality="OBSERVED + LOWER-FREQUENCY CARRY BEFORE MAY" /><ExtendedHistoricalChart rows={rows} field="luna_price" title="LUNA / USD" quality="OBSERVED + LOWER-FREQUENCY CARRY BEFORE MAY" /><ExtendedHistoricalChart rows={rows} field="luna_supply" title="LUNA supply" quality="OBSERVED MAY 1 ONWARD" /><ExtendedHistoricalChart rows={rows} field="anchor_total_deposits" title="Anchor deposits" quality="OBSERVED STATE" /><ExtendedHistoricalChart rows={rows} field="anchor_withdrawal_flow" title="Anchor withdrawal events" quality="OBSERVED MAY 6 ONWARD · MISSING EARLIER" /><ExtendedHistoricalChart rows={rows} field="backing_ratio" title="Backing ratio" quality="DERIVED MAY 1 ONWARD" /></div></>;
+  const [range, setRange] = useState("all");
+  const [start, setStart] = useState("2022-03-01");
+  const [end, setEnd] = useState("2022-05-13");
+  const filtered = rows.filter((row) => {
+    const date = row.timestamp.slice(0, 10);
+    if (range === "may") return date >= "2022-05-01";
+    if (range === "crisis") return date >= "2022-05-06";
+    if (range === "custom") return date >= start && date <= end;
+    return true;
+  });
+  return <><SectionLead title="What actually happened?" text="Observed state and event-flow series are shown with their quality class. Missing history stays missing; fixture cohorts never appear here." /><div className="eventStrip"><span>May 7 · UST &lt; $0.995</span><span>May 9 · UST &lt; $0.95</span><span>May 11–13 · supply explosion</span></div><div className="controls"><label>Zoom / date range<select aria-label="Historical chart range" value={range} onChange={(event) => setRange(event.target.value)}><option value="all">All 1,776 hours</option><option value="may">May 2022</option><option value="crisis">Crisis week</option><option value="custom">Custom dates</option></select></label>{range === "custom" && <><label>From<input aria-label="Historical start date" type="date" min="2022-03-01" max="2022-05-13" value={start} onChange={(event) => setStart(event.target.value)} /></label><label>To<input aria-label="Historical end date" type="date" min="2022-03-01" max="2022-05-13" value={end} onChange={(event) => setEnd(event.target.value)} /></label></>}<span>{filtered.length} observed hours</span></div><div className="twoCol"><ExtendedHistoricalChart rows={filtered} field="ust_price" title="UST / USD" quality="OBSERVED + LOWER-FREQUENCY CARRY BEFORE MAY" /><ExtendedHistoricalChart rows={filtered} field="luna_price" title="LUNA / USD" quality="OBSERVED + LOWER-FREQUENCY CARRY BEFORE MAY" /><ExtendedHistoricalChart rows={filtered} field="luna_supply" title="LUNA supply" quality="OBSERVED MAY 1 ONWARD" /><ExtendedHistoricalChart rows={filtered} field="anchor_total_deposits" title="Anchor deposits" quality="OBSERVED STATE" /><ExtendedHistoricalChart rows={filtered} field="anchor_withdrawal_flow" title="Anchor withdrawal events" quality="OBSERVED MAY 6 ONWARD · MISSING EARLIER" /><ExtendedHistoricalChart rows={filtered} field="backing_ratio" title="Backing ratio" quality="DERIVED MAY 1 ONWARD" /></div></>;
 }
 
 function HistoricalFitScreen({ fit, busy, onRun }: { fit: TerraHistoricalFit | null; busy: boolean; onRun: () => Promise<void> }) {
@@ -362,7 +376,7 @@ function RunSummary({ replay }: { replay: TerraReplay }) {
 function SectionLead({ title: heading, text }: { title: string; text: string }) { return <div className="sectionLead"><div><p className="eyebrow">REPRODUCIBLE RESEARCH WORKFLOW</p><h2>{heading}</h2><p>{text}</p></div></div>; }
 function Metric({ label, value, detail }: { label: string; value: string; detail?: string }) { return <article className="metricCard"><p>{label}</p><strong>{value}</strong>{detail ? <small>{detail}</small> : null}</article>; }
 function Empty({ title: heading, text, action, busy, onRun }: { title: string; text: string; action: string; busy: boolean; onRun: () => Promise<void> }) { return <div className="emptyState"><div className="pulse"><i /></div><p className="eyebrow">HISTORICAL REPLAY</p><h2>{heading}</h2><p>{text}</p><button className="primary" disabled={busy} onClick={() => void onRun()}>{action}</button></div>; }
-function title(section: string) { return ({ overview: "Research Overview", "historical-data": "Historical Data", "historical-fit": "Historical Fit", "early-warning": "Early Warning", "stress-test": "Stress Test", "model-comparison": "Model Comparison", "mechanism-check": "Mechanism Check", "data-sources": "Data Sources", "wallet-dynamics": "Wallet / Run Dynamics", "model-lab": "Model Lab", replay: "Strict Historical Replay", benchmark: "Model Benchmark", ablation: "Ablation Study", counterfactual: "Counterfactual", provenance: "Data Provenance" } as Record<string, string>)[section] ?? "Research Overview"; }
+function title(section: string) { return ({ overview: "Research Overview", "historical-data": "Historical Data", "historical-fit": "Historical Fit", "early-warning": "Early Warning", "warning-lab": "Synthetic B0–B3", "exit-planner": "Exit Calculator", "demo-runs": "Saved Demo Runs", "stress-test": "Stress Test", "model-comparison": "Model Comparison", "mechanism-check": "Mechanism Check", "data-sources": "Data Sources", "wallet-dynamics": "Wallet / Run Dynamics", "model-lab": "Model Lab", replay: "Strict Historical Replay", benchmark: "Model Benchmark", ablation: "Ablation Study", counterfactual: "Counterfactual", provenance: "Data Provenance" } as Record<string, string>)[section] ?? "Research Overview"; }
 function formatMetric(value: unknown) { return typeof value === "number" && Number.isFinite(value) ? new Intl.NumberFormat("en-US", { maximumFractionDigits: 4 }).format(value) : "—"; }
 function formatHours(value: unknown) { return typeof value === "number" && Number.isFinite(value) ? `${value > 0 ? "+" : ""}${value.toFixed(1)}h` : "Not detected"; }
 

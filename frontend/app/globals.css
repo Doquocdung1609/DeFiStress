@@ -111,6 +111,9 @@ main { min-width: 0; }
 .bridgeRow { padding: 12px; border: 1px solid #25506a; border-radius: 7px; background: #0a2134; color: var(--muted); }.bridgeRow strong { color: var(--cyan); margin-left: 4px; }
 .claimBoundary { border-left: 3px solid var(--amber); }.claimList { margin: 0; padding-left: 20px; color: #aac0d0; }.claimList li { margin: 9px 0; line-height: 1.5; }
 .exportLinks { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }.exportLinks a { color: var(--cyan); padding-bottom: 2px; border-bottom: 1px solid #327286; text-decoration: none; font-size: 11px; }
+.demoDetails { margin: 12px 0; padding: 12px; border: 1px solid #275675; border-radius: 7px; color: #aac3d6; font-size: 12px; overflow-wrap: anywhere; }
+.demoDetails summary { color: var(--cyan); cursor: pointer; font-weight: 700; }
+.demoDetails code { color: #8dc8d2; font-size: 10px; }
 
 @media (max-width: 1050px) {
   .shell { grid-template-columns: 76px minmax(0,1fr); }.sidebar { padding-inline: 10px; }.brand > div, nav a:not(.active) .navDot + *, .sidebarFoot { display: none; }.brand { padding-inline: 7px; }.brandMark { width: 40px; }.sidebar nav a { font-size: 0; justify-content: center; height: 42px; }.sidebar nav a::after { content: attr(href); font-size: 8px; color: var(--muted); }.metricGrid, .metricGrid.wide { grid-template-columns: repeat(2, 1fr); }.coverageStrip { grid-template-columns: repeat(4, 1fr); }

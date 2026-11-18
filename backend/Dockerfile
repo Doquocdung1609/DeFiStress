@@ -4,6 +4,8 @@ WORKDIR /app
 COPY pyproject.toml README.md ./
 COPY backend ./backend
 COPY sim ./sim
+COPY defistress_v2 ./defistress_v2
+COPY data/processed/terra_extended ./data/processed/terra_extended
 RUN pip install --no-cache-dir .
 EXPOSE 8000
 CMD ["uvicorn", "backend.app.main:app", "--host", "0.0.0.0", "--port", "8000"]

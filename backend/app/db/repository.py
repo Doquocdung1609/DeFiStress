@@ -386,6 +386,27 @@ class Repository:
             )
         return experiment_id
 
+    def get_terra_experiment(self, experiment_id: str) -> dict[str, Any] | None:
+        with self.sessions() as session:
+            row = session.get(TerraExperimentRecord, experiment_id)
+            if row is None:
+                return None
+            return {"id": row.id, "status": row.status, **row.result_json}
+
+    def list_terra_experiments(
+        self, limit: int = 30, experiment_types: tuple[str, ...] | None = None,
+    ) -> list[dict[str, Any]]:
+        with self.sessions() as session:
+            query = select(TerraExperimentRecord)
+            if experiment_types is not None:
+                query = query.where(TerraExperimentRecord.experiment_type.in_(experiment_types))
+            rows = session.scalars(query.order_by(TerraExperimentRecord.created_at.desc()).limit(limit)).all()
+            return [
+                {"id": row.id, "status": row.status, "experiment_type": row.experiment_type,
+                 "dataset_version": row.dataset_version, "created_at": row.created_at.isoformat() + "Z"}
+                for row in rows
+            ]
+
 
 def _position_hf(position: dict[str, Any], price: float) -> float:
     debt = float(position.get("debt_usdc", 0)) + float(position.get("other_debt_usd", 0))

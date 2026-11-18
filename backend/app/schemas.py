@@ -1,9 +1,11 @@
 from __future__ import annotations
 
+import re
+from datetime import UTC, datetime
 from decimal import Decimal
 from typing import Any, Literal
 
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field, ValidationInfo, field_validator
 
 
 class SnapshotCreate(BaseModel):
@@ -222,3 +224,86 @@ class TerraStressTestRequest(BaseModel):
     stress_start_timestamp: str = "2022-05-06T23:00:00Z"
     runs: int = Field(default=100, ge=1, le=1000)
     seed: int = 20220506
+
+
+class WarningDemoRequest(BaseModel):
+    """Small synthetic price panel; all observations are invented for this demo."""
+
+    ust_price: str | None = "1"
+    luna_previous_price: str | None = "100"
+    luna_current_price: str | None = "100"
+    ust_delay_minutes: int = Field(default=0, ge=0, le=60)
+    cutoff: datetime = datetime(2030, 1, 1, 3, tzinfo=UTC)
+
+    @field_validator("ust_price", "luna_previous_price", "luna_current_price")
+    @classmethod
+    def canonical_price(cls, value: str | None) -> str | None:
+        if value is None:
+            return None
+        if type(value) is not str or re.fullmatch(r"(?:0|[1-9][0-9]*)(?:\.[0-9]+)?", value) is None:
+            raise ValueError("price must be an exact positive decimal string")
+        amount = Decimal(value)
+        if amount <= 0 or amount > Decimal("1000000000000") or len(value.replace(".", "")) > 78:
+            raise ValueError("price must be positive and within the demo bound")
+        return _plain_decimal(value)
+
+    @field_validator("cutoff")
+    @classmethod
+    def synthetic_clock(cls, value: datetime) -> datetime:
+        if value.tzinfo is None or value.utcoffset() is None:
+            raise ValueError("cutoff must include a UTC timezone")
+        result = value.astimezone(UTC)
+        if not 2030 <= result.year < 2100 or (result.minute, result.second, result.microsecond) != (0, 0, 0):
+            raise ValueError("synthetic cutoff must be an exact UTC hour in 2030–2099")
+        return result
+
+
+def _plain_decimal(value: str) -> str:
+    """Canonicalize a fixed point string without Decimal context rounding."""
+    whole, _, fraction = value.partition(".")
+    fraction = fraction.rstrip("0")
+    return f"{whole}.{fraction}" if fraction else whole
+
+
+class ExitDemoRequest(BaseModel):
+    """User-declared assumptions for illustrative arithmetic only."""
+
+    quantity_ust: str = "1000"
+    warning_timestamp: datetime = datetime(2030, 1, 1, 3, tzinfo=UTC)
+    warning_price_usd: str = "1"
+    price_usd: str = "1"
+    capacity_ust: str | None = None
+    fee_percent: str = "0"
+    slippage_percent: str = "0"
+    latency_minutes: int = Field(default=0, ge=0, le=10080)
+
+    @field_validator(
+        "quantity_ust", "price_usd", "warning_price_usd", "capacity_ust", "fee_percent", "slippage_percent",
+    )
+    @classmethod
+    def bounded_decimal(cls, value: str | None, info: ValidationInfo) -> str | None:
+        if value is None and info.field_name == "capacity_ust":
+            return None
+        if type(value) is not str or re.fullmatch(r"(?:0|[1-9][0-9]*)(?:\.[0-9]+)?", value) is None:
+            raise ValueError("use a nonnegative fixed point decimal string")
+        assert isinstance(value, str)
+        if len(value.replace(".", "")) > 28:
+            raise ValueError("number has too many digits")
+        amount = Decimal(value)
+        if amount > Decimal("1000000000000"):
+            raise ValueError("number exceeds the demo bound")
+        if info.field_name in {"quantity_ust", "price_usd", "warning_price_usd"} and amount <= 0:
+            raise ValueError("quantity and price must be positive")
+        if info.field_name in {"fee_percent", "slippage_percent"} and amount > 100:
+            raise ValueError("percent must not exceed 100")
+        return _plain_decimal(value)
+
+    @field_validator("warning_timestamp")
+    @classmethod
+    def synthetic_warning_time(cls, value: datetime) -> datetime:
+        if value.tzinfo is None or value.utcoffset() is None:
+            raise ValueError("warning timestamp must include a timezone")
+        utc_value = value.astimezone(UTC)
+        if not 2030 <= utc_value.year < 2100:
+            raise ValueError("illustrative warning timestamp must be in 2030–2099")
+        return utc_value

@@ -1,5 +1,6 @@
 .env
 .venv/
+.venv-fresh/
 __pycache__/
 *.py[cod]
 .pytest_cache/
@@ -17,6 +18,8 @@ frontend/coverage/
 data/exports/*.zip
 data/snapshots/real-*.json
 data/runs/*.json
+data/runs/*.log
+data/runs/*.sqlite
 !data/runs/.gitkeep
 !data/exports/.gitkeep
 .DS_Store

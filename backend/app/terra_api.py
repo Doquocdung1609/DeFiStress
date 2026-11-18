@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import io
 import json
+import zipfile
 from typing import Any
 
 from fastapi import APIRouter, Depends, HTTPException, Query, Response, status
@@ -9,13 +11,17 @@ from backend.app.adapters.terra.history import configured, historical, partial, 
 from backend.app.config import Settings, get_settings
 from backend.app.db import Repository
 from backend.app.schemas import (
+    ExitDemoRequest,
     TerraCounterfactualRequest,
     TerraDatasetImportRequest,
     TerraMonteCarloRequest,
     TerraReplayRequest,
     TerraSensitivityRequest,
     TerraStressTestRequest,
+    WarningDemoRequest,
 )
+from backend.app.services.demo_exit import run_exit_demo
+from backend.app.services.demo_warning import run_warning_demo
 from backend.app.services.terra_datasets import dataset_from_rows
 from backend.app.services.terra_export import build_terra_export
 from sim.terra.demo_data import DEMO_OUTPUT, dataset_summary, frame_records, load_extended_frame
@@ -513,3 +519,47 @@ def export_terra_replay(replay_id: str, repository: Repository = Depends(terra_r
         media_type="application/zip",
         headers={"Content-Disposition": f'attachment; filename="terra-replay-{replay_id}.zip"'},
     )
+
+
+@router.post("/terra/demo/warnings", status_code=status.HTTP_201_CREATED)
+def create_warning_demo(
+    request: WarningDemoRequest, repository: Repository = Depends(terra_repository),
+) -> dict[str, Any]:
+    ensure_terra_fixture(repository)
+    payload = run_warning_demo(request)
+    run_id = repository.save_terra_experiment(FIXTURE_VERSION, "WARNING_SYNTHETIC", payload)
+    return {"id": run_id, **payload}
+
+
+@router.post("/terra/demo/exits", status_code=status.HTTP_201_CREATED)
+def create_exit_demo(
+    request: ExitDemoRequest, repository: Repository = Depends(terra_repository),
+) -> dict[str, Any]:
+    ensure_terra_fixture(repository)
+    payload = run_exit_demo(request)
+    run_id = repository.save_terra_experiment(FIXTURE_VERSION, "EXIT_ILLUSTRATIVE", payload)
+    return {"id": run_id, **payload}
+
+
+@router.get("/terra/demo/runs")
+def list_demo_runs(repository: Repository = Depends(terra_repository)) -> list[dict[str, Any]]:
+    return repository.list_terra_experiments(experiment_types=("WARNING_SYNTHETIC", "EXIT_ILLUSTRATIVE"))
+
+
+@router.get("/terra/demo/runs/{run_id}")
+def get_demo_run(run_id: str, repository: Repository = Depends(terra_repository)) -> dict[str, Any]:
+    row = repository.get_terra_experiment(run_id)
+    if row is None or row.get("mode") not in {"SYNTHETIC_WARNING", "ILLUSTRATIVE_EXIT"}:
+        raise HTTPException(404, "Demo run not found")
+    return row
+
+
+@router.get("/terra/demo/runs/{run_id}/export")
+def export_demo_run(run_id: str, repository: Repository = Depends(terra_repository)) -> Response:
+    row = get_demo_run(run_id, repository)
+    stream = io.BytesIO()
+    with zipfile.ZipFile(stream, "w", compression=zipfile.ZIP_DEFLATED) as archive:
+        archive.writestr("result.json", json.dumps(row, sort_keys=True, indent=2, allow_nan=False) + "\n")
+    return Response(stream.getvalue(), media_type="application/zip", headers={
+        "Content-Disposition": f'attachment; filename="defistress-demo-{run_id}.zip"',
+    })
