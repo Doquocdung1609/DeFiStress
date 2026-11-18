@@ -1,0 +1,1413 @@
+{
+  "GATE_A": "BLOCKED_BACKEND_INDEPENDENCE",
+  "GATE_B": "PASS_REGISTERED_CORE_SCOPE",
+  "L1_INTEGRITY": "FAIL",
+  "L1_counts": {
+    "BLOCKED": 0,
+    "FAIL": 3,
+    "PASS": 193
+  },
+  "L2_CONTRACTS": "PASS",
+  "L2_TEST_RESULTS": {
+    "errors": 0,
+    "failures": 0,
+    "passed": 80,
+    "path": "/evidence/linux-prephase.xml",
+    "pytest_exit_code": 0,
+    "reason": "EXECUTED_JUNIT_PASS",
+    "scope": "SYNTHETIC_GUARDS_AND_VALIDATOR_REGRESSION_TESTS_NOT_MAINNET_VALIDATION",
+    "sha256": "7b56c20c6b1305d7926bce4fbeb63c830553df84f581f2c31c27fa3a606e7782",
+    "skipped": 0,
+    "tests": 80
+  },
+  "PHASE02_AUTHORIZATION": "NOT_AUTHORIZED",
+  "checks": [
+    {
+      "id": "REG-CHAIN",
+      "reason": "REGISTERED_CHECK_PASSED",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "REG-BLOCKS",
+      "reason": "REGISTERED_CHECK_PASSED",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "REG-POOLS",
+      "reason": "REGISTERED_CHECK_PASSED",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "REG-DECIMALS",
+      "reason": "REGISTERED_CHECK_PASSED",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "REG-V1",
+      "reason": "REGISTERED_CHECK_PASSED",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "ALCHEMY-SUMMARY",
+      "reason": "REGISTERED_CHECK_PASSED",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:0",
+      "path": "components/26030952-pass1-borrowers.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:1",
+      "path": "components/26030952-pass1-oracle.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:2",
+      "path": "components/26030952-pass1-P3000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:3",
+      "path": "components/26030952-pass1-P500.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:4",
+      "path": "components/26030952-pass2-borrowers.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:5",
+      "path": "components/26030952-pass2-oracle.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:6",
+      "path": "components/26030952-pass2-P3000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:7",
+      "path": "components/26030952-pass2-P500.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:8",
+      "path": "components/26038152-pass1-borrowers.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:9",
+      "path": "components/26038152-pass1-oracle.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:10",
+      "path": "components/26038152-pass1-P3000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:11",
+      "path": "components/26038152-pass1-P500.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:12",
+      "path": "components/26038152-pass2-borrowers.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:13",
+      "path": "components/26038152-pass2-oracle.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:14",
+      "path": "components/26038152-pass2-P3000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:15",
+      "path": "components/26038152-pass2-P500.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:16",
+      "path": "components/26045352-pass1-borrowers.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:17",
+      "path": "components/26045352-pass1-oracle.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:18",
+      "path": "components/26045352-pass1-P3000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:19",
+      "path": "components/26045352-pass1-P500.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:20",
+      "path": "components/26045352-pass2-borrowers.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:21",
+      "path": "components/26045352-pass2-oracle.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:22",
+      "path": "components/26045352-pass2-P3000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:23",
+      "path": "components/26045352-pass2-P500.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:24",
+      "path": "core/blockpi-26030952-pass1.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:25",
+      "path": "core/blockpi-26030952-pass2.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:26",
+      "path": "core/blockpi-26038152-pass1.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:27",
+      "path": "core/blockpi-26038152-pass2.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:28",
+      "path": "core/blockpi-26045352-pass1.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:29",
+      "path": "core/blockpi-26045352-pass2.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:30",
+      "path": "core/drpc-26030952-pass1.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:31",
+      "path": "core/drpc-26030952-pass2.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:32",
+      "path": "core/drpc-26038152-pass1.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:33",
+      "path": "core/drpc-26038152-pass2.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:34",
+      "path": "core/drpc-26045352-pass1.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:35",
+      "path": "core/drpc-26045352-pass2.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:36",
+      "path": "core/llama-26030952-pass1.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:37",
+      "path": "core/llama-26030952-pass2.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:38",
+      "path": "core/llama-26038152-pass1.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:39",
+      "path": "core/llama-26038152-pass2.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:40",
+      "path": "core/llama-26045352-pass1.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:41",
+      "path": "core/llama-26045352-pass2.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:42",
+      "path": "core/publicnode-26030952-pass1.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:43",
+      "path": "core/publicnode-26030952-pass2.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:44",
+      "path": "core/publicnode-26038152-pass1.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:45",
+      "path": "core/publicnode-26038152-pass2.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:46",
+      "path": "core/publicnode-26045352-pass1.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:47",
+      "path": "core/publicnode-26045352-pass2.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:48",
+      "path": "cross_provider_comparison.json",
+      "reason": "DIGEST_MISMATCH",
+      "scope": "L1_INTEGRITY",
+      "status": "FAIL"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:49",
+      "path": "raw/core-blockpi-26030952-pass1-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:50",
+      "path": "raw/core-blockpi-26030952-pass2-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:51",
+      "path": "raw/core-blockpi-26038152-pass1-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:52",
+      "path": "raw/core-blockpi-26038152-pass2-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:53",
+      "path": "raw/core-blockpi-26045352-pass1-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:54",
+      "path": "raw/core-blockpi-26045352-pass2-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:55",
+      "path": "raw/core-drpc-26030952-pass1-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:56",
+      "path": "raw/core-drpc-26030952-pass2-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:57",
+      "path": "raw/core-drpc-26038152-pass1-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:58",
+      "path": "raw/core-drpc-26038152-pass2-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:59",
+      "path": "raw/core-drpc-26045352-pass1-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:60",
+      "path": "raw/core-drpc-26045352-pass2-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:61",
+      "path": "raw/core-llama-26030952-pass1-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:62",
+      "path": "raw/core-llama-26030952-pass2-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:63",
+      "path": "raw/core-llama-26038152-pass1-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:64",
+      "path": "raw/core-llama-26038152-pass2-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:65",
+      "path": "raw/core-llama-26045352-pass1-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:66",
+      "path": "raw/core-llama-26045352-pass2-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:67",
+      "path": "raw/core-publicnode-26030952-pass1-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:68",
+      "path": "raw/core-publicnode-26030952-pass2-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:69",
+      "path": "raw/core-publicnode-26038152-pass1-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:70",
+      "path": "raw/core-publicnode-26038152-pass2-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:71",
+      "path": "raw/core-publicnode-26045352-pass1-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:72",
+      "path": "raw/core-publicnode-26045352-pass2-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:73",
+      "path": "raw/primary-26030952-pass1-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:74",
+      "path": "raw/primary-26030952-pass1-001.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:75",
+      "path": "raw/primary-26030952-pass1-002.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:76",
+      "path": "raw/primary-26030952-pass1-003.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:77",
+      "path": "raw/primary-26030952-pass1-004.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:78",
+      "path": "raw/primary-26030952-pass1-005.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:79",
+      "path": "raw/primary-26030952-pass2-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:80",
+      "path": "raw/primary-26030952-pass2-001.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:81",
+      "path": "raw/primary-26030952-pass2-002.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:82",
+      "path": "raw/primary-26030952-pass2-003.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:83",
+      "path": "raw/primary-26030952-pass2-004.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:84",
+      "path": "raw/primary-26030952-pass2-005.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:85",
+      "path": "raw/primary-26038152-pass1-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:86",
+      "path": "raw/primary-26038152-pass1-001.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:87",
+      "path": "raw/primary-26038152-pass1-002.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:88",
+      "path": "raw/primary-26038152-pass1-003.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:89",
+      "path": "raw/primary-26038152-pass1-004.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:90",
+      "path": "raw/primary-26038152-pass1-005.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:91",
+      "path": "raw/primary-26038152-pass2-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:92",
+      "path": "raw/primary-26038152-pass2-001.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:93",
+      "path": "raw/primary-26038152-pass2-002.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:94",
+      "path": "raw/primary-26038152-pass2-003.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:95",
+      "path": "raw/primary-26038152-pass2-004.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:96",
+      "path": "raw/primary-26038152-pass2-005.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:97",
+      "path": "raw/primary-26045352-pass1-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:98",
+      "path": "raw/primary-26045352-pass1-001.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:99",
+      "path": "raw/primary-26045352-pass1-002.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:100",
+      "path": "raw/primary-26045352-pass1-003.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:101",
+      "path": "raw/primary-26045352-pass1-004.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:102",
+      "path": "raw/primary-26045352-pass1-005.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:103",
+      "path": "raw/primary-26045352-pass2-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:104",
+      "path": "raw/primary-26045352-pass2-001.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:105",
+      "path": "raw/primary-26045352-pass2-002.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:106",
+      "path": "raw/primary-26045352-pass2-003.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:107",
+      "path": "raw/primary-26045352-pass2-004.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:108",
+      "path": "raw/primary-26045352-pass2-005.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/full/collection_manifest.json:109",
+      "path": "validation_catalog.json",
+      "reason": "DIGEST_MISMATCH",
+      "scope": "L1_INTEGRITY",
+      "status": "FAIL"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:0",
+      "path": "borrower_repair_catalog.json",
+      "reason": "DIGEST_MISMATCH",
+      "scope": "L1_INTEGRITY",
+      "status": "FAIL"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:1",
+      "path": "components/26030952-pass1-borrowers.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:2",
+      "path": "components/26030952-pass2-borrowers.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:3",
+      "path": "components/26038152-pass1-borrowers.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:4",
+      "path": "components/26038152-pass2-borrowers.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:5",
+      "path": "components/26045352-pass1-borrowers.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:6",
+      "path": "components/26045352-pass2-borrowers.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:7",
+      "path": "raw/borrower-repair-26030952-pass1-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:8",
+      "path": "raw/borrower-repair-26030952-pass1-001.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:9",
+      "path": "raw/borrower-repair-26030952-pass1-002.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:10",
+      "path": "raw/borrower-repair-26030952-pass1-003.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:11",
+      "path": "raw/borrower-repair-26030952-pass1-004.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:12",
+      "path": "raw/borrower-repair-26030952-pass1-005.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:13",
+      "path": "raw/borrower-repair-26030952-pass1-006.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:14",
+      "path": "raw/borrower-repair-26030952-pass1-007.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:15",
+      "path": "raw/borrower-repair-26030952-pass1-008.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:16",
+      "path": "raw/borrower-repair-26030952-pass1-009.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:17",
+      "path": "raw/borrower-repair-26030952-pass1-010.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:18",
+      "path": "raw/borrower-repair-26030952-pass1-011.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:19",
+      "path": "raw/borrower-repair-26030952-pass2-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:20",
+      "path": "raw/borrower-repair-26030952-pass2-001.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:21",
+      "path": "raw/borrower-repair-26030952-pass2-002.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:22",
+      "path": "raw/borrower-repair-26030952-pass2-003.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:23",
+      "path": "raw/borrower-repair-26030952-pass2-004.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:24",
+      "path": "raw/borrower-repair-26030952-pass2-005.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:25",
+      "path": "raw/borrower-repair-26030952-pass2-006.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:26",
+      "path": "raw/borrower-repair-26030952-pass2-007.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:27",
+      "path": "raw/borrower-repair-26030952-pass2-008.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:28",
+      "path": "raw/borrower-repair-26030952-pass2-009.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:29",
+      "path": "raw/borrower-repair-26030952-pass2-010.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:30",
+      "path": "raw/borrower-repair-26030952-pass2-011.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:31",
+      "path": "raw/borrower-repair-26038152-pass1-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:32",
+      "path": "raw/borrower-repair-26038152-pass1-001.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:33",
+      "path": "raw/borrower-repair-26038152-pass1-002.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:34",
+      "path": "raw/borrower-repair-26038152-pass1-003.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:35",
+      "path": "raw/borrower-repair-26038152-pass1-004.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:36",
+      "path": "raw/borrower-repair-26038152-pass1-005.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:37",
+      "path": "raw/borrower-repair-26038152-pass1-006.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:38",
+      "path": "raw/borrower-repair-26038152-pass1-007.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:39",
+      "path": "raw/borrower-repair-26038152-pass1-008.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:40",
+      "path": "raw/borrower-repair-26038152-pass1-009.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:41",
+      "path": "raw/borrower-repair-26038152-pass1-010.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:42",
+      "path": "raw/borrower-repair-26038152-pass1-011.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:43",
+      "path": "raw/borrower-repair-26038152-pass2-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:44",
+      "path": "raw/borrower-repair-26038152-pass2-001.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:45",
+      "path": "raw/borrower-repair-26038152-pass2-002.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:46",
+      "path": "raw/borrower-repair-26038152-pass2-003.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:47",
+      "path": "raw/borrower-repair-26038152-pass2-004.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:48",
+      "path": "raw/borrower-repair-26038152-pass2-005.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:49",
+      "path": "raw/borrower-repair-26038152-pass2-006.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:50",
+      "path": "raw/borrower-repair-26038152-pass2-007.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:51",
+      "path": "raw/borrower-repair-26038152-pass2-008.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:52",
+      "path": "raw/borrower-repair-26038152-pass2-009.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:53",
+      "path": "raw/borrower-repair-26038152-pass2-010.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:54",
+      "path": "raw/borrower-repair-26038152-pass2-011.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:55",
+      "path": "raw/borrower-repair-26045352-pass1-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:56",
+      "path": "raw/borrower-repair-26045352-pass1-001.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:57",
+      "path": "raw/borrower-repair-26045352-pass1-002.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:58",
+      "path": "raw/borrower-repair-26045352-pass1-003.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:59",
+      "path": "raw/borrower-repair-26045352-pass1-004.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:60",
+      "path": "raw/borrower-repair-26045352-pass1-005.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:61",
+      "path": "raw/borrower-repair-26045352-pass1-006.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:62",
+      "path": "raw/borrower-repair-26045352-pass1-007.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:63",
+      "path": "raw/borrower-repair-26045352-pass1-008.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:64",
+      "path": "raw/borrower-repair-26045352-pass1-009.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:65",
+      "path": "raw/borrower-repair-26045352-pass1-010.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:66",
+      "path": "raw/borrower-repair-26045352-pass1-011.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:67",
+      "path": "raw/borrower-repair-26045352-pass2-000.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:68",
+      "path": "raw/borrower-repair-26045352-pass2-001.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:69",
+      "path": "raw/borrower-repair-26045352-pass2-002.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:70",
+      "path": "raw/borrower-repair-26045352-pass2-003.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:71",
+      "path": "raw/borrower-repair-26045352-pass2-004.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:72",
+      "path": "raw/borrower-repair-26045352-pass2-005.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:73",
+      "path": "raw/borrower-repair-26045352-pass2-006.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:74",
+      "path": "raw/borrower-repair-26045352-pass2-007.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:75",
+      "path": "raw/borrower-repair-26045352-pass2-008.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:76",
+      "path": "raw/borrower-repair-26045352-pass2-009.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:77",
+      "path": "raw/borrower-repair-26045352-pass2-010.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "FILE:evidence/borrower_repair/collection_manifest.json:78",
+      "path": "raw/borrower-repair-26045352-pass2-011.json.gz",
+      "reason": "BYTE_HASH_AND_SIZE",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "PROVENANCE-SIZE",
+      "reason": "REGISTERED_CHECK_PASSED",
+      "scope": "L1_INTEGRITY",
+      "status": "PASS"
+    },
+    {
+      "id": "ALCHEMY-VALUE-REPLAY",
+      "reason": "NOT_REPLAYABLE_FROM_PERSISTED_SUMMARY",
+      "scope": "LIMITATION",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "BACKEND-INDEPENDENCE",
+      "reason": "NO_REQUEST_LEVEL_DISTINCT_BACKEND_ATTESTATION",
+      "scope": "LIMITATION",
+      "status": "BLOCKED"
+    }
+  ],
+  "counts": {
+    "BLOCKED": 2,
+    "FAIL": 3,
+    "PASS": 193
+  },
+  "report_errors": [],
+  "schema": "defistress-prephase02-offline-v1.1",
+  "source_commit": "2e0ec142c475f8d1362f90c4ca8d2f0718e41f77",
+  "validator_bytes_sha256": "ae8ebbea92f6501ac1a437a2d3edb3e12c4fdd6c5881fae4c85df6f5076dc332",
+  "validator_commit": "LOCAL_P04_03_SOURCE_MANIFEST"
+}

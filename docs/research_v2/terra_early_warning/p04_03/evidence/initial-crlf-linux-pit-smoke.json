@@ -1,0 +1,13 @@
+{
+  "failure_classification": "QUARANTINED",
+  "failure_reason": "raw Git-byte SHA-256 mismatch for docs/research_v2/terra_early_warning/p04_01/P04_01_DATASET_REGISTRY.json",
+  "failure_type": "TypeContractError",
+  "historical_backtest_executed": false,
+  "implementation_commit": "LOCAL_P04_03_SOURCE_MANIFEST",
+  "p04_01_source_commit": "9207ead7db3acf1332b34cebcd19981c2f7bd9cc",
+  "point_in_time_eligibility": "BLOCKED_NOT_CLEARED_FOR_FORECAST",
+  "schema": "defistress-terra-p04-02-validation/1",
+  "scientific_status": "GATE_A_BLOCKED — GATE_B_SCOPED_PASS — PHASE02_HISTORICAL_EXECUTION_NOT_AUTHORIZED",
+  "scope": "SAVED_METADATA_AUDIT_AND_SYNTHETIC_PIT_CONTRACTS_ONLY",
+  "status": "FAIL"
+}

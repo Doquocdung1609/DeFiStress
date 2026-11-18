@@ -1,0 +1,74 @@
+[
+  {
+    "asset": "ust",
+    "processed_path": "terra_may2022_v1.csv",
+    "hour_label": "2022-05-07 22:00:00",
+    "raw_minute_label": "2022-05-07 22:59:00",
+    "same_saved_value": true,
+    "vendor_timezone_verified": false,
+    "claim": "SAVED_CLOCK_MAPPING_ONLY_NO_ONSET_OR_WARNING"
+  },
+  {
+    "asset": "ust",
+    "processed_path": "terra_may2022_v1.csv",
+    "hour_label": "2022-05-07 23:00:00",
+    "raw_minute_label": "2022-05-07 23:59:00",
+    "same_saved_value": true,
+    "vendor_timezone_verified": false,
+    "claim": "SAVED_CLOCK_MAPPING_ONLY_NO_ONSET_OR_WARNING"
+  },
+  {
+    "asset": "ust",
+    "processed_path": "terra_extended/terra_state_hourly_20220301_20220513.csv",
+    "hour_label": "2022-05-07 22:00:00",
+    "raw_minute_label": "2022-05-07 22:00:00",
+    "same_saved_value": true,
+    "vendor_timezone_verified": false,
+    "claim": "SAVED_CLOCK_MAPPING_ONLY_NO_ONSET_OR_WARNING"
+  },
+  {
+    "asset": "ust",
+    "processed_path": "terra_extended/terra_state_hourly_20220301_20220513.csv",
+    "hour_label": "2022-05-07 23:00:00",
+    "raw_minute_label": "2022-05-07 23:00:00",
+    "same_saved_value": true,
+    "vendor_timezone_verified": false,
+    "claim": "SAVED_CLOCK_MAPPING_ONLY_NO_ONSET_OR_WARNING"
+  },
+  {
+    "asset": "luna",
+    "processed_path": "terra_may2022_v1.csv",
+    "hour_label": "2022-05-07 22:00:00",
+    "raw_minute_label": "2022-05-07 22:59:00",
+    "same_saved_value": true,
+    "vendor_timezone_verified": false,
+    "claim": "SAVED_CLOCK_MAPPING_ONLY_NO_ONSET_OR_WARNING"
+  },
+  {
+    "asset": "luna",
+    "processed_path": "terra_may2022_v1.csv",
+    "hour_label": "2022-05-07 23:00:00",
+    "raw_minute_label": "2022-05-07 23:59:00",
+    "same_saved_value": true,
+    "vendor_timezone_verified": false,
+    "claim": "SAVED_CLOCK_MAPPING_ONLY_NO_ONSET_OR_WARNING"
+  },
+  {
+    "asset": "luna",
+    "processed_path": "terra_extended/terra_state_hourly_20220301_20220513.csv",
+    "hour_label": "2022-05-07 22:00:00",
+    "raw_minute_label": "2022-05-07 22:00:00",
+    "same_saved_value": true,
+    "vendor_timezone_verified": false,
+    "claim": "SAVED_CLOCK_MAPPING_ONLY_NO_ONSET_OR_WARNING"
+  },
+  {
+    "asset": "luna",
+    "processed_path": "terra_extended/terra_state_hourly_20220301_20220513.csv",
+    "hour_label": "2022-05-07 23:00:00",
+    "raw_minute_label": "2022-05-07 23:00:00",
+    "same_saved_value": true,
+    "vendor_timezone_verified": false,
+    "claim": "SAVED_CLOCK_MAPPING_ONLY_NO_ONSET_OR_WARNING"
+  }
+]

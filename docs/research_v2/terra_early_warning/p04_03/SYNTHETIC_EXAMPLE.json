@@ -1,0 +1,577 @@
+{
+  "payload": {
+    "fixture": {
+      "luna": [
+        {
+          "chain": {
+            "namespace": "terra",
+            "network": "columbus-5"
+          },
+          "interval": {
+            "closure": "LEFT_CLOSED_RIGHT_OPEN",
+            "end": "2030-01-01T02:00:00.000000Z",
+            "start": "2030-01-01T01:00:00.000000Z"
+          },
+          "measurement": {
+            "completeness_evidence_id": "complete-LUNA-1",
+            "reason": null,
+            "status": "AVAILABLE",
+            "unit": {
+              "base_asset": "LUNA",
+              "quote_asset": "USD",
+              "unit": "USD/LUNA"
+            },
+            "value": "100"
+          },
+          "observation_id": "LUNA-1",
+          "observed_at": "2030-01-01T01:00:00.000000Z",
+          "provenance": {
+            "origin": "SYNTHETIC",
+            "raw_sha256": "55449bcac512640e94c354c19d3c464510a67e7fb434d0d95ee65f73e05ba922",
+            "source_commit": "c51d4d06d8b560a149e32ade922f8ed62da1a589",
+            "source_id": "synthetic-luna",
+            "verification": "FULL_BYTES_VERIFIED"
+          },
+          "source_frequency": "HOURLY_AGGREGATE",
+          "vintage": {
+            "availability_time": "2030-01-01T02:00:00.000000Z",
+            "ingestion_time": "2030-01-01T02:00:00.000000Z",
+            "publication_time": "2030-01-01T02:00:00.000000Z",
+            "revision_of": null,
+            "unknown_clock_reason": null,
+            "vintage_id": "v-LUNA-1"
+          }
+        },
+        {
+          "chain": {
+            "namespace": "terra",
+            "network": "columbus-5"
+          },
+          "interval": {
+            "closure": "LEFT_CLOSED_RIGHT_OPEN",
+            "end": "2030-01-01T03:00:00.000000Z",
+            "start": "2030-01-01T02:00:00.000000Z"
+          },
+          "measurement": {
+            "completeness_evidence_id": "complete-LUNA-2",
+            "reason": null,
+            "status": "AVAILABLE",
+            "unit": {
+              "base_asset": "LUNA",
+              "quote_asset": "USD",
+              "unit": "USD/LUNA"
+            },
+            "value": "90"
+          },
+          "observation_id": "LUNA-2",
+          "observed_at": "2030-01-01T02:00:00.000000Z",
+          "provenance": {
+            "origin": "SYNTHETIC",
+            "raw_sha256": "90b8e6d45d5617e12dbc486cfc42f15244f5c497848a4cc1424180baa7a8e280",
+            "source_commit": "c51d4d06d8b560a149e32ade922f8ed62da1a589",
+            "source_id": "synthetic-luna",
+            "verification": "FULL_BYTES_VERIFIED"
+          },
+          "source_frequency": "HOURLY_AGGREGATE",
+          "vintage": {
+            "availability_time": "2030-01-01T03:00:00.000000Z",
+            "ingestion_time": "2030-01-01T03:00:00.000000Z",
+            "publication_time": "2030-01-01T03:00:00.000000Z",
+            "revision_of": null,
+            "unknown_clock_reason": null,
+            "vintage_id": "v-LUNA-2"
+          }
+        }
+      ],
+      "ust": [
+        {
+          "chain": {
+            "namespace": "terra",
+            "network": "columbus-5"
+          },
+          "interval": {
+            "closure": "LEFT_CLOSED_RIGHT_OPEN",
+            "end": "2030-01-01T03:00:00.000000Z",
+            "start": "2030-01-01T02:00:00.000000Z"
+          },
+          "measurement": {
+            "completeness_evidence_id": "complete-UST-2",
+            "reason": null,
+            "status": "AVAILABLE",
+            "unit": {
+              "base_asset": "UST",
+              "quote_asset": "USD",
+              "unit": "USD/UST"
+            },
+            "value": "0.99"
+          },
+          "observation_id": "UST-2",
+          "observed_at": "2030-01-01T02:00:00.000000Z",
+          "provenance": {
+            "origin": "SYNTHETIC",
+            "raw_sha256": "b7acd24e494c95ddc80898da0297b5f2086a6daacb03208ef03d4e092a9f2d71",
+            "source_commit": "c51d4d06d8b560a149e32ade922f8ed62da1a589",
+            "source_id": "synthetic-ust",
+            "verification": "FULL_BYTES_VERIFIED"
+          },
+          "source_frequency": "HOURLY_AGGREGATE",
+          "vintage": {
+            "availability_time": "2030-01-01T03:00:00.000000Z",
+            "ingestion_time": "2030-01-01T03:00:00.000000Z",
+            "publication_time": "2030-01-01T03:00:00.000000Z",
+            "revision_of": null,
+            "unknown_clock_reason": null,
+            "vintage_id": "v-UST-2"
+          }
+        }
+      ]
+    },
+    "fixture_hash": "31eed3eadefdd2b768d19aaf01d8cc1d5592af2bb3cf4f1b3f4e6797febb084d",
+    "output": {
+      "available_observations": "3",
+      "config_hash": "ff50659a9b86bd2eed80e88e1468fe90405440d8ceef6ec6088499cac3acede8",
+      "configuration": {
+        "luna": {
+          "chain": {
+            "namespace": "terra",
+            "network": "columbus-5"
+          },
+          "policy": {
+            "additional_delay_us": "0",
+            "max_source_age_us": "86400000000"
+          },
+          "source_id": "synthetic-luna",
+          "unit": {
+            "base_asset": "LUNA",
+            "quote_asset": "USD",
+            "unit": "USD/LUNA"
+          }
+        },
+        "luna_return_window": "1",
+        "peg_persistence": "1",
+        "profile_id": "issue56-synthetic-hourly/1",
+        "reference_price": {
+          "denominator": "1",
+          "numerator": "1"
+        },
+        "sample_period_us": "3600000000",
+        "thresholds": [
+          [
+            "B1_WATCH",
+            {
+              "denominator": "200",
+              "numerator": "1"
+            }
+          ],
+          [
+            "B1_HIGH",
+            {
+              "denominator": "100",
+              "numerator": "1"
+            }
+          ],
+          [
+            "B2_WATCH",
+            {
+              "denominator": "20",
+              "numerator": "1"
+            }
+          ],
+          [
+            "B2_HIGH",
+            {
+              "denominator": "10",
+              "numerator": "1"
+            }
+          ],
+          [
+            "B3_WATCH",
+            {
+              "denominator": "2",
+              "numerator": "1"
+            }
+          ],
+          [
+            "B3_HIGH",
+            {
+              "denominator": "4",
+              "numerator": "3"
+            }
+          ],
+          [
+            "UST_SATURATION",
+            {
+              "denominator": "50",
+              "numerator": "1"
+            }
+          ],
+          [
+            "LUNA_SATURATION",
+            {
+              "denominator": "5",
+              "numerator": "1"
+            }
+          ]
+        ],
+        "ust": {
+          "chain": {
+            "namespace": "terra",
+            "network": "columbus-5"
+          },
+          "policy": {
+            "additional_delay_us": "0",
+            "max_source_age_us": "86400000000"
+          },
+          "source_id": "synthetic-ust",
+          "unit": {
+            "base_asset": "UST",
+            "quote_asset": "USD",
+            "unit": "USD/UST"
+          }
+        }
+      },
+      "context": {
+        "decision_at": "2030-01-01T03:00:00.000000Z",
+        "information_cutoff": "2030-01-01T03:00:00.000000Z",
+        "issued_at": "2030-01-01T03:00:00.000000Z"
+      },
+      "input_lineage_hash": "2f79c81a4522423416a2fc1520ef51cd20ff6e1c7c181b7b1f87e6e3f4ae60dc",
+      "level": "WATCH",
+      "model_id": "B3_TRANSPARENT_COMPOSITE",
+      "model_version": "synthetic-toy/1",
+      "origin": "SYNTHETIC",
+      "profile_hash": "cd500fde61f6b90819efb6d2ecfb440a596c50f4235cd9093efcb57059eb216b",
+      "reasons": [],
+      "record_kind": "SYNTHETIC_MODEL_WARNING_NOT_NATIVE_OBSERVATION",
+      "required_observations": "3",
+      "score": {
+        "denominator": "2",
+        "numerator": "1"
+      },
+      "signals": [
+        {
+          "role": "DERIVED_FEATURE",
+          "signal_id": "ust_current_downside",
+          "value": {
+            "denominator": "100",
+            "numerator": "1"
+          }
+        },
+        {
+          "role": "DERIVED_FEATURE",
+          "signal_id": "ust_persistent_downside",
+          "value": {
+            "denominator": "100",
+            "numerator": "1"
+          }
+        },
+        {
+          "role": "DERIVED_FEATURE",
+          "signal_id": "luna_current_downside",
+          "value": {
+            "denominator": "10",
+            "numerator": "1"
+          }
+        },
+        {
+          "role": "DERIVED_FEATURE",
+          "signal_id": "luna_trailing_signed_mean",
+          "value": {
+            "denominator": "10",
+            "numerator": "-1"
+          }
+        },
+        {
+          "role": "DERIVED_FEATURE",
+          "signal_id": "luna_trailing_population_variance",
+          "value": {
+            "denominator": "1",
+            "numerator": "0"
+          }
+        },
+        {
+          "role": "SCORE_CONTRIBUTION",
+          "signal_id": "ust_score_contribution",
+          "value": {
+            "denominator": "4",
+            "numerator": "1"
+          }
+        },
+        {
+          "role": "SCORE_CONTRIBUTION",
+          "signal_id": "luna_score_contribution",
+          "value": {
+            "denominator": "4",
+            "numerator": "1"
+          }
+        }
+      ],
+      "slots": [
+        {
+          "ancestry": [
+            {
+              "chain": {
+                "namespace": "terra",
+                "network": "columbus-5"
+              },
+              "interval": {
+                "closure": "LEFT_CLOSED_RIGHT_OPEN",
+                "end": "2030-01-01T03:00:00.000000Z",
+                "start": "2030-01-01T02:00:00.000000Z"
+              },
+              "measurement": {
+                "completeness_evidence_id": "complete-UST-2",
+                "reason": null,
+                "status": "AVAILABLE",
+                "unit": {
+                  "base_asset": "UST",
+                  "quote_asset": "USD",
+                  "unit": "USD/UST"
+                },
+                "value": "0.99"
+              },
+              "observation_id": "UST-2",
+              "observed_at": "2030-01-01T02:00:00.000000Z",
+              "provenance": {
+                "origin": "SYNTHETIC",
+                "raw_sha256": "b7acd24e494c95ddc80898da0297b5f2086a6daacb03208ef03d4e092a9f2d71",
+                "source_commit": "c51d4d06d8b560a149e32ade922f8ed62da1a589",
+                "source_id": "synthetic-ust",
+                "verification": "FULL_BYTES_VERIFIED"
+              },
+              "source_frequency": "HOURLY_AGGREGATE",
+              "vintage": {
+                "availability_time": "2030-01-01T03:00:00.000000Z",
+                "ingestion_time": "2030-01-01T03:00:00.000000Z",
+                "publication_time": "2030-01-01T03:00:00.000000Z",
+                "revision_of": null,
+                "unknown_clock_reason": null,
+                "vintage_id": "v-UST-2"
+              }
+            }
+          ],
+          "component": "UST",
+          "expected_at": "2030-01-01T02:00:00.000000Z",
+          "reasons": [],
+          "selected": {
+            "chain": {
+              "namespace": "terra",
+              "network": "columbus-5"
+            },
+            "interval": {
+              "closure": "LEFT_CLOSED_RIGHT_OPEN",
+              "end": "2030-01-01T03:00:00.000000Z",
+              "start": "2030-01-01T02:00:00.000000Z"
+            },
+            "measurement": {
+              "completeness_evidence_id": "complete-UST-2",
+              "reason": null,
+              "status": "AVAILABLE",
+              "unit": {
+                "base_asset": "UST",
+                "quote_asset": "USD",
+                "unit": "USD/UST"
+              },
+              "value": "0.99"
+            },
+            "observation_id": "UST-2",
+            "observed_at": "2030-01-01T02:00:00.000000Z",
+            "provenance": {
+              "origin": "SYNTHETIC",
+              "raw_sha256": "b7acd24e494c95ddc80898da0297b5f2086a6daacb03208ef03d4e092a9f2d71",
+              "source_commit": "c51d4d06d8b560a149e32ade922f8ed62da1a589",
+              "source_id": "synthetic-ust",
+              "verification": "FULL_BYTES_VERIFIED"
+            },
+            "source_frequency": "HOURLY_AGGREGATE",
+            "vintage": {
+              "availability_time": "2030-01-01T03:00:00.000000Z",
+              "ingestion_time": "2030-01-01T03:00:00.000000Z",
+              "publication_time": "2030-01-01T03:00:00.000000Z",
+              "revision_of": null,
+              "unknown_clock_reason": null,
+              "vintage_id": "v-UST-2"
+            }
+          }
+        },
+        {
+          "ancestry": [
+            {
+              "chain": {
+                "namespace": "terra",
+                "network": "columbus-5"
+              },
+              "interval": {
+                "closure": "LEFT_CLOSED_RIGHT_OPEN",
+                "end": "2030-01-01T02:00:00.000000Z",
+                "start": "2030-01-01T01:00:00.000000Z"
+              },
+              "measurement": {
+                "completeness_evidence_id": "complete-LUNA-1",
+                "reason": null,
+                "status": "AVAILABLE",
+                "unit": {
+                  "base_asset": "LUNA",
+                  "quote_asset": "USD",
+                  "unit": "USD/LUNA"
+                },
+                "value": "100"
+              },
+              "observation_id": "LUNA-1",
+              "observed_at": "2030-01-01T01:00:00.000000Z",
+              "provenance": {
+                "origin": "SYNTHETIC",
+                "raw_sha256": "55449bcac512640e94c354c19d3c464510a67e7fb434d0d95ee65f73e05ba922",
+                "source_commit": "c51d4d06d8b560a149e32ade922f8ed62da1a589",
+                "source_id": "synthetic-luna",
+                "verification": "FULL_BYTES_VERIFIED"
+              },
+              "source_frequency": "HOURLY_AGGREGATE",
+              "vintage": {
+                "availability_time": "2030-01-01T02:00:00.000000Z",
+                "ingestion_time": "2030-01-01T02:00:00.000000Z",
+                "publication_time": "2030-01-01T02:00:00.000000Z",
+                "revision_of": null,
+                "unknown_clock_reason": null,
+                "vintage_id": "v-LUNA-1"
+              }
+            }
+          ],
+          "component": "LUNA",
+          "expected_at": "2030-01-01T01:00:00.000000Z",
+          "reasons": [],
+          "selected": {
+            "chain": {
+              "namespace": "terra",
+              "network": "columbus-5"
+            },
+            "interval": {
+              "closure": "LEFT_CLOSED_RIGHT_OPEN",
+              "end": "2030-01-01T02:00:00.000000Z",
+              "start": "2030-01-01T01:00:00.000000Z"
+            },
+            "measurement": {
+              "completeness_evidence_id": "complete-LUNA-1",
+              "reason": null,
+              "status": "AVAILABLE",
+              "unit": {
+                "base_asset": "LUNA",
+                "quote_asset": "USD",
+                "unit": "USD/LUNA"
+              },
+              "value": "100"
+            },
+            "observation_id": "LUNA-1",
+            "observed_at": "2030-01-01T01:00:00.000000Z",
+            "provenance": {
+              "origin": "SYNTHETIC",
+              "raw_sha256": "55449bcac512640e94c354c19d3c464510a67e7fb434d0d95ee65f73e05ba922",
+              "source_commit": "c51d4d06d8b560a149e32ade922f8ed62da1a589",
+              "source_id": "synthetic-luna",
+              "verification": "FULL_BYTES_VERIFIED"
+            },
+            "source_frequency": "HOURLY_AGGREGATE",
+            "vintage": {
+              "availability_time": "2030-01-01T02:00:00.000000Z",
+              "ingestion_time": "2030-01-01T02:00:00.000000Z",
+              "publication_time": "2030-01-01T02:00:00.000000Z",
+              "revision_of": null,
+              "unknown_clock_reason": null,
+              "vintage_id": "v-LUNA-1"
+            }
+          }
+        },
+        {
+          "ancestry": [
+            {
+              "chain": {
+                "namespace": "terra",
+                "network": "columbus-5"
+              },
+              "interval": {
+                "closure": "LEFT_CLOSED_RIGHT_OPEN",
+                "end": "2030-01-01T03:00:00.000000Z",
+                "start": "2030-01-01T02:00:00.000000Z"
+              },
+              "measurement": {
+                "completeness_evidence_id": "complete-LUNA-2",
+                "reason": null,
+                "status": "AVAILABLE",
+                "unit": {
+                  "base_asset": "LUNA",
+                  "quote_asset": "USD",
+                  "unit": "USD/LUNA"
+                },
+                "value": "90"
+              },
+              "observation_id": "LUNA-2",
+              "observed_at": "2030-01-01T02:00:00.000000Z",
+              "provenance": {
+                "origin": "SYNTHETIC",
+                "raw_sha256": "90b8e6d45d5617e12dbc486cfc42f15244f5c497848a4cc1424180baa7a8e280",
+                "source_commit": "c51d4d06d8b560a149e32ade922f8ed62da1a589",
+                "source_id": "synthetic-luna",
+                "verification": "FULL_BYTES_VERIFIED"
+              },
+              "source_frequency": "HOURLY_AGGREGATE",
+              "vintage": {
+                "availability_time": "2030-01-01T03:00:00.000000Z",
+                "ingestion_time": "2030-01-01T03:00:00.000000Z",
+                "publication_time": "2030-01-01T03:00:00.000000Z",
+                "revision_of": null,
+                "unknown_clock_reason": null,
+                "vintage_id": "v-LUNA-2"
+              }
+            }
+          ],
+          "component": "LUNA",
+          "expected_at": "2030-01-01T02:00:00.000000Z",
+          "reasons": [],
+          "selected": {
+            "chain": {
+              "namespace": "terra",
+              "network": "columbus-5"
+            },
+            "interval": {
+              "closure": "LEFT_CLOSED_RIGHT_OPEN",
+              "end": "2030-01-01T03:00:00.000000Z",
+              "start": "2030-01-01T02:00:00.000000Z"
+            },
+            "measurement": {
+              "completeness_evidence_id": "complete-LUNA-2",
+              "reason": null,
+              "status": "AVAILABLE",
+              "unit": {
+                "base_asset": "LUNA",
+                "quote_asset": "USD",
+                "unit": "USD/LUNA"
+              },
+              "value": "90"
+            },
+            "observation_id": "LUNA-2",
+            "observed_at": "2030-01-01T02:00:00.000000Z",
+            "provenance": {
+              "origin": "SYNTHETIC",
+              "raw_sha256": "90b8e6d45d5617e12dbc486cfc42f15244f5c497848a4cc1424180baa7a8e280",
+              "source_commit": "c51d4d06d8b560a149e32ade922f8ed62da1a589",
+              "source_id": "synthetic-luna",
+              "verification": "FULL_BYTES_VERIFIED"
+            },
+            "source_frequency": "HOURLY_AGGREGATE",
+            "vintage": {
+              "availability_time": "2030-01-01T03:00:00.000000Z",
+              "ingestion_time": "2030-01-01T03:00:00.000000Z",
+              "publication_time": "2030-01-01T03:00:00.000000Z",
+              "revision_of": null,
+              "unknown_clock_reason": null,
+              "vintage_id": "v-LUNA-2"
+            }
+          }
+        }
+      ],
+      "validation_status": "SYNTHETIC_CONTROLS_ONLY"
+    },
+    "output_hash": "5b960bc5ecd148e9dc6a7e5bcc2bc931b5b0dfd9c2608405bcfc696b5e156fc4"
+  },
+  "schema_version": "defistress-terra-synthetic-warning/1"
+}

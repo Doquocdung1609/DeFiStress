@@ -1,0 +1,67 @@
+[
+  {
+    "control": "M01",
+    "fixture_origin": "SYNTHETIC",
+    "ust": "1",
+    "luna_previous": "100",
+    "luna_current": "100",
+    "composite_expected": [
+      0,
+      1
+    ],
+    "risk_level": "NORMAL",
+    "output_hash": "d747ff6b16da15d1158daf26b298fe69621a87a08b0a22e6c843a1f7961e23d5"
+  },
+  {
+    "control": "M02",
+    "fixture_origin": "SYNTHETIC",
+    "ust": "0.99",
+    "luna_previous": "100",
+    "luna_current": "100",
+    "composite_expected": [
+      1,
+      4
+    ],
+    "risk_level": "NORMAL",
+    "output_hash": "ef22ddc87ed3be31aa5093dfd5461ab256ec5c3264726aca32b716ddd8704984"
+  },
+  {
+    "control": "M03",
+    "fixture_origin": "SYNTHETIC",
+    "ust": "1",
+    "luna_previous": "100",
+    "luna_current": "90",
+    "composite_expected": [
+      1,
+      4
+    ],
+    "risk_level": "NORMAL",
+    "output_hash": "89a1029fd4b20127890bf4b2d0dbc9863a4366d1f7a3a2291c7b1199fe77ca15"
+  },
+  {
+    "control": "M04",
+    "fixture_origin": "SYNTHETIC",
+    "ust": "0.99",
+    "luna_previous": "100",
+    "luna_current": "90",
+    "composite_expected": [
+      1,
+      2
+    ],
+    "risk_level": "WATCH",
+    "output_hash": "5b960bc5ecd148e9dc6a7e5bcc2bc931b5b0dfd9c2608405bcfc696b5e156fc4"
+  },
+  {
+    "control": "M05",
+    "fixture_origin": "SYNTHETIC",
+    "ust": "0.98",
+    "luna_previous": "100",
+    "luna_current": "80",
+    "composite_expected": [
+      1,
+      1
+    ],
+    "risk_level": "HIGH",
+    "output_hash": "2d2717194a0414b9c394a7ebd2b9127960f416b0ad0717ee40e72109cf365668"
+  }
+]

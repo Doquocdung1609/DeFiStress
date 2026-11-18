@@ -1,0 +1,907 @@
+{
+  "scope": "COPIED_ACCEPTED_METADATA_NO_HISTORICAL_SCORING",
+  "approved_fields": 0,
+  "source_commit": "9207ead7db3acf1332b34cebcd19981c2f7bd9cc",
+  "integration_base": "c51d4d06d8b560a149e32ade922f8ed62da1a589",
+  "manifest_sha256": "90604d78d158d493bf00eed8be7fecde145bec6e14f3b6a6d472ba50b9b1ff29",
+  "registry_sha256": "09302fa53609651c61488c622862e6e1b3ea74747cc6e3cc2366cbbdd3e218f5",
+  "field_admission": [
+    {
+      "field": "timestamp",
+      "artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "unit": "UTC hour label",
+      "grid_frequency": "1h",
+      "source_frequency": "constructed hourly grid",
+      "aggregation_declared": "constructed grid",
+      "source_file_declared": null,
+      "source_columns_declared": null,
+      "transformation_declared": null,
+      "source_quality_declared": "CONSTRUCTED_COORDINATE",
+      "source_lineage_locator": null,
+      "rows": 1776,
+      "nonnull": 1776,
+      "missing": 0,
+      "first_nonmissing": "2022-03-01 00:00:00+00:00",
+      "last_nonmissing": "2022-05-13 23:00:00+00:00",
+      "availability_time": null,
+      "publication_time": null,
+      "vintage_proof": "NOT_PRESENT_IN_SELECTED_FIELD_RECORDS",
+      "point_in_time_status": "BLOCKED_AVAILABILITY_AND_VINTAGE",
+      "interval_rule": "As-of observation timestamp alone does not prove historical availability",
+      "approved_forecast_use": false,
+      "acquisition": "Pinned existing Git bytes retrieved 2026-10-21; original historic release evidence unresolved"
+    },
+    {
+      "field": "block_height",
+      "artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "unit": "Terra block height",
+      "grid_frequency": "1h",
+      "source_frequency": "approximately15-minute sampled state",
+      "aggregation_declared": "latest source record at or before timestamp",
+      "source_file_declared": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor/Anchor_global_stats_fullnode.parquet",
+      "source_columns_declared": [
+        "minute index",
+        "height"
+      ],
+      "transformation_declared": "backward as-of at each UTC hour; no linear interpolation",
+      "source_quality_declared": "HISTORICAL_DIRECT",
+      "source_lineage_locator": {
+        "path": "data/processed/terra_data_completion/source_lineage.json",
+        "json_pointer": "/0"
+      },
+      "rows": 1776,
+      "nonnull": 1776,
+      "missing": 0,
+      "first_nonmissing": "2022-03-01 00:00:00+00:00",
+      "last_nonmissing": "2022-05-13 23:00:00+00:00",
+      "availability_time": null,
+      "publication_time": null,
+      "vintage_proof": "NOT_PRESENT_IN_SELECTED_FIELD_RECORDS",
+      "point_in_time_status": "BLOCKED_AVAILABILITY_AND_VINTAGE",
+      "interval_rule": "As-of observation timestamp alone does not prove historical availability",
+      "approved_forecast_use": false,
+      "acquisition": "Pinned existing Git bytes retrieved 2026-10-21; original historic release evidence unresolved"
+    },
+    {
+      "field": "ust_price",
+      "artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "unit": "USD/UST",
+      "grid_frequency": "1h",
+      "source_frequency": "daily throughApril;minute aggregate fromMay1",
+      "aggregation_declared": "latest observation at or before each UTC hour",
+      "source_file_declared": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/external/ustc-usd-max.csv; data/prices/ust_price_may2022.parquet",
+      "source_columns_declared": [
+        "snapped_at",
+        "price",
+        "time",
+        "ust_price"
+      ],
+      "transformation_declared": "CoinGecko daily point carried backward-as-of through April; Kaiko minute point as-of from May 1",
+      "source_quality_declared": "HISTORICAL_STATE_CARRIED_FORWARD",
+      "source_lineage_locator": {
+        "path": "data/processed/terra_data_completion/source_lineage.json",
+        "json_pointer": "/1"
+      },
+      "rows": 1776,
+      "nonnull": 1776,
+      "missing": 0,
+      "first_nonmissing": "2022-03-01 00:00:00+00:00",
+      "last_nonmissing": "2022-05-13 23:00:00+00:00",
+      "availability_time": null,
+      "publication_time": null,
+      "vintage_proof": "NOT_PRESENT_IN_SELECTED_FIELD_RECORDS",
+      "point_in_time_status": "BLOCKED_AVAILABILITY_AND_VINTAGE",
+      "interval_rule": "As-of observation timestamp alone does not prove historical availability",
+      "approved_forecast_use": false,
+      "acquisition": "Pinned existing Git bytes retrieved 2026-10-21; original historic release evidence unresolved"
+    },
+    {
+      "field": "luna_price",
+      "artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "unit": "USD/LUNA",
+      "grid_frequency": "1h",
+      "source_frequency": "daily throughApril;minute aggregate fromMay1",
+      "aggregation_declared": "latest observation at or before each UTC hour",
+      "source_file_declared": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/external/lunc-usd-max.csv; data/prices/luna_price_may2022.parquet",
+      "source_columns_declared": [
+        "snapped_at",
+        "price",
+        "time",
+        "luna_price"
+      ],
+      "transformation_declared": "CoinGecko daily point carried backward-as-of through April; Kaiko minute point as-of from May 1",
+      "source_quality_declared": "HISTORICAL_STATE_CARRIED_FORWARD",
+      "source_lineage_locator": {
+        "path": "data/processed/terra_data_completion/source_lineage.json",
+        "json_pointer": "/2"
+      },
+      "rows": 1776,
+      "nonnull": 1776,
+      "missing": 0,
+      "first_nonmissing": "2022-03-01 00:00:00+00:00",
+      "last_nonmissing": "2022-05-13 23:00:00+00:00",
+      "availability_time": null,
+      "publication_time": null,
+      "vintage_proof": "NOT_PRESENT_IN_SELECTED_FIELD_RECORDS",
+      "point_in_time_status": "BLOCKED_AVAILABILITY_AND_VINTAGE",
+      "interval_rule": "As-of observation timestamp alone does not prove historical availability",
+      "approved_forecast_use": false,
+      "acquisition": "Pinned existing Git bytes retrieved 2026-10-21; original historic release evidence unresolved"
+    },
+    {
+      "field": "ust_supply",
+      "artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "unit": "UST",
+      "grid_frequency": "1h",
+      "source_frequency": "daily holder-balance snapshot",
+      "aggregation_declared": "daily state carried forward within its day",
+      "source_file_declared": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/daily_balances/columbus-5-lunaust-supply-breakdown-fullnode.parquet",
+      "source_columns_declared": [
+        "date",
+        "denom",
+        "balance",
+        "address"
+      ],
+      "transformation_declared": "filter denom=UST and sum per-address balances by date; no 1e6 rescaling",
+      "source_quality_declared": "HISTORICAL_STATE_CARRIED_FORWARD",
+      "source_lineage_locator": {
+        "path": "data/processed/terra_data_completion/source_lineage.json",
+        "json_pointer": "/3"
+      },
+      "rows": 1776,
+      "nonnull": 1776,
+      "missing": 0,
+      "first_nonmissing": "2022-03-01 00:00:00+00:00",
+      "last_nonmissing": "2022-05-13 23:00:00+00:00",
+      "availability_time": null,
+      "publication_time": null,
+      "vintage_proof": "NOT_PRESENT_IN_SELECTED_FIELD_RECORDS",
+      "point_in_time_status": "BLOCKED_AVAILABILITY_AND_VINTAGE",
+      "interval_rule": "As-of observation timestamp alone does not prove historical availability",
+      "approved_forecast_use": false,
+      "acquisition": "Pinned existing Git bytes retrieved 2026-10-21; original historic release evidence unresolved"
+    },
+    {
+      "field": "luna_supply",
+      "artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "unit": "LUNA",
+      "grid_frequency": "1h",
+      "source_frequency": "hourly source state",
+      "aggregation_declared": "none",
+      "source_file_declared": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/native_swaps/luna_total_supply_run.parquet",
+      "source_columns_declared": [
+        "time index",
+        "luna_supply"
+      ],
+      "transformation_declared": "direct hourly series; no pre-May backfill",
+      "source_quality_declared": "PARTIAL_HISTORICAL",
+      "source_lineage_locator": {
+        "path": "data/processed/terra_data_completion/source_lineage.json",
+        "json_pointer": "/4"
+      },
+      "rows": 1776,
+      "nonnull": 312,
+      "missing": 1464,
+      "first_nonmissing": "2022-05-01 00:00:00+00:00",
+      "last_nonmissing": "2022-05-13 23:00:00+00:00",
+      "availability_time": null,
+      "publication_time": null,
+      "vintage_proof": "NOT_PRESENT_IN_SELECTED_FIELD_RECORDS",
+      "point_in_time_status": "BLOCKED_AVAILABILITY_AND_VINTAGE",
+      "interval_rule": "As-of observation timestamp alone does not prove historical availability",
+      "approved_forecast_use": false,
+      "acquisition": "Pinned existing Git bytes retrieved 2026-10-21; original historic release evidence unresolved"
+    },
+    {
+      "field": "anchor_total_deposits",
+      "artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "unit": "UST",
+      "grid_frequency": "1h",
+      "source_frequency": "approximately15-minute sampled/derived state",
+      "aggregation_declared": "backward as-of state",
+      "source_file_declared": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor/Anchor_global_stats_fullnode.parquet; data/anchor_run/epoch_state_fig10.parquet",
+      "source_columns_declared": [
+        "prev_aterra_supply",
+        "prev_exchange_rate",
+        "deposit_b_ust"
+      ],
+      "transformation_declared": "prev_aterra_supply × prev_exchange_rate / 1e6 through May 6 00:00; deposit_b_ust × 1e9 thereafter",
+      "source_quality_declared": "HISTORICAL_DERIVED",
+      "source_lineage_locator": {
+        "path": "data/processed/terra_data_completion/source_lineage.json",
+        "json_pointer": "/5"
+      },
+      "rows": 1776,
+      "nonnull": 1776,
+      "missing": 0,
+      "first_nonmissing": "2022-03-01 00:00:00+00:00",
+      "last_nonmissing": "2022-05-13 23:00:00+00:00",
+      "availability_time": null,
+      "publication_time": null,
+      "vintage_proof": "NOT_PRESENT_IN_SELECTED_FIELD_RECORDS",
+      "point_in_time_status": "BLOCKED_AVAILABILITY_AND_VINTAGE",
+      "interval_rule": "As-of observation timestamp alone does not prove historical availability",
+      "approved_forecast_use": false,
+      "acquisition": "Pinned existing Git bytes retrieved 2026-10-21; original historic release evidence unresolved"
+    },
+    {
+      "field": "anchor_deposit_flow",
+      "artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "unit": "UST/hour",
+      "grid_frequency": "1h",
+      "source_frequency": "event-level aggregated hourly",
+      "aggregation_declared": "event-to-UTC-hour sum",
+      "source_file_declared": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor_run/anchor_run_tx_cleaned.parquet",
+      "source_columns_declared": [
+        "time",
+        "action",
+        "ust_vol"
+      ],
+      "transformation_declared": "filter explicit deposit/withdraw actions and sum ust_vol",
+      "source_quality_declared": "PARTIAL_HISTORICAL",
+      "source_lineage_locator": {
+        "path": "data/processed/terra_data_completion/source_lineage.json",
+        "json_pointer": "/6"
+      },
+      "rows": 1776,
+      "nonnull": 192,
+      "missing": 1584,
+      "first_nonmissing": "2022-05-06 00:00:00+00:00",
+      "last_nonmissing": "2022-05-13 23:00:00+00:00",
+      "availability_time": null,
+      "publication_time": null,
+      "vintage_proof": "NOT_PRESENT_IN_SELECTED_FIELD_RECORDS",
+      "point_in_time_status": "BLOCKED_AVAILABILITY_AND_INTERVAL_TIMING",
+      "interval_rule": "Must be available only after entire [hour,hour+1h) bucket and publication/processing delay",
+      "approved_forecast_use": false,
+      "acquisition": "Pinned existing Git bytes retrieved 2026-10-21; original historic release evidence unresolved"
+    },
+    {
+      "field": "anchor_withdrawal_flow",
+      "artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "unit": "UST/hour",
+      "grid_frequency": "1h",
+      "source_frequency": "event-level aggregated hourly",
+      "aggregation_declared": "event-to-UTC-hour sum",
+      "source_file_declared": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor_run/anchor_run_tx_cleaned.parquet",
+      "source_columns_declared": [
+        "time",
+        "action",
+        "ust_vol"
+      ],
+      "transformation_declared": "filter explicit deposit/withdraw actions and sum ust_vol",
+      "source_quality_declared": "PARTIAL_HISTORICAL",
+      "source_lineage_locator": {
+        "path": "data/processed/terra_data_completion/source_lineage.json",
+        "json_pointer": "/6"
+      },
+      "rows": 1776,
+      "nonnull": 192,
+      "missing": 1584,
+      "first_nonmissing": "2022-05-06 00:00:00+00:00",
+      "last_nonmissing": "2022-05-13 23:00:00+00:00",
+      "availability_time": null,
+      "publication_time": null,
+      "vintage_proof": "NOT_PRESENT_IN_SELECTED_FIELD_RECORDS",
+      "point_in_time_status": "BLOCKED_AVAILABILITY_AND_INTERVAL_TIMING",
+      "interval_rule": "Must be available only after entire [hour,hour+1h) bucket and publication/processing delay",
+      "approved_forecast_use": false,
+      "acquisition": "Pinned existing Git bytes retrieved 2026-10-21; original historic release evidence unresolved"
+    },
+    {
+      "field": "ust_native_redemption_volume",
+      "artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "unit": "UST/hour",
+      "grid_frequency": "1h",
+      "source_frequency": "event-level aggregated hourly",
+      "aggregation_declared": "event-to-UTC-hour sum",
+      "source_file_declared": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/native_swaps/ust_luna_swaps_run.parquet",
+      "source_columns_declared": [
+        "time",
+        "offer_amount"
+      ],
+      "transformation_declared": "sum UST offered into the native market module",
+      "source_quality_declared": "PARTIAL_HISTORICAL",
+      "source_lineage_locator": {
+        "path": "data/processed/terra_data_completion/source_lineage.json",
+        "json_pointer": "/7"
+      },
+      "rows": 1776,
+      "nonnull": 168,
+      "missing": 1608,
+      "first_nonmissing": "2022-05-07 00:00:00+00:00",
+      "last_nonmissing": "2022-05-13 23:00:00+00:00",
+      "availability_time": null,
+      "publication_time": null,
+      "vintage_proof": "NOT_PRESENT_IN_SELECTED_FIELD_RECORDS",
+      "point_in_time_status": "BLOCKED_AVAILABILITY_AND_INTERVAL_TIMING",
+      "interval_rule": "Must be available only after entire [hour,hour+1h) bucket and publication/processing delay",
+      "approved_forecast_use": false,
+      "acquisition": "Pinned existing Git bytes retrieved 2026-10-21; original historic release evidence unresolved"
+    },
+    {
+      "field": "gross_luna_issuance_from_native_swaps",
+      "artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "unit": "LUNA/hour",
+      "grid_frequency": "1h",
+      "source_frequency": "event-level aggregated hourly",
+      "aggregation_declared": "event-to-UTC-hour sum",
+      "source_file_declared": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/native_swaps/ust_luna_swaps_run.parquet",
+      "source_columns_declared": [
+        "time",
+        "swap_amount",
+        "fee_amount"
+      ],
+      "transformation_declared": "sum(swap_amount + fee_amount)",
+      "source_quality_declared": "HISTORICAL_DERIVED",
+      "source_lineage_locator": {
+        "path": "data/processed/terra_data_completion/source_lineage.json",
+        "json_pointer": "/8"
+      },
+      "rows": 1776,
+      "nonnull": 168,
+      "missing": 1608,
+      "first_nonmissing": "2022-05-07 00:00:00+00:00",
+      "last_nonmissing": "2022-05-13 23:00:00+00:00",
+      "availability_time": null,
+      "publication_time": null,
+      "vintage_proof": "NOT_PRESENT_IN_SELECTED_FIELD_RECORDS",
+      "point_in_time_status": "BLOCKED_AVAILABILITY_AND_INTERVAL_TIMING",
+      "interval_rule": "Must be available only after entire [hour,hour+1h) bucket and publication/processing delay",
+      "approved_forecast_use": false,
+      "acquisition": "Pinned existing Git bytes retrieved 2026-10-21; original historic release evidence unresolved"
+    },
+    {
+      "field": "backing_ratio",
+      "artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "unit": "ratio",
+      "grid_frequency": "1h",
+      "source_frequency": "derived from mixed-frequency dependencies",
+      "aggregation_declared": "hourly aligned inputs",
+      "source_file_declared": "derived from luna_price, luna_supply, ust_price, ust_supply",
+      "source_columns_declared": [
+        "luna_price",
+        "luna_supply",
+        "ust_price",
+        "ust_supply"
+      ],
+      "transformation_declared": "(luna_price × luna_supply) / (ust_price × ust_supply)",
+      "source_quality_declared": "PARTIAL_HISTORICAL",
+      "source_lineage_locator": {
+        "path": "data/processed/terra_data_completion/source_lineage.json",
+        "json_pointer": "/10"
+      },
+      "rows": 1776,
+      "nonnull": 312,
+      "missing": 1464,
+      "first_nonmissing": "2022-05-01 00:00:00+00:00",
+      "last_nonmissing": "2022-05-13 23:00:00+00:00",
+      "availability_time": null,
+      "publication_time": null,
+      "vintage_proof": "NOT_PRESENT_IN_SELECTED_FIELD_RECORDS",
+      "point_in_time_status": "BLOCKED_AVAILABILITY_AND_VINTAGE",
+      "interval_rule": "As-of observation timestamp alone does not prove historical availability",
+      "approved_forecast_use": false,
+      "acquisition": "Pinned existing Git bytes retrieved 2026-10-21; original historic release evidence unresolved"
+    },
+    {
+      "field": "top10_anchor_share",
+      "artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "unit": "fraction",
+      "grid_frequency": "1h",
+      "source_frequency": "daily",
+      "aggregation_declared": "daily state carried forward; stops after May 6",
+      "source_file_declared": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor/anchor_deposit_concentration.parquet",
+      "source_columns_declared": [
+        "date index",
+        "Top 10",
+        "Top 100"
+      ],
+      "transformation_declared": "divide by 100",
+      "source_quality_declared": "HISTORICAL_STATE_CARRIED_FORWARD",
+      "source_lineage_locator": {
+        "path": "data/processed/terra_data_completion/source_lineage.json",
+        "json_pointer": "/9"
+      },
+      "rows": 1776,
+      "nonnull": 1608,
+      "missing": 168,
+      "first_nonmissing": "2022-03-01 00:00:00+00:00",
+      "last_nonmissing": "2022-05-06 23:00:00+00:00",
+      "availability_time": null,
+      "publication_time": null,
+      "vintage_proof": "NOT_PRESENT_IN_SELECTED_FIELD_RECORDS",
+      "point_in_time_status": "BLOCKED_AVAILABILITY_AND_VINTAGE",
+      "interval_rule": "As-of observation timestamp alone does not prove historical availability",
+      "approved_forecast_use": false,
+      "acquisition": "Pinned existing Git bytes retrieved 2026-10-21; original historic release evidence unresolved"
+    },
+    {
+      "field": "top100_anchor_share",
+      "artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "unit": "fraction",
+      "grid_frequency": "1h",
+      "source_frequency": "daily",
+      "aggregation_declared": "daily state carried forward; stops after May 6",
+      "source_file_declared": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor/anchor_deposit_concentration.parquet",
+      "source_columns_declared": [
+        "date index",
+        "Top 10",
+        "Top 100"
+      ],
+      "transformation_declared": "divide by 100",
+      "source_quality_declared": "HISTORICAL_STATE_CARRIED_FORWARD",
+      "source_lineage_locator": {
+        "path": "data/processed/terra_data_completion/source_lineage.json",
+        "json_pointer": "/9"
+      },
+      "rows": 1776,
+      "nonnull": 1608,
+      "missing": 168,
+      "first_nonmissing": "2022-03-01 00:00:00+00:00",
+      "last_nonmissing": "2022-05-06 23:00:00+00:00",
+      "availability_time": null,
+      "publication_time": null,
+      "vintage_proof": "NOT_PRESENT_IN_SELECTED_FIELD_RECORDS",
+      "point_in_time_status": "BLOCKED_AVAILABILITY_AND_VINTAGE",
+      "interval_rule": "As-of observation timestamp alone does not prove historical availability",
+      "approved_forecast_use": false,
+      "acquisition": "Pinned existing Git bytes retrieved 2026-10-21; original historic release evidence unresolved"
+    }
+  ],
+  "source_byte_records": [
+    {
+      "path": "terra_may2022_v1_pack/terra_may2022_v1_pack/source_contract.json",
+      "git_blob_sha1": "81bfd5125792b270b7c1584c95015ac329add04d",
+      "sha256_git_bytes": "20ccc07387c57ced45d4100c8ad5ba8bbb7eb2d3c5a4c4343ba0db5dfed97b3a",
+      "size_bytes": 1562,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "scripts/terra/complete_historical_data.py",
+      "git_blob_sha1": "43acc8139e93f4da600ca0bf83c3e8c26abf0241",
+      "sha256_git_bytes": "a9ec67b8f847ce8fabe57c0b379611566e741f5eeeea3fdb2358a244594418f2",
+      "size_bytes": 72267,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "sim/terra/schemas.py",
+      "git_blob_sha1": "f651b33f5b58c56752b0596fb925a43c4e70a8e9",
+      "sha256_git_bytes": "11fc92523d2d74ec60caca226c679e8d085928fd3d290caf7052545367147f15",
+      "size_bytes": 9140,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "sim/terra/datasets.py",
+      "git_blob_sha1": "2a67fbb5ddcf2a49dcd549373ef331e08fe99b79",
+      "sha256_git_bytes": "011e2f2335a4df3ef8410e7a4022800abdc2dabf20d197b84e22e517399e0b98",
+      "size_bytes": 5024,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "sim/terra/leakage.py",
+      "git_blob_sha1": "82ff4239dd1ebe33b2885fc592982d36a893574e",
+      "sha256_git_bytes": "6c5af779d66d4bc737ffa8d74508f0203edfac84ad57e3326cb166694a384a3e",
+      "size_bytes": 1274,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "sim/terra/ground_truth.py",
+      "git_blob_sha1": "b2337a959b83069b732ae596bf5ef2548d3a6a6a",
+      "sha256_git_bytes": "87eaf9a1cdcea5eb2b3ccad253138625c9663548936e523387e8b492e30ae740",
+      "size_bytes": 470,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "sim/terra/early_warning_v2.py",
+      "git_blob_sha1": "386614c75714c1ff97362c242ad8e47e28c3686b",
+      "sha256_git_bytes": "8948ced68354a2dd2fdc40600040c94af445b83f1ccbcc3fb61c0ebe4180a83c",
+      "size_bytes": 11241,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/processed/terra_may2022_v1.csv",
+      "git_blob_sha1": "6ddd0d91d6481f688edd4291c4871386e8e290ca",
+      "sha256_git_bytes": "dd3c8293b2a698be161d7eb7b33c361d4d1bc57b9472603960b57efedf93898d",
+      "size_bytes": 141510,
+      "status": "FULL_BYTES_VERIFIED",
+      "csv_profile": {
+        "rows": 312,
+        "fields": [
+          "timestamp",
+          "block_height",
+          "ust_price",
+          "luna_price",
+          "ust_supply",
+          "luna_supply",
+          "anchor_total_deposits",
+          "anchor_deposit_flow",
+          "anchor_withdrawal_flow",
+          "ust_native_redemption_volume",
+          "luna_minted_from_redemption",
+          "luna_burned",
+          "ust_dex_sell_volume",
+          "terra_dex_liquidity",
+          "terra_dex_depth",
+          "top10_anchor_share",
+          "top100_anchor_share",
+          "curve_ust_liquidity",
+          "curve_pool_imbalance",
+          "curve_ust_price",
+          "bridge_outflow_terra_to_ethereum",
+          "bridge_inflow_ethereum_to_terra",
+          "btc_reserve_value",
+          "reserve_intervention_volume",
+          "source_name",
+          "source_type",
+          "chain_id",
+          "raw_reference",
+          "quality_flag"
+        ],
+        "missing": {
+          "timestamp": 0,
+          "block_height": 0,
+          "ust_price": 0,
+          "luna_price": 0,
+          "ust_supply": 0,
+          "luna_supply": 0,
+          "anchor_total_deposits": 0,
+          "anchor_deposit_flow": 0,
+          "anchor_withdrawal_flow": 0,
+          "ust_native_redemption_volume": 0,
+          "luna_minted_from_redemption": 0,
+          "luna_burned": 0,
+          "ust_dex_sell_volume": 0,
+          "terra_dex_liquidity": 0,
+          "terra_dex_depth": 0,
+          "top10_anchor_share": 0,
+          "top100_anchor_share": 0,
+          "curve_ust_liquidity": 312,
+          "curve_pool_imbalance": 312,
+          "curve_ust_price": 0,
+          "bridge_outflow_terra_to_ethereum": 0,
+          "bridge_inflow_ethereum_to_terra": 0,
+          "btc_reserve_value": 312,
+          "reserve_intervention_volume": 0,
+          "source_name": 0,
+          "source_type": 0,
+          "chain_id": 0,
+          "raw_reference": 0,
+          "quality_flag": 0
+        },
+        "first": "2022-05-01T00:00:00+00:00",
+        "last": "2022-05-13T23:00:00+00:00"
+      }
+    },
+    {
+      "path": "data/processed/terra_may2022_v1_import_manifest.json",
+      "git_blob_sha1": "e4abe29ecc3d4c97083e070233cf507015335998",
+      "sha256_git_bytes": "e42db6a2e1fed8c35d76b5885a16020d6f0713c9772efc4495e6dcfc5f656670",
+      "size_bytes": 849,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/processed/terra_extended/data_dictionary.md",
+      "git_blob_sha1": "1a7dd7e96b8488126d71018bd95b41b46d504f57",
+      "sha256_git_bytes": "e0893a28b84a7c372a293d3918b1e895bd55fa8ff91dbda7851d8b2c8dd12e9c",
+      "size_bytes": 4669,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.parquet",
+      "git_blob_sha1": "38b2cfe84380e4ef6131151018c008cddec92b56",
+      "sha256_git_bytes": "0e338c3d096600d93bf29884370e46cb5e260820e910b483a7f19048521dcac1",
+      "size_bytes": 65818,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/processed/terra_extended/data_completion_report.md",
+      "git_blob_sha1": "7fbf545132655888594fbcd3e5b7eb10ba60aade",
+      "sha256_git_bytes": "99b90012f6b1e7ad2be8171bc243259d237fbea8efe455ac4d93fb14acd2b4f9",
+      "size_bytes": 8199,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "git_blob_sha1": "57aa3c12652e457c31fe0e2d31cbaa8c58e58d96",
+      "sha256_git_bytes": "a79582c60d6850314c10ae8da25c4894bc618c600c762203a07e3a57949bc740",
+      "size_bytes": 287456,
+      "status": "FULL_BYTES_VERIFIED",
+      "csv_profile": {
+        "rows": 1776,
+        "fields": [
+          "timestamp",
+          "block_height",
+          "ust_price",
+          "luna_price",
+          "ust_supply",
+          "luna_supply",
+          "anchor_total_deposits",
+          "anchor_deposit_flow",
+          "anchor_withdrawal_flow",
+          "ust_native_redemption_volume",
+          "gross_luna_issuance_from_native_swaps",
+          "backing_ratio",
+          "top10_anchor_share",
+          "top100_anchor_share"
+        ],
+        "missing": {
+          "timestamp": 0,
+          "block_height": 0,
+          "ust_price": 0,
+          "luna_price": 0,
+          "ust_supply": 0,
+          "luna_supply": 1464,
+          "anchor_total_deposits": 0,
+          "anchor_deposit_flow": 1584,
+          "anchor_withdrawal_flow": 1584,
+          "ust_native_redemption_volume": 1608,
+          "gross_luna_issuance_from_native_swaps": 1608,
+          "backing_ratio": 1464,
+          "top10_anchor_share": 168,
+          "top100_anchor_share": 168
+        },
+        "first": "2022-03-01T00:00:00+00:00",
+        "last": "2022-05-13T23:00:00+00:00"
+      }
+    },
+    {
+      "path": "data/processed/terra_extended/provenance_manifest.json",
+      "git_blob_sha1": "f55a4543161fd15a5f1492cc2b70de941144c146",
+      "sha256_git_bytes": "40cc8d0265372b171cda122e63b956e5dbeca67ea8ee680c78adbd3fd0748ce2",
+      "size_bytes": 30505,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/processed/terra_final/final_report.md",
+      "git_blob_sha1": "fefa18e758e0d9829a9df27ee1c69960360fe006",
+      "sha256_git_bytes": "02d78b27d51aad4d7da71c51f03c721f2f530d296cc9c969ebb27ed03a224325",
+      "size_bytes": 7807,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/processed/terra_final/data_quality.json",
+      "git_blob_sha1": "a7b2e2a9d783156d7ba777c0fde96cd83aabb63c",
+      "sha256_git_bytes": "839ea5290214470559fef1a630ee327d8db5507b5bb7060c499f287909327506",
+      "size_bytes": 5658,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/processed/terra_final/final_metrics.json",
+      "git_blob_sha1": "662fcad4c302ee95d1b2e9e46a9f4d85fb9a1934",
+      "sha256_git_bytes": "f69252a7e3fd9dc37fa822ec923d6f1494ce7af6a241a0540bef8fae4d565a65",
+      "size_bytes": 1506,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/processed/terra_data_completion/source_lineage.json",
+      "git_blob_sha1": "1856cdd3f9603072730973745384528f9d1abe64",
+      "sha256_git_bytes": "168fa8709ceca54b3212e953b9966f3378e062b96be17e2bc1a529f1f0df6a95",
+      "size_bytes": 10216,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/processed/terra_data_completion/temporal_quality_report.json",
+      "git_blob_sha1": "5b6761a17fea4d37a2cc2a781e458450d6534bcc",
+      "sha256_git_bytes": "253b3acac234a8367b1528308e48210f1aff47c7f9fa22408bad55242675e7d7",
+      "size_bytes": 10148,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/processed/research_final/validation_audit/phase5_terra_early_warning_audit.json",
+      "git_blob_sha1": "c57615dbfe686863b366db648234cf0af1d6b8ca",
+      "sha256_git_bytes": "0d71ad963fe9263c8c943c594622e4cb67a38b1f168d1c7a217b1de3f5b19116",
+      "size_bytes": 11897,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/terra_may2022_v1_evidence.csv",
+      "git_blob_sha1": "24e13dfa5f7c9d3acbaab7ec40ebfad4e0433d89",
+      "sha256_git_bytes": "9727946c2087afa34dfeb0ac11c4d1e9376cd8c82e6bc5557cf9be83ef838c0a",
+      "size_bytes": 96522,
+      "status": "FULL_BYTES_VERIFIED",
+      "csv_profile": {
+        "rows": 312,
+        "fields": [
+          "timestamp",
+          "block_height",
+          "ust_price",
+          "luna_price",
+          "ust_supply",
+          "luna_supply",
+          "anchor_total_deposits",
+          "anchor_deposit_flow",
+          "anchor_withdrawal_flow",
+          "ust_native_redemption_volume",
+          "luna_minted_from_redemption",
+          "luna_burned",
+          "ust_dex_sell_volume",
+          "terra_dex_liquidity",
+          "terra_dex_depth",
+          "top10_anchor_share",
+          "top100_anchor_share",
+          "curve_ust_liquidity",
+          "curve_pool_imbalance",
+          "curve_ust_price",
+          "bridge_outflow_terra_to_ethereum",
+          "bridge_inflow_ethereum_to_terra",
+          "btc_reserve_value",
+          "reserve_intervention_volume"
+        ],
+        "missing": {
+          "timestamp": 0,
+          "block_height": 0,
+          "ust_price": 0,
+          "luna_price": 0,
+          "ust_supply": 0,
+          "luna_supply": 0,
+          "anchor_total_deposits": 0,
+          "anchor_deposit_flow": 0,
+          "anchor_withdrawal_flow": 0,
+          "ust_native_redemption_volume": 0,
+          "luna_minted_from_redemption": 0,
+          "luna_burned": 0,
+          "ust_dex_sell_volume": 0,
+          "terra_dex_liquidity": 0,
+          "terra_dex_depth": 0,
+          "top10_anchor_share": 0,
+          "top100_anchor_share": 0,
+          "curve_ust_liquidity": 312,
+          "curve_pool_imbalance": 312,
+          "curve_ust_price": 0,
+          "bridge_outflow_terra_to_ethereum": 0,
+          "bridge_inflow_ethereum_to_terra": 0,
+          "btc_reserve_value": 312,
+          "reserve_intervention_volume": 0
+        },
+        "first": "2022-05-01T00:00:00+00:00",
+        "last": "2022-05-13T23:00:00+00:00"
+      }
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/source_inventory.csv",
+      "git_blob_sha1": "10f6db40e318d57b9dfd453fb4f816c1a3acf0f7",
+      "sha256_git_bytes": "e83310f9c7909b0bee8f67099432e8887045f2caa5ed043a80899a4494bc8112",
+      "size_bytes": 5154,
+      "status": "FULL_BYTES_VERIFIED",
+      "csv_profile": {
+        "rows": 38,
+        "fields": [
+          "path",
+          "size_bytes",
+          "readable",
+          "columns",
+          "sample_rows"
+        ],
+        "missing": {
+          "path": 0,
+          "size_bytes": 0,
+          "readable": 0,
+          "columns": 0,
+          "sample_rows": 0
+        }
+      }
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/evidence_map.json",
+      "git_blob_sha1": "ac70cc9a1697d5a51b8909e9feca0fb5373f934b",
+      "sha256_git_bytes": "ca146e47b8597cd315da4947d5643ca691b58a218393e1164952752d346fa470",
+      "size_bytes": 7344,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/provenance_manifest.json",
+      "git_blob_sha1": "68035e4aad8f4d2902b5fdbc4173e488113ccfa1",
+      "sha256_git_bytes": "9e6718150f8ca7f836a722e5bd9eedb1c8b1eaff47944147178671fc43a22581",
+      "size_bytes": 8509,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/Datasets.md",
+      "git_blob_sha1": "b13060af3ed4520c71ce0a1364700f2d0bf6a781",
+      "sha256_git_bytes": "31a99697172dafc85f7c9ddb8eb2720ca4124c917ec6a579358051b125325b2d",
+      "size_bytes": 27807,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/README.md",
+      "git_blob_sha1": "d1b02eceb663bfb3db5bdf2a71e7e1a077bd959b",
+      "sha256_git_bytes": "4469d8445403c5094ac6e8041036280027b7371905f98ece5d91ff85900eb028",
+      "size_bytes": 12095,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/prices/ust_price_may2022.parquet",
+      "git_blob_sha1": "4177abf7e63be7daaed9864711a6784b64b4521c",
+      "sha256_git_bytes": "043c03404a9e53c352df645e192a360b30ce6f853d2006fdec298e950ecdd869",
+      "size_bytes": 383037,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/prices/luna_price_may2022.parquet",
+      "git_blob_sha1": "925817f34b45dc84d4bfec594975557c5c026d14",
+      "sha256_git_bytes": "2007339f3436f3b4690a6cfd3fa9bf324d2586eca081cdacaea5a42244027465",
+      "size_bytes": 385826,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor/anchor_deposit_concentration.parquet",
+      "git_blob_sha1": "2a7a1470db821dd78fd0654490df0bffe1fe9578",
+      "sha256_git_bytes": "8717912cb4800b2aa471474bd9d4cefa405b7827914331c0037cc31f29068651",
+      "size_bytes": 18121,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/curve/curve_ust_3pool_may7.parquet",
+      "git_blob_sha1": "2f9850f94d495b58e715930842b1b20a80fa7c2b",
+      "sha256_git_bytes": "40adfe729e1cb039aab46798ebd95a9338be215e9f8f5ac330aec7e3a0ae26bf",
+      "size_bytes": 24074,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/curve/curve_ust_may2021.parquet",
+      "git_blob_sha1": "9a97ea20b55a4a45a8626b2a2037722113e33cca",
+      "sha256_git_bytes": "6ddd99260568095be7dfbcdd7544c430a9c49a6cba5a6c27144d55d9fc096f50",
+      "size_bytes": 76002,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/native_swaps/luna_total_supply_run.parquet",
+      "git_blob_sha1": "f51904cbfad0bdca5b2ffa6cea9e7e750fc17afd",
+      "sha256_git_bytes": "db340cb1cbdc8fb94d232fe114c990b11a047488ac6d4a61ba622edf99a173a1",
+      "size_bytes": 7864,
+      "status": "FULL_BYTES_VERIFIED"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/external/lunc-usd-max.csv",
+      "git_blob_sha1": "1c2c895d0db22c7ea7d490959606018f3adc09fd",
+      "sha256_git_bytes": "06b114d0f8cde94b990585ad529ea945dccfdfe5bef393edd74bbad522766ac9",
+      "size_bytes": 96949,
+      "status": "FULL_BYTES_VERIFIED",
+      "csv_profile": {
+        "rows": 1252,
+        "fields": [
+          "snapped_at",
+          "price",
+          "market_cap",
+          "total_volume"
+        ],
+        "missing": {
+          "snapped_at": 0,
+          "price": 0,
+          "market_cap": 0,
+          "total_volume": 0
+        }
+      }
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/external/ustc-usd-max.csv",
+      "git_blob_sha1": "ef1341e76c59aeb90b6a8d84af42f068458478fe",
+      "sha256_git_bytes": "a9f2d11e4c06f01952f17439ac0433d527f7d5516c0a4c5685f71aedd6db2dad",
+      "size_bytes": 58303,
+      "status": "FULL_BYTES_VERIFIED",
+      "csv_profile": {
+        "rows": 739,
+        "fields": [
+          "snapped_at",
+          "price",
+          "market_cap",
+          "total_volume"
+        ],
+        "missing": {
+          "snapped_at": 0,
+          "price": 0,
+          "market_cap": 0,
+          "total_volume": 0
+        }
+      }
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/data/anchor_run/epoch_state_fig10.parquet",
+      "git_blob_sha1": "cc6cd5991fb8e7293d2f6589ca2eda6b57e28635",
+      "sha256_git_bytes": "29e6cb98fe7a3631e67f6e7e42289c1b11a1fc63a54255242e83367711774074",
+      "size_bytes": 40160,
+      "status": "FULL_BYTES_VERIFIED"
+    }
+  ]
+}

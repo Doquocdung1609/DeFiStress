@@ -1,0 +1,36 @@
+{
+  "coverage": {
+    "cleared_historical_predictive_fields": 0,
+    "registered_historical_fields": 14,
+    "terra_acceptance_statuses": 9,
+    "verified_saved_inputs": 35
+  },
+  "exit_simulation_executed": false,
+  "historical_backtest_executed": false,
+  "historical_signal_generation_executed": false,
+  "implementation_commit": "LOCAL_P04_03_SOURCE_MANIFEST",
+  "p04_01_source_commit": "9207ead7db3acf1332b34cebcd19981c2f7bd9cc",
+  "point_in_time_eligibility": "BLOCKED_NOT_CLEARED_FOR_FORECAST",
+  "risk_score_status": "NOT_IMPLEMENTED",
+  "schema": "defistress-terra-p04-02-validation/1",
+  "scientific_status": "GATE_A_BLOCKED — GATE_B_SCOPED_PASS — PHASE02_HISTORICAL_EXECUTION_NOT_AUTHORIZED",
+  "scope": "SAVED_METADATA_AUDIT_AND_SYNTHETIC_PIT_CONTRACTS_ONLY",
+  "source_integrity": {
+    "decoded_content_sha256": "c42b47b343c74e6e1a53611414da1c989a3c4a8ada081fd50ddfe0a57b112ea1",
+    "hash_domains_distinct": true,
+    "pit_manifest_raw_git_bytes_sha256": "90604d78d158d493bf00eed8be7fecde145bec6e14f3b6a6d472ba50b9b1ff29",
+    "registry_raw_git_bytes_sha256": "09302fa53609651c61488c622862e6e1b3ea74747cc6e3cc2366cbbdd3e218f5"
+  },
+  "status": "PASS",
+  "terra_acceptance_statuses": {
+    "BACKTEST_PROTOCOL_APPROVED": "NOT_APPROVED_PROPOSAL_ONLY",
+    "DATA_AUDITED": "SCOPED_PASS_35_BYTES_304_PATHS",
+    "EXIT_FEASIBILITY_EVALUATED": "NOT_EXECUTED_NOT_VERIFIABLE_CURRENT_DEPTH_INPUTS",
+    "FALSE_ALARM_RISK_EVALUATED": "NOT_EVALUATED_IN_NEW_PROGRAM",
+    "HISTORICAL_BACKTEST_EXECUTED": "NOT_EXECUTED",
+    "INDEPENDENTLY_REVIEWED": "NOT_REVIEWED_WORK_SELF_AUDIT_ONLY",
+    "MODEL_IMPLEMENTED": "V2_NOT_IMPLEMENTED_V1_CODE_EXISTS",
+    "POINT_IN_TIME_ELIGIBLE": "BLOCKED_AVAILABILITY_AND_INTERVAL_TIMING",
+    "PRE_EVENT_ALERT_DEMONSTRATED": "NOT_DEMONSTRATED_IN_NEW_PROGRAM"
+  }
+}
