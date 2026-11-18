@@ -25,7 +25,9 @@ permissions:
 
 jobs:
   offline-saved-state-adapter:
-    runs-on: ubuntu-latest
+    # Python 3.12.10 is not published for the Ubuntu 26.04 image currently
+    # behind ubuntu-latest. Pin the runner image to preserve the exact runtime.
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     env:
       PYTHONPATH: ${{ github.workspace }}
