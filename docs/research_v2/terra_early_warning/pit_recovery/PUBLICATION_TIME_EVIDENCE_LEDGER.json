@@ -1,0 +1,649 @@
+{
+  "schema": "terra-pit-evidence-recovery-v1",
+  "authority": "V2_TERRA_P04_01_REVIEW_AND_PIT_EVIDENCE_RESEARCH_AUTHORIZED",
+  "base_commit": "053e94cb722f15eed689814c5a7771fa8f881be8",
+  "reviewed_pr_head": "8ec1eb2c49c1d4c3088b2bb0550b38fb6a05bde5",
+  "retrieval_date": "2026-10-21",
+  "source_ledger": [
+    {
+      "id": "PIT-R01",
+      "title": "Binance pre-event websocket semantics",
+      "url": "https://github.com/binance/binance-spot-api-docs/blob/e0c89c7c9430e1e5c54a5696fca1627f35c35398/web-socket-streams.md",
+      "evidence_class": "HISTORICAL_VERSIONED_OFFICIAL_SPEC",
+      "source_version": "e0c89c7c9430e1e5c54a5696fca1627f35c35398",
+      "document_date_declared_or_git_metadata": "2022-03-09T11:30:29Z",
+      "retrieval_date": "2026-10-21",
+      "supported_scope": "Trade time T and event time E differ; kline start t, close T, closed flag x documented. Payload examples are illustrative.",
+      "does_not_establish": "No captured UST/LUNA stream, actual receipt latency, exact dataset vintage or historical access proof. Text says every second and update speed2000ms; neither is a guaranteed delivery SLA.",
+      "historical_dataset_publication_at": null,
+      "bytes": {
+        "size_bytes": 14869,
+        "sha256": "d8d794cdaf887d871f0668167074b1e0606f9600a5c6bf8f20aab1111967c89a",
+        "git_blob_sha1": "3690c916fadaf7aa98e03b82392a7f4160320517",
+        "domain": "exact UTF-8/Git LF bytes; not HTTP wire bytes"
+      },
+      "bytes_status": "FULL_TEXT_HASHED"
+    },
+    {
+      "id": "PIT-R02",
+      "title": "Binance pre-event archive format and release policy",
+      "url": "https://github.com/binance/binance-public-data/blob/257842004e465f961b8cb318c8c554c6e4c83886/README.md",
+      "evidence_class": "HISTORICAL_VERSIONED_OFFICIAL_SPEC",
+      "source_version": "257842004e465f961b8cb318c8c554c6e4c83886",
+      "document_date_declared_or_git_metadata": "2022-04-20T08:46:35Z",
+      "retrieval_date": "2026-10-21",
+      "supported_scope": "Daily archive uploads described as next-day; monthly upload starts next month; spot kline open/close and .CHECKSUM documented.",
+      "does_not_establish": "No exact UTC upload hour, per-object first publication or proof that current bytes equal originally published bytes. Archive clock cannot be used as contemporaneous websocket clock.",
+      "historical_dataset_publication_at": null,
+      "bytes": {
+        "size_bytes": 5026,
+        "sha256": "9417bc282dba7571a34ad349ee9bb6b29d7b362e8faf1ae398e3b3c96ddfb314",
+        "git_blob_sha1": "71abdb85f13a24a50cd29a08ed366d0c20a703da",
+        "domain": "exact UTF-8/Git LF bytes; not HTTP wire bytes"
+      },
+      "bytes_status": "FULL_TEXT_HASHED"
+    },
+    {
+      "id": "PIT-R03",
+      "title": "Binance archive revision notice",
+      "url": "https://github.com/binance/binance-public-data/blob/d571690eb66760763b0bd6e27e8cd35603c7e244/README.md",
+      "evidence_class": "CURRENT_OFFICIAL_SPEC",
+      "source_version": "d571690eb66760763b0bd6e27e8cd35603c7e244",
+      "document_date_declared_or_git_metadata": "2026-10-16T14:18:28Z",
+      "retrieval_date": "2026-10-21",
+      "supported_scope": "Current archive may be replaced; update tables refer to old/new checksums, including2022-08-08 kline and2022-04-21 aggregate-trade notices.",
+      "does_not_establish": "No affected UST/LUNA file list read. Revision ZIP contents not acquired; cannot assert these symbols were or were not revised.",
+      "historical_dataset_publication_at": null,
+      "bytes": {
+        "size_bytes": 5282,
+        "sha256": "2e133d9945a9263a02781369078e72805eff074680f305cd5460016471c6caad",
+        "git_blob_sha1": "e01e34a0b0cd91d62386a5a237190a3167138bae",
+        "domain": "exact UTF-8/Git LF bytes; not HTTP wire bytes"
+      },
+      "bytes_status": "FULL_TEXT_HASHED"
+    },
+    {
+      "id": "PIT-R04",
+      "title": "Pre-event Anchor market query schema",
+      "url": "https://github.com/anchor-protocol/money-market-contracts/blob/f0c961c3f88f26750b2430f6b05a86c9f4f8fa9d/packages/moneymarket/src/market.rs",
+      "evidence_class": "HISTORICAL_VERSIONED_OFFICIAL_CODE",
+      "source_version": "f0c961c3f88f26750b2430f6b05a86c9f4f8fa9d",
+      "document_date_declared_or_git_metadata": "2022-04-30T21:35:29Z",
+      "retrieval_date": "2026-10-21",
+      "supported_scope": "EpochState has optional block_height; response exchange_rate and aterra_supply distinct from stored prev_* state.",
+      "does_not_establish": "Source commit not proof of deployed code ID at a historical height; query argument is not proof the RPC executed against that historical chain state.",
+      "historical_dataset_publication_at": null,
+      "bytes": {
+        "size_bytes": 5236,
+        "sha256": "d3a40e2c1f16512ffc9d7117b28bafc3a2dd67938a53ce2b81f11df458608e2b",
+        "git_blob_sha1": "1898ff2da71596e455a605e77c9bf474b504e9bd",
+        "domain": "exact UTF-8/Git LF bytes; not HTTP wire bytes"
+      },
+      "bytes_status": "FULL_TEXT_HASHED"
+    },
+    {
+      "id": "PIT-R05",
+      "title": "Anchor Market documentation",
+      "url": "https://docs.anchorprotocol.com/anchor-2/smart-contracts/money-market/market",
+      "evidence_class": "CURRENT_OFFICIAL_SPEC",
+      "source_version": null,
+      "document_date_declared_or_git_metadata": null,
+      "retrieval_date": "2026-10-21",
+      "supported_scope": "Optional block_height affects accrued-versus-stored query semantics; stored prev_supply/rate can be stale.",
+      "does_not_establish": "Historical deployment/response height, block hash, original publication and data completeness remain unverified.",
+      "historical_dataset_publication_at": null,
+      "bytes": null,
+      "bytes_status": "WEB_TOOL_CONTENT_READ_NOT_WIRE_BYTES_VERIFIED"
+    },
+    {
+      "id": "PIT-R06",
+      "title": "Tendermint BFT time",
+      "url": "https://docs.tendermint.com/master/spec/consensus/bft-time.html",
+      "evidence_class": "CURRENT_OFFICIAL_SPEC",
+      "source_version": null,
+      "document_date_declared_or_git_metadata": null,
+      "retrieval_date": "2026-10-21",
+      "supported_scope": "Consensus header time derives from commit voting timestamps; distinguish from observer receipt.",
+      "does_not_establish": "Current specification is not proof of Terra deployment version, exact observed wall-clock delivery, or archived columbus-5 header verification.",
+      "historical_dataset_publication_at": null,
+      "bytes": null,
+      "bytes_status": "WEB_TOOL_CONTENT_READ_NOT_WIRE_BYTES_VERIFIED"
+    },
+    {
+      "id": "PIT-R07",
+      "title": "Kaiko dataset versioning",
+      "url": "https://docs.kaiko.com/rest-api/general/getting-started/data-versioning",
+      "evidence_class": "CURRENT_OFFICIAL_SPEC",
+      "source_version": null,
+      "document_date_declared_or_git_metadata": null,
+      "retrieval_date": "2026-10-21",
+      "supported_scope": "Dataset version separate from API version; latest can change.",
+      "does_not_establish": "Does not certify minute semantics, release latency or vintage of shipped replication aggregates.",
+      "historical_dataset_publication_at": null,
+      "bytes": null,
+      "bytes_status": "WEB_TOOL_CONTENT_READ_NOT_WIRE_BYTES_VERIFIED"
+    },
+    {
+      "id": "PIT-R08",
+      "title": "Jump retrospective chronology",
+      "url": "https://jumpcrypto.com/resources/the-depegging-of-ust",
+      "evidence_class": "POST_EVENT_PRIMARY_ANALYST_REPORT",
+      "source_version": null,
+      "document_date_declared_or_git_metadata": "2022-06-02",
+      "retrieval_date": "2026-10-21",
+      "supported_scope": "Report dated June2,2022 uses GMT and links transaction/block anchors for May7; severe deterioration described around May9 18:30.",
+      "does_not_establish": "Post-event label corroboration only. Not a pre-event predictor, independent receipt verification or proof of a threshold-defined onset; market participant author, not disinterested replication.",
+      "historical_dataset_publication_at": null,
+      "bytes": null,
+      "bytes_status": "WEB_TOOL_CONTENT_READ_NOT_WIRE_BYTES_VERIFIED"
+    },
+    {
+      "id": "PIT-R09",
+      "title": "Nansen original URL access attempt",
+      "url": "https://www.nansen.ai/research/on-chain-forensics-demystifying-terrausd-de-peg",
+      "evidence_class": "ACCESS_FAILED",
+      "source_version": null,
+      "document_date_declared_or_git_metadata": null,
+      "retrieval_date": "2026-10-21",
+      "supported_scope": "Direct original URL returned404; linked redirect also failed.",
+      "does_not_establish": "No new primary-source verification. Search snippets/reprints not admitted as primary evidence.",
+      "historical_dataset_publication_at": null,
+      "bytes": null,
+      "bytes_status": "ACCESS_FAILED_NO_SOURCE_BODY_VERIFIED"
+    },
+    {
+      "id": "PIT-R10",
+      "title": "Etherscan reported Curve transaction links",
+      "url": "https://etherscan.io/tx/0xaa23df48c53f221d0e8ac60ffc9e69340f3e8948fcdc936f3aee9c887d802abb",
+      "evidence_class": "ACCESS_FAILED",
+      "source_version": null,
+      "document_date_declared_or_git_metadata": null,
+      "retrieval_date": "2026-10-21",
+      "supported_scope": "Report links swap at reported block14732287; direct explorer403. Withdrawal link0x18bd477f9beeff22b2ad0c6d48a9c0f02b542049789f0638f5ec50365f1d1de7 also403.",
+      "does_not_establish": "No receipt/header/state readback performed; transaction times/blocks remain source-reported.",
+      "historical_dataset_publication_at": null,
+      "bytes": null,
+      "bytes_status": "ACCESS_FAILED_NO_SOURCE_BODY_VERIFIED"
+    },
+    {
+      "id": "PIT-R11",
+      "title": "Binance archive directory feasibility",
+      "url": "https://data.binance.vision/?prefix=data/spot/daily/klines/USTUSDT/1m/",
+      "evidence_class": "ACCESS_FAILED",
+      "source_version": null,
+      "document_date_declared_or_git_metadata": null,
+      "retrieval_date": "2026-10-21",
+      "supported_scope": "Web tool could not access the directory. No archive files downloaded.",
+      "does_not_establish": "No claim of verified symbol/window/object availability; documentation alone does not prove coverage.",
+      "historical_dataset_publication_at": null,
+      "bytes": null,
+      "bytes_status": "ACCESS_FAILED_NO_SOURCE_BODY_VERIFIED"
+    }
+  ],
+  "additional_repository_sources_read": [
+    {
+      "path": "terra_may2022_v1_pack/terra_may2022_v1_pack/build_terra_may2022_v1.py",
+      "source_commit": "053e94cb722f15eed689814c5a7771fa8f881be8",
+      "size_bytes": 51134,
+      "sha256": "4071c1c3eecf97fb4dc4708b18c290cb598aba095b77e243474fa34acd1a6972",
+      "git_blob_sha1": "4c2ed59c3c6650b3cc0baf21c57ece5a1c7bb34e",
+      "domain": "exact UTF-8/Git LF bytes; not HTTP wire bytes"
+    },
+    {
+      "path": "scripts/terra/import_dataset.py",
+      "source_commit": "053e94cb722f15eed689814c5a7771fa8f881be8",
+      "size_bytes": 1086,
+      "sha256": "5666ef590c4ac077f23561c308a75989f273055647b7983cddeb800c71bf90af",
+      "git_blob_sha1": "97f21c1a9e9bd8a55e6af8db10a7d95d6648d369",
+      "domain": "exact UTF-8/Git LF bytes; not HTTP wire bytes"
+    },
+    {
+      "path": "data/raw/terra_may2022_v1/replication/terra-luna-run-replication/code/figures/fig02_ust_supply_by_entity.py",
+      "source_commit": "053e94cb722f15eed689814c5a7771fa8f881be8",
+      "size_bytes": 3544,
+      "sha256": "87ee9802b2b43d7a92ae97267262ae0c7434dc5de9b2d34f4b73f2249e59ce7d",
+      "git_blob_sha1": "59da7ad0de2385544315609084257772ca3f9d61",
+      "domain": "exact UTF-8/Git LF bytes; not HTTP wire bytes"
+    }
+  ],
+  "original_audit_scope": {
+    "paths": 304,
+    "unique_git_blobs": 272,
+    "full_bytes": 35,
+    "metadata_only": 269
+  },
+  "core_field_eligibility": [
+    {
+      "field": "timestamp",
+      "source_artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "source_commit": "053e94cb722f15eed689814c5a7771fa8f881be8",
+      "unit": "UTC hour label",
+      "source_frequency": "constructed hourly grid",
+      "use_class": "FORECAST_ADMISSION_CHECK",
+      "status": "BLOCKED_INSUFFICIENT_AVAILABILITY_EVIDENCE",
+      "eligible_as_of": null,
+      "publication_at": null,
+      "available_at": null,
+      "reasons": [
+        "Historical per-field availability/vintage remains unproved.",
+        "Coordinate only; not an independent predictive economic feature."
+      ],
+      "required_evidence": [
+        "versioned source/asset/unit contract",
+        "interval completion and original availability proof or reviewed bounded reconstruction",
+        "vintage/revision lineage",
+        "no-lookahead and missingness controls"
+      ],
+      "source_ledger_ids": [
+        "PIT-R06"
+      ],
+      "original_registry_field_pointer": "docs/research_v2/terra_early_warning/p04_01/P04_01_DATASET_REGISTRY.json#/core_fields/0",
+      "source_ledger_relationship": "Supplementary semantic evidence only; underlying per-field data lineage remains the pinned original registry, not inferred from these generic documents."
+    },
+    {
+      "field": "block_height",
+      "source_artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "source_commit": "053e94cb722f15eed689814c5a7771fa8f881be8",
+      "unit": "Terra block height",
+      "source_frequency": "approximately15-minute sampled state",
+      "use_class": "FORECAST_ADMISSION_CHECK",
+      "status": "BLOCKED_INSUFFICIENT_AVAILABILITY_EVIDENCE",
+      "eligible_as_of": null,
+      "publication_at": null,
+      "available_at": null,
+      "reasons": [
+        "Historical per-field availability/vintage remains unproved.",
+        "Requires authenticated columbus-5 header/state-height mapping; stored sample height is not first-available time."
+      ],
+      "required_evidence": [
+        "versioned source/asset/unit contract",
+        "interval completion and original availability proof or reviewed bounded reconstruction",
+        "vintage/revision lineage",
+        "no-lookahead and missingness controls"
+      ],
+      "source_ledger_ids": [
+        "PIT-R06"
+      ],
+      "original_registry_field_pointer": "docs/research_v2/terra_early_warning/p04_01/P04_01_DATASET_REGISTRY.json#/core_fields/1",
+      "source_ledger_relationship": "Supplementary semantic evidence only; underlying per-field data lineage remains the pinned original registry, not inferred from these generic documents."
+    },
+    {
+      "field": "ust_price",
+      "source_artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "source_commit": "053e94cb722f15eed689814c5a7771fa8f881be8",
+      "unit": "USD/UST",
+      "source_frequency": "daily throughApril;minute aggregate fromMay1",
+      "use_class": "FORECAST_ADMISSION_CHECK",
+      "status": "BLOCKED_INSUFFICIENT_AVAILABILITY_EVIDENCE",
+      "eligible_as_of": null,
+      "publication_at": null,
+      "available_at": null,
+      "reasons": [
+        "Historical per-field availability/vintage remains unproved.",
+        "Local source is aggregated replication price; Binance semantics cannot be transferred. Raw minute interval/close/publication unresolved. Legacy hourly-last differs from extended backward-as-of."
+      ],
+      "required_evidence": [
+        "versioned source/asset/unit contract",
+        "interval completion and original availability proof or reviewed bounded reconstruction",
+        "vintage/revision lineage",
+        "no-lookahead and missingness controls"
+      ],
+      "source_ledger_ids": [
+        "PIT-R07"
+      ],
+      "original_registry_field_pointer": "docs/research_v2/terra_early_warning/p04_01/P04_01_DATASET_REGISTRY.json#/core_fields/2",
+      "source_ledger_relationship": "Supplementary semantic evidence only; underlying per-field data lineage remains the pinned original registry, not inferred from these generic documents.",
+      "raw_timestamp_timezone": "Raw minute Parquet timestamp[us] has no timezone; UTC is processed-loader convention, not newly verified original vendor publication timezone."
+    },
+    {
+      "field": "luna_price",
+      "source_artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "source_commit": "053e94cb722f15eed689814c5a7771fa8f881be8",
+      "unit": "USD/LUNA",
+      "source_frequency": "daily throughApril;minute aggregate fromMay1",
+      "use_class": "FORECAST_ADMISSION_CHECK",
+      "status": "BLOCKED_INSUFFICIENT_AVAILABILITY_EVIDENCE",
+      "eligible_as_of": null,
+      "publication_at": null,
+      "available_at": null,
+      "reasons": [
+        "Historical per-field availability/vintage remains unproved.",
+        "Local source is aggregated replication price; Binance semantics cannot be transferred. Raw minute interval/close/publication unresolved. Legacy hourly-last differs from extended backward-as-of."
+      ],
+      "required_evidence": [
+        "versioned source/asset/unit contract",
+        "interval completion and original availability proof or reviewed bounded reconstruction",
+        "vintage/revision lineage",
+        "no-lookahead and missingness controls"
+      ],
+      "source_ledger_ids": [
+        "PIT-R07"
+      ],
+      "original_registry_field_pointer": "docs/research_v2/terra_early_warning/p04_01/P04_01_DATASET_REGISTRY.json#/core_fields/3",
+      "source_ledger_relationship": "Supplementary semantic evidence only; underlying per-field data lineage remains the pinned original registry, not inferred from these generic documents.",
+      "raw_timestamp_timezone": "Raw minute Parquet timestamp[us] has no timezone; UTC is processed-loader convention, not newly verified original vendor publication timezone."
+    },
+    {
+      "field": "ust_supply",
+      "source_artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "source_commit": "053e94cb722f15eed689814c5a7771fa8f881be8",
+      "unit": "UST",
+      "source_frequency": "daily holder-balance snapshot",
+      "use_class": "FORECAST_ADMISSION_CHECK",
+      "status": "BLOCKED_INSUFFICIENT_AVAILABILITY_EVIDENCE",
+      "eligible_as_of": null,
+      "publication_at": null,
+      "available_at": null,
+      "reasons": [
+        "Historical per-field availability/vintage remains unproved.",
+        "Pin normalization/schema/version; original daily-state effective time not proved."
+      ],
+      "required_evidence": [
+        "versioned source/asset/unit contract",
+        "interval completion and original availability proof or reviewed bounded reconstruction",
+        "vintage/revision lineage",
+        "no-lookahead and missingness controls"
+      ],
+      "source_ledger_ids": [
+        "PIT-R06"
+      ],
+      "original_registry_field_pointer": "docs/research_v2/terra_early_warning/p04_01/P04_01_DATASET_REGISTRY.json#/core_fields/4",
+      "source_ledger_relationship": "Supplementary semantic evidence only; underlying per-field data lineage remains the pinned original registry, not inferred from these generic documents."
+    },
+    {
+      "field": "luna_supply",
+      "source_artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "source_commit": "053e94cb722f15eed689814c5a7771fa8f881be8",
+      "unit": "LUNA",
+      "source_frequency": "hourly source state",
+      "use_class": "FORECAST_ADMISSION_CHECK",
+      "status": "BLOCKED_INSUFFICIENT_AVAILABILITY_EVIDENCE",
+      "eligible_as_of": null,
+      "publication_at": null,
+      "available_at": null,
+      "reasons": [
+        "Historical per-field availability/vintage remains unproved.",
+        "Pin normalization/schema/version; original daily-state effective time not proved."
+      ],
+      "required_evidence": [
+        "versioned source/asset/unit contract",
+        "interval completion and original availability proof or reviewed bounded reconstruction",
+        "vintage/revision lineage",
+        "no-lookahead and missingness controls"
+      ],
+      "source_ledger_ids": [
+        "PIT-R06"
+      ],
+      "original_registry_field_pointer": "docs/research_v2/terra_early_warning/p04_01/P04_01_DATASET_REGISTRY.json#/core_fields/5",
+      "source_ledger_relationship": "Supplementary semantic evidence only; underlying per-field data lineage remains the pinned original registry, not inferred from these generic documents."
+    },
+    {
+      "field": "anchor_total_deposits",
+      "source_artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "source_commit": "053e94cb722f15eed689814c5a7771fa8f881be8",
+      "unit": "UST",
+      "source_frequency": "approximately15-minute sampled/derived state",
+      "use_class": "FORECAST_ADMISSION_CHECK",
+      "status": "BLOCKED_INSUFFICIENT_AVAILABILITY_EVIDENCE",
+      "eligible_as_of": null,
+      "publication_at": null,
+      "available_at": null,
+      "reasons": [
+        "Historical per-field availability/vintage remains unproved.",
+        "Stored prev_* fields differ from live epoch_state; query args do not pin actual chain state."
+      ],
+      "required_evidence": [
+        "versioned source/asset/unit contract",
+        "interval completion and original availability proof or reviewed bounded reconstruction",
+        "vintage/revision lineage",
+        "no-lookahead and missingness controls"
+      ],
+      "source_ledger_ids": [
+        "PIT-R04",
+        "PIT-R05",
+        "PIT-R06"
+      ],
+      "original_registry_field_pointer": "docs/research_v2/terra_early_warning/p04_01/P04_01_DATASET_REGISTRY.json#/core_fields/6",
+      "source_ledger_relationship": "Supplementary semantic evidence only; underlying per-field data lineage remains the pinned original registry, not inferred from these generic documents."
+    },
+    {
+      "field": "anchor_deposit_flow",
+      "source_artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "source_commit": "053e94cb722f15eed689814c5a7771fa8f881be8",
+      "unit": "UST/hour",
+      "source_frequency": "event-level aggregated hourly",
+      "use_class": "FORECAST_ADMISSION_CHECK",
+      "status": "BLOCKED_INSUFFICIENT_AVAILABILITY_EVIDENCE",
+      "eligible_as_of": null,
+      "publication_at": null,
+      "available_at": null,
+      "reasons": [
+        "Historical per-field availability/vintage remains unproved.",
+        "Completed [h,h+1h) plus release/processing delay required; raw event completeness and direction need verification."
+      ],
+      "required_evidence": [
+        "versioned source/asset/unit contract",
+        "interval completion and original availability proof or reviewed bounded reconstruction",
+        "vintage/revision lineage",
+        "no-lookahead and missingness controls"
+      ],
+      "source_ledger_ids": [
+        "PIT-R04",
+        "PIT-R05",
+        "PIT-R06"
+      ],
+      "original_registry_field_pointer": "docs/research_v2/terra_early_warning/p04_01/P04_01_DATASET_REGISTRY.json#/core_fields/7",
+      "source_ledger_relationship": "Supplementary semantic evidence only; underlying per-field data lineage remains the pinned original registry, not inferred from these generic documents."
+    },
+    {
+      "field": "anchor_withdrawal_flow",
+      "source_artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "source_commit": "053e94cb722f15eed689814c5a7771fa8f881be8",
+      "unit": "UST/hour",
+      "source_frequency": "event-level aggregated hourly",
+      "use_class": "FORECAST_ADMISSION_CHECK",
+      "status": "BLOCKED_INSUFFICIENT_AVAILABILITY_EVIDENCE",
+      "eligible_as_of": null,
+      "publication_at": null,
+      "available_at": null,
+      "reasons": [
+        "Historical per-field availability/vintage remains unproved.",
+        "Completed [h,h+1h) plus release/processing delay required; raw event completeness and direction need verification."
+      ],
+      "required_evidence": [
+        "versioned source/asset/unit contract",
+        "interval completion and original availability proof or reviewed bounded reconstruction",
+        "vintage/revision lineage",
+        "no-lookahead and missingness controls"
+      ],
+      "source_ledger_ids": [
+        "PIT-R04",
+        "PIT-R05",
+        "PIT-R06"
+      ],
+      "original_registry_field_pointer": "docs/research_v2/terra_early_warning/p04_01/P04_01_DATASET_REGISTRY.json#/core_fields/8",
+      "source_ledger_relationship": "Supplementary semantic evidence only; underlying per-field data lineage remains the pinned original registry, not inferred from these generic documents."
+    },
+    {
+      "field": "ust_native_redemption_volume",
+      "source_artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "source_commit": "053e94cb722f15eed689814c5a7771fa8f881be8",
+      "unit": "UST/hour",
+      "source_frequency": "event-level aggregated hourly",
+      "use_class": "FORECAST_ADMISSION_CHECK",
+      "status": "BLOCKED_INSUFFICIENT_AVAILABILITY_EVIDENCE",
+      "eligible_as_of": null,
+      "publication_at": null,
+      "available_at": null,
+      "reasons": [
+        "Historical per-field availability/vintage remains unproved.",
+        "Completed [h,h+1h) plus release/processing delay required; raw event completeness and direction need verification."
+      ],
+      "required_evidence": [
+        "versioned source/asset/unit contract",
+        "interval completion and original availability proof or reviewed bounded reconstruction",
+        "vintage/revision lineage",
+        "no-lookahead and missingness controls"
+      ],
+      "source_ledger_ids": [
+        "PIT-R06"
+      ],
+      "original_registry_field_pointer": "docs/research_v2/terra_early_warning/p04_01/P04_01_DATASET_REGISTRY.json#/core_fields/9",
+      "source_ledger_relationship": "Supplementary semantic evidence only; underlying per-field data lineage remains the pinned original registry, not inferred from these generic documents."
+    },
+    {
+      "field": "gross_luna_issuance_from_native_swaps",
+      "source_artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "source_commit": "053e94cb722f15eed689814c5a7771fa8f881be8",
+      "unit": "LUNA/hour",
+      "source_frequency": "event-level aggregated hourly",
+      "use_class": "FORECAST_ADMISSION_CHECK",
+      "status": "BLOCKED_INSUFFICIENT_AVAILABILITY_EVIDENCE",
+      "eligible_as_of": null,
+      "publication_at": null,
+      "available_at": null,
+      "reasons": [
+        "Historical per-field availability/vintage remains unproved.",
+        "Completed [h,h+1h) plus release/processing delay required; raw event completeness and direction need verification."
+      ],
+      "required_evidence": [
+        "versioned source/asset/unit contract",
+        "interval completion and original availability proof or reviewed bounded reconstruction",
+        "vintage/revision lineage",
+        "no-lookahead and missingness controls"
+      ],
+      "source_ledger_ids": [
+        "PIT-R06"
+      ],
+      "original_registry_field_pointer": "docs/research_v2/terra_early_warning/p04_01/P04_01_DATASET_REGISTRY.json#/core_fields/10",
+      "source_ledger_relationship": "Supplementary semantic evidence only; underlying per-field data lineage remains the pinned original registry, not inferred from these generic documents."
+    },
+    {
+      "field": "backing_ratio",
+      "source_artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "source_commit": "053e94cb722f15eed689814c5a7771fa8f881be8",
+      "unit": "ratio",
+      "source_frequency": "derived from mixed-frequency dependencies",
+      "use_class": "FORECAST_ADMISSION_CHECK",
+      "status": "BLOCKED_INSUFFICIENT_AVAILABILITY_EVIDENCE",
+      "eligible_as_of": null,
+      "publication_at": null,
+      "available_at": null,
+      "reasons": [
+        "Historical per-field availability/vintage remains unproved.",
+        "Derived availability is maximum of all component availability plus processing; not literal collateral backing."
+      ],
+      "required_evidence": [
+        "versioned source/asset/unit contract",
+        "interval completion and original availability proof or reviewed bounded reconstruction",
+        "vintage/revision lineage",
+        "no-lookahead and missingness controls"
+      ],
+      "source_ledger_ids": [
+        "PIT-R06"
+      ],
+      "original_registry_field_pointer": "docs/research_v2/terra_early_warning/p04_01/P04_01_DATASET_REGISTRY.json#/core_fields/11",
+      "source_ledger_relationship": "Supplementary semantic evidence only; underlying per-field data lineage remains the pinned original registry, not inferred from these generic documents."
+    },
+    {
+      "field": "top10_anchor_share",
+      "source_artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "source_commit": "053e94cb722f15eed689814c5a7771fa8f881be8",
+      "unit": "fraction",
+      "source_frequency": "daily",
+      "use_class": "FORECAST_ADMISSION_CHECK",
+      "status": "BLOCKED_INSUFFICIENT_AVAILABILITY_EVIDENCE",
+      "eligible_as_of": null,
+      "publication_at": null,
+      "available_at": null,
+      "reasons": [
+        "Historical per-field availability/vintage remains unproved.",
+        "Daily holder snapshot effective time/coverage and incomplete top-N cohort need proof; do not extend beyondMay6."
+      ],
+      "required_evidence": [
+        "versioned source/asset/unit contract",
+        "interval completion and original availability proof or reviewed bounded reconstruction",
+        "vintage/revision lineage",
+        "no-lookahead and missingness controls"
+      ],
+      "source_ledger_ids": [
+        "PIT-R06"
+      ],
+      "original_registry_field_pointer": "docs/research_v2/terra_early_warning/p04_01/P04_01_DATASET_REGISTRY.json#/core_fields/12",
+      "source_ledger_relationship": "Supplementary semantic evidence only; underlying per-field data lineage remains the pinned original registry, not inferred from these generic documents."
+    },
+    {
+      "field": "top100_anchor_share",
+      "source_artifact": "data/processed/terra_extended/terra_state_hourly_20220301_20220513.csv",
+      "source_commit": "053e94cb722f15eed689814c5a7771fa8f881be8",
+      "unit": "fraction",
+      "source_frequency": "daily",
+      "use_class": "FORECAST_ADMISSION_CHECK",
+      "status": "BLOCKED_INSUFFICIENT_AVAILABILITY_EVIDENCE",
+      "eligible_as_of": null,
+      "publication_at": null,
+      "available_at": null,
+      "reasons": [
+        "Historical per-field availability/vintage remains unproved.",
+        "Daily holder snapshot effective time/coverage and incomplete top-N cohort need proof; do not extend beyondMay6."
+      ],
+      "required_evidence": [
+        "versioned source/asset/unit contract",
+        "interval completion and original availability proof or reviewed bounded reconstruction",
+        "vintage/revision lineage",
+        "no-lookahead and missingness controls"
+      ],
+      "source_ledger_ids": [
+        "PIT-R06"
+      ],
+      "original_registry_field_pointer": "docs/research_v2/terra_early_warning/p04_01/P04_01_DATASET_REGISTRY.json#/core_fields/13",
+      "source_ledger_relationship": "Supplementary semantic evidence only; underlying per-field data lineage remains the pinned original registry, not inferred from these generic documents."
+    }
+  ],
+  "rejected_use_cases": [
+    {
+      "field": "legacy.curve_ust_price",
+      "status": "REJECTED",
+      "use_class": "CURVE_VENUE_PRICE_OBSERVATION",
+      "reason": "Manifest maps it to the same aggregate ust_price Parquet. A column alias is not an independent Curve quote."
+    },
+    {
+      "field": "legacy.terra_dex_liquidity",
+      "status": "REJECTED",
+      "use_class": "EXECUTABLE_HISTORICAL_LIQUIDITY",
+      "reason": "Market-wide24h volume proxy divided by24 is not reserves/order-book executable depth."
+    },
+    {
+      "field": "legacy.terra_dex_depth",
+      "status": "REJECTED",
+      "use_class": "EXECUTABLE_HISTORICAL_DEPTH",
+      "reason": "Fixed pre-cutoff volume quantile is a model-input proxy, not observed historical depth."
+    }
+  ],
+  "new_source_predictive_admission": {
+    "POINT_IN_TIME_ELIGIBLE": 0,
+    "BLOCKED_INSUFFICIENT_AVAILABILITY_EVIDENCE": 14,
+    "REJECTED_USE_CASES": 3,
+    "counts_are": "14core records plus3separate use-case decisions; not17unique observed datasets"
+  },
+  "gates": {
+    "P04_01_TECHNICALLY_ACCEPTED": "PASS_SCOPED_AUDIT",
+    "P04_02_SYNTHETIC_CONTRACTS_READY": "CODEX_PR_52_PRESENT_TECHNICAL_REVIEW_PENDING",
+    "POINT_IN_TIME_DATA_ELIGIBLE": "BLOCKED_0_FIELDS",
+    "EARLY_WARNING_PROTOCOL_APPROVED": "NOT_APPROVED",
+    "HISTORICAL_BACKTEST_AUTHORIZED": "NOT_AUTHORIZED",
+    "PRE_EVENT_ALERT_DEMONSTRATED": "NOT_DEMONSTRATED_IN_NEW_PROGRAM",
+    "FALSE_ALARM_RISK_EVALUATED": "NOT_EVALUATED",
+    "EXIT_FEASIBILITY_EVALUATED": "NOT_EXECUTED_NOT_VERIFIABLE"
+  },
+  "no_historical_feature_backtest_or_exit_execution": true,
+  "independent_review_status": "Work fresh tool-based second pass of own authored audit; not external independent peer review",
+  "scientific_status": "GATE_A_BLOCKED — GATE_B_SCOPED_PASS — PHASE02_HISTORICAL_EXECUTION_NOT_AUTHORIZED",
+  "codex_interface_reference": {
+    "pr": 52,
+    "head": "fa77aac27a5239c98769663ba85dc6d24977e4a2",
+    "status": "PENDING_REVIEW_NOT_ACCEPTED",
+    "counts": "Codex self-reported; not independently reproduced by this Work research package",
+    "work_did_not_edit_codex_paths": true
+  }
+}
