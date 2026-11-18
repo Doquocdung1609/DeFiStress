@@ -1,0 +1,101 @@
+{
+  "schema": "defistress-demo-candidates/1",
+  "integration_base": "c51d4d06d8b560a149e32ade922f8ed62da1a589",
+  "preview_branch": "demo/e2e-preview",
+  "scientific_acceptance": false,
+  "candidate_prs": {
+    "57": {
+      "head": "724eaa106c83947996636dd89a68caebcb0702b8",
+      "original_pr_base": "c51d4d06d8b560a149e32ade922f8ed62da1a589",
+      "paths": [
+        ".github/workflows/v2-p02-01-contracts.yml",
+        ".github/workflows/v2-p02-02-saved-state-adapter.yml",
+        ".github/workflows/v2-terra-pit-contracts.yml"
+      ],
+      "exact_git_blobs_verified": 3,
+      "formal_pr_state": "DRAFT_UNMERGED"
+    },
+    "55": {
+      "head": "3b70eee46055e64149b164af9fa8da759756acd1",
+      "original_pr_base": "c51d4d06d8b560a149e32ade922f8ed62da1a589",
+      "paths": [
+        "defistress_v2/contracts/__init__.py",
+        "defistress_v2/contracts/valuation.py",
+        "defistress_v2/valuation/__init__.py",
+        "defistress_v2/valuation/economic.py",
+        "defistress_v2/valuation/policy.py",
+        "tests/v2/test_valuation.py",
+        "tests/v2/test_valuation_boundaries.py",
+        "tests/v2/test_valuation_independent_review.py"
+      ],
+      "exact_git_blobs_verified": 8,
+      "formal_pr_state": "DRAFT_UNMERGED"
+    },
+    "58": {
+      "head": "ecddfc5c09da841c9929fde712ead3a4053150b4",
+      "original_pr_base": "c51d4d06d8b560a149e32ade922f8ed62da1a589",
+      "paths": [
+        "defistress_v2/terra_warning/__init__.py",
+        "defistress_v2/terra_warning/contracts.py",
+        "defistress_v2/terra_warning/engine.py",
+        "docs/research_v2/terra_early_warning/p04_03/AUTHORIZATION_AND_DEPENDENCIES.md",
+        "docs/research_v2/terra_early_warning/p04_03/CONTINUATION_REVIEW.md",
+        "docs/research_v2/terra_early_warning/p04_03/CONTROL_MATRIX.json",
+        "docs/research_v2/terra_early_warning/p04_03/EVIDENCE.json",
+        "docs/research_v2/terra_early_warning/p04_03/HISTORICAL_FIELD_MAPPING.json",
+        "docs/research_v2/terra_early_warning/p04_03/HISTORICAL_READINESS.md",
+        "docs/research_v2/terra_early_warning/p04_03/ISSUE56_SNAPSHOT.md",
+        "docs/research_v2/terra_early_warning/p04_03/P04_04_PROTOCOL_PROPOSED.md",
+        "docs/research_v2/terra_early_warning/p04_03/P04_05_EXIT_BLUEPRINT_PROPOSED.md",
+        "docs/research_v2/terra_early_warning/p04_03/PR53_CLOCK_WITNESS.json",
+        "docs/research_v2/terra_early_warning/p04_03/README.md",
+        "docs/research_v2/terra_early_warning/p04_03/REFERENCE_VECTORS.json",
+        "docs/research_v2/terra_early_warning/p04_03/SOURCE_PRESERVATION.json",
+        "docs/research_v2/terra_early_warning/p04_03/SYNTHETIC_EXAMPLE.json",
+        "docs/research_v2/terra_early_warning/p04_03/collect_delivery.py",
+        "docs/research_v2/terra_early_warning/p04_03/evidence/accepted-regressions.xml.gz",
+        "docs/research_v2/terra_early_warning/p04_03/evidence/final-source-readback.json",
+        "docs/research_v2/terra_early_warning/p04_03/evidence/initial-crlf-linux-L1-L2.json",
+        "docs/research_v2/terra_early_warning/p04_03/evidence/initial-crlf-linux-pit-smoke.json",
+        "docs/research_v2/terra_early_warning/p04_03/evidence/initial-crlf-linux-source-audit.json",
+        "docs/research_v2/terra_early_warning/p04_03/evidence/linux-L1-L2.json",
+        "docs/research_v2/terra_early_warning/p04_03/evidence/linux-accepted-regressions.xml",
+        "docs/research_v2/terra_early_warning/p04_03/evidence/linux-execution.json",
+        "docs/research_v2/terra_early_warning/p04_03/evidence/linux-pit-smoke.json",
+        "docs/research_v2/terra_early_warning/p04_03/evidence/linux-pr55.xml",
+        "docs/research_v2/terra_early_warning/p04_03/evidence/linux-prephase.xml",
+        "docs/research_v2/terra_early_warning/p04_03/evidence/linux-source-audit.json",
+        "docs/research_v2/terra_early_warning/p04_03/evidence/linux-warning.xml",
+        "docs/research_v2/terra_early_warning/p04_03/evidence/pr55-independent-recalculation.json.gz",
+        "docs/research_v2/terra_early_warning/p04_03/evidence/pr55-wheel-verification.json",
+        "docs/research_v2/terra_early_warning/p04_03/evidence/run_linux.py",
+        "docs/research_v2/terra_early_warning/p04_03/evidence/static-reviews.json.gz",
+        "docs/research_v2/terra_early_warning/p04_03/evidence/warning-coverage.json",
+        "docs/research_v2/terra_early_warning/p04_03/evidence/warning.xml",
+        "docs/research_v2/terra_early_warning/p04_03/repair_8a/QA.json",
+        "docs/research_v2/terra_early_warning/p04_03/repair_8a/README.md",
+        "docs/research_v2/terra_early_warning/p04_03/repair_8a/repair-L1-L2.json.gz",
+        "docs/research_v2/terra_early_warning/p04_03/repair_8a/repair-l2.xml.gz",
+        "docs/research_v2/terra_early_warning/p04_03/repair_8a/repair-linux.xml.gz",
+        "tests/v2/terra_warning/test_step7_regressions.py",
+        "tests/v2/terra_warning/test_warning.py"
+      ],
+      "exact_git_blobs_verified": 44,
+      "formal_pr_state": "DRAFT_UNMERGED"
+    },
+    "53": {
+      "head": "96de4c8f4d3fd7bd3974eba3a50bde49fcd8dc5b",
+      "original_pr_base": "053e94cb722f15eed689814c5a7771fa8f881be8",
+      "paths": [
+        "docs/research_v2/terra_early_warning/pit_recovery/ACQUISITION_VERIFICATION_PACKAGE_PROPOSED.md",
+        "docs/research_v2/terra_early_warning/pit_recovery/DATASET_ELIGIBILITY_MATRIX.md",
+        "docs/research_v2/terra_early_warning/pit_recovery/EARLY_WARNING_PROTOCOL_AMENDMENT_PROPOSED.md",
+        "docs/research_v2/terra_early_warning/pit_recovery/EVENT_ONSET_RECONCILIATION.md",
+        "docs/research_v2/terra_early_warning/pit_recovery/PUBLICATION_TIME_EVIDENCE_LEDGER.json",
+        "docs/research_v2/terra_early_warning/pit_recovery/REVIEW_AND_HANDOFF.md"
+      ],
+      "exact_git_blobs_verified": 6,
+      "formal_pr_state": "DRAFT_UNMERGED"
+    }
+  }
+}
