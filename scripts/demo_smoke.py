@@ -34,7 +34,11 @@ def main() -> None:
     scenario = call("/api/v1/scenarios", {"snapshot_id": snapshot["id"]})
     assert isinstance(scenario, dict)
     run = call("/api/v1/runs", {"scenario_id": scenario["id"], "mode": "DETERMINISTIC"})
-    assert isinstance(run, dict) and run["id"]
+    assert isinstance(run, dict) and run["id"] and run["status"] == "COMPLETE"
+    result = run["result"]
+    assert result["metrics"]["total_liquidated_debt"] > 0
+    assert result["metrics"]["cascade_depth"] >= 1
+    assert result["events"] and result["timeseries"]
     print("3 Aave scenario and run:", run["id"])
     history = call("/api/v1/terra/demo/historical-data")
     assert isinstance(history, dict) and len(history["observations"]) == 1776
@@ -45,18 +49,25 @@ def main() -> None:
     warning = call("/api/v1/terra/demo/warnings", {
         "ust_price": "0.99", "luna_previous_price": "100", "luna_current_price": "90",
     })
-    assert isinstance(warning, dict) and warning["models"]["B3"]["level"] == "WATCH"
+    assert isinstance(warning, dict) and warning["origin"] == "SYNTHETIC"
+    assert {name: model["level"] for name, model in warning["models"].items()} == {
+        "B0": "NORMAL", "B1": "HIGH", "B2": "HIGH", "B3": "WATCH",
+    }
     missing = call("/api/v1/terra/demo/warnings", {"ust_price": None})
     assert isinstance(missing, dict) and missing["models"]["B3"]["level"] == "ABSTAIN"
     print("6 synthetic B0-B3: WATCH and ABSTAIN verified")
     stress = call("/api/v1/terra/stress-test", {"runs": 2, "horizon_hours": 4})
-    assert isinstance(stress, dict) and stress["runs"] == 2
+    assert isinstance(stress, dict) and stress["runs"] == 2 and stress["summary"]
     print("7 Terra stress: 2 seeded runs")
     exit_run = call("/api/v1/terra/demo/exits", {
         "quantity_ust": "1000", "price_usd": "0.8", "capacity_ust": "600",
         "fee_percent": "1", "slippage_percent": "2", "latency_minutes": 15,
     })
-    assert isinstance(exit_run, dict) and exit_run["calculation"]["net_usd"] == "465.6"
+    assert isinstance(exit_run, dict) and exit_run["execution_status"] == "CAPACITY_ASSUMED_PARTIAL"
+    assert exit_run["calculation"]["net_usd"] == "465.6"
+    assert exit_run["calculation"]["filled_ust"] == "600"
+    assert exit_run["calculation"]["unfilled_ust"] == "400"
+    assert exit_run["calculation"]["modeled_loss_usd"] == "134.4"
     print("8 illustrative exit: 465.6 USD")
     saved = call(f"/api/v1/terra/demo/runs/{exit_run['id']}")
     assert saved == exit_run

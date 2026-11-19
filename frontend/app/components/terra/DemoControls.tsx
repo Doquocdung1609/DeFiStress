@@ -56,7 +56,7 @@ export function SyntheticWarningDemo() {
       <label className="formField">UST công bố trễ (phút)<input aria-label="UST delay minutes" type="number" min="0" max="60" value={delay} onChange={(e) => setDelay(Number(e.target.value))} /></label>
     </div><div className="actionRow"><button className="primary" disabled={busy} onClick={() => void execute()}>{busy ? "Đang tính…" : "Chạy B0–B3"}</button></div></section>
     {error && <p role="alert" className="researchWarning">{error}</p>}
-    {run && <><div className="metricGrid">{Object.entries(run.models).map(([name, model]) => <article className="metricCard" key={name}><p>{name}</p><strong>{model.level}</strong><small>{model.score ? `${model.score.numerator}/${model.score.denominator}` : "Không đủ chứng cứ để chấm điểm"}</small></article>)}</div><section className="panel"><p>Run {run.id} · {run.status} · {run.origin}</p><p className="researchWarning">Chỉ kiểm thử điều khiển tổng hợp. Không phải dự báo lịch sử Terra 2022.</p>{Object.entries(run.models).map(([name, model]) => <details key={name} className="demoDetails"><summary>{name} · {model.level} · đóng góp, ngưỡng và nguồn</summary><p>Quyết định: {model.context.decision_at} · cutoff: {model.context.information_cutoff} · phát cảnh báo: {model.context.issued_at}</p><p>Tín hiệu: {model.signals.map((signal) => `${signal.signal_id} ${signal.value.numerator}/${signal.value.denominator}`).join(" · ") || "Không có"}</p><p>Ngưỡng: {model.configuration.thresholds.map(([key, value]) => `${key} ${value.numerator}/${value.denominator}`).join(" · ")}</p><p>Quan sát chọn: {model.slots.map((slot) => slot.selected ? `${slot.component} ${slot.selected.measurement.value} (${slot.selected.provenance.source_id}, ${slot.selected.provenance.origin})` : `${slot.component}: thiếu ở ${slot.expected_at}`).join(" · ")}</p><p>Lý do: {model.reasons?.join(", ") || "Không có"}</p><code>Lineage: {model.input_lineage_hash}<br />Output: {model.output_hash}</code></details>)}<ResultLink id={run.id} /></section></>}
+    {run && <><div className="metricGrid">{Object.entries(run.models).map(([name, model]) => <article className="metricCard" key={name}><p>{name}</p><strong>{model.level}</strong><small>{model.score ? `${model.score.numerator}/${model.score.denominator}` : "Không đủ chứng cứ để chấm điểm"}</small></article>)}</div><section className="panel"><p>Run {run.id} · {run.status} · {run.origin}</p><p className="researchWarning">Chỉ kiểm thử điều khiển tổng hợp. Không phải dự báo lịch sử Terra 2022.</p>{Object.entries(run.models).map(([name, model]) => <details key={name} className="demoDetails"><summary>{name} · {model.level} · đóng góp, ngưỡng và nguồn</summary><p>Quyết định: {model.context.decision_at} · cutoff: {model.context.information_cutoff} · phát cảnh báo: {model.context.issued_at}</p><p>Tín hiệu: {model.signals.map((signal) => `${signal.signal_id} ${signal.value.numerator}/${signal.value.denominator}`).join(" · ") || "Không có"}</p><p>Ngưỡng: {model.configuration.thresholds.map(([key, value]) => `${key} ${value.numerator}/${value.denominator}`).join(" · ")}</p><p>Quan sát chọn: {model.slots.map((slot) => slot.selected ? `${slot.component} ${slot.selected.measurement.value} (${slot.selected.provenance.source_id}, ${slot.selected.provenance.origin})` : `${slot.component}: thiếu ở ${slot.expected_at}`).join(" · ")}</p><p>Lý do: {model.reasons?.join(", ") || "Không có"}</p><code>Lineage: {model.input_lineage_hash}<br />Output: {model.output_hash}</code></details>)}<ResultLink id={run.id} />{typeof run.assumptions.ust_price === "string" && run.models.B3.level !== "ABSTAIN" ? <p><a href={`/terra/exit-planner?warning_run=${encodeURIComponent(run.id)}`}>Đánh giá phương án thoát từ cảnh báo tổng hợp này</a></p> : null}</section></>}
   </>;
 }
 
@@ -72,6 +72,18 @@ export function IllustrativeExitDemo() {
   const [run, setRun] = useState<ExitRun | null>(null);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
+  const [sourceWarning, setSourceWarning] = useState("");
+  useEffect(() => {
+    const id = new URLSearchParams(window.location.search).get("warning_run");
+    if (!id) return;
+    void api<WarningRun>(`/api/v1/terra/demo/runs/${encodeURIComponent(id)}`).then((saved) => {
+      const selectedPrice = saved.assumptions.ust_price;
+      if (saved.mode !== "SYNTHETIC_WARNING" || saved.origin !== "SYNTHETIC" || saved.status !== "COMPLETE" || typeof selectedPrice !== "string" || saved.models.B3.level === "ABSTAIN") return;
+      setWarningPrice(selectedPrice);
+      setWarningTime(saved.models.B3.context.decision_at);
+      setSourceWarning(saved.id);
+    }).catch(() => setSourceWarning(""));
+  }, []);
   async function execute() {
     setBusy(true); setError(""); setRun(null);
     try {
@@ -80,7 +92,7 @@ export function IllustrativeExitDemo() {
     } catch (cause) { setError(cause instanceof Error ? cause.message : "Không tính được kế hoạch."); }
     finally { setBusy(false); }
   }
-  return <><div className="sectionLead"><div><p className="eyebrow">ILLUSTRATIVE EXIT</p><h2>Ước tính thoát vị thế</h2><p>Công cụ tính theo giả định bạn nhập. Không có dữ liệu độ sâu thị trường hoặc cam kết khớp lệnh.</p></div></div><section className="panel"><div className="formGrid">
+  return <><div className="sectionLead"><div><p className="eyebrow">ILLUSTRATIVE EXIT</p><h2>Ước tính thoát vị thế</h2><p>Công cụ tính theo giả định bạn nhập. Không có dữ liệu độ sâu thị trường hoặc cam kết khớp lệnh.</p>{sourceWarning ? <p>Đã lấy giá và thời điểm từ cảnh báo tổng hợp {sourceWarning}. Giá thoát, dung lượng và chi phí vẫn là giả định bạn nhập.</p> : null}</div></div><section className="panel"><div className="formGrid">
     <label className="formField">Số UST muốn bán<input aria-label="UST quantity" value={quantity} onChange={(e) => setQuantity(e.target.value)} inputMode="decimal" /></label>
     <label className="formField">Mốc cảnh báo giả định (UTC, ISO 8601)<input aria-label="Warning timestamp" value={warningTime} onChange={(e) => setWarningTime(e.target.value)} /></label>
     <label className="formField">Giá UST lúc cảnh báo<input aria-label="Warning price" value={warningPrice} onChange={(e) => setWarningPrice(e.target.value)} inputMode="decimal" /></label>
