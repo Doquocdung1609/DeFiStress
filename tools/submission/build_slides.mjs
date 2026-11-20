@@ -75,7 +75,18 @@ async function productSlide(title, labels, images = [], connected = true) {
 
 for (let n = 1; n <= 42; n++) {
   if(n===4) {
-    await productSlide('Bảy chương: từ bài toán đến mô hình và ứng dụng', ['1 · Giới thiệu','2 · Lý thuyết','3 · Dữ liệu','4 · Mô hình','5 · Aave–Uniswap','6 · Terra','7 · Sản phẩm'], [], true);
+    const slide = presentation.slides.add();
+    slide.background.fill = '#F7FAFE';
+    text(slide,'Bảy chương: từ bài toán đến mô hình và ứng dụng',90,60,1740,130,40,true);
+    const chapters=['1 · Giới thiệu','2 · Cơ sở lý thuyết','3 · Dữ liệu','4 · Phương pháp','5 · Kết quả\nAave–Uniswap','6 · Terra và\ncảnh báo rủi ro','7 · Phần mềm\nvà kết luận'];
+    for(const [i,label] of chapters.entries()) {
+      const left=i<4 ? 90+i*445 : 310+(i-4)*520;
+      const top=i<4 ? 280 : 570;
+      slide.shapes.add({geometry:'roundRect',position:{left,top,width:360,height:180},fill:'#E3F1FC',line:{fill:'#087BC7',width:2}});
+      text(slide,label,left+24,top+35,312,120,23,true);
+    }
+    text(slide,'Lộ trình nội dung của báo cáo; sơ đồ không biểu diễn kết quả đo lường.',100,850,1700,70,24,false);
+    text(slide,'Nhóm 1 · Tiền số và công nghệ Blockchain · TS Lâm Đức Dương',90,995,1730,45,18,false,'#6B7D90');
     continue;
   }
   if(n===14) {

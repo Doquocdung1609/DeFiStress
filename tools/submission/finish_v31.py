@@ -278,7 +278,7 @@ def main():
             paragraph.text = 'Lệnh chạy bản demo nộp bài (khác với quy trình tái lập bộ nghiên cứu đã khóa):'
         if paragraph.text.startswith('Nguồn: Nhóm nghiên cứu xây dựng từ cơ chế Aave và Uniswap V3'):
             paragraph.text = 'Nguồn: Sơ đồ cơ chế của mô hình. Liên kết giá DEX → HF đi qua Policy A/C giả định; đây không phải sơ đồ oracle Aave Mainnet đã được xác minh.'
-        if paragraph.style.name == 'Table Caption' and '7.5' in paragraph.text:
+        if paragraph.style.name == 'Table Caption' and paragraph._p is [x._p for x in doc.paragraphs if x.style.name == 'Table Caption'][-1]:
             # Keep field-based numbering while correcting only the caption description.
             for run in paragraph.runs:
                 if 'Đối chứng policy và eligible/executed' in run.text:
