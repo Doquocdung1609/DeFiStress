@@ -15,7 +15,7 @@ from docx.oxml.ns import qn
 from docx.shared import Cm, Pt
 
 TITLE = "Mô hình hóa và kiểm định sức chịu đựng rủi ro lây lan trong tài chính phi tập trung"
-STUDENTS = ["Đỗ Quốc Dũng", "Nguyễn Duy Anh", "Đỗ Trung Hải", "Nguyễn Quang Minh"]
+STUDENTS = ["Đỗ Quốc Dũng", "Đỗ Trung Hải", "Nguyễn Quang Minh"]
 
 
 def style(doc: Document) -> None:
@@ -271,9 +271,8 @@ def main() -> None:
         ("Khả năng mở rộng", ["Một proof of concept local chain có thể lưu run ID và hash kết quả để kiểm tra toàn vẹn sau này. Bản nộp hiện không kèm receipt local-chain đã thực thi, vì vậy không tuyên bố đã triển khai hợp đồng thông minh."]),
     ])
     create_document(root / "05_PHU_LUC_VA_MINH_CHUNG/Phan_Cong_Va_Dong_Gop_Thanh_Vien.docx", "Phân công và đóng góp thành viên", [
-        ("Nguyên tắc ghi nhận", ["Bảng dưới đây phân biệt danh sách nhóm trong báo cáo gốc với bằng chứng Git. Commit author không tự chứng minh mọi vai trò học thuật hoặc công việc ngoài Git. Vai trò chi tiết cần được từng thành viên xác nhận trước khi nộp."]),
-        ("Bằng chứng hiện có", ["Lịch sử Git trên nhánh demo có commit của Doquocdung1609 và Trunghai05. Hai thành viên còn lại có tên trong bản Word gốc nhưng chưa có tài khoản GitHub được đối chiếu chắc chắn ở bản kiểm tra này; không gán commit hoặc vai trò cho họ theo suy đoán."]),
-    ], table=[("Thành viên", "Tài khoản Git đã đối chiếu", "Đóng góp có bằng chứng", "Vai trò khác"), (STUDENTS[0], "Doquocdung1609", "Các commit nguồn, tài liệu và tích hợp trên Git", "Chờ xác nhận"), (STUDENTS[1], "Chưa xác nhận", "Chưa đối chiếu được", "Chờ xác nhận"), (STUDENTS[2], "Trunghai05", "PR #59 và các commit triển khai demo", "Chờ xác nhận"), (STUDENTS[3], "Chưa xác nhận", "Chưa đối chiếu được", "Chờ xác nhận")])
+        ("Phạm vi ghi nhận", ["Nhóm 1 gồm đúng ba thành viên. Minh phụ trách frontend và trực quan hóa trong PR #61; ba commit 8faa6b7, 63e2541, 03b3eba được giữ khi merge. Trách nhiệm slide và thuyết trình được giao cho Minh; chỉnh lý cuối bằng Codex là hỗ trợ chung của nhóm."]),
+    ], table=[("Thành viên", "GitHub", "Công việc", "Bằng chứng"), (STUDENTS[0], "Doquocdung1609", "Nghiên cứu, dữ liệu, mô hình hóa và điều phối", "Lịch sử nguồn và tích hợp"), (STUDENTS[1], "Trunghai05", "Phần mềm, API và demo", "PR #58, #59"), (STUDENTS[2], "Minh-1512", "Frontend, trực quan hóa và kiểm thử", "PR #61, merge 25e757a")])
 
 
 if __name__ == "__main__":

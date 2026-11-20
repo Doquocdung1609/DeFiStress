@@ -2,7 +2,7 @@
 
 **Đề tài:** Mô hình hóa và kiểm định sức chịu đựng rủi ro lây lan trong tài chính phi tập trung (DeFi).
 
-**Nhóm thực hiện theo báo cáo gốc:** Đỗ Quốc Dũng, Nguyễn Duy Anh, Đỗ Trung Hải, Nguyễn Quang Minh. Học phần, giảng viên và phân công cá nhân phải được nhóm xác nhận trước khi nộp.
+**Nhóm thực hiện theo báo cáo gốc:** Đỗ Quốc Dũng, Đỗ Trung Hải, Nguyễn Quang Minh. Học phần: Tiền số và công nghệ Blockchain. Giảng viên: TS Lâm Đức Dương. Minh (`Minh-1512`) đóng góp frontend trong PR #61; Hải (`Trunghai05`) tích hợp demo, Dũng (`Doquocdung1609`) phụ trách nghiên cứu và điều phối.
 
 ## Phương pháp và phạm vi
 

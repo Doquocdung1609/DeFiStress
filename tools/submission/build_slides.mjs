@@ -48,7 +48,46 @@ function newSlide(title, kicker, lines, note) {
   slide.speakerNotes.text = note;
 }
 
-for (let n = 1; n <= 42; n++) await sourceSlide(n);
+async function productSlide(title, labels, images = [], connected = true) {
+  const slide = presentation.slides.add();
+  slide.background.fill = '#F7FAFE';
+  text(slide, title, 90, 60, 1740, 120, 40, true);
+  const width = (1740 - 35 * (labels.length - 1)) / labels.length;
+  for (const [index, label] of labels.entries()) {
+    const left = 90 + index * (width + 35);
+    slide.shapes.add({geometry:'roundRect',position:{left,top:230,width,height:145},fill:'#E3F1FC',line:{fill:'#087BC7',width:2}});
+    text(slide,label,left+20,255,width-40,100,24,true);
+    if(connected && index<labels.length-1) text(slide,'→',left+width,270,35,65,25,true);
+  }
+  for (const [index, filename] of images.entries()) {
+    const bytes=await fs.readFile(path.resolve('docs/demo/evidence/frontend-ui-improvements',filename));
+    const w=images.length===1?1250:820;
+    slide.images.add({blob:bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength),contentType:'image/png',fit:'contain',position:{left:images.length===1?335:90+index*910,top:430,width:w,height:500}});
+  }
+  text(slide,'Nhóm 1 · Tiền số và công nghệ Blockchain · TS Lâm Đức Dương',90,995,1730,45,18,false,'#6B7D90');
+  slide.speakerNotes.text='Nguồn ảnh: PR #61 của Minh-1512; ảnh ứng dụng local. Fixture và synthetic là đầu vào minh họa. ABM chạy ngoài chuỗi; kết quả không phải giao dịch Mainnet.';
+}
+
+for (let n = 1; n <= 42; n++) {
+  await sourceSlide(n);
+  if(n===1) {
+    const slide=presentation.slides.items.at(-1);
+    slide.shapes.add({geometry:'rect',position:{left:0,top:1000,width:1920,height:80},fill:'#FFFFFF',line:{fill:'none',width:0}});
+    text(slide,'Nhóm 1 · Tiền số và công nghệ Blockchain · TS Lâm Đức Dương',90,1010,1740,60,20,true);
+  }
+}
+
+await productSlide('Kiến trúc: dữ liệu blockchain và tính toán ngoài chuỗi', ['Nguồn dữ liệu\nRPC / dữ liệu đã lưu','Adapters\nChuẩn hóa trạng thái','FastAPI + engine\nTính và lưu SQLite','Next.js\nKết quả / ZIP'], ['01-aave-fixture.png']);
+await productSlide('Terra: hai nguồn dữ liệu, hai mục đích phân tích', ['Lịch sử 2022\nKhám phá và tái dựng','Synthetic B0–B3\nKiểm tra quy tắc'], ['05-terra-historical-crisis-week.png','06-terra-synthetic-warning.png'], false);
+await productSlide('Cảnh báo → giả định thực thi → kết quả thoát vị thế', ['Cảnh báo đã lưu\nGiá và thời điểm','Giả định\nGiá, phí, capacity','600 UST khớp\n400 UST còn lại','465,6 USD ròng\nLỗ phần thoát 134,4'], ['10-exit-capacity-partial.png']);
+await productSlide('ABM là phương pháp chính; blockchain cung cấp đầu vào', ['On-chain\nAave / Uniswap','Read-only\nSnapshot cùng block','Off-chain ABM\nTác nhân + pool','Stress / Monte Carlo\nAPI + dashboard'], ['04-uniswap-feedback.png']);
+await productSlide('Ứng dụng thật: 32 frontend tests và 9 smoke checks', ['Kết quả Aave\nFixture có nhãn','Cảnh báo B0–B3\nSynthetic','Thoát một phần\nGiả định thực thi'], ['03-aave-severe.png','10-exit-capacity-partial.png']);
+await sourceSlide(43);
+await productSlide('Ba thành viên và minh chứng đóng góp', ['Đỗ Quốc Dũng\nDoquocdung1609\nNghiên cứu, điều phối','Đỗ Trung Hải\nTrunghai05\nBackend và demo','Nguyễn Quang Minh\nMinh-1512 · PR #61\nFrontend, trực quan hóa'], [], false);
+await sourceSlide(44);
+await sourceSlide(45);
+
+/* Preserved drafting material; final deck uses the visual product slides above.
 
 newSlide('Sản phẩm chạy trên máy: từ dữ liệu đến kết quả', 'Kiến trúc phần mềm', [
   'Frontend Next.js → Backend FastAPI → engine mô phỏng và bộ phân tích Terra.',
@@ -87,6 +126,7 @@ newSlide('Bằng chứng ứng dụng chạy thật', 'Demo và kiểm thử', [
 
 await sourceSlide(44);
 await sourceSlide(45);
+*/
 
 const pptx = await PresentationFile.exportPptx(presentation);
 await fs.mkdir(path.dirname(output), { recursive: true });
