@@ -281,7 +281,8 @@ def main():
         if paragraph.style.name == 'Table Caption' and '7.5' in paragraph.text:
             # Keep field-based numbering while correcting only the caption description.
             for run in paragraph.runs:
-                run.text = run.text.replace('Đối chứng policy và eligible/executed', 'Ma trận kết luận và giới hạn sáu RQ')
+                if 'Đối chứng policy và eligible/executed' in run.text:
+                    run.text = run.text.replace('Đối chứng policy và eligible/executed', 'Ma trận kết luận và giới hạn sáu RQ')
     for table in doc.tables:
         for row in table.rows:
             if len(row.cells) >= 3 and row.cells[0].text.strip() == 'Thời gian xử lý vị thế':
