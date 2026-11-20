@@ -12,7 +12,7 @@ from docx.shared import Pt
 
 ROOT = Path("C:/Users/Admin/Desktop/NHOM_01_DEFISTRESS_BAO_CAO_BTL")
 SCRIPT_SOURCE = Path("C:/Users/Admin/Downloads/DeFiStress_Script_ThuyetTrinh_45_Slide.docx")
-TIMELINE_SOURCE = Path("C:/Users/Admin/Desktop/DeFiStress-BTL-output/recording-v2/timeline.json")
+TIMELINE_SOURCE = Path("C:/Users/Admin/Desktop/DeFiStress-BTL-V3/recording/timeline.json")
 REPO_URL = "https://github.com/Doquocdung1609/DeFiStress"
 BRANCH = "submission/group01-btl-final"
 
@@ -59,6 +59,32 @@ def script() -> None:
         heading = source.paragraphs[text_index].text.replace(f"Slide {text_index // 2}", f"Slide {index}")
         document.add_heading(heading, level=1)
         document.add_paragraph(source.paragraphs[text_index + 1].text)
+    for paragraph in list(document.paragraphs):
+        if paragraph.text.startswith("Slide "):
+            import re
+            match = re.match(r"Slide (\d+)", paragraph.text)
+            if match:
+                number = int(match.group(1))
+                speaker = "Đỗ Quốc Dũng" if number <= 27 else "Đỗ Trung Hải" if number <= 40 else "Nguyễn Quang Minh"
+                role = paragraph.insert_paragraph_before(f"Người trình bày dự kiến: {speaker}.")
+                paragraph._p.addnext(role._p)
+    document.add_heading("Câu hỏi phản biện và trả lời", level=1)
+    questions = [
+        ("Vì sao chọn ABM?", "Cần mô tả hành vi khác nhau của người vay, liquidator và arbitrageur cùng vòng phản hồi qua thị trường."),
+        ("Monte Carlo có thay ABM không?", "Monte Carlo tạo nhiều đường giả định; mỗi đường vẫn dùng quy tắc tương tác của mô hình."),
+        ("Có triển khai blockchain không?", "Blockchain cung cấp đầu vào đọc; engine chạy ngoài chuỗi để thử phản thực với chi phí thấp."),
+        ("HF dưới 1 đã là thanh lý thực thi chưa?", "Chưa. Cần tuyến nợ, vốn, công suất và kế hoạch có khoản hoàn trả dương."),
+        ("Aave có dùng trực tiếp giá Uniswap trong mô hình không?", "Policy A là giả định của mô hình. Không gán đó là oracle thực tế của Aave."),
+        ("Uniswap V3 khác mô hình x·y=k đơn giản thế nào?", "Thanh khoản hoạt động theo khoảng tick; vượt tick làm thay đổi lượng thanh khoản đang dùng."),
+        ("280/10.000 nghĩa là gì?", "Tần suất depth ≥2 trong Severe Policy A của bộ đã khóa, không phải xác suất khủng hoảng thị trường."),
+        ("Terra có cảnh báo trước mất neo đầu tiên không?", "HIGH đến muộn 45 giờ ở ngưỡng 0,995 nhưng sớm ba giờ ở ngưỡng sâu 0,90. Hai mốc khác nhau."),
+        ("Exit Calculator bảo đảm khớp lệnh không?", "Không. Giá, phí và capacity là giả định; thiếu capacity thì chưa thể xác minh kết quả khớp."),
+        ("Có kết nối ví hoặc giao dịch thật không?", "Bản demo là công cụ phân tích local, không gửi giao dịch tài sản thật."),
+        ("Ai đóng góp phần nào?", "Dũng nghiên cứu và điều phối; Hải tích hợp phần mềm/demo; Minh frontend và trực quan hóa qua PR #61. Hồ sơ ghi nguồn commit và phần hỗ trợ chung."),
+    ]
+    for question, answer in questions:
+        document.add_paragraph(question, style="Heading 2")
+        document.add_paragraph(answer)
     target = ROOT / "02_SLIDE_THUYET_TRINH/Kich_Ban_Thuyet_Trinh_DeFiStress_FINAL.docx"
     target.parent.mkdir(parents=True, exist_ok=True)
     document.save(target)
@@ -66,7 +92,7 @@ def script() -> None:
 
 def timeline() -> None:
     rows = json.loads(TIMELINE_SOURCE.read_text(encoding="utf-8"))
-    seconds_total = 274.466667
+    seconds_total = 381.76
     descriptions = {
         "aave-fixture": "Tổng quan Aave và nhãn fixture",
         "aave-positions": "Danh mục người vay",
@@ -92,13 +118,13 @@ def timeline() -> None:
     lines = [
         "# VIDEO TIMELINE — DEFISTRESS FULL DEMO",
         "",
-        "Video ghi bằng Playwright trên ứng dụng local. Mốc được lấy từ phiên quay thật; mỗi cảnh kéo dài đến mốc bắt đầu cảnh tiếp theo. Thời lượng 04:34.",
+        "Video ghi bằng Playwright trên ứng dụng local sau PR #61. Mốc lấy từ phiên quay thật; mỗi cảnh kéo dài đến mốc tiếp theo. Thời lượng 06:22, gồm kiểm tra responsive cuối video.",
         "",
         "| Bắt đầu | Kết thúc | Cảnh |",
         "|---|---|---|",
     ]
     document = new_document("VIDEO TIMELINE — DEFISTRESS FULL DEMO")
-    document.add_paragraph("Ứng dụng local, trình duyệt thật; thời lượng 04:34. Các mốc lấy từ timeline của phiên quay.")
+    document.add_paragraph("Ứng dụng local sau PR #61, trình duyệt thật; thời lượng 06:22. Các mốc lấy từ timeline phiên quay.")
     table = document.add_table(rows=1, cols=3)
     for cell, value in zip(table.rows[0].cells, ("Bắt đầu", "Kết thúc", "Nội dung"), strict=True):
         cell.text = value

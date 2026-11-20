@@ -30,6 +30,11 @@ async function sourceSlide(n) {
     position: { left: 0, top: 0, width: 1920, height: 1080 },
   });
   slide.speakerNotes.text = `Nguồn: DefiStress - Nhóm 1.pdf, trang ${n}. Slide ảnh từ tài liệu nhóm; các kết quả được diễn giải trong báo cáo cuối với giới hạn mô hình.`;
+  if([29,36,37,38,40,41,42,44].includes(n)) {
+    slide.shapes.add({geometry:'rect',position:{left:0,top:0,width:110,height:90},fill:'#FFFFFF',line:{fill:'none',width:0}});
+  }
+  slide.shapes.add({geometry:'rect',position:{left:1815,top:0,width:105,height:75},fill:'#FFFFFF',line:{fill:'none',width:0}});
+  text(slide,`${presentation.slides.items.length}/51`,1830,18,85,45,16,false,'#6B7D90');
 }
 
 function newSlide(title, kicker, lines, note) {
@@ -69,11 +74,23 @@ async function productSlide(title, labels, images = [], connected = true) {
 }
 
 for (let n = 1; n <= 42; n++) {
+  if(n===4) {
+    await productSlide('Bảy chương: từ bài toán đến mô hình và ứng dụng', ['1 · Giới thiệu','2 · Lý thuyết','3 · Dữ liệu','4 · Mô hình','5 · Aave–Uniswap','6 · Terra','7 · Sản phẩm'], [], true);
+    continue;
+  }
+  if(n===14) {
+    await productSlide('Bốn cấu hình định giá trong cùng một cú sốc', ['A · Adverse\nmin(reference, DEX)','B · Reference only\nChỉ giá tham chiếu','C weak · α=0,25\nLag 1 · Window 3','C moderate · α=0,50\nLag 1 · Window 2'], [], false);
+    const slide=presentation.slides.items.at(-1);
+    text(slide,'C chỉ dùng giá DEX từ các wave đã hoàn tất. Các chính sách là giả định mô hình, chưa được xác minh là oracle Aave/Chainlink thực tế.',120,500,1660,240,30,false);
+    continue;
+  }
   await sourceSlide(n);
   if(n===1) {
     const slide=presentation.slides.items.at(-1);
     slide.shapes.add({geometry:'rect',position:{left:0,top:1000,width:1920,height:80},fill:'#FFFFFF',line:{fill:'none',width:0}});
     text(slide,'Nhóm 1 · Tiền số và công nghệ Blockchain · TS Lâm Đức Dương',90,1010,1740,60,20,true);
+    slide.shapes.add({geometry:'rect',position:{left:0,top:0,width:800,height:65},fill:'#FFFFFF',line:{fill:'none',width:0}});
+    text(slide,'BÀI TẬP LỚN · NHÓM 1',90,10,700,45,17,true);
   }
 }
 

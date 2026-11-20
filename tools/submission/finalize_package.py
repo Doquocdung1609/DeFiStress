@@ -54,7 +54,7 @@ def main() -> None:
         source_rows.append({"source": relative, "copy": target.relative_to(ROOT).as_posix(), "sha256": digest(target)})
     pretty(data / "EVIDENCE_SOURCE_MANIFEST.json", {"source_commit": args.commit, "files": source_rows})
 
-    screen_dir = QA / "browser-qa"
+    screen_dir = Path("C:/Users/Admin/Desktop/DeFiStress-BTL-V3/browser")
     for source in sorted(screen_dir.glob("*.png")):
         shutil.copy2(source, tests / source.name)
     junit = QA / "targeted-pytest.xml"
@@ -64,11 +64,11 @@ def main() -> None:
         "source_commit": args.commit,
         "demo_smoke": {"cases": 9, "passed": 9, "status": "PASS_LOCAL"},
         "python_targeted": {"tests": 18, "passed": 18, "junit": "targeted-pytest.xml"},
-        "frontend_vitest": {"tests": 22, "passed": 22},
+        "frontend_vitest": {"tests": 32, "passed": 32},
         "frontend_lint": "PASS_LOCAL",
         "frontend_production_build": "PASS_LOCAL",
         "browser_qa": {"screenshots": len(list(screen_dir.glob("*.png"))), "status": "PASS_LOCAL"},
-        "hosted_ci": "NOT_VERIFIED_ON_SUBMISSION_HEAD",
+        "hosted_ci": "RECORD_FINAL_HEAD_CI_SEPARATELY",
         "limitations": "Aave browser demo uses a labelled synthetic fixture; Terra B0–B3 and exit are illustrative.",
     })
 
@@ -86,12 +86,12 @@ def main() -> None:
         "video": VIDEO.name,
         "video_sha256": digest(VIDEO),
         "ffprobe": video_info,
-        "scenes": json.loads((QA / "recording-v2/timeline.json").read_text(encoding="utf-8")),
+        "scenes": json.loads((Path("C:/Users/Admin/Desktop/DeFiStress-BTL-V3/recording/timeline.json")).read_text(encoding="utf-8")),
     })
     (ROOT / "03_VIDEO_DEMO/VIDEO_QC.md").write_text(
         "# Video QC\n\n"
         f"- File: `{VIDEO.name}`; SHA-256: `{digest(VIDEO)}`.\n"
-        "- H.264, 1920×1080, 30 fps; 04:34.\n"
+        "- H.264, 1920×1080, 30 fps; 06:22.\n"
         "- Đã trích và kiểm tra hình tại các mốc 00:05, 00:50, 01:35, 02:25, 03:20 và 04:20.\n"
         "- Các mốc đầu, giữa và cuối hiển thị ứng dụng thật. Hai khung 01:35 và 02:25 có trạng thái loading ngắn của trang Terra; các cảnh sau tiếp tục tải kết quả.\n"
         "- Màn hình Aave mang nhãn fixture synthetic. Không có secret hoặc giao dịch blockchain thật được ghi.\n"
@@ -111,7 +111,7 @@ def main() -> None:
         ],
         "status": {
             "product_demo": "COMPLETE_LOCAL",
-            "submission_files": "COMPLETE_WITH_COURSE_AND_LECTURER_PENDING_CONFIRMATION",
+            "submission_files": "FILES_PRODUCED_ACCESS_GATE_PENDING",
             "drive_upload": "PENDING",
             "github_access": "PENDING",
         },

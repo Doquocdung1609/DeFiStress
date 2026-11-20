@@ -11,6 +11,7 @@ foreach ($file in $files) {
         $document = $null
         try {
             $document = $word.Documents.Open($file.FullName, $false, $false)
+            foreach ($equation in $document.OMaths) { try { $equation.BuildUp() } catch { } }
             $document.Fields.Update() | Out-Null
             foreach ($toc in $document.TablesOfContents) { $toc.Update() | Out-Null }
             $document.Save()
