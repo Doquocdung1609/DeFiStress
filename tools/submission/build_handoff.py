@@ -166,7 +166,7 @@ def guide() -> None:
         "Cài backend: `.venv\\Scripts\\python.exe -m pip install -e .`; nếu cần phần test, cài thêm extras dev theo pyproject.toml.",
         "Cài frontend: `cd frontend; pnpm install --frozen-lockfile; cd ..`.",
         "Khởi chạy: `.\\scripts\\start_demo.ps1`; mở http://localhost:3100. FastAPI tại http://localhost:8100/docs. Dừng bằng `.\\scripts\\stop_demo.ps1`.",
-        "Kiểm tra smoke: `.venv\\Scripts\\python.exe scripts\\demo_smoke.py`. Browser test: `cd frontend; node scripts/browser_demo.mjs` sau khi cài Chromium bằng `pnpm exec playwright install chromium`.",
+        "Kiểm tra smoke: `.venv\\Scripts\\python.exe scripts\\demo_smoke.py`. Browser test: `cd frontend; node scripts/browser_demo.mjs` với Google Chrome đã cài trên máy (script dùng channel chrome).",
         "Dùng Aave Fixture Dataset khi chưa cấu hình snapshot Mainnet. Mọi kết quả fixture phải giữ nhãn synthetic. Terra Historical và Synthetic B0–B3 là hai chế độ khác nhau.",
         "Xem README_BTL.md trong mã nguồn để biết provenance, giới hạn và đường dẫn chi tiết.",
     ])

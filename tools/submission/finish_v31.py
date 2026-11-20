@@ -271,6 +271,26 @@ def main():
             p.paragraph_format.keep_with_next=True
         if p._p.xpath('.//w:drawing'):
             p.paragraph_format.keep_with_next=True
+    for paragraph in doc.paragraphs:
+        if paragraph.text.startswith('Các kết quả nghiên cứu được lưu cùng kịch bản'):
+            paragraph.text = 'Đầu vào, kịch bản, seed và hash được lưu để tái lập. Kiểm thử API, Python và trình duyệt gắn với đúng phiên bản; các bộ hồi quy chồng lấn không được cộng thành một tổng độc lập.'
+        if paragraph.text.startswith('Lệnh chuẩn để tái lập toàn bộ package nghiên cứu'):
+            paragraph.text = 'Lệnh chạy bản demo nộp bài (khác với quy trình tái lập bộ nghiên cứu đã khóa):'
+        if paragraph.text.startswith('Nguồn: Nhóm nghiên cứu xây dựng từ cơ chế Aave và Uniswap V3'):
+            paragraph.text = 'Nguồn: Sơ đồ cơ chế của mô hình. Liên kết giá DEX → HF đi qua Policy A/C giả định; đây không phải sơ đồ oracle Aave Mainnet đã được xác minh.'
+        if paragraph.style.name == 'Table Caption' and '7.5' in paragraph.text:
+            # Keep field-based numbering while correcting only the caption description.
+            for run in paragraph.runs:
+                run.text = run.text.replace('Đối chứng policy và eligible/executed', 'Ma trận kết luận và giới hạn sáu RQ')
+    for table in doc.tables:
+        for row in table.rows:
+            if len(row.cells) >= 3 and row.cells[0].text.strip() == 'Thời gian xử lý vị thế':
+                row.cells[2].text = 'Thời gian xử lý tập vị thế theo lịch engine; khác thời gian phục hồi giá.'
+            if len(row.cells) >= 3 and row.cells[0].text.strip() == 'Nợ xấu' and row.cells[1].text.strip() == 'USDC':
+                row.cells[1].text = 'USD tương đương'
+            for cell in row.cells:
+                if 'Không che giấu việc chưa xuất hiện vòng thanh lý thứ hai' in cell.text:
+                    cell.text = 'Lưới gốc không có vòng hai; lưới mở rộng có bốn trường hợp dưới Policy A. Cảnh báo Terra bỏ lỡ mất neo ban đầu.'
     # Avoid an overflowed explicit page-break paragraph after the abstract.
     for index, paragraph in enumerate(doc.paragraphs):
         if paragraph.text.strip() == 'MỤC LỤC':
