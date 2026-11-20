@@ -14,6 +14,8 @@ EXCLUDED_PREFIXES = (
     "data/processed/research_final/level3_extension/deep_stress/checkpoints/",
 )
 MAX_SINGLE_FILE = 8_000_000
+# Runtime dependency used by the unchanged Terra stress-demo route.
+REQUIRED_RUNTIME = {"data/processed/terra_extended/terra_native_swaps.parquet"}
 
 
 def main() -> None:
@@ -29,7 +31,7 @@ def main() -> None:
         for relative in files:
             source = REPO / relative
             excluded_prefix = any(relative.startswith(prefix) for prefix in EXCLUDED_PREFIXES)
-            if excluded_prefix or source.stat().st_size > MAX_SINGLE_FILE:
+            if relative not in REQUIRED_RUNTIME and (excluded_prefix or source.stat().st_size > MAX_SINGLE_FILE):
                 excluded.append({"path": relative, "reason": "raw/large research evidence distributed separately"})
                 continue
             archive.write(source, relative)

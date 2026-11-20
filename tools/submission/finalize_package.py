@@ -92,8 +92,8 @@ def main() -> None:
         "# Video QC\n\n"
         f"- File: `{VIDEO.name}`; SHA-256: `{digest(VIDEO)}`.\n"
         "- H.264, 1920×1080, 30 fps; 06:22.\n"
-        "- Đã trích và kiểm tra hình tại các mốc 00:05, 00:50, 01:35, 02:25, 03:20 và 04:20.\n"
-        "- Các mốc đầu, giữa và cuối hiển thị ứng dụng thật. Hai khung 01:35 và 02:25 có trạng thái loading ngắn của trang Terra; các cảnh sau tiếp tục tải kết quả.\n"
+        "- Đã giải mã toàn bộ MP4 bằng ffmpeg, exit 0, không có lỗi; đã kiểm tra 23 khung từ timeline phiên quay.\n"
+        "- Các cảnh hiển thị ứng dụng thật, kết quả Aave, Terra, B0–B3, ABSTAIN, Exit 465,60 USD và mở lại lượt chạy. Đoạn responsive cuối có vùng xám ngoài viewport hẹp do giữ khung video 1920×1080.\n"
         "- Màn hình Aave mang nhãn fixture synthetic. Không có secret hoặc giao dịch blockchain thật được ghi.\n"
         "- Video không có voice-over; dùng kịch bản thuyết trình và timeline để trình bày trực tiếp.\n",
         encoding="utf-8",

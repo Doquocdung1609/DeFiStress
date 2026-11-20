@@ -271,6 +271,22 @@ def main():
             p.paragraph_format.keep_with_next=True
         if p._p.xpath('.//w:drawing'):
             p.paragraph_format.keep_with_next=True
+    # Avoid an overflowed explicit page-break paragraph after the abstract.
+    for index, paragraph in enumerate(doc.paragraphs):
+        if paragraph.text.strip() == 'MỤC LỤC':
+            paragraph.paragraph_format.page_break_before = True
+            if index:
+                previous = doc.paragraphs[index - 1]
+                for br in list(previous._p.iter(qn('w:br'))):
+                    if br.get(qn('w:type')) == 'page':
+                        br.getparent().remove(br)
+                if not previous.text.strip() and previous._p.find('.//' + qn('w:sectPr')) is None:
+                    previous._p.getparent().remove(previous._p)
+    for style in doc.styles:
+        if style.name.lower().startswith('toc'):
+            style.paragraph_format.keep_with_next = False
+            style.paragraph_format.keep_together = False
+            style.paragraph_format.page_break_before = False
     doc.save(TARGET)
     with (QA/'FORMULA_AND_CAPTION_INVENTORY.csv').open('w',encoding='utf-8-sig',newline='') as f:
         w=csv.writer(f)
