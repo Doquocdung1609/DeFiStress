@@ -118,11 +118,12 @@ try {
 
   await open("/terra/exit-planner", "Exit Calculator");
   await page.getByRole("button", { name: "Tính phương án" }).click();
-  await page.getByRole("heading", { name: "NOT_VERIFIABLE" }).waitFor();
+  await page.locator(".executionStatus").getByText("Chưa thể xác minh", { exact: true }).waitFor();
   await page.getByRole("textbox", { name: "Assumed capacity" }).fill("600");
   await page.getByRole("button", { name: "Tính phương án" }).click();
-  await page.getByRole("heading", { name: "CAPACITY_ASSUMED_PARTIAL" }).waitFor();
+  await page.locator(".executionStatus").getByText("Khớp một phần theo dung lượng giả định", { exact: true }).waitFor();
   assert.match(await page.locator("main").innerText(), /465\.6/);
+  await page.locator(".exitResult").scrollIntoViewIfNeeded();
   await shot("exit-capacity-partial");
   await page.getByRole("link", { name: "Mở kết quả đã lưu" }).click();
   await page.getByRole("heading", { name: /ILLUSTRATIVE_EXIT/ }).waitFor();
@@ -132,7 +133,32 @@ try {
   await page.getByRole("link", { name: "Tải kết quả ZIP" }).click();
   const download = await pending;
   assert.match(download.suggestedFilename(), /defistress-demo-.*\.zip/);
-  console.log(`browser: ${capture} screenshots; saved run and ZIP download verified`);
+  const responsiveSizes = [
+    ["1920x1080", 1920, 1080],
+    ["1366x768", 1366, 768],
+    ["1024x768", 1024, 768],
+    ["390x844", 390, 844],
+  ];
+  for (const [label, width, height] of responsiveSizes) {
+    await page.setViewportSize({ width, height });
+    await open("/terra/warning-lab", "Synthetic B0–B3");
+    await page.getByRole("button", { name: "Chạy B0–B3" }).click();
+    await page.locator(".warningModelGrid").waitFor();
+    const warningWidth = await page.evaluate(() => ({ viewport: document.documentElement.clientWidth, content: document.documentElement.scrollWidth }));
+    assert.ok(warningWidth.content <= warningWidth.viewport, `${label} warning page overflows horizontally`);
+    await shot(`responsive-warning-${label}`);
+    if (width <= 1024) {
+      await open("/terra/exit-planner", "Exit Calculator");
+      await page.getByRole("textbox", { name: "Assumed capacity" }).fill("600");
+      await page.getByRole("button", { name: "Tính phương án" }).click();
+      await page.locator(".executionStatus").getByText("Khớp một phần theo dung lượng giả định", { exact: true }).waitFor();
+      const exitWidth = await page.evaluate(() => ({ viewport: document.documentElement.clientWidth, content: document.documentElement.scrollWidth }));
+      assert.ok(exitWidth.content <= exitWidth.viewport, `${label} Exit Calculator overflows horizontally`);
+      await page.locator(".exitResult").scrollIntoViewIfNeeded();
+      await shot(`responsive-exit-${label}`);
+    }
+  }
+  console.log(`browser: ${capture} screenshots; saved run, ZIP download and responsive layouts verified`);
 } finally {
   await context.close();
   if (recordDir) {
