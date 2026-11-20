@@ -5,7 +5,7 @@ from datetime import UTC, datetime
 from decimal import Decimal
 from typing import Any, Literal
 
-from pydantic import BaseModel, Field, ValidationInfo, field_validator
+from pydantic import BaseModel, Field, ValidationInfo, field_validator, model_validator
 
 
 class SnapshotCreate(BaseModel):
@@ -276,6 +276,12 @@ class ExitDemoRequest(BaseModel):
     fee_percent: str = "0"
     slippage_percent: str = "0"
     latency_minutes: int = Field(default=0, ge=0, le=10080)
+
+    @model_validator(mode="after")
+    def nonnegative_net_proceeds(self) -> ExitDemoRequest:
+        if Decimal(self.fee_percent) + Decimal(self.slippage_percent) > 100:
+            raise ValueError("combined fee and slippage must not exceed 100 percent")
+        return self
 
     @field_validator(
         "quantity_ust", "price_usd", "warning_price_usd", "capacity_ust", "fee_percent", "slippage_percent",

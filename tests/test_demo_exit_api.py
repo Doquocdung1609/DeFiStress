@@ -60,6 +60,7 @@ def test_exit_invalid_numbers_rejected(tmp_path):
         for body in ({"quantity_ust": "NaN"}, {"quantity_ust": "0"},
                      {"price_usd": -1}, {"capacity_ust": "-2"},
                      {"fee_percent": "101"}, {"slippage_percent": "Infinity"},
+                     {"fee_percent": "70", "slippage_percent": "40", "capacity_ust": "600"},
                      {"latency_minutes": -1}):
             assert api.post("/api/v1/terra/demo/exits", json=body).status_code == 422
     finally:
