@@ -34,6 +34,7 @@ import {
   shouldShowFixtureBanner,
   shouldShowMainnetBanner,
 } from "@/lib/snapshot-selection";
+import { formatHealthFactor, healthFactorStatus } from "@/lib/visualization";
 import { ContagionGraph } from "./ContagionGraph";
 
 const nav = [
@@ -575,9 +576,9 @@ function Overview({ snapshot, positions, liquidity, health }: { snapshot: Snapsh
       <Card label="USDC oracle price" value={money(snapshot.oracle_prices.USDC)} detail={`${snapshot.stablecoin_state.depeg_bps.toFixed(1)} bps depeg monitor`} />
       <Card label="Sampled debt" value={money(totalDebt)} detail={`${positions.length} borrowers`} />
       <Card label="Borrower cohort" value={String(positions.length)} detail={String(snapshot.coverage.cohort_label ?? "snapshot cohort")} />
-      <Card label="HF below 1.05" value={String(positions.filter((p) => p.health_factor < 1.05).length)} detail="critical risk" tone="risk" />
-      <Card label="HF below 1.10" value={String(positions.filter((p) => p.health_factor < 1.1).length)} detail="immediate risk cohort" tone="risk" />
-      <Card label="HF below 1.20" value={String(positions.filter((p) => p.health_factor < 1.2).length)} detail="watch cohort" />
+      <Card label="HF below 1.00" value={String(positions.filter((p) => p.health_factor < 1).length)} detail="eligible for liquidation review" tone="risk" />
+      <Card label="HF 1.00–1.10" value={String(positions.filter((p) => p.health_factor >= 1 && p.health_factor < 1.1).length)} detail="low buffer · visual grouping" tone="risk" />
+      <Card label="HF 1.10–1.20" value={String(positions.filter((p) => p.health_factor >= 1.1 && p.health_factor < 1.2).length)} detail="watch · visual grouping" />
       <Card label="DEX spot" value={money(liquidity?.spot_price)} detail={`${String(liquidity?.pool.fee ?? "—")} fee tier`} />
     </div>
     <div className="twoCol">
@@ -615,7 +616,7 @@ function Positions({ positions, coverage }: { positions: Position[]; coverage: S
     <div className="coverageStrip researchCoverage">{coverageItems.map(([label, value]) => <div key={String(label)}><span>{label}</span><strong>{String(value)}</strong></div>)}</div>
     <Panel title="Position cohort" eyebrow="PSEUDONYMIZED PUBLIC ADDRESSES">
       <div className="controls"><label>HF threshold<select value={limit} onChange={(e) => setLimit(Number(e.target.value))}><option value={1.05}>Below 1.05</option><option value={1.1}>Below 1.10</option><option value={1.2}>Below 1.20</option><option value={10}>All</option></select></label><label>Order<select value={sort} onChange={(e) => setSort(e.target.value as "hf" | "debt")}><option value="hf">Lowest HF</option><option value="debt">Top debt</option></select></label><label>Search<input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="borrower-…" /></label></div>
-      <div className="tableWrap"><table><thead><tr><th>Borrower</th><th>HF</th><th>WETH collateral</th><th>USDC debt</th><th>Liquidation price</th><th>Distance</th><th>Debt share</th></tr></thead><tbody>{filtered.map((p) => <tr key={p.borrower_hash}><td><code>{p.borrower_hash}</code></td><td><span className={`hf ${p.health_factor < 1.05 ? "danger" : p.health_factor < 1.2 ? "warn" : "ok"}`}>{p.health_factor.toFixed(3)}</span></td><td>{p.collateral_weth.toFixed(3)}</td><td>{money(p.debt_usdc)}</td><td>{money(p.liquidation_price)}</td><td>{percent(p.distance_to_liquidation)}</td><td>{percent(p.debt_share)}</td></tr>)}</tbody></table></div>
+      <div className="tableWrap"><table><thead><tr><th>Borrower</th><th>Health Factor</th><th>WETH collateral</th><th>USDC debt</th><th>Liquidation price</th><th>Distance</th><th>Debt share</th></tr></thead><tbody>{filtered.map((p) => { const status = healthFactorStatus(p.health_factor); const label = status === "liquidation-threshold" ? (p.health_factor < 1 ? "Eligible for review" : "At threshold") : status === "low-buffer" ? "Low buffer" : status === "relative-buffer" ? "Relative buffer" : "Not available"; return <tr key={p.borrower_hash}><td><code>{p.borrower_hash}</code></td><td><span className={`hf ${status === "liquidation-threshold" ? "danger" : status === "low-buffer" ? "warn" : status === "relative-buffer" ? "ok" : "unknown"}`} title="HF below 1 is eligible for liquidation review; it does not mean a liquidation was executed.">{formatHealthFactor(p.health_factor)}</span><small className="hfNote">{label}</small></td><td>{p.collateral_weth.toFixed(3)}</td><td>{money(p.debt_usdc)}</td><td>{money(p.liquidation_price)}</td><td>{percent(p.distance_to_liquidation)}</td><td>{percent(p.debt_share)}</td></tr>; })}</tbody></table></div>
     </Panel>
     <Panel title="Filtered Health Factor distribution" eyebrow={`${filtered.length} POSITIONS`}><Chart><BarChart data={hfHistogram(filtered)}><CartesianGrid strokeDasharray="3 3" stroke="#1b3553" /><XAxis dataKey="bin" stroke="#7590aa" /><YAxis stroke="#7590aa" allowDecimals={false} /><Tooltip contentStyle={tooltipStyle} /><Bar dataKey="count" fill="#31d4e8" radius={[4, 4, 0, 0]} /></BarChart></Chart></Panel>
   </>;
